@@ -1,24 +1,39 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook50-profile.xsl"
  type="text/xml"
  title="Profiling step"?>
-<!DOCTYPE appendix
+
+<!DOCTYPE article
 [
   <!ENTITY % entities SYSTEM "generic-entities.ent">
-    %entities;
-  <!ENTITY productnamex "<phrase xmlns='http://docbook.org/ns/docbook' os='sles;sled;osuse'>&productname;</phrase><phrase xmlns='http://docbook.org/ns/docbook' os='article'>&sls;</phrase>">
-  <!ENTITY productnumberx "<phrase xmlns='http://docbook.org/ns/docbook' os='sles;sled;osuse'>&productnumber;</phrase><phrase xmlns='http://docbook.org/ns/docbook' os='article'>15</phrase>">
+  %entities;
+  <!ENTITY productnamex "&sls; code stream 15">
 ]>
 
-<!--
-  IMPORTANT: When editing this file, make sure to keep the article version
-  (art_pcidss.xml) up-to-date.
--->
+<article xml:id="article-pci-dss"
+         xml:lang="en"
+         version="5.0"
+         xmlns="http://docbook.org/ns/docbook"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:xlink="http://www.w3.org/1999/xlink">
+ <title>&sle_pcidss_guide;</title>
+ <titleabbrev>&sle_pcidss_guide;</titleabbrev>
+ <info>
+  <productname>&productnamex;</productname>
+  <date><?dbtimestamp format="B d, Y" ?></date>
+  <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
+   <dm:bugtracker>
+    <dm:url>https://bugzilla.suse.com/enter_bug.cgi</dm:url>
+    <dm:component>Documentation</dm:component>
+    <dm:product>SUSE Linux Enterprise Server 15 code stream</dm:product>
+    <dm:assignee>taroth@suse.com</dm:assignee>
+   </dm:bugtracker>
+   <dm:editurl>https://github.com/SUSE/doc-sle/edit/main/xml/</dm:editurl>
+   <dm:translation>no</dm:translation>
+  </dm:docmanager>
+ </info>
 
-<appendix xml:id="app-pcidss"
- xmlns="http://docbook.org/ns/docbook" version="5.0"
- xmlns:xi="http://www.w3.org/2001/XInclude"
- xmlns:xlink="http://www.w3.org/1999/xlink">
+ <section xml:id="art-pci-dss-compliance">
  <title>Achieving &pcidssa; compliance</title>
  <info>
   <abstract>
@@ -31,6 +46,7 @@
    </para>
   </abstract>
  </info>
+
 
  <!-- Possibly useful resources:
  Positive Research Center (describing PCI-DSS 1.0!)
@@ -70,7 +86,8 @@
    </para>
   </listitem>
  </orderedlist>
- <sect1 xml:id="sec-pcidss-what">
+ </section>
+ <section xml:id="sec-pcidss-what">
   <title>What is the &pcidssa;?</title>
   <para>
    The &pcidss; (&pcidssa;) is a set of
@@ -180,8 +197,8 @@
    in this document can only provide a starting point for implementing the
    &pcidssa; and are necessarily subject to discussion.
   </para>
- </sect1>
- <sect1 xml:id="sec-pcidss-os-relevant">
+ </section>
+ <section xml:id="sec-pcidss-os-relevant">
   <title>Focus of this document: areas relevant to the operating system</title>
   <para>
    The &pcidssa; covers a wide range of aspects related to cardholder data. Not all of
@@ -213,14 +230,15 @@
    requirement 12 (maintain a policy) are not discussed extensively in this
    document.
   </para>
- </sect1>
- <sect1 xml:id="sec-pcidss-requirement">
+ </section>
+ <section xml:id="sec-pcidss-requirement">
   <title>Requirements in detail</title>
   <para>
    The following section goes through relevant parts of the &pcidssa; in
    detail, following the ordering of the standard itself.
   </para>
-   <sect2 xml:id="sec-pcidss-requirement-1">
+ </section>
+   <section xml:id="sec-pcidss-requirement-1">
     <title>Requirement 1: Install and maintain a firewall configuration to protect cardholder data</title>
     <para>
      The listed terms in this section are mostly design, documentation and
@@ -426,8 +444,8 @@
       </listitem>
      </varlistentry>
     </variablelist>
-   </sect2>
-   <sect2 xml:id="sec-pcidss-requirement-2">
+   </section>
+   <section xml:id="sec-pcidss-requirement-2">
     <title>Requirement 2: Do not use vendor-supplied defaults for system passwords and other security parameters</title>
     <para>
      During the installation of &productnamex;, general system
@@ -742,8 +760,8 @@
       </listitem>
      </varlistentry>
     </variablelist>
-   </sect2>
-   <sect2 xml:id="sec-pcidss-requirement-3">
+   </section>
+   <section xml:id="sec-pcidss-requirement-3">
     <title>Requirement 3: Protect stored cardholder data</title>
     <para>
      This section explains how to handle cardholder and
@@ -850,8 +868,8 @@
       </listitem>
      </varlistentry>
     </variablelist>
-   </sect2>
-   <sect2 xml:id="sec-pcidss-requirement-4">
+   </section>
+   <section xml:id="sec-pcidss-requirement-4">
     <title>Requirement 4: Encrypt transmission of cardholder data across open, public networks</title>
     <para>
      Cardholder data must be encrypted during transmissions over insecure
@@ -909,8 +927,8 @@
       </listitem>
      </varlistentry>
     </variablelist>
-   </sect2>
-   <sect2 xml:id="sec-pcidss-requirement-5">
+   </section>
+   <section xml:id="sec-pcidss-requirement-5">
     <title>Requirement 5: Protect all systems against malware and regularly update anti-virus software or programs</title>
     <para>
      For &pcidssa; compliance, it is necessary to protect against malicious
@@ -930,8 +948,8 @@
      requirement, but the drawbacks compared to third-party products need to
      be clearly understood.
     </para>
-   </sect2>
-   <sect2 xml:id="sec-pcidss-requirement-6">
+   </section>
+   <section xml:id="sec-pcidss-requirement-6">
     <title>Requirement 6: Develop and maintain secure systems and applications</title>
     <para>
      The major part of this requirement concerns in-house software development,
@@ -1045,8 +1063,8 @@
       </listitem>
      </varlistentry>
     </variablelist>
-   </sect2>
-   <sect2 xml:id="sec-pcidss-requirement-7">
+   </section>
+   <section xml:id="sec-pcidss-requirement-7">
     <title>Requirement 7: Restrict access to cardholder data by business need to know</title>
     <para>
      OS access control is a complex topic. Again, this &pcidssa; requirement
@@ -1184,8 +1202,8 @@ other::r--
       </listitem>
      </varlistentry>
     </variablelist>
-   </sect2>
-   <sect2 xml:id="sec-pcidss-requirement-8">
+   </section>
+   <section xml:id="sec-pcidss-requirement-8">
     <title>Requirement 8: Identify and authenticate access to system components</title>
     <para>
      Ideally, use a central database with user information and a unique
@@ -1325,8 +1343,8 @@ other::r--
       </listitem>
      </varlistentry>
     </variablelist>
-   </sect2>
-   <sect2 xml:id="sec-pcidss-requirement-9">
+   </section>
+   <section xml:id="sec-pcidss-requirement-9">
     <title>Requirement 9: Restrict physical access to cardholder data</title>
     <para>
      Physical access to systems that are involved in processing cardholder
@@ -1334,8 +1352,8 @@ other::r--
      Appropriate facility entry controls must be in place to
      allow on-site personnel and visitors to access systems directly.
     </para>
-   </sect2>
-   <sect2 xml:id="sec-pcidss-requirement-10">
+   </section>
+   <section xml:id="sec-pcidss-requirement-10">
     <title>Requirement 10: Track and monitor all access to network resources and cardholder data</title>
     <para>
      To track user activities, it is important to have a synchronized time
@@ -1363,8 +1381,8 @@ other::r--
      All auditing requirements from this section can be fulfilled by defining
      centrally stored auditing rules.
     </para>
-   </sect2>
-   <sect2 xml:id="sec-pcidss-requirement-11">
+   </section>
+   <section xml:id="sec-pcidss-requirement-11">
     <title>Requirement 11: Regularly test security systems and processes</title>
     <para>
      Testing the discussed security mechanisms is also a key requirement for
@@ -1388,8 +1406,8 @@ other::r--
      <phrase os="article"><citetitle>&productnamex; Security Guide,
      Chapter Intrusion Detection with &aide;</citetitle>.</phrase>
     </para>
-   </sect2>
-   <sect2 xml:id="sec-pcidss-requirement-12">
+   </section>
+   <section xml:id="sec-pcidss-requirement-12">
     <title>Requirement 12: Maintain a policy that addresses information security for all personnel</title>
     <para>
      Any organization that handles valuable information should
@@ -1401,6 +1419,5 @@ other::r--
      All security policies should also be evaluated regularly and adjusted to
      keep the protection level as high as possible.
     </para>
-   </sect2>
- </sect1>
-</appendix>
+   </section>
+</article>
