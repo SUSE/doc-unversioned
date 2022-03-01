@@ -28,7 +28,7 @@
     <dm:product>SUSE Linux Enterprise Server 15 code stream</dm:product>
     <dm:assignee>taroth@suse.com</dm:assignee>
    </dm:bugtracker>
-   <dm:editurl>https://github.com/SUSE/doc-sle/edit/main/xml/</dm:editurl>
+   <dm:editurl>https://github.com/SUSE/doc-unversioned/edit/main/xml/</dm:editurl>
    <dm:translation>no</dm:translation>
   </dm:docmanager>
  </info>
