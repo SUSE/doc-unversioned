@@ -1,10 +1,10 @@
 ## ---------------------------- 
-## Doc Config File for SUSE Linux Enterprise High Availability Extension
-## Geo Clustering Quick Start
+## PCI-DSS, unversioned
+## repo: SUSE/doc-unversioned
 ## ----------------------------
 ##
 ## Basics
-MAIN="art_pci-dss.xml"
+MAIN="security_pcidss.xml"
 ROOTID=article-pci-dss
 
 ## Profiling
