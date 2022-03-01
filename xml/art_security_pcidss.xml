@@ -2,32 +2,45 @@
 <?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook50-profile.xsl"
  type="text/xml"
  title="Profiling step"?>
-<!DOCTYPE appendix
+<!DOCTYPE article
 [
   <!ENTITY % entities SYSTEM "generic-entities.ent">
     %entities;
   <!ENTITY productnamex "<phrase xmlns='http://docbook.org/ns/docbook' os='sles;sled;osuse'>&productname;</phrase><phrase xmlns='http://docbook.org/ns/docbook' os='article'>&sls;</phrase>">
-  <!ENTITY productnumberx "<phrase xmlns='http://docbook.org/ns/docbook' os='sles;sled;osuse'>&productnumber;</phrase><phrase xmlns='http://docbook.org/ns/docbook' os='article'>15</phrase>">
+  <!ENTITY productnumberx "<phrase xmlns='http://docbook.org/ns/docbook' os='sles;sled;osuse'>&productnumber;</phrase><phrase xmlns='http://docbook.org/ns/docbook' os='article'>code stream 15</phrase>">
 ]>
 
-<!--
-  IMPORTANT: When editing this file, make sure to keep the article version
-  (art_pcidss.xml) up-to-date.
--->
+<article xml:id="article-security-pcidss"
+         xmlns="http://docbook.org/ns/docbook"
+         version="5.0"
+         xml:lang="en"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:xlink="http://www.w3.org/1999/xlink">
 
-<appendix xml:id="app-pcidss"
- xmlns="http://docbook.org/ns/docbook" version="5.0"
- xmlns:xi="http://www.w3.org/2001/XInclude"
- xmlns:xlink="http://www.w3.org/1999/xlink">
- <title>Achieving &pcidssa; compliance</title>
+ <title>&sle_pcidss_guide;</title>
+ <titleabbrev>&sle_pcidss_guide;</titleabbrev>
  <info>
+  <productname>&productnamex;</productname>
+  <productnumber>&productnumberx;</productnumber>
+  <date><?dbtimestamp format="B d, Y" ?></date>
+  <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
+   <dm:bugtracker>
+    <dm:url>https://bugzilla.suse.com/enter_bug.cgi</dm:url>
+    <dm:component>Documentation</dm:component>
+    <dm:product>SUSE Linux Enterprise Server 15</dm:product>
+    <dm:assignee>taroth@suse.com</dm:assignee>
+   </dm:bugtracker>
+   <dm:editurl>https://github.com/SUSE/doc-sle/edit/main/xml/</dm:editurl>
+   <dm:translation>no</dm:translation>
+  </dm:docmanager>
+
   <abstract>
    <para>
     To protect customers and the business itself, companies that handle
     credit card payments must keep data as safe and secure as possible.
     Following the &pcidss; helps to secure all areas that are connected to
-    payment processes and to implement security-relevant actions to keep the
-    data and the computing environment safe.
+    payment processes, and to implement security-relevant actions to keep
+    the data and the computing environment safe.
    </para>
   </abstract>
  </info>
@@ -70,6 +83,21 @@
    </para>
   </listitem>
  </orderedlist>
+
+  <important xml:id="art-pcidss-disclaimer">
+  <title>&pcidssa; Disclaimer</title>
+  <para>
+   SUSE seeks to provide our customers with quick and easy guides that can
+   assist them in maintaining security compliance. Implementation of the
+   settings contained within this guide without its prior testing in a non-
+   operational environment is highly discouraged. The developers of these
+   profiles and documentation have made reasonable efforts to ensure overall
+   compliance. They assume no responsibility for its use by other parties, and
+   make no guarantee, expressed or implied, about its quality, reliability, or
+   any other characteristic.
+  </para>
+  </important>
+
  <sect1 xml:id="sec-pcidss-what">
   <title>What is the &pcidssa;?</title>
   <para>
@@ -92,14 +120,12 @@
    <title>Build and maintain a secure network and systems</title>
    <listitem>
     <para>
-     Install and maintain a firewall configuration to protect cardholder
-     data
+     <xref linkend="sec-pcidss-requirement-1"/>
     </para>
    </listitem>
    <listitem>
     <para>
-     Do not use vendor-supplied defaults for system passwords and other
-     security parameters
+     <xref linkend="sec-pcidss-requirement-2"/>
     </para>
    </listitem>
   </orderedlist>
@@ -107,12 +133,12 @@
    <title>Protect cardholder data</title>
    <listitem>
     <para>
-     Protect stored cardholder data
+     <xref linkend="sec-pcidss-requirement-3"/>
     </para>
    </listitem>
    <listitem>
     <para>
-     Encrypt transmission of cardholder data across open, public networks
+     <xref linkend="sec-pcidss-requirement-4"/>
     </para>
    </listitem>
   </orderedlist>
@@ -120,13 +146,12 @@
    <title>Maintain a vulnerability management program</title>
    <listitem>
     <para>
-     Protect all systems against malware and regularly update anti-virus
-     software or programs
+     <xref linkend="sec-pcidss-requirement-5"/>
     </para>
    </listitem>
    <listitem>
     <para>
-     Develop and maintain secure systems and applications
+     <xref linkend="sec-pcidss-requirement-6"/>
     </para>
    </listitem>
   </orderedlist>
@@ -134,17 +159,17 @@
    <title>Implement strong access control measures</title>
    <listitem>
     <para>
-     Restrict access to cardholder data by business need to know
+     <xref linkend="sec-pcidss-requirement-7"/>
     </para>
    </listitem>
    <listitem>
     <para>
-     Identify and authenticate access to system components
+     <xref linkend="sec-pcidss-requirement-8"/>
     </para>
    </listitem>
    <listitem>
     <para>
-     Restrict physical access to cardholder data
+     <xref linkend="sec-pcidss-requirement-9"/>
     </para>
    </listitem>
   </orderedlist>
@@ -152,12 +177,12 @@
    <title>Regularly monitor and test networks</title>
    <listitem>
     <para>
-     Track and monitor all access to network resources and cardholder data
+     <xref linkend="sec-pcidss-requirement-10"/>
     </para>
    </listitem>
    <listitem>
     <para>
-     Regularly test security systems and processes
+    <xref linkend="sec-pcidss-requirement-11"/>
     </para>
    </listitem>
   </orderedlist>
@@ -165,7 +190,7 @@
    <title>Maintain an information security policy</title>
    <listitem>
     <para>
-     Maintain a policy that addresses information security for all personnel
+     <xref linkend="sec-pcidss-requirement-12"/>
     </para>
    </listitem>
   </orderedlist>
@@ -217,25 +242,26 @@
  <sect1 xml:id="sec-pcidss-requirement">
   <title>Requirements in detail</title>
   <para>
-   The following section goes through relevant parts of the &pcidssa; in
-   detail, following the ordering of the standard itself.
+   The following section provides an overview of the relevant parts of the
+   &pcidssa;, following the ordering of the standard itself.
   </para>
    <sect2 xml:id="sec-pcidss-requirement-1">
     <title>Requirement 1: Install and maintain a firewall configuration to protect cardholder data</title>
     <para>
-     The listed terms in this section are mostly design, documentation and
+     The listed terms in this section are mostly design, documentation, and
      formal process requirements. All changes to the firewalls and routers
-     need to be approved, documented and verified, and all stakeholders
+     need to be approved, documented, and verified, and all stakeholders
      need to be involved. The network design includes a DMZ environment,
      access to the Internet, a protected network for database servers,
-     traffic filtering rules between network segments, etc.
+     traffic filtering rules between network segments, and other relevant
+     considerations.
     </para>
     <para>
      In addition to a dedicated firewall and router, &productnamex;
-     comes with a host firewall based on iptables. The system can be easily
+     comes with a host firewall based on iptables. The system can be
      configured to allow only connections on certain inbound ports. With the
-     &yast; firewall module it is also possible to define more complex rules.
-     For example, to disable connections not coming from certain network
+     &yast; firewall module it is also possible to define more complex
+     rules, such as refusing connections from specific
      addresses. This allows integrating the local system firewall into an
      overall firewall design that maximizes network security.
     </para>
@@ -251,8 +277,8 @@
      </listitem>
      <listitem>
       <para>
-       Limit traffic to and from the system so that unneeded and unwanted
-       traffic is directly avoided.
+       Limit traffic to and from the system so that unwanted
+       traffic is not allowed.
       </para>
      </listitem>
     </itemizedlist>
@@ -276,17 +302,16 @@
      <varlistentry xml:id="vle-pcidss-firewall">
       <term>
        1.2.1.b Verify that inbound and outbound traffic is limited to
-       that which is necessary for the cardholder data environment
+       that which is necessary for the cardholder data environment.
       </term>
       <listitem>
        <para>
         Outbound traffic should only be allowed in specifically defined
-        cases. To allow specific traffic, manually add rules for
-        outbound traffic.
+        cases. Create rules for allowed outbound traffic.
        </para>
        <para>
-        Make the SSH daemon only reachable on the administration
-        interface and not on the general network card if possible.
+        Make the SSH daemon only reachable on a separate administration
+        interface, and not on the general network interface if possible.
         Define the source addresses that a service allows traffic from.
        </para>
        <para>
@@ -294,9 +319,9 @@
         interface <systemitem>eth0</systemitem> to server
         <systemitem class="ipaddress">10.0.0.1</systemitem>, use:
        </para>
-<screen>&prompt.root;<command>firewall-cmd</command> --permanent --direct --add-rule ipv4 filter OUTPUT 23 \
-    -d 10.0.0.1/32 -o eth0 -p udp -m udp --dport 53 -j ACCEPT
-&prompt.root;<command>firewall-cmd</command> --reload</screen>
+<screen>&prompt.sudo;<command>firewall-cmd --permanent --direct --add-rule ipv4 filter OUTPUT 23 \</command>
+    <command>-d 10.0.0.1/32 -o eth0 -p udp -m udp --dport 53 -j ACCEPT</command>
+&prompt.sudo;<command>firewall-cmd --reload</command></screen>
        <para>
         To block all other outbound traffic, see <xref linkend="vle-pcidss-deny-all"/>.
        </para>
@@ -305,13 +330,13 @@
      <varlistentry xml:id="vle-pcidss-deny-all">
       <term>
        1.2.1.c Verify that all other inbound and outbound traffic is
-       specifically denied
+       specifically denied.
       </term>
       <listitem>
        <para>
         Deny all outbound and inbound traffic for which no exceptions
         are defined as stated in the previous section. Forwarding is
-        usually completely disabled by a kernel parameter and should
+        usually completely disabled by a kernel parameter, and should
         not be enabled for endpoint servers.
        </para>
        <para>
@@ -321,13 +346,13 @@
        <para>
         To block all outbound traffic, manually add the following rules:
        </para>
-<screen>&prompt.root;<command>firewall-cmd</command> --permanent --direct --add-rule ipv4 filter OUTPUT 0 -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
-&prompt.root;<command>firewall-cmd</command> --permanent --direct --add-rule ipv6 filter OUTPUT 0 -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
-&prompt.root;<command>firewall-cmd</command> --permanent --direct --add-rule ipv4 filter OUTPUT 99 -j DROP
-&prompt.root;<command>firewall-cmd</command> --permanent --direct --add-rule ipv6 filter OUTPUT 99 -j DROP
-&prompt.root;<command>firewall-cmd</command> --reload</screen>
+<screen>&prompt.sudo;<command>firewall-cmd --permanent --direct --add-rule ipv4 filter OUTPUT 0 -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT</command>
+&prompt.sudo;<command>firewall-cmd --permanent --direct --add-rule ipv6 filter OUTPUT 0 -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT</command>
+&prompt.sudo;<command>firewall-cmd --permanent --direct --add-rule ipv4 filter OUTPUT 99 -j DROP</command>
+&prompt.sudo;<command>firewall-cmd --permanent --direct --add-rule ipv6 filter OUTPUT 99 -j DROP</command>
+&prompt.sudo;<command>firewall-cmd --reload</command></screen>
        <para>
-        In addition, inbound traffic can also be configured for certain
+        In addition, inbound traffic can also be configured for specific
         services via the TCP wrapper configuration file
         <filename>/etc/hosts.deny</filename>.
        </para>
@@ -342,7 +367,7 @@
      <varlistentry>
       <term>
        1.3.3 Implement anti-spoofing measures to detect and block forged
-       source IP addresses from entering the network
+       source IP addresses from entering the network.
       </term>
       <listitem>
        <para>
@@ -354,10 +379,8 @@
          <formalpara>
           <title><systemitem>iptables</systemitem> rules that only allow input from certain addresses on specified interfaces</title>
           <para>
-           The used address space for
-           communications can be clearly defined in the system setup. Any use of
-           addresses that violates these definitions can be logged and trigger an
-           alarm.
+           The used address space for communications can be clearly defined
+           in the system setup. Any use of addresses that violates these definitions can be logged and trigger an alarm.
           </para>
          </formalpara>
         </listitem>
@@ -371,7 +394,7 @@
            the following command:
           </para>
          </formalpara>
-         <screen>&prompt.user;cat /proc/sys/net/ipv4/conf/all/rp_filter</screen>
+         <screen>&prompt.user;<command>cat /proc/sys/net/ipv4/conf/all/rp_filter</command></screen>
          <para>
           When enabled, this returns
           <literal>1</literal>.
@@ -383,19 +406,19 @@
      <varlistentry>
       <term>
        1.3.5 Permit only <quote>established</quote> connections into the
-       network
+       network.
       </term>
       <listitem>
        <para>
         &firewalld; enables connection tracking via
         <literal>iptables</literal>. Connections to an interface that has
-        been marked as external are dropped by default. Only connections that
-        are associated with an established connection are allowed.
+        been marked as external are dropped by default. Only connections
+        that are associated with an established connection are allowed.
        </para>
        <para>
-        It is possible to define certain services that are allowed to connect
-        to an external interface. However, this must be in compliance with
-        the general security policy.
+        It is possible to define certain services that are allowed to
+        connect to an external interface. However, this must be in
+        compliance with the general security policy.
        </para>
        <para>
         Keep in mind that the first line of defense against malicious
@@ -410,7 +433,7 @@
      <varlistentry>
       <term>
        1.3.7 Do not disclose private IP addresses and routing information to
-       unauthorized parties
+       unauthorized parties.
       </term>
       <listitem>
        <para>
@@ -437,14 +460,14 @@
      already includes customer-defined security options for most services.
     </para>
     <para>
-     For more information about OS security, see
+     For more information about OS security, see the
      <phrase os="sles;sled;osuse"><xref linkend="book-security"/>.</phrase>
      <phrase os="article"><citetitle>&productnamex; Security Guide</citetitle>.</phrase>
     </para>
     <variablelist>
      <varlistentry>
       <term>
-       2.1 Always change vendor-supplied defaults and remove or disable
+       2.1 Always change vendor-supplied defaults, and remove or disable
        unnecessary default accounts before installing a system on the network.
       </term>
       <listitem>
@@ -501,7 +524,8 @@
         the lines inside the <filename>/etc/shadow</filename> file.
        </para>
        <para>
-        In that file, the second column represents the defined password:
+        In <filename>/etc/shadow</filename>, the second column represents the
+      defined password:
        </para>
        <itemizedlist>
         <listitem>
@@ -532,7 +556,7 @@
        </para>
        <orderedlist>
         <listitem>
-         <para>Center for Internet Security (CIS) </para>
+         <para>Center for Internet Security (CIS)</para>
         </listitem>
         <listitem>
          <para>International Organization for Standardization (ISO)</para>
@@ -548,8 +572,8 @@
         As the &pcidssa; requirements are not specified precisely, there is no
         direct relationship between hardening standards and specific
         requirements. However, other hardening resources can also help in
-        complying with these specifications, including
-        <phrase os="sles;sled;osuse"><xref linkend="book-security"/></phrase>.
+        complying with these specifications, including the
+        <phrase os="sles;sled;osuse"><xref linkend="book-security"/></phrase>
         <phrase os="article"><citetitle>&productnamex; Security Guide</citetitle>.</phrase>
        </para>
       </listitem>
@@ -614,20 +638,20 @@
        </para>
        <itemizedlist>
         <listitem>
-         <screen>&prompt.user;systemctl status <replaceable>SERVICE</replaceable></screen>
+         <screen>&prompt.user;<command>systemctl status <replaceable>SERVICE</replaceable></command></screen>
         </listitem>
         <listitem>
-         <screen>&prompt.sudo;systemctl enable <replaceable>SERVICE</replaceable></screen>
+         <screen>&prompt.sudo;<command>systemctl enable <replaceable>SERVICE</replaceable></command></screen>
         </listitem>
         <listitem>
-         <screen>&prompt.sudo;systemctl disable <replaceable>SERVICE</replaceable></screen>
+         <screen>&prompt.sudo;<command>systemctl disable <replaceable>SERVICE</replaceable></command></screen>
         </listitem>
        </itemizedlist>
        <para>
         To list all available services that are installed on the system and
         see their status, use the following command:
        </para>
-       <screen>&prompt.user;systemctl list-unit-files --type=service</screen>
+       <screen>&prompt.user;<command>systemctl list-unit-files --type=service</command></screen>
       </listitem>
      </varlistentry>
      <varlistentry>
@@ -711,7 +735,7 @@
       <replaceable>KERNELVERSION</replaceable> with the currently running
       kernel).
        </para>
-       <screen>&prompt.sudo;/usr/bin/dracut --logfile /var/log/YaST2/mkinitrd.log --force /boot/$initrd-<replaceable>NAME</replaceable> $<replaceable>KERNELVERSION</replaceable></screen>
+       <screen>&prompt.sudo;<command>/usr/bin/dracut --logfile /var/log/YaST2/mkinitrd.log --force /boot/$initrd-<replaceable>NAME</replaceable> $<replaceable>KERNELVERSION</replaceable></command></screen>
        <para>
         It is harder to remove or restrict application functionality, as
         functionality is in most cases compiled into the application or
@@ -994,7 +1018,7 @@
        <para>
         First, refresh all software repositories, so you have up-to-date information:
        </para>
-       <screen>&prompt.sudo;zypper refresh</screen>
+       <screen>&prompt.sudo;<command>zypper refresh</command></screen>
        <para>
         Then use the patch-related commands of Zypper:
        </para>
@@ -1004,7 +1028,7 @@
           Search for important security fixes that have not yet been
           installed:
          </para>
-         <screen>&prompt.user;zypper list-patches --category security --severity important</screen>
+         <screen>&prompt.user;<command>zypper list-patches --category security --severity important</command></screen>
         </listitem>
         <listitem>
          <para>
@@ -1013,21 +1037,21 @@
           also show patches that have already been installed, use the
           parameter <option>--all</option>:
          </para>
-         <screen>&prompt.user;zypper list-patches --all --cve=CVE-2016-4957</screen>
+         <screen>&prompt.user;z<command>ypper list-patches --all --cve=CVE-2016-4957</command></screen>
         </listitem>
         <listitem>
          <para>
           To list details of individual patches, use the
           <command>patch-info</command> subcommand:
          </para>
-         <screen>&prompt.user;zypper patch-info SUSE-SLE-SERVER-12-SP1-2016-600</screen>
+         <screen>&prompt.user;<command>zypper patch-info SUSE-SLE-Product-SLES-15-SP3-2021-2126</command></screen>
         </listitem>
         <listitem>
          <para>
           To install only important security patches, use the
           <command>patch</command> subcommand:
          </para>
-         <screen>&prompt.sudo;zypper patch --category security --severity important</screen>
+         <screen>&prompt.sudo;<command>zypper patch --category security --severity important</command></screen>
         </listitem>
        </itemizedlist>
        <para>
@@ -1165,7 +1189,7 @@ other::r--
         Permitted (<literal>+ep</literal>):
        </para>
 <screen>
-&prompt.root;<command>sudo getcap /usr/bin/ping</command>
+&prompt.sudo;<command>getcap /usr/bin/ping</command>
 /usr/bin/ping = cap_net_raw+ep
 </screen>
        <para>
@@ -1371,8 +1395,8 @@ other::r--
      &pcidssa;. Evaluating the configurations and testing logging mechanisms
      can protect against known security risks and ensure that essential
      information is available to identify possible security breaches.
-     Testing capabilities should be considered ahead of time, during system
-     design already.
+     Testing capabilities should be considered during system
+     design, before installation and deployment.
     </para>
     <para>
      To keep track of system integrity, &productnamex; comes with the Advanced
@@ -1403,4 +1427,4 @@ other::r--
     </para>
    </sect2>
  </sect1>
-</appendix>
+</article>

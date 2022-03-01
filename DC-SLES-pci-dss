@@ -4,8 +4,8 @@
 ## ----------------------------
 ##
 ## Basics
-MAIN="art_pci-dss.xml"
-ROOTID=article-pci-dss
+MAIN="art_security_pcidss.xml"
+ROOTID=article-security-pcidss
 
 ## Profiling
 PROFOS="article"
