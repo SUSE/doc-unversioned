@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook50-profile.xsl"
  type="text/xml"
  title="Profiling step"?>
@@ -44,6 +44,7 @@
    </para>
   </abstract>
  </info>
+
 
  <!-- Possibly useful resources:
  Positive Research Center (describing PCI-DSS 1.0!)
@@ -245,6 +246,7 @@
    The following section provides an overview of the relevant parts of the
    &pcidssa;, following the ordering of the standard itself.
   </para>
+
    <sect2 xml:id="sec-pcidss-requirement-1">
     <title>Requirement 1: Install and maintain a firewall configuration to protect cardholder data</title>
     <para>
