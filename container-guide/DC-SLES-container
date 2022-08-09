@@ -4,8 +4,8 @@
 ## ----------------------------
 ##
 ## Basics
-MAIN="MAIN.SLEDS.xml"
-ROOTID=book-container
+MAIN="book_container.xml"
+# ROOTID=book-container
 
 ## Profiling
 PROFOS="sles"
