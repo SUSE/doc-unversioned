@@ -511,7 +511,7 @@
        </para>
        <screen>install floppy /bin/true</screen>
        <para>
-        <literal>floppy</literal> 模块通常是在初始 RAM 磁盘执行期间装载的。因此，请使用 <command>dracut</command>（将 <replaceable>NAME</replaceable>替换为当前 initrd 的名称，将 <replaceable>KERNELVERSION</replaceable> 替换为当前运行的内核）将此项配置更改传播到 <filename>initrd</filename> 文件。
+        <literal>floppy</literal> 模块通常是在初始 RAM 磁盘执行期间装载的。因此，请使用 <command>dracut</command> 将此项配置更改传播到 <filename>initrd</filename> 文件（请将 <replaceable>NAME</replaceable>替换为当前 initrd 的名称，将 <replaceable>KERNELVERSION</replaceable> 替换为当前运行的内核）。
        </para>
        <screen><prompt>&gt; </prompt><command>sudo</command> <command>/usr/bin/dracut --logfile /var/log/YaST2/mkinitrd.log --force /boot/$initrd-<replaceable>NAME</replaceable> $<replaceable>KERNELVERSION</replaceable></command></screen>
        <para>
@@ -662,10 +662,10 @@
     <itemizedlist>
      <listitem>
       <para>
-       软件包管理器 Zypper 是 <phrase os="article">SUSE Linux Enterprise Server</phrase> 的一个强大工具。除其他众多功能外，它还能解析软件包、产品、模式和补丁的依赖关系，具有一项锁定机制用于防止安装软件包，并提供了一个完整的更新堆栈，用于确保系统处于最新状态并使其能够防范已知安全问题。
+       软件包管理器 Zypper 是 <phrase os="article">SUSE Linux Enterprise Server</phrase> 的一个强大工具。除其他众多功能外，它还能解析软件包、产品、软件集和补丁的依赖关系，具有一项锁定机制用于防止安装软件包，并提供了一个完整的更新堆栈，用于确保系统处于最新状态并使其能够防范已知安全问题。
       </para>
       <para>
-       <command>zypper</command> 是所有 <phrase os="article">SUSE Linux Enterprise Server</phrase> 安装的组成部分，当系统注册之后便可直接访问更新储存库。
+       <command>zypper</command> 是所有 <phrase os="article">SUSE Linux Enterprise Server</phrase> 安装的组成部分，当系统注册之后便可直接访问更新软件源。
       </para>
       <para>
        有关 Zypper 的信息，请参见<phrase os="article"><citetitle><phrase os="article">《SUSE Linux Enterprise Server</phrase> 管理指南》的“使用命令行工具管理软件”一章中的“使用 Zypper”一节</citetitle></phrase>。
@@ -690,7 +690,7 @@
         要识别需要安装以保护系统安全的补丁，请执行以下操作：
        </para>
        <para>
-        首先刷新所有软件储存库，以获得最新信息：
+        首先刷新所有软件源，以获得最新信息：
        </para>
        <screen><prompt>&gt; </prompt><command>sudo</command> <command>zypper refresh</command></screen>
        <para>
