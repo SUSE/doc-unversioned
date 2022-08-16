@@ -18,7 +18,7 @@
     <dm:product>Documentation</dm:product>
     <dm:assignee>cschroder@suse.com</dm:assignee>
    </dm:bugtracker>
-   <dm:editurl>https://github.com/SUSE/doc-unversioned/blob/main/xml/</dm:editurl>
+   
    <dm:translation>yes</dm:translation>
   </dm:docmanager>
 
