@@ -1,0 +1,16 @@
+## ---------------------------- 
+## PCI-DSS, unversioned
+## repo: SUSE/doc-unversioned
+## ----------------------------
+##
+## Basics
+MAIN="art_security_pcidss.xml"
+ROOTID=article-security-pcidss
+
+## Profiling
+PROFOS="article"
+PROFARCH="x86_64;zseries;power;aarch64"
+
+## stylesheet location
+STYLEROOT="/usr/share/xml/docbook/stylesheet/suse2022-ns"
+FALLBACK_STYLEROOT="/usr/share/xml/docbook/stylesheet/suse-ns"
