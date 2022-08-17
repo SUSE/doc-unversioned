@@ -16,8 +16,8 @@
   <title>&sle; base images</title>
 
   <para>
-   &suse; offers several official base container images that can be used as
-   a starting point for building custom containers. Each &slea; base image
+   &suse; offers several official base container images that can be used as a
+   starting point for building custom containers. Each &slea; base image
    provides a minimal environment with a shell and package management.
   </para>
 
@@ -40,21 +40,22 @@
   <title>&suse; container properties</title>
 
   <para>
-   &suse; container images have identifiers that provide information about their
-   version, origin, and creation time. The individual identifiers listed below
-   can be accessed after you pull a container image from the repository and run
-   <literal>podman inspect</literal> on it.
+   &suse; container images have identifiers that provide information about
+   their version, origin, and creation time. The individual identifiers listed
+   below can be accessed after you pull a container image from the repository
+   and run <literal>podman inspect</literal> on it.
   </para>
 
   <sect2 xml:id="sec-repository-names">
    <title>Repository names</title>
    <para>
     Repository names start with the name of the product, for example:
-    <literal>suse/sle...</literal> and <literal>opensuse/tumbleweed</literal>. The &slea; 15 containers for all service
-    packs reside in the repository <literal>suse/sle15</literal>. However, for
-    &slea; 12, there is a separate repository name for each service pack, for
-    example, <literal>suse/sles12sp3</literal>,
-    <literal>suse/sles12sp4</literal>, and <literal>suse/sles12sp5</literal>.
+    <literal>suse/sle...</literal> and <literal>opensuse/tumbleweed</literal>.
+    The &slea; 15 containers for all service packs reside in the repository
+    <literal>suse/sle15</literal>. However, for &slea; 12, there is a separate
+    repository name for each service pack, for example,
+    <literal>suse/sles12sp3</literal>, <literal>suse/sles12sp4</literal>, and
+    <literal>suse/sles12sp5</literal>.
    </para>
   </sect2>
 
@@ -290,7 +291,8 @@
        <listitem>
         <para>
          <emphasis>Description:</emphasis> Reference pointing to the image. The
-         image you get with <command>docker pull<replaceable>REF_NAME</replaceable></command> must not change.
+         image you get with <command>docker
+         pull<replaceable>REF_NAME</replaceable></command> must not change.
         </para>
        </listitem>
        <listitem>
@@ -303,108 +305,112 @@
      </listitem>
     </varlistentry>
    </variablelist>
-  <sect3 xml:id="sec-bci-labels">
+   <sect3 xml:id="sec-bci-labels">
     <title>&bci; labels</title>
     <para>
-      &bci;s feature the following labels.
+     &bci;s feature the following labels.
     </para>
     <variablelist>
-    <varlistentry>
-    <term>
-      com.suse.image-type
-    </term>
-    <listitem>
-    <para>
-      Shows whether this is a pure &bci; or an application container based on another &bci;.
-    </para>
-    </listitem>
-    </varlistentry>
-    <varlistentry>
-    <term>
-      com.suse.eula
-    </term>
-    <listitem>
-    <para>
-      Marks which section of the &suse; EULA applies to the container image.
-    </para>
-    </listitem>
-    </varlistentry>
-    <varlistentry>
-    <term>
-      com.suse.release-stage
-    </term>
-    <listitem>
-    <para>
-      Indicates the current release stage of the image.
-    </para>
-    </listitem>
-    </varlistentry>
-    <varlistentry>
-    <term>
-      com.suse.supportlevel
-    </term>
-    <listitem>
-    <para>
-      Shows the support level for the container.
-    </para>
-    <itemizedlist><title>Values</title>
-    <listitem>
-    <para>
-    <literal>l2</literal> Problem isolation, which means technical support designed to analyze data, reproduce customer problems, isolate problem areas, and provide a resolution for problems not resolved by Level 1, or prepare for Level 3.
-    </para>
-    </listitem>
-    <listitem>
-    <para>
-      <literal>l3</literal> Problem resolution, which means technical support designed to resolve problems by engaging engineering to resolve product defects which have been identified by Level 2 Support.
-    </para>
-    </listitem>
-    <listitem>
-    <para>
-      <literal>techpreview</literal> The image is unsupported and intended for use in proof-of-concept scenarios.
-    </para>
-    <para>
-      <literal>unsupported</literal> No support is provided for the image.
-    </para>
-    </listitem>
-    </itemizedlist>
-    </listitem>
-    </varlistentry>
-    <varlistentry>
-    <term>
-      com.suse.lifecycle-url
-    </term>
-    <listitem>
-    <para>
-      Points to the <link xlink:href="https://www.suse.com/lifecycle/" /> page that offers information about the lifecycle of the image.
-    </para>
-    </listitem>
-    </varlistentry>
+     <varlistentry>
+      <term>com.suse.image-type</term>
+      <listitem>
+       <para>
+        Shows whether this is a pure &bci; or an application container based on
+        another &bci;.
+       </para>
+      </listitem>
+     </varlistentry>
+     <varlistentry>
+      <term>com.suse.eula</term>
+      <listitem>
+       <para>
+        Marks which section of the &suse; EULA applies to the container image.
+       </para>
+      </listitem>
+     </varlistentry>
+     <varlistentry>
+      <term>com.suse.release-stage</term>
+      <listitem>
+       <para>
+        Indicates the current release stage of the image.
+       </para>
+      </listitem>
+     </varlistentry>
+     <varlistentry>
+      <term>com.suse.supportlevel</term>
+      <listitem>
+       <para>
+        Shows the support level for the container.
+       </para>
+       <itemizedlist>
+        <title>Values</title>
+        <listitem>
+         <para>
+          <literal>l2</literal> Problem isolation, which means technical
+          support designed to analyze data, reproduce customer problems,
+          isolate problem areas, and provide a resolution for problems not
+          resolved by Level 1, or prepare for Level 3.
+         </para>
+        </listitem>
+        <listitem>
+         <para>
+          <literal>l3</literal> Problem resolution, which means technical
+          support designed to resolve problems by engaging engineering to
+          resolve product defects which have been identified by Level 2
+          Support.
+         </para>
+        </listitem>
+        <listitem>
+         <para>
+          <literal>techpreview</literal> The image is unsupported and intended
+          for use in proof-of-concept scenarios.
+         </para>
+         <para>
+          <literal>unsupported</literal> No support is provided for the image.
+         </para>
+        </listitem>
+       </itemizedlist>
+      </listitem>
+     </varlistentry>
+     <varlistentry>
+      <term>com.suse.lifecycle-url</term>
+      <listitem>
+       <para>
+        Points to the <link xlink:href="https://www.suse.com/lifecycle/" />
+        page that offers information about the lifecycle of the image.
+       </para>
+      </listitem>
+     </varlistentry>
     </variablelist>
-    </sect3>
-    <sect3 xml:id="sec-bci-labels-query">
-      <title>Working with &bci; labels</title>
-      <para>
-        Use &podman; and the <package>jq</package> tool to retrieve labels of a local image. The following command lists all labels of the <literal>bci-base:15.4</literal> image:
-      </para>
+   </sect3>
+   <sect3 xml:id="sec-bci-labels-query">
+    <title>Working with &bci; labels</title>
+    <para>
+     Use &podman; and the <package>jq</package> tool to retrieve labels of a
+     local image. The following command lists all labels of the
+     <literal>bci-base:15.4</literal> image:
+    </para>
 <screen>podman inspect registry.suse.com/bci/bci-base:15.4 | \
 jq '.[0].Labels'</screen>
-      <para>
-        It is also possible to retrieve the value of a specific label:
-      </para>
+    <para>
+     It is also possible to retrieve the value of a specific label:
+    </para>
 <screen>podman inspect registry.suse.com/bci/bci-base:15.4 | \
 jq '.[0].Labels["com.suse.sle.base.supportlevel"]'</screen>
-      <para>
-        The preceding command retrieves the value of the <literal>com.suse.sle.base.supportlevel</literal> label.
-      </para>
-      <para>
-        The <package>skopeo</package> tool makes it possible to examine labels of an image without pulling it first. For example:
-      </para>
+    <para>
+     The preceding command retrieves the value of the
+     <literal>com.suse.sle.base.supportlevel</literal> label.
+    </para>
+    <para>
+     The <package>skopeo</package> tool makes it possible to examine labels of
+     an image without pulling it first. For example:
+    </para>
 <screen>skopeo inspect docker://registry.suse.com/bci/bci-base:15.4 | \
 jq '.Labels'
 skopeo inspect docker://registry.suse.com/bci/bci-base:15.4 | \
 jq '.Labels["com.suse.sle.base.supportlevel"]'</screen>
-    </sect3>
-    </sect2>
+   </sect3>
+  </sect2>
 
   <sect2 xml:id="sec-tags">
    <title>Tags</title>
@@ -433,29 +439,35 @@ jq '.Labels["com.suse.sle.base.supportlevel"]'</screen>
    <link xlink:href="https://registry.suse.com"/>. It contains tested and
    updated &sle; base container images. All images in the &suseregistry;
    undergo a maintenance process. The images are built to contain the latest
-   available updates and fixes. The &suseregistry;'s Web user interface lists
-   a subset of the available images.
+   available updates and fixes. The &suseregistry;'s Web user interface lists a
+   subset of the available images.
   </para>
  </sect1>
-<sect1 xml:id="sec-verify-containers">
+ <sect1 xml:id="sec-verify-containers">
   <title>Verifying containers</title>
+
   <para>
-  Signatures for images available through &suseregistry; are stored in the
-  Notary. You can verify the signature of a specific image using the following
-  command:
+   Signatures for images available through &suseregistry; are stored in the
+   Notary. You can verify the signature of a specific image using the following
+   command:
   </para>
+
 <screen>docker trust inspect --pretty registry.suse.com/suse/<replaceable>IMAGE</replaceable>:<replaceable>TAG</replaceable></screen>
-<para>
-For example, the command <command>docker trust inspect --pretty
-registry.suse.com/suse/sle15:latest</command> verifies the signature of the
-latest SLE15 base image.
-</para>
-<para>
-To automatically validate an image when you pull it, set the environment
-<literal>DOCKER_CONTENT_TRUST</literal> to <literal>1</literal>. For example:
-</para>
+
+  <para>
+   For example, the command <command>docker trust inspect --pretty
+   registry.suse.com/suse/sle15:latest</command> verifies the signature of the
+   latest SLE15 base image.
+  </para>
+
+  <para>
+   To automatically validate an image when you pull it, set the environment
+   <literal>DOCKER_CONTENT_TRUST</literal> to <literal>1</literal>. For
+   example:
+  </para>
+
 <screen>env DOCKER_CONTENT_TRUST=1 docker pull registry.suse.com/suse/sle15:latest</screen>
-  </sect1>
+ </sect1>
  <sect1 xml:id="sec-compare-containers">
   <title>Comparing containers</title>
 
@@ -463,8 +475,8 @@ To automatically validate an image when you pull it, set the environment
    The
    <link xlink:href="https://github.com/GoogleContainerTools/container-diff#container-diff">container-diff</link>
    tool can be used for analyzing and comparing container images.
-   <literal>container-diff</literal> can examine images along several
-   criteria, including the following:
+   <literal>container-diff</literal> can examine images along several criteria,
+   including the following:
   </para>
 
   <itemizedlist>
