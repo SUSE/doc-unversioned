@@ -9,46 +9,192 @@
   <!ENTITY productnamex "<phrase xmlns='http://docbook.org/ns/docbook' os='sles;sled;osuse'>&productname;</phrase><phrase xmlns='http://docbook.org/ns/docbook' os='article'>&sls;</phrase>">
   <!ENTITY productnumberx "<phrase xmlns='http://docbook.org/ns/docbook' os='sles;sled;osuse'>&productnumber;</phrase><phrase xmlns='http://docbook.org/ns/docbook' os='article'>code stream 15</phrase>">
 ]>
-
 <article xml:id="article-suseconnect-tracking"
          xmlns="http://docbook.org/ns/docbook"
          version="5.0"
          xml:lang="en"
          xmlns:xi="http://www.w3.org/2001/XInclude"
          xmlns:xlink="http://www.w3.org/1999/xlink">
-
  <title>Tracking active systems with &suseconnect;</title>
  <titleabbrev>Tracking active systems with &suseconnect;</titleabbrev>
- <info>
-  <productname>&productnamex;</productname>
-  <productnumber>&productnumberx;</productnumber>
-  <date><?dbtimestamp format="B d, Y" ?></date>
+ <info><productname>&productnamex;</productname>
+  <productnumber>&productnumberx;</productnumber><date>
+<?dbtimestamp format="B d, Y" ?></date>
   <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
    <dm:bugtracker>
     <dm:url>https://bugzilla.suse.com/enter_bug.cgi</dm:url>
     <dm:component>Security</dm:component>
     <dm:product>Documentation</dm:product>
-    <dm:assignee>cwickert@suse.com</dm:assignee>
+    <dm:assignee>tbazant@suse.com</dm:assignee>
    </dm:bugtracker>
    <dm:editurl>https://github.com/SUSE/doc-unversioned/blob/main/xml/</dm:editurl>
    <dm:translation>yes</dm:translation>
   </dm:docmanager>
-
   <abstract>
    <para>
-    ADDME
+    This document introduces basic information about &suseconnect; and how
+    &scc; and registration servers use it to gather information about active
+    systems and their hardware environment.
    </para>
   </abstract>
  </info>
+ <sect1 xml:id="suseconnect-introduction">
+  <title>Introduction</title>
 
- <para>
-  This document aims to provide a basic understanding of how
-  &productnamex; can be configured to comply with the &pcidss;.
- </para>
+  <sect2 xml:id="suseconnect-whatis">
+   <title>What is &suseconnect;?</title>
+   <para>
+    &suseconnect; is a tool to register SLE-based operating systems with &scc;
+    or other registration serve, such as &suma;, &rmt;, or &smt;. Registered
+    systems receive updates to installed packages, for example, to increase
+    security of the operating system. With &suseconnect;, you can additionally
+    register extensions and modules that extend the base system's
+    functionality.
+   </para>
+  </sect2>
 
- <sect1 xml:id="sec-pcidss-what">
-  <title>What is &suseconnect;?</title>
+  <sect2 xml:id="suseconnect-general">
+   <title>Existing information</title>
+   <para>
+    This document does not cover general usage of &suseconnect;. To find more
+    basic information about how to register your system, modules, and
+    extensions with &suseconnect;, refer to
+    <link xlink:href="https://documentation.suse.com/sles/html/SLES-all/cha-register-sle.html"/>.
+   </para>
+  </sect2>
+ </sect1>
+ <sect1 xml:id="suseconnect-tracking-active-hosts">
+  <title>Tracking active systems</title>
+
   <para>
+   With newer versions of &suseconnect;, each registered host contacts &scc; or
+   registration server automatically on a daily basis. It sends unique
+   identification of the host and description of its hardware environment.
   </para>
+
+  <sect2 xml:id="suseconnect-customer-benefit">
+   <title>Customer benefit</title>
+   <para>
+    The new functionality of &suseconnect; bring the following benefits to the
+    customer:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      Ability to identify <emphasis role="bold">all types of
+      deployments</emphasis> of systems, no matter if they are derived from a
+      custom image or clones of an already registered virtual machine.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      By contacting the registration server regularly, you can obtain the
+      number of <emphasis role="bold">actually running</emphasis> registered
+      systems. This gives better insight into the consumption of SUSE
+      subscriptions.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Updates to registration tools provide clearer picture of your workloads.
+      You can filter out systems that are no longer running or decommissioned.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      By collecting regular registration and hardware information, we will
+      continue to improve our products to reflect your needs and let you manage
+      system subscriptions more easily.
+     </para>
+    </listitem>
+   </itemizedlist>
+  </sect2>
+
+  <sect2 xml:id="suseconnect-tracking-prerequisites-">
+   <title>Prerequisites</title>
+   <para>
+    In order to use the extended &suseconnect; functionality, you need to:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      Run a supported and registered SLE-based host with all update patches
+      applied.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Verify that the host system includes the <command>&suseconnect;</command>
+      command version 0.3.33 or higher.
+     </para>
+    </listitem>
+   </itemizedlist>
+  </sect2>
+
+  <sect2 xml:id="suseconnect-tracking-how-it-works">
+   <title>How it works</title>
+   <para>
+    We extended &suseconnect; with the new option
+    <option>--keep-alive</option>. The command <command>&suseconnect;
+    --keep-alive</command> updates the last time that a host contacted its
+    registration server and attaches the host's hardware information.
+   </para>
+   <para>
+    The &suseconnect; package ships with two &systemd; units:
+   </para>
+   <variablelist>
+    <varlistentry>
+     <term><filename>suseconnect-keepalive.service</filename></term>
+     <listitem>
+      <para>
+       A service which runs the command <command>&suseconnect;
+       --keep-alive</command> on demand.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><filename>suseconnect-keepalive.timer</filename></term>
+     <listitem>
+      <para>
+       A timer which runs the service
+       <filename>suseconnect-keepalive.service</filename> once a day.
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+   <para>
+    These units are responsible for keeping the system information up-to-date
+    with the &scc; or a registration server, and to provide accurate data about
+    subscription usage.
+   </para>
+   <note>
+    <title>The timer is enabled automatically</title>
+    <para>
+     When the &suseconnect; package is installed or updated, and its version is
+     equal to or greater than the one described above, the keep-alive timer
+     will be enabled automatically.
+    </para>
+   </note>
+   <sect3 xml:id="disabling-suseconnect-timer">
+    <title>Disabling the keep-alive timer</title>
+    <para>
+     If you prefer to not have the &suseconnect; keep-alive timer running on
+     your system, you can disable it with <command>systemctl</command>:
+    </para>
+<screen>&prompt.sudo;systemctl disable --now suse-connect-keepalive.timer</screen>
+    <para>
+     Once the timer is disabled, subsequent updates to the &suseconnect;
+     package will not reenable it.
+    </para>
+    <tip>
+     <title>Re-enabling the keep-alive timer</title>
+     <para>
+      If you decide to re-enable the disabled keep-alive timer, run the
+      following command:
+     </para>
+<screen>&prompt.sudo;systemctl enable --now suse-connect-keepalive.timer</screen>
+    </tip>
+   </sect3>
+  </sect2>
  </sect1>
 </article>
