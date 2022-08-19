@@ -29,6 +29,7 @@
   </abstract>
   <xi:include href="container_guide_authors.xml"/>
   <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
+  <dm:editurl>https://github.com/SUSE/doc-unversioned/edit/main/container-guide/xml/</dm:editurl>
    <dm:translation>no</dm:translation>
   </dm:docmanager>
  </info>
