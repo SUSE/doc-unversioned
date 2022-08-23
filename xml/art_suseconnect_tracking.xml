@@ -196,5 +196,200 @@
     </tip>
    </sect3>
   </sect2>
+
+  <sect2 xml:id="identifying-inactive-systems-with-registration-servers">
+   <title>Identifying inactive systems</title>
+   <para>
+    When &suseconnect; daily reports details about active hosts, &scc; or
+    registration servers collect this information and let you filter out
+    registered inactive hosts. If your hosts are registered against &rmt; or
+    &suma;, these registration servers forward the received information to
+    &scc;.
+   </para>
+   <sect3 xml:id="identifying-inactive-systems-with-scc">
+    <title>Identifying inactive systems with &scc;</title>
+    <para>
+     In &scc; Web user interface, you can limit the list of subscriptions to
+     see only inactive hosts.
+    </para>
+    <procedure>
+     <step>
+      <para>
+       Log in to &scc; at <link xlink:href="https://scc.suse.com"/> and select
+       your organization in the left pane.
+      </para>
+     </step>
+     <step>
+      <para>
+       Select <guimenu>Systems</guimenu> from the top menu to list all
+       registered hosts by default.
+      </para>
+     </step>
+     <step>
+      <para>
+       Select <guimenu>Inactive</guimenu> from the top left drop-down list.
+      </para>
+      <figure>
+       <title>Drop-down list with a filter for inactive hosts</title>
+       <mediaobject>
+        <imageobject role="fo">
+         <imagedata fileref="scc-inactive-filter.png" width="75%"/>
+        </imageobject>
+        <imageobject role="html">
+         <imagedata fileref="scc-inactive-filter.png" width="75%"/>
+        </imageobject>
+       </mediaobject>
+      </figure>
+     </step>
+     <step>
+      <para>
+       If you have sufficient privileges and your inactive host is registered
+       directly with &scc;, you can de-register it by clicking the three dots
+       on its right and selecting <guimenu>De-register</guimenu>.
+      </para>
+     </step>
+    </procedure>
+   </sect3>
+   <sect3 xml:id="identifying-inactive-systems-with-rmt">
+    <title>Identifying inactive systems with &rmt;</title>
+    <para>
+     By using the <command>rmt-cli purge</command> command, you can view hosts
+     that have not contacted the &rmt; server since a given date in the past:
+    </para>
+<screen>
+&prompt.root;rmt-cli systems purge --before 2021-06-16
++--------------------------------------+--------------+-------------------------+-------------------------+--------------------------------------------+
+| Login                                | Hostname     | Registration time       | Last seen               | Products                                   |
++--------------------------------------+--------------+-------------------------+-------------------------+--------------------------------------------+
+| SCC_c5b07772abbd43b497cd3e568eede75a | 6e485e48b2b0 | 2021-06-11 13:38:07 UTC | 2021-06-11 13:52:01 UTC | SLES/15.2/x86_64                           |
+|                                      |              |                         |                         | sle-module-basesystem/15.2/x86_64          |
+|                                      |              |                         |                         | sle-module-server-applications/15.2/x86_64 |
+| SCC_5fcf292b92e049269eef726e93a90f5a | node52       | 2021-06-15 13:29:24 UTC | 2021-06-15 13:31:25 UTC | SLES/15.2/x86_64                           |
+|                                      |              |                         |                         | sle-module-basesystem/15.2/x86_64          |
+|                                      |              |                         |                         | sle-module-server-applications/15.2/x86_64 |
++--------------------------------------+--------------+-------------------------+-------------------------+--------------------------------------------+
+Do you want to delete these systems? (y/n) y
+Purged systems that have not contacted this RMT since 2021-06-16.
+</screen>
+   </sect3>
+  </sect2>
+ </sect1>
+ <sect1 xml:id="system-data-gathered-by-scc">
+  <title>System data gathered by &scc;</title>
+
+  <para>
+   When a system is registered directly via &scc;, or its registration
+   information is forwarded by &rmt; or &suma;, &scc; collects the following
+   information:
+  </para>
+
+  <table>
+   <title>System attributes collected by &scc;</title>
+   <tgroup cols='3' align='left'>
+    <thead>
+     <row>
+      <entry>
+       System Attribute
+      </entry>
+      <entry>
+       Type
+      </entry>
+      <entry>
+       Example value
+      </entry>
+     </row>
+    </thead>
+    <tbody>
+     <row>
+      <entry>
+        Hostname
+      </entry>
+      <entry>
+        string
+      </entry>
+      <entry>
+       virtual.domain.net
+      </entry>
+     </row>
+     <row>
+      <entry>
+        CPUs
+      </entry>
+      <entry>
+       int
+      </entry>
+      <entry>
+       1
+      </entry>
+     </row>
+     <row>
+      <entry>
+       Sockets
+      </entry>
+      <entry>
+       int
+      </entry>
+      <entry>
+       2
+      </entry>
+     </row>
+     <row>
+      <entry>
+       Architecture
+      </entry>
+      <entry>
+       string
+      </entry>
+      <entry>
+       x86_64
+      </entry>
+     </row>
+     <row>
+      <entry>
+       UUID
+      </entry>
+      <entry>
+       uuid
+      </entry>
+      <entry>
+       6A5072A0-311B-430E-8EDE-A8770788B92D
+      </entry>
+     </row>
+     <row>
+      <entry>
+       Hypervisor
+      </entry>
+      <entry>
+       string
+      </entry>
+      <entry>
+       KVM
+      </entry>
+     </row>
+     <row>
+      <entry>
+       Cloud Provider
+      </entry>
+      <entry>
+       string
+      </entry>
+      <entry>
+       Amazon (can also be 'Google' or 'Azure', not 100% accurate in the 'Azure' case)
+      </entry>
+     </row>
+     <row>
+      <entry>
+       Last Seen Date
+      </entry>
+      <entry>
+       date
+      </entry>
+      <entry>
+       2021-05-05 (the last time that the system contacted &scc;)
+      </entry>
+     </row>
+    </tbody>
+   </tgroup>
+  </table>
  </sect1>
 </article>
