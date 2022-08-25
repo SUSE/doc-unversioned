@@ -88,7 +88,7 @@
   <para>
    We extended &suseconnect; with the new option <option>--keep-alive</option>. The command
    <command>&suseconnect; --keep-alive</command> updates the last time that a host contacted SCC or
-   RMT and attaches the host's hardware information.
+   RMT and updates the host's hardware information.
   </para>
 
   <para>
@@ -151,7 +151,7 @@
   <title>Identifying inactive systems</title>
 
   <para>
-   When &suseconnect; daily reports details about active hosts, SCC or RMT collect this information
+   When &suseconnect; reports details about active hosts daily, SCC or RMT collect this information
    and let you filter out registered inactive hosts. If your hosts are registered against RMT or
    &suma;, these registration servers forward the received information to SCC.
   </para>
@@ -159,7 +159,7 @@
   <sect2 xml:id="identifying-inactive-systems-with-scc">
    <title>Identifying inactive systems with SCC</title>
    <para>
-    In the SCC Web user interface, you can limit the list of subscriptions to see only inactive
+    In the SCC Web user interface, you can limit the list of systems to see only inactive
     hosts.
    </para>
    <procedure>
@@ -203,7 +203,7 @@
   <sect2 xml:id="identifying-inactive-systems-with-rmt">
    <title>Identifying inactive systems with RMT</title>
    <para>
-    By using the <command>rmt-cli purge</command> command, you can view hosts that have not
+    By using the <command>rmt-cli purge</command> command, you can view and remove hosts that have not
     contacted the RMT server since a given date in the past:
    </para>
 <screen>
@@ -390,13 +390,13 @@ Purged systems that have not contacted this RMT since 2021-06-16.
    </listitem>
    <listitem>
     <para>
-     Find complex information about RMT at
+     Find further information about RMT at
      <link xlink:href="https://documentation.suse.com/sles/html/SLES-all/book-rmt.html"/>
     </para>
    </listitem>
    <listitem>
     <para>
-     Find complex information about &suma; at
+     Find further information about &suma; at
      <link xlink:href="https://documentation.suse.com/suma/"/>
     </para>
    </listitem>
