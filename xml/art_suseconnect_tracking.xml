@@ -310,7 +310,7 @@ Purged systems that have not contacted this RMT since 2021-06-16.
        string
       </entry>
       <entry>
-       KVM
+       KVM or VMware etc.
       </entry>
      </row>
      <row>
@@ -321,7 +321,7 @@ Purged systems that have not contacted this RMT since 2021-06-16.
        string
       </entry>
       <entry>
-       Amazon (can also be 'Google' or 'Azure', not 100% accurate in the 'Azure' case)
+       Amazon or Google or Azure
       </entry>
      </row>
      <row>
@@ -332,7 +332,7 @@ Purged systems that have not contacted this RMT since 2021-06-16.
        date
       </entry>
       <entry>
-       2021-05-05 (the last time that the system contacted &scc;)
+       2021-05-05 (the last time that the system contacted SCC or RMT)
       </entry>
      </row>
     </tbody>
@@ -385,7 +385,7 @@ Purged systems that have not contacted this RMT since 2021-06-16.
    </listitem>
    <listitem>
     <para>
-     You can find &scc; at <link xlink:href="https://scc.suse.com/"/>.
+     You can find SCC at <link xlink:href="https://scc.suse.com/"/>.
     </para>
    </listitem>
    <listitem>
