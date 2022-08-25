@@ -108,7 +108,8 @@
     <term><filename>suseconnect-keepalive.timer</filename></term>
     <listitem>
      <para>
-      A timer which runs the service <filename>suseconnect-keepalive.service</filename> once a day.
+      A timer which runs the service <filename>suseconnect-keepalive.service</filename> once a day
+      at random time to prevent SCC congestion.
      </para>
     </listitem>
    </varlistentry>
