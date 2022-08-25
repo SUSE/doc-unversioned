@@ -86,8 +86,8 @@
   <title>How tracking inactive systems works</title>
 
   <para>
-   We extended &suseconnect; with the new option <option>--keep-alive</option>. The command
-   <command>&suseconnect; --keep-alive</command> updates the last time that a host contacted SCC or
+   We extended &suseconnect; with the new option <option>--keepalive</option>. The command
+   <command>&suseconnect; --keepalive</command> updates the last time that a host contacted SCC or
    RMT and updates the host's hardware information.
   </para>
 
@@ -100,7 +100,7 @@
     <term><filename>suseconnect-keepalive.service</filename></term>
     <listitem>
      <para>
-      A service which runs the command <command>&suseconnect; --keep-alive</command> on demand.
+      A service which runs the command <command>&suseconnect; --keepalive</command> on demand.
      </para>
     </listitem>
    </varlistentry>
