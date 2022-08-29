@@ -9,6 +9,12 @@
     xmlns:xi="http://www.w3.org/2001/XInclude"
     xmlns:xlink="http://www.w3.org/1999/xlink">
  <title>&podman; overview</title>
+ <info>
+  <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
+   <dm:bugtracker/>
+   <dm:translation>yes</dm:translation>
+  </dm:docmanager>
+ </info>
  <para>
   <link xlink:href="https://podman.io/">Podman</link> is short for Pod Manager
   Tool. It is a daemonless container engine for developing, managing, and

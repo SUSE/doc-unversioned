@@ -9,6 +9,12 @@
   xmlns:xi="http://www.w3.org/2001/XInclude"
   xmlns:xlink="http://www.w3.org/1999/xlink">
  <title>Creating custom container images</title>
+ <info>
+  <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
+  <dm:bugtracker/>
+  <dm:translation>yes</dm:translation>
+  </dm:docmanager>
+ </info>
  <para>
   To create a custom image, you need a base image of &productname;. You can use
   any of the pre-built &productname; images.

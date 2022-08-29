@@ -9,12 +9,18 @@
   xmlns:xi="http://www.w3.org/2001/XInclude"
   xmlns:xlink="http://www.w3.org/1999/xlink">
  <title>Obtaining containers</title>
+ <info>
+  <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
+   <dm:bugtracker/>
+   <dm:translation>yes</dm:translation>
+  </dm:docmanager>
+ </info>
  <para>
   This chapter provides information on obtaining container images.
  </para>
  <sect1 xml:id="sec-sle-base-images">
   <title>&sle; base images</title>
-
+  
   <para>
    &suse; offers several official base container images that can be used as a
    starting point for building custom containers. Each &slea; base image
