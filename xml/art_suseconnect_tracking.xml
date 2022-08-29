@@ -31,7 +31,7 @@
   </dm:docmanager>
   <abstract>
    <para>
-    This document document describes what &suseconnect; is and how the &scc; (SCC) and Repository
+    This document describes what &suseconnect; is and how the &scc; (SCC) and Repository
     Mirroring Tool (RMT) use it to gather information about active systems and their hardware
     environment.
    </para>
@@ -57,15 +57,15 @@
 
   <para>
    With newer versions of &suseconnect;, each registered host contacts SCC or RMT automatically on a
-   daily basis. It sends unique identification of the host and description of its hardware
-   environment.
+   daily basis. It sends the unique identification of the host and description of 
+   its hardware environment.
   </para>
  </sect1>
  <sect1 xml:id="suseconnect-tracking-requirements">
   <title>Requirements</title>
 
   <para>
-   In order to use the extended &suseconnect; functionality, you need to:
+   To use the extended &suseconnect; functionality, you need to:
   </para>
 
   <itemizedlist>
@@ -116,8 +116,8 @@
   </variablelist>
 
   <para>
-   These units are responsible for keeping the system information up-to-date with the SCC or RMT,
-   and to provide accurate data about subscription usage.
+   These units are responsible for keeping the system information up to date with
+   the SCC or RMT, and for providing accurate data about subscription usage.
   </para>
 
   <note>
@@ -177,7 +177,7 @@
     </step>
     <step>
      <para>
-      Select <guimenu>Inactive</guimenu> from the top left drop-down list.
+      Select <guimenu>Inactive</guimenu> from the upper-left drop-down list.
      </para>
      <figure>
       <title>Drop-down list with a filter for inactive hosts</title>
@@ -194,7 +194,7 @@
     <step>
      <para>
       If you have sufficient privileges and your inactive host is registered directly with SCC, you
-      can de-register it by clicking the three dots on its right and selecting
+      can deregister it by clicking the three dots on its right and selecting
       <guimenu>De-register</guimenu>.
      </para>
     </step>
@@ -240,7 +240,7 @@
     <tbody>
      <row>
       <entry>
-        Hostname
+        Host Name
       </entry>
       <entry>
         string
@@ -312,7 +312,7 @@
        string
       </entry>
       <entry>
-       Amazon or Google or Azure
+       Amazon, Google, or Azure
       </entry>
      </row>
      <row>
@@ -334,26 +334,28 @@
   <title>Benefits</title>
 
   <para>
-   The new functionality of &suseconnect; bring the following benefits to the customer:
+   The new functionality of &suseconnect; brings the following benefits to the 
+   customer:
   </para>
 
   <itemizedlist>
    <listitem>
     <para>
      Ability to identify all types of deployments of systems, no matter if they are derived from a
-     custom image or clones of an already registered virtual machine.
+     custom image or are clones of an already registered virtual machine.
     </para>
    </listitem>
    <listitem>
     <para>
      By contacting SCC or RMT regularly, you can obtain the number of actually running registered
-     systems. This gives better insight into the consumption of &suse; subscriptions.
+     systems. This provides a better insight into the consumption of &suse; 
+     subscriptions.
     </para>
    </listitem>
    <listitem>
     <para>
-     Updates to registration tools provide clearer picture of your workloads. You can filter out
-     systems that are no longer running or decommissioned.
+     Updates to registration tools provide a clearer picture of your workloads. 
+     You can filter out the systems that are no longer running or decommissioned.
     </para>
    </listitem>
    <listitem>
