@@ -340,6 +340,29 @@
        <para>
         Indicates the current release stage of the image.
        </para>
+       <itemizedlist>
+        <title>Values</title>
+        <listitem>
+         <para>
+          <literal>prototype</literal> Indicates that the container image is in the ALP prototype phase.
+         </para>
+        </listitem>
+        <listitem>
+          <para>
+           <literal>alpha</literal> Prevents the container image from appearing in the <link xlink:href="registry.suse.com" /> Web interface even if it is available there. The value also indicates the alpha quality of the container image.
+          </para>
+         </listitem>
+         <listitem>
+          <para>
+           <literal>beta</literal> Lists the container image in the Beta Container Images section of the <link xlink:href="registry.suse.com" /> Web interface and adds the Beta label to the image. The value also indicates the beta quality of the container image.
+          </para>
+         </listitem>
+         <listitem>
+          <para>
+           <literal>released</literal> Indicates that the container image is released and suitable for production use.
+          </para>
+         </listitem>
+        </itemizedlist>
       </listitem>
      </varlistentry>
      <varlistentry>
