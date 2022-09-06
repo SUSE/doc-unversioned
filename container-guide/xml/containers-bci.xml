@@ -141,6 +141,12 @@
     <link xlink:href="https://suse.com/lifecycle">suse.com/lifecycle</link> to
     find out whether the container in question is still under support.
    </para>
+   <important>
+   <title>No updates beyond support period</title>
+   <para>
+      A &bci; is no longer updated after its support period ends. You will not receive any notification when that happens.
+   </para>
+   </important>
   </sect2>
 
   <sect2 xml:id="getting-started-bci">
