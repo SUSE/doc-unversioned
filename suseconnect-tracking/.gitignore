@@ -1,0 +1,10 @@
+*~
+\#*#
+.#*
+*.bak
+*.orig
+*.swp
+.directory
+build/
+.vscode/
+.idea/
