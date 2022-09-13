@@ -23,20 +23,31 @@
   <sect2 xml:id="sec-sle-container-non-sle-host-support">
    <title>Support for &slsa; hosts</title>
    <para>
-    Consult the following support and compatibility matrix to make sure that
-    the desired host system and container combination is compatible and
-    supported.
-   </para>
-   <informalfigure>
-    <mediaobject>
-     <imageobject role="fo">
-      <imagedata fileref="container_support_matrix.png" width="100%" format="PNG"/>
-     </imageobject>
-     <imageobject role="html">
-      <imagedata fileref="container_support_matrix.png" width="100%" format="PNG"/>
-     </imageobject>
-    </mediaobject>
-   </informalfigure>
+    Containers are fully supported on the following conditions:
+  </para>
+  <itemizedlist>
+  <listitem>
+  <para>
+    &slea; 15-based container images are running on &slea; 15- and &slea; Micro-based hosts
+  </para>
+  </listitem>
+  <listitem>
+    <para>
+      &slea; 12-based container images are running on &slea; 15- and &slea; Micro-based hosts
+    </para>
+    </listitem>
+  <listitem>
+  <para>
+    &slea; 12-based container images are running on &slea; 12-based hosts
+  </para>
+  </listitem>
+  </itemizedlist>
+  <important>
+  <title>Newer container images on older hosts</title>
+  <para>
+    While it is technically possible to run a newer container image on an older container host, &suse; recommends upgrading the container host to avoid potential risks and compatibility problems.
+  </para>
+</important>
    <para>
     In most scenarios, all &slea; containers are expected to be interoperable
     if the application or its dependencies do not interact directly with kernel
