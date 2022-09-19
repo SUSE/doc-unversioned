@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook50-profile.xsl"
+ type="text/xml"
+ title="Profiling step"?>
+<!DOCTYPE article
+[
+<!ENTITY % entities SYSTEM "generic-entities.ent">
+%entities;
+]>
+
+<article xml:id="article-hipaa"
+ xmlns="http://docbook.org/ns/docbook"
+ version="5.0"
+ xml:lang="en"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+
+<title>???</title>
+ <subtitle>&productname; &productnumber;</subtitle>
+ <info>
+  <productnumber>&productnumber;</productnumber><productname>&productname;</productname>
+  <date><?dbtimestamp format="B d, Y"?></date>
+  <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
+   <dm:bugtracker>
+    <dm:url>https://bugzilla.suse.com/enter_bug.cgi</dm:url>
+    <dm:component>Security</dm:component>
+    <dm:product>Documentation</dm:product>
+    <dm:assignee>taroth@suse.com</dm:assignee>
+   </dm:bugtracker>
+   <dm:editurl>https://github.com/SUSE/doc-unversioned/blob/main/hipaa/xml/</dm:editurl>
+   <dm:translation>no</dm:translation>
+  </dm:docmanager>
+
+  <abstract>
+   <para>????</para>
+  </abstract>
+ </info>
+
+ <sect1 xml:id="hipaa-whatis">
+  <title>What is ???</title>
+
+  <para></para>
+ </sect1>
+
+ <sect1 xml:id="hipaa-related-topics">
+  <title>Related topics</title>
+
+  <itemizedlist>
+   <listitem>
+    <para>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+    </para>
+   </listitem>
+  </itemizedlist>
+ </sect1>
+ <xi:include href="common_copyright_quick.xml"/>
+ <xi:include href="common_license_gfdl1.2.xml"/>
+</article>
