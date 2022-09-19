@@ -32,22 +32,47 @@
   </dm:docmanager>
 
   <abstract>
-   <para>????</para>
+   <para>
+    This document explains how to assess, measure and enforce security baselines with the help
+    of &openscap;.
+   </para>
   </abstract>
  </info>
 
- <sect1 xml:id="hipaa-whatis">
-  <title>What is ???</title>
+ <sect1 xml:id="openscap-whatis">
+  <title>What is &openscap;?</title>
 
-  <para></para>
+  <para>&openscap; is a collection of open source tools that implement the <systemitem
+    class="protocol">Security Content Automation Protocol (SCAP)</systemitem> maintained by the
+    <orgname>National Institute of Standards and Technology (NIST)</orgname>. &openscap;
+   supports automated configuration, vulnerability and patch checking, technical control compliance
+   activities, and security measurement.</para>
  </sect1>
 
+ <sect1 xml:id="openscap-benefits">
+  <title>Benefits</title>
+
+  <para>
+   The &openscap; tools, together with the  <literal>Scap Security Guide</literal>, can be used for auditing your system in an automated way.
+  </para>
+
+   </sect1>
+
+ <!--
+  <para>
+   All profile files are available in the <link
+   xlink:href="https://github.com/ComplianceAsCode/content/tree/master/products/sle15/profiles">ComplianceAsCode</link>
+   repository.
+  </para>
+ -->
  <sect1 xml:id="hipaa-related-topics">
   <title>Related topics</title>
 
   <itemizedlist>
    <listitem>
     <para>
+     <link xlink:href="https://www.open-scap.org/security-policies/scap-security-guide/">
+     <citetitle>SCAP Security Guide</citetitle></link>
     </para>
    </listitem>
    <listitem>
