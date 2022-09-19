@@ -1,0 +1,16 @@
+## ---------------------------- 
+## HIPAA, unversioned
+## repo: SUSE/doc-unversioned
+## ----------------------------
+##
+## Basics
+MAIN="article_hipaa.xml"
+ROOTID=article-hipaa
+
+## Profiling
+PROFOS="article"
+PROFARCH="x86_64;zseries;power;aarch64"
+
+## stylesheet location
+STYLEROOT="/usr/share/xml/docbook/stylesheet/suse2022-ns"
+FALLBACK_STYLEROOT="/usr/share/xml/docbook/stylesheet/suse-ns"
