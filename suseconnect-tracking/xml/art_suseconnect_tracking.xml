@@ -15,8 +15,8 @@
          xml:lang="en"
          xmlns:xi="http://www.w3.org/2001/XInclude"
          xmlns:xlink="http://www.w3.org/1999/xlink">
- <title>Enriched system visii¡bility in the &scc;</title>
- <titleabbrev>Enriched system visii¡bility in the &scc;</titleabbrev>
+ <title>Enriched system visibility in the &scc;</title>
+ <titleabbrev>Enriched system visibility in the &scc;</titleabbrev>
  <info><productname>&productnamex;</productname>
   <productnumber>&productnumberx;</productnumber><date>
 <?dbtimestamp format="B d, Y" ?></date>
