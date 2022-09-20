@@ -9,7 +9,7 @@
   <!ENTITY productnamex "<phrase xmlns='http://docbook.org/ns/docbook' os='sles;sled;osuse'>&productname;</phrase><phrase xmlns='http://docbook.org/ns/docbook' os='article'>&sls;</phrase>">
    <!ENTITY productnumberx "<phrase xmlns='http://docbook.org/ns/docbook' os='sles;sled;osuse'>&productnumber;</phrase>">
 ]>
-<article xml:id="article-suseconnect-tracking"
+<article xml:id="article-suseconnect-visibility"
          xmlns="http://docbook.org/ns/docbook"
          version="5.0"
          xml:lang="en"
@@ -66,7 +66,7 @@
    the description of its hardware environment.
   </para>
  </sect1>
- <sect1 xml:id="suseconnect-tracking-requirements">
+ <sect1 xml:id="suseconnect-visibility-requirements">
   <title>Requirements</title>
 
   <para>
@@ -87,7 +87,7 @@
    </listitem>
   </itemizedlist>
  </sect1>
- <sect1 xml:id="suseconnect-tracking-how-it-works">
+ <sect1 xml:id="suseconnect-visibility-how-it-works">
   <title>How enhanced system visibility works</title>
 
   <para>
@@ -371,7 +371,7 @@
    </listitem>
   </itemizedlist>
  </sect1>
- <sect1 xml:id="suseconnect-tracking-related-topics">
+ <sect1 xml:id="suseconnect-visibility-related-topics">
   <title>Related topics</title>
 
   <itemizedlist>
