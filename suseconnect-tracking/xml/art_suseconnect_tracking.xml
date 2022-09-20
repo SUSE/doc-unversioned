@@ -60,7 +60,7 @@
    regardless of where they are running or how they are managed; physical or virtual, on-prem or in
    the cloud, connected to SCC or RMT, or managed by SUSE Manager.
 
-   To help you identify or filter out systems in SCC that are no longer running or decommissioned,
+   To help you identify or filter out systems in SCC that are decommissioned or no longer running,
    &suseconnect; now features a daily “ping,” which will update system information automatically.
    Each registered host contacts SCC or RMT and sends the unique identification of the host and
    the description of its hardware environment.
