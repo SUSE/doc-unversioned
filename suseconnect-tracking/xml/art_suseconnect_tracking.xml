@@ -15,8 +15,8 @@
          xml:lang="en"
          xmlns:xi="http://www.w3.org/2001/XInclude"
          xmlns:xlink="http://www.w3.org/1999/xlink">
- <title>Tracking active systems with &suseconnect;</title>
- <titleabbrev>Tracking active systems with &suseconnect;</titleabbrev>
+ <title>Enriched system visii¡bility in the &scc;</title>
+ <titleabbrev>Enriched system visii¡bility in the &scc;</titleabbrev>
  <info><productname>&productnamex;</productname>
   <productnumber>&productnumberx;</productnumber><date>
 <?dbtimestamp format="B d, Y" ?></date>
@@ -32,8 +32,8 @@
   <abstract>
    <para>
     This document describes what &suseconnect; is and how the &scc; (SCC) and Repository
-    Mirroring Tool (RMT) use it to gather information about active systems and their hardware
-    environment.
+    Mirroring Tool (RMT) use it to gather updated information about active systems and
+    their hardware environment.
    </para>
   </abstract>
  </info>
@@ -56,9 +56,14 @@
   </tip>
 
   <para>
-   With newer versions of &suseconnect;, each registered host contacts SCC or RMT automatically on a
-   daily basis. It sends the unique identification of the host and description of 
-   its hardware environment.
+   SUSE is committed to helping provide better insights into the consumption of SUSE subscriptions,
+   regardless of where they are running or how they are managed; physical or virtual, on-prem or in
+   the cloud, connected to SCC or RMT, or managed by SUSE Manager.
+
+   To help you identify or filter out systems in SCC that are no longer running or decommissioned,
+   &suseconnect; now features a daily “ping,” which will update system information automatically.
+   Each registered host contacts SCC or RMT and sends the unique identification of the host and
+   the description of its hardware environment.
   </para>
  </sect1>
  <sect1 xml:id="suseconnect-tracking-requirements">
@@ -83,7 +88,7 @@
   </itemizedlist>
  </sect1>
  <sect1 xml:id="suseconnect-tracking-how-it-works">
-  <title>How tracking inactive systems works</title>
+  <title>How enhanced system visibility works</title>
 
   <para>
    We extended &suseconnect; with the new option <option>--keepalive</option>. The command
