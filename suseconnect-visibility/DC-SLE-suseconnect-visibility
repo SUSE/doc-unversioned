@@ -4,8 +4,8 @@
 ## ---------------------------------
 ##
 ## Basics
-MAIN="art_suseconnect_tracking.xml"
-ROOTID=article-suseconnect-tracking
+MAIN="art_suseconnect_visibility.xml"
+ROOTID=article-suseconnect-visibility
 
 ## Profiling
 PROFOS="article"
