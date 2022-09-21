@@ -25,23 +25,68 @@
    <para>
     Containers are fully supported on the following conditions:
   </para>
-  <itemizedlist>
-  <listitem>
-  <para>
-    &slea; 15-based container images are running on &slea; 15- and &slea; Micro-based hosts
-  </para>
-  </listitem>
-  <listitem>
-    <para>
-      &slea; 12-based container images are running on &slea; 15- and &slea; Micro-based hosts
-    </para>
-    </listitem>
-  <listitem>
-  <para>
-    &slea; 12-based container images are running on &slea; 12-based hosts
-  </para>
-  </listitem>
-  </itemizedlist>
+  <table>
+    <title>Support matrix</title>
+    <tgroup cols="3">
+     <colspec colname="c1" align="center" colwidth="3*"/>
+     <colspec colname="c2" align="center" />
+     <colspec colname="c3" align="center" />
+     <thead>
+      <row valign="middle">
+       <entry align="center">
+         Container image
+        </entry>
+        <entry morerows="1">
+          &slsa; 12
+        </entry>
+        <entry morerows="1">
+          &slsa; 15
+        </entry>
+        </row>
+        <row>
+          <entry align="center">
+           Host
+          </entry>
+         </row>
+        </thead>
+        <tbody>
+          <row>
+           <entry>
+            <emphasis role="bold">&slsa; 12 SP5</emphasis>
+           </entry>
+           <entry>
+            <phrase role="color:suse-jungle-green">&#10003;</phrase>
+           </entry>
+           <entry>
+            <phrase role="color:suse-waterhole-blue">&#10059;</phrase>
+           </entry>
+          </row>
+          <row>
+            <entry>
+             <emphasis role="bold">&slsa; 15</emphasis>
+            </entry>
+            <entry>
+              <phrase role="color:suse-jungle-green">&#10003;</phrase>
+            </entry>
+            <entry>
+             <phrase role="color:suse-jungle-green">&#10003;</phrase>
+            </entry>
+           </row>
+           <row>
+            <entry>
+             <emphasis role="bold">&slsa; Micro</emphasis>
+            </entry>
+            <entry>
+              <phrase role="color:suse-waterhole-blue">&#10059;</phrase>
+            </entry>
+            <entry>
+             <phrase role="color:suse-jungle-green">&#10003;</phrase>
+            </entry>
+           </row>
+          </tbody>
+        </tgroup>
+       </table>
+
   <important>
   <title>Newer container images on older hosts</title>
   <para>
