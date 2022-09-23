@@ -6,6 +6,8 @@
 [
 <!ENTITY % entities SYSTEM "generic-entities.ent">
 %entities;
+<!ENTITY productnamex "<phrase xmlns='http://docbook.org/ns/docbook' os='sles;sled;osuse'>&productname;</phrase><phrase xmlns='http://docbook.org/ns/docbook' os='article'>&sls;</phrase>">
+<!ENTITY productnumberx "<phrase xmlns='http://docbook.org/ns/docbook' os='sles;sled;osuse'>&productnumber;</phrase>">
 ]>
 
 <article xml:id="article-hipaa"
@@ -15,10 +17,11 @@
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink">
 
-<title>???</title>
- <subtitle>&productname; &productnumber;</subtitle>
+<title>Hardening &sle; with &openscap;</title>
+ <titleabbrev>Hardening &sle; with &openscap;</titleabbrev>
  <info>
-  <productnumber>&productnumber;</productnumber><productname>&productname;</productname>
+  <productname>&productnamex;</productname>
+  <productnumber>&productnumberx;</productnumber>
   <date><?dbtimestamp format="B d, Y"?></date>
   <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
    <dm:bugtracker>
@@ -53,26 +56,114 @@
   <title>Benefits</title>
 
   <para>
-   The &openscap; tools, together with the  <literal>Scap Security Guide</literal>, can be used for auditing your system in an automated way.
+   The &openscap; tools, together with the <literal>Scap
+    Security Guide</literal>, can be used for auditing your system in an
+   automated way. The <literal>Scap Security Guide</literal> implements
+   security guidances recommended by respected authorities. These security
+   guidances are transformed into a machine readable format which then can
+   be used by &openscap;.
   </para>
 
-   </sect1>
+ </sect1>
 
- <!--
+ <sect1 xml:id="openscap-use">
+  <title>Using &openscap;</title>
+
+  <para>For general instructions how to use the <literal>Scap Security
+    Guide</literal>, see the README in <link
+    xlink:href="https://github.com/ComplianceAsCode/content"/>. </para>
+  <para>The <literal>Scap Security Guide</literal> contains multiple
+   profiles. The profiles applicable to &sle; are codestream-specific
+   and differ between code 12 and code 15.</para>
+  <para>They are hosted in the <link
+    xlink:href="https://github.com/ComplianceAsCode/"
+    >ComplianceAsCode</link> repository: </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     <link
+      xlink:href="https://github.com/ComplianceAsCode/content/tree/master/products/sle15/profiles"
+     />
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <link
+      xlink:href="https://github.com/ComplianceAsCode/content/tree/master/products/sle12/profiles"
+     > </link>
+    </para>
+   </listitem>
+  </itemizedlist>
   <para>
-   All profile files are available in the <link
-   xlink:href="https://github.com/ComplianceAsCode/content/tree/master/products/sle15/profiles">ComplianceAsCode</link>
-   repository.
+   Human-readable versions of the profiles are available in your
+   installed system under:</para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     <filename>/usr/share/doc/scap-security-guide/guides/ssg-sle15-guide-stig.html</filename>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <filename>/usr/share/doc/scap-security-guide/guides/ssg-sle12-guide-stig.html</filename>
+    </para>
+   </listitem>
+  </itemizedlist>
+  <para>
+   Alternatively, find the same content online at:
   </para>
- -->
+  <itemizedlist>
+   <listitem>
+    <para>
+     <link xlink:href="https://static.open-scap.org/ssg-guides/ssg-sle15-guide-index.html"></link>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <link xlink:href="https://static.open-scap.org/ssg-guides/ssg-sle12-guide-index.html"></link>
+    </para>
+   </listitem>
+  </itemizedlist>
+  <para>In the online versions, use the drop-down box at the upper right corner of
+   the page to select one of the available profiles and to view a command line
+   snippet how to evaluate the respective profile with &openscap;.
+  </para>
+ </sect1>
+
+ <sect1 xml:id="openscap-terminology">
+  <title>Terminology</title>
+  <variablelist>
+   <varlistentry>
+    <term>Policy</term>
+    <listitem>
+     <para>TBD</para>
+    </listitem>
+   </varlistentry>
+    <varlistentry>
+     <term>Profile</term>
+     <listitem>
+      <para>A set of recommendations or a set of rules.</para>
+     </listitem>
+    </varlistentry>
+   <varlistentry>
+     <term>Rule</term>
+     <listitem>
+      <para>TBD</para>
+     </listitem>
+    </varlistentry>
+  </variablelist>
+ </sect1>
+
  <sect1 xml:id="hipaa-related-topics">
   <title>Related topics</title>
 
   <itemizedlist>
    <listitem>
-    <para>
-     <link xlink:href="https://www.open-scap.org/security-policies/scap-security-guide/">
-     <citetitle>SCAP Security Guide</citetitle></link>
+    <para>Check out the <citetitle>SCAP Security Guide</citetitle> online
+     at <link
+     xlink:href="https://www.open-scap.org/security-policies/scap-security-guide/"/>.
+     Alternatively, access it from your system after installing the
+     <package>scap-security-guide</package> package.
     </para>
    </listitem>
    <listitem>
