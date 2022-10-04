@@ -1,0 +1,13 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[#container-guide]
+= Container Guide
+
+[[cha-intro]]
+== About this guide
+This guide provides an introduction to the {suse} container ecosystem.
+This document is a work in progress.
+The content in this document is subject to change without notice.
+
+include::containers-basics.adoc[] 
