@@ -1,7 +1,7 @@
 include::attributes-generic.adoc[]
 include::attributes-product.adoc[]
 
-[#container-guide]
+[container-guide]
 = Container Guide
 
 [[cha-intro]]
@@ -11,3 +11,4 @@ This document is a work in progress.
 The content in this document is subject to change without notice.
 
 include::containers-basics.adoc[] 
+include::containers-bci.adoc[] 

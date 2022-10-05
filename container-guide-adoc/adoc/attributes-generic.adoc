@@ -33,7 +33,7 @@
 
 :selinux: SELinux
 
-:x64: x86-64
+:x64: AMD64/Intel 64
 :aarch64: AArch64
 :ppc: PowerPC
 
@@ -234,3 +234,6 @@
 :rmtool: Repository Mirroring Tool
 :suseregistry: {suse} Registry
 :k8s: Kubernetes
+:ppc64le : ppc64le
+:zseries: IBM Z
+:zypper: Zypper
