@@ -105,39 +105,30 @@ Below is an overview of the available language stack {bcia}s.
 
 python::
   * URL: https://registry.suse.com/static/bci/python
-  * Tags: 3.6, 3.9, 3.10
   * Ships with the python3 version from the tag and pip3, curl, git tools.
 node::
   * URL: https://registry.suse.com/static/bci/nodejs
-  * Tags: 12, 14, 16
   * Comes with nodejs version from the tag, npm and git. The yarn package manager can be installed with the `npm install -g yarn` command.
 openjdk::
   * URL: https://registry.suse.com/static/bci/openjdk
-  * Tags: 11, 17
   * Ships with the OpenJDK runtime. Designed for deploying Java applications.
 openjdk-devel::
   * URL: https://registry.suse.com/static/bci/openjdk-devel
-  * Tags: 11, 17
   * Includes the development part of OpenJDK in addition to the OpenJDK runtime. Instead of Bash, the default entry point is the jshell shell.
 ruby::
   * URL: https://registry.suse.com/static/bci/ruby
-  * Tags: 2.5
   * A standard development environment based on Ruby 2.5, featuring ruby, gem and bundler as well as git and curl.
 golang::
   * URL: https://registry.suse.com/static/bci/golang
-  * Tags: 1.16, 1.17, 1.18
   * Ships with the go compiler version specified in the tag.
 dotnet-runtime::
   * URL: https://registry.suse.com/static/bci/dotnet-runtime
-  * Tags: 3.1, 5.0, 6.0
   * Includes the .NET runtime from Microsoft and the Microsoft .NET repository.
 dotnet-aspnet::
   * URL: https://registry.suse.com/static/bci/dotnet-aspnet
-  * Tags: 3.1, 5.0, 6.0
   * Ships with the ASP.NET runtime from Microsoft and the Microsoft .NET repository.
 dotnet-sdk::
   * URL: https://registry.suse.com/static/bci/dotnet-sdk
-  * Tags: 3.1, 5.0, 6.0
   * Comes with the .NET and ASP.NET SDK from Microsoft as well as the Microsoft .NET repository.
 
 [[sec-status-lifecycle-bci]]
