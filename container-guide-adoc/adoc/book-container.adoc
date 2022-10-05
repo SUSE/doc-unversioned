@@ -11,4 +11,5 @@ This document is a work in progress.
 The content in this document is subject to change without notice.
 
 include::containers-basics.adoc[] 
-include::containers-bci.adoc[] 
+include::containers-bci.adoc[]
+include::containers-build-tools.adoc[]
