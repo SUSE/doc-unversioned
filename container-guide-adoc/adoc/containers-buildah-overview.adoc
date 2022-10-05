@@ -1,0 +1,81 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[[cha-buildah-overview]]
+== {buildah} overview
+
+https://buildah.io/[Buildah] is tool for building OCI-compliant container images. {buildah} can handle the following tasks:
+
+* Create containers from scratch or from existing images.
+* Create an image from a working container or via Dockerfile.
+* Build images in the OCI or {deng} image formats.
+* Mount a working container's root file system for manipulation.
+* Use the updated contents of a container's root file system as a file system layer to create a new image.
+* Delete a working container or an image and rename a local container.
+
+Compared to {deng}, {buildah} has several advantages:
+
+* The tool makes it possible to mount a working container's file system, so it becomes accessible by the host.
+* The process of building container images using {buildah} can be automated via scripts by using {buildah}'s subcommands instead of a Containerfile or Dockerfile.
+* Similar to {podman}, {buildah} does not require a daemon to run and can be used by unprivileged users.
+* It is possible to build images inside a container without mounting the DOCKER socket, which improves security.
+
+[[cha-podman-buildah]]
+=== {podman} and {buildah}
+
+Both {podman} and {buildah} can be used to build container images. While {podman} makes it possible to build images using Dockerfiles, {buildah} offers an expanded range of image building options and capabilities.
+
+[[cha-buildah-install]]
+=== {buildah} installation
+
+To install {buildah}, run the command `sudo zypper in buildah`. Run the command `buildah --version` to check whether {buildah} has been installed successfully.
+
+If you already have {podman} installed and set up for use in rootless mode, {buildah} can be used in an unprivileged environment without any further configuration. If you need to enable rootless mode for {buildah}, run the following command:
+
+....
+> sudo usermod --add-subuids 100000-165535 --add-subgids 100000-165535 USER
+....
+
+This command enables rootless mode for the current user. After running the command, log out and log in again to enable the changes.
+
+The command above defines a range of local UIDs on the host, onto which the UIDs allocated to users inside the container are mapped. Note that the ranges defined for different users must not overlap. It is also important that the ranges do not reuse the UID of any existing local users or groups. By default, adding a user with the `useradd` command on SLSA PRODUCT-GA automatically allocates subUID and subGID ranges.
+
+NOTE: {buildah} in rootless mode
+====
+In rootless mode, {buildah} commands must be executed in a modified user namespace of the user. To enter this user namespace, run the command `buildah unshare`. Otherwise, the `buildah mount` command will fail.
+====
+
+[[cha-buildah-build-images]]
+=== Building images with {buildah}
+
+Instead of a special file with instructions, {buildah} uses individual commands to build an image. Building an image with {buildah} involves the following steps:
+
+* run a container based on the specified image
+* edit the container (install packages, configure settings, etc.)
+* configure the container options
+* commit all changes into a new image
+
+While this process may include additional steps, such as mounting the container's file system and working with it, the basic workflow logic remains the same.
+
+The following example can give you a general idea of how to build an image with {buildah}.
+
+....
+container=$(buildah from suse/sle15) <1>
+buildah run $container zypper up <2>
+buildah copy $container . /usr/src/example/ <3>
+buildah config --workingdir /usr/src/example $container <4>
+buildah config --port 8000 $container
+buildah config --cmd "php -S 0.0.0.0:8000" $container 
+buildah config --label maintainer="Tux" $container <5>
+buildah config --label version="0.1" $container 
+buildah commit $container example <6>
+buildah rm $container <7>
+....
+
+<1> Specify a container (also called a working container) based on the specified image (in this case, `sle15`).
+<2> Run a command in the working container you just created. In this example, {buildah} runs the `zypper up` command.
+<3> Copy files and directories to the specified location in the container. In this example, {buildah} copies the entire contents of the current directory to `/usr/src/example/`.
+<4> The `buildah config` commands specify container options. These include defining a working directory, exposing a port, and running a command inside the container.
+<5> The `buildah config --label` command allows you to assign labels to the container. This may include `maintainer`, `description`, `version`, and so on.
+<6> Create an image from the working container by committing all the modifications.
+<7> Delete the working container.
