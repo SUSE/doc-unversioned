@@ -20,9 +20,7 @@
   <xi:include href="common_copyright_gfdl.xml"/>
   <abstract>
    <para>
-    This guide provides an introduction to the &suse; container ecosystem.
-    This document is a work in progress. The content in this document is
-    subject to change without notice.
+    The following guide covers the &suse; container ecosystem. Since containers are a constantly evolving technology, the guide is regularly updated, expanded and improved to reflect the latest technological developments.
    </para>
   </abstract>
   <xi:include href="container_guide_authors.xml"/>
