@@ -20,7 +20,7 @@
   <xi:include href="common_copyright_gfdl.xml"/>
   <abstract>
    <para>
-    The following guide covers the &suse; container ecosystem. Since containers are a constantly evolving technology, the guide is regularly updated, expanded and improved to reflect the latest technological developments.
+    The following guide covers the &sle; container ecosystem. Since containers are a constantly evolving technology, the guide is regularly updated, expanded and improved to reflect the latest technological developments.
    </para>
   </abstract>
   <xi:include href="container_guide_authors.xml"/>
