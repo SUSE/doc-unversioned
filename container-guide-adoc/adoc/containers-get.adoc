@@ -1,0 +1,176 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[[cha-containers-get]]
+== Obtaining containers
+
+This chapter provides information on obtaining container images.
+
+[[sec-sle-base-images]]
+=== {slea} base images
+
+{suse} offers several official base container images that can be used as a starting point for building custom containers. Each {slea} base image provides a minimal environment with a shell and package management.
+
+Base images are available from https://registry.suse.com. For information about the {suseregistry}, see link:#sec-suse-registry[]. The base images in the {suseregistry} all have the status General Availability (that is, they are suitable for production use) and https://www.suse.com/products/long-term-service-pack-support/[LTSS] releases of {slsa} 12 and {slsa} 15. {slea} base images in the {suse} Registry receive security updates and are covered by the {suse} support plans. For more information about these support plans, see link:#cha-containers-support[???].
+
+[[sec-suse-container-properties]]
+=== {suse} container properties
+
+{suse} container images have identifiers that provide information about their version, origin, and creation time. The individual identifiers listed below can be accessed after you pull a container image from the repository and run `podman inspect` on it.
+
+[[sec-repository-names]]
+==== Repository names
+
+Repository names start with the name of the product, for example: `suse/sle...` and `opensuse/tumbleweed`. The {slea} 15 containers for all service packs reside in the repository `suse/sle15`. However, for {slea} 12, there is a separate repository name for each service pack, for example, `suse/sles12sp3`, `suse/sles12sp4`, and `suse/sles12sp5`.
+
+[[sec-labels]]
+==== Labels
+
+Labels help to identify images. All {slea} container image labels begin with `com.suse.PRODUCTCONTAINER_NAME` followed by a further specification. Container images also contain `org.opencontainers.image` labels.
+
+Below is a list of all currently defined labels.
+
+`org.opencontainers.image.title`, `com.suse.sle.base.title`::
+  * _Must be provided by derived images:_ Yes
+  * _OCI notation:_ `org.opencontainers.image.title`
+  * _Description:_ Title of the image
+  * _Example:_ `{slea} PRODUCT-GA Base
+           Container`
+`org.opencontainers.image.description`, `com.suse.sle.base.description`::
+  * _Must be provided by derived images:_ Yes
+  * _OCI notation:_ `org.opencontainers.image.description`
+  * _Description:_ Short description of the image
+  * _Example:_ `Image containing a minimal
+           environment for containers based on {slea} PRODUCT-GA`
+`org.opencontainers.image.version`, `com.suse.sle.base.version`::
+  * _Must be provided by derived images:_ Yes
+  * _OCI notation:_ `org.opencontainers.image.version`
+  * _Description:_ Image version (`MAJOR.SP.CICOUNT.BUILDCOUNT`)
+  * _Example:_ `15.0.4.2`
+`org.opencontainers.image.created`, `com.suse.sle.base.created`::
+  * _Must be provided by derived images:_ Yes
+  * _OCI notation:_ `org.opencontainers.image.created`
+  * _Description:_ Timestamp of image build
+  * _Example:_ `2018-07-27T14:12:30Z`
+`org.opencontainers.image.vendor`, `com.suse.sle.base.vendor`::
+  * _Must be provided by derived images:_ No
+  * _OCI notation:_ `org.opencontainers.image.vendor`
+  * _Description:_ Image vendor
+  * _Example:_ `{suse} LLC`
+`org.opencontainers.image.url`, `com.suse.sle.base.url`::
+  * _Must be provided by derived images:_ No
+  * _OCI notation:_ `org.opencontainers.image.url`
+  * _Description:_ Additional information
+  * _Example:_ `https://www.suse.com/products/server/`
+`org.openbuildservice.disturl`, `com.suse.sle.base.disturl`::
+  * _Must be provided by derived images:_ Yes
+  * _OCI notation:_ `org.openbuildservice.disturl`
+  * _Description:_ Image OBS URL
+  * _Example:_ `obs://build.suse.de/{suse}:{slea}-15:Update:CR/images/2951b67133dd6384cacb28203174e030-sles15-image`
+`org.opensuse.reference`, `com.suse.sle.base.reference`::
+  * _Must be provided by derived images:_ Yes
+  * _OCI notation:_ `org.opensuse.reference`
+  * _Description:_ Reference pointing to the image. The image you get with `docker
+           pullREF_NAME` must not change.
+  * _Example:_ `registry.suse.com/suse/sle15:4.2`
+
+[[sec-bci-labels]]
+==== {bcia} labels
+
+{bcia}s feature the following labels.
+
+com.suse.image-type::
+  Shows whether this is a pure {bcia} or an application container based on another {bcia}.
+com.suse.eula::
+  Marks which section of the {suse} EULA applies to the container image.
+com.suse.release-stage::
+  Indicates the current release stage of the image.
+
+  * `prototype` Indicates that the container image is in the ALP prototype phase.
+  * `alpha` Prevents the container image from appearing in the registry.suse.com Web interface even if it is available there. The value also indicates the alpha quality of the container image.
+  * `beta` Lists the container image in the Beta Container Images section of the registry.suse.com Web interface and adds the Beta label to the image. The value also indicates the beta quality of the container image.
+  * `released` Indicates that the container image is released and suitable for production use.
+com.suse.supportlevel::
+  Shows the support level for the container.
+  * `l2` Problem isolation, which means technical support designed to analyze data, reproduce customer problems, isolate problem areas, and provide a resolution for problems not resolved by Level 1, or prepare for Level 3.
+  * `l3` Problem resolution, which means technical support designed to resolve problems by engaging engineering to resolve product defects which have been identified by Level 2 Support.
+  * `techpreview` The image is unsupported and intended for use in proof-of-concept scenarios.
+  * `unsupported` No support is provided for the image.
+com.suse.lifecycle-url::
+  Points to the https://www.suse.com/lifecycle/ page that offers information about the lifecycle of the image.
+
+[[sec-bci-labels-query]]
+===== Working with {bcia} labels
+
+Use {podman} and the jq tool to retrieve labels of a local image. The following command lists all labels of the `bci-base:15.4` image:
+
+....
+podman inspect registry.suse.com/bci/bci-base:15.4 | \
+jq '.[0].Labels'
+....
+
+It is also possible to retrieve the value of a specific label:
+
+....
+podman inspect registry.suse.com/bci/bci-base:15.4 | \
+jq '.[0].Labels["com.suse.sle.base.supportlevel"]'
+....
+
+The preceding command retrieves the value of the `com.suse.sle.base.supportlevel` label.
+
+The skopeo tool makes it possible to examine labels of an image without pulling it first. For example:
+
+....
+skopeo inspect docker://registry.suse.com/bci/bci-base:15.4 | \
+jq '.Labels'
+skopeo inspect docker://registry.suse.com/bci/bci-base:15.4 | \
+jq '.Labels["com.suse.sle.base.supportlevel"]'
+....
+
+[[sec-tags]]
+==== Tags
+
+Tags are used to refer to images. A tag forms a part of the image's name. Unlike labels, tags can be freely defined, and they are usually used to indicate a version number.
+
+If a tag exists in multiple images, the newest image is used. The image maintainer decides which tags to assign to the container image.
+
+The conventional tag format is `repository name`: `image version specification` (usually version number). For example, the tag for the latest published image of PRODUCTNAME 15 SP2 would be `suse/sle15:15.2`.
+
+[[sec-suse-registry]]
+=== {suseregistry}
+
+The official {suseregistry} is available at https://registry.suse.com. It contains tested and updated {slea} base container images. All images in the {suseregistry} undergo a maintenance process. The images are built to contain the latest available updates and fixes. The {suseregistry}'s Web user interface lists a subset of the available images.
+
+[[sec-verify-containers]]
+=== Verifying containers
+
+Signatures for images available through {suseregistry} are stored in the Notary. You can verify the signature of a specific image using the following command:
+
+....
+docker trust inspect --pretty registry.suse.com/suse/IMAGE:TAG
+....
+
+For example, the command `docker trust inspect --pretty
+   registry.suse.com/suse/sle15:latest` verifies the signature of the latest SLE15 base image.
+
+To automatically validate an image when you pull it, set the environment `DOCKER_CONTENT_TRUST` to `1`. For example:
+
+....
+env DOCKER_CONTENT_TRUST=1 docker pull registry.suse.com/suse/sle15:latest
+....
+
+[[sec-compare-containers]]
+=== Comparing containers
+
+The https://github.com/GoogleContainerTools/container-diff#container-diff[container-diff] tool can be used for analyzing and comparing container images. `container-diff` can examine images along with following several criteria:
+
+* Docker image history
+* Image file system
+* DEB packages
+* RPM packages
+* PyPI packages
+* NPM packages
+
+You can inspect a single image or perform a diff operation on two images. `container-diff` supports Docker images located in both a local Docker daemon and a remote registry. It is also possible to use the tool with `.tar`, `.tar.gz`, and `.tgz` archives.
+
+The container-diff package is part of the PRODUCTNAME PRODUCTNUMBER Containers Module. Alternatively, it can be installed separately. For instructions on installing it, see the https://github.com/GoogleContainerTools/container-diff#installation[container-diff documentation].
