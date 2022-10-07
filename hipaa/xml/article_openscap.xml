@@ -78,7 +78,7 @@
    <package>scap-security-guide</package> RPM package. After you have installed the package,
    find XML files for all SCAP components described in <xref linkend="openscap-components"/> in
    <filename>/usr/share/xml/scap/ssg/content/</filename>. They are named according to the SCAP
-   component and to the &SLE; codestream they apply to (code 12 or 15). The directory also holds
+   component and to the &sle; codestream they apply to (code 12 or 15). The directory also holds
    XML files specific to &osuse;.
   </para>
   <para>
