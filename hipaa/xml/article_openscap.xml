@@ -72,6 +72,21 @@
     Guide</literal>, see the README in <link
     xlink:href="https://github.com/ComplianceAsCode/content"/>.
   </para>
+
+  <para>
+   &suse; ships the <literal>Scap Security Guide</literal> toolset in the
+   <package>scap-security-guide</package> RPM package. After you have installed the package,
+   find XML files for all SCAP components described in <xref linkend="openscap-components"/> in
+   <filename>/usr/share/xml/scap/ssg/content/</filename>. They are named according to the SCAP
+   component and to the &SLE; codestream they apply to (code 12 or 15). The directory also holds
+   XML files specific to &osuse;.
+  </para>
+  <para>
+   The DataStream (DS) XML files are very useful because they include everything you will need
+   when you want to harden and audit your &sle; system.
+  </para>
+
+<!--taroth 2022-10-07: move the following to new section about profiles???-->
   <para>The <literal>Scap Security Guide</literal> contains multiple
    profiles. The profiles applicable to &sle; are codestream-specific
    and differ between code 12 and code 15.</para>
@@ -130,7 +145,7 @@
   </para>
  </sect1>
 
- <sect1>
+ <sect1 xml:id="openscap-components">
   <title>SCAP Components and their interaction</title>
   <para>
    SCAP consists of the following components which interact with each other.
