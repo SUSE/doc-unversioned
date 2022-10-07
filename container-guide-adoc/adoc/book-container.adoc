@@ -6,7 +6,7 @@ include::attributes-product.adoc[]
 
 [[cha-intro]]
 == About this guide
-This guide provides an introduction to the {suse} container ecosystem.
+This guide provides an introduction to the {sle} container ecosystem.
 This document is a work in progress.
 The content in this document is subject to change without notice.
 
