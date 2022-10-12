@@ -1,0 +1,44 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[[cha-containers-terminology]]
+== Terminology
+
+Container::
+  A _container_ is a running instance based on a particular container image. Each _container_ can be distinguished by a unique container ID.
+Control groups::
+  _Control groups_, also called `cgroups` , are a Linux kernel feature that allows aggregating or partitioning tasks (processes) and all their children into hierarchically-organized groups, to manage their resource limits.
+{deng}::
+  {deng} is a server-client type application that performs all tasks related to containers. {deng} comprises the following:
+  +
+  * *Daemon:.*
+  +
+  The server side of {deng}, which manages all DOCKER objects (images, containers, network connections used by containers, etc.).
+  * *REST API:.*
+  +
+  Applications can use this API to communicate directly with the daemon.
+  * *CLI client:.*
+  +
+  Enables you to communicate with the daemon. If the daemon is running on a different machine than the CLI client, the CLI client can communicate by using network sockets or the REST API provided by {deng}.
+Dockerfile::
+  A _Dockerfile_ provides instructions on how to build a container image. link:#Docker-engine[varlistentry_title] reads instructions in the _Dockerfile_ and builds a new image according to the instructions.
+Image::
+  An _image_ is a read-only template used to create a _container_. A DOCKER image is made of a series of layers built one over the other. Each layer corresponds to a permanent change, for example, an update of an application. The changes are stored in a file called a _Dockerfile_. For more details, see http://docs.docker.com/engine/reference/glossary#image[the official Docker documentation].
+Container image::
+  A _container image_ is an unchangeable, static file that includes executable code so it can run an isolated process on IT infrastructure. The image is comprised of system libraries, system tools, and other platform settings a program needs to run on a containerization platform. A container image is compiled from file system layers built on top of a parent or base image.
+Base image::
+  A _base image_ is an image that does not have a parent image. In a Dockerfile, a base image is identified by the `FROM
+       scratch` directive.
+Parent image::
+  The image that serves as the basis for another container image. In other words, if an image is not a base image, it is derived from a parent image. In a Dockerfile, the `FROM` directive is pointing to the parent image. Most DOCKER containers are created using parent images.
+Namespaces::
+  {deng} uses Linux _namespaces_ for its containers, which isolates resources reserved for particular containers.
+Orchestration::
+  In a production environment, you typically need a cluster with many containers on each cluster node. The containers must cooperate and you need a framework that enables you to automatically manage the containers. The act of automatic container management is called container orchestration and is typically handled by Kubernetes.
+Registry::
+  A _registry_ is storage for already-created images. It typically contains several _repositories_. There are two types of registries:
+  +
+  * public registry: Any (usually registered) user can download and use images. A typical example of a public registry is https://hub.docker.com/[Docker Hub].
+  * private registry: Access is restricted to particular users, or from a particular private network.
+Repository::
+  A _repository_ is storage for images in a _registry_.
