@@ -6,12 +6,11 @@ include::attributes-product.adoc[]
 
 [[cha-intro]]
 == About this guide
-This guide provides an introduction to the {sle} container ecosystem.
-This document is a work in progress.
-The content in this document is subject to change without notice.
+The following guide covers the {sle} container ecosystem. Since containers are a constantly evolving technology, the guide is regularly updated, expanded and improved to reflect the latest technological developments.
 
 include::containers-basics.adoc[] 
 include::containers-bci.adoc[]
 include::containers-build-tools.adoc[]
 include::containers-buildah-overview.adoc[]
 include::containers-get.adoc[]
+include::containers-orchestration.adoc[]
