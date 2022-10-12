@@ -12,7 +12,7 @@ This chapter provides a brief overview of tools for building images and managing
 [[sec-build-tools-docker]]
 ==== {docker}
 
-{docker} is a system for creating and managing containers. Its core is the {docker} Open Source Engine&#8212;a lightweight virtualization solution to run containers simultaneously on a single host. {docker} containers can be built using Dockerfiles (see link:#Dockerfile[???]). For a general introduction to {deng}, refer to link:#cha-docker-overview[???].
+{docker} is a system for creating and managing containers. Its core is the {docker} Open Source Engine&#8212;a lightweight virtualization solution to run containers simultaneously on a single host. {docker} containers can be built using Dockerfiles (see link:#Dockerfile[???]).
 
 [[sec-build-tools-podman]]
 ==== {podman}

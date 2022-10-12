@@ -45,3 +45,4 @@ endif::[]
 :copyright-end: {docyear}
 :company: SUSE LLC
 :additional-rightsholders:
+:productnumber: 15 SP4
