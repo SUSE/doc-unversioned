@@ -1,3 +1,6 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
 [[cha-orchestration]]
 == Container orchestration
 
