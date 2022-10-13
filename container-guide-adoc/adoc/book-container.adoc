@@ -8,6 +8,16 @@ include::attributes-product.adoc[]
 == About this guide
 The following guide covers the {sle} container ecosystem. Since containers are a constantly evolving technology, the guide is regularly updated, expanded, and improved to reflect the latest technological developments.
 
+[[sec-prerequisites]]
+== Prerequisites
+
+The guide expects the following from the reader:
+
+* in-depth understanding of Linux
+* general understanding of container technologies
+* confidence working in the command line
+* familiarity with relevant terminology
+
 include::containers-basics.adoc[] 
 include::containers-bci.adoc[]
 include::containers-build-tools.adoc[]
@@ -18,3 +28,6 @@ include::containers-podman-overview.adoc[]
 include::containers-support.adoc[]
 include::containers-troubleshoot.adoc[]
 include::containers-terminology.adoc[]
+include::common_intro_feedback_i.adoc[]
+include::common_copyright_gfdl.adoc[]
+include::common_gfdl1.2_i.adoc[]
