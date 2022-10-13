@@ -8,19 +8,11 @@ include::attributes-product.adoc[]
 == About this guide
 The following guide covers the {sle} container ecosystem. Since containers are a constantly evolving technology, the guide is regularly updated, expanded, and improved to reflect the latest technological developments.
 
-[[sec-prerequisites]]
-== Prerequisites
-
-The guide expects the following from the reader:
-
-* in-depth understanding of Linux
-* general understanding of container technologies
-* confidence working in the command line
-* familiarity with relevant terminology
-
 include::containers-basics.adoc[] 
 include::containers-bci.adoc[]
 include::containers-build-tools.adoc[]
+include::containers-docker-installation.adoc[]
+include::containers-docker-registry.adoc[]
 include::containers-buildah-overview.adoc[]
 include::containers-get.adoc[]
 include::containers-orchestration.adoc[]

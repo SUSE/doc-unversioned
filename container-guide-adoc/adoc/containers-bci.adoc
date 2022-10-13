@@ -43,7 +43,20 @@ There are four general purpose {bcia}s, and each container image comes with a mi
 
 The table below provides a quick overview of the differences between {bcia}-Base, {bcia}-Minimal, {bcia}-Micro, and {bcia}-BusyBox.
 
-image::bci-variants.png[image,scaledwidth=80.0%]
+//image::bci-variants.png[image,scaledwidth=80.0%]
+
+.Support matrix
+[cols="^,^,^,^,^",options="header",]
+|===
+|Features |{bcia}-Base |{bcia}-Minimal |{bcia}-Micro |{bcia}-BusyBox
+|glibc |&#10003; |&#10003; |&#10003; |&#10003;
+|CA certificates |&#10003; |&#10003; |&#10003; |&#10003;
+|rpm database |&#10003; |&#10003; |&#10003; |&#10003;
+|coreutils |&#10003; |&#10003; |&#10003; |busybox
+|bash |&#10003; |&#10003; |&#10003; |&#9587;
+|rpm binary |&#10003; |&#10003; |&#9587; |&#9587;
+|rpm binary |&#10003; |&#9587; |&#9587; |&#9587;
+|===
 
 ==== {bcia}-Base and {bcia}-Init: When you need flexibility
 

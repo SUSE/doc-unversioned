@@ -1,0 +1,80 @@
+[[cha-registry-installation]]
+== Configuring image storage
+
+Before creating custom images, decide where you want to store images. The easiest solution is to push images to https://hub.docker.com[DHUB]. By default, all images pushed to DHUB are public. Make sure not to publish sensitive data or software not licensed for public use.
+
+You can restrict access to custom container images with the following:
+
+* DHUB allows creating private repositories for paid subscribers.
+* An on-site DREG allows storing all the container images used by your organization.
+
+[[sec-docker-registry-definition]]
+=== What is DREG?
+
+DREG is an open source platform for storing and retrieving container images. You can avoid using DHUB by running a local instance of DREG.
+
+DREG is also used by DHUB. However, from a user's point of view, DHUB consists of the following components:
+
+The user interface (UI)::
+  The part that is accessed by users using a browser. The UI provides an easy way to browse the contents of DHUB, either manually or using a search feature. It can be used to create organizations by different users.
+  +
+  This component is closed source.
+The authentication component::
+  This component is used to protect the images stored in DHUB. It validates all push, pull, and search requests.
+  +
+  This component is closed source.
+The storage back-end::
+  A place that images are uploaded to and downloaded from. It is provided by DREG.
+  +
+  This component is open source.
+
+[[sec-docker-registry-installation]]
+=== Running a DREG
+
+The SUSEREGISTRY provides a container image that makes it possible to run a local DREG as a container. Before you start a container, create a `config.yml` file with the following example configuration:
+
+....
+version: 0.1
+log:
+  level: info
+storage:
+  filesystem:
+    rootdirectory: /var/lib/docker-registry
+http:
+  addr: 0.0.0.0:5000
+....
+
+Also create an empty directory to map the `/var/lib/docker-registry` directory outside the container. This directory is used for storing container images.
+
+Run the following command to pull the registry container image from the SUSEREGISTRY and start a container that can be accessed on port 5000:
+
+....
+podman run -d --restart=always --name registry -p 5000:5000 \
+-v /PATH/config.yml:/etc/docker/registry/config.yml \
+-v /PATH/DIR:/var/lib/ \ docker-registry registry.suse.com/sles12/registry:2.6.2
+....
+
+To make it easier to manage the registry, create a corresponding system unit:
+
+....
+PROMPT.ROOT podman generate systemd registry >  \
+ /etc/systemd/system/suse_registry.service
+....
+
+Enable and start the registry service, then verify its status:
+
+....
+PROMPT.ROOTsystemctl enable suse_registry.service
+PROMPT.ROOTsystemctl start suse_registry.service
+PROMPT.ROOTsystemctl status suse_registry.service
+....
+
+For more details about DREG and its configuration, see the official documentation at https://docs.docker.com/registry/.
+
+[[sec-docker-registry-limitations]]
+=== Limitations
+
+DREG has two major limitations:
+
+* It lacks any form of authentication. That means everybody with access to DREG can push and pull images to it. That includes overwriting existing images.
+* There is no way to see which images have been pushed to DREG. You need to manually take notes of what is being stored on it. There is also no search functionality.
