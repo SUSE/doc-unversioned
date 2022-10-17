@@ -7,7 +7,8 @@ This repository hosts the documentation sources for the following products:
 
 * The Container Guide
 * PCI DSS
-* Trento (upcoming)
+* SUSEConnect visibility
+* Trento
 
 Released versions of the SLE documentation are published at
 https://documentation.suse.com/.
