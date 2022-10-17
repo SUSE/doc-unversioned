@@ -52,7 +52,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
     <title>Trento is an evolving product</title>
     <para>
       The product continues to be under active development, but is available for any &suse;
-      customer with a registered &productname; 15 (SP1 or higher).
+      customer with a registered &sles4sap;&nbsp;15 (SP1 or higher).
       Contact <link xlink:href="https://www.suse.com/support"/> for further assistence.
     </para>
   </important>
@@ -137,12 +137,12 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         <listitem>
           <formalpara>
             <title>Delivery mechanism:</title>
-            <para>RPM package for &productname; 15&nbsp;SP1 and
+            <para>RPM package for &sles4sap;&nbsp;15&nbsp;SP1 and
               newer.</para>
           </formalpara>
           <formalpara>
             <title>Supported runtime:</title>
-            <para> Supports &productname; 15&nbsp;SP1 and newer.
+            <para> Supports &sles4sap;&nbsp;15&nbsp;SP1 and newer.
             </para>
           </formalpara>
         </listitem>
@@ -229,7 +229,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       <para> The resource footprint of the &t.agent; is designed to not
         impact the performance of the host it runs on. </para>
       <para> The &t.agent; component needs to interact with several
-        low-level system components that are part of the &productname;
+        low-level system components that are part of the &sles4sap;&nbsp;
         distribution. </para>
     </section>
     <section xml:id="sec-trento-network-requirements">
@@ -273,7 +273,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         <listitem>
           <formalpara>
             <title>&t.agent;s</title>
-            <para>A registered &productname; distribution.</para>
+            <para>A registered &sles4sap;&nbsp; distribution.</para>
           </formalpara>
         </listitem>
         <listitem>
@@ -425,7 +425,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
     </section>
 
     <section xml:id="sec-trento-install-trentoserver-on-sles-for-sap15">
-      <title>Installing &t.server; on K3s running on &productname; 15</title>
+      <title>Installing &t.server; on K3s running on &sles4sap;&nbsp;15</title>
       <para>
         If you choose to deploy K3s on a VM with a registered &sles4sap;&nbsp;15 distro,
         you can install the package <filename>trento-server-installer</filename> and
@@ -833,7 +833,7 @@ Warning: Permanently added '<replaceable>TRENTO_AGENT_IP</replaceable>' (ECDSA) 
           <title><guimenu>About</guimenu></title>
           <para> Shows the Trento flavor, the current server version, a link to
             the GitHub repository of the Trento web component, and the number of
-            registered &productname; subscriptions. </para>
+            registered &sles4sap;&nbsp;subscriptions. </para>
         </formalpara>
       </listitem>
     </itemizedlist>
