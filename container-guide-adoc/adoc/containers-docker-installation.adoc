@@ -12,61 +12,63 @@ Prepare the host as described below. Before installing any {docker}-related pack
 [NOTE]
 .Built-in {docker} orchestration support
 ====
-Starting with {deng} 1.12, container orchestration is now an integral part of {deng}. Even though this feature is available in PRODUCTNAME, it is not supported by SUSE and is only provided as a technology preview. Use K8S for container orchestration. For details, refer to the http://kubernetes.io/docs/getting-started-guides/kubeadm/[Kubernetes documentation].
-====Start YAST, and select [.menuchoice]#Software > Software Repositories#.
+Starting with {deng} 1.12, container orchestration is now an integral part of {deng}. Even though this feature is available in {sles} {productnumber}, it is not supported by SUSE and is only provided as a technology preview. Use K8S for container orchestration. For details, refer to the http://kubernetes.io/docs/getting-started-guides/kubeadm/[Kubernetes documentation].
+====
 
-Click Add to open the add-on dialog.
+==== Enabling the Containers Module using the {yast} graphical interface
 
-Select Extensions and Modules from Registration Server and click Next.
+. Start {yast}, and select _Software > Software Repositories_.
+. Click _Add_ to open the add-on dialog.
+. Select _Extensions and Modules_ from _Registration Server_ and click _Next_.
+. From the list of available extensions and modules, select Containers Module {productnumber} x86_64 and click _Next_. This adds the _Containers Module_ and its repositories to the system.
+. If you use {rmtool}, update the list of repositories on the {rmt} server.
 
-From the list of available extensions and modules, select Containers Module PRODUCTNUMBER x86_64 and click Next.
+==== Enabling the Containers Module from the command line using {suseconnect}
 
-The Containers Module and its repositories will be added to your system.
-
-If you use RMTOOL, update the list of repositories on the RMT server.
-
-The Containers Module can also be added with the following command:
+The _Containers Module_ can also be added with the following command:
 
 ....
-> sudo SUSEConnect -p sle-module-containers/PRODUCTNUMBER-REGURL/x86_64
+> sudo SUSEConnect -p sle-module-containers/15.4/x86_64
 ....
 
-Install the docker package:
+==== Installing and configuring {deng}
 
+. Install the `docker` package:
++
 ....
 > sudo zypper install docker
 ....
-
-To automatically start the {docker} service at boot time:
-
++
+. To automatically start the {docker} service at boot time:
++
 ....
 > sudo systemctl enable docker.service
 ....
-
-This also automatically enables docker.socket.
-
-Open the `/etc/sysconfig/docker` file. Search for the parameter `DOCKER_OPTS` and add `--insecure-registry
++
+This also enables _docker.socket_.
++
+. Open the `/etc/sysconfig/docker` file. Search for the parameter `DOCKER_OPTS` and add `--insecure-registry
        ADDRESS_OF_YOUR_REGISTRY`.
-
-Add CA certificates to the directory `/etc/docker/certs.d/REGISTRY_ADDRESS`
-
++
+.. Add CA certificates to the directory `/etc/docker/certs.d/REGISTRY_ADDRESS`:
++
 ....
 > sudo cp CA /etc/pki/trust/anchors/
 ....
-
-Copy the CA certificates to your system:
-
++
+.. Copy the CA certificates to your system:
++
 ....
 > sudo update-ca-certificates
 ....
-
-Start the {docker} service:
-
++
+. Start the {docker} service:
++
 ....
 > sudo systemctl start docker.service
 ....
-
-This automatically starts docker.socket.
++
+This also starts _docker.socket_.
 
 The {docker} daemon listens on a local socket accessible only by the root user and by the members of the docker group. The docker group is automatically created during package installation.
 
@@ -84,11 +86,11 @@ This allows the user to communicate with the local {docker} daemon.
 To give the containers access to the external network, enable the `ipv4 ip_forward` rule.
 
 [[sec-docker-setup-net-docs]]
-==== How {deng} interacts with `iptables`
+==== How {deng} interacts with iptables
 
 To learn more about how containers interact with each other and the system firewall, see the https://docs.docker.com/v17.09/engine/userguide/networking/default_network/container-communication/[{docker} documentation].
 
-It is also possible to completely prevent {deng} from manipulating `iptables`. See the https://docs.docker.com/network/iptables/#prevent-docker-from-manipulating-iptables[{docker} documentation].
+It is also possible to prevent {deng} from manipulating `iptables`. See the https://docs.docker.com/network/iptables/#prevent-docker-from-manipulating-iptables[{docker} documentation].
 
 [[sec-docker-storaged]]
 === Storage drivers
@@ -99,9 +101,9 @@ It is also possible to completely prevent {deng} from manipulating `iptables`. S
 * devicemapper: This driver relies on the device-mapper thin provisioning module. It supports copy-on-write, so it leverages all the advantages of {deng}.
 * btrfs: This driver relies on Btrfs to provide all the features required by {deng}. To use this driver, the `/var/lib/docker` directory must be on a Btrfs file system.
 
-Since PRODUCTNAME 12 onward, the Btrfs file system is used by default, which forces {deng} to use the btrfs driver.
+Since {sles} 12 onward, the Btrfs file system is used by default, which forces {deng} to use the btrfs driver.
 
-It is possible to specify what driver to use by changing the value of the DOCKER_OPTS variable defined in the `/etc/sysconfig/docker` file. This can be done either manually or using YAST by browsing to the [.menuchoice]#System > /etc/sysconfig Editor > System > Management > DOCKER_OPTS# menu and entering the -s storage_driver string.
+It is possible to specify what driver to use by changing the value of the DOCKER_OPTS variable defined in the `/etc/sysconfig/docker` file. This can be done either manually or using {yast} by browsing to the _System > /etc/sysconfig Editor > System > Management > DOCKER_OPTS_ menu and entering the _-s storage_driver_ string.
 
 For example, to force the usage of the devicemapper driver, enter the following text:
 
@@ -114,10 +116,12 @@ DOCKER_OPTS="-s devicemapper"
 ====
 It is recommended to mount `/var/lib/docker` on a separate partition or volume. In case of file system corruption, this would leave the operating system running {deng} unaffected.
 
-If you choose the Btrfs file system for `/var/lib/docker`, it is strongly recommended to create a subvolume for it. This ensures that the directory is excluded from file system snapshots. If you do not exclude `/var/lib/docker` from snapshots, the file system will likely run out of disk space soon after you start deploying containers. In addition, a rollback to a previous snapshot will also reset the {docker} database and images. For more information, see &dsc-sles;-15/html/SLES-all/cha-snapper.html#sec-snapper-setup-customizing-new-subvolume.
-====[[sec-docker-setup-updates]]
+If you choose the Btrfs file system for `/var/lib/docker`, it is strongly recommended to create a subvolume for it. This ensures that the directory is excluded from file system snapshots. If you do not exclude `/var/lib/docker` from snapshots, the file system will likely run out of disk space soon after you start deploying containers. In addition, a rollback to a previous snapshot will also reset the {docker} database and images. For more information, see https://documentation.suse.com/sles/html/SLES-all/cha-snapper.html#sec-snapper-setup-customizing-new-subvolume.
+====
+
+[[sec-docker-setup-updates]]
 === Updates
 
-All updates to the docker package are marked as interactive (that is, no automatic updates) to avoid accidental updates breaking running container workloads. In general, we recommend stopping all running containers before applying an update to {deng}.
+All updates to the `docker` package are marked as interactive (that is, no automatic updates) to avoid accidental updates that can break running container workloads. We recommend stopping all running containers before applying an update to {deng}.
 
 To avoid data loss, we do not recommend having workloads rely on containers being start-able after an update to {deng}. Although it is technically possible to keep containers running during an update via the `--live-restore` option, experience has shown that such updates can introduce regressions. SUSE does not support this feature.

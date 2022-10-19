@@ -1,0 +1,174 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[[cha-docker-building-images]]
+== Creating custom container images
+
+To create a custom image, you need a base image of {sles}. You can use any of the pre-built {sles} images.
+
+[[sec-download-prebuild-images]]
+=== Pulling base {slsa} images
+
+To obtain a pre-built base image for {slea} 12 SP5 and later, use the following command:
+
+....
+      >docker pull registry.suse.com/suse/IMAGENAME
+....
+
+For example, for {sles} 15, the command is as follows:
+
+....
+docker pull registry.suse.com/suse/sle15
+....
+
+`sle2docker` is not required, because the image is being pulled from the {dreg}.
+
+For information on obtaining specific base images, refer to link:#sec-sle-base-images[???].
+
+When the container image is ready, you can customize it as described in link:#sec-customize-prebuild-images[Customizing {slsa} container images].
+
+[[sec-customize-prebuild-images]]
+=== Customizing {slsa} container images
+
+The pre-built images do not have any repositories configured and do not include any modules or extensions. They contain a https://github.com/SUSE/container-suseconnect[zypper service] that contacts either the SCCREG or a {rmtool} ({rmt}) server, according to the configuration of the {sles} host that runs the container. The service obtains the list of repositories available for the product used by the container image. You can also directly declare extensions in your `Dockerfile`. For more information, see link:#sec-docker-sle-images-customizing-the-images-extensions[Adding {slea} extensions and modules to images].
+
+[NOTE]
+.SLE_BCI repository
+====
+Starting with {slea} 15 SP3, the default base image includes the `SLE_BCI` repository. This repository is only used when a container is built or runs on a non-registered {slsa} host, or when registration credentials are not made available to containers. The repository provides a subset of {slea} 15 SP3 packages useful for customizing {slsa} container images. The repository is available without any registration, and it is not supported.
+====
+
+You do not need to add any credentials to the container image, because the machine credentials are automatically injected into the `/run/secrets` directory in the container by the docker daemon. The same applies to the `/etc/SUSEConnect` file of the host system, which is automatically injected into the `/run/secrets` directory.
+
+[NOTE]
+.Credentials and security
+====
+The contents of the `/run/secrets` directory are never included in a container image, hence there is no risk of your credentials leaking.
+====
+
+[[note-build-images-different-codebase]]
+[NOTE]
+.Building images on systems registered with {rmt}
+====
+When the host system used for building container images is registered with {rmt}, the default behavior allows only building containers of the same code base as the host. For example, if your container host is an {slea} 15 system, you can only build {slea} 15-based images on that host by default. To build images for a different {slea} version, for example, {slea} 12 on an {slea} 15 host, the host machine credentials for the target release can be injected into the container as outlined below.
+
+Note that if the {rmt} server is using a self-signed certificate, the matching CA certificate needs to be added into the container at `CA_TRUSTSTORE/rmt-server.pem` for the certificate to be accepted.
+
+When the host system is registered with {scc}, this restriction does not apply.
+====
+
+[NOTE]
+.Building container images in on-demand {slea} instances in the public cloud
+====
+Building container images on {slea} instances that were launched as on-demand or pay-as-you-go instances on a public cloud (AWS, GCE, or Azure) requires additional steps. To install packages and updates, the on-demand public cloud instances are connected to the update infrastructure. This infrastructure is based on {rmt} servers operated by {suse} on the various public cloud providers.
+
+Therefore, your machines need to locate the required services and authenticate with them. This can be done using the `containerbuild-regionsrv` service. This service is available in the public cloud images provided through the marketplaces of the various public cloud providers. Before building an image, this service must be started on the public cloud instance by running the following command:
+
+....
+> sudo systemctl start containerbuild-regionsrv
+....
+
+To start it automatically on system start-up, enable it:
+
+....
+> sudo systemctl enable containerbuild-regionsrv
+....
+
+The Zypper plug-ins provided by the {slea} base images connect to this service and retrieve authentication details and information about which update server to talk to. For this to work, the container has to be built with host networking enabled, for example:
+
+....
+> docker build --network host build-directory/    
+....
+
+Since update infrastructure in the public clouds is based upon {rmt}, the restrictions on building {slea} images for {slea} versions different from the {slea} version of the host apply as well (see link:#note-build-images-different-codebase[note_title]).
+====
+
+To obtain the list of repositories, use the following command:
+
+....
+>sudo zypper ref -s
+....
+
+This automatically adds all the repositories to the container. For each repository added to the system, a new file is created under `/etc/zypp/repos.d` . The URLs of these repositories include an access token that automatically expires after 12 hours. To renew the token, run the command `zypper ref -s` . Including these files in a container image does not pose any security risk.
+
+To use a different set of credentials, put a custom `/etc/zypp/credentials.d/SCCcredentials` file inside the container image. It contains the machine credentials that have the subscription you want to use. The same applies to the `SUSEConnect` file: to override the existing file on the host system running the container, add a custom `/etc/SUSEConnect` file inside the container image.
+
+Now you can create a custom container image by using a `Dockerfile` as described in link:#sec-docker-sle-images-customizing-the-images-sles12sp3[Creating a custom image for {slea} 12 SP5 and later].
+
+If you want to move your application to a container, see link:#cha-docker-containerize-app[???].
+
+After you have edited the `Dockerfile` , build the image by running the following command in the same directory in which the `Dockerfile` resides:
+
+....
+>docker build .
+....
+
+For more information about `docker build` options, see the https://docs.docker.com/engine/reference/commandline/build/[official Docker documentation] .
+
+[NOTE]
+.Creating application images
+====
+For information about creating a `Dockerfile` for the application you want to run inside a container, see link:#cha-docker-containerize-app[???].
+====
+
+[[sec-docker-sle-images-customizing-the-images-sles12sp3]]
+==== Creating a custom image for {slea} 12 SP5 and later
+
+The following `Dockerfile` creates a simple container image based on {sles} 15:
+
+....
+FROM registry.suse.com/suse/sle15
+RUN zypper ref -s
+RUN zypper -n in vim      
+....
+
+When the {docker} host machine is registered with an internal {rmt} server, the image requires the SSL certificate used by {rmt}:
+
+....
+FROM registry.suse.com/suse/sle15
+# Import the crt file of our private SMT server
+ADD http://smt./smt.crt /etc/pki/trust/anchors/smt.crt
+RUN update-ca-certificates
+RUN zypper ref -s
+RUN zypper -n in vim      
+....
+
+[[sec-docker-sle-images-metainfo]]
+==== Meta information in {slea} container images
+
+Starting with {slea} 12 SP3, all base container images include information such as a build time stamp and description. This information is provided in the form of labels attached to the base images, and is therefore available for derived images and containers (see link:#sec-labels[???]). This information can be viewed with `docker inspect` :
+
+....
+>docker inspect registry.suse.com/suse/sle15
+        [...]
+        "Labels": {
+            "com.suse.sle.base.created": "2020-11-23T11:51:32.695975200Z",
+            "com.suse.sle.base.description": "Image containing a minimal environment for containers based on SUSE Linux Enterprise Server 15 SP2.",
+            "com.suse.sle.base.disturl": "obs://build.suse.de/SUSE:{slea}-15-SP2:Update:CR/images/4a8871be8078bcef2e2417e2a98fc3a0-sles15-image",
+            "com.suse.sle.base.reference": "registry.suse.com/suse/sle15:15.2.8.2.794",
+            "com.suse.sle.base.title": "SUSE Linux Enterprise Server 15 SP2 Base Container",
+            "com.suse.sle.base.url": "https://www.suse.com/products/server/",
+            "com.suse.sle.base.vendor": "SUSE LLC",
+            "com.suse.sle.base.version": "15.2.8.2.794",
+            "org.openbuildservice.disturl": "obs://build.suse.de/SUSE:{slea}-15-SP2:Update:CR/images/4a8871be8078bcef2e2417e2a98fc3a0-sles15-image",
+            "org.opencontainers.image.created": "2020-11-23T11:51:32.695975200Z",
+            "org.opencontainers.image.description": "Image containing a minimal environment for containers based on SUSE Linux Enterprise Server 15 SP2.",
+            "org.opencontainers.image.title": "SUSE Linux Enterprise Server 15 SP2 Base Container",
+            "org.opencontainers.image.url": "https://www.suse.com/products/server/",
+            "org.opencontainers.image.vendor": "SUSE LLC",
+            "org.opencontainers.image.version": "15.2.8.2.794",
+            "org.opensuse.reference": "registry.suse.com/suse/sle15:15.2.8.2.794"
+        },
+        [...]
+....
+
+All labels are shown twice to ensure that the information in derived images about the original base image is still visible and not overwritten.
+
+[[sec-docker-sle-images-customizing-the-images-extensions]]
+==== Adding {slea} extensions and modules to images
+
+If you have subscriptions to {sles} extensions or modules that you want to use in your custom image, you can add them to the container image by specifying the `ADDITIONAL_MODULES` environment variable:
+
+....
+ENV ADDITIONAL_MODULES sle-module-desktop-applications,sle-module-development-tools
+....

@@ -233,6 +233,7 @@
 :rmt: RMT
 :rmtool: Repository Mirroring Tool
 :suseregistry: {suse} Registry
+:suseconnect: {suse}Connect
 :k8s: Kubernetes
 :ppc64le : ppc64le
 :zseries: IBM Z
