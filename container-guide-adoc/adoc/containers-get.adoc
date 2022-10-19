@@ -11,7 +11,7 @@ This chapter provides information on obtaining container images.
 
 {suse} offers several official base container images that can be used as a starting point for building custom containers. Each {slea} base image provides a minimal environment with a shell and package management.
 
-Base images are available from https://registry.suse.com. For information about the {suseregistry}, see link:#sec-suse-registry[]. The base images in the {suseregistry} all have the status General Availability (that is, they are suitable for production use) and https://www.suse.com/products/long-term-service-pack-support/[LTSS] releases of {slsa} 12 and {slsa} 15. {slea} base images in the {suse} Registry receive security updates and are covered by the {suse} support plans. For more information about these support plans, see link:#cha-containers-support[???].
+Base images are available from https://registry.suse.com. For information about the {suseregistry}, see link:#sec-suse-registry[]. The base images in the {suseregistry} all have the status General Availability (that is, they are suitable for production use) and https://www.suse.com/products/long-term-service-pack-support/[LTSS] releases of {slsa} 12 and {slsa} 15. {slea} base images in the {suse} Registry receive security updates and are covered by the {suse} support plans. For more information about these support plans, see link:#cha-containers-support[Compatibility and support conditions].
 
 [[sec-suse-container-properties]]
 === {suse} container properties

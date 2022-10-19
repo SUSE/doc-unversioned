@@ -79,4 +79,4 @@ Similar to {deng}, {podman} can run containers in an interactive mode, allowing 
 
 {podman} can build images from a Dockerfile. The `podman build` command behaves as `docker build`, and it accepts the same options.
 
-{podman}'s companion tool {buildah} provides an alternative way to build images. For further information about {buildah}, refer to link:#cha-buildah-overview[???].
+{podman}'s companion tool {buildah} provides an alternative way to build images. For further information about {buildah}, refer to link:#cha-buildah-overview[{buildah} overview].

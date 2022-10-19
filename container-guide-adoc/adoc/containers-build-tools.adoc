@@ -12,19 +12,19 @@ This chapter provides a brief overview of tools for building images and managing
 [[sec-build-tools-docker]]
 ==== {docker}
 
-{docker} is a system for creating and managing containers. Its core is the {docker} Open Source Engine&#8212;a lightweight virtualization solution to run containers simultaneously on a single host. {docker} containers can be built using Dockerfiles (see link:#Dockerfile[???]).
+{docker} is a system for creating and managing containers. Its core is the {docker} Open Source Engine&#8212;a lightweight virtualization solution to run containers simultaneously on a single host. {docker} containers can be built using Dockerfiles.
 
 [[sec-build-tools-podman]]
 ==== {podman}
 
-{podman} stands for Pod Manager tool. It is a daemonless container engine for developing, managing, and running Open Container Initiative (OCI) containers on a Linux system, and it offers a drop-in alternative for {docker}. {podman} is the default container runtime in OPENSUSE Kubic&#8212;a certified Kubernetes distribution built on top of OPENSUSE. For a general introduction to {podman}, refer to link:#cha-podman-overview[???].
+{podman} stands for Pod Manager tool. It is a daemonless container engine for developing, managing, and running Open Container Initiative (OCI) containers on a Linux system, and it offers a drop-in alternative for {docker}. {podman} is the default container runtime in OPENSUSE Kubic&#8212;a certified Kubernetes distribution built on top of OPENSUSE. For a general introduction to {podman}, refer to link:#cha-podman-overview[{podman} overview].
 
 [[sec-build-tools-buildah]]
 ==== {buildah}
 
 {buildah} facilitates building OCI container images. It is a complementary tool to {podman}, and ` podman build ` uses {buildah} to perform container image builds. {buildah} makes it possible to build images from scratch, from existing images, and using Dockerfiles. OCI images built using the {buildah} command-line tool and the underlying OCI-based technologies (for example, `containers/image` and `containers/storage` ) are portable and can therefore run in a {deng} environment.
 
-For information on installing and using {buildah}, refer to link:#cha-buildah-overview[???].
+For information on installing and using {buildah}, refer to link:#cha-buildah-overview[{buildah} overview].
 
 [[sec-internal-build-tools]]
 === SUSE build tools

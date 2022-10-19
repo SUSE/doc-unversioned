@@ -23,7 +23,7 @@ docker pull registry.suse.com/suse/sle15
 
 `sle2docker` is not required, because the image is being pulled from the {dreg}.
 
-For information on obtaining specific base images, refer to link:#sec-sle-base-images[???].
+For information on obtaining specific base images, refer to link:#sec-sle-base-images[{slea} base images].
 
 When the container image is ready, you can customize it as described in link:#sec-customize-prebuild-images[Customizing {slsa} container images].
 
@@ -95,7 +95,7 @@ To use a different set of credentials, put a custom `/etc/zypp/credentials.d/SCC
 
 Now you can create a custom container image by using a `Dockerfile` as described in link:#sec-docker-sle-images-customizing-the-images-sles12sp3[Creating a custom image for {slea} 12 SP5 and later].
 
-If you want to move your application to a container, see link:#cha-docker-containerize-app[???].
+If you want to move your application to a container, see link:#cha-docker-containerize-app[Creating application images].
 
 After you have edited the `Dockerfile` , build the image by running the following command in the same directory in which the `Dockerfile` resides:
 
@@ -108,7 +108,7 @@ For more information about `docker build` options, see the https://docs.docker.c
 [NOTE]
 .Creating application images
 ====
-For information about creating a `Dockerfile` for the application you want to run inside a container, see link:#cha-docker-containerize-app[???].
+For information about creating a `Dockerfile` for the application you want to run inside a container, see link:#cha-docker-containerize-app[Creating application images].
 ====
 
 [[sec-docker-sle-images-customizing-the-images-sles12sp3]]
@@ -136,7 +136,7 @@ RUN zypper -n in vim
 [[sec-docker-sle-images-metainfo]]
 ==== Meta information in {slea} container images
 
-Starting with {slea} 12 SP3, all base container images include information such as a build time stamp and description. This information is provided in the form of labels attached to the base images, and is therefore available for derived images and containers (see link:#sec-labels[???]). This information can be viewed with `docker inspect` :
+Starting with {slea} 12 SP3, all base container images include information such as a build time stamp and description. This information is provided in the form of labels attached to the base images, and is therefore available for derived images and containers (see link:#sec-labels[Labels]). This information can be viewed with `docker inspect` :
 
 ....
 >docker inspect registry.suse.com/suse/sle15

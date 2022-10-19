@@ -19,7 +19,7 @@ Using {deng} to build applications has the following advantages:
 * The application can run in the same environment it was built in.
 * Developers can test their code in the same environment as used in production.
 
-The following section provides examples and recommendations on creating container images for applications. Before proceeding, make sure that you have activated your {sles} base image as described in link:#sec-download-prebuild-images[???].
+The following section provides examples and recommendations on creating container images for applications. Before proceeding, make sure that you have activated your {sles} base image as described in link:#sec-download-prebuild-images[Pulling base {slsa} images].
 
 [[sec-application-with-specific-dependencies]]
 === Running an application with specific package versions
@@ -75,7 +75,7 @@ ENTRYPOINT ["/etc/bin/example"] <6>
 
 The above example `Dockerfile` performs the following operations:
 
-<1> Pulls the `sle15` base image from link:#sec-download-prebuild-images[???].
+<1> Pulls the `sle15` base image as described in link:#sec-download-prebuild-images[Pulling base {slsa} images].
 <2> Refreshes repositories and installations of the _example_.
 <3> Sets a `BACKUP` environment variable (the variable persists to containers started from the image). You can always overwrite the value of the variable while running the container by specifying a new value.
 <4> Creates the directory `/backup`.
@@ -139,7 +139,7 @@ ENTRYPOINT ["/usr/sbin/httpd"]
 CMD ["-D", "FOREGROUND"]
 ....
 
-<1> Pull the base image as in link:#sec-download-prebuild-images[???].
+<1> Pull the base image as described in link:#sec-download-prebuild-images[Pulling base {slsa} images].
 <2> Maintainer of the image (optional).
 <3> The repositories and service files to be copied to `/etc/zypp/repos.d` and `/etc/zypp/services.d`. This makes them available on the host in the container.
 <4> Command to refresh repositories and services.
@@ -156,7 +156,7 @@ To use the container, proceed as follows:
 
 .. Make sure the host system is subscribed to the Server Applications Module of {sles}. To view installed modules or install additional modules, open YAST and select Add System Extensions or Modules.
 
-.. Make sure the {slea} images from the {suseregistry} are installed as described in link:#sec-download-prebuild-images[???].
+.. Make sure the {slea} images from the {suseregistry} are installed as described in link:#sec-download-prebuild-images[Pulling base {slsa} images].
 
 .. Save the `Dockerfile` from link:#ex-docker-dockerfile-apache2[example_title] into the `docker` directory.
 

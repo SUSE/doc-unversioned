@@ -19,7 +19,7 @@ The Linux kernel's namespaces and kernel control groups features enable the cont
 [[sec-concepts-workflow]]
 === Key concepts and brief introduction to {podman}
 
-Although {deng} is a popular choice for working with images and containers, {podman} provides a drop-in replacement for {docker} that offers several advantages. While link:#cha-podman-overview[???] provides more information on {podman}, this chapter offers a quick introduction to key concepts and a basic procedure for creating a container image and using it to run a container.
+Although {deng} is a popular choice for working with images and containers, {podman} provides a drop-in replacement for {docker} that offers several advantages. While link:#cha-podman-overview[{podman} overview] provides more information on {podman}, this chapter offers a quick introduction to key concepts and a basic procedure for creating a container image and using it to run a container.
 
 The basic {podman} workflow is as follows:
 
