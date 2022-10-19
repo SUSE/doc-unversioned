@@ -12,13 +12,13 @@ To create a custom image, you need a base image of {sles}. You can use any of th
 To obtain a pre-built base image for {slea} 12 SP5 and later, use the following command:
 
 ....
-      >docker pull registry.suse.com/suse/IMAGENAME
+> docker pull registry.suse.com/suse/IMAGENAME
 ....
 
 For example, for {sles} 15, the command is as follows:
 
 ....
-docker pull registry.suse.com/suse/sle15
+> docker pull registry.suse.com/suse/sle15
 ....
 
 `sle2docker` is not required, because the image is being pulled from the {dreg}.
@@ -100,7 +100,7 @@ If you want to move your application to a container, see link:#cha-docker-contai
 After you have edited the `Dockerfile` , build the image by running the following command in the same directory in which the `Dockerfile` resides:
 
 ....
->docker build .
+> docker build .
 ....
 
 For more information about `docker build` options, see the https://docs.docker.com/engine/reference/commandline/build/[official Docker documentation] .

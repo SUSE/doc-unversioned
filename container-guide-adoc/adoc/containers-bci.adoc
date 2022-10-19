@@ -15,10 +15,10 @@ include::attributes-product.adoc[]
 [[sec-bci-why]]
 === Why {bci}s
 
-{bcia}s offer a platform for creating {slsa}-based custom container images and containerized applications that can be distributed freely. {bcia}s feature the same predictable enterprise lifecycle as {slsa}. The SLE_BCI 15 SP3 and SP4 repository (which is a subset of the {slea} repository) gives {bcia}s access to 4000 packages available for the {x64}, {aarch64}, {ppc}, and {zseries} architectures. The packages in the repository have undergone quality assurance and security audits by SUSE. The container images are FIPS-compliant when running on a host in FIPS mode. In addition to that, SUSE can provide official support for {bcia}s through SUSE subscription plans.
+{bcia}s offer a platform for creating {slsa}-based custom container images and containerized applications that can be distributed freely. {bcia}s feature the same predictable enterprise lifecycle as {slsa}. The SLE_BCI 15 SP3 and SP4 repository (which is a subset of the {slea} repository) gives {bcia}s access to 4000 packages available for the {x64}, {aarch64}, {ppc}, and {zseries} architectures. The packages in the repository have undergone quality assurance and security audits by {suse}. The container images are FIPS-compliant when running on a host in FIPS mode. In addition to that, {suse} can provide official support for {bcia}s through {suse} subscription plans.
 
 Security::
-  Each package in the SLE_BCI repository undergoes security audits, and {bcia}s benefit from the same mechanism of dealing with CVEs as SLES. All discovered and fixed vulnerabilities are announced via e-mail, the dedicated https://www.suse.com/security/cve/[CVE pages], and as OVAL and CVRF data. To ensure a secure supply chain, all container images are signed with Notary v1, {podman}'s GPG signatures, and Sigstore Cosign.
+  Each package in the SLE_BCI repository undergoes security audits, and {bcia}s benefit from the same mechanism of dealing with CVEs as {sles}. All discovered and fixed vulnerabilities are announced via e-mail, the dedicated https://www.suse.com/security/cve/[CVE pages], and as OVAL and CVRF data. To ensure a secure supply chain, all container images are signed with Notary v1, {podman}'s GPG signatures, and Sigstore Cosign.
 Stability::
   Since {bcia}s are based on {slsa}, they feature the same level of stability and quality assurance. Similar to {slsa}, {bcia}s receive maintenance updates that provide bug fixes, improvements, and security patches.
 Tooling and integration::
@@ -32,7 +32,7 @@ Redistribution::
 * {bcia} are fully compatible with {slsa}, but **they do not require a subscription to run and distribute them.**
 * {bcia} automatically run in FIPS-compatible mode when the host operating system is running in FIPS mode.
 * Each {bcia} includes the RPM database, which makes it possible to audit the contents of the container image. You can use the RPM database to determine the specific version of the RPM package any given file belongs to. This allows you to ensure that a container image is not susceptible to known and already fixed vulnerabilities.
-* All {bcia} (except for those without {zypper}) come with the container-suseconnect service. This gives containers that run on a registered {slsa} host access to the full {slsa} repositories. container-suseconnect is invoked automatically when you run {zypper} for the first time, and the service adds the correct {slsa} repositories into the running container. On an unregistered {slsa} host or on a non-{slsa} host, the service does nothing.
+* All {bcia} (except for those without {zypper}) come with the `container-suseconnect` service. This gives containers that run on a registered {slsa} host access to the full {slsa} repositories. `container-suseconnect` is invoked automatically when you run {zypper} for the first time, and the service adds the correct {slsa} repositories into the running container. On an unregistered {slsa} host or on a non-{slsa} host, the service does nothing.
 
 [[sec-general-purpose-bci]]
 === General-purpose {bcia}s
@@ -42,8 +42,6 @@ There are four general purpose {bcia}s, and each container image comes with a mi
 {suse} offers several general-purpose {bcia}s that are intended as deployment targets or as foundations for creating customized images: {bcia}-Base, {bcia}-Minimal, {bcia}-Micro, and {bcia}-BusyBox. These images share the common {slsa} base, and none of them ship with a specific language or an application stack. All images feature the RPM database (even if the specific image does not include the RPM package manager) that can be used to verify the provenance of every file in the image. Each image includes the {slsa} certificate bundle, which allows the deployed applications to use the system's certificates to verify TLS connections.
 
 The table below provides a quick overview of the differences between {bcia}-Base, {bcia}-Minimal, {bcia}-Micro, and {bcia}-BusyBox.
-
-//image::bci-variants.png[image,scaledwidth=80.0%]
 
 .Support matrix
 [cols="^,^,^,^,^",options="header",]
@@ -60,28 +58,29 @@ The table below provides a quick overview of the differences between {bcia}-Base
 
 ==== {bcia}-Base and {bcia}-Init: When you need flexibility
 
-This {bcia} comes with the Zypper package manager and a free SLE-{bci} repository. This allows you to install software available in the repository and customize the image during the build. The downside is the size of the image. It is the largest of the general-purpose {bcia}s, so it is not always the best choice for a deployment image.
+This {bcia} comes with the Zypper package manager and a free {slea}-{bci} repository. This allows you to install software available in the repository and customize the image during the build. The downside is the size of the image. It is the largest of the general-purpose {bcia}s, so it is not always the best choice for a deployment image.
 
 A variant of {bcia}-Base called {bcia}-Init comes with systemd preinstalled. The {bcia}-Init container image can be useful in scenarios requiring systemd for managing services in a single container.
 
-IMPORTANT: Using {bcia}-init with {docker} or nerdctl
+[IMPORTANT]
+.Using {bcia}-init with {docker} or nerdctl
 ====
 When using {bcia}-init container with {docker}, you must use the following arguments for SYSTEMD to work correctly in the container:
 
 ....
-docker run -ti --tmpfs /run -v /sys/fs/cgroup:/sys/fs/cgroup:rw --cgroupns=host registry.suse.com/bci/bci-init:latest
+> docker run -ti --tmpfs /run -v /sys/fs/cgroup:/sys/fs/cgroup:rw --cgroupns=host registry.suse.com/bci/bci-init:latest
 ....
 
 In case of nerdctl, the correct command is as follows:
 
 ....
-nerdctl run -ti --env container=containerd --tmpfs /run -v /sys/fs cgroup:/sys/fs/cgroup:rw --cgroupns=host  registry.suse.com/bci bci-init:latest
+> nerdctl run -ti --env container=containerd --tmpfs /run -v /sys/fs cgroup:/sys/fs/cgroup:rw --cgroupns=host  registry.suse.com/bci bci-init:latest
 ....
 
 To correctly shut down the container use the following command:
 
 ....
-docker kill -s SIGRTMIN+3 CONTAINER_ID
+> docker kill -s SIGRTMIN+3 CONTAINER_ID
 ....
 ====
 
@@ -147,7 +146,7 @@ dotnet-sdk::
 [[sec-status-lifecycle-bci]]
 === Important note on status and lifecycle
 
-All container images, except for base, are currently classified as tech preview, and SUSE does not provide official support for them. This information is visible on the web on https://registry.suse.com[registry.suse.com]. It is also indicated via the `com.suse.supportlevel` label whether a container image still has the tech preview status. You can use the skopeo and jq utilities to check the status of the desired {bcia} as follows:
+All container images, except for base, are currently classified as tech preview, and {suse} does not provide official support for them. This information is visible on the web on https://registry.suse.com[registry.suse.com]. It is also indicated via the `com.suse.supportlevel` label whether a container image still has the tech preview status. You can use the skopeo and jq utilities to check the status of the desired {bcia} as follows:
 
 ....
 > skopeo inspect docker://registry.suse.com/bci/bci-micro:15.4 | jq '.Labels["com.suse.supportlevel"]'
@@ -187,7 +186,7 @@ Remove a package::
 Clean up temporary files::
   `zypper clean`
 
-For more information on using {zypper}, refer to https://documentation.suse.com/sles-15/html/SLES-all/cha-sw-cl.html#sec-zypper.
+For more information on using {zypper}, refer to https://documentation.suse.com/sles-15/html/{sles}-all/cha-sw-cl.html#sec-zypper.
 
 All the described commands use the `--non-interactive` flag to skip confirmations, since you cannot approve these manually during container builds. Keep in mind that you must use the flag with any command that modifies the system. Also note that `--non-interactive` is not a "yes to all" flag. Instead, `--non-interactive` confirms what is considered to be the intention of the user. For example, an installation command with the `--non-interactive` option fails if it needs to import new repository signing keys, as that is something that the user must verify themselves.
 
@@ -219,16 +218,14 @@ Verify GnuPG signatures::
 [[sec-bci-package-naming]]
 ==== Package naming conventions
 
-SLE package naming conventions differ from Debian, Ubuntu, and Alpine, and they are closer to those of RHEL. The main difference is that development packages of libraries (that is, packages containing headers and build description files) are named _PACKAGE-devel_ in SLE, as opposed to _PACKAGE-dev_ as they are in Debian and Ubuntu. When in doubt, search for the package directly using the following command: `docker run --rm
+{slea} package naming conventions differ from Debian, Ubuntu, and Alpine, and they are closer to those of RHEL. The main difference is that development packages of libraries (that is, packages containing headers and build description files) are named _PACKAGE-devel_ in {slea}, as opposed to _PACKAGE-dev_ as they are in Debian and Ubuntu. When in doubt, search for the package directly using the following command: `docker run --rm
     registry.suse.com/bci/bci-base:OS_VERSION zypper
     search PACKAGE_NAME` (replace OS_VERSION with the appropriate service version number, for example: `15.3` or `15.4`).
 
 [[sec-bci-gpg-keys]]
 ==== Adding GPG signing keys
 
-Adding external repositories to a container or container image normally requires importing the GPG key used for signing the packages. This can be done with the `rpm --import
-    KEY_URL` command. This adds the key to the RPM database, and all packages from the repository can be installed afterwards.
-
+Adding external repositories to a container or container image normally requires importing the GPG key used for signing the packages. This can be done with the `rpm --import KEY_URL` command. This adds the key to the RPM database, and all packages from the repository can be installed afterwards.
 
 [[sec-getting-started-bci]]
 === Getting started with {bci}s
@@ -237,10 +234,10 @@ The {bcia} are available as OCI-compatible container images directly from https:
 
 ....
 > podman run --rm -it registry.suse.com/bci/bci-base:15.4 grep '^NAME' /etc/os-release
-NAME="SLES"
+NAME="{sles}"
 ....
 
-Alternatively, you can use {bcia} in Dockerfile as follows:
+Alternatively, you can use {bcia} in `Dockerfile` as follows:
 
 ....
 FROM registry.suse.com/bci/bci-base:15.4
@@ -250,8 +247,7 @@ ENTRYPOINT ["/usr/bin/python3", "-m", "http.server"]
 EXPOSE 8000
 ....
 
-You can then build container images using the `docker build
-.` or `buildah bud .` commands:
+You can then build container images using the `docker build .` or `buildah bud .` commands:
 
 ....
 > docker build .
