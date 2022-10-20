@@ -195,9 +195,10 @@
  </sect1>
 
  <sect1 xml:id="openscap-scan">
-  <title> targets</title>
+  <title>Vulnerability scanning</title>
   <para>
-   The content provided by the <literal>SCAP User Guide</literal> can be used to scan the following targets:
+   The content provided by the <literal>SCAP User Guide</literal> can be used to scan the following targets
+   for vulnerabilities:
   </para>
   <itemizedlist>
    <listitem>
@@ -228,8 +229,8 @@
     <term>oscap</term>
     <listitem>
      <para>
-      A command line interface that can be used to scan local machines. Both <package>oscap</package> and
-      <package>scap-security-guide</package> need to be installed on the local machine.
+      A command line interface that can be used to scan local machines. Both the <package>openscap-utils</package> and
+      <package>scap-security-guide</package> package need to be installed on the local machine.
      </para>
     </listitem>
    </varlistentry>
@@ -238,7 +239,9 @@
      <listitem>
       <para>
        A graphical user interface that can be used for scanning a single machine, either local or remote (via SSH).
-       <remark>taroth 2022-10-20: what about package requirements here?</remark> 
+       Both the <package>scap-workbench</package> and <package>scap-security-guide</package> package need to be installed
+       on the local machine. On the remote machine the <package>openscap-utils</package> package needs to be
+       installed.
       </para>
      </listitem>
     </varlistentry>
@@ -247,18 +250,11 @@
     <listitem>
      <para>
       A command line interface that can be used to scan a remote machine via SSH with an interface resembling
-      the oscap tool. <command>oscap</command> needs to be installed on the remote machine.
+      the oscap tool. <package>openscap-utils</package> needs to be installed on the remote machine.
      </para>
     </listitem>
    </varlistentry>
   </variablelist>
- </sect1>
- 
- <sect1>
-  <title></title>
-  <para>
-   
-  </para>
  </sect1>
 
  <sect1 xml:id="openscap-terminology">
