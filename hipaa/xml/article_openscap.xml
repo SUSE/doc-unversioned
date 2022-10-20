@@ -250,7 +250,9 @@
     <listitem>
      <para>
       A command line interface that can be used to scan a remote machine via SSH with an interface resembling
-      the oscap tool. <package>openscap-utils</package> needs to be installed on the remote machine.
+      the <command>oscap</command> tool. On the local machine, the package <package>openscap-utils</package>
+      needs to be installed. On the remote machine, the <package>openscap-utils</package> package needs
+      to be installed.
      </para>
     </listitem>
    </varlistentry>
