@@ -179,9 +179,7 @@
       <para>
        An XML format maintained by NIST and NDV. It uses a standardized naming scheme for IT products
        with the following elements:
-       <literal>cpe:/{part}:{vendor}:{product}:{version}:{update}:{edition}:{language}</literal>
-       <remark>taroth 2022-10-07: find out if the curled brackets represent replaceables and tag
-        accordingly, if so</remark>
+       <literal>cpe:/<replaceable>part</replaceable>:<replaceable>vendor</replaceable>:<replaceable>product</replaceable>:<replaceable>version</replaceable>:<replaceable>update</replaceable>:<replaceable>edition</replaceable>:<replaceable>language</replaceable></literal>
       </para>
      </listitem>
     </varlistentry>
