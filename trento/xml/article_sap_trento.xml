@@ -1590,7 +1590,7 @@ Warning: Permanently added '<replaceable>TRENTO_AGENT_IP</replaceable>' (ECDSA) 
           </step>
           <step>
             <para>Execute the script:</para>
-            <screen>&prompt.root;<command>./trento-support.sh</command> --output file.tgz --collect all</screen>
+            <screen>&prompt.root;<command>./trento-support.sh</command> --output file-tgz --collect all</screen>
           </step>
           <step>
             <para>Send the generated archive file to support for analysis.</para>
