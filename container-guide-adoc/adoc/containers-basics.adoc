@@ -19,7 +19,7 @@ The Linux kernel's namespaces and kernel control groups features enable the cont
 [[sec-concepts-workflow]]
 === Key concepts and brief introduction to {podman}
 
-Although {deng} is a popular choice for working with images and containers, {podman} provides a drop-in replacement for {docker} that offers several advantages. While link:#cha-podman-overview[{podman} overview] provides more information on {podman}, this chapter offers a quick introduction to key concepts and a basic procedure for creating a container image and using it to run a container.
+Although {deng} is a popular choice for working with images and containers, {podman} provides a drop-in replacement for {docker} that offers several advantages. While <<cha-podman-overview>> provides more information on {podman}, this chapter offers a quick introduction to key concepts and a basic procedure for creating a container image and using it to run a container.
 
 The basic {podman} workflow is as follows:
 
@@ -29,7 +29,7 @@ Running a container, either on a local machine or cloud service, normally involv
 
 [arabic]
 . Fetch a base image by pulling it from a registry to your local machine.
-. Create a Dockerfile and use it to build a custom image on top of the base image.
+. Create a `Dockerfile` and use it to build a custom image on top of the base image.
 . Use the created image to start one or more containers.
 
 To run a container, you need an image. An image includes all dependencies needed to run the application. For example, the {slea} base image contains the {slea} distribution with a minimal package selection.

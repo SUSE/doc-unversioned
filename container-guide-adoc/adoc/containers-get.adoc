@@ -11,7 +11,7 @@ This chapter provides information on obtaining container images.
 
 {suse} offers several official base container images that can be used as a starting point for building custom containers. Each {slea} base image provides a minimal environment with a shell and package management.
 
-Base images are available from https://registry.suse.com. For information about the {suseregistry}, see link:#sec-suse-registry[]. The base images in the {suseregistry} all have the status General Availability (that is, they are suitable for production use) and https://www.suse.com/products/long-term-service-pack-support/[LTSS] releases of {slsa} 12 and {slsa} 15. {slea} base images in the {suse} Registry receive security updates and are covered by the {suse} support plans. For more information about these support plans, see link:#cha-containers-support[Compatibility and support conditions].
+Base images are available from https://registry.suse.com. For information about the {suseregistry}, see <<sec-suse-registry>>. The base images in the {suseregistry} all have the status General Availability (that is, they are suitable for production use) and https://www.suse.com/products/long-term-service-pack-support/[LTSS] releases of {slsa}{nbsp}12 and {slsa}{nbsp}15. {slea} base images in the {suse} Registry receive security updates and are covered by the {suse} support plans. For more information about these support plans, see <<cha-containers-support>>.
 
 [[sec-suse-container-properties]]
 === {suse} container properties
@@ -21,7 +21,7 @@ Base images are available from https://registry.suse.com. For information about 
 [[sec-repository-names]]
 ==== Repository names
 
-Repository names start with the name of the product, for example: `suse/sle...` and `opensuse/tumbleweed`. The {slea} 15 containers for all service packs reside in the repository `suse/sle15`. However, for {slea} 12, there is a separate repository name for each service pack, for example, `suse/sles12sp3`, `suse/sles12sp4`, and `suse/sles12sp5`.
+Repository names start with the name of the product, for example: `suse/sle...` and `opensuse/tumbleweed`. The {slea} 15 containers for all service packs reside in the repository `suse/sle15`. However, for {slea}{nbsp}12, there is a separate repository name for each service pack, for example, `suse/sles12sp3`, `suse/sles12sp4`, and `suse/sles12sp5`.
 
 [[sec-labels]]
 ==== Labels
@@ -173,4 +173,4 @@ The https://github.com/GoogleContainerTools/container-diff#container-diff[contai
 
 You can inspect a single image or perform a diff operation on two images. `container-diff` supports Docker images located in both a local Docker daemon and a remote registry. It is also possible to use the tool with `.tar`, `.tar.gz`, and `.tgz` archives.
 
-The container-diff package is part of the PRODUCTNAME PRODUCTNUMBER Containers Module. Alternatively, it can be installed separately. For instructions on installing it, see the https://github.com/GoogleContainerTools/container-diff#installation[container-diff documentation].
+The container-diff package is part of the {sles}{nbsp}{productnumber} Containers Module. Alternatively, it can be installed separately. For instructions on installing it, see the https://github.com/GoogleContainerTools/container-diff#installation[container-diff documentation].

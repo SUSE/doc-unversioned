@@ -29,10 +29,10 @@ Redistribution::
 [[sec-bci-highlights]]
 ==== Highlights
 
-* {bcia} are fully compatible with {slsa}, but **they do not require a subscription to run and distribute them.**
-* {bcia} automatically run in FIPS-compatible mode when the host operating system is running in FIPS mode.
+* {bcia}s are fully compatible with {slsa}, but **they do not require a subscription to run and distribute them.**
+* {bcia}s automatically run in FIPS-compatible mode when the host operating system is running in FIPS mode.
 * Each {bcia} includes the RPM database, which makes it possible to audit the contents of the container image. You can use the RPM database to determine the specific version of the RPM package any given file belongs to. This allows you to ensure that a container image is not susceptible to known and already fixed vulnerabilities.
-* All {bcia} (except for those without {zypper}) come with the `container-suseconnect` service. This gives containers that run on a registered {slsa} host access to the full {slsa} repositories. `container-suseconnect` is invoked automatically when you run {zypper} for the first time, and the service adds the correct {slsa} repositories into the running container. On an unregistered {slsa} host or on a non-{slsa} host, the service does nothing.
+* All {bcia}s (except for those without {zypper}) come with the `container-suseconnect` service. This gives containers that run on a registered {slsa} host access to the full {slsa} repositories. `container-suseconnect` is invoked automatically when you run {zypper} for the first time, and the service adds the correct {slsa} repositories into the running container. On an unregistered {slsa} host or on a non-{slsa} host, the service does nothing.
 
 [[sec-general-purpose-bci]]
 === General-purpose {bcia}s
@@ -60,7 +60,7 @@ The table below provides a quick overview of the differences between {bcia}-Base
 
 This {bcia} comes with the Zypper package manager and a free {slea}-{bci} repository. This allows you to install software available in the repository and customize the image during the build. The downside is the size of the image. It is the largest of the general-purpose {bcia}s, so it is not always the best choice for a deployment image.
 
-A variant of {bcia}-Base called {bcia}-Init comes with systemd preinstalled. The {bcia}-Init container image can be useful in scenarios requiring systemd for managing services in a single container.
+A variant of {bcia}-Base called {bcia}-Init comes with systemd preinstalled. The {bcia}-Init container image can be useful in scenarios requiring systemd for managing services in a single container.
 
 [IMPORTANT]
 .Using {bcia}-init with {docker} or nerdctl
@@ -103,15 +103,15 @@ Similar to {bcia}-Micro, the {bcia}-BusyBox image comes with the most basic tool
 
 For your reference, the list below provides an approximate size of each {bcia}. Keep in mind that the provided numbers are rough estimations.
 
-* `{bcia}-Base` ~94 MB
-* `{bcia}-Minimal` ~42 MB
-* `{bcia}-Micro` ~26 MB
-* `{bcia}-BusyBox` ~14 MB
+* `{bcia}-Base` ~94{nbsp}MB
+* `{bcia}-Minimal` ~42{nbsp}MB
+* `{bcia}-Micro` ~26{nbsp}MB
+* `{bcia}-BusyBox` ~14{nbsp}MB
 
 [[sec-language-stack-bci]]
-=== Language stack {bcia}
+=== Language stack {bcia}s
 
-Language stack {bcia} are built on top of the {bcia}-Base general-purpose {bcia}. Each container image comes with the {zypper} stack and the free `SLE_BCI` repository. Additionally, each image includes most common tools for building and deploying applications in the specific language environment. This includes tools like a compiler or interpreter as well as the language specific package manager.
+Language stack {bcia}s are built on top of the {bcia}-Base general-purpose {bcia}. Each container image comes with the {zypper} stack and the free `SLE_BCI` repository. Additionally, each image includes most common tools for building and deploying applications in the specific language environment. This includes tools like a compiler or interpreter as well as the language specific package manager.
 
 Below is an overview of the available language stack {bcia}s.
 
@@ -156,7 +156,7 @@ All container images, except for base, are currently classified as tech preview,
 "l3"
 ....
 
-In the example above, the `com.suse.supportlevel` label is set to `techpreview` in the `bci-micro` container image, indicating that the image still has the tech preview status. The `bci-base` container image, on the other hand, has full L3 support. Unlike like the general purpose {bcia}, the language stack {bcia} may not follow the lifecycle of the {slsa} distribution: they are supported as long as the respective language stack receives support. In other words, new versions of {bcia} (indicated by the OCI tags) may be released during the lifecycle of a {slsa} Service Pack, while older versions may become unsupported. Refer to https://suse.com/lifecycle[suse.com/lifecycle] to find out whether the container in question is still under support.
+In the example above, the `com.suse.supportlevel` label is set to `techpreview` in the `bci-micro` container image, indicating that the image still has the tech preview status. The `bci-base` container image, on the other hand, has full L3 support. Unlike like the general purpose {bcia}s, the language stack {bcia}s may not follow the lifecycle of the {slsa} distribution: they are supported as long as the respective language stack receives support. In other words, new versions of {bcia}s (indicated by the OCI tags) may be released during the lifecycle of a {slsa} Service Pack, while older versions may become unsupported. Refer to https://suse.com/lifecycle[suse.com/lifecycle] to find out whether the container in question is still under support.
 
 IMPORTANT: A {bci} is no longer updated after its support period ends. You will not receive any notification when that happens.
 
@@ -230,14 +230,14 @@ Adding external repositories to a container or container image normally requires
 [[sec-getting-started-bci]]
 === Getting started with {bci}s
 
-The {bcia} are available as OCI-compatible container images directly from https://registry.suse.com[registry.suse.com] and can be used like any other container image. For example, using one of the general purpose containers:
+The {bcia}s are available as OCI-compatible container images directly from https://registry.suse.com[registry.suse.com] and can be used like any other container image. For example, using one of the general purpose containers:
 
 ....
 > podman run --rm -it registry.suse.com/bci/bci-base:15.4 grep '^NAME' /etc/os-release
 NAME="{sles}"
 ....
 
-Alternatively, you can use {bcia} in `Dockerfile` as follows:
+Alternatively, you can use a {bcia} in `Dockerfile` as follows:
 
 ....
 FROM registry.suse.com/bci/bci-base:15.4

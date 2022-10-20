@@ -12,7 +12,7 @@ Prepare the host as described below. Before installing any {docker}-related pack
 [NOTE]
 .Built-in {docker} orchestration support
 ====
-Starting with {deng} 1.12, container orchestration is now an integral part of {deng}. Even though this feature is available in {sles} {productnumber}, it is not supported by SUSE and is only provided as a technology preview. Use K8S for container orchestration. For details, refer to the http://kubernetes.io/docs/getting-started-guides/kubeadm/[Kubernetes documentation].
+Starting with {deng} 1.12, container orchestration is now an integral part of {deng}. Even though this feature is available in {sles}{nbsp}{productnumber}, it is not supported by SUSE and is only provided as a technology preview. Use K8S for container orchestration. For details, refer to the http://kubernetes.io/docs/getting-started-guides/kubeadm/[Kubernetes documentation].
 ====
 
 ==== Enabling the Containers Module using the {yast} graphical interface
@@ -101,7 +101,7 @@ It is also possible to prevent {deng} from manipulating `iptables`. See the http
 * devicemapper: This driver relies on the device-mapper thin provisioning module. It supports copy-on-write, so it leverages all the advantages of {deng}.
 * btrfs: This driver relies on Btrfs to provide all the features required by {deng}. To use this driver, the `/var/lib/docker` directory must be on a Btrfs file system.
 
-Since {sles} 12 onward, the Btrfs file system is used by default, which forces {deng} to use the btrfs driver.
+Since {sles}{nbsp}12 onward, the Btrfs file system is used by default, which forces {deng} to use the btrfs driver.
 
 It is possible to specify what driver to use by changing the value of the DOCKER_OPTS variable defined in the `/etc/sysconfig/docker` file. This can be done either manually or using {yast} by browsing to the _System > /etc/sysconfig Editor > System > Management > DOCKER_OPTS_ menu and entering the _-s storage_driver_ string.
 

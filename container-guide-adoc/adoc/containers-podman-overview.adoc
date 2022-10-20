@@ -4,14 +4,14 @@ include::attributes-product.adoc[]
 [[cha-podman-overview]]
 == {podman} overview
 
-https://podman.io/[Podman] is short for Pod Manager Tool. It is a daemonless container engine for developing, managing, and running Open Container Initiative (OCI) containers on a Linux system, and it offers a drop-in alternative for DOCKER. {podman} is the default container runtime in OPENSUSE KubicMDASHa certified Kubernetes distribution built on top of OPENSUSE. {podman} can be used to create OCI-compliant container images using a Dockerfile and a range of commands identical to {deng}. For example, the `podman build` command performs the same task as `docker build`. In other words, {podman} provides a drop-in replacement for {deng}.
+https://podman.io/[Podman] is short for Pod Manager Tool. It is a daemonless container engine for developing, managing, and running Open Container Initiative (OCI) containers on a Linux system, and it offers a drop-in alternative for {docker}. {podman} is the default container runtime in {opensuse} Kubic{mdash}a certified Kubernetes distribution built on top of {opensuse}. {podman} can be used to create OCI-compliant container images using a `Dockerfile` and a range of commands identical to {deng}. For example, the `podman build` command performs the same task as `docker build`. In other words, {podman} provides a drop-in replacement for {deng}.
 
 Moving from {deng} to {podman} does not require any changes in the established workflow. There is no need to rebuild images, and you can use the exact same commands to build and manage images as well as run and control containers.
 
 {podman} differs from {deng} in two important ways.
 
 * {podman} does not use a daemon, so the container engine interacts directly with an image registry, containers, and an image storage. As {podman} does not have a daemon, it provides integration with systemd. This makes it possible to control containers via systemd units. You can create these units for existing containers as well as generate units that can start containers if they do not exist in the system. Moreover, {podman} can run systemd inside containers.
-* Because {podman} relies on several namespaces, which provide an isolation mechanism for Linux processes, it does not require root privileges to create and run containers. This means that {podman} can run in root mode as well as in an unprivileged environment. Moreover, a container created by an unprivileged user cannot get higher privileges on the host than the container's creator.
+* Because {podman} relies on namespaces, which provide an isolation mechanism for Linux processes, it does not require root privileges to create and run containers. This means that {podman} can run in root mode as well as in an unprivileged environment. Moreover, a container created by an unprivileged user cannot get higher privileges on the host than the container's creator.
 
 [[cha-podman-install]]
 === {podman} installation
@@ -24,9 +24,9 @@ To run {podman} without root privileges, subuids and subgids must be assigned to
 > sudo usermod --add-subuids 100000-165535 --add-subgids 100000-165535 USER
 ....
 
-To enable the change, reboot the machine or stop the session of the current user. To do the latter, run `loginctl list-sessions | grep USER` and note the session ID. Then run `loginctl kill-session SESSION_ID` to terminate the session.
+To enable the change, reboot the machine or stop the session of the current user. To do the latter, run `loginctl list-sessions | grep USER` and note the session ID. Then run `loginctl kill-session SESSION_ID` to stop the session.
 
-The command above defines a range of local UIDs to which the UIDs allocated to users inside the container are mapped on the host. Note that the ranges defined for different users must not overlap. It is also important that the ranges do not reuse the UID of an existing local user or group. By default, adding a user with the `useradd` command on SLSA PRODUCT-GA automatically allocates subUID and subGID ranges.
+The command above defines a range of local UIDs to which the UIDs allocated to users inside the container are mapped on the host. Note that the ranges defined for different users must not overlap. It is also important that the ranges do not reuse the UID of an existing local user or group. By default, adding a user with the `useradd` command on {slsa}{nbsp}{productnumber} automatically allocates subUID and subGID ranges.
 
 Running a container with {podman} in rootless mode on SLS may fail, because the container needs read access to the SCC credentials. For example, running a container with the command `podman run -it --rm registry.suse.com/suse/sle15 bash` and then executing `zypper ref` results in the following error message:
 
@@ -61,7 +61,7 @@ You can then grant a specific user write access by adding them to the created gr
 
 Since {podman} is compatible with {deng}, it features the same commands and options. For example, the `podman pull` command fetches a container image from a registry, while the `podman build` command is used to build images.
 
-One of the advantages of {podman} over {deng} is that {podman} can be configured to search multiple registries. To make {podman} search the SUSEREGISTRY first and use DHUB as a fallback, add the following configuration to the `/etc/containers/registries.conf` file:
+One of the advantages of {podman} over {deng} is that {podman} can be configured to search multiple registries. To make {podman} search the {suseregistry} first and use {dhub} as a fallback, add the following configuration to the `/etc/containers/registries.conf` file:
 
 ....
 [registries.search]
@@ -77,6 +77,6 @@ Similar to {deng}, {podman} can run containers in an interactive mode, allowing 
 [[cha-podman-build-images]]
 ==== Building images with {podman}
 
-{podman} can build images from a Dockerfile. The `podman build` command behaves as `docker build`, and it accepts the same options.
+{podman} can build images from a `Dockerfile`. The `podman build` command behaves as `docker build`, and it accepts the same options.
 
-{podman}'s companion tool {buildah} provides an alternative way to build images. For further information about {buildah}, refer to link:#cha-buildah-overview[{buildah} overview].
+{podman}'s companion tool {buildah} provides an alternative way to build images. For further information about {buildah}, refer to <<cha-buildah-overview>>.

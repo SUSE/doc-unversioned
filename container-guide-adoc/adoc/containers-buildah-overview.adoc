@@ -7,18 +7,18 @@ include::attributes-product.adoc[]
 https://buildah.io/[Buildah] is tool for building OCI-compliant container images. {buildah} can handle the following tasks:
 
 * Create containers from scratch or from existing images.
-* Create an image from a working container or via Dockerfile.
+* Create an image from a working container or via a `Dockerfile`.
 * Build images in the OCI or {deng} image formats.
 * Mount a working container's root file system for manipulation.
 * Use the updated contents of a container's root file system as a file system layer to create a new image.
 * Delete a working container or an image and rename a local container.
 
-Compared to {deng}, {buildah} has several advantages:
+Compared to {deng}, {buildah} offers the following advantages:
 
 * The tool makes it possible to mount a working container's file system, so it becomes accessible by the host.
-* The process of building container images using {buildah} can be automated via scripts by using {buildah}'s subcommands instead of a Containerfile or Dockerfile.
+* The process of building container images using {buildah} can be automated via scripts by using {buildah}'s subcommands instead of a Containerfile or `Dockerfile`.
 * Similar to {podman}, {buildah} does not require a daemon to run and can be used by unprivileged users.
-* It is possible to build images inside a container without mounting the DOCKER socket, which improves security.
+* It is possible to build images inside a container without mounting the {docker} socket, which improves security.
 
 [[cha-podman-buildah]]
 === {podman} and {buildah}
@@ -38,7 +38,7 @@ If you already have {podman} installed and set up for use in rootless mode, {bui
 
 This command enables rootless mode for the current user. After running the command, log out and log in again to enable the changes.
 
-The command above defines a range of local UIDs on the host, onto which the UIDs allocated to users inside the container are mapped. Note that the ranges defined for different users must not overlap. It is also important that the ranges do not reuse the UID of any existing local users or groups. By default, adding a user with the `useradd` command on SLSA PRODUCT-GA automatically allocates subUID and subGID ranges.
+The command above defines a range of local UIDs on the host, onto which the UIDs allocated to users inside the container are mapped. Note that the ranges defined for different users must not overlap. It is also important that the ranges do not reuse the UID of any existing local users or groups. By default, adding a user with the `useradd` command on {slsa}{nbsp}{productnumber} automatically allocates subUID and subGID ranges.
 
 NOTE: {buildah} in rootless mode
 ====

@@ -18,8 +18,7 @@ To install container-diff, run the `sudo zypper in container-diff` command.
 [[sec-container-diff-basics]]
 ==== Basic container-diff commands
 
-The command `container-diff analyze
-    IMAGE` runs a standard analysis on a single image. By default, it returns a hash and size of the container image. For more information that can help you to identify and fix problems, use the specific analyzers. Use the `--type` parameter to specify the desired analyzer. Two of the most useful analyzers are `history` (returns a list of descriptions of how an image layer was created) and `file` (returns a list of file system contents, including names, paths, and sizes):
+The command `container-diff analyze IMAGE` runs a standard analysis on a single image. By default, it returns a hash and size of the container image. For more information that can help you to identify and fix problems, use the specific analyzers. Use the `--type` parameter to specify the desired analyzer. Two of the most useful analyzers are `history` (returns a list of descriptions of how an image layer was created) and `file` (returns a list of file system contents, including names, paths, and sizes):
 
 ....
 > sudo container-diff analyze --type=history daemon://IMAGE

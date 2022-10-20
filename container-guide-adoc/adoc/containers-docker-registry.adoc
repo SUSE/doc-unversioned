@@ -54,7 +54,7 @@ podman run -d --restart=always --name registry -p 5000:5000 \
 To make it easier to manage the registry, create a corresponding system unit:
 
 ....
-PROMPT.ROOT podman generate systemd registry >  \
+> sudo podman generate systemd registry >  \
  /etc/systemd/system/suse_registry.service
 ....
 

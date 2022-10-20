@@ -4,7 +4,7 @@ include::attributes-product.adoc[]
 [[cha-docker-containerize-app]]
 == Creating application images
 
-{deng} is designed to allow running multiple separate application environments in parallel, with lower resource use than when using full virtual machines. Several types of applications are suitable for running inside containers: daemons, Web servers, and applications that expose IP ports for communications. You can use {deng} to automate the building and deployment processes by performing the build process inside a container, building an image, and then deploying containers based on the image.
+{deng} is designed to allow running multiple separate application environments in parallel, with lower resource use than when using full virtual machines. Applications that are suitable for running inside containers include daemons, Web servers, and applications that expose IP ports for communications. You can use {deng} to automate the building and deployment processes by performing the build process inside a container, building an image, and then deploying containers based on the image.
 
 Running an application inside a container has the following advantages:
 
@@ -19,7 +19,7 @@ Using {deng} to build applications has the following advantages:
 * The application can run in the same environment it was built in.
 * Developers can test their code in the same environment as used in production.
 
-The following section provides examples and recommendations on creating container images for applications. Before proceeding, make sure that you have activated your {sles} base image as described in link:#sec-download-prebuild-images[Pulling base {slsa} images].
+The following section provides examples and recommendations on creating container images for applications. Before proceeding, make sure that you have activated your {sles} base image as described in <<sec-download-prebuild-images>>.
 
 [[sec-application-with-specific-dependencies]]
 === Running an application with specific package versions
@@ -75,7 +75,7 @@ ENTRYPOINT ["/etc/bin/example"] <6>
 
 The above example `Dockerfile` performs the following operations:
 
-<1> Pulls the `sle15` base image as described in link:#sec-download-prebuild-images[Pulling base {slsa} images].
+<1> Pulls the `sle15` base image as described in <<sec-download-prebuild-images>>.
 <2> Refreshes repositories and installations of the _example_.
 <3> Sets a `BACKUP` environment variable (the variable persists to containers started from the image). You can always overwrite the value of the variable while running the container by specifying a new value.
 <4> Creates the directory `/backup`.
@@ -139,7 +139,7 @@ ENTRYPOINT ["/usr/sbin/httpd"]
 CMD ["-D", "FOREGROUND"]
 ....
 
-<1> Pull the base image as described in link:#sec-download-prebuild-images[Pulling base {slsa} images].
+<1> Pull the base image as described in <<sec-download-prebuild-images>>.
 <2> Maintainer of the image (optional).
 <3> The repositories and service files to be copied to `/etc/zypp/repos.d` and `/etc/zypp/services.d`. This makes them available on the host in the container.
 <4> Command to refresh repositories and services.
@@ -154,11 +154,11 @@ To use the container, proceed as follows:
 
 . Prepare the host system for the build process.
 
-.. Make sure the host system is subscribed to the Server Applications Module of {sles}. To view installed modules or install additional modules, open YAST and select Add System Extensions or Modules.
+.. Make sure the host system is subscribed to the Server Applications Module of {sles}. To view installed modules or install additional modules, open {yast} and select Add System Extensions or Modules.
 
-.. Make sure the {slea} images from the {suseregistry} are installed as described in link:#sec-download-prebuild-images[Pulling base {slsa} images].
+.. Make sure the {slea} images from the {suseregistry} are installed as described in <<sec-download-prebuild-images>>.
 
-.. Save the `Dockerfile` from link:#ex-docker-dockerfile-apache2[example_title] into the `docker` directory.
+.. Save the `Dockerfile` in the `docker` directory.
 
 .. Within the container, you need access to software repositories and services that are registered on the host. To make them available, copy repositories and service files from the host to the `docker/etc` directory:
 +
@@ -213,8 +213,8 @@ You can use the resulting container to serve your data with the Apache2 Web serv
 
 . In the `Dockerfile` :
 +
-* In the link:#ex-docker-dockerfile-apache2[Dockerfile example], comment the line that starts with `RUN echo` by adding a `#` character at its beginning.
-* In the link:#ex-docker-dockerfile-apache2[Dockerfile example], uncomment the line starting with `COPY` by removing the leading `#` character.
+* In the example `Dockerfile`, comment the line that starts with `RUN echo` by adding a `#` character at its beginning.
+* In the example `Dockerfile`, uncomment the line starting with `COPY` by removing the leading `#` character.
 +
 . Rebuild the image.
 
