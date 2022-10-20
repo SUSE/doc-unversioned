@@ -58,20 +58,15 @@
   <para>
    The &openscap; tools, together with the <literal>Scap
     Security Guide</literal>, can be used for auditing your system in an
-   automated way. The <literal>Scap Security Guide</literal> implements
+   automated way. The <literal>SCAP Security Guide</literal> implements
    security guidances recommended by respected authorities. These security
    guidances are transformed into a machine readable format which then can
    be used by &openscap;.
   </para>
  </sect1>
 
- <sect1 xml:id="openscap-use">
-  <title>Using &openscap;</title>
-
-  <para>For general instructions how to use the <literal>Scap Security
-    Guide</literal>, see the README in <link
-    xlink:href="https://github.com/ComplianceAsCode/content"/>.
-  </para>
+ <sect1 xml:id="openscap-ssg">
+  <title>SCAP Security Guide</title>
 
   <para>
    &suse; ships the <literal>Scap Security Guide</literal> toolset in the
@@ -85,68 +80,12 @@
    The DataStream (DS) XML files are very useful because they include everything you will need
    when you want to harden and audit your &sle; system.
   </para>
-
-<!--taroth 2022-10-07: move the following to new section about profiles???-->
-  <para>The <literal>Scap Security Guide</literal> contains multiple
-   profiles. The profiles applicable to &sle; are codestream-specific
-   and differ between code 12 and code 15.</para>
-  <para>They are hosted in the <link
-    xlink:href="https://github.com/ComplianceAsCode/"
-    >ComplianceAsCode</link> repository: </para>
-  <itemizedlist>
-   <listitem>
-    <para>
-     <link
-      xlink:href="https://github.com/ComplianceAsCode/content/tree/master/products/sle15/profiles"
-     />
-    </para>
-   </listitem>
-   <listitem>
-    <para>
-     <link
-      xlink:href="https://github.com/ComplianceAsCode/content/tree/master/products/sle12/profiles"
-     > </link>
-    </para>
-   </listitem>
-  </itemizedlist>
-  <para>
-   Human-readable versions of the profiles are available in your
-   installed system under:</para>
-  <itemizedlist>
-   <listitem>
-    <para>
-     <filename>/usr/share/doc/scap-security-guide/guides/ssg-sle15-guide-stig.html</filename>
-    </para>
-   </listitem>
-   <listitem>
-    <para>
-     <filename>/usr/share/doc/scap-security-guide/guides/ssg-sle12-guide-stig.html</filename>
-    </para>
-   </listitem>
-  </itemizedlist>
-  <para>
-   Alternatively, find the same content online at:
-  </para>
-  <itemizedlist>
-   <listitem>
-    <para>
-     <link xlink:href="https://static.open-scap.org/ssg-guides/ssg-sle15-guide-index.html"></link>
-    </para>
-   </listitem>
-   <listitem>
-    <para>
-     <link xlink:href="https://static.open-scap.org/ssg-guides/ssg-sle12-guide-index.html"></link>
-    </para>
-   </listitem>
-  </itemizedlist>
-  <para>In the online versions, use the drop-down box at the upper right corner of
-   the page to select one of the available profiles and to view a command line
-   snippet how to evaluate the respective profile with &openscap;.
-  </para>
  </sect1>
 
  <sect1 xml:id="openscap-components">
   <title>SCAP Components and their interaction</title>
+  <!--taroth 2022-10-20: rename to SCAP Document formats? - see
+   https://github.com/ComplianceAsCode/content#readme-->
   <para>
    SCAP consists of the following components which interact with each other.
   </para>
@@ -187,11 +126,71 @@
      <term>DataStreams (DS)</term>
      <listitem>
       <para>
-       An XML format which packs different SCAP components (CPE, XCCDF, OVAL) into a single file. 
+       An XML format which packs different SCAP components (CPE, XCCDF, OVAL) into a single file.
        It can be used to distribute SCAP content over the network.</para>
      </listitem>
     </varlistentry>
   </variablelist>
+ </sect1>
+
+ <sect1 xml:id="openscap-ssg-profiles">
+  <title>SCAP Security Guide profiles</title>
+  <para>The <literal>Scap Security Guide</literal> contains multiple
+   profiles. The profiles applicable to &sle; are codestream-specific
+   and differ between code 12 and code 15.</para>
+  <para>They are hosted in the <link
+   xlink:href="https://github.com/ComplianceAsCode/"
+   >ComplianceAsCode</link> repository: </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     <link
+      xlink:href="https://github.com/ComplianceAsCode/content/tree/master/products/sle15/profiles"
+     />
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <link
+      xlink:href="https://github.com/ComplianceAsCode/content/tree/master/products/sle12/profiles"
+      > </link>
+    </para>
+   </listitem>
+  </itemizedlist>
+  <para>
+   Human-readable versions of the profiles are available in your
+   installed system under:</para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     <filename>/usr/share/doc/scap-security-guide/guides/ssg-sle15-guide-stig.html</filename>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <filename>/usr/share/doc/scap-security-guide/guides/ssg-sle12-guide-stig.html</filename>
+    </para>
+   </listitem>
+  </itemizedlist>
+  <para>
+   Alternatively, find the same content online at:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     <link xlink:href="https://static.open-scap.org/ssg-guides/ssg-sle15-guide-index.html"></link>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <link xlink:href="https://static.open-scap.org/ssg-guides/ssg-sle12-guide-index.html"></link>
+    </para>
+   </listitem>
+  </itemizedlist>
+  <para>In the online versions, use the drop-down box at the upper right corner of
+   the page to select one of the available profiles and to view a command line
+   snippet how to evaluate the respective profile with &openscap;.
+  </para>
  </sect1>
 
  <sect1 xml:id="openscap-terminology">
@@ -233,7 +232,9 @@
     </para>
    </listitem>
    <listitem>
-    <para>
+    <para>For general instructions how to use the <literal>SCAP Security
+     Guide</literal>, see the README in <link
+      xlink:href="https://github.com/ComplianceAsCode/content"/>.
     </para>
    </listitem>
    <listitem>
