@@ -56,7 +56,7 @@
   <title>Benefits</title>
 
   <para>
-   The &openscap; tools, together with the <literal>Scap
+   The &openscap; tools, together with the <literal>SCAP
     Security Guide</literal>, can be used for auditing your system in an
    automated way. The <literal>SCAP Security Guide</literal> implements
    security guidances recommended by respected authorities. These security
@@ -69,10 +69,11 @@
   <title>SCAP Security Guide</title>
 
   <para>
-   &suse; ships the <literal>Scap Security Guide</literal> toolset in the
-   <package>scap-security-guide</package> RPM package. After you have installed the package,
-   find XML files for all SCAP document formats described in <xref linkend="openscap-components"/> in
-   <filename>/usr/share/xml/scap/ssg/content/</filename>. They are named according to the SCAP
+   &suse; ships the <literal>SCAP Security Guide</literal> (SSG) toolset in the
+   <package>scap-security-guide</package> RPM package. It contains the latest set of security polices for
+   Linux systems. After you have installed the package, the SSG security content is available
+   in <filename>/usr/share/xml/scap/ssg/content/</filename>. Each of the SCAP components has its own
+   XML-based document format and its XML name space. All XML files in that directory are named according to the SCAP
    component and to the &sle; codestream they apply to (code 12 or 15). The directory also holds
    XML files specific to &osuse;.
   </para>
@@ -84,8 +85,6 @@
 
  <sect1 xml:id="openscap-components">
   <title>SCAP Components and their interaction</title>
-  <!--taroth 2022-10-20: rename to SCAP Document formats? - see
-   https://github.com/ComplianceAsCode/content#readme-->
   <para>
    SCAP consists of the following components which interact with each other.
   </para>
@@ -194,7 +193,7 @@
  </sect1>
 
  <sect1 xml:id="openscap-scan">
-  <title>Scanning Targets</title>
+  <title> targets</title>
   <para>
    The content provided by the <literal>SCAP User Guide</literal> can be used to scan the following targets:
   </para>
@@ -251,6 +250,13 @@
     </listitem>
    </varlistentry>
   </variablelist>
+ </sect1>
+ 
+ <sect1>
+  <title></title>
+  <para>
+   
+  </para>
  </sect1>
 
  <sect1 xml:id="openscap-terminology">
