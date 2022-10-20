@@ -72,14 +72,10 @@
    &suse; ships the <literal>SCAP Security Guide</literal> (SSG) toolset in the
    <package>scap-security-guide</package> RPM package. It contains the latest set of security polices for
    Linux systems. After you have installed the package, the SSG security content is available
-   in <filename>/usr/share/xml/scap/ssg/content/</filename>. Each of the SCAP components has its own
-   XML-based document format and its XML name space. All XML files in that directory are named according to the SCAP
+   in <filename>/usr/share/xml/scap/ssg/content/</filename>. It consists of several SCAP components,
+   which are all based on XML. All XML files in that directory are named according to the SCAP
    component and to the &sle; codestream they apply to (code 12 or 15). The directory also holds
    XML files specific to &osuse;.
-  </para>
-  <para>
-   The DataStream (DS) XML files are very useful because they include everything you will need
-   when you want to harden and audit your &sle; system.
   </para>
  </sect1>
 
@@ -93,10 +89,11 @@
     <term>Open Vulnerability and Assessment Language (OVAL)</term>
     <listitem>
      <para>
-      An XML format developed and moderated by the <orgname>Center for Internet
-      Security</orgname> (CIS). It represents system information and reports results. It supports
-      platform-dependent and -independent tests. Every OVAL XML file includes oval definitions
-      related to a set of tests which are described by objects, states and variables.
+      A SCAP language in XML format developed and moderated by the <orgname>Center for Internet
+      Security</orgname> (CIS). It represents the target system configuration and reports results.
+      The language describes a desired state of resources in a declarative manner. Every OVAL XML
+      file includes oval definitions related to a set of tests which are described by objects,
+      states and variables.
      </para>
     </listitem>
    </varlistentry>
@@ -104,10 +101,11 @@
      <term>Extensible Configuration Checklist Description Format (XCCDF)</term>
      <listitem>
      <para>
-      An XML format developed by NIST. SCAP uses it for automated compliance checking and
-      scoring. It specifies security checklists, benchmarks and configuration documentation. The
-      XCCDF XML file includes a benchmark as a set of different profiles related to different
-      groups. Each group is a set of rules which have OVAL definitions. Each profile is related
+      A language in XML format developed by NIST. It is designed to express, organize, and manage
+      security guidance. SCAP uses it for automated compliance checking and scoring. It specifies
+      security checklists, benchmarks and configuration documentation. The XCCDF XML file includes
+      a benchmark as a set of different profiles related to different groups. Each group is a set
+      of rules which have OVAL definitions. Each profile is related
       to different good practices such as DISA STIG, HIPAA, PCI-DSS, or ANSSI.</para>
      </listitem>
     </varlistentry>
@@ -115,8 +113,9 @@
      <term>Common Platform Enumeration (CPE)</term>
      <listitem>
       <para>
-       An XML format maintained by NIST and NDV. It uses a standardized naming scheme for IT products
-       with the following elements:
+       A structured naming scheme to identify information technology systems, platforms, and
+       software packages. It is maintained by NIST and NDV. The naming scheme consists of the following
+       elements:
        <literal>cpe:/<replaceable>part</replaceable>:<replaceable>vendor</replaceable>:<replaceable>product</replaceable>:<replaceable>version</replaceable>:<replaceable>update</replaceable>:<replaceable>edition</replaceable>:<replaceable>language</replaceable></literal>
       </para>
      </listitem>
@@ -126,7 +125,10 @@
      <listitem>
       <para>
        An XML format which packs different SCAP components (CPE, XCCDF, OVAL) into a single file.
-       It can be used to distribute SCAP content over the network.</para>
+       It can be used to distribute SCAP content over the network. The DataStreams files are
+       very useful because they include everything you need when you want to harden and audit
+       your &sle; system.
+       </para>
      </listitem>
     </varlistentry>
   </variablelist>
