@@ -259,6 +259,13 @@
   </variablelist>
  </sect1>
 
+ <sect1>
+  <title>Vulnerability remediation</title>
+  <para>
+ <!--taroth 2022-10-20: todo: oscap, scap-workbench, oscap-ssh???, ansible playbooks, bash scripts-->
+  </para>
+ </sect1>
+
  <sect1 xml:id="openscap-terminology">
   <title>Terminology</title>
  <remark>taroth 2022-10-07: some terms to add: DISA, SCAP, NIST, STIG, HIPAA, PCI-DSS, OVAL, XCCDF,
