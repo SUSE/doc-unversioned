@@ -71,7 +71,7 @@
   <para>
    &suse; ships the <literal>Scap Security Guide</literal> toolset in the
    <package>scap-security-guide</package> RPM package. After you have installed the package,
-   find XML files for all SCAP components described in <xref linkend="openscap-components"/> in
+   find XML files for all SCAP document formats described in <xref linkend="openscap-components"/> in
    <filename>/usr/share/xml/scap/ssg/content/</filename>. They are named according to the SCAP
    component and to the &sle; codestream they apply to (code 12 or 15). The directory also holds
    XML files specific to &osuse;.
@@ -191,6 +191,66 @@
    the page to select one of the available profiles and to view a command line
    snippet how to evaluate the respective profile with &openscap;.
   </para>
+ </sect1>
+
+ <sect1 xml:id="openscap-scan">
+  <title>Scanning Targets</title>
+  <para>
+   The content provided by the <literal>SCAP User Guide</literal> can be used to scan the following targets:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>bare-metal machines</para>
+   </listitem>
+   <listitem>
+    <para>virtual machines</para>
+   </listitem>
+   <listitem>
+    <para>virtual machine images</para>
+   </listitem>
+   <listitem>
+    <para>containers</para>
+   </listitem>
+   <listitem>
+    <para>container images</para>
+   </listitem>
+  </itemizedlist>
+  <para>
+   Automated checks help to identify the target and to select only the rules that make sense for this specific
+   target. For example, checks for separate partitions make sense on bare-metal machines but not for containers.
+  </para>
+  <para>
+   Depending on your setup and the target to scan (remote or local), you can use either of the following tools:
+  </para>
+  <variablelist>
+   <varlistentry>
+    <term>oscap</term>
+    <listitem>
+     <para>
+      A command line interface that can be used to scan local machines. Both <package>oscap</package> and
+      <package>scap-security-guide</package> need to be installed on the local machine.
+     </para>
+    </listitem>
+   </varlistentry>
+    <varlistentry>
+     <term>SCAP Workbench</term>
+     <listitem>
+      <para>
+       A graphical user interface that can be used for scanning a single machine, either local or remote (via SSH).
+       <remark>taroth 2022-10-20: what about package requirements here?</remark> 
+      </para>
+     </listitem>
+    </varlistentry>
+   <varlistentry>
+    <term>oscap-ssh</term>
+    <listitem>
+     <para>
+      A command line interface that can be used to scan a remote machine via SSH with an interface resembling
+      the oscap tool. <command>oscap</command> needs to be installed on the remote machine.
+     </para>
+    </listitem>
+   </varlistentry>
+  </variablelist>
  </sect1>
 
  <sect1 xml:id="openscap-terminology">
