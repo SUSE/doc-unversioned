@@ -280,7 +280,22 @@
  <remark>taroth 2022-10-07: some terms to add: DISA, SCAP, NIST, STIG, HIPAA, PCI-DSS, OVAL, XCCDF,
   CPE, DS </remark>
   <variablelist>
-   <varlistentry>
+    <varlistentry>
+     <term>Security Content Automation Protocol (SCAP)</term>
+     <listitem>
+      <para>
+       A framework of specifications that support automated configuration, vulnerability scanning,
+       and policy compliance evaluation of systems deployed in an organization.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term>National Institute of Standards and Technology (NIST)</term>
+     <listitem>
+      <para>A physical sciences laboratory and non-regulatory agency of the United States Department of Commerce.</para>
+     </listitem>
+    </varlistentry>
+   <!--<varlistentry>
     <term>Policy</term>
     <listitem>
      <para>TBD</para>
@@ -297,7 +312,7 @@
      <listitem>
       <para>TBD</para>
      </listitem>
-    </varlistentry>
+    </varlistentry>-->
   </variablelist>
  </sect1>
 
