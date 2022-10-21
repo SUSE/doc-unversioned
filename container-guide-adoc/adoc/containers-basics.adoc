@@ -32,7 +32,7 @@ Running a container, either on a local machine or cloud service, normally involv
 . Create a `Dockerfile` and use it to build a custom image on top of the base image.
 . Use the created image to start one or more containers.
 
-To run a container, you need an image. An image includes all dependencies needed to run the application. For example, the {slea} base image contains the {slea} distribution with a minimal package selection.
+To run a container, you need an image. An image includes all dependencies needed to run the application. For example, the {slea} {bcia}-Base image contains the {slea} distribution with a minimal package selection.
 
 While it is possible to create an image from scratch, few applications would work in such an empty environment. Thus, using an existing base image is more practical in most situations. A base image has no parent, meaning it is not based on another image.
 
@@ -42,50 +42,6 @@ Both base and custom images are usually available through a repository of images
 
 To build a custom image, you must create a special file called a `Containerfile` or `Dockerfile` containing building instructions. For example, a `Dockerfile` can contain instructions to update the system software, install the desired application, open specific network ports, run commands, etc.
 
-You can build images not only from base images, but also on top of custom images. So you can have an image consisting of multiple layers.
-
 image:container-image-layers.png[image,scaledwidth=50.0%]
 
-[[sec-container-example]]
-==== Practical example
-
-The following procedure shows how to build a custom {docker} image that can be used to run a container with a simple PHP application called `example`, served using the built-in PHP development server.
-
-Install {podman}:
-
-....
-> sudo zypper in podman
-....
-
-Switch to the PHP project's directory and create a file named `Dockerfile` :
-
-....
-> cd example
-> touch Dockerfile
-....
-
-Open the `Dockerfile` file for editing and add the following:
-
-....
-FROM php:7.4-cli
-COPY . /usr/src/example
-WORKDIR /usr/src/example
-EXPOSE 8000
-CMD [ "php", "-S", "0.0.0.0:8000" ]
-....
-
-Build a container image:
-
-....
-> sudo podman build -t example .
-....
-
-Run a container:
-
-....
-> sudo podman run -it -p 8000:8000 --rm example
-....
-
-Point the browser to `localhost:8000` to access the application running in the container.
-
-Note that SUSE does not provide support for third-party images, such as the one used in this example.
+You can build images not only from base images, but also on top of custom images. So you can have an image consisting of multiple layers.

@@ -52,8 +52,8 @@ The table below provides a quick overview of the differences between {bcia}-Base
 |rpm database |&#10003; |&#10003; |&#10003; |&#10003;
 |coreutils |&#10003; |&#10003; |&#10003; |busybox
 |bash |&#10003; |&#10003; |&#10003; |&#9587;
-|rpm binary |&#10003; |&#10003; |&#9587; |&#9587;
-|rpm binary |&#10003; |&#9587; |&#9587; |&#9587;
+|rpm (binary) |&#10003; |&#10003; |&#9587; |&#9587;
+|zypper |&#10003; |&#9587; |&#9587; |&#9587;
 |===
 
 ==== {bcia}-Base and {bcia}-Init: When you need flexibility
