@@ -48,7 +48,8 @@
   <para>
    SCAP stands for <systemitem class="protocol">Security Content Automation Protocol</systemitem>.
    It is a framework of specifications that support automated configuration, vulnerability scanning,
-   and policy compliance evaluation of systems deployed in an organization.
+   and policy compliance evaluation of systems deployed in an organization. It also standardizes how
+   vulnerabilities and security configurations are communicated both to machines and human beings.
   </para>
 
   <para>&openscap; is a collection of open source tools that implement the SCAP framework, which is
