@@ -1597,8 +1597,8 @@ Warning: Permanently added '<replaceable>TRENTO_AGENT_IP</replaceable>' (ECDSA) 
             <screen>&prompt.root;<command>chmod</command> +x trento-support.sh</screen>
           </step>
           <step>
-            <para>Execute the script:</para>
-            <screen>&prompt.root;<command>./trento-support.sh</command> --output file.tgz --collect all</screen>
+            <para>Set the &k8s; config file and execute the script:</para>
+            <screen>&prompt.root;<command>KUBECONFIG=/etc/rancher/k3s/k3s.yaml ./trento-support.sh</command> --output file-tgz --collect all</screen>
           </step>
           <step>
             <para>Send the generated archive file to support for analysis.</para>
