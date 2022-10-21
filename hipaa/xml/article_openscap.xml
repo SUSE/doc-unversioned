@@ -43,13 +43,18 @@
  </info>
 
  <sect1 xml:id="openscap-whatis">
-  <title>What is &openscap;?</title>
+  <title>What are SCAP and &openscap;?</title>
 
-  <para>&openscap; is a collection of open source tools that implement the <systemitem
-    class="protocol">Security Content Automation Protocol (SCAP)</systemitem> maintained by the
-    <orgname>National Institute of Standards and Technology (NIST)</orgname>. &openscap;
-   supports automated configuration, vulnerability and patch checking, technical control compliance
-   activities, and security measurement.</para>
+  <para>
+   SCAP stands for <systemitem class="protocol">Security Content Automation Protocol</systemitem>.
+   It is a framework of specifications that support automated configuration, vulnerability scanning,
+   and policy compliance evaluation of systems deployed in an organization.
+  </para>
+
+  <para>&openscap; is a collection of open source tools that implement the SCAP framework, which is
+   maintained by the <orgname>National Institute of Standards and Technology (NIST)</orgname>.
+   &openscap; has received the SCAP 1.2 certification by NIST in 2014.
+  </para>
  </sect1>
 
  <sect1 xml:id="openscap-benefits">
@@ -81,20 +86,16 @@
  </sect1>
 
  <sect1 xml:id="openscap-components">
-  <title>SCAP Components and their interaction</title>
+  <title>SCAP Components</title>
   <para>
-   SCAP consists of the following components which interact with each other.
+   SCAP consists of the following important components which interact with each other.
   </para>
   <variablelist>
    <varlistentry>
     <term>Open Vulnerability and Assessment Language (OVAL)</term>
     <listitem>
      <para>
-      A SCAP language in XML format developed and moderated by the <orgname>Center for Internet
-      Security</orgname> (CIS). It represents the target system configuration and reports results.
-      The language describes a desired state of resources in a declarative manner. Every OVAL XML
-      file includes oval definitions related to a set of tests which are described by objects,
-      states and variables.
+      An XML format for testing the presence of a specific state.
      </para>
     </listitem>
    </varlistentry>
@@ -102,12 +103,10 @@
      <term>Extensible Configuration Checklist Description Format (XCCDF)</term>
      <listitem>
      <para>
-      A language in XML format developed by NIST. It is designed to express, organize, and manage
-      security guidance. SCAP uses it for automated compliance checking and scoring. It specifies
-      security checklists, benchmarks and configuration documentation. The XCCDF XML file includes
-      a benchmark as a set of different profiles related to different groups. Each group is a set
-      of rules which have OVAL definitions. Each profile is related
-      to different good practices such as DISA STIG, HIPAA, PCI-DSS, or ANSSI.</para>
+      An XML format that specifies security checklists, benchmarks, and configuration
+      documentation. The XCCDF file includes a benchmark as a set of different profiles
+      related to different groups. Each group is a set of rules which have OVAL definitions.
+      Each profile is related to different good practices such as STIG, HIPAA, PCI-DSS, or ANSSI.</para>
      </listitem>
     </varlistentry>
     <varlistentry>
@@ -130,6 +129,14 @@
        very useful because they include everything you need when you want to harden and audit
        your &sle; system.
        </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term>Common Configuration Enumeration (CCE)</term>
+     <listitem>
+      <para>
+       Unique identifiers to security-related system configuration issues.
+      </para>
      </listitem>
     </varlistentry>
   </variablelist>
