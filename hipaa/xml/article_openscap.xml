@@ -270,9 +270,24 @@
 
  <sect1>
   <title>Vulnerability remediation</title>
+  <!--taroth 2022-10-20: todo: oscap, scap-workbench, ansible playbooks, bash scripts-->
   <para>
- <!--taroth 2022-10-20: todo: oscap, scap-workbench, oscap-ssh???, ansible playbooks, bash scripts-->
+   The security policy profiles in the <literal>SCAP User Guide</literal> can not only be used to scan a
+   target system and to generate reports, but also to apply fixes automatically to the target system
+   (<literal>remediation</literal>), if possible.
   </para>
+  <important>
+   <title>Automatic remediation not always available</title>
+   <para>
+    Automatic remediation is <emphasis>not</emphasis> offered in case the automatic application of a fix
+    is too dangerous to be enforced in a running target system.
+   </para>
+  </important>
+  <para>
+   You can use one of the following tools to remediate a target system according to a profile from the
+   <literal>SCAP User Guide</literal>:
+  </para>
+
  </sect1>
 
  <sect1 xml:id="openscap-terminology">
