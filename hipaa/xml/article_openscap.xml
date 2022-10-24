@@ -277,7 +277,7 @@
 
  <sect1 xml:id="openscap-terminology">
   <title>Terminology</title>
- <remark>taroth 2022-10-07: some terms to add: DISA, SCAP, NIST, STIG, HIPAA, PCI-DSS, OVAL, XCCDF,
+ <remark>taroth 2022-10-07: some terms to add: DISA, STIG, HIPAA, PCI-DSS, OVAL, XCCDF,
   CPE, DS </remark>
   <variablelist>
     <varlistentry>
