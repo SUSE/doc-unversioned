@@ -284,10 +284,62 @@
    </para>
   </important>
   <para>
-   You can use one of the following tools to remediate a target system according to a profile from the
-   <literal>SCAP User Guide</literal>:
+   &openscap; allows to automatically remediate target systems that have been found in a non-compliant state.
+   This requires an XCCDF file with instructions. The overall process is as follows:
   </para>
-
+  <procedure>
+   <step>
+    <para>
+     The <command>oscap</command> command line tool performs a system scan.
+    </para>
+   </step>
+   <step>
+    <para>
+     Each rule that fails is marked as a candidate for remediation.
+    </para>
+   </step>
+   <step>
+    <para>
+     Within the XCCDF file, <command>oscap</command> then searches for an appropriate
+     &gt;xccdf:fix&lt; element, resolves it, prepares the environment, and executes the
+     fix script. The fix scripts can be either Bash <filename>*.sh</filename> files
+     or Ansible playbook <filename>*.yml</filename> files.
+    </para>
+   </step>
+   <step>
+    <para>
+     After the execution of the script, the respective rule is evaluated again to check if the fix was
+     successful.
+    </para>
+   </step>
+  </procedure>
+  <para>
+   All results of the remediation are stored in an output XCCDF file.
+  </para>
+  <para>
+   For remediating a target system with <command>oscap</command>, you have the following options:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     You can remediate a target system while you are scanning it. In this case, evaluation and
+     remediation are performed as a part of a single command.</para>
+   </listitem>
+   <listitem>
+    <para>
+     You can remediate a target system after you have scanned it. In the first step, the system is only evaluated,
+     and the results are stored in the XCCDF results file. In the second step,
+     <command>oscap</command> executes the fix scripts and verifies the result.
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     The review mode allows to save remediation instructions to a file for further review. The remediation content
+     is not executed during this operation.
+    </para>
+   </listitem>
+  </itemizedlist>
+  <!--taroth 2022-10-24: add code examples for oscap commands-->
  </sect1>
 
  <sect1 xml:id="openscap-terminology">
