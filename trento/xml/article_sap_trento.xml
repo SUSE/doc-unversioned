@@ -38,6 +38,16 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
   <title>Getting started with &trentopremium;</title>
   <subtitle>&sles4sapreg;</subtitle>
   <info>
+    <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
+      <dm:bugtracker>
+        <dm:url>https://bugzilla.suse.com/enter_bug.cgi</dm:url>
+        <dm:component>Documentation</dm:component>
+        <dm:product>SUSE Linux Enterprise Server for SAP Applications 15 SP4</dm:product>
+        <dm:assignee>thomas.schraitle@suse.com</dm:assignee>
+      </dm:bugtracker>
+      <dm:editurl>https://github.com/SUSE/doc-unversioned/edit/main/trento/xml/</dm:editurl>
+      <dm:translation>no</dm:translation>
+    </dm:docmanager>
     <abstract>
       <para>
        &trentopremium; is an open cloud-native web console that aims to help
