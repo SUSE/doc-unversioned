@@ -3,6 +3,6 @@
 MAIN="book-container.adoc"
 ADOC_POST=yes
 ADOC_TYPE=book
-ADOC_POST_STYLE="adoc_postprocess.xsl"
+# ADOC_POST_STYLE="adoc_postprocess.xsl"
 STYLEROOT="/usr/share/xml/docbook/stylesheet/suse2022-ns"
 DOCBOOK5_RNG_URI="http://docbook.org/xml/5.1/rng/docbookxi.rng"
