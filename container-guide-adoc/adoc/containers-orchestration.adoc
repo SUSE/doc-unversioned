@@ -1,0 +1,47 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[[cha-orchestration]]
+== Container orchestration
+
+[[sec-pod-deployment-with-podman]]
+=== Pod deployment with {podman}
+
+In addition to building and managing images, {podman} makes it possible to work with pods. A pod is a group of one or more containers with shared resources, such as the network interface. A pod encapsulates an application composed of multiple containers into a single unit.
+
+The `podman pod` can be used to create, delete, query, and inspect pods. To create a new pod, run the `podman pod
+   create` command. This creates a pod with a random name. To list the existing pods, use the `podman pod list` command. To view a list of running pods, run `podman ps -a --pod`. The output of the command looks as follows (the `STATUS` and `CREATED` columns are omitted for brevity):
+
+....
+POD ID        NAME                # OF CONTAINERS   INFRA ID
+399a120a09ff  suspicious_curie    1                 e57820093817
+....
+
+Notice that the command assigned a random name to the pod (`suspicious_curie` in this case). You can use the `--name` parameter to assign the desired name to a pod.
+
+To examine the pod and its contents, run the `podman ps -a
+   --pod` command and take a look at the output (the `COMMAND`, `CREATED`, `STATUS`, `PORTS`, and `POD
+   ID` columns are omitted for brevity):
+
+....
+CONTAINER ID  IMAGE                 NAMES              PODNAME
+e57820093817  k8s.gcr.io/pause:3.2  399a120a09ff-infra suspicious_curie
+....
+
+The created pod has an `infra` container identified by the `k8s.gcr.io` name. The purpose of this container is to reserve the namespaces associated with the pod and allow {podman} to add other containers to the pod.
+
+Using the `podman run --pod` command, you can run a container and add it to the desired pod. For example, the command below runs a container based on the `suse/sle15` image and adds the container to the `suspicious_curie` pod:
+
+....
+podman run -d --pod suspicious_curie registry.suse.com/suse/sle15 sleep 1h
+....
+
+The command above adds a container that sleeps for 60 minutes and then exits. Run the `podman ps -a --pod` command again and you should see that the pod now has two containers.
+
+Containers in a pod can be restarted, stopped, and started without affecting the overall status of the pod. For example, you can stop a container using the `sudo podman stop CONTAINER_NAME` command.
+
+To stop the pod, use the `podman pod stop` command:
+
+....
+podman pod stop suspicious_curie
+....

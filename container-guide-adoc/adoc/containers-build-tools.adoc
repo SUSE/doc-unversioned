@@ -1,0 +1,55 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[[cha-containers-build]]
+== Tools for building images and managing containers
+
+This chapter provides a brief overview of tools for building images and managing containers. Most of the tools mentioned below are part of the *{sles} {productnumber} Containers Module*. You can see the full list of packages in the *Containers Module* in the https://scc.suse.com/packages[{scc}].
+
+[[sec-build-tools]]
+=== Tools available to customers
+
+[[sec-build-tools-docker]]
+==== {docker}
+
+{docker} is a system for creating and managing containers. Its core is the {docker} Open Source Engine&#8212;a lightweight virtualization solution to run containers simultaneously on a single host. {docker} containers are be built using Dockerfiles.
+
+[[sec-build-tools-podman]]
+==== {podman}
+
+{podman} stands for Pod Manager tool. It is a daemonless container engine for developing, managing, and running Open Container Initiative (OCI) containers on a Linux system, and it offers a drop-in alternative for {docker}. {podman} is the default container runtime in {opensuse} Kubic&#8212;a certified Kubernetes distribution built on top of {opensuse}. For a general introduction to {podman}, refer to <<cha-podman-overview>>.
+
+[[sec-build-tools-buildah]]
+==== {buildah}
+
+{buildah} facilitates building OCI container images. It is a complementary tool to {podman}, and ` podman build ` uses {buildah} to perform container image builds. {buildah} makes it possible to build images from scratch, from existing images, and using Dockerfiles. OCI images built using the {buildah} command-line tool and the underlying OCI-based technologies (for example, `containers/image` and `containers/storage` ) are portable and can therefore run in a {deng} environment.
+
+For information on installing and using {buildah}, refer to <<cha-buildah-overview>>.
+
+[[sec-internal-build-tools]]
+=== SUSE build tools
+
+[[sec-internal-build-tools-obs]]
+==== Open Build Service
+
+The Open Build Service (OBS) provides free infrastructure for building and storing RPM packages including various container formats. The https://registry.opensuse.org/cgi-bin/cooverview[OBS Container Registry] provides a detailed listing of all container images built by the OBS, complete with commands for pulling the images into your local {docker} environment. The OBS {opensuse} https://build.opensuse.org/image_templates[container image templates] can be modified to specific needs, which offers the easiest way to create your own container branch. Container images can be built with native {docker} tools from an existing image using a `Dockerfile`. Alternatively, images can be built from scratch using the {kiwi} image-building solution.
+
+Instructions on how to build images on OBS can be found at https://openbuildservice.org/2018/05/09/container-building-and-distribution/.
+
+[[sec-internal-build-tools-kiwi]]
+==== {kiwi}
+
+{kiwi} Next Generation is a multi-purpose tool for building images. In addition to container images, regular installation ISO images, and images for virtual machines, {kiwi} can build images that boot via PXE or Vagrant boxes. The main building block in {kiwi} is an image XML description, a directory that includes the `config.xml` or `.kiwi` file along with scripts or configuration data. The process of creating images with {kiwi} is fully automated and does not require any user interaction. Any information required for the image creation process is provided by the primary configuration file `config.xml`. The image can be customized using the `config.sh` and `images.sh` scripts.
+
+NOTE: It is important to distinguish between {kiwi} NG (currently version 9.20.9) and its unmaintained legacy versions (7.x.x or older), now called https://documentation.suse.com/kiwi/[{kiwi} Legacy].
+
+For specific information on how to install {kiwi} and use it to build images, see the http://osinside.github.io/kiwi/[{kiwi} documentation]. A collection of example image descriptions can be found on the https://github.com/OSInside/kiwi-descriptions[{kiwi} GitHub repository].
+
+{kiwi}'s man pages provide information on using the tool. To access the man pages, install the `kiwi-man-pages`` package.
+
+[[sec-building-official-slea-images]]
+=== Building official {slea} images
+
+Images are considered official only if they are built using the Internal Build Service.
+
+There are no official {slea} container images at https://build.opensuse.org, and the RPMs exported there are not identical to the internal ones. This means that it is not possible to build officially supported images at https://build.opensuse.org.
