@@ -76,18 +76,117 @@
 
   <para>
    &suse; ships the <literal>SCAP Security Guide</literal> (SSG) toolset in the
-   <package>scap-security-guide</package> RPM package. It contains the latest set of security polices for
-   Linux systems. After you have installed the package, the SSG security content is available
-   in <filename>/usr/share/xml/scap/ssg/content/</filename>. It consists of several SCAP components,
-   which are all based on XML. All XML files in that directory are named according to the SCAP
-   component and to the &sle; codestream they apply to (code 12 or 15). The directory also holds
-   XML files specific to &osuse;.
-  </para>
-  <!--taroth 2022-10-20: add directory overview (varlist or table)-->
+   <package>scap-security-guide</package> RPM package. It contains the latest set
+   of security polices for Linux systems. The <literal>SCAP Security Guide</literal>
+   is maintained upstream in the <link xlink:href="https://github.com/ComplianceAsCode/"
+    >ComplianceAsCode</link> repository.
+   </para>
+   <para>
+   After you have installed the package, the SSG security content and the related files
+   are available in your system from the following directories:</para>
+  <variablelist>
+   <title>Overview of files and directories</title>
+   <varlistentry>
+    <term><filename>/usr/share/xml/scap/ssg/content/</filename></term>
+    <listitem>
+     <para>
+      Contains the SSG security content. It consists of several <xref linkend="openscap-components"
+      xrefstyle="title"/>, which are all based on XML. All XML files in that directory are named
+      according to the SCAP component and to the &sle; codestream they apply to (code 12 or 15).
+      The directory also holds XML files specific to &osuse;.
+     </para>
+    </listitem>
+   </varlistentry>
+    <varlistentry>
+     <term><filename>/usr/share/doc/scap-security-guide/guides/</filename></term>
+     <listitem>
+      <para>
+       Contains profiles for different hardening policies in human-readable format.
+       They describe the profiles that are included in the Datastream files.
+       The profiles applicable to &sle; are codestream-specific and differ between
+       code 12 and code 15. Each profile is a guide how to secure your operating system
+       according to a regulation that you want your system to comply with.
+      </para>
+      <para>
+       The guides usually have the following structure:
+      </para>
+      <itemizedlist>
+       <listitem>
+        <para>
+         Short description.
+        </para>
+       </listitem>
+       <listitem>
+        <para>
+         Profile Title. For example: <citetitle>DISA STIG for &sle; 15</citetitle>
+        </para>
+       </listitem>
+       <listitem>
+        <para>
+         Profile ID. For example: <citetitle>xccdf_org.ssgproject.content_profile_stig</citetitle>
+        </para>
+       </listitem>
+       <listitem>
+        <para>
+         Revision History. Information about the current version and status of the profile.
+         For example: <citetitle>xccdf_org.ssgproject.content_profile_stig</citetitle>
+        </para>
+       </listitem>
+       <listitem>
+        <para>
+         Platforms (in CPE notation). Which product or system the profile applies to.
+         For example: <citetitle>cpe:/o:suse:linux_enterprise_server:15</citetitle>
+        </para>
+       </listitem>
+       <listitem>
+        <para>
+         A table of contents.
+        </para>
+       </listitem>
+       <listitem>
+        <para>
+         A checklist which consists of groups (and subgroups) with rules.
+        </para>
+        <para>
+         Each rule consists of a short description, the rationale behind the rule,
+         a severity (low, medium, or high) and a unique identifier in 
+         <literal>Common Configuration Enumeration (CCE)</literal> format. The CCE number
+         for each number is provided to &suse; by NIST.
+        </para>
+        <para>
+         Each rule also provides a list of references. Rules can belong to more than one standard
+         in information security, so they can have different identifiers. Each reference is a unique
+         identifier for that rule in the nomenclature of the respective standard. For example, the rule
+         which is known by the unique identifier <literal>CCE-83289-9</literal> in STIG is also known by
+         the unique identifier <literal>A.12.4.1</literal> in ISO/IEC 27001:2013.
+        </para>
+        <para>
+         If remediation options exist for a rule, they are listed in different formats.
+        </para>
+       </listitem>
+      </itemizedlist>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><filename>/usr/share/scap-security-guide</filename></term>
+     <listitem>
+      <para>
+       Contains subdirectories with fix scripts which can be used to remediate the target system
+       in case a vulnerability is found during a scan. Fix scripts can be available in the following
+       two formats: Shell scripts (<filename>bash/<replaceable>*.sh</replaceable></filename>) and Ansible
+       snippets <filename>ansible/<replaceable>*.yml</replaceable></filename>.
+       <remark>taroth 2022-10-28: I suppose SUSE does not support nor ship the following formats:
+       'Puppet snippet' and 'OSBuild Blueprint' snippet - at least there are no subdirectories within
+       /usr/share/scap-security-guide (apart from an empty kickstart directory, which probably should
+       not be there at all?!?)</remark>
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
  </sect1>
 
  <sect1 xml:id="openscap-components">
-  <title>SCAP Components</title>
+  <title>SCAP components</title>
   <para>
    SCAP consists of the following important components which interact with each other.
   </para>
@@ -148,7 +247,7 @@
   <para>The <literal>Scap Security Guide</literal> contains multiple
    profiles. The profiles applicable to &sle; are codestream-specific
    and differ between code 12 and code 15.</para>
-  <para>They are hosted in the <link
+  <para>They are maintained and hosted in the upstream <link
    xlink:href="https://github.com/ComplianceAsCode/"
    >ComplianceAsCode</link> repository: </para>
   <itemizedlist>
@@ -168,22 +267,11 @@
    </listitem>
   </itemizedlist>
   <para>
-   Human-readable versions of the profiles are available in your
-   installed system under:</para>
-  <itemizedlist>
-   <listitem>
-    <para>
-     <filename>/usr/share/doc/scap-security-guide/guides/ssg-sle15-guide-stig.html</filename>
-    </para>
-   </listitem>
-   <listitem>
-    <para>
-     <filename>/usr/share/doc/scap-security-guide/guides/ssg-sle12-guide-stig.html</filename>
-    </para>
-   </listitem>
-  </itemizedlist>
+   Human-readable versions of the profiles are available in your installed system in
+   <filename>/usr/share/doc/scap-security-guide/guides</filename>.
+  </para>
   <para>
-   Alternatively, find the same content online at:
+   Alternatively, find the same content online as static HTML pages:
   </para>
   <itemizedlist>
    <listitem>
@@ -201,6 +289,86 @@
    the page to select one of the available profiles and to view a command line
    snippet how to evaluate the respective profile with &openscap;.
   </para>
+  <informalfigure>
+   <mediaobject>
+    <imageobject role="fo">
+     <imagedata fileref="openscap-ssg-static-html.png" width="95%"></imagedata>
+    </imageobject>
+    <imageobject role="html">
+     <imagedata fileref="openscap-ssg-static-html.png" width="90%"></imagedata>
+    </imageobject>
+   </mediaobject>
+  </informalfigure>
+  <para>
+   The following profiles are available:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     ANSSI-BP-028 (enhanced)
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     ANSSI-BP-028 (high)
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     ANSSI-BP-028 (intermediary)
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     ANSSI-BP-028 (minimal)
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     CIS SUSE &sle; 15 Benchmark Level 2 (Workstation)
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     CIS &sle; 15 Benchmark for Level 1 (Server)
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     CIS &sle; 15 Benchmark for Level 1 (Workstation)
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     CIS &sle; 15 Benchmark for Level 2 (Server)
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     DISA STIG for &sle; 15
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Health Insurance Portability and Accountability Act (HIPPA)
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     PCI-DSS v.3.2.1 Control Baseline for &sle; 15
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Public Cloud Hardening for &sle; 15
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     Standard System Security Profile for &sle; 15
+    </para>
+   </listitem>
+  </itemizedlist>
  </sect1>
 
  <sect1 xml:id="openscap-scan">
