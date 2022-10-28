@@ -1696,15 +1696,15 @@ trento-server-runner-*</screen>
         </step>
         <step>
           <para>Retrieve details about one particular pod:</para>
-          <screen>&prompt.user;<command>kubectl pod</command> <replaceable>POD_NAME</replaceable></screen>
+          <screen>&prompt.user;<command>kubectl describe pod</command> <replaceable>POD_NAME</replaceable></screen>
         </step>
         <step>
           <para>Retrieve the log of one particular pod:</para>
-          <screen>&prompt.user;<command>kubectl log</command> <replaceable>POD_NAME</replaceable></screen>
+          <screen>&prompt.user;<command>kubectl logs</command> <replaceable>POD_NAME</replaceable></screen>
         </step>
         <step>
           <para>Follow the log of one particular pod:</para>
-          <screen>&prompt.user;<command>kubectl log</command> <replaceable>POD_NAME</replaceable> --follow</screen>
+          <screen>&prompt.user;<command>kubectl logs</command> <replaceable>POD_NAME</replaceable> --follow</screen>
         </step>
       </procedure>
     </section>
