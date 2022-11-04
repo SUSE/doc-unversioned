@@ -1,5 +1,6 @@
 MAIN=book-container.adoc
 ADOC_POST=yes
 ADOC_TYPE=book
-STYLEROOT=/usr/share/xml/docbook/stylesheet/suse2022-ns
+STYLEROOT="/usr/share/xml/docbook/stylesheet/suse2022-ns"
+FALLBACK_STYLEROOT="/usr/share/xml/docbook/stylesheet/suse2022-ns"
 DOCBOOK5_RNG_URI="http://docbook.org/xml/5.1/rng/docbookxi.rng"
