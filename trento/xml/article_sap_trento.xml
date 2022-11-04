@@ -55,14 +55,6 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
        &sap; environments, including HA features.
       </para>
     </abstract>
-
-    <dm:bugtracker xmlns:dm="urn:x-suse:ns:docmanager">
-      <dm:url>https://bugzilla.suse.com/enter_bug.cgi</dm:url>
-      <dm:product>Documentation</dm:product>
-      <dm:component>Trento</dm:component>
-      <dm:assignee>thomas.schraitle@suse.com</dm:assignee>
-    </dm:bugtracker>
-
     <xi:include href="common_copyright_gfdl.xml" />
     </info>
 
@@ -794,7 +786,731 @@ Warning: Permanently added '<replaceable>TRENTO_AGENT_IP</replaceable>' (ECDSA) 
     </procedure>
   </section>
 
-  <section xml:id="sec-trento-webconsole">
+
+  <!--
+  Split section sec-trento-webconsole in two sections:
+
+  1. Configuration:
+     Where we describe the different configuration options currently available in the console.
+     Particularly:
+     - cluster settings (we can reutilize the existing content)
+     - tags on overviews (hosts, clusters, sap systems, HANA databases)
+  2. Use cases:
+     dashboard description (we can reutilize the exiting content)
+     - what to do when host status is not green
+     - what to do when pacemaker cluster status is not green
+     - what to do when database status is not green
+     - what to do wen SAP instances status is not green
+  -->
+  <section xml:id="sec-trento-checks">
+    <title>Performing configuration checks</title>
+    <para>
+      One of Trentos main feature is to provide checks for your SAP Landscape.
+      To run these checks, proceed as follows:
+    </para>
+    <procedure xml:id="pro-trento-checks">
+      <title>Performing configuration checks</title>
+      <step>
+        <para>Log in to Trento</para>
+      </step>
+      <step>
+        <para>In the Trento dashboard, click <guimenu>Cluster</guimenu>.</para>
+      </step>
+      <step>
+        <para>In the list, search for a cluster, for example a &hana; cluster.</para>
+      </step>
+      <step>
+        <para>Click the respective cluster name in the name column. The details view opens.</para>
+        <remark>tom 2023-01-16: screenshot</remark>
+        <figure>
+          <title>&pace; cluster details</title>
+          <mediaobject>
+            <imageobject>
+              <imagedata width="70%" fileref="trento-web-pacemaker-cluster-details-view.png"/>
+            </imageobject>
+          </mediaobject>
+        </figure>
+      </step>
+      <step xml:id="st-trento-checks-settings">
+        <para>Click <guimenu>Settings</guimenu>. The cluster settings for the respective cluster opens, see
+          <xref linkend="fig-pacemaker-clustersettings"/>.</para>
+        <figure xml:id="fig-pacemaker-clustersettings">
+          <title>&pace; Cluster Settings</title>
+          <mediaobject>
+            <imageobject>
+              <imagedata width="70%" fileref="trento-web-pacemaker-clustersettings.png"/>
+            </imageobject>
+          </mediaobject>
+        </figure>
+      </step>
+      <step>
+        <para> In the cluster settings, the checks are grouped into categories,
+          see <xref
+            linkend="fig-pacemaker-clustersettings" />. To view all the
+          corresponding checks for a category, click the category. Enable all
+          the checks you want to execute. Repeat it for other categories.
+        </para>
+      </step>
+      <step>
+        <para>
+          Click the button <guimenu>Select Checks for Execution</guimenu>. To really execute the checks, click
+          the button that appears on the right side.
+          <remark>tom 2023-01-16: Why is this a two-step process?</remark>
+        </para>
+      </step>
+      <step>
+        <para>
+          Investigate the result in the result table. Each row in this table shows you an
+          ID of the check, a short description and the result, see <xref linkend="fig-pacemaker-checkresult"/>
+        </para>
+        <figure xml:id="fig-pacemaker-checkresult">
+          <title>Check results for a cluster</title>
+          <mediaobject>
+            <imageobject>
+              <imagedata width="70%" fileref="trento-web-checkresult.png"/>
+            </imageobject>
+          </mediaobject>
+        </figure>
+        <para>
+          Use the filter to reduce the list to only show, for example, critical results.
+        </para>
+        <para>
+          Click the corresponding row to open the details view of this check. This shows you
+          an abstract and how to remedy the problem. Further links gives you the context.
+          Close the view with the <keycap function="escape"/> key or click outside of view.
+        </para>
+      </step>
+    </procedure>
+    <para>
+      The result is stored. You can view it at any time.
+    </para>
+  </section>
+
+  <section xml:id="sec-trento-use-webconsole">
+    <title>Using &t.web;</title>
+    <para>
+      When you access the Trento web console for the first time, it asks
+      to accept the license. Click <guimenu>Accept</guimenu> to continue.
+    </para>
+    <para>
+      After you have accepted the license, Trento can be used.
+      The left sidebar in the &t.web; contains the following entries: </para>
+    <itemizedlist>
+      <listitem>
+        <formalpara>
+          <title><guimenu>Dashboard</guimenu></title>
+          <para> Determine at a glance the health status of your &sap;
+            environment.</para>
+        </formalpara>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title><guimenu>Hosts</guimenu></title>
+          <para>Overview of all registered hosts running the &t.agent;.
+          </para>
+        </formalpara>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title><guimenu>Clusters</guimenu></title>
+          <para>Overview of all discovered &pace; clusters.
+          </para>
+        </formalpara>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title><guimenu>&sap; Systems</guimenu></title>
+          <para>Overview of all discovered &sap; Systems; identified by the
+            corresponding system IDs.
+          </para>
+        </formalpara>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title><guimenu>HANA Databases</guimenu></title>
+          <para> Overview of all discovered &hana; databases; identified by
+            the corresponding system IDs. </para>
+        </formalpara>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title><guimenu>Checks catalog</guimenu></title>
+          <para> Overview of all catalog of configuration checks that Trento may
+            carry out for the different cluster components (&pace;, &corosync;,
+            SBD, etc.) in any of the supported platforms: Azure, AWS or GCP. </para>
+        </formalpara>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title><guimenu>Settings</guimenu></title>
+          <para>
+            It lets you retrieve the API key for this particular installation.
+          </para>
+        </formalpara>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title><guimenu>About</guimenu></title>
+          <para> Shows the Trento flavor, the current server version, a link to
+            the GitHub repository of the Trento web component, and the number of
+            registered &sles4sap;&nbsp;subscriptions. </para>
+        </formalpara>
+      </listitem>
+    </itemizedlist>
+
+    <section xml:id="sec-trento-health">
+      <title>Getting the global health state</title>
+      <para>
+        The dashboard allows you to determine at a glance the health status of your &sap; environment.
+        From the sidebar on the left, click <guimenu>Dashboard</guimenu>.
+      </para>
+      <para>
+        The health status of a registered &sap; system is the compound of its health status at
+        four<remark>tom 2023-01-16: really? In former times, we had a grey state, but it seems it vanished.</remark>
+        different layers, which are a reflection of the &sap; architecture:
+      </para>
+      <itemizedlist>
+        <listitem>
+          <formalpara>
+            <title><guimenu>Hosts</guimenu>:</title>
+            <para>it collects the running status of the &t.agent; and the Node Exporter.</para>
+          </formalpara>
+        </listitem>
+        <listitem>
+          <formalpara>
+            <title><guimenu>&pace; Clusters</guimenu>:</title>
+            <para>the status here is based on the running status of the cluster and the results
+              of the configuration checks.</para>
+          </formalpara>
+        </listitem>
+        <listitem>
+          <formalpara>
+            <title><guimenu>Database</guimenu>:</title>
+            <para>it collects the status of the HANA instances as returned by <command>sapcontrol</command>.</para>
+          </formalpara>
+        </listitem>
+        <listitem>
+          <formalpara>
+            <title><guimenu>SAP instances</guimenu>:</title>
+            <para>it summarizes the status of the ABAP instances as returned by <command>sapcontrol</command>.</para>
+          </formalpara>
+        </listitem>
+      </itemizedlist>
+
+      <para>
+        The dashboard contains the following states (see <xref linkend="fig-trento-web-home"/>):
+      </para>
+      <figure xml:id="fig-trento-web-home">
+        <title>Dashboard with the global health state</title>
+        <mediaobject>
+          <imageobject>
+            <imagedata width="80%" fileref="trento-web-home.png" />
+          </imageobject>
+        </mediaobject>
+      </figure>
+      <variablelist xml:id="vl-health-states">
+        <title>The three different health states</title>
+        <varlistentry>
+          <term><guimenu>Passing</guimenu></term>
+          <listitem>
+            <para>
+              Contains the number of systems that pass all checks.
+              A system in a passing state is functional and all checks have passed.
+              <remark>... add some further remarks what the user can expect.</remark>
+              For a system global health status to be <emphasis>Passing</emphasis>,
+              all components must be in passing (green) status.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guimenu>Warning</guimenu></term>
+          <listitem>
+            <para>
+              Contains the number of systems with needed to be investigated further.
+              A system with at least one component in warning (yellow) status, but no
+              components in critical (red) status, will be computed as
+              <emphasis>Warning</emphasis> in the global health section.
+              As administrator, you should check these systems and follow the recommendations
+              in the checks result.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guimenu>Critical</guimenu></term>
+          <listitem>
+            <para>
+              Contains the number of critical systems.
+              A system with at least one component in critical (red) status, will be computed
+              as <emphasis>Critical</emphasis> in the global health section.
+              As administrator, these systems are usually broken and need to be repaired.
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <para>
+        Every part of the dashboard as <guimenu>Hosts</guimenu>, <guimenu>Clusters</guimenu>,
+        <guimenu>SAP Systems</guimenu>, or <guimenu>HANA Databases</guimenu> contains their
+        individual health summary.
+      </para>
+
+      <remark>tom 2023-01-16: Do we still have a grey state?</remark>
+      <para>
+        A grey status is returned when either a component does not exist, or it is stopped
+        (as returned by <command>sapcontrol</command>), or its status is unknown (for instance
+        if a command to determine the status fails).
+      </para>
+      <para> Grey statuses are not counted in the calculation of the global health status.</para>
+
+    </section>
+
+    <section xml:id="sec-trento-status">
+      <title>Viewing the status</title>
+      <para>
+        Getting to know the status of a system is a important task for every
+        administrator. The status allows you to see if some of your systems need
+        to be examined further.
+      </para>
+      <para>
+        The following subsection gives you an overview of specific parts of your
+        SAP Landscape to show their state. Each status site shows you an overview of
+        the health states (see details in <xref linkend="vl-health-states"/>).
+      </para>
+
+      <section xml:id="sec-trento-status-hosts">
+        <title>Viewing the status of hosts</title>
+        <para>To display the lists of registered hosts and their details, proceed as follows:</para>
+        <procedure>
+          <step>
+            <para>Log in to the &t.web; console.</para>
+          </step>
+          <step>
+            <para>Click the <guimenu>Hosts</guimenu> entry in the left sidebar to show a summary
+              of the state for all hosts (see <xref linkend="fig-trento-status-hosts"/>).
+            </para>
+            <figure xml:id="fig-trento-status-hosts">
+              <title>Hosts entry</title>
+              <mediaobject>
+                <imageobject>
+                  <imagedata width="80%" fileref="trento-web-hosts-view.png" />
+                </imageobject>
+              </mediaobject>
+            </figure>
+          </step>
+          <step>
+            <para>
+              To investigate the specific host details, click the host name in the respective column
+              to open the corresponding <guimenu>Host details</guimenu> view.
+              If the list is too big, reduce the list by providing filters.
+            </para>
+            <para>
+              Clicking on a host name opens the corresponding <guimenu>Host details</guimenu> view.
+              This view provides the following:
+            </para>
+            <itemizedlist xml:id="lst-trento-web-hosts-details">
+              <title><guimenu>Host details</guimenu> view</title>
+              <listitem>
+                <para><guimenu>Hosts details</guimenu> section: it shows the
+                  status of both the &t.agent; and the Node Exporter and
+                  provides the host name, the cluster name (when applicable) and
+                  the &t.agent; version. </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <guimenu>Monitoring dashboard</guimenu>: it shows the CPU and
+                  Memory usage for the specific hosts. </para>
+                <informalfigure>
+                  <mediaobject>
+                    <imageobject>
+                      <imagedata width="80%"
+                        fileref="trento-web-hosts-dashboard-cpu-memory.png" />
+                    </imageobject>
+                  </mediaobject>
+                </informalfigure>
+              </listitem>
+              <listitem>
+                <para><guimenu>Provider details</guimenu> section: when applicable,
+                  it shows the name of the cloud provider, the name of the virtual machine,
+                  the name of the  resource group it belongs to, the location, the size of the
+                  virtual machine, and other information. </para>
+              </listitem>
+              <listitem>
+                <para><guimenu>&sap; instances</guimenu> section: when applicable,
+                  lists the ID, SID, type, features, and instance number of any &sap;
+                  instance running on the host (&netweaver; or &hana;).</para>
+              </listitem>
+              <listitem>
+                <para><guimenu>&suse; subscription details</guimenu> section: it
+                  lists the different components or modules that are part of the
+                  subscription and for each one of them it provides the
+                  architecture, the version and type, the registration and
+                  subscription status as well as the start and end dates of the
+                  subscription. </para>
+              </listitem>
+            </itemizedlist>
+          </step>
+        </procedure>
+      </section>
+      <section xml:id="sec-trento-status-pacemakerclusters">
+        <title>Viewing the &pace; cluster status</title>
+        <para>
+          To display a list of all available &pace; clusters and their details, proceed as follows:
+        </para>
+        <procedure>
+          <step>
+            <para>Log in to the &t.web; console.</para>
+          </step>
+          <step>
+            <para>Click the <guimenu>Clusters</guimenu> entry in the left sidebar to show a summary
+              of the state for all &pace; clusters (see <xref linkend="fig-trento-status-pacemakerclusters"/>).
+            </para>
+            <figure xml:id="fig-trento-status-pacemakerclusters">
+              <title>&pace; clusters</title>
+              <mediaobject>
+                <imageobject>
+                  <imagedata width="80%" fileref="trento-web-pacemaker-view.png" />
+                </imageobject>
+              </mediaobject>
+            </figure>
+          </step>
+          <step>
+            <para>
+              To investigate the specific &pace; cluster details, click the cluster name in the
+              respective column to open the corresponding <guimenu>&pace; cluster details</guimenu> view.
+              If the list is too big, reduce the list by providing filters.
+            </para>
+            <para> This view provides the following: </para>
+            <itemizedlist>
+              <title><guimenu>&pace; cluster details</guimenu> view</title>
+              <listitem>
+                <para> A <guimenu>Settings</guimenu>, <guimenu>Show
+                    Results</guimenu>, and <guimenu>Start Execution</guimenu>.
+                  These buttons are used to enable or disable checks and start
+                  them. If you want to perform specific checks, proceed with
+                    <xref linkend="st-trento-checks-settings" /> of <xref
+                    linkend="pro-trento-checks" />. </para>
+              </listitem>
+              <listitem>
+                <para>
+                  The cloud provider, the cluster type, HANA log, SID (when applicable), SAPHanaSR health state,
+                  HANA secondary sync state, fencing type, when the CIB was last written,
+                  and HANA log operation mode.
+                </para>
+              </listitem>
+              <listitem>
+                <para><guimenu>Check Result</guimenu> section: with a summary of
+                  the health of the clusters based on the runtime status and the
+                  selected configuration checks for each one of them (passed, warning, and
+                  critical).
+                </para>
+              </listitem>
+              <listitem>
+                <para><guimenu>Stopped resources</guimenu> section: with a summary
+                of resources which has been stopped on the cluster.
+                </para>
+              </listitem>
+              <listitem>
+                <para><guimenu>&pace; Site details</guimenu> section: with a summary of
+                  NBG and WDF<remark>tom 2023-01-16: what are these acronyms</remark>.
+                  Both lists the hostname, their role, the IP and virtual IP address.
+                  If you click the <guimenu>Details</guimenu> you can view the attributes
+                  of the site and their resources. Close this view with the <keycap
+                    function="escape"/> key.
+                </para>
+              </listitem>
+              <listitem>
+                <para><guimenu>SBD/Fencing</guimenu> section: with a status and the SBD device.</para>
+              </listitem>
+            </itemizedlist>
+          </step>
+          
+        </procedure>
+      </section>
+      <section xml:id="sec-trento-status-sapsystems">
+        <title>Viewing the SAP Systems status</title>
+        <para>
+          To display a list of all available SAP Systems and their details, proceed as follows:
+        </para>
+        <procedure>
+          <step>
+            <para>Log in to the &t.web; console.</para>
+          </step>
+          <step>
+            <para>
+              To investigate the specific SAP Systems details, click the <guimenu>SAP Systems</guimenu>
+              entry in the left sidebar to show a summary of the state for all SAP Systems
+              (see <xref linkend="fig-trento-status-sapsystems"/>).
+            </para>
+            <figure xml:id="fig-trento-status-sapsystems">
+              <title>&sap; Systems</title>
+              <mediaobject>
+                <imageobject>
+                  <imagedata width="70%" fileref="trento-web-sapsystems-view.png" />
+                </imageobject>
+              </mediaobject>
+            </figure>
+          </step>
+          <step>
+            <para>
+              Decide which part you want to examine. You can view the details of the <guimenu>SID</guimenu>
+              column of an entry, or you go with <guimenu>Attached RDBMS</guimenu> to see the details
+              of the database.
+              If the list is too big, reduce the list by providing filters.
+            </para>
+            <para>
+              If you click on an entry in the <guimenu>SID</guimenu> column, the <guimenu>SAP System Details</guimenu>
+              view opens. This view provides the following: </para>
+            <itemizedlist xml:id="lst-trento-web-sapsystems-details">
+              <title>&sap; System details</title>
+              <listitem>
+                <para>the <guimenu>Name</guimenu> and <guimenu>Type</guimenu> of
+                  this &sap; System.</para>
+              </listitem>
+              <listitem>
+                <para>
+                  <guimenu>Layout</guimenu> section: for each
+                  instance, virtual host name, instance number, features
+                  (processes), HTTP and HTTPS ports, start priority, and
+                  SAPControl status. </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <guimenu>Hosts</guimenu> section: with the host name, the IP
+                  address, the cloud provider (when applicable), the cluster
+                  name (when applicable), and the &t.agent; version for each
+                  listed host. When you click the host name, it takes you to the
+                  corresponding <xref linkend="lst-trento-web-hosts-details" />.
+                </para>
+              </listitem>
+            </itemizedlist>
+            <figure>
+              <title>&sap; System Details</title>
+              <mediaobject>
+                <imageobject>
+                  <imagedata fileref="trento-web-sapsystemsdetails-view.png"
+                    width="80%" />
+                </imageobject>
+              </mediaobject>
+            </figure>
+          </step>
+        </procedure>
+      </section>
+      <section xml:id="sec-trento-status-hanadatabases">
+        <title>Viewing the &hana; database status</title>
+        <para>
+          To display a list of all available &hana; databases and their details, proceed as follows:
+        </para>
+        <procedure>
+          <step>
+            <para>Log in to the &t.web; console.</para>
+          </step>
+          <step>
+            <para>
+              Click the <guimenu>HANA databases</guimenu> entry in the left sidebar to show a summary
+              of the state for all &hana; databases (see <xref linkend="fig-trento-status-hanadb"/>).
+            </para>
+            <figure xml:id="fig-trento-status-hanadb">
+              <title>HANA databases</title>
+              <mediaobject>
+                <imageobject>
+                  <imagedata width="80%" fileref="trento-web-hanadb-view.png"/>
+                </imageobject>
+              </mediaobject>
+            </figure>
+          </step>
+          <step>
+            <para>
+              To investigate the specific &hana; database details, click the respective name in the
+              <guimenu>SID</guimenu> column to open the corresponding
+              <guimenu>HANA Database details</guimenu> view.
+              If the list is too big, reduce the list by providing filters.
+            </para>
+            <para> Clicking on one of the <guimenu>SID</guimenu>s opens the
+                <guimenu>HANA Databases</guimenu> detail view. This view
+              provides the following: </para>
+            <itemizedlist xml:id="lst-trento-web-hanadatabases-details">
+              <title><guimenu>HANA Database</guimenu> details view</title>
+              <listitem>
+                <para>the <guimenu>Name</guimenu> and <guimenu>Type</guimenu> of
+                  this &sap; System.</para>
+              </listitem>
+              <listitem>
+                <para>
+                  <guimenu>Layout</guimenu> section: lists all related &hana;
+                  instances with their corresponding virtual hostname, instance
+                  number, features (roles), HTTP/HTTPS ports, start priorities,
+                  and SAPControl status. </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <guimenu>Hosts</guimenu> section: lists the hosts where all
+                  the related instances are running and for each host it
+                  provides the host name, the local IP address(es), the cloud
+                  provider (when applicable), the cluster name (when
+                  applicable), the system ID, and the &t.agent; version. </para>
+                <para> Clicking on a host name takes you to the corresponding
+                    <xref linkend="lst-trento-web-hosts-details" />. </para>
+              </listitem>
+            </itemizedlist>
+            <figure>
+              <title>HANA Database details</title>
+              <mediaobject>
+                <imageobject>
+                  <imagedata fileref="trento-web-hana-database-details-view.png"
+                    width="70%" />
+                </imageobject>
+              </mediaobject>
+            </figure>
+          </step>
+        </procedure>
+      </section>
+    </section>
+
+    <section xml:id="sec-trento-manage-tags">
+      <title>Managing tags</title>
+      <para>
+       Tags are a means to group specific objects by assigning a purpose, location, owner, or other
+       properties you like. Such objects can be hosts, clusters, databases, or SAP systems.
+       Tags makes it easer to distinguish and show all these different objects to make
+       your lists more readable and searchable. You can use any text you like to create
+       your tags.
+      </para>
+      <para>
+        The following subsection shows how you can add, remove, and filter objects based on
+        your tags.
+      </para>
+      <section xml:id="sec-trento-add-tags">
+        <title>Adding tags to hosts, clusters, databases, and SAP Systems</title>
+        <para>
+          To add one or more tags to your objects, do the following:
+        </para>
+        <procedure>
+          <step>
+            <para>
+              Log in to Trento.
+            </para>
+          </step>
+          <step>
+            <para>
+              In the Trento dashboard, click the respective object, be it a host, a cluster, or
+              anything else. For this example, as we show it for hosts, click the <guimenu>Hosts</guimenu>
+              entry.
+            </para>
+          </step>
+          <step>
+            <para>
+              In the <guimenu>Hosts</guimenu> view, search for your host you want to assign a tag.
+            </para>
+          </step>
+          <step>
+            <para>
+              In the <guimenu>Tags</guimenu> column, click the <guimenu>Add Tag</guimenu> entry.
+            </para>
+          </step>
+          <step>
+            <para>Enter the respective tag and finish with <keycap function="return"/>.</para>
+          </step>
+          <step>
+            <para>
+              Repeat this procedure to assign as many tags as you want. It can be on the same
+              or on a different host.
+            </para>
+          </step>
+        </procedure>
+        <para>
+          After you have finished the above procedure, the changed host contains one or
+          more tags.
+        </para>
+        <para>
+          The same principle applies to the other entries from the dashboard, be it for <guimenu>Clusters</guimenu>,
+          <guimenu>SAP Systems</guimenu>, or <guimenu>HANA Databases</guimenu>.
+        </para>
+      </section>
+
+      <section xml:id="sec-trento-remove-tags">
+        <title>Removing tags</title>
+        <para>
+          If you want to remove existing tags, click the respective part in the da
+        </para>
+        <procedure>
+          <step>
+            <para>
+              Log in to Trento.
+            </para>
+          </step>
+          <step>
+            <para>
+              In the Trento dashboard, click the respective part that you are interested in, be it a host, a cluster, or
+              anything else. For this example, as we show it for hosts, click the <guimenu>Hosts</guimenu>
+              entry.
+            </para>
+          </step>
+          <step>
+            <para>
+              In the <guimenu>Hosts</guimenu> view, search for your host you want to remove a tag.
+            </para>
+          </step>
+          <step>
+            <para>
+              In the <guimenu>Tags</guimenu> column, click the <guimenu>×</guimenu> icon to remove
+              the tag.
+            </para>
+          </step>
+          <step>
+            <para>
+              Repeat this procedure to remove as many tags as you want. It can be on the same
+              or on a different host.
+            </para>
+          </step>
+        </procedure>
+      </section>
+
+      <section xml:id="sec-trento-filter-tags">
+        <title>Filter tags</title>
+        <para>
+          With tags, you can show only those parts you are interested in. For example, if
+          you have created a <literal>drbd</literal> tag for some hosts, you can show only
+          those hosts that have this <literal>drbd</literal> tag assigned.
+        </para>
+        <procedure>
+          <step>
+            <para>
+              In the Trento dashboard, click the respective part you are interested in.
+            </para>
+          </step>
+          <step>
+            <para>
+              Make sure you have already assigned some tags. If not, refer to <xref linkend="sec-trento-add-tags"/>.
+            </para>
+          </step>
+          <step>
+            <para>
+              In the second row, click the last pull down menu with the name <guimenu>Filter tags</guimenu>.
+              The pull down menu opens and shows you all of your definied tags.
+            </para>
+          </step>
+          <step>
+            <para>
+              Select the tag you want to filter from the pull down menu.
+              It is possible to select more than one tag.
+            </para>
+          </step>
+        </procedure>
+        <para>
+          After you have finished the above procedure, Trento shows all respective hosts that
+          contains one or more of your selected tags.
+        </para>
+        <para>
+          To remove the filter, click the <guimenu>×</guimenu> icon from the same pull down menu.
+        </para>
+      </section>
+    </section>
+
+  </section>
+
+
+<!--
+  <section xml:id="sec-trento-webconsole-">
     <title>Using &t.web;</title>
     <remark>toms 2021-12-13: this section is a bit too referential and needs
       more focus on the user. As discussed with Alberto, we keep it for
@@ -1130,7 +1846,7 @@ Warning: Permanently added '<replaceable>TRENTO_AGENT_IP</replaceable>' (ECDSA) 
                 checks. Whenever you make a new selection of checks you need to
                 click <guimenu>Select Checks for Execution</guimenu> to save the change.
               </para>
-              <!-- still change 2 -->
+              <!-\- still change 2 -\->
             </listitem>
           </itemizedlist>
           <para>
@@ -1400,7 +2116,7 @@ Warning: Permanently added '<replaceable>TRENTO_AGENT_IP</replaceable>' (ECDSA) 
         details. </para>
     </section>
   </section>
-
+-->
   <section xml:id="sec-trento-updating-trentoserver">
     <title>Updating &t.server;</title>
     <para> To update the &t.server;, do the following: </para>
