@@ -1,5 +1,7 @@
 = SUSE Linux Enterprise unversioned
 
+[![Validate/build docs](https://github.com/SUSE/doc-unversioned/actions/workflows/docbook.yml/badge.svg?branch=main)](https://github.com/SUSE/doc-unversioned/actions/workflows/docbook.yml)
+
 This is the source for the official SUSE Linux Enterprise unversioned
 documentation.
 
