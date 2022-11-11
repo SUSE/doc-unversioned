@@ -154,11 +154,9 @@
          for each number is provided to &suse; by NIST.
         </para>
         <para>
-         Each rule also provides a list of references. Rules can belong to more than one standard
-         in information security, so they can have different identifiers. Each reference is a unique
-         identifier for that rule in the nomenclature of the respective standard. For example, the rule
-         which is known by the unique identifier <literal>CCE-83289-9</literal> in STIG is also known by
-         the unique identifier <literal>A.12.4.1</literal> in ISO/IEC 27001:2013.
+         Each rule also provides a list of references to different good practices. For example, the rule
+         which is known by the unique identifier <literal>CCE-83289-9</literal> in STIG has a reference to
+         a specific good practice <literal>A.12.4.1</literal> in ISO/IEC 27001:2013.
         </para>
         <para>
          If remediation options exist for a rule, they are listed in different formats.
@@ -244,7 +242,7 @@
 
  <sect1 xml:id="openscap-ssg-profiles">
   <title>SCAP Security Guide profiles</title>
-  <para>The <literal>Scap Security Guide</literal> contains multiple
+  <para>The <literal>SCAP Security Guide</literal> contains multiple
    profiles. The profiles applicable to &sle; are codestream-specific
    and differ between code 12 and code 15.</para>
   <para>They are maintained and hosted in the upstream <link
@@ -289,18 +287,10 @@
    the page to select one of the available profiles and to view a command line
    snippet how to evaluate the respective profile with &openscap;.
   </para>
-  <informalfigure>
-   <mediaobject>
-    <imageobject role="fo">
-     <imagedata fileref="openscap-ssg-static-html.png" width="95%"></imagedata>
-    </imageobject>
-    <imageobject role="html">
-     <imagedata fileref="openscap-ssg-static-html.png" width="90%"></imagedata>
-    </imageobject>
-   </mediaobject>
-  </informalfigure>
+  <sect2 xml:id="openscap-ssg-profiles-sle15">
+   <title>&sle; 15 profiles</title>
   <para>
-   The following profiles are available:
+   For code 15, the following profiles are supported by &suse;:
   </para>
   <itemizedlist>
    <listitem>
@@ -323,7 +313,7 @@
      ANSSI-BP-028 (minimal)
     </para>
    </listitem>
-   <listitem>
+   <!--<listitem>
     <para>
      CIS SUSE &sle; 15 Benchmark Level 2 (Workstation)
     </para>
@@ -342,7 +332,7 @@
     <para>
      CIS &sle; 15 Benchmark for Level 2 (Server)
     </para>
-   </listitem>
+   </listitem>-->
    <listitem>
     <para>
      DISA STIG for &sle; 15
@@ -350,7 +340,7 @@
    </listitem>
    <listitem>
     <para>
-     Health Insurance Portability and Accountability Act (HIPPA)
+     Health Insurance Portability and Accountability Act (HIPAA)
     </para>
    </listitem>
    <listitem>
@@ -363,18 +353,114 @@
      Public Cloud Hardening for &sle; 15
     </para>
    </listitem>
-   <listitem>
+   <!--<listitem>
     <para>
      Standard System Security Profile for &sle; 15
     </para>
-   </listitem>
+   </listitem>-->
   </itemizedlist>
+   <figure>
+    <title>SCAP Security Guide profiles for &sle; 15</title>
+    <mediaobject>
+     <imageobject role="fo">
+      <imagedata fileref="openscap-ssg-static-html-sle15.png" width="95%"></imagedata>
+     </imageobject>
+     <imageobject role="html">
+      <imagedata fileref="openscap-ssg-static-html-sle15.png" width="90%"></imagedata>
+     </imageobject>
+    </mediaobject>
+   </figure>
+  </sect2>
+  <sect2 xml:id="openscap-ssg-profiles-sle12">
+   <title>Profiles for &sle; 12</title>
+   <para>
+    For code 12, the following profiles are supported by &suse;:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      ANSSI-BP-028 (enhanced)
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      ANSSI-BP-028 (high)
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      ANSSI-BP-028 (intermediary)
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      ANSSI-BP-028 (minimal)
+     </para>
+    </listitem>
+    <!--<listitem>
+     <para>
+     CIS SUSE &sle; 12 Benchmark Level 2 (Workstation)
+     </para>
+     </listitem>
+     <listitem>
+     <para>
+     CIS &sle; 12 Benchmark for Level 1 (Server)
+     </para>
+     </listitem>
+     <listitem>
+     <para>
+     CIS &sle; 12 Benchmark for Level 1 (Workstation)
+     </para>
+     </listitem>
+     <listitem>
+     <para>
+     CIS &sle; 12 Benchmark for Level 2 (Server)
+     </para>
+     </listitem>-->
+    <listitem>
+     <para>
+      DISA STIG for &sle; 12
+     </para>
+    </listitem>
+    <!--<listitem>
+     <para>
+      Health Insurance Portability and Accountability Act (HIPAA)
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      PCI-DSS v.3.2.1 Control Baseline for &sle; 12
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      Public Cloud Hardening for &sle; 12
+     </para>
+    </listitem>-->
+    <!--<listitem>
+     <para>
+     Standard System Security Profile for &sle; 12
+     </para>
+     </listitem>-->
+   </itemizedlist>
+  <figure>
+   <title>SCAP Security Guide profiles for &sle; 12</title>
+   <mediaobject>
+    <imageobject role="fo">
+     <imagedata fileref="openscap-ssg-static-html-sle12.png" width="95%"></imagedata>
+    </imageobject>
+    <imageobject role="html">
+     <imagedata fileref="openscap-ssg-static-html-sle12.png" width="90%"></imagedata>
+    </imageobject>
+   </mediaobject>
+  </figure>
+   </sect2>
  </sect1>
 
  <sect1 xml:id="openscap-scan">
   <title>Vulnerability scanning</title>
   <para>
-   The content provided by the <literal>SCAP User Guide</literal> can be used to scan the following targets
+   The content provided by the <literal>SCAP Security Guide</literal> can be used to scan the following targets
    for vulnerabilities:
   </para>
   <itemizedlist>
@@ -440,7 +526,7 @@
   <title>Vulnerability remediation</title>
   <!--taroth 2022-10-20: todo: oscap, scap-workbench, ansible playbooks, bash scripts-->
   <para>
-   The security policy profiles in the <literal>SCAP User Guide</literal> can not only be used to scan a
+   The security policy profiles in the <literal>SCAP Security Guide</literal> can not only be used to scan a
    target system and to generate reports, but also to apply fixes automatically to the target system
    (<literal>remediation</literal>), if possible.
   </para>
