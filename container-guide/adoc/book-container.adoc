@@ -1,6 +1,8 @@
 include::attributes-generic.adoc[]
 include::attributes-product.adoc[]
 
+:docinfo:
+
 [container-guide]
 = Container Guide
 
