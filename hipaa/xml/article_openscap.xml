@@ -443,18 +443,18 @@
      </para>
      </listitem>-->
    </itemizedlist>
-  <figure>
-   <title>SCAP Security Guide profiles for &sle; 12</title>
-   <mediaobject>
-    <imageobject role="fo">
-     <imagedata fileref="openscap-ssg-static-html-sle12.png" width="95%"></imagedata>
-    </imageobject>
-    <imageobject role="html">
-     <imagedata fileref="openscap-ssg-static-html-sle12.png" width="90%"></imagedata>
-    </imageobject>
-   </mediaobject>
-  </figure>
-   </sect2>
+   <figure>
+    <title>SCAP Security Guide profiles for &sle; 12</title>
+    <mediaobject>
+     <imageobject role="fo">
+      <imagedata fileref="openscap-ssg-static-html-sle12.png" width="95%"/>
+     </imageobject>
+     <imageobject role="html">
+      <imagedata fileref="openscap-ssg-static-html-sle12.png" width="90%"/>
+     </imageobject>
+    </mediaobject>
+   </figure>
+  </sect2>
  </sect1>
 
  <sect1 xml:id="openscap-scan">
