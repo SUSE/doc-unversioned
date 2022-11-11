@@ -372,7 +372,7 @@
    </figure>
   </sect2>
   <sect2 xml:id="openscap-ssg-profiles-sle12">
-   <title>Profiles for &sle; 12</title>
+   <title>&sle; 12 profiles</title>
    <para>
     For code 12, the following profiles are supported by &suse;:
    </para>
