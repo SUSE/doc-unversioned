@@ -1635,7 +1635,7 @@ Warning: Permanently added '<replaceable>TRENTO_AGENT_IP</replaceable>' (ECDSA) 
           </step>
           <step>
             <para>Generate the dump:</para>
-            <screen>&prompt.user;<command>./dump_scenario_from_k8s.sh</command> -n <replaceable>SCENARIO_NAME</replaceable> -p <replaceable>PATH</replaceable></screen>
+            <screen>&prompt.user;<command>./dump_scenario_from_k8.sh</command> -n <replaceable>SCENARIO_NAME</replaceable> -p <replaceable>PATH</replaceable></screen>
           </step>
           <step>
           <para>Go to <filename>/scenarios/</filename>, package all the JSON files and send
