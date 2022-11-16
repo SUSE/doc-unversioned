@@ -220,6 +220,16 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       <title>&t.server; requirements</title>
       <para> Running all the &t.server; components requires a minimum of 2GB of RAM, 
        two CPU cores and 64GB of storage. </para>
+      <para>
+        The &t.server; and the &t.agent;s requires a public SSH key exchange before
+        they can start their communication. To create the public and private SSH keys,
+        log in to the &t.server; as user &trentoadmin; and run the following command:
+      </para>
+      <screen>ssh-keygen -f ~/.ssh/id_rsa -t rsa -b 4096 -N ''</screen>
+      <para>
+        <xref linkend="pro-trento-installing-trentoagent"/> describes how to use
+        the public SSH key for the &t.agent;.
+      </para>
       <para> While the &t.server; supports various usage scenarios,
         depending on the existing infrastructure, it's designed to be
         cloud-native and OS agnostic. As such, the default installation
