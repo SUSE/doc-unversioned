@@ -218,8 +218,11 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       &t.agent;s. </para>
     <section xml:id="sec-trento-server-requirements">
       <title>&t.server; requirements</title>
-      <para> Running all the &t.server; components requires a minimum of 2GB of RAM, 
-       two CPU cores and 64GB of storage. </para>
+      <para> Running all the &t.server; components requires a minimum of 2GB of RAM,
+        two CPU cores and 64GB of storage.
+        When usng K3s, storage should be provided under <filename>/var/lib/rancher/k3s</filename>,
+        with at least 64 GB.
+      </para>
       <para>
         The &t.server; and the &t.agent;s requires a public SSH key exchange before
         they can start their communication. To create the public and private SSH keys,
