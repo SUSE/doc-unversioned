@@ -223,7 +223,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         When using K3s, such storage should be provided under <filename>/var/lib/rancher/k3s</filename>.
       </para>
       <para>
-       &t.server; needs an SSH key in order to execute configuration checks in the &t.agent;s hosts.
+       &t.server; needs an SSH key to execute configuration checks in the &t.agent;s hosts.
        You can use an existing SSH key pair or create one by running the following command:
       </para>
       <screen>ssh-keygen -f ~/.ssh/id_rsa -t rsa -b 4096 -N ''</screen>
