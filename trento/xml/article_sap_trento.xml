@@ -228,8 +228,8 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       </para>
       <screen>ssh-keygen -f ~/.ssh/id_rsa -t rsa -b 4096 -N ''</screen>
       <para>
-       This command will create two files under the .ssh folder of the home directory of the executing user: 
-       file id_rsa with the private SSH key and file id_rsa.pub with the public SSH key.
+       The previous command creates two files in the <filename>~/.ssh</filename> directory:
+       file <filename>id_rsa</filename> as private SSH key and file <filename>id_rsa.pub</filename> as public SSH key.
       </para>
       <para> While the &t.server; supports various usage scenarios,
         depending on the existing infrastructure, it's designed to be
