@@ -220,18 +220,16 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       <title>&t.server; requirements</title>
       <para> Running all the &t.server; components requires a minimum of 2GB of RAM,
         two CPU cores and 64GB of storage.
-        When usng K3s, storage should be provided under <filename>/var/lib/rancher/k3s</filename>,
-        with at least 64 GB.
+        When using K3s, such storage should be provided under <filename>/var/lib/rancher/k3s</filename>.
       </para>
       <para>
-        The &t.server; and the &t.agent;s requires a public SSH key exchange before
-        they can start their communication. To create the public and private SSH keys,
-        log in to the &t.server; as user &trentoadmin; and run the following command:
+       &t.server; needs an SSH key in order to execute configuration checks in the &t.agent;s hosts.
+       You can use an existing SSH key pair or create one by running the following command:
       </para>
       <screen>ssh-keygen -f ~/.ssh/id_rsa -t rsa -b 4096 -N ''</screen>
       <para>
-        <xref linkend="pro-trento-installing-trentoagent"/> describes how to use
-        the public SSH key for the &t.agent;.
+       This command will create two files under the .ssh folder of the home directory of the executing user: 
+       file id_rsa with the private SSH key and file id_rsa.pub with the public SSH key.
       </para>
       <para> While the &t.server; supports various usage scenarios,
         depending on the existing infrastructure, it's designed to be
@@ -411,11 +409,11 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         <stepalternatives>
           <step>
             <para>Installing as user &rootuser;</para>
-            <screen>&prompt.root;curl -sfL https://get.k3s.io | INSTALL_K3S_SKIP_SELINUX_RPM=true INSTALL_K3S_VERSION=v1.24.6+k3s1 sh</screen>
+            <screen>&prompt.root;curl -sfL https://get.k3s.io | INSTALL_K3S_SKIP_SELINUX_RPM=true sh</screen>
           </step>
           <step>
             <para>Installing as non-&rootuser; user:</para>
-            <screen>&prompt.user;curl -sfL https://get.k3s.io | INSTALL_K3S_SKIP_SELINUX_RPM=true INSTALL_K3S_VERSION=v1.24.6+k3s1 sh -s - --write-kubeconfig-mode 644</screen>
+            <screen>&prompt.user;curl -sfL https://get.k3s.io | INSTALL_K3S_SKIP_SELINUX_RPM=true sh -s - --write-kubeconfig-mode 644</screen>
           </step>
         </stepalternatives>
       </step>
@@ -442,7 +440,11 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
           Note that the experimental flag is not needed as of Helm version 3.8.0.
         </para>
       </step>
-      <step>
+       <step>
+        <para> Monitor the creation and startup of the Trento Kubernertes pods and wait until they are all in running status:</para>
+        <screen>watch kubectl get pods</screen>
+      </step>
+       <step>
         <para> Log out the &t.server; host. </para>
       </step>
       <step>
@@ -685,32 +687,6 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
           This step is necessary to enable the runner checks in the
           &t.agent; host via SSH.
         </para>
-      </step>
-      <step xml:id="step-trento-installing-trentoagent-knownhosts">
-        <para> Add the &t.agent; host to the list of known hosts on your
-          &t.server; by logging in once via SSH as <systemitem
-            class="username">&trentoadmin;</systemitem>: </para>
-        <substeps>
-          <step>
-            <para> Log in on the &t.server; host.
-            </para>
-          </step>
-          <step>
-            <para> Connect to the &t.agent; host as <systemitem
-              class="username">&trentoadmin;</systemitem> using SSH and
-              answer <literal>yes</literal> when asked whether to
-              continue or not with the connection process: </para>
-            <screen>&prompt.user;ssh &trentoadmin;@<replaceable>TRENTO_AGENT_IP</replaceable>
-[...]
-Are you sure you want to continue connecting (yes/no/[fingerprint])? <emphasis role="strong">yes</emphasis>
-Warning: Permanently added '<replaceable>TRENTO_AGENT_IP</replaceable>' (ECDSA) to the list of known hosts.</screen>
-          </step>
-          <step>
-            <para>
-              Log out to go back to the &t.agent; host.
-            </para>
-          </step>
-        </substeps>
       </step>
       <step>
         <para>
