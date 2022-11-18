@@ -441,7 +441,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         </para>
       </step>
        <step>
-        <para> Monitor the creation and startup of the Trento Kubernertes pods and wait until they are all in running status:</para>
+        <para> Monitor the creation and startup of the Trento &k8s; pods and wait until they are all in running status:</para>
         <screen>watch kubectl get pods</screen>
       </step>
        <step>
