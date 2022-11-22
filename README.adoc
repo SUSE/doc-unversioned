@@ -19,9 +19,7 @@ Beta documentation versions are available at https://susedoc.github.io/, where a
 == Reporting bugs
 
 Bugs are collected on https://bugzilla.suse.com. If possible please check for
-duplicates before creating a new report. When creating a new report, use
-`SUSE Linux Enterprise Desktop` or `Server` as product and in the next step the version.
-As component select `Documentation`.
+duplicates before creating a new report. When creating a new report, best use the `Report documentation issue` icon in the HTML output of our documentation.
 
 
 == Contributing
