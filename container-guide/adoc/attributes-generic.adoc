@@ -218,6 +218,7 @@
 // Container-related attributes
 :podman: Podman
 :buildah: Buildah
+:nerdctl: nerdctl
 :docker: Docker
 :deng: {docker} Open Source Engine
 :dhub: {docker} Hub

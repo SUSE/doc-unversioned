@@ -63,7 +63,7 @@ This {bcia} comes with the Zypper package manager and a free {slea}-{bci} reposi
 A variant of {bcia}-Base called {bcia}-Init comes with systemd preinstalled. The {bcia}-Init container image can be useful in scenarios requiring systemd for managing services in a single container.
 
 [IMPORTANT]
-.Using {bcia}-init with {docker} or nerdctl
+.Using {bcia}-init with {docker} or {nerdctl}
 ====
 When using {bcia}-init container with {docker}, you must use the following arguments for SYSTEMD to work correctly in the container:
 
@@ -71,7 +71,7 @@ When using {bcia}-init container with {docker}, you must use the following argum
 > docker run -ti --tmpfs /run -v /sys/fs/cgroup:/sys/fs/cgroup:rw --cgroupns=host registry.suse.com/bci/bci-init:latest
 ....
 
-In case of nerdctl, the correct command is as follows:
+In case of {nerdctl}, the correct command is as follows:
 
 ....
 > nerdctl run -ti --env container=containerd --tmpfs /run -v /sys/fs cgroup:/sys/fs/cgroup:rw --cgroupns=host  registry.suse.com/bci bci-init:latest
@@ -189,6 +189,156 @@ Clean up temporary files::
 For more information on using {zypper}, refer to https://documentation.suse.com/sles-15/html/{sles}-all/cha-sw-cl.html#sec-zypper.
 
 All the described commands use the `--non-interactive` flag to skip confirmations, since you cannot approve these manually during container builds. Keep in mind that you must use the flag with any command that modifies the system. Also note that `--non-interactive` is not a "yes to all" flag. Instead, `--non-interactive` confirms what is considered to be the intention of the user. For example, an installation command with the `--non-interactive` option fails if it needs to import new repository signing keys, as that is something that the user must verify themselves.
+
+
+[[sec-bci-suseconnect]]
+==== Using container-suseconnect with {bcia}s
+
+https://github.com/SUSE/container-suseconnect[`container-suseconnect`]
+is a plugin available in all {bcia}s that ship with
+Zypper. When the plugin detects the host's {sles}
+registration credentials, it uses them to give the container access the
+SUSE Linux Enterprise repositories. This includes additional modules and
+previous package versions that are not part of the free `SLE_BCI`
+repository.
+
+[[sec-bci-suseconnect-howto]]
+=== Using container-suseconnect
+
+If you are running a registered {slsa} system with {docker},
+`container-suseconnect` automatically discovers your credentials and uses the subscription,
+without requiring any action on your part.
+
+On {opensuse} systems with {docker}, you must copy the files
+`/etc/SUSEConnect` and `/etc/zypp/credentials.d/SCCcredentials` from a
+registered {slsa} machine to your local machine. The
+`/etc/SUSEConnect` file is required only if you are using {rmt} for
+managing your registration credentials.
+
+[[sec-bci-suseconnect-podman-buildah-nerdctl]]
+==== Using container-suseconnect on non-{slea} hosts or with {podman}, {buildah}, and {nerdctl}
+
+You need a registered {slsa} system to use `container-suseconnect` on
+non-{slea} hosts or with {podman}, {buildah}, or with {nerdctl}. This can be a
+physical machine, a virtual machine, or the BCI-Base container with
+`SUSEConnect` installed and registered.
+
+If you do not use {rmt}, copy
+`/etc/zypp/credentials.d/SCCcredentials` to the development machine.
+Otherwise, copy both the `/etc/zypp/credentials.d/SCCcredentials` and
+`/etc/SUSEConnect` files.
+
+You can use the following command to obtain `SCCcredentials` (replace
+`REGISTRATION_CODE` with your {scc} registration code).
+
+{docker}:
+
+[source,Shell]
+----
+docker run --rm registry.suse.com/suse/sle15:latest bash -c \
+    "zypper -n in SUSEConnect; SUSEConnect --regcode REGISTRATION_CODE; \
+     cat /etc/zypp/credentials.d/SCCcredentials"
+----
+
+{podman}:
+
+[source,Shell]
+----
+podman run --rm registry.suse.com/suse/sle15:latest bash -c \
+    "zypper -n in SUSEConnect; SUSEConnect --regcode REGISTRATION_CODE; \
+     cat /etc/zypp/credentials.d/SCCcredentials"
+----
+
+{nerdctl}:
+
+[source,Shell]
+----
+nerdctl run --rm registry.suse.com/suse/sle15:latest bash -c \
+    "zypper -n in SUSEConnect; SUSEConnect --regcode REGISTRATION_CODE; \
+     cat /etc/zypp/credentials.d/SCCcredentials"
+----
+
+If you are running a container based on a {bcia}, mount
+`SCCcredentials` (and optionally `/etc/SUSEConnect`) in the correct
+destination. The following example shows how to mount `SCCcredentials`
+in the current working directory.
+
+{docker}:
+
+[source,Shell]
+----
+docker run -v /path/to/SCCcredentials:/etc/zypp/credentials.d/SCCcredentials \
+    --rm -it --pull=always registry.suse.com/bci/bci-base:latest
+----
+
+{podman}:
+
+[source,Shell]
+----
+podman run -v /path/to/SCCcredentials:/etc/zypp/credentials.d/SCCcredentials \
+    --rm -it --pull=always registry.suse.com/bci/bci-base:latest
+----
+
+{nerdctl}:
+
+[source,Shell]
+----
+nerdctl run -v /path/to/SCCcredentials:/etc/zypp/credentials.d/SCCcredentials \
+    --rm -it --pull=always registry.suse.com/bci/bci-base:latest
+----
+
+Do not copy the `SCCcredentials` and `SUSEConnect` files into the
+container image to avoid inadvertently adding them to the final image.
+Use secrets instead, as they are only available to a single layer and
+are not part of the built image. To do this, put a copy of
+`SCCcredentials` (and optionally `SUSEConnect`) somewhere on the file
+system and modify the `RUN` instructions that invoke {zypper} as follows:
+
+[source,Dockerfile]
+----
+FROM registry.suse.com/bci/bci-base:latest
+
+RUN --mount=type=secret,id=SUSEConnect \
+    --mount=type=secret,id=SCCcredentials \
+    zypper -n in fluxbox
+----
+
+{docker} and {buildah} support mounting secrets via the `--secret` flag
+as shown below.
+
+{docker}:
+
+[source,Shell]
+----
+docker build --secret=id=SCCcredentials,src=/path/to/SCCcredentials \
+    --secret=id=SUSEConnect,src=/path/to/SUSEConnect .
+----
+
+{podman}:
+
+[source,Shell]
+----
+buildah bud --layers --secret=id=SCCcredentials,src=/path/to/SCCcredentials \
+    --secret=id=SUSEConnect,src=/path/to/SUSEConnect .
+----
+
+[[sec-bci-suseconnect-add-modules]]
+==== Adding modules to a container or container image
+
+`container-suseconnect` allows you to automatically add {slea} Modules to
+a container or container image. What modules are added is determined by
+the environment variable `ADDITIONAL_MODULES` that includes a
+comma-separated list of the module names. In a `Dockerfile`, this
+is done using the `ENV` directive as follows:
+
+[source,Dockerfile]
+----
+FROM registry.suse.com/bci/bci-base:latest
+ENV ADDITIONAL_MODULES sle-module-desktop-applications,sle-module-development-tools
+
+RUN --mount=type=secret,id=SCCcredentials zypper -n in fluxbox && zypper -n clean
+----
+
 
 [[sec-bci-task-examples]]
 ==== Common patterns
