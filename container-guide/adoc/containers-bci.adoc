@@ -206,7 +206,7 @@ repository.
 === Using container-suseconnect
 
 If you are running a registered {slsa} system with {docker},
-`container-suseconnect` automatically detects and uses the subscription,
+`container-suseconnect` automatically discovers your credentials and uses the subscription,
 without requiring any action on your part.
 
 On {opensuse} systems with {docker}, you must copy the files
@@ -268,7 +268,7 @@ in the current working directory.
 [source,Shell]
 ----
 docker run -v /path/to/SCCcredentials:/etc/zypp/credentials.d/SCCcredentials \
-    -it --pull=always registry.suse.com/bci/bci-base:latest
+    --rm -it --pull=always registry.suse.com/bci/bci-base:latest
 ----
 
 {podman}:
@@ -276,7 +276,7 @@ docker run -v /path/to/SCCcredentials:/etc/zypp/credentials.d/SCCcredentials \
 [source,Shell]
 ----
 podman run -v /path/to/SCCcredentials:/etc/zypp/credentials.d/SCCcredentials \
-    -it --pull=always registry.suse.com/bci/bci-base:latest
+    --rm -it --pull=always registry.suse.com/bci/bci-base:latest
 ----
 
 {nerdctl}:
@@ -284,7 +284,7 @@ podman run -v /path/to/SCCcredentials:/etc/zypp/credentials.d/SCCcredentials \
 [source,Shell]
 ----
 nerdctl run -v /path/to/SCCcredentials:/etc/zypp/credentials.d/SCCcredentials \
-    -it --pull=always registry.suse.com/bci/bci-base:latest
+    --rm -it --pull=always registry.suse.com/bci/bci-base:latest
 ----
 
 Do not copy the `SCCcredentials` and `SUSEConnect` files into the
@@ -292,7 +292,7 @@ container image to avoid inadvertently adding them to the final image.
 Use secrets instead, as they are only available to a single layer and
 are not part of the built image. To do this, put a copy of
 `SCCcredentials` (and optionally `SUSEConnect`) somewhere on the file
-system and modify the `RUN` instructions that invoke Zypper as follows:
+system and modify the `RUN` instructions that invoke {zypper} as follows:
 
 [source,Dockerfile]
 ----
@@ -401,7 +401,7 @@ You can then build container images using the `docker build .` or `buildah bud .
 
 ....
 > docker build .
-Sending build context to {docker} daemon  2.048kB
+Sending build context to Docker daemon  2.048kB
 Step 1/4 : FROM registry.suse.com/bci/bci-base:15.4
  ---> e34487b4c4e1
 Step 2/4 : RUN zypper -n in python3 &&     echo "Hello Green World!" > index.html
