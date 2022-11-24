@@ -6,8 +6,7 @@ Service requests and support::
   For services and support options available for your product, see https://www.suse.com/support/.
   To open a service request, you need a SUSE subscription registered at {scc}. Go to https://scc.suse.com/support/requests, log in, and click _Create New_.
 Bug reports::
-  Report issues with the documentation at https://bugzilla.suse.com/. To simplify the process, click the _Report an issue_ icon in the HTML version of this document. This preselects the right product and category in Bugzilla and adds a link to the current section. You can now write your bug report.
-  A Bugzilla account is required.
+ Provided you have a Bugzilla account, you can report documentation-related issues  at https://bugzilla.suse.com/. Click the _Report an issue_ icon in the HTML version of this document. This automatically selects the right product and category in the submission form and adds a link to the current section. You can then write a bug report.
 Contributions::
   To contribute to this documentation, click the _Edit source document_ icon in the HTML version of this document. This will take you to the source code on GitHub, where you can open a pull request.
   A GitHub account is required.
