@@ -173,10 +173,10 @@
        in case a vulnerability is found during a scan. Fix scripts can be available in the following
        two formats: Shell scripts (<filename>bash/<replaceable>*.sh</replaceable></filename>) and Ansible
        snippets <filename>ansible/<replaceable>*.yml</replaceable></filename>.
-       <remark>taroth 2022-10-28: I suppose SUSE does not support nor ship the following formats:
+       <!--taroth 2022-10-28: I suppose SUSE does not support nor ship the following formats:
        'Puppet snippet' and 'OSBuild Blueprint' snippet - at least there are no subdirectories within
        /usr/share/scap-security-guide (apart from an empty kickstart directory, which probably should
-       not be there at all?!?)</remark>
+       not be there at all?!?) - answer by msmeissn: yes, we support only shell and ansible currently.-->
       </para>
      </listitem>
     </varlistentry>
