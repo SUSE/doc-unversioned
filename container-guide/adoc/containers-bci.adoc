@@ -334,7 +334,7 @@ Problem retrieving the repository index file for service 'container-suseconnect-
 Warning: Skipping service 'container-suseconnect-zypp' because of the above error.
 ....
 
-Ignore the message, as it simply indicates that container-suseconnect was not able to retrieve your {scc} credentials, and thus could not add the full {slea} repositories. You still have full access to the `SLE_BCI`` repository, and can continue using the container as intended.
+Ignore the message, as it simply indicates that container-suseconnect was not able to retrieve your {scc} credentials, and thus could not add the full {slea} repositories. You still have full access to the `SLE_BCI` repository, and can continue using the container as intended.
 ====
 
 [[sec-bci-suseconnect-add-modules]]
