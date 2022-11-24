@@ -322,6 +322,21 @@ buildah bud --layers --secret=id=SCCcredentials,src=/path/to/SCCcredentials \
     --secret=id=SUSEConnect,src=/path/to/SUSEConnect .
 ----
 
+[NOTE]
+====
+container-suseconnect runs automatically every time you invoke {zypper}. If you are not using a registered {slsa} host, you may see the following error message:
+
+....
+> zypper ref
+Refreshing service 'container-suseconnect-zypp'.
+Problem retrieving the repository index file for service 'container-suseconnect-zypp':
+[container-suseconnect-zypp|file:/usr/lib/zypp/plugins/services/container-suseconnect-zypp] 
+Warning: Skipping service 'container-suseconnect-zypp' because of the above error.
+....
+
+Ignore the message, as it simply indicates that container-suseconnect was not able to retrieve your {scc} credentials, and thus could not add the full {slea} repositories. You still have full access to the `SLE_BCI` repository, and can continue using the container as intended.
+====
+
 [[sec-bci-suseconnect-add-modules]]
 ==== Adding modules to a container or container image
 
