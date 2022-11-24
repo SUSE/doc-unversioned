@@ -245,9 +245,7 @@
   <para>The <literal>SCAP Security Guide</literal> contains multiple
    profiles. The profiles applicable to &sle; are codestream-specific
    and differ between code 12 and code 15.</para>
-  <para>They are maintained and hosted in the upstream <link
-   xlink:href="https://github.com/ComplianceAsCode/"
-   >ComplianceAsCode</link> repository: </para>
+  <para>They are maintained and hosted in an upstream repository: </para>
   <itemizedlist>
    <listitem>
     <para>
@@ -459,6 +457,8 @@
 
  <sect1 xml:id="openscap-scan">
   <title>Vulnerability scanning</title>
+  <sect2 xml:id="openscap-scan-targets">
+   <title>Targets</title>
   <para>
    The content provided by the <literal>SCAP Security Guide</literal> can be used to scan the following targets
    for vulnerabilities:
@@ -484,6 +484,9 @@
    Automated checks help to identify the target and to select only the rules that make sense for this specific
    target. For example, checks for separate partitions make sense on bare-metal machines but not for containers.
   </para>
+  </sect2>
+  <sect2 xml:id="openscap-scan-tools">
+   <title>Tools</title>
   <para>
    Depending on your setup and the target to scan (remote or local), you can use either of the following tools:
   </para>
@@ -520,6 +523,73 @@
     </listitem>
    </varlistentry>
   </variablelist>
+  </sect2>
+  <sect2 xml:id="openscap-scan-sle15">
+   <title>Scanning &productnamex;</title>
+   <para>
+    There are several options to scan &productnamex; for vulnerability issues based on a certain profile:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>via <command>oscap</command></para>
+    </listitem>
+    <listitem>
+     <para>via shell</para>
+    </listitem>
+   </itemizedlist>
+   <para>
+    For the following example, we assume that you want to scan &productnamex; 15 and generate a report.
+   </para>
+   <example xml:id="ex-openscap-oscap-sle15">
+   <title>Scanning with oscap</title>
+   <screen>&prompt.sudo;<command>oscap</command> xccdf eval \
+    --profile <replaceable>stig</replaceable><co xml:id="co-eval-profile"/> \
+    --results <replaceable>/tmp/results.xml</replaceable><co xml:id="co-eval-results"/> \
+    --report <replaceable>/tmp/report.html</replaceable><co xml:id="co-eval-report"/> \
+    /usr/share/xml/scap/ssg/content/ssg-sle15-ds-1.2.xml<co xml:id="co-eval-ssg"/></screen>
+   <calloutlist>
+    <callout arearefs="co-eval-profile">
+     <para>
+      Specifies the profile to use, in this case, <literal>stig</literal>.
+     </para>
+    </callout>
+    <callout arearefs="co-eval-results">
+     <para>
+      Saves the results of the evaluation to <filename>/tmp/results.xml</filename>
+     </para>
+    </callout>
+    <callout arearefs="co-eval-report">
+     <para>
+      Generates a HTML report called <filename>/tmp/report.html</filename> in
+      addition to the results in XML.
+     </para>
+    </callout>
+    <callout arearefs="co-eval-ssg">
+     <para>
+      <literal>Scap Security Guide</literal> (SSG) policy file in the
+      <literal>datastream</literal> (ds) format. Make sure to select the correct
+      version for your system, in this case the one that applies to code 15.
+      To list all available policies, run:
+      <command>ls -1 /usr/share/xml/scap/ssg/content/ssg-*-ds.xml</command>.For
+      more information about a particular policy, run
+      <command>oscap info</command> on the file.
+     </para>
+    </callout>
+   </calloutlist>
+   <para>
+    The evaluation process usually takes a few minutes, depending on the number of
+    selected rules.
+   </para>
+   </example>
+   <para>
+    If you want to use the shell instead, run the following command:
+   </para>
+   <screen>&prompt.sudo; /usr/share/scap-security-guide/bash/sle15-script-stig.sh</screen>
+   <para>
+    The shell script is standalone. If you do not want to install the complete
+    <package>scap-security-guide</package> package, you can copy it out of the RPM.
+   </para>
+  </sect2>
  </sect1>
 
  <sect1>
