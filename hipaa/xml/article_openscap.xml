@@ -71,6 +71,63 @@
   </para>
  </sect1>
 
+ <sect1 xml:id="openscap-components">
+  <title>SCAP components</title>
+  <para>
+   SCAP consists of the following important components which interact with each other.
+  </para>
+  <variablelist>
+   <varlistentry>
+    <term>Open Vulnerability and Assessment Language (OVAL)</term>
+    <listitem>
+     <para>
+      An XML format for testing the presence of a specific state.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term>Extensible Configuration Checklist Description Format (XCCDF)</term>
+    <listitem>
+     <para>
+      An XML format that specifies security checklists, benchmarks, and configuration
+      documentation. The XCCDF file includes a benchmark as a set of different profiles
+      related to different groups. Each group is a set of rules which have OVAL definitions.
+      Each profile is related to different good practices such as STIG, HIPAA, PCI-DSS, or ANSSI.</para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term>Common Platform Enumeration (CPE)</term>
+    <listitem>
+     <para>
+      A structured naming scheme to identify information technology systems, platforms, and
+      software packages. It is maintained by NIST and NDV. The naming scheme consists of the following
+      elements:
+      <literal>cpe:/<replaceable>part</replaceable>:<replaceable>vendor</replaceable>:<replaceable>product</replaceable>:<replaceable>version</replaceable>:<replaceable>update</replaceable>:<replaceable>edition</replaceable>:<replaceable>language</replaceable></literal>
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term>DataStreams (DS)</term>
+    <listitem>
+     <para>
+      An XML format which packs different SCAP components (CPE, XCCDF, OVAL) into a single file.
+      It can be used to distribute SCAP content over the network. The DataStreams files are
+      very useful because they include everything you need when you want to harden and audit
+      your &sle; system.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term>Common Configuration Enumeration (CCE)</term>
+    <listitem>
+     <para>
+      Unique identifiers to security-related system configuration issues.
+     </para>
+    </listitem>
+   </varlistentry>
+  </variablelist>
+ </sect1>
+
  <sect1 xml:id="openscap-ssg">
   <title>SCAP Security Guide</title>
 
@@ -183,62 +240,6 @@
    </variablelist>
  </sect1>
 
- <sect1 xml:id="openscap-components">
-  <title>SCAP components</title>
-  <para>
-   SCAP consists of the following important components which interact with each other.
-  </para>
-  <variablelist>
-   <varlistentry>
-    <term>Open Vulnerability and Assessment Language (OVAL)</term>
-    <listitem>
-     <para>
-      An XML format for testing the presence of a specific state.
-     </para>
-    </listitem>
-   </varlistentry>
-    <varlistentry>
-     <term>Extensible Configuration Checklist Description Format (XCCDF)</term>
-     <listitem>
-     <para>
-      An XML format that specifies security checklists, benchmarks, and configuration
-      documentation. The XCCDF file includes a benchmark as a set of different profiles
-      related to different groups. Each group is a set of rules which have OVAL definitions.
-      Each profile is related to different good practices such as STIG, HIPAA, PCI-DSS, or ANSSI.</para>
-     </listitem>
-    </varlistentry>
-    <varlistentry>
-     <term>Common Platform Enumeration (CPE)</term>
-     <listitem>
-      <para>
-       A structured naming scheme to identify information technology systems, platforms, and
-       software packages. It is maintained by NIST and NDV. The naming scheme consists of the following
-       elements:
-       <literal>cpe:/<replaceable>part</replaceable>:<replaceable>vendor</replaceable>:<replaceable>product</replaceable>:<replaceable>version</replaceable>:<replaceable>update</replaceable>:<replaceable>edition</replaceable>:<replaceable>language</replaceable></literal>
-      </para>
-     </listitem>
-    </varlistentry>
-    <varlistentry>
-     <term>DataStreams (DS)</term>
-     <listitem>
-      <para>
-       An XML format which packs different SCAP components (CPE, XCCDF, OVAL) into a single file.
-       It can be used to distribute SCAP content over the network. The DataStreams files are
-       very useful because they include everything you need when you want to harden and audit
-       your &sle; system.
-       </para>
-     </listitem>
-    </varlistentry>
-    <varlistentry>
-     <term>Common Configuration Enumeration (CCE)</term>
-     <listitem>
-      <para>
-       Unique identifiers to security-related system configuration issues.
-      </para>
-     </listitem>
-    </varlistentry>
-  </variablelist>
- </sect1>
 
  <sect1 xml:id="openscap-ssg-profiles">
   <title>SCAP Security Guide profiles</title>
