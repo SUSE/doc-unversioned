@@ -530,7 +530,7 @@
     The following example shows how to scan &productnamex; locally with <command>oscap</command> for vulnerability
     issues according to a certain profile. In addition to saving the results in XML format, an HTML report can be generated.
    </para>
-   <example xml:id="ex-openscap-oscap-sle15">
+   <example xml:id="ex-oscap-scan-sle15">
     <title>Scanning &productnamex; 15 with oscap</title>
    <screen>&prompt.sudo;<command>oscap</command> xccdf eval \
     --profile <replaceable>stig</replaceable><co xml:id="co-eval-profile"/> \
@@ -637,7 +637,9 @@
       <listitem>
        <para>
         You can remediate a target system on the fly, while you are scanning it. In this case,
-        evaluation and remediation are performed as a part of a single command.</para>
+        evaluation and remediation are performed as a part of a single command.
+        For details how to use this option, see <xref linkend="ex-oscap-remediate-sle15-fly"/>.
+       </para>
       </listitem>
      </varlistentry>
      <varlistentry>
@@ -663,7 +665,57 @@
   </sect2>
   <sect2 xml:id="openscap-remediate-sle">
   <title>Remediating a non-compliant &productnamex;</title>
-   <para></para>
+   <para>
+    The following examples shows how to scan and remediate &productnamex; locally with <command>oscap</command>
+    to comply with a certain profile.
+   </para>
+   <example xml:id="ex-oscap-remediate-sle15-fly">
+    <title>Remediating &productnamex; 15 with oscap (on the fly)</title>
+    <screen>&prompt.sudo;<command>oscap</command> xccdf eval --remediate<co xml:id="co-remedy-fly"/> \
+     --profile <replaceable>stig</replaceable><co xml:id="co-remedy-fly-profile"/> \
+     --results <replaceable>/tmp/results.xml</replaceable><co xml:id="co-remedy-fly-results"/> \
+     /usr/share/xml/scap/ssg/content/ssg-sle15-ds-1.2.xml<co xml:id="co-remedy-fly-ssg"/></screen>
+    <calloutlist>
+     <callout arearefs="co-remedy-fly">
+      <para>
+       Tells <command>oscap</command> to evaluate <emphasis>and</emphasis> remediate the target system
+       in one go.
+      </para>
+     </callout>
+     <callout arearefs="co-remedy-fly-profile">
+      <para>
+       Specifies the profile to use, in this case, <literal>stig</literal>.
+      </para>
+     </callout>
+     <callout arearefs="co-remedy-fly-results">
+      <para>
+       Saves the results of the evaluation to <filename>/tmp/results.xml</filename>.
+      </para>
+     </callout>
+     <callout arearefs="co-remedy-fly-ssg">
+      <para>
+       <literal>SCAP Security Guide</literal> policy file in the
+       <literal>datastream</literal> format. Make sure to select the correct
+       version for your system, in this case the one that applies to code 15.
+       To list all available policies, run:
+       <command>ls -1 /usr/share/xml/scap/ssg/content/ssg-*-ds.xml</command>.For
+       more information about a particular policy, run
+       <command>oscap info</command> on the file.
+      </para>
+     </callout>
+    </calloutlist>
+    <para>
+     The command's output <remark>taroth 2022-11-25: or the results file? check!</remark>
+     contains two sections. The first section <remark>taroth 2022-11-25: first TestResult element?
+     check!</remark> shows the result of the scan <emphasis>prior to</emphasis> the remediation.
+     The second section <remark>taroth 2022-11-25: second TestResult element? check!</remark>
+     shows the result of the scan after applying the remediation.
+     In the second section, if a result of a rule is <literal>fixed</literal>, this means that the
+     fix was successfully applied and this rule is now passes evaluation.
+     If the result of a rule is <literal>error</literal>, this means that remediation for this rule
+     was not successfully and the rule still does not pass evaltuation.
+    </para>
+   </example>
   </sect2>
 
  </sect1>
