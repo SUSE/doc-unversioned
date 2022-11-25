@@ -240,7 +240,6 @@
    </variablelist>
  </sect1>
 
-
  <sect1 xml:id="openscap-ssg-profiles">
   <title>SCAP Security Guide profiles</title>
   <para>The <literal>SCAP Security Guide</literal> contains multiple
@@ -528,21 +527,11 @@
   <sect2 xml:id="openscap-scan-sle15">
    <title>Scanning &productnamex;</title>
    <para>
-    There are several options to scan &productnamex; for vulnerability issues based on a certain profile:
-   </para>
-   <itemizedlist>
-    <listitem>
-     <para>via <command>oscap</command></para>
-    </listitem>
-    <listitem>
-     <para>via shell</para>
-    </listitem>
-   </itemizedlist>
-   <para>
-    For the following example, we assume that you want to scan &productnamex; 15 and generate a report.
+    The following example shows how to scan &productnamex; locally with <command>oscap</command> for vulnerability
+    issues according to a certain profile. In addition to saving the results in XML format, an HTML report can be generated.
    </para>
    <example xml:id="ex-openscap-oscap-sle15">
-   <title>Scanning with oscap</title>
+    <title>Scanning &productnamex; 15 with oscap</title>
    <screen>&prompt.sudo;<command>oscap</command> xccdf eval \
     --profile <replaceable>stig</replaceable><co xml:id="co-eval-profile"/> \
     --results <replaceable>/tmp/results.xml</replaceable><co xml:id="co-eval-results"/> \
@@ -556,19 +545,19 @@
     </callout>
     <callout arearefs="co-eval-results">
      <para>
-      Saves the results of the evaluation to <filename>/tmp/results.xml</filename>
+      Saves the results of the evaluation to <filename>/tmp/results.xml</filename>.
      </para>
     </callout>
     <callout arearefs="co-eval-report">
      <para>
-      Generates a HTML report called <filename>/tmp/report.html</filename> in
+      Generates an HTML report called <filename>/tmp/report.html</filename> in
       addition to the results in XML.
      </para>
     </callout>
     <callout arearefs="co-eval-ssg">
      <para>
-      <literal>Scap Security Guide</literal> (SSG) policy file in the
-      <literal>datastream</literal> (ds) format. Make sure to select the correct
+      <literal>SCAP Security Guide</literal> policy file in the
+      <literal>datastream</literal> format. Make sure to select the correct
       version for your system, in this case the one that applies to code 15.
       To list all available policies, run:
       <command>ls -1 /usr/share/xml/scap/ssg/content/ssg-*-ds.xml</command>.For
@@ -582,18 +571,10 @@
     selected rules.
    </para>
    </example>
-   <para>
-    If you want to use the shell instead, run the following command:
-   </para>
-   <screen>&prompt.sudo; /usr/share/scap-security-guide/bash/sle15-script-stig.sh</screen>
-   <para>
-    The shell script is standalone. If you do not want to install the complete
-    <package>scap-security-guide</package> package, you can copy it out of the RPM.
-   </para>
   </sect2>
  </sect1>
 
- <sect1>
+ <sect1 xml:id="openscap-remediate">
   <title>Vulnerability remediation</title>
   <!--taroth 2022-10-20: todo: oscap, scap-workbench, ansible playbooks, bash scripts-->
   <para>
@@ -608,6 +589,8 @@
     is too dangerous to be enforced in a running target system.
    </para>
   </important>
+  <sect2 xml:id="openscap-remediate-process">
+  <title>&openscap; remediation process</title>
   <para>
    &openscap; allows to automatically remediate target systems that have been found in a non-compliant state.
    This requires an XCCDF file with instructions. The overall process is as follows:
@@ -626,7 +609,7 @@
    <step>
     <para>
      Within the XCCDF file, <command>oscap</command> then searches for an appropriate
-     &gt;xccdf:fix&lt; element, resolves it, prepares the environment, and executes the
+     &lt;xccdf:fix&gt; element, resolves it, prepares the environment, and executes the
      fix script. The fix scripts can be either Bash <filename>*.sh</filename> files
      or Ansible playbook <filename>*.yml</filename> files.
     </para>
@@ -641,30 +624,48 @@
   <para>
    All results of the remediation are stored in an output XCCDF file.
   </para>
+ </sect2>
+ 
+  <sect2 xml:id="openscap-remediate-options">
+  <title>&openscap; remediation options</title>
   <para>
    For remediating a target system with <command>oscap</command>, you have the following options:
   </para>
-  <itemizedlist>
-   <listitem>
-    <para>
-     You can remediate a target system while you are scanning it. In this case, evaluation and
-     remediation are performed as a part of a single command.</para>
-   </listitem>
-   <listitem>
-    <para>
-     You can remediate a target system after you have scanned it. In the first step, the system is only evaluated,
-     and the results are stored in the XCCDF results file. In the second step,
-     <command>oscap</command> executes the fix scripts and verifies the result.
-    </para>
-   </listitem>
-   <listitem>
-    <para>
-     The review mode allows to save remediation instructions to a file for further review. The remediation content
-     is not executed during this operation.
-    </para>
-   </listitem>
-  </itemizedlist>
-  <!--taroth 2022-10-24: add code examples for oscap commands-->
+   <variablelist>
+     <varlistentry>
+      <term>Remediation on the fly</term>
+      <listitem>
+       <para>
+        You can remediate a target system on the fly, while you are scanning it. In this case,
+        evaluation and remediation are performed as a part of a single command.</para>
+      </listitem>
+     </varlistentry>
+     <varlistentry>
+      <term>Remediation after scanning</term>
+      <listitem>
+       <para>
+        You can remediate a target system after you have scanned it. In the first step,
+        the system is only evaluated, and the results are stored in the XCCDF results file.
+        In the second step, <command>oscap</command> executes the fix scripts and verifies the result.
+       </para>
+      </listitem>
+     </varlistentry>
+     <varlistentry>
+      <term>Review mode</term>
+      <listitem>
+       <para>
+        The review mode allows to save remediation instructions to a file for further review. The remediation content
+        is not executed during this operation.
+       </para>
+      </listitem>
+     </varlistentry>
+   </variablelist>
+  </sect2>
+  <sect2 xml:id="openscap-remediate-sle">
+  <title>Remediating a non-compliant &productnamex;</title>
+   <para></para>
+  </sect2>
+
  </sect1>
 
  <sect1 xml:id="openscap-terminology">
