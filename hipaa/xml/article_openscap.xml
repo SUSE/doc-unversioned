@@ -720,6 +720,84 @@
      rule was not successfully and the rule still does not pass evaluation.
     </para>
    </example>
+   <example xml:id="ex-oscap-remediate-sle15-post">
+    <title>Remediating &productnamex; 15 with oscap (after scanning)</title>
+    <para>
+     In this example, we first execute a scan and then run the remediation as next step.
+    </para>
+    <procedure>
+     <step>
+     <screen>&prompt.sudo;<command>oscap</command> xccdf eval<xref linkend="co-oscap-eval-command" xrefstyle="select:label nopage"/> \
+      --profile <replaceable>stig</replaceable><xref linkend="co-oscap-eval-profile" xrefstyle="select:label nopage"/> \
+      --results <replaceable>/tmp/results.xml</replaceable><xref linkend="co-oscap-eval-results" xrefstyle="select:label nopage"/> \
+      /usr/share/xml/scap/ssg/content/ssg-sle15-ds-1.2.xml<xref linkend="co-oscap-eval-ssg" xrefstyle="select:label nopage"/></screen>
+     <calloutlist>
+      <callout arearefs="co-oscap-eval-command">
+       <para>
+        Calls the oscap xccdf module and tells it to perform an evaluation.
+       </para>
+      </callout>
+      <callout arearefs="co-oscap-eval-profile">
+       <para>
+        Specifies the profile to use, in this case, <literal>stig</literal>.
+       </para>
+      </callout>
+      <callout arearefs="co-oscap-eval-results">
+       <para>
+        Saves the results of the evaluation as XCCDF file to <filename>/tmp/results.xml</filename>.
+       </para>
+      </callout>
+      <callout arearefs="co-oscap-eval-ssg">
+       <para>
+        Specifies the <literal>SCAP Security Guide</literal> policy file to use. In this example,
+        we use a policy file in <literal>DataStream</literal> format that applies to &productnamex;
+        code 15. To list all available policies, run:
+        <command>ls -1 /usr/share/xml/scap/ssg/content/ssg-*-ds.xml</command>. For
+        more information about a particular policy, run
+        <command>oscap info</command> on the file.
+       </para>
+      </callout>
+     </calloutlist>
+     <para>
+      During this step, the system is only evaluated, and the results are stored in a
+      <tag class="element">TestResult</tag> element in <replaceable>/tmp/results.xml</replaceable>.
+     </para>
+    </step>
+    <step>
+    <screen>&prompt.sudo;<command>oscap</command> xccdf remediate<co xml:id="co-oscap-remedy-post"/> \
+     --results <replaceable>/tmp/results.xml</replaceable><co xml:id="co-oscap-remedy-post-results"/> \
+     <replaceable>/tmp/results.xml</replaceable><co xml:id="co-oscap-remedy-post-ssg"/></screen>
+    <calloutlist>
+     <callout arearefs="co-oscap-remedy-post">
+      <para>
+       Calls the oscap xccdf module and tells it to perform a remediation.
+      </para>
+     </callout>
+     <callout arearefs="co-oscap-remedy-post">
+      <para>
+       Saves the results of the remediation to <filename>/tmp/results.xml</filename>.
+      </para>
+     </callout>
+     <callout arearefs="co-oscap-remedy-post">
+      <para>
+       Uses the <replaceable>/tmp/results.xml</replaceable> file from the first step (evaluation)
+       as input file.
+      </para>
+     </callout>
+    </calloutlist>
+     <para>
+      During this step, the results file from the first step is used as input
+      for the <command>oscap</command> command. You can safely store the results
+      from the second step in the same file that you use as input file,
+      <replaceable>/tmp/results.xml</replaceable>. During this run <command>oscap</command>
+      creates a new <tag class="element">xccdf:TestResult</tag> element
+      in the file. The new element is based on the previous one and inherits all the data. The newly created
+      <tag class="element">TestResult</tag> element differs only in the <tag class="element">rule-result</tag>
+      elements which had failed in the first run. Only for those the remediation is executed.
+     </para>
+    </step>
+   </procedure>
+   </example>
   </sect2>
  </sect1>
 
