@@ -711,13 +711,13 @@
      </callout>
     </calloutlist>
     <para>
-     In the resulting <filename>/tmp/results.xml</filename> file, the first <tag class="element">TestResult</tag>
-     element shows the result of the scan <emphasis>prior to</emphasis> the remediation.
-     The second <tag class="element">TestResult</tag> element shows the result of the scan after applying the remediation.
-     In the second  <tag class="element">TestResult</tag> element, if a result of a rule is <literal>fixed</literal>, this means that the
-     fix was successfully applied and this rule is now passes evaluation.
-     If the result of a rule is <literal>error</literal>, this means that remediation for this rule
-     was not successfully and the rule still does not pass evaluation.
+     In the resulting <filename>/tmp/results.xml</filename> file, the first <tag class="element"
+      >TestResult</tag> element shows the result of the scan <emphasis>prior to</emphasis> the remediation.
+     The second <tag class="element">TestResult</tag> element shows the result of the scan after applying the
+     remediation. In the second <tag class="element">TestResult</tag> element, if a result of a rule is
+      <literal>fixed</literal>, this means that the fix was successfully applied and this rule is now passes
+     evaluation. If the result of a rule is <literal>error</literal>, this means that remediation for this
+     rule was not successfully and the rule still does not pass evaluation.
     </para>
    </example>
   </sect2>
