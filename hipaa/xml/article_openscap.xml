@@ -675,6 +675,9 @@
    </para>
    <example xml:id="ex-oscap-remediate-sle15-fly">
     <title>Remediating &productnamex; 15 with oscap (on the fly)</title>
+    <para>
+     For remediation on the fly, use the <option>--remediate</option> command-line option.
+    </para>
     <screen>&prompt.sudo;<command>oscap</command> xccdf eval --remediate<co xml:id="co-oscap-remedy-fly"/> \
      --profile <replaceable>stig</replaceable><co xml:id="co-oscap-remedy-fly-profile"/> \
      --results <replaceable>/tmp/results.xml</replaceable><co xml:id="co-oscap-remedy-fly-results"/> \
@@ -708,15 +711,13 @@
      </callout>
     </calloutlist>
     <para>
-     The command's output <remark>taroth 2022-11-25: or the results file? check!</remark>
-     contains two sections. The first section <remark>taroth 2022-11-25: first TestResult element?
-     check!</remark> shows the result of the scan <emphasis>prior to</emphasis> the remediation.
-     The second section <remark>taroth 2022-11-25: second TestResult element? check!</remark>
-     shows the result of the scan after applying the remediation.
-     In the second section, if a result of a rule is <literal>fixed</literal>, this means that the
+     In the resulting <filename>/tmp/results.xml</filename> file, the first <tag class="element">TestResult</tag>
+     element shows the result of the scan <emphasis>prior to</emphasis> the remediation.
+     The second <tag class="element">TestResult</tag> element shows the result of the scan after applying the remediation.
+     In the second  <tag class="element">TestResult</tag> element, if a result of a rule is <literal>fixed</literal>, this means that the
      fix was successfully applied and this rule is now passes evaluation.
      If the result of a rule is <literal>error</literal>, this means that remediation for this rule
-     was not successfully and the rule still does not pass evaltuation.
+     was not successfully and the rule still does not pass evaluation.
     </para>
    </example>
   </sect2>
