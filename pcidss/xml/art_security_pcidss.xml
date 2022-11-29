@@ -22,6 +22,7 @@
  <info>
   <productname>&productnamex;</productname>
   <productnumber>&productnumberx;</productnumber>
+  <productname role="abbrev">&productnameshort;</productname>
   <date><?dbtimestamp format="B d, Y" ?></date>
   <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
    <dm:bugtracker>
