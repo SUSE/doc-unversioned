@@ -116,28 +116,28 @@ Language stack {bcia}s are built on top of the {bcia}-Base general-purpose {bcia
 Below is an overview of the available language stack {bcia}s.
 
 python::
-  * URL: https://registry.suse.com/static/bci/python
+  * URL: https://registry.suse.com/bci/python/index.html
   * Ships with the python3 version from the tag and pip3, curl, git tools.
 node::
-  * URL: https://registry.suse.com/static/bci/nodejs
+  * URL: https://registry.suse.com/bci/nodejs/index.html
   * Comes with nodejs version from the tag, npm and git. The yarn package manager can be installed with the `npm install -g yarn` command.
 openjdk::
-  * URL: https://registry.suse.com/static/bci/openjdk
+  * URL: https://registry.suse.com/bci/openjdk/index.html
   * Ships with the OpenJDK runtime. Designed for deploying Java applications.
 openjdk-devel::
-  * URL: https://registry.suse.com/static/bci/openjdk-devel
+  * URL: https://registry.suse.com/bci/openjdk-devel/index.html
   * Includes the development part of OpenJDK in addition to the OpenJDK runtime. Instead of Bash, the default entry point is the jshell shell.
 ruby::
-  * URL: https://registry.suse.com/static/bci/ruby
+  * URL: https://registry.suse.com/bci/ruby/index.html
   * A standard development environment based on Ruby 2.5, featuring ruby, gem and bundler as well as git and curl.
 golang::
-  * URL: https://registry.suse.com/static/bci/golang
+  * URL: https://registry.suse.com/bci/golang/index.html
   * Ships with the go compiler version specified in the tag.
 dotnet-runtime::
-  * URL: https://registry.suse.com/static/bci/dotnet-runtime
+  * URL: https://registry.suse.com/bci/dotnet-runtime/index.html
   * Includes the .NET runtime from Microsoft and the Microsoft .NET repository.
 dotnet-aspnet::
-  * URL: https://registry.suse.com/static/bci/dotnet-aspnet
+  * URL: https://registry.suse.com/bci/dotnet-aspnet/index.html
   * Ships with the ASP.NET runtime from Microsoft and the Microsoft .NET repository.
 dotnet-sdk::
   * URL: https://registry.suse.com/static/bci/dotnet-sdk
