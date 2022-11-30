@@ -860,58 +860,15 @@
   </sect2>
  </sect1>
 
- <sect1 xml:id="openscap-terminology">
-  <title>Terminology</title>
- <remark>taroth 2022-10-07: some terms to add: DISA, STIG, HIPAA, PCI-DSS, OVAL, XCCDF,
-  CPE, DS </remark>
-  <variablelist>
-    <varlistentry>
-     <term>Security Content Automation Protocol (SCAP)</term>
-     <listitem>
-      <para>
-       A framework of specifications that support automated configuration, vulnerability scanning,
-       and policy compliance evaluation of systems deployed in an organization.
-      </para>
-     </listitem>
-    </varlistentry>
-    <varlistentry>
-     <term>National Institute of Standards and Technology (NIST)</term>
-     <listitem>
-      <para>A physical sciences laboratory and non-regulatory agency of the United States Department of Commerce.</para>
-     </listitem>
-    </varlistentry>
-   <!--<varlistentry>
-    <term>Policy</term>
-    <listitem>
-     <para>TBD</para>
-    </listitem>
-   </varlistentry>
-    <varlistentry>
-     <term>Profile</term>
-     <listitem>
-      <para>A set of recommendations or a set of rules.</para>
-     </listitem>
-    </varlistentry>
-   <varlistentry>
-     <term>Rule</term>
-     <listitem>
-      <para>TBD</para>
-     </listitem>
-    </varlistentry>-->
-  </variablelist>
- </sect1>
-
- <sect1 xml:id="hipaa-related-topics">
+ <sect1 xml:id="oscap-related-topics">
   <title>Related topics</title>
 
   <itemizedlist>
    <listitem>
-    <para>Check out the <citetitle>SCAP Security Guide</citetitle> online
+    <para>Check out the <citetitle>SCAP Security Guide</citetitle> pages online
      at <link
      xlink:href="https://www.open-scap.org/security-policies/scap-security-guide/"/>.
-     Alternatively, access it from your system after installing the
-     <package>scap-security-guide</package> package.
-    </para>
+     </para>
    </listitem>
    <listitem>
     <para>For general instructions how to use the <literal>SCAP Security
@@ -921,12 +878,15 @@
    </listitem>
    <listitem>
     <para>
+     Find the <citetitle>&openscap;User Manual</citetitle> at
+     <link xlink:href="https://static.open-scap.org/openscap-1.2/oscap_user_manual.html"></link>
     </para>
    </listitem>
-   <listitem>
+   <!--<listitem>
     <para>
+    <remark>taroth 2022-11-30: after writing the other compliance papers, add pointers here</remark>
     </para>
-   </listitem>
+   </listitem>-->
   </itemizedlist>
  </sect1>
  <xi:include href="common_copyright_quick.xml"/>
