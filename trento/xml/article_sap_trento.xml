@@ -69,7 +69,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
   <important>
     <title>Trento is an evolving product</title>
     <para>
-      The product continues to be under active development, but is available for any &suse;
+      The product continues to be under active development, and is available at no extra cost for any &suse;
       customer with a registered &sles4sap;&nbsp;15 (SP1 or higher).
       Contact <link xlink:href="https://www.suse.com/support"/> for further assistence.
     </para>
@@ -146,7 +146,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
     <!--
       Most ist taken from https://confluence.suse.com/x/uoOyN
     -->
-    <para>The main components have different product lifecycles:</para>
+    <para>Trento premium is available at no extra cost for SLES for SAP subscribers. Particularly, the Trento two main components have the following product lifecycles:</para>
 
     <variablelist>
       <varlistentry>
