@@ -36,8 +36,8 @@
 
   <abstract>
    <para>
-    This document explains how to assess, measure and enforce security baselines with the help
-    of &openscap;.
+    This document introduces you to auditing and hardening &sle; with &openscap; and
+    the <literal>SCAP Security Guide</literal>.
    </para>
   </abstract>
  </info>
@@ -865,7 +865,7 @@
 
   <itemizedlist>
    <listitem>
-    <para>Check out the <citetitle>SCAP Security Guide</citetitle> pages online
+    <para>Check out the <literal>SCAP Security Guide</literal> pages online
      at <link
      xlink:href="https://www.open-scap.org/security-policies/scap-security-guide/"/>.
      </para>
