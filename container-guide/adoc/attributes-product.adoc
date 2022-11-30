@@ -32,11 +32,11 @@ endif::[]
 :z-product: {product} for IBM Z and LinuxONE
 :power-product: {product} for POWER
 
-:doc-url: https://example.com/
-:doc-url-beta: https://example.com/
-:doc-url-source: https://example.com/
+:doc-url: https://documentation.suse.com/container/all/
+:doc-url-beta: https://susedoc.github.io/doc-unversioned/main/html/SLES-container/
+:doc-url-source: https://github.com/SUSE/doc-unversioned/tree/main/container-guide
 
-:support-url: https://example.com/support
+:support-url: https://documentation.suse.com/container/all/
 :rn-url: https://www.suse.com/releasenotes
 
 :resource-library-url: https://www.suse.com/products/server#resources
