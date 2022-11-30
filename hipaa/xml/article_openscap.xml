@@ -785,18 +785,65 @@
       </para>
      </callout>
     </calloutlist>
-     <para>
-      During this step, the results file from the first step is used as input
-      for the <command>oscap</command> command. You can safely store the results
-      from the second step in the same file that you use as input file,
+    <para>
+      During this step, the results file from the first step is used as input for the
+      <command>oscap</command> command. You can safely store the results from the
+      second step in the same file that you use as input file,
       <replaceable>/tmp/results.xml</replaceable>. During this run <command>oscap</command>
-      creates a new <tag class="element">xccdf:TestResult</tag> element
-      in the file. The new element is based on the previous one and inherits all the data. The newly created
-      <tag class="element">TestResult</tag> element differs only in the <tag class="element">rule-result</tag>
-      elements which had failed in the first run. Only for those the remediation is executed.
+      creates a new <tag class="element">xccdf:TestResult</tag> element in the file.
+      The new element is based on the previous one and inherits all the data.
+      The newly created <tag class="element">TestResult</tag> element differs
+      only in the <tag class="element">rule-result</tag> elements which had failed
+      in the first run. Only for those the remediation is executed.
      </para>
     </step>
    </procedure>
+   </example>
+   <example xml:id="ex-oscap-remediate-sle15-review">
+    <title>Storing remediation instructions review</title>
+    <para>
+     Run <command>oscap</command> in review mode to store remediation instructions
+     to a file for further review. During this operation the remediation content is
+     <emphasis>not</emphasis> executed.
+     The following shows how to generate remediation instructions in the form of a shell script:
+    </para>
+    <screen>&prompt.sudo;<command>oscap</command> xccdf generate fix<co xml:id="co-oscap-generate-fix"/> \
+     --template urn:xccdf:fix:script:sh<co xml:id="co-oscap-generate-template"/> \
+     --profile <replaceable>stig</replaceable><xref linkend="co-oscap-eval-profile" xrefstyle="select:label nopage"/> \
+     --output <replaceable>my-remediation-script.sh</replaceable><co xml:id="co-oscap-generate-output"/> \
+     /usr/share/xml/scap/ssg/content/ssg-sle15-ds-1.2.xml<xref linkend="co-oscap-eval-ssg" xrefstyle="select:label nopage"/></screen>
+    <calloutlist>
+     <callout arearefs="co-oscap-generate-fix">
+      <para>
+       Calls the oscap xccdf module and tells it to generate a file with remediation instructions.
+      </para>
+     </callout>
+     <callout arearefs="co-oscap-generate-template">
+      <para>
+       Specifies the template to use, in this case a shell script.
+      </para>
+     </callout>
+     <callout arearefs="co-oscap-remedy-fly-profile">
+      <para>
+       Specifies the profile to use, in this case, <literal>stig</literal>.
+      </para>
+     </callout>
+     <callout arearefs="co-oscap-generate-output">
+      <para>
+       Specifies the file to which the remediation instructions are written.
+      </para>
+     </callout>
+     <callout arearefs="co-oscap-eval-ssg">
+      <para>
+       Specifies the <literal>SCAP Security Guide</literal> policy file to use. In this example,
+       we use a policy file in <literal>DataStream</literal> format that applies to &productnamex;
+       code 15. To list all available policies, run:
+       <command>ls -1 /usr/share/xml/scap/ssg/content/ssg-*-ds.xml</command>. For
+       more information about a particular policy, run
+       <command>oscap info</command> on the file.
+      </para>
+     </callout>
+    </calloutlist>
    </example>
   </sect2>
  </sect1>
