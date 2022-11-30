@@ -800,7 +800,7 @@
    </procedure>
    </example>
    <example xml:id="ex-oscap-remediate-sle15-review">
-    <title>Storing remediation instructions review</title>
+    <title>Storing remediation instructions for review</title>
     <para>
      Run <command>oscap</command> in review mode to store remediation instructions
      to a file for further review. During this operation the remediation content is
