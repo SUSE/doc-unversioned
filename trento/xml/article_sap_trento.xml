@@ -122,7 +122,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       on each host of the SAP infrastructure that is monitored.
     </para>
     <para>
-      For &trentopremium;, &suse; collects telemetry data relevant for further
+      For both &trentopremium; and Trento Community, &suse; collects telemetry data relevant for further
       product development. </para>
     <para> See <xref linkend="fig-trento-architecture" /> for additional
       details. </para>
