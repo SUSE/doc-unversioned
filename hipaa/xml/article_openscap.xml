@@ -534,13 +534,13 @@
    </para>
    <example xml:id="ex-oscap-scan-sle15">
     <title>Scanning &sle; with oscap</title>
-    <screen>&prompt.sudo;<command>oscap</command> xccdf eval<co xml:id="co-oscap-eval-command"/> \
+    <screen>&prompt.sudo;<command>oscap</command> xccdf eval<co xml:id="co-oscap-eval"/> \
     --profile <replaceable>stig</replaceable><co xml:id="co-oscap-eval-profile"/> \
     --results <replaceable>/tmp/results.xml</replaceable><co xml:id="co-oscap-eval-results"/> \
     --report <replaceable>/tmp/report.html</replaceable><co xml:id="co-oscap-eval-report"/> \
     /usr/share/xml/scap/ssg/content/ssg-sle15-ds-1.2.xml<co xml:id="co-oscap-eval-ssg"/></screen>
    <calloutlist>
-    <callout arearefs="co-oscap-eval-command">
+    <callout arearefs="co-oscap-eval">
      <para>
       Calls the <command>oscap xccdf</command> module and tells it to perform an evaluation (vulnerability scan).
      </para>
@@ -644,7 +644,7 @@
        <para>
         You can remediate a target system on the fly, while you are scanning it. In this case,
         evaluation and remediation are performed as a part of a single command.
-        For details, see <xref linkend="ex-oscap-remediate-sle15-fly"/>.
+        For details, see <xref linkend="oscap-remediate-sle-fly"/>.
        </para>
       </listitem>
      </varlistentry>
@@ -655,7 +655,7 @@
         You can remediate a target system after you have scanned it. In the first step,
         the system is only evaluated, and the results are stored in the XCCDF results file.
         In the second step, <command>oscap</command> executes the fix scripts and verifies the
-        result. For details, see <xref linkend="ex-oscap-remediate-sle15-post"/>.
+        result. For details, see <xref linkend="oscap-remediate-sle-post"/>.
        </para>
       </listitem>
      </varlistentry>
@@ -664,29 +664,31 @@
       <listitem>
        <para>
         The review mode allows to save remediation instructions to a file for further review. The remediation content
-        is not executed during this operation. For details, see <xref linkend="ex-oscap-remediate-sle15-review"/>.
+        is not executed during this operation. For details, see <xref linkend="oscap-remediate-sle-review"/>.
        </para>
       </listitem>
      </varlistentry>
    </variablelist>
   </sect2>
   <sect2 xml:id="openscap-remediate-sle">
-  <title>Remediating a non-compliant &slea; system</title>
+  <title>Remediating a &slea; system with <command>oscap</command></title>
    <para>
-    The following examples shows how to scan and remediate &sle; locally with <command>oscap</command>
+    The following examples show how to scan and remediate &sle; locally with <command>oscap</command>
     to comply with a certain profile.
    </para>
-   <example xml:id="ex-oscap-remediate-sle15-fly">
-    <title>Remediating &slea; 15 with oscap (on the fly)</title>
+   <sect3 xml:id="oscap-remediate-sle-fly">
+    <title>Remediating &sle; (on the fly)</title>
     <para>
      For remediation on the fly, use the <option>--remediate</option> command-line option.
     </para>
-    <screen>&prompt.sudo;<command>oscap</command> xccdf eval --remediate<co xml:id="co-oscap-remedy-fly-command"/> \
+    <example xml:id="ex-oscap-remediate-sle15-fly">
+     <title>Remediating &slea; 15 (on the fly)</title>
+    <screen>&prompt.sudo;<command>oscap</command> xccdf eval --remediate<co xml:id="co-oscap-remedy-fly"/> \
      --profile <replaceable>stig</replaceable><co xml:id="co-oscap-remedy-fly-profile"/> \
      --results <replaceable>/tmp/results.xml</replaceable><co xml:id="co-oscap-remedy-fly-results"/> \
      /usr/share/xml/scap/ssg/content/ssg-sle15-ds-1.2.xml<co xml:id="co-oscap-remedy-fly-ssg"/></screen>
     <calloutlist>
-     <callout arearefs="co-oscap-remedy-fly-command">
+     <callout arearefs="co-oscap-remedy-fly">
       <para>
        Calls the <command>oscap xccdf</command> module and tells it to perform an evaluation plus a remediation of the target system
        in one go.
@@ -723,19 +725,22 @@
      this means that remediation for this rule was not successful and the rule still does not pass evaluation.
     </para>
    </example>
-   <example xml:id="ex-oscap-remediate-sle15-post">
-    <title>Remediating &slea; 15 with oscap (after scanning)</title>
+   </sect3>
+   <sect3 xml:id="oscap-remediate-sle-post">
+    <title>Remediating &sle; (after scanning)</title>
     <para>
      In this example, we first execute a scan and then run the remediation as next step.
     </para>
+    <example xml:id="ex-oscap-remediate-sle15-post">
+     <title>Remediating &slea; (after scanning)</title>
     <procedure>
      <step>
-     <screen>&prompt.sudo;<command>oscap</command> xccdf eval<co xml:id="co-oscap-remedy-post1-command"/> \
+     <screen>&prompt.sudo;<command>oscap</command> xccdf eval<co xml:id="co-oscap-remedy-post1"/> \
       --profile <replaceable>stig</replaceable><co xml:id="co-oscap-remedy-post1-profile"/> \
       --results <replaceable>/tmp/results.xml</replaceable><co xml:id="co-oscap-remedy-post1-results"/> \
       /usr/share/xml/scap/ssg/content/ssg-sle15-ds-1.2.xml<co xml:id="co-oscap-remedy-post1-ssg"/></screen>
      <calloutlist>
-      <callout arearefs="co-oscap-remedy-post1-command">
+      <callout arearefs="co-oscap-remedy-post1">
        <para>
         Calls the <command>oscap xccdf</command> module and tells it to perform an evaluation.
        </para>
@@ -802,14 +807,17 @@
     </step>
    </procedure>
    </example>
-   <example xml:id="ex-oscap-remediate-sle15-review">
-    <title>Storing remediation instructions for review</title>
+   </sect3>
+   <sect3 xml:id="oscap-remediate-sle-review">
+    <title>Storing &slea; remediation instructions for review</title>
     <para>
      You can also run <command>oscap</command> in review mode to store remediation instructions
      to a file for further review. During this operation the remediation content is
      <emphasis>not</emphasis> executed.
      The following shows how to generate remediation instructions in the form of a shell script:
     </para>
+    <example xml:id="ex-oscap-remediate-sle15-review">
+     <title>Storing &slea; 15 remediation instructions for review</title>
     <screen>&prompt.sudo;<command>oscap</command> xccdf generate fix<co xml:id="co-oscap-generate-fix"/> \
      --template urn:xccdf:fix:script:sh<co xml:id="co-oscap-generate-template"/> \
      --profile <replaceable>stig</replaceable><co xml:id="co-oscap-generate-profile"/> \
@@ -847,7 +855,8 @@
       </para>
      </callout>
     </calloutlist>
-   </example>
+    </example>
+    </sect3>
   </sect2>
  </sect1>
 
