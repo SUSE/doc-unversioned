@@ -1595,7 +1595,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
           </listitem>
           <listitem>
             <para>The output of the command <command>supportconfig</command> in the &t.agent; host. See
-             https://documentation.suse.com/sles/15-SP1/html/SLES-all/cha-adm-support.html#sec-admsupport-cli
+            <link xlink:href="https://documentation.suse.com/sles/html/SLES-all/cha-adm-support.html#sec-admsupport-cli"/>
              for information on how to run this command from Command Line.
            </para>
           </listitem>
