@@ -1565,6 +1565,46 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
   </section>
 -->
 
+  <section xml:id="sec-trento-report-problem">
+    <title>Reporting a Problem</title>
+    <para>
+      Any &suse; customer, with a registered &sles4sap;&nbsp;15 (SP1 or higher) distribution,
+     experiencing an issue with &trentopremium;, can report the problem in &suse; Customer Center under
+     &sles4sap;&nbsp;15 and component trento. 
+    </para>
+      <para>
+      When opening a support case for Trento, make sure that you attach the following information:
+    </para>
+         <itemizedlist>
+          <listitem>
+            <para>The output of the Trento support plugin.</para>
+          </listitem>
+           <listitem>
+            <para>A dump of your scenario.</para>
+          </listitem>
+        </itemizedlist>
+   <para>
+      For issues with a particular Agent, or a component discovered by a particular Agent, also provide the following:
+    </para>
+            <itemizedlist>
+          <listitem>
+            <para>The status of the Agent.</para>
+          </listitem>
+          <listitem>
+            <para>The journal of the agent.</para>
+          </listitem>
+          <listitem>
+            <para>The output of the supportconfig command in the Agent host. See
+             https://documentation.suse.com/sles/15-SP1/html/SLES-all/cha-adm-support.html#sec-admsupport-cli
+             for information on how to run this command from Command Line.
+           </para>
+          </listitem>
+        </itemizedlist>
+      <para>
+      Section <xref linkend="sec-trento-problemanalysis" /> explains how to retrieve the information listed above.
+    </para>
+  </section> 
+ 
   <section xml:id="sec-trento-problemanalysis">
     <title>Problem Analysis</title>
     <para>
@@ -1655,7 +1695,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
           <screen>&prompt.user;<command>sudo systemctl restart</command> trento-agent</screen>
         </step>
         <step>
-          <para>Retriebe the log from the journal:</para>
+          <para>Retrieve the log from the journal:</para>
           <screen>&prompt.user;<command>sudo journalctl</command> -u trento-agent</screen>
         </step>
       </procedure>
@@ -1673,7 +1713,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
           <screen>&prompt.user;<command>export KUBECONFIG</command>=/etc/rancher/k3s/k3s.yaml</screen>
         </step>
         <step>
-          <para>List pods running in K3s cluster and their status:</para>
+          <para>List pods running in &k8s; cluster and their status:</para>
           <screen>&prompt.user;<command>kubectl get pods</command>
 Trento Server currently consists of five pods:
 trento-server-postgresql-*
