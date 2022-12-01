@@ -1584,7 +1584,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
           </listitem>
         </itemizedlist>
    <para>
-      For issues with a particular Agent, or a component discovered by a particular Agent, also provide the following:
+      For issues with a particular &t.agent;, or a component discovered by a particular &t.agent;, also provide the following:
     </para>
             <itemizedlist>
           <listitem>
