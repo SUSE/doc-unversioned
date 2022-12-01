@@ -1573,7 +1573,8 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
      &sles4sap;&nbsp;15 and component trento. 
     </para>
       <para>
-      When opening a support case for Trento, make sure that you provide the following information:
+      When opening a support case for Trento, provide the following information, which can be retrieved
+     as explained in section <xref linkend="sec-trento-problemanalysis" />:
     </para>
          <itemizedlist>
           <listitem>
@@ -1600,9 +1601,6 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
            </para>
           </listitem>
         </itemizedlist>
-      <para>
-      Section <xref linkend="sec-trento-problemanalysis" /> explains how to retrieve the information listed above.
-    </para>
   </section> 
  
   <section xml:id="sec-trento-problemanalysis">
