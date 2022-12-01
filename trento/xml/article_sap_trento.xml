@@ -1588,10 +1588,10 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
     </para>
             <itemizedlist>
           <listitem>
-            <para>The status of the Agent.</para>
+            <para>The status of the &t.agent;.</para>
           </listitem>
           <listitem>
-            <para>The journal of the agent.</para>
+            <para>The journal of the &t.agent;.</para>
           </listitem>
           <listitem>
             <para>The output of the supportconfig command in the Agent host. See
