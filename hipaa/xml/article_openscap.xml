@@ -366,11 +366,14 @@
     <title>SCAP Security Guide profiles for &sle; 15</title>
     <mediaobject>
      <imageobject role="fo">
-      <imagedata fileref="openscap-ssg-static-html-sle15.png" width="95%"></imagedata>
+      <imagedata fileref="openscap-ssg-static-html-sle15.png" width="95%"/>
      </imageobject>
      <imageobject role="html">
-      <imagedata fileref="openscap-ssg-static-html-sle15.png" width="90%"></imagedata>
+      <imagedata fileref="openscap-ssg-static-html-sle15.png" width="90%"/>
      </imageobject>
+     <textobject role="description">
+      <phrase>SCAP Security Guide profiles for &sle; 15</phrase>
+     </textobject>
     </mediaobject>
    </figure>
   </sect2>
@@ -455,6 +458,9 @@
      <imageobject role="html">
       <imagedata fileref="openscap-ssg-static-html-sle12.png" width="90%"/>
      </imageobject>
+     <textobject role="description">
+      <phrase>SCAP Security Guide profiles for &sle; 12</phrase>
+     </textobject>
     </mediaobject>
    </figure>
   </sect2>
