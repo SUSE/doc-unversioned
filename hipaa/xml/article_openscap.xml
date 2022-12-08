@@ -54,7 +54,7 @@
 
   <para>&openscap; is a collection of open source tools that implement the SCAP framework for Linux.
    SCAP is maintained by the <orgname>National Institute of Standards and Technology (NIST)</orgname>.
-   &openscap; has received the SCAP 1.2 certification by NIST in 2014.
+   &openscap; received the SCAP 1.2 certification by NIST in 2014.
   </para>
  </sect1>
 
@@ -66,7 +66,7 @@
     Security Guide</literal>, can be used for auditing your system in an
    automated way. The <literal>SCAP Security Guide</literal> implements
    security guidances recommended by respected authorities. These security
-   guidances are transformed into a machine readable format which then can
+   guidances are transformed into a machine-readable format which then can
    be used by &openscap; and other tools.
   </para>
  </sect1>
@@ -89,19 +89,20 @@
     <term>Extensible Configuration Checklist Description Format (XCCDF)</term>
     <listitem>
      <para>
-      An XML format that specifies security checklists, benchmarks, and configuration
-      documentation. The XCCDF file includes a benchmark as a set of different profiles
-      related to different groups. Each group is a set of rules which have OVAL definitions.
-      Each profile is related to different good practices such as STIG, HIPAA, PCI-DSS, or ANSSI.</para>
+      An XML format that specifies security checklists, benchmarks and
+      configuration documentation. The XCCDF file includes a benchmark
+      as a set of different profiles related to different groups. Each group
+      is a set of rules which have OVAL definitions. Each profile is related
+      to different good practices such as STIG, HIPAA, PCI-DSS, or ANSSI.</para>
     </listitem>
    </varlistentry>
    <varlistentry>
     <term>Common Platform Enumeration (CPE)</term>
     <listitem>
      <para>
-      A structured naming scheme to identify information technology systems, platforms, and
-      software packages. It is maintained by NIST and NDV. The naming scheme consists of the following
-      elements:
+      A structured naming scheme to identify information technology systems,
+      platforms and software packages. It is maintained by NIST and NDV. 
+      The naming scheme consists of the following elements:
       <literal>cpe:/<replaceable>part</replaceable>:<replaceable>vendor</replaceable>:<replaceable>product</replaceable>:<replaceable>version</replaceable>:<replaceable>update</replaceable>:<replaceable>edition</replaceable>:<replaceable>language</replaceable></literal>
      </para>
     </listitem>
@@ -161,8 +162,9 @@
        Contains profiles for different hardening policies in human-readable format.
        They describe the profiles that are included in the DataStream files.
        The profiles applicable to &sle; are codestream-specific and differ between
-       code 12 and code 15. Each profile is a guide how to secure your operating system
-       according to a regulation that you want your system to comply with.
+       code 12 and code 15. Each profile is a guide on how to secure your
+       operating system according to a regulation that you want your system
+       to comply with.
       </para>
       <para>
        The guides usually have the following structure:
@@ -170,7 +172,7 @@
       <itemizedlist>
        <listitem>
         <para>
-         Short description.
+         Short description
         </para>
        </listitem>
        <listitem>
@@ -197,18 +199,18 @@
        </listitem>
        <listitem>
         <para>
-         A table of contents.
+         A table of contents
         </para>
        </listitem>
        <listitem>
         <para>
-         A checklist which consists of groups (and subgroups) with rules.
+         A checklist which consists of groups (and subgroups) with rules
         </para>
         <para>
          Each rule consists of a short description, the rationale behind the rule,
-         a severity (low, medium, or high) and a unique identifier in 
-         <literal>Common Configuration Enumeration (CCE)</literal> format. The CCE number
-         for each rule is provided to &suse; by NIST.
+         a severity (low, medium or high) and a unique identifier in the
+         <literal>Common Configuration Enumeration (CCE)</literal> 
+         format. The CCE number for each rule is provided to &suse; by NIST.
         </para>
         <para>
          Each rule also lists references to different good practices. For example, the rule
@@ -259,14 +261,14 @@
     <para>
      <link
       xlink:href="https://github.com/ComplianceAsCode/content/tree/master/products/sle12/profiles"
-      > </link>
+     />
     </para>
    </listitem>
   </itemizedlist>
   <para>
-   After installation of the <package>scap-security-guide</package> package,
-   human-readable versions of the profiles are available in your file system in
-   <filename>/usr/share/doc/scap-security-guide/guides</filename>.
+   After the installation of the <package>scap-security-guide</package>
+   package, human-readable versions of the profiles are available in your
+   file system in <filename>/usr/share/doc/scap-security-guide/guides</filename>.
   </para>
   <para>
    Alternatively, find the same content online as static HTML pages:
@@ -283,9 +285,10 @@
     </para>
    </listitem>
   </itemizedlist>
-  <para>In the online versions, use the drop-down box at the upper right corner of
-   the page to select one of the available profiles and to view a command line
-   snippet how to evaluate the respective profile with &openscap;.
+  <para>In the online versions, use the drop-down list in the upper-right
+  corner of the page to select one of the available profiles and to view
+  a command-line snippet about how to evaluate the respective profile
+  with &openscap;.
   </para>
   <sect2 xml:id="openscap-ssg-profiles-sle15">
    <title>&sle; 15 profiles</title>
@@ -484,7 +487,8 @@
   </itemizedlist>
   <para>
    Automated checks help to identify the target and to select only the rules that make sense for this specific
-   target. For example, checks for separate partitions make sense on bare-metal machines but not for containers.
+   target. For example, checks for separate partitions make sense for
+   bare-metal machines but not for containers.
   </para>
   </sect2>
   <sect2 xml:id="openscap-scan-tools">
@@ -497,7 +501,7 @@
     <term>oscap</term>
     <listitem>
      <para>
-      A command line interface that can be used to scan local machines. Both the <package>openscap-utils</package> and
+      A command-line interface that can be used to scan local machines. Both the <package>openscap-utils</package> and
       <package>scap-security-guide</package> package need to be installed on the local machine.
      </para>
     </listitem>
@@ -507,9 +511,10 @@
      <listitem>
       <para>
        A graphical user interface that can be used for scanning a single machine, either local or remote (via SSH).
-       Both the <package>scap-workbench</package> and <package>scap-security-guide</package> package need to be installed
-       on the local machine. On the remote machine the <package>openscap-utils</package> package needs to be
-       installed.
+       Both the <package>scap-workbench</package> and
+       <package>scap-security-guide</package> packages need to
+       be installed on the local machine. On the remote machine,
+       the <package>openscap-utils</package> package needs to be installed.
       </para>
      </listitem>
     </varlistentry>
@@ -517,10 +522,11 @@
     <term>oscap-ssh</term>
     <listitem>
      <para>
-      A command line interface that can be used to scan a remote machine via SSH with an interface resembling
-      the <command>oscap</command> tool. On the local machine, the package <package>openscap-utils</package>
-      needs to be installed. On the remote machine, the <package>openscap-utils</package> package needs
-      to be installed.
+      A command-line interface that can be used to scan a remote machine
+      via SSH with an interface resembling the <command>oscap</command>
+      tool. On the local machine, the package <package>openscap-utils</package>
+      needs to be installed. On the remote machine, the
+      <package>openscap-utils</package> package needs to be installed.
      </para>
     </listitem>
    </varlistentry>
@@ -604,7 +610,7 @@
   <procedure>
    <step>
     <para>
-     The <command>oscap</command> command line tool performs a system scan.
+     The <command>oscap</command> command-line tool performs a system scan.
     </para>
    </step>
    <step>
@@ -720,9 +726,10 @@
       >TestResult</tag> element shows the result of the scan <emphasis>prior to</emphasis> the remediation.
      The second <tag class="element">TestResult</tag> element shows the result of the scan
      <emphasis>after</emphasis> applying the remediation. In the second <tag class="element">TestResult</tag>
-     element, if a result of a rule is <literal>fixed</literal>, this means that the fix was successfully
-     applied and this rule now passes evaluation. If the result of a rule is <literal>error</literal>,
-     this means that remediation for this rule was not successful and the rule still does not pass evaluation.
+     element, if the result of a rule is <literal>fixed</literal>, this means that the fix was successfully
+     applied, and this rule now passes evaluation. If the result of a rule is
+     <literal>error</literal>, this means that remediation for this rule was
+     not successful, and the rule still does not pass evaluation.
     </para>
    </example>
    </sect3>
@@ -752,7 +759,8 @@
       </callout>
       <callout arearefs="co-oscap-remedy-post1-results">
        <para>
-        Saves the results of the evaluation as XCCDF file to <replaceable>/tmp/results.xml</replaceable>.
+        Saves the results of the evaluation as an XCCDF file to
+        <replaceable>/tmp/results.xml</replaceable>.
        </para>
       </callout>
       <callout arearefs="co-oscap-remedy-post1-ssg">
@@ -797,12 +805,12 @@
       During this step, the results file from the first step is used as input for the
       <command>oscap</command> command. You can safely store the results from the
       second step in the same file that you use as input file,
-      <replaceable>/tmp/results.xml</replaceable>. During this run <command>oscap</command>
+      <replaceable>/tmp/results.xml</replaceable>. During this run, <command>oscap</command>
       creates a new <tag class="element">xccdf:TestResult</tag> element in the file.
       The new element is based on the previous one and inherits all the data.
       The newly created <tag class="element">xccdf:TestResult</tag> element differs
       only in the <tag class="element">rule-result</tag> elements which had failed
-      in the first run. Only for those the remediation is executed.
+      in the first run. Only for those is the remediation executed.
      </para>
     </step>
    </procedure>
@@ -812,8 +820,8 @@
     <title>Storing &slea; remediation instructions for review</title>
     <para>
      You can also run <command>oscap</command> in review mode to store remediation instructions
-     to a file for further review. During this operation the remediation content is
-     <emphasis>not</emphasis> executed.
+     to a file for further review. During this operation, the remediation
+     content is <emphasis>not</emphasis> executed.
      The following shows how to generate remediation instructions in the form of a shell script:
     </para>
     <example xml:id="ex-oscap-remediate-sle15-review">
@@ -831,7 +839,7 @@
      </callout>
      <callout arearefs="co-oscap-generate-template">
       <para>
-       Specifies the template to use, in this case a shell script.
+       Specifies the template to use, in this case, a shell script.
       </para>
      </callout>
      <callout arearefs="co-oscap-generate-profile">
@@ -871,15 +879,15 @@
      </para>
    </listitem>
    <listitem>
-    <para>For general instructions how to use the <literal>SCAP Security
+    <para>For general instructions on how to use the <literal>SCAP Security
      Guide</literal>, see the README in <link
-      xlink:href="https://github.com/ComplianceAsCode/content"/>.
+      xlink:href="https://github.com/ComplianceAsCode/content/"/>.
     </para>
    </listitem>
    <listitem>
     <para>
-     Find the <citetitle>&openscap;User Manual</citetitle> at
-     <link xlink:href="https://static.open-scap.org/openscap-1.2/oscap_user_manual.html"></link>
+     Find the <citetitle>&openscap; User Manual</citetitle> at
+     <link xlink:href="https://static.open-scap.org/openscap-1.2/oscap_user_manual.html"></link>.
     </para>
    </listitem>
    <!--<listitem>
