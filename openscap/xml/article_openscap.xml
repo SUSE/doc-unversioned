@@ -6,8 +6,6 @@
 [
 <!ENTITY % entities SYSTEM "generic-entities.ent">
 %entities;
-<!ENTITY productnamex "<phrase xmlns='http://docbook.org/ns/docbook' os='sles;sled;osuse'>&productname;</phrase><phrase xmlns='http://docbook.org/ns/docbook' os='article'>&sls;</phrase>">
-<!ENTITY productnumberx "<phrase xmlns='http://docbook.org/ns/docbook' os='sles;sled;osuse'>&productnumber;</phrase>">
 ]>
 
 <article xml:id="article-openscap"
@@ -20,8 +18,7 @@
  <title>Hardening &sle; with &openscap;</title>
  <titleabbrev>Hardening &sle; with &openscap;</titleabbrev>
  <info>
-  <productname>&productnamex;</productname>
-  <productnumber>&productnumberx;</productnumber>
+  <productname>&productname;</productname>
   <date><?dbtimestamp format="B d, Y"?></date>
   <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
    <dm:bugtracker>
@@ -30,7 +27,7 @@
     <dm:product>Documentation</dm:product>
     <dm:assignee>taroth@suse.com</dm:assignee>
    </dm:bugtracker>
-   <dm:editurl>https://github.com/SUSE/doc-unversioned/blob/main/hipaa/xml/</dm:editurl>
+   <dm:editurl>https://github.com/SUSE/doc-unversioned/edit/main/openscap/xml/</dm:editurl>
    <dm:translation>no</dm:translation>
   </dm:docmanager>
 
