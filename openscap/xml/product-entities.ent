@@ -2,28 +2,21 @@
 <!-- This file can be edited downstream. -->
 
 <!-- PRODUCT NAME AND VERSIONS -->
-<!ENTITY productname            "<phrase xmlns='http://docbook.org/ns/docbook' role='productname'><phrase os='osuse'>&opensuse; Leap</phrase><phrase os='sles'>&sls;</phrase><phrase os='sled'>&sled;</phrase><phrase os='slemicro'>&slem;</phrase></phrase>">
-<!ENTITY productnamereg         "<phrase xmlns='http://docbook.org/ns/docbook' role='productname'><phrase os='osuse'>&opensusereg; Leap</phrase><phrase os='sles'>&slsreg;</phrase><phrase os='sled'>&sledreg;</phrase><phrase os='slemicro'>&slemreg;</phrase></phrase>">
-<!ENTITY productnameshort       "<phrase xmlns='http://docbook.org/ns/docbook' role='productname'><phrase os='osuse'>&opensuse; Leap</phrase><phrase os='sles'>&slsa;</phrase><phrase os='sled'>&sleda;</phrase><phrase os='slemicro'>&slema;</phrase></phrase>">
+<!ENTITY productname            "<phrase xmlns='http://docbook.org/ns/docbook' role='productname'><phrase os='sles'>&sls;</phrase></phrase>">
+<!ENTITY productnamereg         "<phrase xmlns='http://docbook.org/ns/docbook' role='productname'><phrase os='sles'>&slsreg;</phrase></phrase>">
+<!ENTITY productnameshort       "<phrase xmlns='http://docbook.org/ns/docbook' role='productname'><phrase os='sles'>&slsa;</phrase></phrase>">
 
 <!ENTITY product-ga             "15">
 <!ENTITY product-sp             "Code stream">
 <!ENTITY productnumber-regurl   "&product-ga;.&product-sp;">
 <!ENTITY productnumber-leaprepo "&product-ga;.&product-sp;">
-<!ENTITY productnumber          "<phrase xmlns='http://docbook.org/ns/docbook' role='productnumber'><phrase os='osuse'>15.4</phrase><phrase os='sles;sled'>&product-ga; SP&product-sp;</phrase><phrase os='slemicro'>5.2</phrase></phrase>">
+<!ENTITY productnumber          "<phrase xmlns='http://docbook.org/ns/docbook' role='productnumber'><phrase os='sles'>&product-ga; SP&product-sp;</phrase></phrase>">
 
 
 
 <!-- PROJECT REPOSITORY URL -->
 <!ENTITY repo-url               "https://github.com/SUSE/doc-unversioned">
 <!ENTITY repo-readme            "&repo-url;/blob/main/README.adoc">
-
-<!-- DOCUMENTATION.SUSE.COM PRODUCT URL -->
-<!ENTITY doc-url                "&dsc;/[PRODUCT]/[VERSION]">
-
-<!-- RELEASE NOTES URL -->
-<!ENTITY rn-url                 "&sc-rn;/x86_64/[PRODUCT]/[VERSION]">
-
 
 <!-- START YEAR OF COPYRIGHT -->
 <!ENTITY copyrightstart         "2006">
