@@ -1,5 +1,5 @@
 ## ---------------------------- 
-## HIPAA, unversioned
+## OpenSCAP, unversioned
 ## repo: SUSE/doc-unversioned
 ## ----------------------------
 ##
@@ -8,7 +8,7 @@ MAIN="article_openscap.xml"
 ROOTID=article-openscap
 
 ## Profiling
-PROFOS="article"
+PROFOS="sles"
 PROFARCH="x86_64;zseries;power;aarch64"
 
 ## stylesheet location
