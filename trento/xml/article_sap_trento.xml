@@ -96,7 +96,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       </listitem>
       <listitem>
         <para>Configuration validation for &hana; Scale-Up
-          Performance-Optimized scenarios deployed on Azure, AWS, GCP or on-premise bare metal platforms, including KVM and Nutanix.
+          Performance-Optimized 2-node scenarios deployed on Azure, AWS, GCP or on-premise bare metal platforms, including KVM and Nutanix.
         </para>
       </listitem>
       <listitem>
