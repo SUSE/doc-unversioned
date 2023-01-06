@@ -18,6 +18,7 @@
          xmlns:xi="http://www.w3.org/2001/XInclude"
          xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>Using &kubevirt; on &sle;</title>
+  <info><date>
 <?dbtimestamp format="B d, Y" ?></date>
     <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
       <dm:bugtracker>
@@ -26,7 +27,6 @@
         <dm:assignee>tbazant@suse.com</dm:assignee>
       </dm:bugtracker>
       <dm:editurl>https://github.com/SUSE/doc-unversioned/blob/main/xml/</dm:editurl>
-      <dm:translation>yes</dm:translation>
     </dm:docmanager>
     <authorgroup>
       <author><personname><firstname>Jim</firstname><surname>Fehlig</surname></personname>
