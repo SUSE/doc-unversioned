@@ -18,8 +18,6 @@
          xmlns:xi="http://www.w3.org/2001/XInclude"
          xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>Using &kubevirt; on &sle;</title>
-  <info><productname>&productnamex;</productname>
-    <productnumber>&productnumberx;</productnumber><date>
 <?dbtimestamp format="B d, Y" ?></date>
     <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
       <dm:bugtracker>
