@@ -2,23 +2,23 @@
 <!-- This file can be edited downstream. -->
 
 <!-- PRODUCT NAME AND VERSIONS -->
-<!ENTITY productname            "PRODUCT">
-<!ENTITY productnameshort       "ACRONYM">
-<!ENTITY productnumber          "X.Y">
+<!ENTITY productname            "&kubevirt;">
+<!-- <!ENTITY productnameshort       "ACRONYM"> -->
+<!ENTITY productnumber          "&product-ga; SP&product-sp;">
 
 
 <!-- PROJECT REPOSITORY URL -->
-<!ENTITY repo-url               "https://github.com/SUSE/doc-[PRODUCT]">
+<!ENTITY repo-url               "https://github.com/SUSE/doc-unversioned">
 <!ENTITY repo-readme            "&repo-url;/blob/main/README.adoc">
 
 <!-- DOCUMENTATION.SUSE.COM PRODUCT URL -->
-<!ENTITY doc-url                "&dsc;/[PRODUCT]/[VERSION]">
+<!-- <!ENTITY doc-url                "&dsc;/[PRODUCT]/[VERSION]"> -->
 
 <!-- RELEASE NOTES URL -->
-<!ENTITY rn-url                 "&sc-rn;/x86_64/[PRODUCT]/[VERSION]">
+<!-- <!ENTITY rn-url                 "&sc-rn;/x86_64/[PRODUCT]/[VERSION]"> -->
 
 
 <!-- START YEAR OF COPYRIGHT -->
-<!ENTITY copyrightstart         "20XX">
+<!ENTITY copyrightstart         "2023">
 <!-- COPYRIGHT HOLDER(S) -->
 <!ENTITY copyrightholder        "SUSE LLC">
