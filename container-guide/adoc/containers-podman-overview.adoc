@@ -28,6 +28,8 @@ To enable the change, reboot the machine or stop the session of the current user
 
 The command above defines a range of local UIDs to which the UIDs allocated to users inside the container are mapped on the host. Note that the ranges defined for different users must not overlap. It is also important that the ranges do not reuse the UID of an existing local user or group. By default, adding a user with the `useradd` command on {slsa}{nbsp}{productnumber} automatically allocates subUID and subGID ranges.
 
+When using rootless containers with {podman}, it is recommended to use cgroups v2. cgroups v1 are limited compared to v2. For example cgroups v1 allow every user to modify all existing control groups, and not just their own. Additionally, {podman} is be unable to read container logs properly with cgroups v1 and the systemd log driver. To enable cgroups v2, add the following to the kernel cmdline: `systemd.unified_cgroup_hierarchy=1`
+
 Running a container with {podman} in rootless mode on SLS may fail, because the container needs read access to the SCC credentials. For example, running a container with the command `podman run -it --rm registry.suse.com/suse/sle15 bash` and then executing `zypper ref` results in the following error message:
 
 ....
