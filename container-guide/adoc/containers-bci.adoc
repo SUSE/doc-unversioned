@@ -34,6 +34,12 @@ Redistribution::
 * Each {bcia} includes the RPM database, which makes it possible to audit the contents of the container image. You can use the RPM database to determine the specific version of the RPM package any given file belongs to. This allows you to ensure that a container image is not susceptible to known and already fixed vulnerabilities.
 * All {bcia}s (except for those without {zypper}) come with the `container-suseconnect` service. This gives containers that run on a registered {slsa} host access to the full {slsa} repositories. `container-suseconnect` is invoked automatically when you run {zypper} for the first time, and the service adds the correct {slsa} repositories into the running container. On an unregistered {slsa} host or on a non-{slsa} host, the service does nothing.
 
+[NOTE]
+.{slea}_{bcia} repository
+====
+There is a {slea}_{bcia} repository for each {slea} service pack. This means that {bcia}s based on SP4 have access to the {slea}_{bcia} repository for SP4, all {bcia}s based on SP4 use the SLE_BCI repository for SP4, and so on. Each SLE_BCI repository contains all SLE packages except kernels, bootloaders, installers (including {yast}), desktop environments, and hypervisors (such as KVM and Xen).
+====
+
 [[sec-general-purpose-bci]]
 === General-purpose {bcia}s
 
