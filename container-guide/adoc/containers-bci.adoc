@@ -15,10 +15,10 @@ include::attributes-product.adoc[]
 [[sec-bci-why]]
 === Why {bci}s
 
-{bcia}s offer a platform for creating {slsa}-based custom container images and containerized applications that can be distributed freely. {bcia}s feature the same predictable enterprise lifecycle as {slsa}. The SLE_BCI 15 SP3 and SP4 repository (which is a subset of the {slea} repository) gives {bcia}s access to 4000 packages available for the {x64}, {aarch64}, {ppc}, and {zseries} architectures. The packages in the repository have undergone quality assurance and security audits by {suse}. The container images are FIPS-compliant when running on a host in FIPS mode. In addition to that, {suse} can provide official support for {bcia}s through {suse} subscription plans.
+{bcia}s offer a platform for creating {slsa}-based custom container images and containerized applications that can be distributed freely. {bcia}s feature the same predictable enterprise lifecycle as {slsa}. The {slea}_{bcia} 15 SP3 and SP4 repository (which is a subset of the {slea} repository) gives {bcia}s access to 4000 packages available for the {x64}, {aarch64}, {ppc}, and {zseries} architectures. The packages in the repository have undergone quality assurance and security audits by {suse}. The container images are FIPS-compliant when running on a host in FIPS mode. In addition to that, {suse} can provide official support for {bcia}s through {suse} subscription plans.
 
 Security::
-  Each package in the SLE_BCI repository undergoes security audits, and {bcia}s benefit from the same mechanism of dealing with CVEs as {sles}. All discovered and fixed vulnerabilities are announced via e-mail, the dedicated https://www.suse.com/security/cve/[CVE pages], and as OVAL and CVRF data. To ensure a secure supply chain, all container images are signed with Notary v1, {podman}'s GPG signatures, and Sigstore Cosign.
+  Each package in the {slea}_{bcia} repository undergoes security audits, and {bcia}s benefit from the same mechanism of dealing with CVEs as {sles}. All discovered and fixed vulnerabilities are announced via e-mail, the dedicated https://www.suse.com/security/cve/[CVE pages], and as OVAL and CVRF data. To ensure a secure supply chain, all container images are signed with Notary v1, {podman}'s GPG signatures, and Sigstore Cosign.
 Stability::
   Since {bcia}s are based on {slsa}, they feature the same level of stability and quality assurance. Similar to {slsa}, {bcia}s receive maintenance updates that provide bug fixes, improvements, and security patches.
 Tooling and integration::
@@ -58,7 +58,7 @@ The table below provides a quick overview of the differences between {bcia}-Base
 
 ==== {bcia}-Base and {bcia}-Init: When you need flexibility
 
-This {bcia} comes with the Zypper package manager and a free {slea}-{bci} repository. This allows you to install software available in the repository and customize the image during the build. The downside is the size of the image. It is the largest of the general-purpose {bcia}s, so it is not always the best choice for a deployment image.
+This {bcia} comes with the Zypper package manager and the free {slea}_{bcia} repository. This allows you to install software available in the repository and customize the image during the build. The downside is the size of the image. It is the largest of the general-purpose {bcia}s, so it is not always the best choice for a deployment image.
 
 A variant of {bcia}-Base called {bcia}-Init comes with systemd preinstalled. The {bcia}-Init container image can be useful in scenarios requiring systemd for managing services in a single container.
 
@@ -111,7 +111,7 @@ For your reference, the list below provides an approximate size of each {bcia}. 
 [[sec-language-stack-bci]]
 === Language stack {bcia}s
 
-Language stack {bcia}s are built on top of the {bcia}-Base general-purpose {bcia}. Each container image comes with the {zypper} stack and the free `SLE_BCI` repository. Additionally, each image includes most common tools for building and deploying applications in the specific language environment. This includes tools like a compiler or interpreter as well as the language specific package manager.
+Language stack {bcia}s are built on top of the {bcia}-Base general-purpose {bcia}. Each container image comes with the {zypper} stack and the free `{slea}_{bcia}` repository. Additionally, each image includes most common tools for building and deploying applications in the specific language environment. This includes tools like a compiler or interpreter as well as the language specific package manager.
 
 Below is an overview of the available language stack {bcia}s.
 
@@ -269,7 +269,7 @@ is a plugin available in all {bcia}s that ship with
 Zypper. When the plugin detects the host's {sles}
 registration credentials, it uses them to give the container access the
 SUSE Linux Enterprise repositories. This includes additional modules and
-previous package versions that are not part of the free `SLE_BCI`
+previous package versions that are not part of the free `{slea}_{bcia}`
 repository.
 
 [[sec-bci-suseconnect-howto]]
@@ -404,7 +404,7 @@ Problem retrieving the repository index file for service 'container-suseconnect-
 Warning: Skipping service 'container-suseconnect-zypp' because of the above error.
 ....
 
-Ignore the message, as it simply indicates that container-suseconnect was not able to retrieve your {scc} credentials, and thus could not add the full {slea} repositories. You still have full access to the `SLE_BCI` repository, and can continue using the container as intended.
+Ignore the message, as it simply indicates that container-suseconnect was not able to retrieve your {scc} credentials, and thus could not add the full {slea} repositories. You still have full access to the `{slea}_{bcia}` repository, and can continue using the container as intended.
 ====
 
 [[sec-bci-suseconnect-add-modules]]
