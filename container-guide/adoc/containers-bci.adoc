@@ -37,7 +37,7 @@ Redistribution::
 [NOTE]
 .{slea}_{bcia} repository
 ====
-There is a {slea}_{bcia} repository for each {slea} service pack. This means that {bcia}s based on SP4 have access to the {slea}_{bcia} repository for SP4, all {bcia}s based on SP4 use the SLE_BCI repository for SP4, and so on. Each SLE_BCI repository contains all SLE packages except kernels, bootloaders, installers (including {yast}), desktop environments, and hypervisors (such as KVM and Xen).
+There is a {slea}_{bcia} repository for each {slea} service pack. This means that {bcia}s based on SP4 have access to the {slea}_{bcia} repository for SP4, all {bcia}s based on SP5 use the SLE_BCI repository for SP5, and so on. Each SLE_BCI repository contains all SLE packages except kernels, bootloaders, installers (including {yast}), desktop environments, and hypervisors (such as KVM and Xen).
 ====
 
 [[sec-general-purpose-bci]]
