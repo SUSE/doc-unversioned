@@ -805,7 +805,7 @@ Warning: Permanently added '<replaceable>TRENTO_AGENT_IP</replaceable>' (ECDSA) 
   <section xml:id="sec-trento-checks">
     <title>Performing configuration checks</title>
     <para>
-      One of Trentos main feature is to provide checks for your SAP Landscape.
+      One of Trento's main feature is to provide checks for the HANA scale-up performance optimized two-node clustes in your SAP Landscape.
       To run these checks, proceed as follows:
     </para>
     <procedure xml:id="pro-trento-checks">
@@ -814,10 +814,10 @@ Warning: Permanently added '<replaceable>TRENTO_AGENT_IP</replaceable>' (ECDSA) 
         <para>Log in to Trento</para>
       </step>
       <step>
-        <para>In the Trento dashboard, click <guimenu>Cluster</guimenu>.</para>
+        <para>In the left panel, click <guimenu>Cluster</guimenu>.</para>
       </step>
       <step>
-        <para>In the list, search for a cluster, for example a &hana; cluster.</para>
+        <para>In the list, search for a &hana; cluster.</para>
       </step>
       <step>
         <para>Click the respective cluster name in the name column. The details view opens.</para>
@@ -833,7 +833,7 @@ Warning: Permanently added '<replaceable>TRENTO_AGENT_IP</replaceable>' (ECDSA) 
       </step>
       <step xml:id="st-trento-checks-settings">
         <para>Click <guimenu>Settings</guimenu>. The cluster settings for the respective cluster opens, see
-          <xref linkend="fig-pacemaker-clustersettings"/>.</para>
+          <xref linkend="fig-pacemaker-clustersettings"/>. For checks to be executed, a checks selection must been made and the connection settings must be maintained. </para>
         <figure xml:id="fig-pacemaker-clustersettings">
           <title>&pace; Cluster Settings</title>
           <mediaobject>
@@ -844,7 +844,7 @@ Warning: Permanently added '<replaceable>TRENTO_AGENT_IP</replaceable>' (ECDSA) 
         </figure>
       </step>
       <step>
-        <para> In the cluster settings, the checks are grouped into categories,
+        <para> In the <guimenu>Checks Selection</guimenu> tab of the Cluster Settings window, the checks are grouped into categories,
           see <xref
             linkend="fig-pacemaker-clustersettings" />. To view all the
           corresponding checks for a category, click the category. Enable all
@@ -853,15 +853,13 @@ Warning: Permanently added '<replaceable>TRENTO_AGENT_IP</replaceable>' (ECDSA) 
       </step>
       <step>
         <para>
-          Click the button <guimenu>Select Checks for Execution</guimenu>. To really execute the checks, click
-          the button that appears on the right side.
+          Click the button <guimenu>Select Checks for Execution</guimenu>. At this moment, you can either wait for Trento to execute the selected checks or trigger an execution immediately by clicking the button that appears on the right side.
           <remark>tom 2023-01-16: Why is this a two-step process?</remark>
         </para>
       </step>
       <step>
         <para>
-          Investigate the result in the result table. Each row in this table shows you an
-          ID of the check, a short description and the result, see <xref linkend="fig-pacemaker-checkresult"/>
+          Investigate the result in the Checks Results view. Each row in this view shows you a check ID, a short description of the check and the check execution result, see <xref linkend="fig-pacemaker-checkresult"/>:
         </para>
         <figure xml:id="fig-pacemaker-checkresult">
           <title>Check results for a cluster</title>
@@ -872,7 +870,13 @@ Warning: Permanently added '<replaceable>TRENTO_AGENT_IP</replaceable>' (ECDSA) 
           </mediaobject>
         </figure>
         <para>
-          Use the filter to reduce the list to only show, for example, critical results.
+          The result of a check execution can be passing, warning or critical.
+          Passing means that the checked configuration meets the recommendation.
+          Warning means that the recommendation is not met but the configuration is
+          not critical for the proper running of the cluster. Critical means that either the
+          execution itself error (for example, a timeout) or the recommendation is not
+          met and is critical for the well being of the cluster. Use the filter to reduce the
+          list to only show, for example, critical results.
         </para>
         <para>
           Click the corresponding row to open the details view of this check. This shows you
@@ -882,7 +886,9 @@ Warning: Permanently added '<replaceable>TRENTO_AGENT_IP</replaceable>' (ECDSA) 
       </step>
     </procedure>
     <para>
-      The result is stored. You can view it at any time.
+      Once a check selection for a given cluster has been made, Trento executes them
+      automatically every five minutes and results are updated accordingly. The check
+      execution result icon spins while the execution is running.
     </para>
   </section>
 
@@ -935,16 +941,16 @@ Warning: Permanently added '<replaceable>TRENTO_AGENT_IP</replaceable>' (ECDSA) 
       <listitem>
         <formalpara>
           <title><guimenu>Checks catalog</guimenu></title>
-          <para> Overview of all catalog of configuration checks that Trento may
-            carry out for the different cluster components (&pace;, &corosync;,
-            SBD, etc.) in any of the supported platforms: Azure, AWS or GCP. </para>
+          <para> Overview of the catalog of configuration checks that Trento may
+            perform for the different cluster components (&pace;, &corosync;,
+            SBD, etc.) in any of the supported platforms: Azure, AWS, GCP, or on-premise bare metal (default). </para>
         </formalpara>
       </listitem>
       <listitem>
         <formalpara>
           <title><guimenu>Settings</guimenu></title>
           <para>
-            It lets you retrieve the API key for this particular installation.
+            It lets you retrieve the API key for this particular installation, which is required for the &t.agent; configuration.
           </para>
         </formalpara>
       </listitem>
@@ -953,7 +959,7 @@ Warning: Permanently added '<replaceable>TRENTO_AGENT_IP</replaceable>' (ECDSA) 
           <title><guimenu>About</guimenu></title>
           <para> Shows the Trento flavor, the current server version, a link to
             the GitHub repository of the Trento web component, and the number of
-            registered &sles4sap;&nbsp;subscriptions. </para>
+            registered &sles4sap;&nbsp;subscriptions that has been discovered. </para>
         </formalpara>
       </listitem>
     </itemizedlist>
@@ -962,7 +968,7 @@ Warning: Permanently added '<replaceable>TRENTO_AGENT_IP</replaceable>' (ECDSA) 
       <title>Getting the global health state</title>
       <para>
         The dashboard allows you to determine at a glance the health status of your &sap; environment.
-        From the sidebar on the left, click <guimenu>Dashboard</guimenu>.
+        It is the home page of the Trento web console and you can go back to it any time by clicking on <guimenu>Dashboard</guimenu> in the left sidebar.
       </para>
       <para>
         The health status of a registered &sap; system is the compound of its health status at
@@ -973,7 +979,7 @@ Warning: Permanently added '<replaceable>TRENTO_AGENT_IP</replaceable>' (ECDSA) 
         <listitem>
           <formalpara>
             <title><guimenu>Hosts</guimenu>:</title>
-            <para>it collects the running status of the &t.agent; and the Node Exporter.</para>
+            <para>it reflects the heartbeat of the &t.agent;.</para>
           </formalpara>
         </listitem>
         <listitem>
@@ -998,7 +1004,7 @@ Warning: Permanently added '<replaceable>TRENTO_AGENT_IP</replaceable>' (ECDSA) 
       </itemizedlist>
 
       <para>
-        The dashboard contains the following states (see <xref linkend="fig-trento-web-home"/>):
+        The dashboard groups systems in three different health boxes (see <xref linkend="fig-trento-web-home"/>):
       </para>
       <figure xml:id="fig-trento-web-home">
         <title>Dashboard with the global health state</title>
@@ -1014,11 +1020,7 @@ Warning: Permanently added '<replaceable>TRENTO_AGENT_IP</replaceable>' (ECDSA) 
           <term><guimenu>Passing</guimenu></term>
           <listitem>
             <para>
-              Contains the number of systems that pass all checks.
-              A system in a passing state is functional and all checks have passed.
-              <remark>... add some further remarks what the user can expect.</remark>
-              For a system global health status to be <emphasis>Passing</emphasis>,
-              all components must be in passing (green) status.
+              It shows the number of systems with all layers in passing (green) status.
             </para>
           </listitem>
         </varlistentry>
@@ -1026,12 +1028,7 @@ Warning: Permanently added '<replaceable>TRENTO_AGENT_IP</replaceable>' (ECDSA) 
           <term><guimenu>Warning</guimenu></term>
           <listitem>
             <para>
-              Contains the number of systems with needed to be investigated further.
-              A system with at least one component in warning (yellow) status, but no
-              components in critical (red) status, will be computed as
-              <emphasis>Warning</emphasis> in the global health section.
-              As administrator, you should check these systems and follow the recommendations
-              in the checks result.
+              It shows the number of systems with at least one layer in warning (yellow) status and the rest in green (passing) status.
             </para>
           </listitem>
         </varlistentry>
@@ -1047,12 +1044,38 @@ Warning: Permanently added '<replaceable>TRENTO_AGENT_IP</replaceable>' (ECDSA) 
           </listitem>
         </varlistentry>
       </variablelist>
-
+<para>
+The health boxes in the dashboard are clickable. By clicking on one particular box, you filter by the systems in the corresponding health status. In large SAP environments, this feature facilitates the SAP administrator knowing which systems are in a certain status. 
+</para>
       <para>
-        Every part of the dashboard as <guimenu>Hosts</guimenu>, <guimenu>Clusters</guimenu>,
-        <guimenu>SAP Systems</guimenu>, or <guimenu>HANA Databases</guimenu> contains their
-        individual health summary.
+        The icons representing the health summary of a particular layer, contain links to the views in the Trento console that can help determine where an issue is coming from:
       </para>
+      <itemizedlist>
+        <listitem>
+          <formalpara>
+            <title><guimenu>Hosts health icon</guimenu>:</title>
+            <para>Link to the Hosts overview, filtered by SID equal to the SAPSID and the DBSID of the corresponding SAP system.</para>
+          </formalpara>
+         </listitem>
+         <listitem>
+          <formalpara>
+            <title><guimenu>Cluster health icon</guimenu>:</title>
+            <para>Link to corresponding &pace; Cluster Details view.</para>
+          </formalpara>
+         </listitem>
+         <listitem>
+          <formalpara>
+            <title><guimenu>Database health icon</guimenu>:</title>
+            <para>Link to the corresponding HANA Database Details view.</para>
+          </formalpara>
+         </listitem>
+         <listitem>
+          <formalpara>
+            <title><guimenu>SAP Instances health icon</guimenu>:</title>
+            <para>Link to the corresponding SAP System Details view.</para>
+          </formalpara>
+         </listitem>
+       </itemizedlist> 
 
       <remark>tom 2023-01-16: Do we still have a grey state?</remark>
       <para>
@@ -1060,7 +1083,7 @@ Warning: Permanently added '<replaceable>TRENTO_AGENT_IP</replaceable>' (ECDSA) 
         (as returned by <command>sapcontrol</command>), or its status is unknown (for instance
         if a command to determine the status fails).
       </para>
-      <para> Grey statuses are not counted in the calculation of the global health status.</para>
+      <para> Grey statuses are not yet counted in the calculation of the global health status.</para>
 
     </section>
 
@@ -1369,11 +1392,11 @@ Warning: Permanently added '<replaceable>TRENTO_AGENT_IP</replaceable>' (ECDSA) 
     <section xml:id="sec-trento-manage-tags">
       <title>Managing tags</title>
       <para>
-       Tags are a means to group specific objects by assigning a purpose, location, owner, or other
-       properties you like. Such objects can be hosts, clusters, databases, or SAP systems.
-       Tags makes it easer to distinguish and show all these different objects to make
+       Tags are a means to label specific objects with a purpose, location, owner, or any other
+       property you like. Such objects can be hosts, clusters, databases, or SAP systems.
+       Tags make it easer to distinguish and show all these different objects, making
        your lists more readable and searchable. You can use any text you like to create
-       your tags.
+       your tags except blank spaces and special characters other than + - = . , _ : and @.
       </para>
       <para>
         The following subsection shows how you can add, remove, and filter objects based on
@@ -1392,14 +1415,12 @@ Warning: Permanently added '<replaceable>TRENTO_AGENT_IP</replaceable>' (ECDSA) 
           </step>
           <step>
             <para>
-              In the Trento dashboard, click the respective object, be it a host, a cluster, or
-              anything else. For this example, as we show it for hosts, click the <guimenu>Hosts</guimenu>
-              entry.
+              In the Trento dashboard, go to the overview corresponding to the object for which you want to create tags. For example, the <guimenu>Hosts</guimenu> overview.
             </para>
           </step>
           <step>
             <para>
-              In the <guimenu>Hosts</guimenu> view, search for your host you want to assign a tag.
+              In the <guimenu>Hosts</guimenu> overview, search for the host you want to add a tag to.
             </para>
           </step>
           <step>
@@ -1422,7 +1443,7 @@ Warning: Permanently added '<replaceable>TRENTO_AGENT_IP</replaceable>' (ECDSA) 
           more tags.
         </para>
         <para>
-          The same principle applies to the other entries from the dashboard, be it for <guimenu>Clusters</guimenu>,
+          The same principle applies to the other objects in Trento, be it <guimenu>Clusters</guimenu>,
           <guimenu>SAP Systems</guimenu>, or <guimenu>HANA Databases</guimenu>.
         </para>
       </section>
@@ -1439,15 +1460,13 @@ Warning: Permanently added '<replaceable>TRENTO_AGENT_IP</replaceable>' (ECDSA) 
             </para>
           </step>
           <step>
-            <para>
-              In the Trento dashboard, click the respective part that you are interested in, be it a host, a cluster, or
-              anything else. For this example, as we show it for hosts, click the <guimenu>Hosts</guimenu>
-              entry.
-            </para>
+<para>
+In the Trento dashboard, go to the overview corresponding to the object for which you want to remove tags. For example, the <guimenu>Hosts</guimenu> overview.
+</para>
           </step>
           <step>
             <para>
-              In the <guimenu>Hosts</guimenu> view, search for your host you want to remove a tag.
+              In the <guimenu>Hosts</guimenu> overview, search for the host you want to remove a tag from.
             </para>
           </step>
           <step>
@@ -1468,14 +1487,14 @@ Warning: Permanently added '<replaceable>TRENTO_AGENT_IP</replaceable>' (ECDSA) 
       <section xml:id="sec-trento-filter-tags">
         <title>Filter tags</title>
         <para>
-          With tags, you can show only those parts you are interested in. For example, if
+          With tags, you can show only those objects you are interested in. For example, if
           you have created a <literal>drbd</literal> tag for some hosts, you can show only
           those hosts that have this <literal>drbd</literal> tag assigned.
         </para>
         <procedure>
           <step>
             <para>
-              In the Trento dashboard, click the respective part you are interested in.
+              In the Trento dashboard, go to the respective overview you are interested in.
             </para>
           </step>
           <step>
@@ -1486,7 +1505,7 @@ Warning: Permanently added '<replaceable>TRENTO_AGENT_IP</replaceable>' (ECDSA) 
           <step>
             <para>
               In the second row, click the last pull down menu with the name <guimenu>Filter tags</guimenu>.
-              The pull down menu opens and shows you all of your definied tags.
+              The pull down menu opens and shows you all of your defined tags.
             </para>
           </step>
           <step>
