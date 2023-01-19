@@ -826,30 +826,54 @@ Warning: Permanently added '<replaceable>TRENTO_AGENT_IP</replaceable>' (ECDSA) 
           <title>&pace; cluster details</title>
           <mediaobject>
             <imageobject>
-              <imagedata width="70%" fileref="trento-web-pacemaker-cluster-details-view.png"/>
+              <imagedata width="80%" fileref="trento-web-pacemaker-cluster-details-view.png"/>
             </imageobject>
           </mediaobject>
         </figure>
       </step>
       <step xml:id="st-trento-checks-settings">
-        <para>Click <guimenu>Settings</guimenu>. The cluster settings for the respective cluster opens, see
-          <xref linkend="fig-pacemaker-clustersettings"/>. For checks to be executed, a checks selection must been made and the connection settings must be maintained. </para>
-        <figure xml:id="fig-pacemaker-clustersettings">
-          <title>&pace; Cluster Settings</title>
-          <mediaobject>
-            <imageobject>
-              <imagedata width="70%" fileref="trento-web-pacemaker-clustersettings.png"/>
-            </imageobject>
-          </mediaobject>
-        </figure>
-      </step>
-      <step>
-        <para> In the <guimenu>Checks Selection</guimenu> tab of the Cluster Settings window, the checks are grouped into categories,
-          see <xref
-            linkend="fig-pacemaker-clustersettings" />. To view all the
-          corresponding checks for a category, click the category. Enable all
-          the checks you want to execute. Repeat it for other categories.
+        <para>Click the <guimenu>Settings</guimenu> button to change the cluster settings of the respective cluster:
         </para>
+        <substeps>
+          <step>
+            <formalpara>
+              <title><guimenu>Checks Selections</guimenu></title>
+              <para>
+                Select the checks to be executed, see <xref
+                  linkend="fig-pacemaker-clustersettings-checks"/>.
+                For checks to be executed, a checks selection must been made and the
+                connection settings must be maintained.
+              </para>
+            </formalpara>
+            <figure xml:id="fig-pacemaker-clustersettings-checks">
+              <title>&pace; Cluster Settings&mdash;Checks Selection</title>
+              <mediaobject>
+                <imageobject>
+                  <imagedata width="70%"
+                    fileref="trento-web-pacemaker-clustersettings-checks.png" />
+                </imageobject>
+              </mediaobject>
+            </figure>
+          </step>
+          <step>
+            <formalpara>
+              <title><guimenu>Connection Settings</guimenu></title>
+              <para>
+                Add the respective Trento service user, in this guide named <systemitem class="username">&trentoadmin;</systemitem>.
+                <!--see <xref linkend="sec-trento-installation-prerequisites"/>.-->
+                This user was used in <xref linkend="pro-trento-installing-trentoagent"/>.
+              </para>
+            </formalpara>
+            <figure xml:id="fig-pacemaker-clustersettings-connection">
+              <title>&pace; Cluster Settings&mdash;Connection Settings</title>
+              <mediaobject>
+                <imageobject>
+                  <imagedata width="70%" fileref="trento-web-pacemaker-clustersettings-connection.png"/>
+                </imageobject>
+              </mediaobject>
+            </figure>
+          </step>
+        </substeps>
       </step>
       <step>
         <para>
@@ -1426,7 +1450,8 @@ The health boxes in the dashboard are clickable. By clicking on one particular b
             </para>
           </step>
           <step>
-            <para>Enter the respective tag and finish with <keycap function="return"/>.</para>
+            <para>Enter the respective tag and finish with <keycap function="enter"/>.
+            </para>
           </step>
           <step>
             <para>
