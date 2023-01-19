@@ -805,7 +805,7 @@ Warning: Permanently added '<replaceable>TRENTO_AGENT_IP</replaceable>' (ECDSA) 
   <section xml:id="sec-trento-checks">
     <title>Performing configuration checks</title>
     <para>
-      One of Trento's main feature is to provide checks for the HANA scale-up performance optimized two-node clustes in your SAP Landscape.
+      One of Trento's main features is to provide checks for the HANA scale-up performance optimized two-node clustes in your SAP Landscape.
       To run these checks, proceed as follows:
     </para>
     <procedure xml:id="pro-trento-checks">
@@ -1036,10 +1036,7 @@ Warning: Permanently added '<replaceable>TRENTO_AGENT_IP</replaceable>' (ECDSA) 
           <term><guimenu>Critical</guimenu></term>
           <listitem>
             <para>
-              Contains the number of critical systems.
-              A system with at least one component in critical (red) status, will be computed
-              as <emphasis>Critical</emphasis> in the global health section.
-              As administrator, these systems are usually broken and need to be repaired.
+              It shows the number of systems with at lease one layer in critical (red) status.
             </para>
           </listitem>
         </varlistentry>
