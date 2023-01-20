@@ -63,7 +63,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
     <para>
       The product continues to be under active development, and is available at no extra cost for any &suse;
       customer with a registered &sles4sap;&nbsp;15 (SP1 or higher).
-      Contact <link xlink:href="https://www.suse.com/support"/> for further assistence.
+      Contact <link xlink:href="https://www.suse.com/support"/> for further assistance.
     </para>
   </important>
 
@@ -134,11 +134,11 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
   </section>
 
   <section xml:id="sec-trento-product-lifecycle-update-strategy">
-    <title>Product lifecycle and update strategy</title>
+    <title>Product life cycle and update strategy</title>
     <!--
       Most ist taken from https://confluence.suse.com/x/uoOyN
     -->
-    <para>Trento premium is available at no extra cost for SLES for SAP subscribers. Particularly, the Trento two main components have the following product lifecycles:</para>
+    <para>Trento premium is available at no extra cost for SLES for SAP subscribers. Particularly, the Trento two main components have the following product life cycles:</para>
 
     <variablelist>
       <varlistentry>
@@ -703,7 +703,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
           </listitem>
           <listitem>
             <para>
-              <parameter>api-key</parameter>: the API key retreived from the Web console.
+              <parameter>api-key</parameter>: the API key retrieved from the Web console.
             </para>
           </listitem>
         </itemizedlist>
@@ -780,7 +780,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
   <section xml:id="sec-trento-checks">
     <title>Performing configuration checks</title>
     <para>
-      One of Trento's main features is to provide checks for the HANA scale-up performance optimized two-node clustes in your SAP Landscape.
+      One of Trento's main features is to provide checks for the HANA scale-up performance optimized two-node clusters in your SAP Landscape.
       To run these checks, proceed as follows:
     </para>
     <procedure xml:id="pro-trento-checks">
@@ -1244,7 +1244,7 @@ The health boxes in the dashboard are clickable. By clicking on one particular b
               <listitem>
                 <para><guimenu>&pace; Site details</guimenu> section: with a summary of
                   NBG and WDF<remark>tom 2023-01-16: what are these acronyms</remark>.
-                  Both lists the hostname, their role, the IP and virtual IP address.
+                  Both lists the host name, their role, the IP and virtual IP address.
                   If you click the <guimenu>Details</guimenu> you can view the attributes
                   of the site and their resources. Close this view with the <keycap
                     function="escape"/> key.
@@ -1369,7 +1369,7 @@ The health boxes in the dashboard are clickable. By clicking on one particular b
               <listitem>
                 <para>
                   <guimenu>Layout</guimenu> section: lists all related &hana;
-                  instances with their corresponding virtual hostname, instance
+                  instances with their corresponding virtual host name, instance
                   number, features (roles), HTTP/HTTPS ports, start priorities,
                   and SAPControl status. </para>
               </listitem>
@@ -1403,7 +1403,7 @@ The health boxes in the dashboard are clickable. By clicking on one particular b
       <para>
        Tags are a means to label specific objects with a purpose, location, owner, or any other
        property you like. Such objects can be hosts, clusters, databases, or SAP systems.
-       Tags make it easer to distinguish and show all these different objects, making
+       Tags make it easier to distinguish and show all these different objects, making
        your lists more readable and searchable. You can use any text you like to create
        your tags except blank spaces and special characters other than + - = . , _ : and @.
       </para>
@@ -1461,7 +1461,7 @@ The health boxes in the dashboard are clickable. By clicking on one particular b
       <section xml:id="sec-trento-remove-tags">
         <title>Removing tags</title>
         <para>
-          If you want to remove existing tags, click the respective part in the da
+          If you want to remove existing tags, click the respective part in the dashboard:
         </para>
         <procedure>
           <step>
@@ -2244,7 +2244,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
           </listitem>
           <listitem>
             <para>
-              <parameter>api-key</parameter>: the API key retreived from the Web console.
+              <parameter>api-key</parameter>: the API key retrieved from the Web console.
             </para>
           </listitem>
         </itemizedlist>
@@ -2403,7 +2403,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
             <screen>&prompt.root;<command>chmod</command> +x trento-support.sh</screen>
           </step>
           <step>
-            <para>Set the &k8s; config file and execute the script:</para>
+            <para>Set the &k8s; configuration file and execute the script:</para>
             <screen>&prompt.root;<command>KUBECONFIG=/etc/rancher/k3s/k3s.yaml ./trento-support.sh</command> --output file-tgz --collect all</screen>
           </step>
           <step>
@@ -2427,7 +2427,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
             <screen>&prompt.user;<command>chmod</command> +x dump_scenario_from_k8.sh</screen>
           </step>
           <step>
-            <para>Set the environment variable <envar>KUBECONFIG</envar> appropiately.</para>
+            <para>Set the environment variable <envar>KUBECONFIG</envar> appropriately.</para>
           </step>
           <step>
             <para>Generate the dump:</para>
@@ -2470,7 +2470,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
     </section>
 
     <section>
-      <title>Plaftorm</title>
+      <title>Platform</title>
       <para />
           <section>
       <title>Platform independent</title>
