@@ -892,18 +892,33 @@ Warning: Permanently added '<replaceable>TRENTO_AGENT_IP</replaceable>' (ECDSA) 
           </mediaobject>
         </figure>
         <para>
-          The result of a check execution can be passing, warning or critical.
-          Passing means that the checked configuration meets the recommendation.
-          Warning means that the recommendation is not met but the configuration is
-          not critical for the proper running of the cluster. Critical means that either the
-          execution itself errored (for example, a timeout) or the recommendation is not
-          met and is critical for the well being of the cluster. Use the filter to reduce the
-          list to only show, for example, critical results.
+          The result of a check execution can be passing, warning or critical:
         </para>
+        <itemizedlist>
+          <listitem>
+            <para><emphasis>Passing</emphasis> means that the checked configuration meets the
+              recommendation.</para>
+          </listitem>
+          <listitem>
+            <para><emphasis>Warning</emphasis> means that the recommendation is not met but the
+              configuration is not critical for the proper running of the
+              cluster.</para>
+          </listitem>
+          <listitem>
+            <para><emphasis>Critical</emphasis> means that either the execution itself errored (for
+              example, a timeout) or the recommendation is not met and is
+              critical for the well being of the cluster.</para>
+          </listitem>
+        </itemizedlist>
+        <para>
+          Use the filter to reduce the list to only show, for example, critical results.
+        </para>
+      </step>
+      <step>
         <para>
           Click the corresponding row to open the details view of this check. This shows you
           an abstract and how to remedy the problem. Further links gives you the context.
-          Close the view with the <keycap function="escape"/> key or click outside of view.
+          Close the view with the <keycap function="escape"/> key or click outside of the view.
         </para>
       </step>
     </procedure>
