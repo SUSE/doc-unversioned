@@ -832,17 +832,33 @@ Warning: Permanently added '<replaceable>TRENTO_AGENT_IP</replaceable>' (ECDSA) 
         </figure>
       </step>
       <step xml:id="st-trento-checks-settings">
-        <para>Click the <guimenu>Settings</guimenu> button to change the cluster settings of the respective cluster:
+        <para>Click the <guimenu>Settings</guimenu> button to change the cluster settings of the respective cluster. For checks to be executed, the connection settings must be maintained and a checks selection must been made.
         </para>
         <substeps>
+                  <step>
+            <formalpara>
+              <title><guimenu>Connection Settings</guimenu></title>
+              <para>
+                Add the respective Trento service user, in this guide named <systemitem class="username">&trentoadmin;</systemitem> and click the button <guimenu>Apply Connection Settings</guimenu>.
+                <!--see <xref linkend="sec-trento-installation-prerequisites"/>.-->
+                The Trento service user was used in <xref linkend="pro-trento-installing-trentoagent"/>.
+              </para>
+            </formalpara>
+            <figure xml:id="fig-pacemaker-clustersettings-connection">
+              <title>&pace; Cluster Settings&mdash;Connection Settings</title>
+              <mediaobject>
+                <imageobject>
+                  <imagedata width="70%" fileref="trento-web-pacemaker-clustersettings-connection.png"/>
+                </imageobject>
+              </mediaobject>
+            </figure>
+          </step>
           <step>
             <formalpara>
               <title><guimenu>Checks Selections</guimenu></title>
               <para>
-                Select the checks to be executed, see <xref
-                  linkend="fig-pacemaker-clustersettings-checks"/>.
-                For checks to be executed, a checks selection must been made and the
-                connection settings must be maintained.
+                Select the checks to be executed and click the button <guimenu>Select Checks for Execution</guimenu>. See <xref
+                  linkend="fig-pacemaker-clustersettings-checks"/>:
               </para>
             </formalpara>
             <figure xml:id="fig-pacemaker-clustersettings-checks">
@@ -855,29 +871,11 @@ Warning: Permanently added '<replaceable>TRENTO_AGENT_IP</replaceable>' (ECDSA) 
               </mediaobject>
             </figure>
           </step>
-          <step>
-            <formalpara>
-              <title><guimenu>Connection Settings</guimenu></title>
-              <para>
-                Add the respective Trento service user, in this guide named <systemitem class="username">&trentoadmin;</systemitem>.
-                <!--see <xref linkend="sec-trento-installation-prerequisites"/>.-->
-                This user was used in <xref linkend="pro-trento-installing-trentoagent"/>.
-              </para>
-            </formalpara>
-            <figure xml:id="fig-pacemaker-clustersettings-connection">
-              <title>&pace; Cluster Settings&mdash;Connection Settings</title>
-              <mediaobject>
-                <imageobject>
-                  <imagedata width="70%" fileref="trento-web-pacemaker-clustersettings-connection.png"/>
-                </imageobject>
-              </mediaobject>
-            </figure>
-          </step>
         </substeps>
       </step>
       <step>
         <para>
-          Click the button <guimenu>Select Checks for Execution</guimenu>. At this moment, you can either wait for Trento to execute the selected checks or trigger an execution immediately by clicking the button that appears on the right side.
+          At this moment, you can either wait for Trento to execute the selected checks or trigger an execution immediately by clicking the button that has appeared in the Checks Selection tab.
           <remark>tom 2023-01-16: Why is this a two-step process?</remark>
         </para>
       </step>
@@ -898,7 +896,7 @@ Warning: Permanently added '<replaceable>TRENTO_AGENT_IP</replaceable>' (ECDSA) 
           Passing means that the checked configuration meets the recommendation.
           Warning means that the recommendation is not met but the configuration is
           not critical for the proper running of the cluster. Critical means that either the
-          execution itself error (for example, a timeout) or the recommendation is not
+          execution itself errored (for example, a timeout) or the recommendation is not
           met and is critical for the well being of the cluster. Use the filter to reduce the
           list to only show, for example, critical results.
         </para>
@@ -911,8 +909,8 @@ Warning: Permanently added '<replaceable>TRENTO_AGENT_IP</replaceable>' (ECDSA) 
     </procedure>
     <para>
       Once a check selection for a given cluster has been made, Trento executes them
-      automatically every five minutes and results are updated accordingly. The check
-      execution result icon spins while the execution is running.
+      automatically every five minutes and results are updated accordingly. A check
+      execution result icon spinning means that an execution is running.
     </para>
   </section>
 
@@ -1052,7 +1050,7 @@ Warning: Permanently added '<replaceable>TRENTO_AGENT_IP</replaceable>' (ECDSA) 
           <term><guimenu>Warning</guimenu></term>
           <listitem>
             <para>
-              It shows the number of systems with at least one layer in warning (yellow) status and the rest in green (passing) status.
+              It shows the number of systems with at least one layer in warning (yellow) status and the rest in passing (green) status.
             </para>
           </listitem>
         </varlistentry>
@@ -1060,13 +1058,13 @@ Warning: Permanently added '<replaceable>TRENTO_AGENT_IP</replaceable>' (ECDSA) 
           <term><guimenu>Critical</guimenu></term>
           <listitem>
             <para>
-              It shows the number of systems with at lease one layer in critical (red) status.
+              It shows the number of systems with at least one layer in critical (red) status.
             </para>
           </listitem>
         </varlistentry>
       </variablelist>
 <para>
-The health boxes in the dashboard are clickable. By clicking on one particular box, you filter by the systems in the corresponding health status. In large SAP environments, this feature facilitates the SAP administrator knowing which systems are in a certain status. 
+The health boxes in the dashboard are clickable. By clicking on one particular box, you filter the dashboard by systems with the corresponding health status. In large SAP environments, this feature facilitates the SAP administrator knowing which systems are in a given status. 
 </para>
       <para>
         The icons representing the health summary of a particular layer, contain links to the views in the Trento console that can help determine where an issue is coming from:
