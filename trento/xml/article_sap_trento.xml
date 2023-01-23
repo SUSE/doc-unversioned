@@ -50,7 +50,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
     </dm:docmanager>
     <abstract>
       <para>
-       &trentopremium; is an open cloud-native web console that aims to help
+       &trentopremium; is an open cloud native web console that aims to help
        &sap; Basis consultants and administrators to monitor the entire OS stack of their
        &sap; environments, including HA features.
       </para>
@@ -61,7 +61,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
   <important>
     <title>Trento is an evolving product</title>
     <para>
-      The product continues to be under active development, and is available at no extra cost for any &suse;
+      The product continues to be under active development and is available at no extra cost for any &suse;
       customer with a registered &sles4sap;&nbsp;15 (SP1 or higher).
       Contact <link xlink:href="https://www.suse.com/support"/> for further assistance.
     </para>
@@ -80,34 +80,34 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
     -->
     <itemizedlist>
       <listitem>
-        <para>A simplified, reactive web UI targeting &sap; admins. </para>
+        <para>A simplified, reactive web UI targeting &sap; admins </para>
       </listitem>
       <listitem>
         <para>Automated discovery of &sap; Systems, &sap; Instances, and
-          &hana; clusters.</para>
+          &hana; clusters</para>
       </listitem>
       <listitem>
         <para>Configuration validation for &hana; Scale-Up
-          Performance-optimized two-node clusters deployed on Azure, AWS, GCP or on-premise bare metal platforms, including KVM and Nutanix.
+          Performance-optimized two-node clusters deployed on Azure, AWS, GCP or on-premise bare metal platforms, including KVM and Nutanix
         </para>
       </listitem>
       <listitem>
         <para>
           Monitoring of CPU and Memory usage at host level through basic integration
-          with Grafana and Prometheus.
+          with Grafana and Prometheus
         </para>
       </listitem>
       <listitem>
         <para>
-          Email alerting for critical events in the monitored landscape.
+          Email alerting for critical events in the monitored landscape
         </para>
       </listitem>
     </itemizedlist>
 
     <para> The <emphasis role="strong">&t.server;</emphasis> is an
-      independent, cloud-native, distributed system and designed to run
+      independent, cloud native, distributed system, designed to run
       on a &k8s; cluster.
-      The &t.server; interacts with users via a web front end.
+      The &t.server; interacts with users via a web front-end.
     </para>
     <para> The <emphasis role="strong">&t.agent;</emphasis> is a single
       background process (<systemitem>trento agent</systemitem>) running
@@ -134,11 +134,11 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
   </section>
 
   <section xml:id="sec-trento-product-lifecycle-update-strategy">
-    <title>Product life cycle and update strategy</title>
+    <title>Product lifecycle and update strategy</title>
     <!--
       Most ist taken from https://confluence.suse.com/x/uoOyN
     -->
-    <para>Trento premium is available at no extra cost for SLES for SAP subscribers. Particularly, the Trento two main components have the following product life cycles:</para>
+    <para>Trento Premium is available at no extra cost for SLES for SAP subscribers. Particularly, Trento's two main components have the following product lifecycles:</para>
 
     <variablelist>
       <varlistentry>
@@ -168,20 +168,20 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
           <formalpara>
             <title>&k8s;:</title>
             <para> The &t.server; runs on any current Cloud Native
-              Computing Foundation (CNCF) certified &k8s;
+              Computing Foundation (CNCF)-certified &k8s;
               distributions. Depending on your background and
-              needs, &suse; support several usage scenarios:
+              needs, &suse; supports several usage scenarios:
             </para>
           </formalpara>
           <itemizedlist>
             <listitem>
-              <para> If you already use a CNCF certified &k8s;,
+              <para> If you already use a CNCF-certified &k8s;,
                 you can run the &t.server; in it. </para>
             </listitem>
             <listitem>
               <para> If you have no &k8s; and want enterprise
                 support, &suse; recommends &suse; Rancher with
-                &rancher.k8s.engine; (RKE) either version 1 or
+                &rancher.k8s.engine; (RKE) version 1 or
                 2. </para>
             </listitem>
             <listitem>
@@ -209,8 +209,8 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       &t.agent;s. </para>
     <section xml:id="sec-trento-server-requirements">
       <title>&t.server; requirements</title>
-      <para> Running all the &t.server; components requires a minimum of 2GB of RAM,
-        two CPU cores and 64GB of storage.
+      <para> Running all the &t.server; components requires a minimum of 2&nbsp;GB of RAM,
+        two CPU cores and 64&nbsp;GB of storage.
         When using K3s, such storage should be provided under <filename>/var/lib/rancher/k3s</filename>.
       </para>
       <para>
@@ -220,11 +220,11 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       <screen>ssh-keygen -f ~/.ssh/id_rsa -t rsa -b 4096 -N ''</screen>
       <para>
        The previous command creates two files in the <filename>~/.ssh</filename> directory:
-       file <filename>id_rsa</filename> as private SSH key and file <filename>id_rsa.pub</filename> as public SSH key.
+       file <filename>id_rsa</filename> as a private SSH key and file <filename>id_rsa.pub</filename> as a public SSH key.
       </para>
       <para> While the &t.server; supports various usage scenarios,
-        depending on the existing infrastructure, it's designed to be
-        cloud-native and OS agnostic. As such, the default installation
+        depending on the existing infrastructure, it is designed to be
+        cloud native and OS agnostic. As such, the default installation
         method provisions a minimal, single node, K3S &k8s; cluster for
         running its components in Linux containers. The &t.server; can
         be installed on the following services: </para>
@@ -240,7 +240,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
           <para>RKE2</para>
         </listitem>
         <listitem>
-          <para>any other CNCF certified &k8s;</para>
+          <para>any other CNCF-certified &k8s;</para>
         </listitem>
       </itemizedlist>
     </section>
@@ -249,8 +249,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       <para> The resource footprint of the &t.agent; is designed to not
         impact the performance of the host it runs on. </para>
       <para> The &t.agent; component needs to interact with several
-        low-level system components that are part of the &sles4sap;&nbsp;
-        distribution. </para>
+        low-level system components that are part of the &sles4sap; distribution. </para>
     </section>
     <section xml:id="sec-trento-network-requirements">
       <title>Network requirements</title>
@@ -267,12 +266,12 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         </listitem>
         <listitem>
           <para>
-            &t.server; must be able to reach the &t.agent;s hosts via SSH (port TCP/22).
+            &t.server; must be able to reach the &t.agent; hosts via SSH (port TCP/22).
           </para>
         </listitem>
          <listitem>
           <para>
-            &t.server; must be able to reach the Node Exporter in the &t.agent;s hosts (port TCP/9100).
+            &t.server; must be able to reach the Node Exporter in the &t.agent; hosts (port TCP/9100).
           </para>
         </listitem>
         <listitem>
@@ -282,7 +281,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
     </section>
 
     <section xml:id="sec-trento-installation-prerequisites">
-      <title>Installation pre-requisites</title>
+      <title>Installation prerequisites</title>
       <itemizedlist>
         <listitem>
           <formalpara>
@@ -293,7 +292,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         <listitem>
           <formalpara>
             <title>&t.agent;s</title>
-            <para>A registered &sles4sap;&nbsp; distribution.</para>
+            <para>A registered &sles4sap; distribution.</para>
           </formalpara>
         </listitem>
         <listitem>
@@ -321,7 +320,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       </para>
     </important>
 
-    <para> The subsections uses the following placeholders: </para>
+    <para> The subsection uses the following placeholders: </para>
     <itemizedlist>
       <listitem>
         <para><replaceable>TRENTO_SERVER_HOSTNAME</replaceable>: the
@@ -376,8 +375,8 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
 
     <section xml:id="sec-trento-install-trentoserver-on-k3s">
       <title>Installing &t.server; on K3s</title>
-      <para> If you do not have a &k8s; cluster or have one but don't want to use
-        it for Trento, you can deploy a small VM (see section <xref
+      <para> If you do not have a &k8s; cluster or have one but do not want to use
+        it for Trento, you can deploy a small VM (see <xref
           linkend="sec-trento-server-requirements" /> for minimum requirements)
         and follow steps in <xref linkend="pro-trento-manually-installing" /> to
         get &t.server; up and running. </para>
@@ -392,7 +391,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       <procedure xml:id="pro-trento-manually-installing">
       <title>Manually installing Trento on a &t.server; host</title>
       <step>
-        <para> Log on the &t.server; host.
+        <para> Log in the &t.server; host.
         </para>
       </step>
       <step xml:id="st-install-k3s">
