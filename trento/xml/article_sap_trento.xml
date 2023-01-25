@@ -896,7 +896,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       <step>
         <para>
           Click the corresponding row to open the <guimenu>Details</guimenu> view of this check. This shows you
-          an abstract and how to remedy the problem. The References section contains links to the documentation
+          an abstract and how to remedy the problem. The <guimenu>References</guimenu> section contains links to the documentation
           of the different vendors to provide more context when necessary.
           Close the view with the <keycap function="escape"/> key or click outside of the view.
         </para>
