@@ -50,7 +50,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
     </dm:docmanager>
     <abstract>
       <para>
-       &trentopremium; is an open cloud-native web console that aims to help
+       &trentopremium; is an open cloud native web console that aims to help
        &sap; Basis consultants and administrators to monitor the entire OS stack of their
        &sap; environments, including HA features.
       </para>
@@ -61,7 +61,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
   <important>
     <title>Trento is an evolving product</title>
     <para>
-      The product continues to be under active development, and is available at no extra cost for any &suse;
+      The product continues to be under active development and is available at no extra cost for any &suse;
       customer with a registered &sles4sap;&nbsp;15 (SP1 or higher).
       Contact <link xlink:href="https://www.suse.com/support"/> for further assistance.
     </para>
@@ -80,34 +80,34 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
     -->
     <itemizedlist>
       <listitem>
-        <para>A simplified, reactive web UI targeting &sap; admins. </para>
+        <para>A simplified, reactive web UI targeting &sap; admins </para>
       </listitem>
       <listitem>
         <para>Automated discovery of &sap; Systems, &sap; Instances, and
-          &hana; clusters.</para>
+          &hana; clusters</para>
       </listitem>
       <listitem>
         <para>Configuration validation for &hana; Scale-Up
-          Performance-optimized two-node clusters deployed on Azure, AWS, GCP or on-premise bare metal platforms, including KVM and Nutanix.
+          Performance-optimized two-node clusters deployed on Azure, AWS, GCP or on-premise bare metal platforms, including KVM and Nutanix
         </para>
       </listitem>
       <listitem>
         <para>
           Monitoring of CPU and Memory usage at host level through basic integration
-          with Grafana and Prometheus.
+          with Grafana and Prometheus
         </para>
       </listitem>
       <listitem>
         <para>
-          Email alerting for critical events in the monitored landscape.
+          Email alerting for critical events in the monitored landscape
         </para>
       </listitem>
     </itemizedlist>
 
     <para> The <emphasis role="strong">&t.server;</emphasis> is an
-      independent, cloud-native, distributed system and designed to run
+      independent, cloud native, distributed system, designed to run
       on a &k8s; cluster.
-      The &t.server; interacts with users via a web front end.
+      The &t.server; interacts with users via a web front-end.
     </para>
     <para> The <emphasis role="strong">&t.agent;</emphasis> is a single
       background process (<systemitem>trento agent</systemitem>) running
@@ -134,11 +134,11 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
   </section>
 
   <section xml:id="sec-trento-product-lifecycle-update-strategy">
-    <title>Product life cycle and update strategy</title>
+    <title>Product lifecycle and update strategy</title>
     <!--
       Most ist taken from https://confluence.suse.com/x/uoOyN
     -->
-    <para>Trento premium is available at no extra cost for SLES for SAP subscribers. Particularly, the Trento two main components have the following product life cycles:</para>
+    <para>Trento Premium is available at no extra cost for SLES for SAP subscribers. Particularly, Trento's two main components have the following product lifecycles:</para>
 
     <variablelist>
       <varlistentry>
@@ -168,20 +168,20 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
           <formalpara>
             <title>&k8s;:</title>
             <para> The &t.server; runs on any current Cloud Native
-              Computing Foundation (CNCF) certified &k8s;
+              Computing Foundation (CNCF)-certified &k8s;
               distributions. Depending on your background and
-              needs, &suse; support several usage scenarios:
+              needs, &suse; supports several usage scenarios:
             </para>
           </formalpara>
           <itemizedlist>
             <listitem>
-              <para> If you already use a CNCF certified &k8s;,
+              <para> If you already use a CNCF-certified &k8s;,
                 you can run the &t.server; in it. </para>
             </listitem>
             <listitem>
               <para> If you have no &k8s; and want enterprise
                 support, &suse; recommends &suse; Rancher with
-                &rancher.k8s.engine; (RKE) either version 1 or
+                &rancher.k8s.engine; (RKE) version 1 or
                 2. </para>
             </listitem>
             <listitem>
@@ -209,8 +209,8 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       &t.agent;s. </para>
     <section xml:id="sec-trento-server-requirements">
       <title>&t.server; requirements</title>
-      <para> Running all the &t.server; components requires a minimum of 2GB of RAM,
-        two CPU cores and 64GB of storage.
+      <para> Running all the &t.server; components requires a minimum of 2&nbsp;GB of RAM,
+        two CPU cores and 64&nbsp;GB of storage.
         When using K3s, such storage should be provided under <filename>/var/lib/rancher/k3s</filename>.
       </para>
       <para>
@@ -220,11 +220,11 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       <screen>ssh-keygen -f ~/.ssh/id_rsa -t rsa -b 4096 -N ''</screen>
       <para>
        The previous command creates two files in the <filename>~/.ssh</filename> directory:
-       file <filename>id_rsa</filename> as private SSH key and file <filename>id_rsa.pub</filename> as public SSH key.
+       file <filename>id_rsa</filename> as a private SSH key and file <filename>id_rsa.pub</filename> as a public SSH key.
       </para>
       <para> While the &t.server; supports various usage scenarios,
-        depending on the existing infrastructure, it's designed to be
-        cloud-native and OS agnostic. As such, the default installation
+        depending on the existing infrastructure, it is designed to be
+        cloud native and OS agnostic. As such, the default installation
         method provisions a minimal, single node, K3S &k8s; cluster for
         running its components in Linux containers. The &t.server; can
         be installed on the following services: </para>
@@ -240,7 +240,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
           <para>RKE2</para>
         </listitem>
         <listitem>
-          <para>any other CNCF certified &k8s;</para>
+          <para>any other CNCF-certified &k8s;</para>
         </listitem>
       </itemizedlist>
     </section>
@@ -249,15 +249,14 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       <para> The resource footprint of the &t.agent; is designed to not
         impact the performance of the host it runs on. </para>
       <para> The &t.agent; component needs to interact with several
-        low-level system components that are part of the &sles4sap;&nbsp;
-        distribution. </para>
+        low-level system components that are part of the &sles4sap; distribution. </para>
     </section>
     <section xml:id="sec-trento-network-requirements">
       <title>Network requirements</title>
       <itemizedlist>
         <listitem>
           <para> The Trento component running &k8s; has
-            network access to the &sap; landscape. </para>
+            network access to the &sap; Landscape. </para>
         </listitem>
         <listitem>
           <para>
@@ -267,12 +266,12 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         </listitem>
         <listitem>
           <para>
-            &t.server; must be able to reach the &t.agent;s hosts via SSH (port TCP/22).
+            &t.server; must be able to reach the &t.agent; hosts via SSH (port TCP/22).
           </para>
         </listitem>
          <listitem>
           <para>
-            &t.server; must be able to reach the Node Exporter in the &t.agent;s hosts (port TCP/9100).
+            &t.server; must be able to reach the Node Exporter in the &t.agent; hosts (port TCP/9100).
           </para>
         </listitem>
         <listitem>
@@ -282,7 +281,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
     </section>
 
     <section xml:id="sec-trento-installation-prerequisites">
-      <title>Installation pre-requisites</title>
+      <title>Installation prerequisites</title>
       <itemizedlist>
         <listitem>
           <formalpara>
@@ -293,7 +292,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         <listitem>
           <formalpara>
             <title>&t.agent;s</title>
-            <para>A registered &sles4sap;&nbsp; distribution.</para>
+            <para>A registered &sles4sap; distribution.</para>
           </formalpara>
         </listitem>
         <listitem>
@@ -321,7 +320,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       </para>
     </important>
 
-    <para> The subsections uses the following placeholders: </para>
+    <para> The subsection uses the following placeholders: </para>
     <itemizedlist>
       <listitem>
         <para><replaceable>TRENTO_SERVER_HOSTNAME</replaceable>: the
@@ -344,7 +343,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
     <section xml:id="sec-trento-install-trentoserver-on-existing-k8s-cluster">
       <title>Installing &t.server; on an existing &k8s; cluster</title>
       <para>
-        &t.server; premium is delivered as a Helm chart in order to facilitate its
+        &t.server; is delivered as a Helm chart to facilitate the
       installation process. If you already have a &k8s; cluster in place and
       want to use it to run &t.server;, proceed as follows:
       </para>
@@ -355,7 +354,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         </step>
         <step>
         <para>
-          Install the &t.server; helm chart using Helm:
+          Install the &t.server; Helm chart using Helm:
         </para>
         <screen>HELM_EXPERIMENTAL_OCI=1 helm upgrade \
    --install trento-server oci://registry.suse.com/trento/trento-server \
@@ -376,8 +375,8 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
 
     <section xml:id="sec-trento-install-trentoserver-on-k3s">
       <title>Installing &t.server; on K3s</title>
-      <para> If you do not have a &k8s; cluster or have one but don't want to use
-        it for Trento, you can deploy a small VM (see section <xref
+      <para> If you do not have a &k8s; cluster or have one but do not want to use
+        it for Trento, you can deploy a small VM (see <xref
           linkend="sec-trento-server-requirements" /> for minimum requirements)
         and follow steps in <xref linkend="pro-trento-manually-installing" /> to
         get &t.server; up and running. </para>
@@ -392,7 +391,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       <procedure xml:id="pro-trento-manually-installing">
       <title>Manually installing Trento on a &t.server; host</title>
       <step>
-        <para> Log on the &t.server; host.
+        <para> Log in to the &t.server; host.
         </para>
       </step>
       <step xml:id="st-install-k3s">
@@ -420,7 +419,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       </step>
       <step xml:id="st-deploy-k3s">
         <para>
-          With the same user that installed K3s, install the &t.server; helm chart
+          With the same user that installed K3s, install the &t.server; Helm chart
           using Helm:
         </para>
         <screen>HELM_EXPERIMENTAL_OCI=1 helm upgrade \
@@ -432,11 +431,11 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         </para>
       </step>
        <step>
-        <para> Monitor the creation and startup of the Trento &k8s; pods and wait until they are all in running status:</para>
+        <para> Monitor the creation and start-up of the Trento &k8s; pods and wait until they are all in running status:</para>
         <screen>watch kubectl get pods</screen>
       </step>
        <step>
-        <para> Log out the &t.server; host. </para>
+        <para> Log out of the &t.server; host. </para>
       </step>
       <step>
         <para> To verify that the &t.server; installation was
@@ -486,7 +485,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         in the &sap; Landscape being monitored/observed by Trento.
       </para>
       <para>
-        Some of the notified events are:
+        Some of the reported events are:
       </para>
       <itemizedlist>
         <listitem>
@@ -527,7 +526,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         <varlistentry>
           <term><replaceable>SMTP_USER</replaceable></term>
           <listitem>
-            <para>Username to access SMTP server.</para>
+            <para>User name to access SMTP server.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -576,7 +575,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         Configuration must be done in the tls section of the <filename>values.yaml</filename>
         file of the chart of the &t.server; web component.
       </para>
-      <para> For details on the required Ingress setup and configuration please
+      <para> For details on the required Ingress setup and configuration,
         refer to: <link
           xlink:href="https://kubernetes.io/docs/concepts/services-networking/ingress/"
          />. Particularly, refer to section <link
@@ -584,7 +583,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
          /> for details on the secret format in the YAML configuration file.
       </para>
       <para>
-        Additional steps required on the Agent side.
+        Additional steps are required on the Agent side.
         <remark>toms 2022-09-14: which steps?</remark>
       </para>
     </section>
@@ -601,14 +600,14 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
     </important>
 
     <para>
-      Before you can install a &t.agent; retrieve the API key of your &t.server;.
+      Before you can install a &t.agent;, retrieve the API key of your &t.server;.
       Proceed as follows:
     </para>
     <procedure>
       <step>
         <para>
           Open the URL of the Trento web console (<uri>http://<replaceable>TRENTO_SERVER_HOSTNAME</replaceable></uri>).
-          It prompts you for a username and password:
+          It prompts you for a user name and password:
         </para>
         <!-- add login of Trento Server -->
         <informalfigure>
@@ -654,15 +653,15 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
     <itemizedlist>
       <listitem>
         <para><replaceable>TRENTO_SERVER_IP</replaceable>: local IP
-          address of the &t.server; host.</para>
+          address of the &t.server; host</para>
       </listitem>
       <listitem>
         <para><replaceable>TRENTO_AGENT_IP</replaceable>: local IP
-          address of the &t.agent; host.</para>
+          address of the &t.agent; host</para>
       </listitem>
       <listitem>
         <para><replaceable>TRENTO_AGENT</replaceable>: host name of the
-          &t.agent; host.</para>
+          &t.agent; host</para>
       </listitem>
     </itemizedlist>
     <para> To install the &t.agent; software on the host and register it
@@ -689,21 +688,21 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       <step>
         <para>
           Open the configuration file <filename>/etc/trento/agent.yml</filename>
-          uncomment (use <literal>#</literal>) the entries for
-          <parameter>ssh-address</parameter>, <parameter>server-url</parameter>, and
-          <parameter>api-key</parameter> and update the values appropriately:
+          and uncomment (use <literal>#</literal>) the entries for
+          <parameter>ssh-address</parameter>, <parameter>server-url</parameter> and
+          <parameter>api-key</parameter>. Update the values appropriately:
         </para>
         <itemizedlist>
           <listitem>
             <para><parameter>ssh-address</parameter>: local IP address</para>
           </listitem>
           <listitem>
-            <para><parameter>server-url</parameter>: URL for the Trento Server (<uri>http://TRENTO_SERVER_HOSTNAME</uri>).
+            <para><parameter>server-url</parameter>: URL for the Trento Server (<uri>http://TRENTO_SERVER_HOSTNAME</uri>)
             </para>
           </listitem>
           <listitem>
             <para>
-              <parameter>api-key</parameter>: the API key retrieved from the Web console.
+              <parameter>api-key</parameter>: the API key retrieved from the Web console
             </para>
           </listitem>
         </itemizedlist>
@@ -712,7 +711,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         <para>
           If SSL termination has been enabled on the server side (refer to
           <xref linkend="sec-trento-enabling-ssl"/>), you can encrypt the
-          communication from the agent to the server as follows</para>
+          communication from the agent to the server as follows:</para>
         <itemizedlist>
           <listitem>
             <para>Provide an HTTPS URL instead of an HTTP one.</para>
@@ -723,7 +722,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
             <procedure>
               <step>
                 <para>Copy the CA certificate in PEM format to <filename>/etc/pki/trust/anchors/</filename>.
-                If your CA certificate is in CRT format, convert it to PEM using <command>openssl</command>
+                If your CA certificate is in CRT format, convert it to PEM using the <command>openssl</command>
                   command as follows:
                 </para>
                 <screen><command>openssl</command> x509 -in mycert.crt -out mycert.pem -outform PEM</screen>
@@ -792,10 +791,11 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         <para>In the left panel, click <guimenu>Cluster</guimenu>.</para>
       </step>
       <step>
-        <para>In the list, search for a &hana; cluster.</para>
+        <para>In the list, search for an &hana; cluster.</para>
       </step>
       <step>
-        <para>Click the respective cluster name in the name column. The details view opens.</para>
+        <para>Click the respective cluster name in the <guimenu>Name</guimenu> column.
+          The <guimenu>Details</guimenu> view opens.</para>
         <remark>tom 2023-01-16: screenshot</remark>
         <figure>
           <title>&pace; cluster details</title>
@@ -807,14 +807,16 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         </figure>
       </step>
       <step xml:id="st-trento-checks-settings">
-        <para>Click the <guimenu>Settings</guimenu> button to change the cluster settings of the respective cluster. For checks to be executed, the connection settings must be maintained and a checks selection must been made.
+        <para>Click the <guimenu>Settings</guimenu> button to change the cluster settings of the respective cluster. 
+          For checks to be executed, the connection settings must be maintained, and a checks selection must be made.
         </para>
         <substeps>
                   <step>
             <formalpara>
               <title><guimenu>Connection Settings</guimenu></title>
               <para>
-                Add the respective Trento service user, in this guide named <systemitem class="username">&trentoadmin;</systemitem> and click the button <guimenu>Apply Connection Settings</guimenu>.
+                Add the respective Trento service user, in this guide named <systemitem class="username">&trentoadmin;</systemitem>,
+                and click the button <guimenu>Apply Connection Settings</guimenu>.
                 <!--see <xref linkend="sec-trento-installation-prerequisites"/>.-->
                 The Trento service user was used in <xref linkend="pro-trento-installing-trentoagent"/>.
               </para>
@@ -850,13 +852,15 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       </step>
       <step>
         <para>
-          At this moment, you can either wait for Trento to execute the selected checks or trigger an execution immediately by clicking the button that has appeared in the Checks Selection tab.
+          At this moment, you can either wait for Trento to execute the selected checks or trigger an execution
+          immediately by clicking the button that has appeared in the Checks Selection tab.
           <remark>tom 2023-01-16: Why is this a two-step process?</remark>
         </para>
       </step>
       <step>
         <para>
-          Investigate the result in the Checks Results view. Each row in this view shows you a check ID, a short description of the check and the check execution result, see <xref linkend="fig-pacemaker-checkresult"/>:
+          Investigate the result in the Checks Results view. Each row in this view shows you a check ID,
+          a short description of the check and the check execution result. See <xref linkend="fig-pacemaker-checkresult"/>:
         </para>
         <figure xml:id="fig-pacemaker-checkresult">
           <title>Check results for a cluster</title>
@@ -882,7 +886,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
           <listitem>
             <para><emphasis>Critical</emphasis> means that either the execution itself errored (for
               example, a timeout) or the recommendation is not met and is
-              critical for the well being of the cluster.</para>
+              critical for the well-being of the cluster.</para>
           </listitem>
         </itemizedlist>
         <para>
@@ -891,15 +895,16 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       </step>
       <step>
         <para>
-          Click the corresponding row to open the details view of this check. This shows you
-          an abstract and how to remedy the problem. Further links gives you the context.
+          Click the corresponding row to open the <guimenu>Details</guimenu> view of this check. This shows you
+          an abstract and how to remedy the problem. The <guimenu>References</guimenu> section contains links to the documentation
+          of the different vendors to provide more context when necessary.
           Close the view with the <keycap function="escape"/> key or click outside of the view.
         </para>
       </step>
     </procedure>
     <para>
       Once a check selection for a given cluster has been made, Trento executes them
-      automatically every five minutes and results are updated accordingly. A check
+      automatically every five minutes, and results are updated accordingly. A check
       execution result icon spinning means that an execution is running.
     </para>
   </section>
@@ -946,14 +951,14 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       <listitem>
         <formalpara>
           <title><guimenu>HANA Databases</guimenu></title>
-          <para> Overview of all discovered &hana; databases; identified by
+          <para>Overview of all discovered &hana; databases; identified by
             the corresponding system IDs. </para>
         </formalpara>
       </listitem>
       <listitem>
         <formalpara>
           <title><guimenu>Checks catalog</guimenu></title>
-          <para> Overview of the catalog of configuration checks that Trento may
+          <para>Overview of the catalog of configuration checks that Trento may
             perform for the different cluster components (&pace;, &corosync;,
             SBD, etc.) in any of the supported platforms: Azure, AWS, GCP, or on-premise bare metal (default). </para>
         </formalpara>
@@ -962,14 +967,14 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         <formalpara>
           <title><guimenu>Settings</guimenu></title>
           <para>
-            It lets you retrieve the API key for this particular installation, which is required for the &t.agent; configuration.
+           Lets you retrieve the API key for this particular installation, which is required for the &t.agent; configuration.
           </para>
         </formalpara>
       </listitem>
       <listitem>
         <formalpara>
           <title><guimenu>About</guimenu></title>
-          <para> Shows the Trento flavor, the current server version, a link to
+          <para>Shows the Trento flavor, the current server version, a link to
             the GitHub repository of the Trento web component, and the number of
             registered &sles4sap;&nbsp;subscriptions that has been discovered. </para>
         </formalpara>
@@ -980,7 +985,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       <title>Getting the global health state</title>
       <para>
         The dashboard allows you to determine at a glance the health status of your &sap; environment.
-        It is the home page of the Trento web console and you can go back to it any time by clicking on <guimenu>Dashboard</guimenu> in the left sidebar.
+        It is the home page of the Trento web console, and you can go back to it any time by clicking on <guimenu>Dashboard</guimenu> in the left sidebar.
       </para>
       <para>
         The health status of a registered &sap; system is the compound of its health status at
@@ -1057,7 +1062,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
 The health boxes in the dashboard are clickable. By clicking on one particular box, you filter the dashboard by systems with the corresponding health status. In large SAP environments, this feature facilitates the SAP administrator knowing which systems are in a given status. 
 </para>
       <para>
-        The icons representing the health summary of a particular layer, contain links to the views in the Trento console that can help determine where an issue is coming from:
+        The icons representing the health summary of a particular layer contain links to the views in the Trento console that can help determine where an issue is coming from:
       </para>
       <itemizedlist>
         <listitem>
@@ -1069,7 +1074,7 @@ The health boxes in the dashboard are clickable. By clicking on one particular b
          <listitem>
           <formalpara>
             <title><guimenu>Cluster health icon</guimenu>:</title>
-            <para>Link to corresponding &pace; Cluster Details view.</para>
+            <para>Link to the corresponding &pace; Cluster Details view.</para>
           </formalpara>
          </listitem>
          <listitem>
@@ -1089,7 +1094,7 @@ The health boxes in the dashboard are clickable. By clicking on one particular b
       <remark>tom 2023-01-16: Do we still have a grey state?</remark>
       <para>
         A grey status is returned when either a component does not exist, or it is stopped
-        (as returned by <command>sapcontrol</command>), or its status is unknown (for instance
+        (as returned by <command>sapcontrol</command>), or its status is unknown (for instance,
         if a command to determine the status fails).
       </para>
       <para> Grey statuses are not yet counted in the calculation of the global health status.</para>
@@ -1099,7 +1104,7 @@ The health boxes in the dashboard are clickable. By clicking on one particular b
     <section xml:id="sec-trento-status">
       <title>Viewing the status</title>
       <para>
-        Getting to know the status of a system is a important task for every
+        Getting to know the status of a system is an important task for every
         administrator. The status allows you to see if some of your systems need
         to be examined further.
       </para>
@@ -1114,7 +1119,7 @@ The health boxes in the dashboard are clickable. By clicking on one particular b
         <para>To display the lists of registered hosts and their details, proceed as follows:</para>
         <procedure>
           <step>
-            <para>Log in to the &t.web; console.</para>
+            <para>Log in to the &t.web;.</para>
           </step>
           <step>
             <para>Click the <guimenu>Hosts</guimenu> entry in the left sidebar to show a summary
@@ -1168,13 +1173,13 @@ The health boxes in the dashboard are clickable. By clicking on one particular b
               </listitem>
               <listitem>
                 <para><guimenu>&sap; instances</guimenu> section: when applicable,
-                  lists the ID, SID, type, features, and instance number of any &sap;
+                  it lists the ID, SID, type, features, and instance number of any &sap;
                   instance running on the host (&netweaver; or &hana;).</para>
               </listitem>
               <listitem>
                 <para><guimenu>&suse; subscription details</guimenu> section: it
                   lists the different components or modules that are part of the
-                  subscription and for each one of them it provides the
+                  subscription, and for each one of them, it provides the
                   architecture, the version and type, the registration and
                   subscription status as well as the start and end dates of the
                   subscription. </para>
@@ -1190,7 +1195,7 @@ The health boxes in the dashboard are clickable. By clicking on one particular b
         </para>
         <procedure>
           <step>
-            <para>Log in to the &t.web; console.</para>
+            <para>Log in to the &t.web;.</para>
           </step>
           <step>
             <para>Click the <guimenu>Clusters</guimenu> entry in the left sidebar to show a summary
@@ -1215,9 +1220,9 @@ The health boxes in the dashboard are clickable. By clicking on one particular b
             <itemizedlist>
               <title><guimenu>&pace; cluster details</guimenu> view</title>
               <listitem>
-                <para> A <guimenu>Settings</guimenu>, <guimenu>Show
-                    Results</guimenu>, and <guimenu>Start Execution</guimenu>.
-                  These buttons are used to enable or disable checks and start
+                <para>The <guimenu>Settings</guimenu>, <guimenu>Show
+                    Results</guimenu>, and <guimenu>Start Execution</guimenu> buttons.
+                  These buttons are used to enable or disable checks and to start
                   them. If you want to perform specific checks, proceed with
                     <xref linkend="st-trento-checks-settings" /> of <xref
                     linkend="pro-trento-checks" />. </para>
@@ -1232,20 +1237,20 @@ The health boxes in the dashboard are clickable. By clicking on one particular b
               <listitem>
                 <para><guimenu>Check Result</guimenu> section: with a summary of
                   the health of the clusters based on the runtime status and the
-                  selected configuration checks for each one of them (passed, warning, and
+                  selected configuration checks for each one of them (passed, warning and
                   critical).
                 </para>
               </listitem>
               <listitem>
                 <para><guimenu>Stopped resources</guimenu> section: with a summary
-                of resources which has been stopped on the cluster.
+                of resources which have been stopped on the cluster.
                 </para>
               </listitem>
               <listitem>
                 <para><guimenu>&pace; Site details</guimenu> section: with a summary of
                   NBG and WDF<remark>tom 2023-01-16: what are these acronyms</remark>.
-                  Both lists the host name, their role, the IP and virtual IP address.
-                  If you click the <guimenu>Details</guimenu> you can view the attributes
+                  Both list the host name, their role, the IP and virtual IP address.
+                  If you click the <guimenu>Details</guimenu>, you can view the attributes
                   of the site and their resources. Close this view with the <keycap
                     function="escape"/> key.
                 </para>
@@ -1265,7 +1270,7 @@ The health boxes in the dashboard are clickable. By clicking on one particular b
         </para>
         <procedure>
           <step>
-            <para>Log in to the &t.web; console.</para>
+            <para>Log in to the &t.web;.</para>
           </step>
           <step>
             <para>
@@ -1295,7 +1300,7 @@ The health boxes in the dashboard are clickable. By clicking on one particular b
             <itemizedlist xml:id="lst-trento-web-sapsystems-details">
               <title>&sap; System details</title>
               <listitem>
-                <para>the <guimenu>Name</guimenu> and <guimenu>Type</guimenu> of
+                <para>The <guimenu>Name</guimenu> and <guimenu>Type</guimenu> of
                   this &sap; System.</para>
               </listitem>
               <listitem>
@@ -1334,7 +1339,7 @@ The health boxes in the dashboard are clickable. By clicking on one particular b
         </para>
         <procedure>
           <step>
-            <para>Log in to the &t.web; console.</para>
+            <para>Log in to the &t.web;.</para>
           </step>
           <step>
             <para>
@@ -1363,7 +1368,7 @@ The health boxes in the dashboard are clickable. By clicking on one particular b
             <itemizedlist xml:id="lst-trento-web-hanadatabases-details">
               <title><guimenu>HANA Database</guimenu> details view</title>
               <listitem>
-                <para>the <guimenu>Name</guimenu> and <guimenu>Type</guimenu> of
+                <para>The <guimenu>Name</guimenu> and <guimenu>Type</guimenu> of
                   this &sap; System.</para>
               </listitem>
               <listitem>
@@ -1376,7 +1381,7 @@ The health boxes in the dashboard are clickable. By clicking on one particular b
               <listitem>
                 <para>
                   <guimenu>Hosts</guimenu> section: lists the hosts where all
-                  the related instances are running and for each host it
+                  related instances are running. For each host, it
                   provides the host name, the local IP address(es), the cloud
                   provider (when applicable), the cluster name (when
                   applicable), the system ID, and the &t.agent; version. </para>
@@ -1453,7 +1458,7 @@ The health boxes in the dashboard are clickable. By clicking on one particular b
           more tags.
         </para>
         <para>
-          The same principle applies to the other objects in Trento, be it <guimenu>Clusters</guimenu>,
+          The same principle applies to other objects in Trento, be it <guimenu>Clusters</guimenu>,
           <guimenu>SAP Systems</guimenu>, or <guimenu>HANA Databases</guimenu>.
         </para>
       </section>
@@ -1514,23 +1519,23 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
           </step>
           <step>
             <para>
-              In the second row, click the last pull down menu with the name <guimenu>Filter tags</guimenu>.
-              The pull down menu opens and shows you all of your defined tags.
+              In the second row, click the last drop-down list with the name <guimenu>Filter tags</guimenu>.
+              The drop-down list opens and shows you all of your defined tags.
             </para>
           </step>
           <step>
             <para>
-              Select the tag you want to filter from the pull down menu.
+              Select the tag you want to filter from the drop-down list.
               It is possible to select more than one tag.
             </para>
           </step>
         </procedure>
         <para>
           After you have finished the above procedure, Trento shows all respective hosts that
-          contains one or more of your selected tags.
+          contain one or more of your selected tags.
         </para>
         <para>
-          To remove the filter, click the <guimenu>×</guimenu> icon from the same pull down menu.
+          To remove the filter, click the <guimenu>×</guimenu> icon from the same drop-down list.
         </para>
       </section>
     </section>
@@ -2213,7 +2218,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
     </para>
     <procedure>
       <step>
-        <para>Log in the &t.agent; host.</para>
+        <para>Log in to the &t.agent; host.</para>
       </step>
       <step>
         <para>Stop the &t.agent;:</para>
@@ -2239,12 +2244,12 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
           </listitem>
           <listitem>
             <para><parameter>server-url</parameter>: HTTP URL for the &t.server;
-              (<uri>http://<replaceable>TRENTO_SERVER_HOSTNAME</replaceable></uri>).
+              (<uri>http://<replaceable>TRENTO_SERVER_HOSTNAME</replaceable></uri>)
             </para>
           </listitem>
           <listitem>
             <para>
-              <parameter>api-key</parameter>: the API key retrieved from the Web console.
+              <parameter>api-key</parameter>: the API key retrieved from the Web console
             </para>
           </listitem>
         </itemizedlist>
@@ -2308,7 +2313,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
     </para>
     <procedure>
       <step>
-        <para>Log in the &t.agent; host.</para>
+        <para>Log in to the &t.agent; host.</para>
       </step>
       <step>
         <para>Stop the &t.agent;:</para>
@@ -2351,7 +2356,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
             <para>The output of the Trento support plugin.</para>
           </listitem>
            <listitem>
-            <para>A dump of your scenario.</para>
+            <para>Your scenario dump.</para>
           </listitem>
         </itemizedlist>
    <para>
@@ -2386,9 +2391,9 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
         useful when troubleshooting/analyzing the issue.</para>
 
       <section>
-        <title>Trento support plugin</title>
+        <title>Trento Support Plugin</title>
         <para> The Trento Support Plugin automates the collection of relevant
-          runtime information. In order to use it proceed as follows: </para>
+          runtime information. To use it, proceed as follows: </para>
         <procedure>
           <step>
             <para>Install the following packages:</para>
@@ -2415,8 +2420,8 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
       <section>
         <title>Scenario dump</title>
         <para>The scenario dump is a dump of the Trento database. It helps the core team
-          recreate a mock environment with the same status as the customer's.
-          To generate the dump proceed as follows:</para>
+          to recreate a mock environment with the same status as the customer's.
+          To generate the dump, proceed as follows:</para>
         <procedure>
           <step>
             <para>Download the latest version of the dump script:</para>
@@ -2435,7 +2440,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
           </step>
           <step>
           <para>Go to <filename>/scenarios/</filename>, package all the JSON files and send
-            it to support for analysis.</para>
+            them to support for analysis.</para>
           </step>
         </procedure>
       </section>
@@ -2450,7 +2455,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
         debug log level for the agent. A detailed log can be then retrieved from the journal:</para>
       <procedure>
         <step>
-          <para>Add parameter log-level with value debug to the
+          <para>Add parameter <parameter>log-level</parameter> with value <literal>debug</literal> to the
             <filename>/etc/trento/agent.yaml</filename> configuration file.</para>
           <screen>&prompt.user;<command>sudo vi</command> /etc/trento/agent.yaml</screen>
         </step>
@@ -2473,7 +2478,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
       <title>Platform</title>
       <para />
           <section>
-      <title>Platform independent</title>
+      <title>Platform-independent</title>
       <para />
       <procedure>
         <step>
@@ -2520,7 +2525,7 @@ trento-server-web-7bff89f9d8-qd4hp                0/1     Init:CrashLoopBackOff 
       <screen>&prompt.root;<command>kubectl logs</command> trento-server-postgresql-0
 [...] [7]FATAL:  data directory "/var/lib/postgresql/data/trento" has invalid permissions
 [...] [7]DETAIL:  Permissions should be u=rwx (0700) or u=rwx,g=rx (0750).</screen>
-      <para> When this happens, uninstall Trento and remove all Trento specific images cached
+      <para> When this happens, uninstall Trento and remove all Trento-specific images cached
         in AKS. Reinstall it like this: </para>
       <procedure>
         <step>
@@ -2563,8 +2568,7 @@ trento-server-web-7bff89f9d8-qd4hp                0/1     Init:CrashLoopBackOff 
                   <screen>&prompt.user;<command>sudo crictl rmi</command> --prune</screen>
                 </step>
                 <step>
-                  <para>If the AKS cluster is a shared one, remove Trento
-                    specific images:</para>
+                  <para>If the AKS cluster is a shared one, remove Trento-specific images:</para>
                   <screen>&prompt.user;<command>sudo crictl rmi</command> <replaceable>IMAGE_ID</replaceable></screen>
                   <para>where <replaceable>IMAGE_ID</replaceable> is the image
                     ID for each one of the following images:</para>
@@ -2573,7 +2577,7 @@ quay.io/prometheus/prometheus
 registry.suse.com/trento/trento-db
 registry.suse.com/trento/trento-runner
 registry.suse.com/trento/trento-web</screen>
-                  <para>You can get the images IDs by running:</para>
+                  <para>You can get the images' IDs by running:</para>
                   <screen>&prompt.user;<command>sudo crictl images</command></screen>
                 </step>
               </stepalternatives>
