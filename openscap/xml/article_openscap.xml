@@ -69,7 +69,7 @@
  </sect1>
 
  <sect1 xml:id="openscap-components">
-  <title>SCAP components</title>
+  <title>Important SCAP components</title>
   <para>
    SCAP consists of the following important components which interact with each other.
   </para>
