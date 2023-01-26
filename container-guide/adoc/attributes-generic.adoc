@@ -223,8 +223,9 @@
 :deng: {docker} Open Source Engine
 :dhub: {docker} Hub
 :dreg: {docker} Registry
-:bci: Base Container Image
-:bcia: BCI
+:bci: {slea} Base Container Image
+:bcia: {slea} BCI
+:bcirepo: {slea}_BCI
 :kiwi: KIWI
 :rmt: RMT
 :rmtool: Repository Mirroring Tool
