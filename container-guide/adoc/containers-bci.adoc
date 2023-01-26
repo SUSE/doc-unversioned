@@ -512,3 +512,112 @@ Successfully built 48b33ec590a6
 > curl localhost:8000
 Hello Green World!
 ....
+
+
+[[sec-building-distroless]]
+==== Building and deploying a distroless container image
+
+There is https://registry.suse.com/static/bci/golang/index.html[a
+SLE BCI that can be used with the Go programming language]. There are a
+couple different recommended methods to work with the Go SLE BCI.
+
+===== Don't Ship The Compiler
+
+Go is a compiled language producing a binary as the end result. That
+means the compiler does not need to be shipped as part of the images
+that are distributed. Instead, it is recommended that the Go image is
+used as the builder image only.
+
+By not shipping the Go compiler with your application, the attack
+surface area of the containerized application is reduced and the
+overall image size is much smaller.
+
+===== Using Go As A Builder Image
+
+There are two ways to work with Go images. First, you can encapsulate
+your application in a https://hub.docker.com/_/scratch/[`scratch`]
+container image, which is essentially an empty image. This approach
+will not function if your Go application depends on libc or any other
+library, as they will not be available.
+
+A second method is to use a slim base container image with just the
+minimal packages needed. The link:{{< relref
+"documentation/general-purpose-bci.adoc" >}}[General Purpose SLE BCI]
+images offer four different options here, depending on your exact
+requirements.
+
+===== Building from `scratch`
+
+The following `Dockerfile` illustrates building an application using
+the SLE BCI Go image to compile the binary and then copying it into a
+new image based on `scratch`. The example uses a `hello world`
+as the program name, which can be substituted for the real application
+name.
+
+[source,docker]
+----
+# Build the Go Binary using the SLE BCI Go 1.19 images
+FROM registry.suse.com/bci/golang:1.19 as build
+
+WORKDIR /app
+
+COPY go.mod ./
+COPY go.sum ./
+RUN go mod download
+
+COPY *.go ./
+
+# Make sure to build the application with CGO disabled. This will force Go to
+# use some Go implementations of code rather than those normally supplied by the
+# host operating system. You need this for scratch images as those supporting
+# libraries are not available.
+RUN CGO_ENABLED=0 go build -o /hello-world
+
+# Create image to bundle app
+FROM scratch
+
+COPY --from=build /hello-world /hello-world
+
+CMD ["/hello-world"]
+----
+
+Additional settings like exposing network ports or running as a
+non-root user can be specified in the last step below the `FROM
+scratch` line.
+
+===== Building from SLE BCI
+
+Applications that require external libraries or CA certificates cannot
+be deployed into a `scratch` image. A General Purpose SLE BCI should
+be used instead. The above `Dockerfile` has to be slightly adjusted
+in this case:
+
+[source,docker]
+----
+# Build the Go Binary using the SLE BCI Go 1.19 images
+FROM registry.suse.com/bci/golang:1.19 as build
+
+WORKDIR /app
+
+COPY go.mod ./
+COPY go.sum ./
+RUN go mod download
+
+COPY *.go ./
+
+RUN go build -o /hello-world
+
+# Create image to bundle app
+FROM registry.suse.com/bci/bci-micro:15.4
+
+# Install dependencies (if required) here
+
+COPY --from=build /hello-world /usr/local/bin/hello-world
+
+CMD ["/usr/local/bin/hello-world"]
+----
+
+The above example uses the SLE BCI micro image as the deployment image for
+the resulting application. This is just one of the options, other
+options can be found in the section about the link:{{< relref
+"documentation/general-purpose-bci.adoc" >}}[General Purpose SLE BCI].
