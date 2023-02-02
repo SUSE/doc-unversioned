@@ -4,7 +4,9 @@ include::attributes-product.adoc[]
 [[cha-containers-basics]]
 == Introduction to Linux containers
 
-The Linux kernel's namespaces and kernel control groups features enable the container to be isolated from the rest of the host system and other containers. Linux containers offer a lightweight virtualization method to run multiple isolated environments simultaneously on a single host. Unlike Xen and KVM, where a full guest operating system is executed through a virtualization layer, Linux containers share and directly use the host OS kernel. This reduces the overhead required for accessing the operating system resources and allows for better overall performance compared to a generic Virtual Machine environment.
+Linux containers offer a lightweight virtualization method to run multiple isolated environments simultaneously on a single host. The Linux kernel's namespaces and kernel control groups features enable the container to be isolated from the rest of the host system and other containers.
+
+Unlike Xen and KVM, where a full guest operating system is executed through a virtualization layer, Linux containers share and directly use the host OS kernel.
 
 * Containers make it possible to isolate applications in self-contained units.
 * Containers provide near-native performance, as the kernel overhead is lower compared to virtualization and emulation.

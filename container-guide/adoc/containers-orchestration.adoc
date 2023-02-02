@@ -4,6 +4,23 @@ include::attributes-product.adoc[]
 [[cha-orchestration]]
 == Container orchestration
 
+[[cha-orchestration-introduction]]
+=== Introduction
+In a production environment you will likely have to manage multiple containers, be it locally on your single container host or on multiple Container Host. To manage multiple containers, you will have to group your containers (one or more) into a Pod, which will allow them to share storage and network resources but also a specification for how to be deployed and run. In short a pod encapsulates an application composed of multiple containers into a single unit. The pod concept was introduced by https://kubernetes.io/docs/concepts/workloads/pods/[Kubernetes] however Podman, which stand for Pod Manager, uses the same definition as Kubernetes. 
+This section is about giving you hints on how to orchestrate your containers.
+
+[[cha-orchestration-podman]]
+=== Single Container Host with Podman
+
+[[cha-orchestration-architecture]]
+==== Architecture
+
+Insert https://documentation.suse.com/sle-micro/5.3/single-html/SLE-Micro-podman/#pod-architecture here
+
+[[cha-orechestration-podman-pod]]
+==== Podman pod
+podman pod is the command line tool for creating, removing, querying and inspecting pods. You can check all the subcommands of podman pod in the https://docs.podman.io/en/latest/markdown/podman-pod.1.html[official upstream documentation]. 
+
 [[sec-pod-deployment-with-podman]]
 === Pod deployment with {podman}
 

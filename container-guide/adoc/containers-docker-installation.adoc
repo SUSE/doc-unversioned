@@ -15,22 +15,6 @@ Prepare the host as described below. Before installing any {docker}-related pack
 Starting with {deng} 1.12, container orchestration is now an integral part of {deng}. Even though this feature is available in {sles}{nbsp}{productnumber}, it is not supported by SUSE and is only provided as a technology preview. Use K8S for container orchestration. For details, refer to the http://kubernetes.io/docs/getting-started-guides/kubeadm/[Kubernetes documentation].
 ====
 
-==== Enabling the Containers Module using the {yast} graphical interface
-
-. Start {yast}, and select _Software > Software Repositories_.
-. Click _Add_ to open the add-on dialog.
-. Select _Extensions and Modules_ from _Registration Server_ and click _Next_.
-. From the list of available extensions and modules, select Containers Module {productnumber} x86_64 and click _Next_. This adds the _Containers Module_ and its repositories to the system.
-. If you use {rmtool}, update the list of repositories on the {rmt} server.
-
-==== Enabling the Containers Module from the command line using {suseconnect}
-
-The _Containers Module_ can also be added with the following command:
-
-....
-> sudo SUSEConnect -p sle-module-containers/15.4/x86_64
-....
-
 ==== Installing and configuring {deng}
 
 . Install the `docker` package:

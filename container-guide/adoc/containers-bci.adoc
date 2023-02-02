@@ -12,6 +12,10 @@ include::attributes-product.adoc[]
 * General-purpose {bcia}s can be used for building custom container images and for deploying applications.
 * Language stack {bcia}s provide minimal environments for developing and deploying applications in specific programming languages.
 
+{bci}s are available from https://registry.suse.com. It contains tested and updated {slea} base container images. All images in the {suseregistry} undergo a maintenance process. The images are built to contain the latest available updates and fixes. The {suseregistry}'s Web user interface lists a subset of the available images. For information about the {suseregistry}, see <<sec-suse-registry>>.
+
+{slea} base images in the {suse} Registry receive security updates and are covered by the {suse} support plans. For more information about these support plans, see <<cha-containers- support>>.
+
 [[sec-bci-why]]
 === Why {bci}s
 
@@ -165,6 +169,68 @@ All container images, except for base, are currently classified as tech preview,
 In the example above, the `com.suse.supportlevel` label is set to `techpreview` in the `bci-micro` container image, indicating that the image still has the tech preview status. The `bci-base` container image, on the other hand, has full L3 support. Unlike like the general purpose {bcia}s, the language stack {bcia}s may not follow the lifecycle of the {slsa} distribution: they are supported as long as the respective language stack receives support. In other words, new versions of {bcia}s (indicated by the OCI tags) may be released during the lifecycle of a {slsa} Service Pack, while older versions may become unsupported. Refer to https://suse.com/lifecycle[suse.com/lifecycle] to find out whether the container in question is still under support.
 
 IMPORTANT: A {bci} is no longer updated after its support period ends. You will not receive any notification when that happens.
+
+[[sec-bci-labels]]
+==== {bcia} labels
+
+{bcia}s feature the following labels.
+
+com.suse.image-type::
+  Shows whether this is a pure {bcia} or an application container based on another {bcia}.
+com.suse.eula::
+  Marks which section of the {suse} EULA applies to the container image.
+com.suse.release-stage::
+  Indicates the current release stage of the image.
+
+  * `prototype` Indicates that the container image is in the ALP prototype phase.
+  * `alpha` Prevents the container image from appearing in the registry.suse.com Web interface even if it is available there. The value also indicates the alpha quality of the container image.
+  * `beta` Lists the container image in the Beta Container Images section of the registry.suse.com Web interface and adds the Beta label to the image. The value also indicates the beta quality of the container image.
+  * `released` Indicates that the container image is released and suitable for production use.
+com.suse.supportlevel::
+  Shows the support level for the container.
+  * `l2` Problem isolation, which means technical support designed to analyze data, reproduce customer problems, isolate problem areas, and provide a resolution for problems not resolved by Level 1, or prepare for Level 3.
+  * `l3` Problem resolution, which means technical support designed to resolve problems by engaging engineering to resolve product defects which have been identified by Level 2 Support.
+  * `techpreview` The image is unsupported and intended for use in proof-of-concept scenarios.
+  * `unsupported` No support is provided for the image.
+com.suse.lifecycle-url::
+  Points to the https://www.suse.com/lifecycle/ page that offers information about the lifecycle of the image.
+
+[[sec-bci-labels-query]]
+===== Working with {bcia} labels
+
+Use {podman} and the jq tool to retrieve labels of a local image. The following command lists all labels of the `bci-base:15.4` image:
+
+....
+podman inspect registry.suse.com/bci/bci-base:15.4 | \
+jq '.[0].Labels'
+....
+
+It is also possible to retrieve the value of a specific label:
+
+....
+podman inspect registry.suse.com/bci/bci-base:15.4 | \
+jq '.[0].Labels["com.suse.sle.base.supportlevel"]'
+....
+
+The preceding command retrieves the value of the `com.suse.sle.base.supportlevel` label.
+
+The skopeo tool makes it possible to examine labels of an image without pulling it first. For example:
+
+....
+skopeo inspect docker://registry.suse.com/bci/bci-base:15.4 | \
+jq '.Labels'
+skopeo inspect docker://registry.suse.com/bci/bci-base:15.4 | \
+jq '.Labels["com.suse.sle.base.supportlevel"]'
+....
+
+[[sec-tags]]
+==== Tags
+
+Tags are used to refer to images. A tag forms a part of the image's name. Unlike labels, tags can be freely defined, and they are usually used to indicate a version number.
+
+If a tag exists in multiple images, the newest image is used. The image maintainer decides which tags to assign to the container image.
+
+The conventional tag format is `repository name`: `image version specification` (usually version number). For example, the tag for the latest published image of PRODUCTNAME 15 SP2 would be `suse/sle15:15.2`.
 
 [[sec-verify-bci-cosign]]
 === Verifying {bcia}s with Cosign
