@@ -17,48 +17,93 @@ This section is about giving you hints on how to orchestrate your containers.
 
 Insert https://documentation.suse.com/sle-micro/5.3/single-html/SLE-Micro-podman/#pod-architecture here
 
-[[cha-orechestration-podman-pod]]
+[[cha-orchestration-podman-pod]]
 ==== Podman pod
 podman pod is the command line tool for creating, removing, querying and inspecting pods. You can check all the subcommands of podman pod in the https://docs.podman.io/en/latest/markdown/podman-pod.1.html[official upstream documentation]. 
 
-[[sec-pod-deployment-with-podman]]
-=== Pod deployment with {podman}
-
-In addition to building and managing images, {podman} makes it possible to work with pods. A pod is a group of one or more containers with shared resources, such as the network interface. A pod encapsulates an application composed of multiple containers into a single unit.
-
-The `podman pod` can be used to create, delete, query, and inspect pods. To create a new pod, run the `podman pod
-   create` command. This creates a pod with a random name. To list the existing pods, use the `podman pod list` command. To view a list of running pods, run `podman ps -a --pod`. The output of the command looks as follows (the `STATUS` and `CREATED` columns are omitted for brevity):
+[[cha-orchestration-pod-create]]
+==== Create and list pods
+podman pod create will create a pod with a random name, but you can use the --name parameter to assign the desired name to a pod.
 
 ....
-POD ID        NAME                # OF CONTAINERS   INFRA ID
-399a120a09ff  suspicious_curie    1                 e57820093817
+ $ sudo podman pod create
+344940492c00b6a19ececbc5b109351bf0a3b8b19b3c279a097da7a653c592d0
 ....
 
-Notice that the command assigned a random name to the pod (`suspicious_curie` in this case). You can use the `--name` parameter to assign the desired name to a pod.
-
-To examine the pod and its contents, run the `podman ps -a
-   --pod` command and take a look at the output (the `COMMAND`, `CREATED`, `STATUS`, `PORTS`, and `POD
-   ID` columns are omitted for brevity):
+you can list our pods using the podman pod list command:
 
 ....
-CONTAINER ID  IMAGE                 NAMES              PODNAME
-e57820093817  k8s.gcr.io/pause:3.2  399a120a09ff-infra suspicious_curie
+$ sudo podman pod list
+POD ID        NAME          STATUS      CREATED        INFRA ID      # OF CONTAINERS
+344940492c00  suspicious_curie  Created     2 minutes ago  617d7e3ce399  1
 ....
 
-The created pod has an `infra` container identified by the `k8s.gcr.io` name. The purpose of this container is to reserve the namespaces associated with the pod and allow {podman} to add other containers to the pod.
-
-Using the `podman run --pod` command, you can run a container and add it to the desired pod. For example, the command below runs a container based on the `suse/sle15` image and adds the container to the `suspicious_curie` pod:
+Print out information about pods:
 
 ....
-podman run -d --pod suspicious_curie registry.suse.com/suse/sle15 sleep 1h
+$ sudo podman ps -a --pod
+CONTAINER ID  IMAGE                 COMMAND     CREATED        STATUS      PORTS       NAMES               POD ID        PODNAME
+617d7e3ce399  k8s.gcr.io/pause:3.5              5 minutes ago  Created                 344940492c00-infra  344940492c00  suspicious_curie
 ....
 
-The command above adds a container that sleeps for 60 minutes and then exits. Run the `podman ps -a --pod` command again and you should see that the pod now has two containers.
+The created pod has an infra container identified by the `k8s.gcr.io` name. The purpose of this container is to reserve the namespaces associated with the pod and allow Podman to add other containers to the pod.
 
-Containers in a pod can be restarted, stopped, and started without affecting the overall status of the pod. For example, you can stop a container using the `sudo podman stop CONTAINER_NAME` command.
-
-To stop the pod, use the `podman pod stop` command:
+[[cha-orchestration-pod-add]]
+==== Run and add a container to a pod
+Using the podman run --pod command, you can run a container and add it to the desired pod. For example, the command below runs a container based on the suse/sle15 image and adds the container to the suspicious_curie pod: 
 
 ....
-podman pod stop suspicious_curie
+$ sudo podman run -d --pod sweet_liskov registry.suse.com/suse/sle15 sleep 1h
+8f5af62a7c385bbd1a3a5cc3a53a8d0f8cf942adc26a065960d4232fcc93ac98
 ....
+
+WARNING: If this command shows the following warning, please refer http://https//documentation.suse.com/container/all/single-html/SLES-container/#sec-bci-suseconnect-podman-buildah-nerdctl[Using container-suseconnect on non-SLE hosts or with Podman, Buildah, and nerdctl]: 
+....
+WARN[0000] Path "/etc/SUSEConnect" from "/etc/containers/mounts.conf" doesn't exist, skipping 
+....
+
+The command above adds a container that sleeps for 60 minutes and then exits. Run the podman ps -a --pod command again and you should see that the pod now has two containers.
+
+You can also check the command podman pod ps:
+....
+$ sudo podman pod ps
+POD ID        NAME          STATUS      CREATED         INFRA ID      # OF CONTAINERS
+344940492c00  suspicious_curie Running     21 minutes ago  617d7e3ce399  2
+....
+
+[[cha-orchestration-pod-stop]]
+==== Stoping pod or a container in a pod
+Let's stop our newly created container named objective_jemison
+
+....
+$ sudo podman ps -a --pod
+CONTAINER ID  IMAGE                                COMMAND     CREATED         STATUS            PORTS       NAMES               POD ID        PODNAME
+617d7e3ce399  k8s.gcr.io/pause:3.5                             14 minutes ago  Up 4 minutes ago              344940492c00-infra  344940492c00  suspicious_curie 8f5af62a7c38  registry.suse.com/suse/sle15:latest  sleep 1h    4 minutes ago   Up 4 minutes ago              objective_jemison   344940492c00  suspicious_curie
+$ sudo podman stop objective_jemison
+objective_jemison
+$ sudo podman pod ps
+POD ID        NAME          STATUS      CREATED         INFRA ID      # OF CONTAINERS
+344940492c00  suspicious_curie  Degraded    25 minutes ago  617d7e3ce399  2
+$ sudo podman ps -a --pod
+CONTAINER ID  IMAGE                                COMMAND     CREATED         STATUS                       PORTS       NAMES               POD ID        PODNAME
+617d7e3ce399  k8s.gcr.io/pause:3.5                             25 minutes ago  Up 15 minutes ago                        344940492c00-infra  344940492c00  suspicious_curie 8f5af62a7c38  registry.suse.com/suse/sle15:latest  sleep 1h    15 minutes ago  Exited (137) 14 seconds ago              objective_jemison   344940492c00  suspicious_curie 
+....
+
+You can also stop the pod and all of its containers using, podman pod stop
+
+....
+$ sudo podman pod stop suspicious_curie
+344940492c00b6a19ececbc5b109351bf0a3b8b19b3c279a097da7a653c592d0
+$ sudo podman ps -ap
+CONTAINER ID  IMAGE                                COMMAND     CREATED         STATUS                      PORTS       NAMES               POD ID        PODNAME
+617d7e3ce399  k8s.gcr.io/pause:3.5                             29 minutes ago  Exited (0) 7 seconds ago                344940492c00-infra  344940492c00  suspicious_curie 8f5af62a7c38  registry.suse.com/suse/sle15:latest  sleep 1h    19 minutes ago  Exited (137) 3 minutes ago              objective_jemison   344940492c00  suspicious_curie
+....
+
+Of course you can also start and restart everything with sudo podman start yourcontainername,  podman pod start yourpodname or podman pod restart yourpodname.
+
+[[cha-orchestration-podman-more]]
+==== More on podman
+If you want to learn more on podman and in depth instruction on how to handle pod deployment, please check https://docs.podman.io/en/latest/ and https://github.com/containers/podman
+
+[[cha-orchestration-kubernetes]]
+=== Multi Container Host with Kubernetes
