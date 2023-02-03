@@ -73,18 +73,12 @@ This {bcia} comes with the Zypper package manager and the free {bcirepo} reposit
 A variant of {bcia}-Base called {bcia}-Init comes with systemd preinstalled. The {bcia}-Init container image can be useful in scenarios requiring systemd for managing services in a single container.
 
 [IMPORTANT]
-.Using {bcia}-init with {docker} or {nerdctl}
+.Using {bcia}-init with {docker}
 ====
 When using {bcia}-init container with {docker}, you must use the following arguments for SYSTEMD to work correctly in the container:
 
 ....
 > docker run -ti --tmpfs /run -v /sys/fs/cgroup:/sys/fs/cgroup:rw --cgroupns=host registry.suse.com/bci/bci-init:latest
-....
-
-In case of {nerdctl}, the correct command is as follows:
-
-....
-> nerdctl run -ti --env container=containerd --tmpfs /run -v /sys/fs cgroup:/sys/fs/cgroup:rw --cgroupns=host  registry.suse.com/bci bci-init:latest
 ....
 
 To correctly shut down the container use the following command:
@@ -357,11 +351,11 @@ registered {slsa} machine to your local machine. The
 `/etc/SUSEConnect` file is required only if you are using {rmt} for
 managing your registration credentials.
 
-[[sec-bci-suseconnect-podman-buildah-nerdctl]]
-==== Using container-suseconnect on non-{slea} hosts or with {podman}, {buildah}, and {nerdctl}
+[[sec-bci-suseconnect-podman-buildahl]]
+==== Using container-suseconnect on non-{slea} hosts or with {podman}, {buildah}
 
 You need a registered {slsa} system to use `container-suseconnect` on
-non-{slea} hosts or with {podman}, {buildah}, or with {nerdctl}. This can be a
+non-{slea} hosts or with {podman}, {buildah}. This can be a
 physical machine, a virtual machine, or the BCI-Base container with
 `SUSEConnect` installed and registered.
 
@@ -391,15 +385,6 @@ podman run --rm registry.suse.com/suse/sle15:latest bash -c \
      cat /etc/zypp/credentials.d/SCCcredentials"
 ----
 
-{nerdctl}:
-
-[source,Shell]
-----
-nerdctl run --rm registry.suse.com/suse/sle15:latest bash -c \
-    "zypper -n in SUSEConnect; SUSEConnect --regcode REGISTRATION_CODE; \
-     cat /etc/zypp/credentials.d/SCCcredentials"
-----
-
 If you are running a container based on a {bcia}, mount
 `SCCcredentials` (and optionally `/etc/SUSEConnect`) in the correct
 destination. The following example shows how to mount `SCCcredentials`
@@ -418,14 +403,6 @@ docker run -v /path/to/SCCcredentials:/etc/zypp/credentials.d/SCCcredentials \
 [source,Shell]
 ----
 podman run -v /path/to/SCCcredentials:/etc/zypp/credentials.d/SCCcredentials \
-    --rm -it --pull=always registry.suse.com/bci/bci-base:latest
-----
-
-{nerdctl}:
-
-[source,Shell]
-----
-nerdctl run -v /path/to/SCCcredentials:/etc/zypp/credentials.d/SCCcredentials \
     --rm -it --pull=always registry.suse.com/bci/bci-base:latest
 ----
 
