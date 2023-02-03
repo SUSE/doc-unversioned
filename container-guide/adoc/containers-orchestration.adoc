@@ -6,17 +6,35 @@ include::attributes-product.adoc[]
 
 [[cha-orchestration-introduction]]
 === Introduction
-Now that you have a better understanding of how to handle containers on your desktop or server, we can go to the next step: How to make use of containers in production ?
-In a production environment you will likely have to manage multiple containers, be it locally on your single container host or on multiple Container Host. To manage multiple containers, you will have to group your containers (one or more) into a Pod, which will allow them to share storage and network resources but also a specification for how to be deployed and run. In short a pod encapsulates an application composed of multiple containers into a single unit. The pod concept was introduced by https://kubernetes.io/docs/concepts/workloads/pods/[Kubernetes] however Podman, which stand for Pod Manager, uses the same definition as Kubernetes. 
-This section is about giving you hints on how to orchestrate your containers.
+Now that you have a better understanding of how to handle containers on your desktop or server, we
+can go to the next step: How to make use of containers in production?
+In a production environment you will likely have to manage multiple containers, be it locally on
+your single container host or on multiple Container Host. To manage multiple containers, you will
+have to group your containers (one or more) into a Pod, which will allow them to share storage and
+network resources but also a specification for how to be deployed and run. In short a pod
+encapsulates an application composed of multiple containers into a single unit. The pod concept was
+introduced by https://kubernetes.io/docs/concepts/workloads/pods/[Kubernetes] however Podman, which
+stand for Pod Manager, uses the same definition as Kubernetes. 
 
 [[cha-orchestration-podman]]
 === Single Container Host with Podman
 
 [[cha-orchestration-architecture]]
 ==== Architecture
+A pod is a group of containers that share the same name space, ports, and network connection.
+Usually, containers within one pod can communicate directly with each other. Each pod contains an
+infrastructure container (INFRA), whose purpose is to hold the name space. INFRA also enables Podman
+to add other containers to the pod. Port bindings, cgroup-parent values, and kernel name spaces are
+all assigned to the infrastructure container. Therefore, later changes of these values are not
+possible.
 
-Insert https://documentation.suse.com/sle-micro/5.3/single-html/SLE-Micro-podman/#pod-architecture here
+Insert https://documentation.suse.com/sle-micro/5.3/single-html/SLE-Micro-podman/images/pods_architecture.svg
+
+Each container in a pod has its own instance of a monitoring program. The monitoring program watches
+the container's process and if the container dies, the monitoring program saves its exit code. The
+program also holds open the tty interface for the particular container. The monitoring program
+enables you to run containers in the detached mode when Podman exits, because this program continues
+to run and enables you to attach tty later.
 
 [[cha-orchestration-podman-pod]]
 ==== Podman pod
