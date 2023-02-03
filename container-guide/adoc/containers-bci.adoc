@@ -192,7 +192,67 @@ com.suse.lifecycle-url::
 [[sec-bci-labels-query]]
 ===== Working with {bcia} labels
 
-Use {podman} and the jq tool to retrieve labels of a local image. The following command lists all labels of the `bci-base:15.4` image:
+Starting with SLE 12 SP3, all base container images include information such as a build time stamp
+and description. This information is provided in the form of labels attached to the base images, and
+is therefore available for derived images and containers.
+
+Here is an example of  the Labels information shown by `podman inspect`:
+
+....
+podman inspect registry.suse.com/suse/sle15
+[...]
+"Labels": {
+            "com.suse.bci.base.created": "2023-01-26T22:15:08.381030307Z",
+            "com.suse.bci.base.description": "Image for containers based on SUSE Linux Enterprise Server 15 SP4.",
+            "com.suse.bci.base.disturl": "obs://build.suse.de/SUSE:SLE-15-SP4:Update:CR/images/1477b070ae019f95b0f2c3c0dce13daf-sles15-image",
+            "com.suse.bci.base.eula": "sle-bci",
+            "com.suse.bci.base.image-type": "sle-bci",
+            "com.suse.bci.base.lifecycle-url": "https://www.suse.com/lifecycle",
+            "com.suse.bci.base.reference": "registry.suse.com/suse/sle15:15.4.27.14.31",
+            "com.suse.bci.base.release-stage": "released",
+            "com.suse.bci.base.source": "https://sources.suse.com/SUSE:SLE-15-SP4:Update:CR/sles15-image/1477b070ae019f95b0f2c3c0dce13daf/",
+            "com.suse.bci.base.supportlevel": "l3",
+            "com.suse.bci.base.title": "SLE BCI 15 SP4 Base Container Image",
+            "com.suse.bci.base.url": "https://www.suse.com/products/server/",
+            "com.suse.bci.base.vendor": "SUSE LLC",
+            "com.suse.bci.base.version": "15.4.27.14.31",
+            "com.suse.eula": "sle-bci",
+            "com.suse.image-type": "sle-bci",
+            "com.suse.lifecycle-url": "https://www.suse.com/lifecycle",
+            "com.suse.release-stage": "released",
+            "com.suse.sle.base.created": "2023-01-26T22:15:08.381030307Z",
+            "com.suse.sle.base.description": "Image for containers based on SUSE Linux Enterprise Server 15 SP4.",
+            "com.suse.sle.base.disturl": "obs://build.suse.de/SUSE:SLE-15-SP4:Update:CR/images/1477b070ae019f95b0f2c3c0dce13daf-sles15-image",
+            "com.suse.sle.base.eula": "sle-bci",
+            "com.suse.sle.base.image-type": "sle-bci",
+            "com.suse.sle.base.lifecycle-url": "https://www.suse.com/lifecycle",
+            "com.suse.sle.base.reference": "registry.suse.com/suse/sle15:15.4.27.14.31",
+            "com.suse.sle.base.release-stage": "released",
+            "com.suse.sle.base.source": "https://sources.suse.com/SUSE:SLE-15-SP4:Update:CR/sles15-image/1477b070ae019f95b0f2c3c0dce13daf/",
+            "com.suse.sle.base.supportlevel": "l3",
+            "com.suse.sle.base.title": "SLE BCI 15 SP4 Base Container Image",
+            "com.suse.sle.base.url": "https://www.suse.com/products/server/",
+            "com.suse.sle.base.vendor": "SUSE LLC",
+            "com.suse.sle.base.version": "15.4.27.14.31",
+            "com.suse.supportlevel": "l3",
+            "org.openbuildservice.disturl": "obs://build.suse.de/SUSE:SLE-15-SP4:Update:CR/images/1477b070ae019f95b0f2c3c0dce13daf-sles15-image",
+            "org.opencontainers.image.created": "2023-01-26T22:15:08.381030307Z",
+            "org.opencontainers.image.description": "Image for containers based on SUSE Linux Enterprise Server 15 SP4.",
+            "org.opencontainers.image.source": "https://sources.suse.com/SUSE:SLE-15-SP4:Update:CR/sles15-image/1477b070ae019f95b0f2c3c0dce13daf/",
+            "org.opencontainers.image.title": "SLE BCI 15 SP4 Base Container Image",
+            "org.opencontainers.image.url": "https://www.suse.com/products/server/",
+            "org.opencontainers.image.vendor": "SUSE LLC",
+            "org.opencontainers.image.version": "15.4.27.14.31",
+            "org.opensuse.reference": "registry.suse.com/suse/sle15:15.4.27.14.31"
+        },
+[...]
+....
+
+All labels are shown twice to ensure that the information in derived images about the original base
+image is still visible and not overwritten.
+
+Use {podman} and the jq tool (`sudo zypper in jq`) to retrieve labels of a local image. The following
+command lists all labels and only the labels information  of the `bci-base:15.4` image:
 
 ....
 podman inspect registry.suse.com/bci/bci-base:15.4 | \
