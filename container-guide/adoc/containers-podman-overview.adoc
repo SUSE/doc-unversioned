@@ -4,33 +4,67 @@ include::attributes-product.adoc[]
 [[cha-podman-overview]]
 == {podman} overview
 
-https://podman.io/[Podman] is short for Pod Manager Tool. It is a daemonless container engine for developing, managing, and running Open Container Initiative (OCI) containers on a Linux system, and it offers a drop-in alternative for {docker}. {podman} is the default container runtime in {opensuse} Kubic{mdash}a certified Kubernetes distribution built on top of {opensuse}. {podman} can be used to create OCI-compliant container images using a `Dockerfile` and a range of commands identical to {deng}. For example, the `podman build` command performs the same task as `docker build`. In other words, {podman} provides a drop-in replacement for {deng}.
+https://podman.io/[Podman] is short for Pod Manager Tool. It is a daemonless container engine for
+managing Open Container Initiative (OCI) containers on a Linux system, and it offers a drop-in
+alternative for {docker}.
+{podman} can be used to create OCI-compliant container images using a `Dockerfile` and a range of
+commands identical to {deng}. For example, the `podman build` command performs the same task as
+`docker build`. In other words, {podman} provides a drop-in replacement for {deng}.
 
-Moving from {deng} to {podman} does not require any changes in the established workflow. There is no need to rebuild images, and you can use the exact same commands to build and manage images as well as run and control containers.
+Moving from {deng} to {podman} does not require any changes in the established workflow. There is no
+need to rebuild images, and you can use the exact same commands to build and manage images as well
+as run and control containers.
 
-{podman} differs from {deng} in two important ways.
+{podman} differs from {deng} in four main ways:
 
-* {podman} does not use a daemon, so the container engine interacts directly with an image registry, containers, and an image storage. As {podman} does not have a daemon, it provides integration with systemd. This makes it possible to control containers via systemd units. You can create these units for existing containers as well as generate units that can start containers if they do not exist in the system. Moreover, {podman} can run systemd inside containers.
-* Because {podman} relies on namespaces, which provide an isolation mechanism for Linux processes, it does not require root privileges to create and run containers. This means that {podman} can run in root mode as well as in an unprivileged environment. Moreover, a container created by an unprivileged user cannot get higher privileges on the host than the container's creator.
+* {podman} does not use a daemon, so the container engine interacts directly with an image registry,
+containers, and an image storage when needed.
+* {podman} has a native systemd integration. Allowing to control containers via systemd units which
+can be created for existing containers as well as generate units that can start containers if they
+do not exist in the system. Moreover, {podman} can run systemd inside containers.
+* Because {podman} relies on namespaces, which provide an isolation mechanism for Linux processes,
+it does not require root privileges to create and run containers. This means that {podman} can run
+in root mode as well as in an unprivileged environment. Moreover, a container created by an
+unprivileged user cannot get higher privileges on the host than the container's creator.
+* {podman} can be configured to search multiple registries by reading
+`/etc/containers/registries.conf` file.
+
+Last but not least, {podman} enables you to organize your containers into pods. Pods share the same
+network interface and resources. A typical use case for organizing a group of containers into a pod
+is a container that runs a database and a container with a client that accesses the database.
+For further information about pods, refer to <<sec-orchestration-podman>>.
 
 [[sec-podman-install]]
 === {podman} installation
 
-To install {podman}, run the command `sudo zypper in podman`. Then run `podman --version` to check whether {podman} has been installed successfully.
+To install {podman}, make sure you have the SLE Containers Module enabled (cf. <<cha-sle-containers-module>>), run the command `sudo zypper in podman`. Then run `podman --version` to check whether {podman} has been installed successfully.
 
-To run {podman} without root privileges, subuids and subgids must be assigned to the user running {podman}. If there is no entry in the `/etc/subuid` file, add an entry using the following command:
+By default, {podman} requires root privileges. To enable rootless mode, subuids and subgids must be assigned to the user running {podman}. If there is no entry in the `/etc/subuid` file, add an entry using the following command:
 
 ....
 > sudo usermod --add-subuids 100000-165535 --add-subgids 100000-165535 USER
 ....
 
-To enable the change, reboot the machine or stop the session of the current user. To do the latter, run `loginctl list-sessions | grep USER` and note the session ID. Then run `loginctl kill-session SESSION_ID` to stop the session.
+To enable the change, reboot the machine or stop the session of the current user. To do the latter,
+run `loginctl list-sessions | grep USER` and note the session ID. Then run 
+`loginctl kill-session SESSION_ID` to stop the session.
 
-The command above defines a range of local UIDs to which the UIDs allocated to users inside the container are mapped on the host. Note that the ranges defined for different users must not overlap. It is also important that the ranges do not reuse the UID of an existing local user or group. By default, adding a user with the `useradd` command on {slsa}{nbsp}{productnumber} automatically allocates subUID and subGID ranges.
+The usermod command above defines a range of local UIDs to which the UIDs allocated to users inside
+the container are mapped on the host. Note that the ranges defined for different users must not
+overlap. It is also important that the ranges do not reuse the UID of an existing local user or
+group. By default, adding a user with the `useradd` command on {slsa}{nbsp}{productnumber}
+automatically allocates subUID and subGID ranges.
 
-When using rootless containers with {podman}, it is recommended to use cgroups v2. cgroups v1 are limited compared to v2. For example cgroups v1 allow every user to modify all existing control groups, and not just their own. Additionally, {podman} is unable to read container logs properly with cgroups v1 and the systemd log driver. To enable cgroups v2, add the following to the kernel cmdline: `systemd.unified_cgroup_hierarchy=1`
+When using rootless containers with {podman}, it is recommended to use cgroups v2. cgroups v1 are
+limited compared to v2. For example cgroups v1 allow every user to modify all existing control
+groups, and not just their own. Additionally, {podman} is unable to read container logs properly
+with cgroups v1 and the systemd log driver. To enable cgroups v2, add the following to the kernel
+cmdline: `systemd.unified_cgroup_hierarchy=1`
 
-Running a container with {podman} in rootless mode on SLS may fail, because the container needs read access to the SCC credentials. For example, running a container with the command `podman run -it --rm registry.suse.com/suse/sle15 bash` and then executing `zypper ref` results in the following error message:
+Running a container with {podman} in rootless mode on SLES may fail, because the container needs
+read access to the SCC credentials. For example, running a container with the command
+`podman run -it --rm registry.suse.com/suse/sle15 bash` and then executing `zypper ref` results in
+the following error message:
 
 ....
 Refreshing service 'container-suseconnect-zypp'.
@@ -41,7 +75,8 @@ Warning: There are no enabled repositories defined.
 Use 'zypper addrepo' or 'zypper modifyrepo' commands to add or enable repositories
 ....
 
-To solve the problem, grant the current user the required access rights by running the following command on the host:
+To solve the problem, grant the current user the required access rights by running the following
+command on the host:
 
 ....
 > sudo setfacl -m u:USER:r /etc/zypp/credentials.d/*
@@ -49,7 +84,9 @@ To solve the problem, grant the current user the required access rights by runni
 
 Log out and log in again to apply the changes.
 
-To give multiple users the required access, create a dedicated group using the `groupadd GROUPNAME` command. Then use the following command to change the group ownership and rights of files in the `/etc/zypp/credentials.d/` directory.
+To give multiple users the required access, create a dedicated group using the `groupadd GROUPNAME`
+command. Then use the following command to change the group ownership and rights of files in the
+`/etc/zypp/credentials.d/` directory.
 
 ....
 > sudo chgrp GROUPNAME /etc/zypp/credentials.d/*
@@ -61,7 +98,10 @@ You can then grant a specific user write access by adding them to the created gr
 [[sec-podman-use]]
 === {podman} basic usage
 
-Since {podman} is compatible with {deng}, it features the same commands and options. For example, the `podman pull` command fetches a container image from a registry, while the `podman build` command is used to build images.
+Since {podman} is compatible with {deng}, it features the same commands and options. You can also
+install the package `podman-docker`, which will allow you to use an emulated docker CLI using
+podman, for example, the `docker pull` command will actually execute `podman pull`, which fetches a
+container image from a registry, or `docker build` will execute `podman build`.
 
 One of the advantages of {podman} over {deng} is that {podman} can be configured to search multiple registries. To make {podman} search the {suseregistry} first and use {dhub} as a fallback, add the following configuration to the `/etc/containers/registries.conf` file:
 

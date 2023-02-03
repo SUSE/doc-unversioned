@@ -4,7 +4,7 @@ include::attributes-product.adoc[]
 [[cha-orchestration]]
 == Container orchestration
 
-[[cha-orchestration-introduction]]
+[[sec-orchestration-introduction]]
 === Introduction
 Now that you have a better understanding of how to handle containers on your desktop or server, we
 can go to the next step: How to make use of containers in production?
@@ -16,10 +16,10 @@ encapsulates an application composed of multiple containers into a single unit.�
 introduced by https://kubernetes.io/docs/concepts/workloads/pods/[Kubernetes] however Podman, which
 stand for Pod Manager, uses the same definition as Kubernetes. 
 
-[[cha-orchestration-podman]]
+[[sec-orchestration-podman]]
 === Single Container Host with Podman
 
-[[cha-orchestration-architecture]]
+[[sec-orchestration-architecture]]
 ==== Architecture
 A pod is a group of containers that share the same name space, ports, and network connection.
 Usually, containers within one pod can communicate directly with each other. Each pod contains an
@@ -36,13 +36,14 @@ program also holds open the tty interface for the particular container. The moni
 enables you to run containers in the detached mode when Podman exits, because this program continues
 to run and enables you to attach tty later.
 
-[[cha-orchestration-podman-pod]]
+[[sec-orchestration-podman-pod]]
 ==== Podman pod
 podman pod is the command line tool for creating, removing, querying and inspecting pods. You can check all the subcommands of podman pod in the https://docs.podman.io/en/latest/markdown/podman-pod.1.html[official upstream documentation]. 
 
-[[cha-orchestration-pod-create]]
+[[sec-orchestration-pod-create]]
 ==== Create and list pods
-podman pod create will create a pod with a random name, but you can use the --name parameter to assign the desired name to a pod.
+podman pod create will create a pod with a random name, but you can use the --name parameter to
+assign the desired name to a pod.
 
 ....
  $ sudo podman pod create
@@ -65,23 +66,29 @@ CONTAINER ID  IMAGE                 COMMAND     CREATED        ST
 617d7e3ce399  k8s.gcr.io/pause:3.5              5 minutes ago  Created                 344940492c00-infra  344940492c00  suspicious_curie
 ....
 
-The created pod has an infra container identified by the `k8s.gcr.io` name. The purpose of this container is to reserve the namespaces associated with the pod and allow Podman to add other containers to the pod.
+The created pod has an infra container identified by the `k8s.gcr.io` name. The purpose of this
+container is to reserve the namespaces associated with the pod and allow {podman} to add other
+containers to the pod.
 
-[[cha-orchestration-pod-add]]
+[[sec-orchestration-pod-add]]
 ==== Run and add a container to a pod
-Using the podman run --pod command, you can run a container and add it to the desired pod. For example, the command below runs a container based on the suse/sle15 image and adds the container to the suspicious_curie pod: 
+Using the podman run --pod command, you can run a container and add it to the desired pod. For
+example, the command below runs a container based on the suse/sle15 image and adds the container to
+the `suspicious_curie` pod: 
 
 ....
 $ sudo podman run -d --pod sweet_liskov registry.suse.com/suse/sle15 sleep 1h
 8f5af62a7c385bbd1a3a5cc3a53a8d0f8cf942adc26a065960d4232fcc93ac98
 ....
 
-WARNING: If this command shows the following warning, please refer http://https//documentation.suse.com/container/all/single-html/SLES-container/#sec-bci-suseconnect-podman-buildah-nerdctl[Using container-suseconnect on non-SLE hosts or with Podman, Buildah, and nerdctl]: 
+WARNING: If this command shows the following warning, please refer
+http://https//documentation.suse.com/container/all/single-html/SLES-container/#sec-bci-suseconnect-podman-buildah-nerdctl[Using container-suseconnect on non-SLE hosts or with Podman, Buildah, and nerdctl]: 
 ....
 WARN[0000] Path "/etc/SUSEConnect" from "/etc/containers/mounts.conf" doesn't exist, skipping 
 ....
 
-The command above adds a container that sleeps for 60 minutes and then exits. Run the podman ps -a --pod command again and you should see that the pod now has two containers.
+The command above adds a container that sleeps for 60 minutes and then exits. Run the podman ps -a
+--pod command again and you should see that the pod now has two containers.
 
 You can also check the command podman pod ps:
 ....
@@ -90,7 +97,7 @@ POD ID        NAME          STATUS      CREATED         INFRA ID
 344940492c00  suspicious_curie Running     21 minutes ago  617d7e3ce399  2
 ....
 
-[[cha-orchestration-pod-stop]]
+[[sec-orchestration-pod-stop]]
 ==== Stoping pod or a container in a pod
 Let's stop our newly created container named objective_jemison
 
@@ -118,17 +125,28 @@ CONTAINER ID  IMAGE                                COMMAND   �
 617d7e3ce399  k8s.gcr.io/pause:3.5                             29 minutes ago  Exited (0) 7 seconds ago                344940492c00-infra  344940492c00  suspicious_curie 8f5af62a7c38  registry.suse.com/suse/sle15:latest  sleep 1h    19 minutes ago  Exited (137) 3 minutes ago              objective_jemison   344940492c00  suspicious_curie
 ....
 
-Of course you can also start and restart everything with sudo podman start yourcontainername,  podman pod start yourpodname or podman pod restart yourpodname.
+Of course you can also start and restart everything with sudo podman start yourcontainername,
+ podman pod start yourpodname or podman pod restart yourpodname.
 
-[[cha-orchestration-podman-more]]
+[[sec-orchestreation-podman-systemd]]
+==== Creating systemd units for a pod
+
+[[sec-orchestration-podman-more]]
 ==== More on podman
-If you want to learn more on podman and in depth instruction on how to handle pod deployment, please check https://docs.podman.io/en/latest/ and https://github.com/containers/podman
+If you want to learn more on podman and in depth instruction on how to handle pod deployment,
+please check https://docs.podman.io/en/latest/ and https://github.com/containers/podman
 
-[[cha-orchestration-kubernetes]]
+[[sec-orchestration-kubernetes]]
 === Multi Container Host with Kubernetes
 
-Kubernetes provides a set of functionality that are required to deploy containers at production level: storage, high availability, lifecycle.
-Kubernetes makes multiple machines work together to create a cluster which you will be able to interact with using an API. The deployment of Kubernetes itself has seen a lot of tools emerge, but the one we do favour at SUSE is Rancher. Rancher is able to deploy Kubernetes, but also to manage application running on top of k8s. To be even more precise, a single Rancher setup can manage multiple Kubernetes cluster, easing the burden of managing the software you deployed just to run you application.
+Kubernetes provides a set of functionality that are required to deploy containers at production
+level: storage, high availability, lifecycle.
+Kubernetes makes multiple machines work together to create a cluster which you will be able to
+interact with using an API. The deployment of Kubernetes itself has seen a lot of tools emerge, but
+the one we do favour at SUSE is Rancher. Rancher is able to deploy Kubernetes, but also to manage
+application running on top of k8s. To be even more precise, a single Rancher setup can manage
+multiple Kubernetes cluster, easing the burden of managing the software you deployed just to run you
+application.
 
 [[sec-k8s]]
 ==== Kubernetes (k8s)
