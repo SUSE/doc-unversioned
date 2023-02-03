@@ -30,6 +30,15 @@ For information on installing and using {buildah}, refer to <<cha-buildah-overvi
 
 {skopeo} is a command line utility for coping, inspecting, deleting and  signing on container images and image repositories. {skopeo} is able to inspect containers and repositories on remote or local container registries. {skopeo} can copy container images between various storage mechanisms.
 
+[[sec-tools-helm]]
+==== {helm}
+{helm} is the Kubernetes Package Manager, it manage charts, which are packages of pre-configured Kubernetes resources. Allowing to easily package, configure, and deploy applications and services onto Kubernetes clusters.
+
+[[sec-tools-distribution]]
+==== {distribution}
+Open Source Registry implementation for storing and distributing container images using the OCI Distribution Specification.
+It's a toolset to provide a simple, secure, and scalable base for building a large scale registry solution or running a simple private registry.
+
 [[sec-tools-obs]]
 ==== Open Build Service
 
