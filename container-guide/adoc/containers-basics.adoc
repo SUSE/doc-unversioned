@@ -4,22 +4,39 @@ include::attributes-product.adoc[]
 [[cha-containers-basics]]
 == Introduction to Linux containers
 
-Linux containers offer a lightweight virtualization method to run multiple isolated environments simultaneously on a single host. The Linux kernel's namespaces and kernel control groups features enable the container to be isolated from the rest of the host system and other containers.
+Linux containers offer a lightweight virtualization method to run multiple isolated virtual
+environments simultaneously on a single host. This technology is based on the Linux kernel's
+namespaces for process isolation and kernel control groups (cgroups) for resource (CPU, memory,
+disk I/O, network, etc) management.
 
-Unlike Xen and KVM, where a full guest operating system is executed through a virtualization layer, Linux containers share and directly use the host OS kernel.
+Unlike Xen and KVM, where a full guest operating system is executed through a virtualization layer,
+Linux containers share and directly use the host OS kernel.
 
-* Containers make it possible to isolate applications in self-contained units.
-* Containers provide near-native performance, as the kernel overhead is lower compared to virtualization and emulation.
-* It is possible to control network interfaces and apply resources inside containers through kernel control groups (cgroups).
-* Portability and ease of development for application developers as the container holds all necessary libraries, dependencies, and files needed.
+Advantages of using containers:
+* Size: Container images should only include the content needed to run an application, whereas a
+virtual machine include an entire operating system,
+* Performance: Containers provide near-native performance, as the kernel overhead is lower compared
+to virtualization and emulation.
+* Security: Containers make it possible to isolate applications in self-contained units from the
+rest of the host system.
+* Resources management: It is possible to fine grained control CPU, memory, disk I/O, network
+interfaces, etc inside containers (cgroups).
+* Flexibility: Container images hold all necessary libraries, dependencies, and files needed to run
+an application, thus can be easily developped and deployed on multiple host.
 
-* Containers run on the host system's kernel, so the containers have to use the specific kernel version provided by the host.
-* Only Linux-based applications can be containerized.
-* A container encapsulates binaries for a specific architecture ({x64} or {aarch64} for instance). So a container made for {x64} only runs on a {x64} system host.
-* Containers in themselves are no more secure than executing binaries outside of a container, and the overall security of containers depends on the host system. While containerized applications can be secured through AA or SELNX profiles, container security require putting in place tools and policies that ensure security of the container infrastructure and applications.
+Limitations of containers:
+* Containers run on the host system's kernel, so the containers have to use the specific kernel
+version provided by the host.
+* Only Linux-based applications can be containerized on a Linux host.
+* A container encapsulates binaries for a specific architecture ({x64} or {aarch64} for instance).
+So a container made for {x64} only runs on a {x64} system host.
+* Containers in themselves are no more secure than executing binaries outside of a container, and 
+the overall security of containers depends on the host system. While containerized applications can
+be secured through AppArmor or SELinuprofiles, container security require putting in place tools and
+policies that ensure security of the container infrastructure and applications.
 
 [[sec-concepts-workflow]]
-=== Key concepts and brief introduction to {podman}
+=== Key concepts and introduction to {podman}
 
 Although {deng} is a popular choice for working with images and containers, {podman} provides a drop-in replacement for {docker} that offers several advantages. While <<cha-podman-overview>> provides more information on {podman}, this chapter offers a quick introduction to key concepts and a basic procedure for creating a container image and using it to run a container.
 
