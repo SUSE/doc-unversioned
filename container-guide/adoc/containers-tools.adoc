@@ -4,7 +4,11 @@ include::attributes-product.adoc[]
 [[cha-containers-tools]]
 == Tools for building images and managing containers
 
-This chapter provides a brief overview of tools, provided by SUSE, for building images and managing containers. All our tools mentioned below are part of the *{sles} {productnumber} Containers Module*, except the Open Build Service. You can see the full list of packages in the *Containers Module* in the https://scc.suse.com/packages[{scc}].
+This chapter provides a brief overview of tools, provided by SUSE, for building images and managing containers.
+There are mainly three area that can be identified: building, running, managing. The frontier between areas is sometimes pretty thin, thus some tools are not exclusively targeting a topic and might be able to fulfill multiple roles.
+This article is not an exhaustive list of all tools, but rather tries to provide you with a better understanding of which tools fits where and how you can combine them together.
+
+All our tools mentioned below are part of the *{sles} {productnumber} Containers Module*, except the Open Build Service. You can see the full list of packages in the *Containers Module* in the https://scc.suse.com/packages[{scc}].
 
 [[sec-tools]]
 
@@ -32,7 +36,8 @@ For information on installing and using {buildah}, refer to <<cha-buildah-overvi
 
 [[sec-tools-helm]]
 ==== {helm}
-{helm} is the Kubernetes Package Manager, it manage charts, which are packages of pre-configured Kubernetes resources. Allowing to easily package, configure, and deploy applications and services onto Kubernetes clusters.
+{helm} is the Kubernetes Package Manager, it's the de-facto standard to deploy containerized applications on Kubernetes clusters, via `charts`.
+It is able to install/update/uninstall applications on a single or multiple containers and the associated resources, liek configuration, storage volumes, etc. Used for instance to deploy our RMT server: https://documentation.suse.com/sles/15-SP4/single-html/SLES-rmt/index.html#sec-rmt-deploy-kubernetes
 
 [[sec-tools-distribution]]
 ==== {distribution}

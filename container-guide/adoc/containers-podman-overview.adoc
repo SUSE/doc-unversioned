@@ -13,7 +13,7 @@ Moving from {deng} to {podman} does not require any changes in the established w
 * {podman} does not use a daemon, so the container engine interacts directly with an image registry, containers, and an image storage. As {podman} does not have a daemon, it provides integration with systemd. This makes it possible to control containers via systemd units. You can create these units for existing containers as well as generate units that can start containers if they do not exist in the system. Moreover, {podman} can run systemd inside containers.
 * Because {podman} relies on namespaces, which provide an isolation mechanism for Linux processes, it does not require root privileges to create and run containers. This means that {podman} can run in root mode as well as in an unprivileged environment. Moreover, a container created by an unprivileged user cannot get higher privileges on the host than the container's creator.
 
-[[cha-podman-install]]
+[[sec-podman-install]]
 === {podman} installation
 
 To install {podman}, run the command `sudo zypper in podman`. Then run `podman --version` to check whether {podman} has been installed successfully.
@@ -58,7 +58,7 @@ To give multiple users the required access, create a dedicated group using the `
 
 You can then grant a specific user write access by adding them to the created group.
 
-[[cha-podman-use]]
+[[sec-podman-use]]
 === {podman} basic usage
 
 Since {podman} is compatible with {deng}, it features the same commands and options. For example, the `podman pull` command fetches a container image from a registry, while the `podman build` command is used to build images.
@@ -76,7 +76,7 @@ Similar to {deng}, {podman} can run containers in an interactive mode, allowing 
 > podman run --rm -ti suse/sle15
 ....
 
-[[cha-podman-build-images]]
+[[sec-podman-build-images]]
 ==== Building images with {podman}
 
 {podman} can build images from a `Dockerfile`. The `podman build` command behaves as `docker build`, and it accepts the same options.

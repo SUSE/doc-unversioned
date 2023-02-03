@@ -14,7 +14,7 @@ include::attributes-product.adoc[]
 
 {bci}s are available from https://registry.suse.com. It contains tested and updated {slea} base container images. All images in the {suseregistry} undergo a maintenance process. The images are built to contain the latest available updates and fixes. The {suseregistry}'s Web user interface lists a subset of the available images. For information about the {suseregistry}, see <<sec-suse-registry>>.
 
-{slea} base images in the {suse} Registry receive security updates and are covered by the {suse} support plans. For more information about these support plans, see <<cha-containers- support>>.
+{slea} base images in the {suse} Registry receive security updates and are covered by the {suse} support plans. For more information about these support plans, see <<cha-containers-support>>.
 
 [[sec-bci-why]]
 === Why {bci}s
