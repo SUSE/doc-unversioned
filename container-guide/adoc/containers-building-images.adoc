@@ -36,7 +36,7 @@ The pre-built images do not have any repositories configured and do not include 
 [NOTE]
 .SLE_BCI repository
 ====
-Starting with {slea}{nbsp}15{nbsp}SP3, the default base image includes the `SLE_BCI` repository. This repository is only used when a container is built or runs on a non-registered {slsa} host, or when registration credentials are not made available to containers. The repository provides a subset of {slea} packages useful for customizing {slsa} container images. The repository is available without any registration, and it is not supported.
+Starting with {slea}{nbsp}15{nbsp}SP3, the default base image includes the `SLE_BCI` repository. This repository is only used when a container is built or runs on a non-registered {slsa} host, or when registration credentials are not made available to the container. The repository provides a subset of {slea} packages useful for customizing {slsa} container images. The repository is available without any registration, and it is not supported.
 ====
 
 You do not need to add any credentials to the container image, because the machine credentials are automatically injected into the `/run/secrets` directory in the container by the docker daemon. The same applies to the `/etc/SUSEConnect` file of the host system, which is automatically injected into the `/run/secrets` directory.
@@ -63,7 +63,7 @@ When the host system is registered with {scc}, this restriction does not apply.
 To obtain the list of repositories, use the following command:
 
 ....
->sudo zypper ref -s
+>sudo zypper repos
 ....
 
 This automatically adds all the repositories to the container. For each repository added to the system, a new file is created under `/etc/zypp/repos.d` . The URLs of these repositories include an access token that automatically expires after 12 hours. To renew the token, run the command `zypper ref -s` . Including these files in a container image does not pose any security risk.
@@ -89,8 +89,7 @@ The following `Dockerfile` creates a simple container image based on {sles}{nbsp
 
 ....
 FROM registry.suse.com/suse/sle15
-RUN zypper ref -s
-RUN zypper -n in vim
+RUN zypper ref -s && zypper -n in vim && zypper -n clean
 ....
 
 When the {podman} host machine is registered with an internal {rmt} server, the image requires the SSL certificate used by {rmt}:
@@ -99,9 +98,10 @@ When the {podman} host machine is registered with an internal {rmt} server, the 
 FROM registry.suse.com/suse/sle15
 # Import the crt file of our private SMT server
 ADD http://smt./smt.crt /etc/pki/trust/anchors/smt.crt
-RUN update-ca-certificates
-RUN zypper ref -s
-RUN zypper -n in vim
+RUN update-ca-certificates && \
+    zypper ref -s && \
+    zypper -n in vim && \
+    zypper -n clean
 ....
 
 [[sec-sle-images-customizing-the-images-extensions]]
