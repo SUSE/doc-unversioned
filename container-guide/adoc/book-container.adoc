@@ -13,6 +13,7 @@ The following guide covers the {sle} container ecosystem. Since containers are a
 include::containers-basics.adoc[] 
 include::containers-tools.adoc[]
 include::containers-bci.adoc[]
+include::containers-registration-repositories.adoc[]
 include::containers-podman-overview.adoc[]
 include::containers-docker-installation.adoc[]
 include::containers-docker-registry.adoc[]

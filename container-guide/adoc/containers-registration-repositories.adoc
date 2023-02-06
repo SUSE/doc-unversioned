@@ -1,7 +1,7 @@
 include::attributes-generic.adoc[]
 include::attributes-product.adoc[]
 
-[[cha-registration]]
+[[cha-registration-repositories]]
 == Registration and Online Repositories
 
 [[sec-sle-containers-module]]
