@@ -89,8 +89,7 @@ The following `Dockerfile` creates a simple container image based on {sles}{nbsp
 
 ....
 FROM registry.suse.com/suse/sle15
-RUN zypper ref -s
-RUN zypper -n in vim
+RUN zypper ref -s && zypper -n in vim && zypper -n clean
 ....
 
 When the {podman} host machine is registered with an internal {rmt} server, the image requires the SSL certificate used by {rmt}:
