@@ -36,7 +36,7 @@ SUSE Linux Enterprise repositories. This includes additional modules and
 previous package versions that are not part of the free SLE_BCI
 repository.
 
-=== How to use container-suseconnect
+=== How to use container-suseconnect on SLES and openSUSE
 
 If you are running a registered SLES system with Docker,
 `container-suseconnect` automatically detects and uses the subscription,
@@ -48,17 +48,15 @@ registered SLES machine to your local machine. Note that the
 `/etc/SUSEConnect` file is required only if you are using RMT for
 managing your registration credentials.
 
-=== How to use container-suseconnect on non-SLE hosts or with Podman, Buildah
+=== How to use container-suseconnect on non-SLES hosts or with Podman and Buildah
 
 You need a registered SLES system to use `container-suseconnect` on
-non-SLE hosts or with Podman, Buildah, or with nerdctl. This can be a
+non-SLE hosts or with Podman and Buildah. This can be a
 physical machine, a virtual machine, or the bci-base container with
 `SUSEConnect` installed and registered.
 
-If you don't use RMT, copy
-`/etc/zypp/credentials.d/SCCcredentials` to the development machine.
-Otherwise, copy both the `/etc/zypp/credentials.d/SCCcredentials` and
-`/etc/SUSEConnect` files.
+If you do no use RMT, copy `/etc/zypp/credentials.d/SCCcredentials` to the development machine.
+Otherwise, copy both the `/etc/zypp/credentials.d/SCCcredentials` and `/etc/SUSEConnect` files.
 
 You can use the following command to obtain `SCCcredentials` (replace
 `REGISTRATION_CODE` with your SCC registration code)
@@ -68,8 +66,6 @@ podman run --rm registry.suse.com/suse/sle15:latest bash -c \
     "zypper -n in SUSEConnect; SUSEConnect --regcode REGISTRATION_CODE; \
      cat /etc/zypp/credentials.d/SCCcredentials"
 ....
-
-{{< /tab >}} {{< tab "nerdctl" >}}
 
 If you are running a container based on a SLE BCI, mount
 `SCCcredentials` (and optionally `/etc/SUSEConnect`) in the correct
@@ -96,13 +92,31 @@ RUN --mount=type=secret,id=SUSEConnect \
     zypper -n in fluxbox
 ....
 
-Buildah both support mounting secrets via the `--secret` flag
-as follows: {{< tabs "mount_secret">}} {{< tab "Docker">}}
+Buildah support mounting secrets via the `--secret` flag as follows:
 
-----
+....
 buildah bud --layers --secret=id=SCCcredentials,src=/path/to/SCCcredentials \
     --secret=id=SUSEConnect,src=/path/to/SUSEConnect .
-----
+....
+
+[NOTE]
+.known issue
+====
+container-suseconnect runs automatically every time you invoke zypper. If you are not using a
+registered SLES host, you may see the following error message:
+
+....
+> zypper ref
+Refreshing service 'container-suseconnect-zypp'.
+Problem retrieving the repository index file for service 'container-suseconnect-zypp':
+[container-suseconnect-zypp|file:/usr/lib/zypp/plugins/services/container-suseconnect-zypp]
+Warning: Skipping service 'container-suseconnect-zypp' because of the above error.
+....
+
+Ignore the message, as it simply indicates that container-suseconnect was not able to retrieve your
+SUSE Customer Center credentials, and thus could not add the full SLE repositories. You still have
+full access to the SLE_BCI repository, and can continue using the container as intended.
+====
 
 === Adding modules into the container or container Image
 
