@@ -98,9 +98,10 @@ When the {podman} host machine is registered with an internal {rmt} server, the 
 FROM registry.suse.com/suse/sle15
 # Import the crt file of our private SMT server
 ADD http://smt./smt.crt /etc/pki/trust/anchors/smt.crt
-RUN update-ca-certificates
-RUN zypper ref -s
-RUN zypper -n in vim
+RUN update-ca-certificates && \
+    zypper ref -s && \
+    zypper -n in vim && \
+    zypper -n clean
 ....
 
 [[sec-sle-images-customizing-the-images-extensions]]
