@@ -24,3 +24,97 @@ The _Containers Module_ can also be added with the following command:
 > sudo SUSEConnect -p sle-module-containers/15.4/x86_64
 ....
 
+[[sec-container-suseconnect]]
+== container-suseconnect
+=== What is container-suseconnect?
+
+https://github.com/SUSE/container-suseconnect[`container-suseconnect`]
+is a plugin available in all Base Container Images that ship with
+Zypper. When the plugin detects the host's SUSE Linux Enterprise Server
+registration credentials, it uses them to give the container access the
+SUSE Linux Enterprise repositories. This includes additional modules and
+previous package versions that are not part of the free SLE_BCI
+repository.
+
+=== How to use container-suseconnect
+
+If you are running a registered SLES system with Docker,
+`container-suseconnect` automatically detects and uses the subscription,
+without requiring any action on your part.
+
+On openSUSE systems with Docker, you must copy the files
+`/etc/SUSEConnect` and `/etc/zypp/credentials.d/SCCcredentials` from a
+registered SLES machine to your local machine. Note that the
+`/etc/SUSEConnect` file is required only if you are using RMT for
+managing your registration credentials.
+
+=== How to use container-suseconnect on non-SLE hosts or with Podman, Buildah
+
+You need a registered SLES system to use `container-suseconnect` on
+non-SLE hosts or with Podman, Buildah, or with nerdctl. This can be a
+physical machine, a virtual machine, or the bci-base container with
+`SUSEConnect` installed and registered.
+
+If you don't use RMT, copy
+`/etc/zypp/credentials.d/SCCcredentials` to the development machine.
+Otherwise, copy both the `/etc/zypp/credentials.d/SCCcredentials` and
+`/etc/SUSEConnect` files.
+
+You can use the following command to obtain `SCCcredentials` (replace
+`REGISTRATION_CODE` with your SCC registration code)
+
+....
+podman run --rm registry.suse.com/suse/sle15:latest bash -c \
+    "zypper -n in SUSEConnect; SUSEConnect --regcode REGISTRATION_CODE; \
+     cat /etc/zypp/credentials.d/SCCcredentials"
+....
+
+{{< /tab >}} {{< tab "nerdctl" >}}
+
+If you are running a container based on a SLE BCI, mount
+`SCCcredentials` (and optionally `/etc/SUSEConnect`) in the correct
+destination. The following example shows how to mount `SCCcredentials`
+in the current working directory:
+
+....
+podman run -v /path/to/SCCcredentials:/etc/zypp/credentials.d/SCCcredentials \
+    -it --pull=always registry.suse.com/bci/bci-base:latest
+....
+
+Do not copy the `SCCcredentials` and `SUSEConnect` files into the
+container image to avoid inadvertently adding them to the final image.
+Use secrets instead, as they are only available to a single layer and
+are not part of the built image. To do this, put a copy of
+`SCCcredentials` (and optionally `SUSEConnect`) somewhere on the file
+system and modify the `RUN` instructions that invoke Zypper as follows:
+
+....
+FROM registry.suse.com/bci/bci-base:latest
+
+RUN --mount=type=secret,id=SUSEConnect \
+    --mount=type=secret,id=SCCcredentials \
+    zypper -n in fluxbox
+....
+
+Buildah both support mounting secrets via the `--secret` flag
+as follows: {{< tabs "mount_secret">}} {{< tab "Docker">}}
+
+----
+buildah bud --layers --secret=id=SCCcredentials,src=/path/to/SCCcredentials \
+    --secret=id=SUSEConnect,src=/path/to/SUSEConnect .
+----
+
+=== Adding modules into the container or container Image
+
+`container-suseconnect` allows you to automatically add SLE Modules into
+a container or container image. What modules are added is determined by
+the environment variable `ADDITIONAL_MODULES` that includes a
+comma-separated list of the module names. In a `Dockerfile`, this
+is done using the `ENV` directive as follows:
+
+....
+FROM registry.suse.com/bci/bci-base:latest
+ENV ADDITIONAL_MODULES sle-module-desktop-applications,sle-module-development-tools
+
+RUN --mount=type=secret,id=SCCcredentials zypper -n in fluxbox && zypper -n clean
+....
