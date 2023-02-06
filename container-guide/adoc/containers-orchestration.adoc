@@ -139,17 +139,38 @@ please check https://docs.podman.io/en/latest/ and https://github.com/container
 [[sec-orchestration-kubernetes]]
 === Multi Container Host with Kubernetes
 
-Kubernetes provides a set of functionality that are required to deploy containers at production
-level: storage, high availability, lifecycle.
-Kubernetes makes multiple machines work together to create a cluster which you will be able to
-interact with using an API. The deployment of Kubernetes itself has seen a lot of tools emerge, but
-the one we do favour at SUSE is Rancher. Rancher is able to deploy Kubernetes, but also to manage
-application running on top of k8s. To be even more precise, a single Rancher setup can manage
-multiple Kubernetes cluster, easing the burden of managing the software you deployed just to run you
-application.
+https://kubernetes.io[Kubernetes] is an open source container orchestration engine for automating deployment, scaling, and
+management of containerized applications. The open source project is hosted by the Cloud Native
+Computing Foundation (https://www.cncf.io/about[CNCF]).
+
+With its large community of developers and abundant features and capabilities, Kubernetes has become
+the de-facto standard and is included across most container-as-a-service platforms. Kubernetes
+provides a set of functionality that are required to deploy containers at production level: storage,
+high availability, lifecycle.
 
 [[sec-k8s]]
 ==== Kubernetes (k8s)
+Kubernetes makes multiple machines work together to create a cluster which you will be able to
+interact with using an API. The deployment of Kubernetes itself has seen a lot of tools emerge, but
+the one we do favour at SUSE is https://ranchermanager.docs.rancher.com[Rancher]. Rancher is able to
+deploy Kubernetes, but also to manage application running on top of k8s. To be even more precise, a
+single Rancher setup can manage multiple Kubernetes cluster, easing the burden of managing the
+software you deployed just to run you application.
+
+We won't describe here how to install and use
+https://www.rancher.com/products/rke[Rancher Kubernetes Engines (RKE)], as the
+https://ranchermanager.docs.rancher.com[Rancher's documentation] does that perfectly.
+
+
+
 [[sec-k3s]]
 ==== Lightweight Kubernetes (k3s)
-https://documentation.suse.com/trd/kubernetes/single-html/kubernetes_ri_rancher-k3s-sles/index.html#id-introduction
+
+https://k3s.io[K3s] is lightweight CNCF-certified Kubernetes distribution, made by Rancher, and
+built IoT & Edge computing. K3s differs from k8s as it is packaged as a single <60MB binary and
+optimised for ARM.
+
+We highly recommend to read our
+https://www.suse.com/c/rancher_blog/introduction-to-k3s/[Introduction to K3s] , as well as our
+documentation on
+https://documentation.suse.com/trd/kubernetes/single-html/kubernetes_ri_rancher-k3s-sles/index.html#id-introduction[how to install K3s and Rancher on {sles}]
