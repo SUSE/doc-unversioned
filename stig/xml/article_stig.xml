@@ -15,8 +15,8 @@
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink">
 
- <title></title>
- <titleabbrev></titleabbrev>
+ <title>Hardening &sle; with STIG</title>
+ <titleabbrev>Hardening &sle; with STIG</titleabbrev>
  <info>
   <productname>&productname;</productname>
   <date><?dbtimestamp format="B d, Y"?></date>
@@ -33,17 +33,84 @@
 
   <abstract>
    <para>
+   <!--taroth 2023-02-07: last thing to write, follow SEO guidelines-->
    </para>
   </abstract>
  </info>
 
  <sect1 xml:id="stig-whatis">
-  <title></title>
+  <title>What is &stiga;?</title>
+
+  <para>
+   &stiga; stands for <literal>&stig;</literal>.
+   <!--It is a configuration standard consisting of cybersecurity requirements for a
+   specific product. -->The <orgname>&disa; (DISA)</orgname> organization, which is part of the
+   <orgname>Department of Defense (DoD)</orgname>, publishes
+   <systemitem>Security Technical Implementation Guides (STIGs)</systemitem>.
+   They contain guidance on how to configure systems to defend against potential threats.
+   Each implementation guide is tailored to a specific product and version,
+   defining a configuration standard with cybersecurity requirements for
+   this product and version.
+  </para>
+   <!--taroth 2023-012-07: copied from the Public Cloud Guide-->
+   <!--The STIG profile
+   replaces the previous CIS Level 3 profile and provides all
+   recommendations that are STIG specific. Overlap of recommendations from
+   other profiles, i.e. CIS Level 1 and Level 2, are present in the STIG
+   profile as applicable. For more information, refer to <link
+    xlink:href="https://public.cyber.mil/stigs/"/>.-->
+ </sect1>
+
+ <sect1 xml:id="stig-benefits">
+  <title>Benefits</title>
 
   <para>
   </para>
  </sect1>
 
+ <sect1 xml:id="stig-components">
+  <title></title>
+  <para>
+  </para>
+ </sect1>
+
+ <sect1 xml:id="stig-use">
+  <title>Hardening &productname; with &stiga;</title>
+  <para>
+   There are several ways to harden your systems with the &stiga;.
+   </para>
+  <variablelist>
+   <varlistentry>
+    <term>During installation with &yast; or &ay;</term>
+    <listitem>
+     <para>
+      &yast; and &ay; let you check some basic aspects
+      of the system at installation time. You can also enable
+      a full scan or scan and remediation, respectively, at first
+      boot of the system.</para>
+      <!--taroth 2023-02-10: add link to Depl Guide/YA Guide URL once Chirstoph has
+       described the feature there-->
+    </listitem>
+   </varlistentry>
+    <varlistentry>
+     <term>With &openscap;</term>
+     <listitem>
+      <para>You can scan or remediate an existing system to bring
+       it to a compliant state. &openscap; can be used to check and remediate
+       local systems as well as on remote systems.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term>With &stiga; Viewer</term>
+     <listitem>
+      <para>You can manually review the rules from DISA and apply them to a
+       dedicated system.</para>
+     </listitem>
+    </varlistentry>
+  </variablelist>
+  <!--taroth 2023-02-10: add subsections with more details-->
+ </sect1>
  <xi:include href="common_copyright_quick.xml"/>
  <xi:include href="common_license_gfdl1.2.xml"/>
 </article>
