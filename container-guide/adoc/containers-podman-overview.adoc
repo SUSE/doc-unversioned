@@ -56,7 +56,7 @@ group. By default, adding a user with the `useradd` command on {slsa}{nbsp}{prod
 automatically allocates subUID and subGID ranges.
 
 When using rootless containers with {podman}, it is recommended to use cgroups v2. cgroups v1 are
-limited compared to v2. For example cgroups v1 allow every user to modify all existing control
+limited in terms of functionality compared to v2. For example cgroups v1 allow every user to modify all existing control
 groups, and not just their own. Additionally, {podman} is unable to read container logs properly
 with cgroups v1 and the systemd log driver. To enable cgroups v2, add the following to the kernel
 cmdline: `systemd.unified_cgroup_hierarchy=1`
