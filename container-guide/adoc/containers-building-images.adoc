@@ -143,7 +143,7 @@ Since update infrastructure in the public clouds is based upon {rmt}, the restri
 Applications that are suitable for running inside containers include daemons, Web servers, and
 applications that expose IP ports for communications. You can use {podman} to automate the building
 and deployment processes by performing the build process inside a container, building an image, and
-then deploying containers based on theimage.
+then deploying containers based on the image.
 
 Running an application inside a container has the following advantages:
 
