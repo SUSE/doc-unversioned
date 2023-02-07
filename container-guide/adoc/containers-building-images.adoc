@@ -80,7 +80,7 @@ After you have edited the `Dockerfile`, build the image by running the following
 > podman build .
 ....
 
-For more information about `podman build` options, see the https://docs.podman.io/en/latest/markdown/podman-build.1.html[official Podma documentation] .
+For more information about `podman build` options, see the https://docs.podman.io/en/latest/markdown/podman-build.1.html[official Podman documentation] .
 
 [[sec-docker-sle-images-customizing-the-images-sles12sp3]]
 ==== Creating a custom image for {slea}{nbsp}12 SP5 and later
