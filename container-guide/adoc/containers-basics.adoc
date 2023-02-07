@@ -22,7 +22,7 @@ rest of the host system.
 * Resources management: It is possible to fine grained control CPU, memory, disk I/O, network
 interfaces, etc inside containers (cgroups).
 * Flexibility: Container images hold all necessary libraries, dependencies, and files needed to run
-an application, thus can be easily developped and deployed on multiple host.
+an application, thus can be easily developed and deployed on multiple hosts.
 
 Limitations of containers::
 * Containers run on the host system's kernel, so the containers have to use the specific kernel
