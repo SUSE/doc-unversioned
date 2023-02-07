@@ -28,7 +28,7 @@ to add other containers to the pod. Port bindings, cgroup-parent values, and ker
 all assigned to the infrastructure container. Therefore, later changes of these values are not
 possible.
 
-Insert https://documentation.suse.com/sle-micro/5.3/single-html/SLE-Micro-podman/images/pods_architecture.svg
+image::pods_architecture.png[image,scaledwidth=80.0%]
 
 Each container in a pod has its own instance of a monitoring program. The monitoring program watches
 the container's process and if the container dies, the monitoring program saves its exit code. The
