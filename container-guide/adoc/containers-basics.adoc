@@ -32,7 +32,7 @@ version provided by the host.
 So a container made for {x64} only runs on a {x64} system host.
 * Containers in themselves are no more secure than executing binaries outside of a container, and 
 the overall security of containers depends on the host system. While containerized applications can
-be secured through AppArmor or SELinuprofiles, container security require putting in place tools and
+be secured through AppArmor or SELinux profiles, container security requires putting in place tools and
 policies that ensure security of the container infrastructure and applications.
 
 [[sec-concepts-workflow]]
