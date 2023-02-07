@@ -25,7 +25,7 @@ interfaces, etc inside containers (cgroups).
 an application, thus can be easily developed and deployed on multiple hosts.
 
 Limitations of containers::
-* Containers run on the host system's kernel, so the containers have to use the specific kernel
+* Containers share the host system's kernel, so the containers have to use the specific kernel
 version provided by the host.
 * Only Linux-based applications can be containerized on a Linux host.
 * A container encapsulates binaries for a specific architecture ({x64} or {aarch64} for instance).
