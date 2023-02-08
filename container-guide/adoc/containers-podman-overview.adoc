@@ -95,13 +95,19 @@ command. Then use the following command to change the group ownership and rights
 
 You can then grant a specific user write access by adding them to the created group.
 
-[[sec-podman-use]]
-=== {podman} basic usage
+[[sec-podman-docker]]
+=== {podman}-docker
 
 Since {podman} is compatible with {deng}, it features the same commands and options. You can also
 install the package `podman-docker`, which will allow you to use an emulated docker CLI using
 podman, for example, the `docker pull` command will actually execute `podman pull`, which fetches a
 container image from a registry, or `docker build` will execute `podman build`.
+
+[[sec-podman-get]]
+=== Getting container images
+
+[[sec-podman-registries]]
+==== Configuring container registries
 
 One of the advantages of {podman} over {deng} is that {podman} can be configured to search multiple registries. To make {podman} search the {suseregistry} first and use {dhub} as a fallback, add the following configuration to the `/etc/containers/registries.conf` file:
 
@@ -109,6 +115,93 @@ One of the advantages of {podman} over {deng} is that {podman} can be configured
 [registries.search]
 registries = ["registry.suse.com", "docker.io"]
 ....
+
+[[sec-podman-search]]
+==== Searching images in registries
+
+Using the `podman search` command allow you to list available containers in the registries defined 
+in `/etc/containers/registries.conf`.
+
+To search in all registries:
+....
+podman search go
+....
+
+To search in a specific registry:
+....
+podman search registry.suse.com/go
+....
+
+==== Downloading (pulling) images
+
+The `podman pull` command pulls an image from an image registry:
+....
+# podman pull <registry>[:<port>]/[<namespace>/]<name>:<tag>
+....
+
+For instance
+....
+# podman pull registry.suse.com/bci/bci-base
+....
+
+Note that if you do not specify a `tag`, the tag `latest` will be used.
+
+The default location of pulled images is `/var/lib/containers/storage/overlay-images/`.
+
+[[sec-podman-tag]]
+==== Renaming images and images tag
+
+One can freely tag images, i.e set a custom name, it's mostly used for setting a more intuitive name
+or to identify specific images.
+
+Pulling the bci-base image from registry.suse.com:
+....
+localhost:~ # podman pull registry.suse.com/bci/bci-base
+Trying to pull registry.suse.com/bci/bci-base:latest...
+Getting image source signatures
+Copying blob bf6ca87723f2 done  
+Copying config 34578a383c done  
+Writing manifest to image destination
+Storing signatures
+34578a383c7b6fdcb85f90fbad59b7e7a16071cf47843688e90fe20ff64a684
+....
+
+List our pulled images:
+....
+localhost:~ # podman images
+REPOSITORY                      TAG         IMAGE ID      CREATED        SIZE
+registry.suse.com/bci/bci-base  latest      34578a383c7b  22 hours ago   122 MB
+....
+
+Rename the bci-base image to `my-base`:
+....
+podman tag 34578a383c7b my-base
+....
+
+....
+podman images
+REPOSITORY                      TAG         IMAGE ID      CREATED        SIZE
+registry.suse.com/bci/bci-base  latest      34578a383c7b  22 hours ago   122 MB
+localhost/my-base               latest      34578a383c7b  22 hours ago   122 MB
+....
+
+Add a custom tag to `my-base`, let's say this is version 1 of my image
+....
+podman tag 34578a383c7b my-base:1
+....
+
+....
+podman images
+REPOSITORY                      TAG         IMAGE ID      CREATED        SIZE
+registry.suse.com/bci/bci-base  latest      34578a383c7b  22 hours ago   122 MB
+localhost/my-base               latest      34578a383c7b  22 hours ago   122 MB
+localhost/my-base               1           34578a383c7b  22 hours ago   122 MB
+....
+
+Note that the default tag `latest` is still present.
+
+[[sec-podman-run]]
+==== Running images
 
 Similar to {deng}, {podman} can run containers in an interactive mode, allowing you to inspect and work with an image. To run `suse/sle15` in interactive mode, use the following command:
 

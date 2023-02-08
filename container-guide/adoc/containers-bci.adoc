@@ -293,8 +293,7 @@ To verify a {bcia}, run Cosign in the container. The command below fetches the
 signing key from the SUSE server and uses it to verify the latest BCI-Base container
 image.
 
-[source,ShellSession]
-----
+....
 > podman run --rm -it gcr.io/projectsigstore/cosign verify \
     --key https://ftp.suse.com/pub/projects/security/keys/container–key.pem \
     registry.suse.com/bci/bci-base:latest | tail -1 | jq
@@ -315,7 +314,7 @@ image.
     }
   }
 ]
-----
+....
 
 The signing key can be used to verify all {bcia}s, and it also
 ships with {slea} 15 (the `/usr/share/container-keys/suse-container-key.pem` file).
@@ -324,8 +323,7 @@ You can also check BCI container images against
 https://github.com/sigstore/rekor[rekor], the immutable tamper resistant
 ledger. For example:
 
-[source,ShellSession]
-----
+....
 > podman run --rm -it -e COSIGN_EXPERIMENTAL=1 gcr.io/projectsigstore/cosign \
     verify --key https://ftp.suse.com/pub/projects/security/keys/container–key.pem \
     registry.suse.com/bci/bci-base:latest | tail -1 | jq
@@ -345,16 +343,16 @@ ledger. For example:
     }
   }
 ]
-----
+....
 
 If verification fails, the output of the `cosign verify` command is similar to the one below.
 
-----
+....
 Error: no matching signatures:
 crypto/rsa: verification error
 main.go:62: error during command execution: no matching signatures:
 crypto/rsa: verification error
-----
+....
 
 [[sec-understanding-bci]]
 === Understanding {bcia}s
