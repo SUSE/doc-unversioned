@@ -63,7 +63,7 @@ When the host system is registered with {scc}, this restriction does not apply.
 To obtain the list of repositories, use the following command:
 
 ....
->sudo zypper repos
+> sudo zypper repos
 ....
 
 This automatically adds all the repositories to the container. For each repository added to the system, a new file is created under `/etc/zypp/repos.d` . The URLs of these repositories include an access token that automatically expires after 12 hours. To renew the token, run the command `zypper ref -s` . Including these files in a container image does not pose any security risk.
@@ -80,7 +80,7 @@ After you have edited the `Dockerfile`, build the image by running the following
 > podman build .
 ....
 
-For more information about `podman build` options, see the https://docs.podman.io/en/latest/markdown/podman-build.1.html[official Podma documentation] .
+For more information about `podman build` options, see the https://docs.podman.io/en/latest/markdown/podman-build.1.html[official Podman documentation] .
 
 [[sec-docker-sle-images-customizing-the-images-sles12sp3]]
 ==== Creating a custom image for {slea}{nbsp}12 SP5 and later
@@ -143,7 +143,7 @@ Since update infrastructure in the public clouds is based upon {rmt}, the restri
 Applications that are suitable for running inside containers include daemons, Web servers, and
 applications that expose IP ports for communications. You can use {podman} to automate the building
 and deployment processes by performing the build process inside a container, building an image, and
-then deploying containers based on theimage.
+then deploying containers based on the image.
 
 Running an application inside a container has the following advantages:
 
