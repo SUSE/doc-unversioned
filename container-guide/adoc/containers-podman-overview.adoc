@@ -22,10 +22,8 @@ containers, and an image storage when needed.
 * {podman} has a native systemd integration. Allowing to control containers via systemd units which
 can be created for existing containers as well as generate units that can start containers if they
 do not exist in the system. Moreover, {podman} can run systemd inside containers.
-* Because {podman} relies on namespaces, which provide an isolation mechanism for Linux processes,
-it does not require root privileges to create and run containers. This means that {podman} can run
-in root mode as well as in an unprivileged environment. Moreover, a container created by an
-unprivileged user cannot get higher privileges on the host than the container's creator.
+* {podman} does not require root privileges to create and run containers. This means that {podman}
+can run in root mode as well as in an unprivileged environment. Moreover, a container created by an unprivileged user cannot get higher privileges on the host than the container's creator.
 * {podman} can be configured to search multiple registries by reading
 `/etc/containers/registries.conf` file.
 
