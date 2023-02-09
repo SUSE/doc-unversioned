@@ -38,7 +38,9 @@ to run and enables you to attach tty later.
 
 [[sec-orchestration-podman-pod]]
 ==== Podman pod
-podman pod is the command line tool for creating, removing, querying and inspecting pods. You can check all the subcommands of podman pod in the https://docs.podman.io/en/latest/markdown/podman-pod.1.html[official upstream documentation]. 
+podman pod is the command line tool for creating, removing, querying and inspecting pods. You can
+check all the subcommands of podman pod in the
+https://docs.podman.io/en/latest/markdown/podman-pod.1.html[official upstream documentation]. 
 
 [[sec-orchestration-pod-create]]
 ==== Create and list pods
@@ -46,7 +48,7 @@ podman pod create will create a pod with a random name, but you can use the --na
 assign the desired name to a pod.
 
 ....
- $ sudo podman pod create
+$ sudo podman pod create
 344940492c00b6a19ececbc5b109351bf0a3b8b19b3c279a097da7a653c592d0
 ....
 
@@ -58,8 +60,7 @@ POD ID        NAME          STATUS      CREATED        INFRA ID�
 344940492c00  suspicious_curie  Created     2 minutes ago  617d7e3ce399  1
 ....
 
-Print out information about pods:
-
+You can also list all containers with the pods they are associated with:
 ....
 $ sudo podman ps -a --pod
 CONTAINER ID  IMAGE                 COMMAND     CREATED        STATUS      PORTS       NAMES               POD ID        PODNAME
