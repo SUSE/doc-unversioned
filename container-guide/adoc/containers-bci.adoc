@@ -395,8 +395,7 @@ registration credentials, it uses them to give the container access the
 SUSE Linux Enterprise repositories. This includes additional modules and
 previous package versions that are not part of the free `{bcirepo}`
 repository.
-Please refer to our dedicated <<cha-container-suseconnect>>, if you want to learn more about how
-to use it for SLES, openSUSE or non-SLES hosts.
+Refer to  <<cha-container-suseconnect>> for more information on how to use the repository for SLES, openSUSE, and non-SLES hosts.
 
 [[sec-bci-task-examples]]
 ==== Common patterns
