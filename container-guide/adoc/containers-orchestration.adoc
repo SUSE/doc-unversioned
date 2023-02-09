@@ -48,28 +48,28 @@ podman pod create will create a pod with a random name, but you can use the --na
 assign the desired name to a pod.
 
 ....
-$ sudo podman pod create
+# podman pod create
 344940492c00b6a19ececbc5b109351bf0a3b8b19b3c279a097da7a653c592d0
 ....
 
 you can list our pods using the podman pod list command:
 
 ....
-$ sudo podman pod list
+# podman pod list
 POD ID        NAME          STATUS      CREATED        INFRA ID      # OF CONTAINERS
 344940492c00  suspicious_curie  Created     2 minutes ago  617d7e3ce399  1
 ....
 
 You can also list all containers with the pods they are associated with:
 ....
-$ sudo podman ps -a --pod
+# podman ps -a --pod
 CONTAINER ID  IMAGE                 COMMAND     CREATED        STATUS      PORTS       NAMES               POD ID        PODNAME
-617d7e3ce399  k8s.gcr.io/pause:3.5              5 minutes ago  Created                 344940492c00-infra  344940492c00  suspicious_curie
+617d7e3ce399  localhost/podman-pause:4.3.1-1669118400              5 minutes ago  Created                 344940492c00-infra  344940492c00  suspicious_curie
 ....
 
-The created pod has an infra container identified by the `k8s.gcr.io` name. The purpose of this
-container is to reserve the namespaces associated with the pod and allow {podman} to add other
-containers to the pod.
+The created pod has an infra container identified by the `localhost/podman-pause:4.x` name. The
+purpose of this container is to reserve the namespaces associated with the pod and allow {podman} to
+add other containers to the pod.
 
 [[sec-orchestration-pod-add]]
 ==== Run and add a container to a pod
@@ -78,14 +78,15 @@ example, the command below runs a container based on the suse/sle15 image and ad
 the `suspicious_curie` pod: 
 
 ....
-$ sudo podman run -d --pod sweet_liskov registry.suse.com/suse/sle15 sleep 1h
+# podman run -d --pod suspicious_curie registry.suse.com/bci/bci-base sleep 1h
 8f5af62a7c385bbd1a3a5cc3a53a8d0f8cf942adc26a065960d4232fcc93ac98
 ....
 
 WARNING: If this command shows the following warning, please refer
 http://https//documentation.suse.com/container/all/single-html/SLES-container/#sec-bci-suseconnect-podman-buildah-nerdctl[Using container-suseconnect on non-SLE hosts or with Podman, Buildah, and nerdctl]: 
 ....
-WARN[0000] Path "/etc/SUSEConnect" from "/etc/containers/mounts.conf" doesn't exist, skipping 
+WARN[0005] Path "/etc/SUSEConnect" from "/etc/containers/mounts.conf" doesn't exist, skipping 
+WARN[0005] Failed to mount subscriptions, skipping entry in /etc/containers/mounts.conf: open /etc/zypp/credentials.d/SCCcredentials: permission denied
 ....
 
 The command above adds a container that sleeps for 60 minutes and then exits. Run the podman ps -a
@@ -93,41 +94,57 @@ The command above adds a container that sleeps for 60 minutes and then exits. Ru
 
 You can also check the command podman pod ps:
 ....
-$ sudo podman pod ps
+# podman pod ps
 POD ID        NAME          STATUS      CREATED         INFRA ID      # OF CONTAINERS
 344940492c00  suspicious_curie Running     21 minutes ago  617d7e3ce399  2
 ....
 
 [[sec-orchestration-pod-stop]]
 ==== Stoping pod or a container in a pod
+
 Let's stop our newly created container named objective_jemison
 
 ....
-$ sudo podman ps -a --pod
+# podman ps -a --pod
 CONTAINER ID  IMAGE                                COMMAND     CREATED         STATUS            PORTS       NAMES               POD ID        PODNAME
-617d7e3ce399  k8s.gcr.io/pause:3.5                             14 minutes ago  Up 4 minutes ago              344940492c00-infra  344940492c00  suspicious_curie 8f5af62a7c38  registry.suse.com/suse/sle15:latest  sleep 1h    4 minutes ago   Up 4 minutes ago              objective_jemison   344940492c00  suspicious_curie
-$ sudo podman stop objective_jemison
+617d7e3ce399  localhost/podman-pause:4.3.1-1669118400                             14 minutes ago  Up 4 minutes ago              344940492c00-infra  344940492c00  suspicious_curie 8f5af62a7c38  registry.suse.com/bci/bci-base:latest  sleep 1h    4 minutes ago   Up 4 minutes ago              objective_jemison   344940492c00  suspicious_curie
+# podman stop objective_jemison
 objective_jemison
-$ sudo podman pod ps
+# podman pod ps
 POD ID        NAME          STATUS      CREATED         INFRA ID      # OF CONTAINERS
 344940492c00  suspicious_curie  Degraded    25 minutes ago  617d7e3ce399  2
-$ sudo podman ps -a --pod
+# podman ps -a --pod
 CONTAINER ID  IMAGE                                COMMAND     CREATED         STATUS                       PORTS       NAMES               POD ID        PODNAME
-617d7e3ce399  k8s.gcr.io/pause:3.5                             25 minutes ago  Up 15 minutes ago                        344940492c00-infra  344940492c00  suspicious_curie 8f5af62a7c38  registry.suse.com/suse/sle15:latest  sleep 1h    15 minutes ago  Exited (137) 14 seconds ago              objective_jemison   344940492c00  suspicious_curie 
+617d7e3ce399  localhost/podman-pause:4.3.1-1669118400                             25 minutes ago  Up 15 minutes ago                        344940492c00-infra  344940492c00  suspicious_curie 8f5af62a7c38  registry.suse.com/bci/bci-base:latest  sleep 1h    15 minutes ago  Exited (137) 14 seconds ago              objective_jemison   344940492c00  suspicious_curie
 ....
 
 You can also stop the pod and all of its containers using, podman pod stop
 
 ....
-$ sudo podman pod stop suspicious_curie
+# podman pod stop suspicious_curie
 344940492c00b6a19ececbc5b109351bf0a3b8b19b3c279a097da7a653c592d0
-$ sudo podman ps -ap
+# podman ps -ap
 CONTAINER ID  IMAGE                                COMMAND     CREATED         STATUS                      PORTS       NAMES               POD ID        PODNAME
-617d7e3ce399  k8s.gcr.io/pause:3.5                             29 minutes ago  Exited (0) 7 seconds ago                344940492c00-infra  344940492c00  suspicious_curie 8f5af62a7c38  registry.suse.com/suse/sle15:latest  sleep 1h    19 minutes ago  Exited (137) 3 minutes ago              objective_jemison   344940492c00  suspicious_curie
+617d7e3ce399  localhost/podman-pause:4.3.1-1669118400                             29 minutes ago  Exited (0) 7 seconds ago                344940492c00-infra  344940492c00  suspicious_curie 8f5af62a7c38  registry.suse.com/bci/bci-base:latest  sleep 1h    19 minutes ago  Exited (137) 3 minutes ago              objective_jemison   344940492c00  suspicious_curie
 ....
 
 Of course you can also start and restart everything with sudo podman start yourcontainername,
  podman pod start yourpodname or podman pod restart yourpodname.
+
+[[sec-orchestration-pod-rm]]
+==== Removing pods
+There are two ways to remove pods. You can use the `podman pod rm` command to remove one or more pods.
+Alternatively, you can remove all stopped pods using the `podman pod prune` command.
+To remove a pod or several pods, run the `podman pod rm` command as follows:
+
+....
+# podman pod rm POD
+....
+
+POD can be a pod name or a pod ID.
+To remove all currently stopped pods, use the `podman pod prune` command. Make sure that all stopped
+pods are intended to be removed before you run the `podman pod prune` command, otherwise you might
+remove pods that are still in use.
 
 [[sec-orchestreation-podman-systemd]]
 ==== Creating systemd units for a pod
