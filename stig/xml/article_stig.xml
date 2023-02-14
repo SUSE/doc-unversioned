@@ -15,8 +15,8 @@
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink">
 
- <title>Hardening &sle; with STIG</title>
- <titleabbrev>Hardening &sle; with STIG</titleabbrev>
+ <title>Hardening &sle; with &stiga;</title>
+ <titleabbrev>Hardening &sle; with &stiga;</titleabbrev>
  <info>
   <productname>&productname;</productname>
   <date><?dbtimestamp format="B d, Y"?></date>
@@ -43,34 +43,34 @@
 
   <para>
    &stiga; stands for <literal>&stig;</literal>.
-   <!--It is a configuration standard consisting of cybersecurity requirements for a
-   specific product. -->The <orgname>&disa; (DISA)</orgname> organization, which is part of the
-   <orgname>Department of Defense (DoD)</orgname>, publishes
-   <systemitem>Security Technical Implementation Guides (STIGs)</systemitem>.
-   They contain guidance on how to configure systems to defend against potential threats.
-   Each implementation guide is tailored to a specific product and version,
-   defining a configuration standard with cybersecurity requirements for
-   this product and version.
+   The <orgname>&disa; (&disaa;)</orgname> organization, which is a parent
+   agency of the United States <orgname>Department of Defense (DoD)</orgname>,
+   approves and publishes <systemitem>&stig;s (&stiga;s)</systemitem>
+   updates them every 90 days.</para>
+   <para>
+   &stiga;s are a set of rules and best practices on how to configure systems
+   to defend against potential threats. Each implementation guide is tailored
+   to a specific product and version, defining a configuration standard
+   with cybersecurity requirements for this product and version.
+   </para>
+   <para>
+   Those requirements need to be met when this system connects to a DoD network.
+   But &stig;s are also used outside of the government sector.
   </para>
-   <!--taroth 2023-012-07: copied from the Public Cloud Guide-->
-   <!--The STIG profile
-   replaces the previous CIS Level 3 profile and provides all
-   recommendations that are STIG specific. Overlap of recommendations from
-   other profiles, i.e. CIS Level 1 and Level 2, are present in the STIG
-   profile as applicable. For more information, refer to <link
-    xlink:href="https://public.cyber.mil/stigs/"/>.-->
  </sect1>
 
  <sect1 xml:id="stig-benefits">
   <title>Benefits</title>
-
   <para>
+   When a &stig; is implemented for a system, the system is hardened. The goals
+   are to minimize attacks and to prevent system access (both physically and
+   via a network) and to define processes for maintenance (applying software updates)
+   and vulnerability patching. &stig;s can also cover configuration settings,
+   for example for operating systems, routers, databases, firewalls, domain name
+   servers and switches.
   </para>
- </sect1>
-
- <sect1 xml:id="stig-components">
-  <title></title>
   <para>
+   &stiga;s are ubiquitous across all systems.
   </para>
  </sect1>
 
@@ -110,6 +110,167 @@
     </varlistentry>
   </variablelist>
   <!--taroth 2023-02-10: add subsections with more details-->
+ </sect1>
+
+ <sect1 xml:id="stig-viewer">
+  <title>&stigviewer;</title>
+  <para>
+   <guimenu>&stigviewer;</guimenu> is a java-based graphical user
+   interface to open content and create checklists for managing the &stiga;
+   security settings on your system or network.
+  </para>
+  <sect2 xml:id="stig-viewer-install">
+   <title>Installing &stigviewer;</title>
+   <para>
+    The <guimenu>&stigviewer;</guimenu> application is available as
+    ZIP archive from <link
+     xlink:href="https://public.cyber.mil/stigs/downloads/?_dl_facet_stigs=stig-viewing"/>.
+    In the <guimenu>&stiga; Topics</guimenu> list on the right-hand side, filter
+    for <guimenu>&stiga; Viewing</guimenu> and download the Linux version of the
+    application.
+   </para>
+   <para>
+    To install <guimenu>&stigviewer;</guimenu>, unpack the ZIP archive.
+    In the directory with the extracted files, start the
+    <guimenu>&stigviewer;</guimenu> with <command>./STIGViewer</command>.
+   </para>
+   <figure xml:id="fig-stig-viewer-main">
+    <title>&stigviewer;&mdash;main window</title>
+    <mediaobject>
+     <imageobject role="fo">
+      <imagedata fileref="disa-stig-viewer-main.png" width="95%"/>
+     </imageobject>
+     <imageobject role="html">
+      <imagedata fileref="disa-stig-viewer-main.png" width="90%"/>
+     </imageobject>
+     <textobject role="description">
+      <phrase>&stigviewer;&mdash;main window</phrase>
+     </textobject>
+    </mediaobject>
+   </figure>
+  </sect2>
+  <sect2 xml:id="stig-viewer-use">
+   <title>Using &stigviewer;</title>
+   <para>
+    To view a &stig; for &sle;, you have the following two options.
+   </para>
+   <procedure>
+    <title>Importing from a ZIP archive</title>
+    <para>
+     You can download a ZIP archive with the &stiga; checklist for your &sle; version
+     (<literal>12</literal> or <literal>15</literal>).
+    </para>
+    <step>
+     <para>Go to <link
+      xlink:href="https://public.cyber.mil/stigs/downloads/"/>.</para>
+    </step>
+    <step>
+     <para>
+      In the <guimenu>Search</guimenu> field, enter
+      <literal>SUSE</literal> and select and download the &stig;
+      checklist that matches the &sle; system you want to harden.
+     </para>
+    </step>
+    <step>
+     <para>
+      In <guimenu>&stigviewer;</guimenu>, click <menuchoice>
+       <guimenu>File</guimenu><guimenu>Import STIG</guimenu></menuchoice>
+      and select the downloaded ZIP archive.</para>
+    </step>
+    <step>
+     <para>
+      Enable the checkbox beneath the entry in the <guimenu>&stiga;
+       Explorer</guimenu> panel to show the individual rules in the
+      middle panel and details for each rule on the right-hand side.
+     </para>
+     <informalfigure>
+      <mediaobject>
+       <imageobject role="fo">
+        <imagedata fileref="disa-stig-viewer-explorer.png" width="95%"/>
+       </imageobject>
+       <imageobject role="html">
+        <imagedata fileref="disa-stig-viewer-explorer.png" width="90%"/>
+       </imageobject>
+       <textobject role="description">
+        <phrase>&stigviewer;&mdash;explorer</phrase>
+       </textobject>
+      </mediaobject>
+     </informalfigure>
+    </step>
+   </procedure>
+   <procedure>
+    <title>Importing from an XCCDF XML</title>
+    <para>
+     Use the <command>oscap</command> command line tool to generate
+     a XCCDF XML file that can be opened with
+     <guimenu>&stigviewer;</guimenu>.
+    </para>
+    <step>
+     <screen>&prompt.sudo;<command>oscap</command> xccdf eval<co xml:id="co-oscap-eval"/> \
+      --profile <replaceable>stig</replaceable><co xml:id="co-oscap-eval-profile"/> \
+      --stig-viewer <replaceable>/tmp/results_stig.xml</replaceable><co xml:id="co-oscap-eval-results"/> \
+      /usr/share/xml/scap/ssg/content/ssg-sle15-ds-1.2.xml<co xml:id="co-oscap-eval-ssg"/></screen>
+     <calloutlist>
+      <callout arearefs="co-oscap-eval">
+       <para>
+        Calls the <command>oscap xccdf</command> module and tells
+        it to perform an evaluation (vulnerability scan).
+       </para>
+      </callout>
+      <callout arearefs="co-oscap-eval-profile">
+       <para>
+        Tells <command>oscap</command> to use the <literal>stig</literal> profile for the scan.
+       </para>
+      </callout>
+      <callout arearefs="co-oscap-eval-results">
+       <para>
+        Saves the results of the evaluation to
+        <replaceable>/tmp/results_stig.xml</replaceable>. This is an XCCDF XML
+        file that can be imported into <guimenu>&stigviewer;</guimenu>.
+       </para>
+      </callout>
+      <callout arearefs="co-oscap-eval-ssg">
+       <para>
+        Specifies the <literal>SCAP Security Guide</literal> policy file to use. In this example,
+        we use a policy file in <literal>DataStream</literal> format that applies to &sle;
+        code 15.
+       </para>
+      </callout>
+     </calloutlist>
+    </step>
+    <step>
+     <para>
+      In <guimenu>&stigviewer;</guimenu>, click <menuchoice>
+       <guimenu>File</guimenu><guimenu>Import STIG</guimenu></menuchoice>
+      and select the XML file you generated.</para>
+    </step>
+    <step>
+     <para>
+      Enable the checkbox beneath the entry in the <guimenu>&stiga;
+       Explorer</guimenu> panel to show the individual rules in the
+      middle panel.
+     </para>
+    </step>
+   </procedure>
+   <para>
+    For more information about &openscap;, see the article <link
+     xlink:href="https://documentation.suse.com/compliance/all/html/SLES-openscap/article-openscap.html">
+     <citetitle>Hardening &sle; with &openscap;</citetitle></link>. It mentions which packages to
+    install for &openscap;, highlights the major SCAP components, lists the SCAP security profiles
+    supported by &suse; and gives some examples of how to run vulnerability
+    scans and remediations.
+   </para>
+   <!--taroth 2023-02-14: document how to create a checklist-->
+   <para>
+    For more information about <guimenu>&stigviewer;</guimenu>, refer to the comprehensive
+    <citetitle>STIG Viewer 2.x User Guide</citetitle>, which is available
+    for download at <link
+     xlink:href="https://public.cyber.mil/stigs/downloads/"/> or the README
+    file that you can access from within <guimenu>&stigviewer;</guimenu>
+    by selecting <menuchoice>
+     <guimenu>Help</guimenu><guimenu>View Readme</guimenu></menuchoice>.
+   </para>
+  </sect2>
  </sect1>
  <xi:include href="common_copyright_quick.xml"/>
  <xi:include href="common_license_gfdl1.2.xml"/>
