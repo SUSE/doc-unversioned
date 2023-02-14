@@ -50,13 +50,13 @@ Containers based on {slsa} 12 SP5 and {slsa} 15 (all service packs) are supporte
 [cols="^,^,^",options="header",]
 |===
 |Container host platform |Container runtime |Support status
+|*Rancher Kubernetes Engine (RKE)* |docker |&#10003;
+|*Rancher Kubernetes Engine 2 (RKE2)* |containerd |&#10003;
+|*K3S* |containerd | &#10003;
 |*{rh} OpenShift* |cri-o |&#10003;
 |*Microsoft Azure Kubernetes Service (AKS)* |containerd |&#10003;
 |*Google Kubernetes Engine (GKE)* |containerd |&#10059;
 |*Amazon Elastic Container Service for Kubernetes (EKS)* |containerd |&#10003;
-|*Rancher Kubernetes Engine (RKE)* |docker |&#10003;
-|*Rancher Kubernetes Engine 2 (RKE2)* |containerd |&#10003;
-|*K3S* |containerd | &#10003;
 |===
 
 &#10003; Fully compatible and fully supported
