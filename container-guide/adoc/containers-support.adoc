@@ -54,6 +54,9 @@ Containers based on {slsa} 12 SP5 and {slsa} 15 (all service packs) are supporte
 |*Microsoft Azure Kubernetes Service (AKS)* |containerd |&#10003;
 |*Google Kubernetes Engine (GKE)* |containerd |&#10059;
 |*Amazon Elastic Container Service for Kubernetes (EKS)* |containerd |&#10003;
+|*Rancher Kubernetes Engine (RKE)* |docker |&#10003;
+|*Rancher Kubernetes Engine 2 (RKE2)* |containerd |&#10003;
+|*K3S* |containerd | &#10003;
 |===
 
 &#10003; Fully compatible and fully supported
@@ -61,6 +64,8 @@ Containers based on {slsa} 12 SP5 and {slsa} 15 (all service packs) are supporte
 &#10059; Workload specific: fully supported but compatibility depends on type of container (privileged or
 unprivileged) and on the application interactions (direct with kernel-version-specific data structures,
 kernel-version-specific modules, etc.)
+
+Refer to the https://www.suse.com/suse-rancher/support-matrix/all-supported-versions/[Rancher Support Matrix] for more information regarding support for Rancher-related products.
 
 [[sec-sle-container-support-plans]]
 === Support plans
