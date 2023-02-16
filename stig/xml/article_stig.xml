@@ -33,7 +33,8 @@
 
   <abstract>
    <para>
-   <!--taroth 2023-02-07: last thing to write, follow SEO guidelines-->
+    This document introduces you to auditing and hardening &sle; with the &stig; (&stiga;) by the
+    <orgname>&disa; (&disaa;)</orgname>.
    </para>
   </abstract>
  </info>
@@ -84,7 +85,7 @@
     <term>During installation with &yast; or &ay;</term>
     <listitem>
      <para>
-      &yast; and &ay; let you check some basic aspects
+      Starting with &sle; 15 SP4, &yast; and &ay; let you check some basic aspects
       of the system at installation time. You can also enable
       a full scan or scan and remediation, respectively, at first
       boot of the system.</para>
@@ -344,7 +345,7 @@
  </sect1>
 
  <sect1 xml:id="stig-viewer">
-  <title>&stigviewer;</title>
+  <title>Working with checklists in &stigviewer;</title>
   <para>
    <guimenu>&stigviewer;</guimenu> is a java-based graphical user
    interface to open content and create checklists for managing the &stiga;
@@ -355,10 +356,8 @@
    <para>
     The <guimenu>&stigviewer;</guimenu> application is available as
     ZIP archive from <link
-     xlink:href="https://public.cyber.mil/stigs/downloads/?_dl_facet_stigs=stig-viewing"/>.
-    In the <guimenu>&stiga; Topics</guimenu> list on the right-hand side, filter
-    for <guimenu>&stiga; Viewing</guimenu> and download the Linux version of the
-    application.
+     xlink:href="https://public.cyber.mil/stigs/stig-viewing-tools/"/>.
+    Download the Linux version of the <guimenu>&stigviewer;</guimenu>.
    </para>
    <para>
     To install <guimenu>&stigviewer;</guimenu>, unpack the ZIP archive.
@@ -484,15 +483,6 @@
     </step>
    </procedure>
    <para>
-    For more information about &openscap;, see the article <link
-     xlink:href="https://documentation.suse.com/compliance/all/html/SLES-openscap/article-openscap.html">
-     <citetitle>Hardening &sle; with &openscap;</citetitle></link>. It mentions which packages to
-    install for &openscap;, highlights the major SCAP components, lists the SCAP security profiles
-    supported by &suse; and gives some examples of how to run vulnerability
-    scans and remediations.
-   </para>
-   <!--taroth 2023-02-14: document how to create a checklist-->
-   <para>
     For more information about <guimenu>&stigviewer;</guimenu>, refer to the comprehensive
     <citetitle>STIG Viewer 2.x User Guide</citetitle>, which is available
     for download at <link
@@ -502,6 +492,7 @@
      <guimenu>Help</guimenu><guimenu>View Readme</guimenu></menuchoice>.
    </para>
   </sect2>
+  <!--taroth 2023-02-16: document how to create a checklist?-->
  </sect1>
  <xi:include href="common_copyright_quick.xml"/>
  <xi:include href="common_license_gfdl1.2.xml"/>
