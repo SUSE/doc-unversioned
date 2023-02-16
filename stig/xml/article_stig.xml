@@ -88,8 +88,12 @@
       of the system at installation time. You can also enable
       a full scan or scan and remediation, respectively, at first
       boot of the system.</para>
-      <!--taroth 2023-02-10: add link to Depl Guide/YA Guide URL once Chirstoph has
-       described the feature there-->
+     <para>
+      For details, see the <link
+       xlink:href="https://documentation.suse.com/sles/15-SP4/html/SLES-all/cha-install.html#sec-yast-install-proposal-security-profile"><citetitle>&sles;
+       &deploy;</citetitle></link>.
+      <remark>taroth 2023-02-16: ToDo: add link to AutoYaST Guide as soon as the PR has been merged</remark>
+     </para>
     </listitem>
    </varlistentry>
     <varlistentry>
@@ -109,7 +113,234 @@
      </listitem>
     </varlistentry>
   </variablelist>
-  <!--taroth 2023-02-10: add subsections with more details-->
+  </sect1>
+
+  <sect1 xml:id="stig-openscap-sle15">
+   <title>Applying a &stiga; profile with &openscap;</title>
+   <para>
+    The contents delivered with the <citetitle>SCAP Security Guide</citetitle> can be used
+    to check or check and remediate systems according to a specific profile.
+   </para>
+   <para>
+    Regarding &stiga;, &suse; supports the following <citetitle>SCAP Security Guide</citetitle>
+    profiles:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      &disaa; &stiga; for &sle; 15
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      &disaa; &stiga; for &sle; 12
+     </para>
+    </listitem>
+   </itemizedlist>
+   <para>
+    The following sections give some examples on how to scan &sle; with <command>oscap</command> for &stiga; compliance
+    and how to perform a remediation. For more background on &openscap; and the <citetitle>SCAP Security Guide</citetitle>, see the article <link
+     xlink:href="https://documentation.suse.com/compliance/all/html/SLES-openscap/article-openscap.html">
+     <citetitle>Hardening &sle; with &openscap;</citetitle></link>.
+   </para>
+
+   <sect2 xml:id="stig-openscap-scan-sle15">
+    <title>Scanning a &slea; system for &stiga; compliance</title>
+   <para>
+    The following example shows how to scan &sle; 15 locally with <command>oscap</command> for vulnerability
+    issues according to the profile <literal>&disaa; &stiga; for &sle; 15</literal>. In addition to saving the results in XML format,
+    an HTML report can be generated.
+   </para>
+   <example xml:id="ex-stig-oscap-scan-sle15">
+    <title>Scanning &sle; with oscap</title>
+    <screen>&prompt.sudo;<command>oscap</command> xccdf eval<co xml:id="co-oscap-eval"/> \
+     --profile <replaceable>stig</replaceable><co xml:id="co-oscap-eval-profile"/> \
+     --results <replaceable>/tmp/results.xml</replaceable><co xml:id="co-oscap-eval-results"/> \
+     --report <replaceable>/tmp/report.html</replaceable><co xml:id="co-oscap-eval-report"/> \
+     /usr/share/xml/scap/ssg/content/ssg-sle15-ds-1.2.xml<co xml:id="co-oscap-eval-ssg"/></screen>
+    <calloutlist>
+     <callout arearefs="co-oscap-eval">
+      <para>
+       Calls the <command>oscap xccdf</command> module and tells it to perform an evaluation (vulnerability scan).
+      </para>
+     </callout>
+     <callout arearefs="co-oscap-eval-profile">
+      <para>
+       Specifies the profile to use, in this case, <literal>stig</literal>.
+      </para>
+     </callout>
+     <callout arearefs="co-oscap-eval-results">
+      <para>
+       Saves the results of the evaluation to <replaceable>/tmp/results.xml</replaceable>.
+      </para>
+     </callout>
+     <callout arearefs="co-oscap-eval-report">
+      <para>
+       Generates an HTML report called <replaceable>/tmp/report.html</replaceable> in
+       addition to the results in XML.
+      </para>
+     </callout>
+     <callout arearefs="co-oscap-eval-ssg">
+      <para>
+       Specifies the <literal>SCAP Security Guide</literal> policy file to use. In this example,
+       we use a policy file in <literal>DataStream</literal> format that applies to &sle;
+       code 15. To list all available policies, run:
+       <command>ls -1 /usr/share/xml/scap/ssg/content/ssg-*-ds.xml</command>. For
+       more information about a particular policy, run
+       <command>oscap info</command> on the file.
+      </para>
+     </callout>
+    </calloutlist>
+    <para>
+     The evaluation process usually takes a few minutes, depending on the number of
+     selected rules.
+    </para>
+   </example>
+   </sect2>
+
+   <sect2 xml:id="stig-openscap-remediate-sle15">
+    <title>Making a &slea; system &stiga;-compliant</title>
+    <para>
+     The following examples show how to scan and remediate &sle; locally with <command>oscap</command>
+     according to the profile <literal>&disaa; &stiga; for &sle; 15</literal>.
+    </para>
+
+    <sect3 xml:id="oscap-remediate-sle-fly">
+    <title>Remediating &sle; (on the fly)</title>
+    <para>
+     For remediation with <command>oscap</command> on the fly, use the <option>--remediate</option> command-line option.
+    </para>
+    <example xml:id="ex-oscap-remediate-sle15-fly">
+     <title>Remediating &slea; 15 (on the fly)</title>
+     <screen>&prompt.sudo;<command>oscap</command> xccdf eval --remediate<co xml:id="co-oscap-remedy-fly"/> \
+      --profile <replaceable>stig</replaceable><co xml:id="co-oscap-remedy-fly-profile"/> \
+      --results <replaceable>/tmp/results.xml</replaceable><co xml:id="co-oscap-remedy-fly-results"/> \
+      /usr/share/xml/scap/ssg/content/ssg-sle15-ds-1.2.xml<co xml:id="co-oscap-remedy-fly-ssg"/></screen>
+     <calloutlist>
+      <callout arearefs="co-oscap-remedy-fly">
+       <para>
+        Calls the <command>oscap xccdf</command> module and tells it to perform an evaluation plus a remediation of the target system
+        in one go.
+       </para>
+      </callout>
+      <callout arearefs="co-oscap-remedy-fly-profile">
+       <para>
+        Specifies the profile to use, in this case, <literal>stig</literal>.
+       </para>
+      </callout>
+      <callout arearefs="co-oscap-remedy-fly-results">
+       <para>
+        Saves the results of the evaluation to <replaceable>/tmp/results.xml</replaceable>.
+       </para>
+      </callout>
+      <callout arearefs="co-oscap-remedy-fly-ssg">
+       <para>
+        Specifies the <literal>SCAP Security Guide</literal> policy file to use. In this example,
+        we use a policy file in <literal>DataStream</literal> format that applies to &sle;
+        code 15. To list all available policies, run:
+        <command>ls -1 /usr/share/xml/scap/ssg/content/ssg-*-ds.xml</command>. For
+        more information about a particular policy, run
+        <command>oscap info</command> on the file.
+       </para>
+      </callout>
+     </calloutlist>
+     <para>
+      In the resulting <replaceable>/tmp/results.xml</replaceable> file, the first <tag class="element"
+       >TestResult</tag> element shows the result of the scan <emphasis>prior to</emphasis> the remediation.
+      The second <tag class="element">TestResult</tag> element shows the result of the scan
+      <emphasis>after</emphasis> applying the remediation. In the second <tag class="element">TestResult</tag>
+      element, if the result of a rule is <literal>fixed</literal>, this means that the fix was successfully
+      applied, and this rule now passes evaluation. If the result of a rule is
+      <literal>error</literal>, this means that remediation for this rule was
+      not successful, and the rule still does not pass evaluation.
+     </para>
+    </example>
+    </sect3>
+
+   <sect3 xml:id="oscap-remediate-sle-post">
+    <title>Remediating &sle; (after scanning)</title>
+    <para>
+     In this example, we first execute a scan and then run the remediation as next step.
+    </para>
+    <example xml:id="ex-oscap-remediate-sle15-post">
+     <title>Remediating &slea; (after scanning)</title>
+     <procedure>
+      <step>
+       <screen>&prompt.sudo;<command>oscap</command> xccdf eval<co xml:id="co-oscap-remedy-post1"/> \
+        --profile <replaceable>stig</replaceable><co xml:id="co-oscap-remedy-post1-profile"/> \
+        --results <replaceable>/tmp/results.xml</replaceable><co xml:id="co-oscap-remedy-post1-results"/> \
+        /usr/share/xml/scap/ssg/content/ssg-sle15-ds-1.2.xml<co xml:id="co-oscap-remedy-post1-ssg"/></screen>
+       <calloutlist>
+        <callout arearefs="co-oscap-remedy-post1">
+         <para>
+          Calls the <command>oscap xccdf</command> module and tells it to perform an evaluation.
+         </para>
+        </callout>
+        <callout arearefs="co-oscap-remedy-post1-profile">
+         <para>
+          Specifies the profile to use, in this case, <literal>stig</literal>.
+         </para>
+        </callout>
+        <callout arearefs="co-oscap-remedy-post1-results">
+         <para>
+          Saves the results of the evaluation as an XCCDF file to
+          <replaceable>/tmp/results.xml</replaceable>.
+         </para>
+        </callout>
+        <callout arearefs="co-oscap-remedy-post1-ssg">
+         <para>
+          Specifies the <literal>SCAP Security Guide</literal> policy file to use. In this example,
+          we use a policy file in <literal>DataStream</literal> format that applies to &sle;
+          code 15. To list all available policies, run:
+          <command>ls -1 /usr/share/xml/scap/ssg/content/ssg-*-ds.xml</command>. For
+          more information about a particular policy, run
+          <command>oscap info</command> on the file.
+         </para>
+        </callout>
+       </calloutlist>
+       <para>
+        During this step, the system is only evaluated, and the results are stored in a
+        <tag class="element">TestResult</tag> element in <replaceable>/tmp/results.xml</replaceable>.
+       </para>
+      </step>
+      <step>
+       <screen>&prompt.sudo;<command>oscap</command> xccdf remediate<co xml:id="co-oscap-remedy-post2-command"/> \
+        --results <replaceable>/tmp/results.xml</replaceable><co xml:id="co-oscap-remedy-post2-results"/> \
+        <replaceable>/tmp/results.xml</replaceable><co xml:id="co-oscap-remedy-post2-ssg"/></screen>
+       <calloutlist>
+        <callout arearefs="co-oscap-remedy-post2-command">
+         <para>
+          Calls the <command>oscap xccdf</command> module and tells it to perform a remediation.
+         </para>
+        </callout>
+        <callout arearefs="co-oscap-remedy-post2-results">
+         <para>
+          Saves the results of the remediation to <replaceable>/tmp/results.xml</replaceable>.
+         </para>
+        </callout>
+        <callout arearefs="co-oscap-remedy-post2-ssg">
+         <para>
+          Uses the <replaceable>/tmp/results.xml</replaceable> XCCDF file from the first step (evaluation)
+          as input file.
+         </para>
+        </callout>
+       </calloutlist>
+       <para>
+        During this step, the results file from the first step is used as input for the
+        <command>oscap</command> command. You can safely store the results from the
+        second step in the same file that you use as input file,
+        <replaceable>/tmp/results.xml</replaceable>. During this run, <command>oscap</command>
+        creates a new <tag class="element">xccdf:TestResult</tag> element in the file.
+        The new element is based on the previous one and inherits all the data.
+        The newly created <tag class="element">xccdf:TestResult</tag> element differs
+        only in the <tag class="element">rule-result</tag> elements which had failed
+        in the first run. Only for those is the remediation executed.
+       </para>
+      </step>
+     </procedure>
+    </example>
+   </sect3>
+  </sect2>
  </sect1>
 
  <sect1 xml:id="stig-viewer">
@@ -206,30 +437,30 @@
      <guimenu>&stigviewer;</guimenu>.
     </para>
     <step>
-     <screen>&prompt.sudo;<command>oscap</command> xccdf eval<co xml:id="co-oscap-eval"/> \
-      --profile <replaceable>stig</replaceable><co xml:id="co-oscap-eval-profile"/> \
-      --stig-viewer <replaceable>/tmp/results_stig.xml</replaceable><co xml:id="co-oscap-eval-results"/> \
-      /usr/share/xml/scap/ssg/content/ssg-sle15-ds-1.2.xml<co xml:id="co-oscap-eval-ssg"/></screen>
+     <screen>&prompt.sudo;<command>oscap</command> xccdf eval<co xml:id="co-stigviewer-oscap-eval"/> \
+      --profile <replaceable>stig</replaceable><co xml:id="co-stigviewer-oscap-eval-profile"/> \
+      --stig-viewer <replaceable>/tmp/results_stig.xml</replaceable><co xml:id="co-stigviewer-oscap-eval-results"/> \
+      /usr/share/xml/scap/ssg/content/ssg-sle15-ds-1.2.xml<co xml:id="co-stigviewer-oscap-eval-ssg"/></screen>
      <calloutlist>
-      <callout arearefs="co-oscap-eval">
+      <callout arearefs="co-stigviewer-oscap-eval">
        <para>
         Calls the <command>oscap xccdf</command> module and tells
         it to perform an evaluation (vulnerability scan).
        </para>
       </callout>
-      <callout arearefs="co-oscap-eval-profile">
+      <callout arearefs="co-stigviewer-oscap-eval-profile">
        <para>
         Tells <command>oscap</command> to use the <literal>stig</literal> profile for the scan.
        </para>
       </callout>
-      <callout arearefs="co-oscap-eval-results">
+      <callout arearefs="co-stigviewer-oscap-eval-results">
        <para>
         Saves the results of the evaluation to
         <replaceable>/tmp/results_stig.xml</replaceable>. This is an XCCDF XML
         file that can be imported into <guimenu>&stigviewer;</guimenu>.
        </para>
       </callout>
-      <callout arearefs="co-oscap-eval-ssg">
+      <callout arearefs="co-stigviewer-oscap-eval-ssg">
        <para>
         Specifies the <literal>SCAP Security Guide</literal> policy file to use. In this example,
         we use a policy file in <literal>DataStream</literal> format that applies to &sle;
