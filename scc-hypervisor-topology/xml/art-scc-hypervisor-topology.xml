@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook50-profile.xsl"
+ type="text/xml"
+ title="Profiling step"?>
+<!DOCTYPE article
+[
+  <!ENTITY % entities SYSTEM "generic-entities.ent">
+    %entities;
+  <!ENTITY productnamex "<phrase xmlns='http://docbook.org/ns/docbook' os='sles;sled;osuse'>&productname;</phrase><phrase xmlns='http://docbook.org/ns/docbook' os='article'>&sls;</phrase>">
+   <!ENTITY productnumberx "<phrase xmlns='http://docbook.org/ns/docbook' os='sles;sled;osuse'>&productnumber;</phrase>">
+]>
+<article xml:id="article-scc-hypervisor-topology"
+         xmlns="http://docbook.org/ns/docbook"
+         version="5.0"
+         xml:lang="en"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Hypervisor topology data in &scc;</title>
+  <titleabbrev>Hypervisor topology data in &scc;</titleabbrev>
+  <info><productname>&productnamex;</productname>
+    <productnumber>&productnumberx;</productnumber><date>
+<?dbtimestamp format="B d, Y" ?></date>
+    <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
+      <dm:bugtracker>
+        <dm:url>https://bugzilla.suse.com/enter_bug.cgi</dm:url>
+        <dm:component>Documentation</dm:component>
+        <dm:assignee>tbazant@suse.com</dm:assignee>
+      </dm:bugtracker>
+      <dm:editurl>https://github.com/SUSE/doc-unversioned/blob/main/xml/</dm:editurl>
+      <dm:translation>yes</dm:translation>
+    </dm:docmanager>
+    <abstract>
+      <para>
+        This document describes how to provide customers' hypervisors topology
+        data to &scc; (SCC).
+      </para>
+    </abstract>
+  </info>
+  <sect1 xml:id="scc-hypervisor-topology-whatis">
+    <title>What is ?</title>
+
+    <para>
+    </para>
+  </sect1>
+  <sect1 xml:id="scc-hypervisor-topology-requirements">
+    <title>Requirements</title>
+
+    <para>
+      To use the XXXX, you need to:
+    </para>
+
+    <itemizedlist>
+      <listitem>
+        <para>
+          Run a supported and registered SLE-based host with all update patches
+          applied.
+        </para>
+      </listitem>
+    </itemizedlist>
+  </sect1>
+  <sect1 xml:id="scc-hypervisor-topology-how-it-works">
+    <title>How providing a hypervisor topology works?</title>
+
+    <para></para>
+  </sect1>
+  <sect1 xml:id="scc-hypervisor-topology-benefits">
+    <title>Benefits</title>
+
+    <para>
+    </para>
+
+  </sect1>
+  <sect1 xml:id="scc-hypervisor-topology-related-topics">
+    <title>Related topics</title>
+
+    <itemizedlist>
+      <listitem>
+        <para></para>
+      </listitem>
+    </itemizedlist>
+  </sect1>
+</article>
