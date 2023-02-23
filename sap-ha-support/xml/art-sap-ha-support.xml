@@ -13,9 +13,9 @@
          xml:lang="en"
          xmlns:xi="http://www.w3.org/2001/XInclude"
          xmlns:xlink="http://www.w3.org/1999/xlink">
-  <title>Supported &ha; solutions by &productname;</title>
-  <info><date>
-<?dbtimestamp format="B d, Y" ?></date>
+  <title>Supported &ha; Solutions by &productname;</title>
+  <info>
+   <date><?dbtimestamp format="B d, Y" ?></date>
     <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
       <dm:bugtracker>
         <dm:url>https://bugzilla.suse.com/enter_bug.cgi</dm:url>
@@ -56,9 +56,8 @@
        and &nwshort; ASCS/ERS &ensa1;.
       </para>
       <para>
-       This document provides an overview of HA solutions that are
-       supported by &suse; for &hana;, &s4hana;, and &nwshort;. New solutions will be added to
-       this document when they become available.
+       This document provides an overview of &ha; solutions that &suse; supports for &hana;,
+       &s4hana;, and &nwshort; on &sles; 15. New solutions will be added when they become available.
       </para>
     </abstract>
   </info>
@@ -197,7 +196,8 @@
     <para>
      This document applies to &productname; 15. Version 12 SP5 is still supported but not covered by
      this document, as &suse; strongly recommends using version 15 for new installations.
-     If you need more details, the individual guides cover version 12 as well.
+     If you need details about version 12, check the individual guides available at
+     <link xlink:href="&dsc;/sbp/sap/"/>.
     </para>
    </note>
   </sect2>
@@ -301,28 +301,28 @@
       <tbody>
        <row>
         <entry>HANA performance optimized, plain setup</entry>
-        <entry>Supported (<link xlink:href="https://documentation.suse.com/sbp/all/html/SLES4&sap;-hana-sr-guide-PerfOpt-15/index.html">Documentation</link>)</entry>
+        <entry>Supported (<link xlink:href="&dsc;/sbp/all/html/SLES4SAP-hana-sr-guide-PerfOpt-15/index.html">Documentation</link>)</entry>
         <entry>(A' =&gt; B) Secondary site is not read-only enabled, so does not accept client's inquiries.</entry>
        </row>
        <row>
         <entry>HANA performance optimized, secondary site read-enabled </entry>
-        <entry>Supported (<link xlink:href="https://documentation.suse.com/sbp/all/html/SLES4&sap;-hana-sr-guide-PerfOpt-15/index.html">Documentation</link>)</entry>
+        <entry>Supported (<link xlink:href="&dsc;/sbp/all/html/SLES4SAP-hana-sr-guide-PerfOpt-15/index.html">Documentation</link>)</entry>
         <entry>(A' =&gt; B”) Secondary site is read-enabled and can accept client's read-only inquiries.</entry>
        </row>
        <row>
         <entry>HANA cost optimized</entry>
-        <entry>Supported (<link xlink:href="https://documentation.suse.com/sbp/all/html/SLES4&sap;-hana-sr-guide-costopt-15/index.html">Documentation</link>)</entry>
+        <entry>Supported (<link xlink:href="&dsc;/sbp/all/html/SLES4SAP-hana-sr-guide-costopt-15/index.html">Documentation</link>)</entry>
         <entry>(A' =&gt; B, Q”) topology is supported. Q is a QA instance running on the secondary site.</entry>
        </row>
        <row>
         <entry>HANA multi-tier system replication (replication chain), third site NOT managed by &pace;</entry>
-        <entry>Supported (<link xlink:href="https://documentation.suse.com/sbp/all/html/SLES4&sap;-hana-sr-guide-PerfOpt-15/index.html">Documentation</link>)</entry>
+        <entry>Supported (<link xlink:href="&dsc;/sbp/all/html/SLES4SAP-hana-sr-guide-PerfOpt-15/index.html">Documentation</link>)</entry>
         <entry>(A' =&gt; B) -&gt; C topology is supported with conditions: A to B system replication
         in &pace; is supported. B to C system replication is not managed by &pace;.</entry>
        </row>
        <row>
         <entry>HANA multi-target system replication, third site NOT managed by &pace; </entry>
-        <entry>Supported (<link xlink:href="https://documentation.suse.com/sbp/all/html/SLES4&sap;-hana-sr-guide-PerfOpt-15/index.html">Documentation</link>)</entry>
+        <entry>Supported (<link xlink:href="&dsc;/sbp/all/html/SLES4SAP-hana-sr-guide-PerfOpt-15/index.html">Documentation</link>)</entry>
         <entry>(B &lt;= A') -&gt; C topology is supported with conditions: A to B system replication
         in &pace; is supported. A to C system replication is not managed by &pace;.</entry>
        </row>
@@ -508,28 +508,28 @@
      <tbody>
       <row>
        <entry>HANA performance optimized, up to 30 nodes including standby</entry>
-       <entry>Supported (<link xlink:href="https://documentation.suse.com/sbp/all/html/SLES4&sap;-hana-scaleOut-PerfOpt-15/index.html">Documentation</link></entry>
+       <entry>Supported (<link xlink:href="&dsc;/sbp/all/html/SLES4SAP-hana-scaleOut-PerfOpt-15/index.html">Documentation</link></entry>
        <entry>Up to 30 HANA nodes including standby nodes.</entry>
       </row>
       <row>
        <entry>HANA performance optimized, up to 12 nodes no standby</entry>
-       <entry>Supported (<link xlink:href="https://documentation.suse.com/sbp/sap/html/SLES4&sap;-hana-scaleout-multitarget-perfopt-15/index.html">Documentation</link></entry>
+       <entry>Supported (<link xlink:href="&dsc;/sbp/sap/html/SLES4SAP-hana-scaleout-multitarget-perfopt-15/index.html">Documentation</link></entry>
        <entry>Up to 12 HANA nodes, NO standby nodes.</entry>
       </row>
       <row>
        <entry>HANA performance optimized, up to 4 nodes, secondary site read-enabled</entry>
-       <entry>Supported (<link xlink:href="https://documentation.suse.com/sbp/all/html/SLES4&sap;-hana-scaleOut-PerfOpt-15/index.html">Documentation</link></entry>
+       <entry>Supported (<link xlink:href="&dsc;/sbp/all/html/SLES4SAP-hana-scaleOut-PerfOpt-15/index.html">Documentation</link></entry>
        <entry>Up to 4 HANA nodes, NO standby nodes.</entry>
       </row>
       <row>
        <entry>HANA multi-target system replication, third site NOT managed by the cluster</entry>
-       <entry>Supported (<link xlink:href="https://documentation.suse.com/sbp/sap/html/SLES4&sap;-hana-scaleout-multitarget-perfopt-15/index.html">Documentation</link></entry>
+       <entry>Supported (<link xlink:href="&dsc;/sbp/sap/html/SLES4SAP-hana-scaleout-multitarget-perfopt-15/index.html">Documentation</link></entry>
        <entry>( B &lt;= A' ) -&gt; C topology is supported with conditions: Site A to site B system
        replication in &pace; is supported. Site A to site C system replication is not managed by &pace;.</entry>
       </row>
       <row>
        <entry>HANA multi-tier system replication, third site NOT managed by the cluster</entry>
-       <entry>Supported (<link xlink:href="https://documentation.suse.com/sbp/sap/html/SLES4&sap;-hana-scaleout-multitarget-perfopt-15/index.html">Documentation</link></entry>
+       <entry>Supported (<link xlink:href="&dsc;/sbp/sap/html/SLES4SAP-hana-scaleout-multitarget-perfopt-15/index.html">Documentation</link></entry>
        <entry>(A' =&gt; B ) -&gt; C topology is supported with conditions: A to B system replication
        in &pace; is supported. B to C system replication is not managed by &pace;.</entry>
       </row>
@@ -685,30 +685,30 @@
     <tbody>
      <row>
       <entry>2-node cluster </entry>
-      <entry>Supported <link xlink:href="https://documentation.suse.com/sbp/all/single-html/&sap;-nw740-sle15-setupguide/">Documentation</link></entry>
+      <entry>Supported <link xlink:href="&dsc;/sbp/all/html/SAP-S4HA10-setupguide-sle15/index.html">Documentation</link></entry>
       <entry>In a 2-node cluster, ASCS fails over to the same node where ERS is running.</entry>
      </row>
      <row>
       <entry>3-node cluster </entry>
-      <entry>Supported <link xlink:href="https://documentation.suse.com/sbp/sap/html/&sap;-S4HA10-setupguide-simplemount-sle15/index.html">Documentation</link></entry>
+      <entry>Supported <link xlink:href="&dsc;/sbp/sap/html/SAP-S4HA10-setupguide-simplemount-sle15/index.html">Documentation</link></entry>
       <entry>In a 3-node cluster, ASCS fails over to the online node where ERS is not running.</entry>
      </row>
      <row>
       <entry>Simple mount file system structure </entry>
-      <entry>Supported <link xlink:href="https://documentation.suse.com/sbp/sap/html/&sap;-S4HA10-setupguide-simplemount-sle15/index.html">Documentation</link></entry>
+      <entry>Supported <link xlink:href="&dsc;/sbp/sap/html/SAP-S4HA10-setupguide-simplemount-sle15/index.html">Documentation</link></entry>
       <entry>Shared filesystem mounts are NOT managed by the cluster. This is the recommended
       configuration over the 'Filesystem' resource-based solution.</entry>
      </row>
      <row>
       <entry>'Filesystem' resource-based </entry>
-      <entry>Supported <link xlink:href="https://documentation.suse.com/sbp/all/html/&sap;-S4HA10-setupguide-sle15/index.html">Documentation</link></entry>
+      <entry>Supported <link xlink:href="&dsc;/sbp/all/html/SAP-S4HA10-setupguide-sle15/index.html">Documentation</link></entry>
       <entry>Shared filesystem mounts are managed by the cluster via the 'Filesystem' resource agent.
       &suse; still supports this configuration, but it is not recommended for new installations.
       Use the simple mount file system structure instead.</entry>
      </row>
      <row>
       <entry>Multi-SID </entry>
-      <entry>Supported <link xlink:href="https://documentation.suse.com/sbp/all/html/SBP-&sap;-MULTI-SID/index.html">Documentation</link></entry>
+      <entry>Supported <link xlink:href="&dsc;/sbp/all/html/SBP-SAP-MULTI-SID/index.html">Documentation</link></entry>
       <entry>Multiple &sap; ASCS/SCS clustered instances are supported in the same cluster.</entry>
      </row>
      <row>
@@ -757,14 +757,14 @@
     </thead>
     <tbody>
      <row>
-      <entry>2-node cluster </entry>
-      <entry>Supported</entry>
+      <entry>2-node cluster</entry>
+      <entry>Supported <link xlink:href="&dsc;/sbp/all/html/SAP-nw740-sle15-setupguide/index.html">Documentation</link></entry>
       <entry>In a 2-node cluster, ASCS fails over to the same node where ERS is running.</entry>
      </row>
      <row>
-      <entry>3-node cluster </entry>
+      <entry>3-node cluster</entry>
       <entry>Supported but undocumented</entry>
-      <entry>In a 3-node cluster, ASCS fails over to the online node where ERS is not running.</entry>
+      <entry>A 3-node cluster is supported, but the extra node is not used for ERS failover.</entry>
      </row>
      <row>
       <entry>Simple mount file system structure</entry>
@@ -774,14 +774,14 @@
      </row>
      <row>
       <entry>'Filesystem' resource-based</entry>
-      <entry>Supported</entry>
+      <entry>Supported <link xlink:href="&dsc;/sbp/all/html/SAP-nw740-sle15-setupguide/index.html">Documentation</link></entry>
       <entry>Shared filesystem mounts are managed by the cluster via the 'Filesystem' resource agent.
       &suse; still supports this configuration, but it is not recommended for new installations.
       Use the simple mount file system structure instead.</entry>
      </row>
      <row>
       <entry>Multi-SID</entry>
-      <entry>Supported</entry>
+      <entry>Supported <link xlink:href="&dsc;/sbp/all/html/SBP-SAP-MULTI-SID/index.html">Documentation</link></entry>
       <entry>Multiple &sap; ASCS/SCS clustered instances are supported in the same cluster.</entry>
      </row>
      <row>
@@ -803,7 +803,7 @@
   <itemizedlist>
    <listitem>
     <para>
-     &suse;: <link xlink:href="https://documentation.suse.com/sbp/sap/"/>
+     &suse;: <link xlink:href="&dsc;/sbp/sap/"/>
     </para>
    </listitem>
    <listitem>
