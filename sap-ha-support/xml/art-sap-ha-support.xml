@@ -16,6 +16,7 @@
   <title>Supported &ha; Solutions by &productname;</title>
   <info>
    <date><?dbtimestamp format="B d, Y" ?></date>
+   <xi:include href="common_copyright_gfdl.xml"/>
     <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
       <dm:bugtracker>
         <dm:url>https://bugzilla.suse.com/enter_bug.cgi</dm:url>
@@ -823,4 +824,6 @@
    </listitem>
   </itemizedlist>
  </sect1>
+
+ <xi:include href="common_legal.xml"/>
 </article>
