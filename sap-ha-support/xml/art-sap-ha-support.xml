@@ -765,7 +765,7 @@
      <row>
       <entry>3-node cluster</entry>
       <entry>Supported but undocumented</entry>
-      <entry>A 3-node cluster is supported, but the extra node is not used for ERS failover.</entry>
+      <entry>A 3-node cluster is supported, but the extra node is not used for ASCS failover.</entry>
      </row>
      <row>
       <entry>Simple mount file system structure</entry>
