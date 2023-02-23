@@ -4,7 +4,7 @@
 ## ---------------------------------
 ##
 ## Basics
-MAIN="art_scc-hypervisor-collector.xml"
+MAIN="art-scc-hypervisor-collector.xml"
 ROOTID=article-scc-hypervisor-collector
 
 ## Profiling
