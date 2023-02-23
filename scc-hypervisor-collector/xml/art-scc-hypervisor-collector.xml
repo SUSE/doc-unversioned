@@ -15,8 +15,8 @@
          xml:lang="en"
          xmlns:xi="http://www.w3.org/2001/XInclude"
          xmlns:xlink="http://www.w3.org/1999/xlink">
-  <title>Hypervisor topology data in &scc;</title>
-  <titleabbrev>Hypervisor topology data in &scc;</titleabbrev>
+  <title>Hypervisor details in &scc;</title>
+  <titleabbrev>Hypervisor details in &scc;</titleabbrev>
   <info><productname>&productnamex;</productname>
     <productnumber>&productnumberx;</productnumber><date>
 <?dbtimestamp format="B d, Y" ?></date>
@@ -31,16 +31,20 @@
     </dm:docmanager>
     <abstract>
       <para>
-        This document describes how to provide customers' hypervisors topology
-        data to &scc; (SCC).
+        This article describes how to provide customers with details about used
+        hypervisors in &scc; (SCC).
       </para>
     </abstract>
   </info>
   <sect1 xml:id="scc-hypervisor-collector-whatis">
-    <title>What is ?</title>
+    <title>What is &scchvc;?</title>
+
     <para>
+      &scchvc; is a command line tool that collects details about customer
+      hypervisor solutions and uploads them to SCC.
     </para>
   </sect1>
+  
   <sect1 xml:id="scc-hypervisor-collector-requirements">
     <title>Requirements</title>
 
@@ -58,9 +62,26 @@
     </itemizedlist>
   </sect1>
   <sect1 xml:id="scc-hypervisor-collector-how-it-works">
-    <title>How providing a hypervisor topology works?</title>
+    <title>How does &scchvc; work?</title>
 
-    <para></para>
+    <para>
+      The
+      <systemitem class="daemon">scc-hypervisor-collector.timer</systemitem>
+      &systemd; timer triggers the <systemitem class="daemon">
+      scc-hypervisor-collector.service</systemitem> &systemd; service on a
+      daily basis. The service runs the &scchvc; command under a restricted
+      <literal>scchvc</literal> user and collects detailed data about the
+      specified hypervisors. It uses the credentials specified in the
+      configuration file
+      <filename>/var/lib/scchvc/.config/scc-hypervisor-collector</filename> and
+      sends the collected data to SCC.
+    </para>
+    <sect2 xml:id="scc-hypervisor-collector-configuration">
+      <title>Configuration</title>
+      <para>
+        insert text
+      </para>
+    </sect2>
   </sect1>
   <sect1 xml:id="scc-hypervisor-collector-benefits">
     <title>Benefits</title>
