@@ -9,7 +9,7 @@
   <!ENTITY productnamex "<phrase xmlns='http://docbook.org/ns/docbook' os='sles;sled;osuse'>&productname;</phrase><phrase xmlns='http://docbook.org/ns/docbook' os='article'>&sls;</phrase>">
    <!ENTITY productnumberx "<phrase xmlns='http://docbook.org/ns/docbook' os='sles;sled;osuse'>&productnumber;</phrase>">
 ]>
-<article xml:id="article-scc-hypervisor-topology"
+<article xml:id="article-scc-hypervisor-collector"
          xmlns="http://docbook.org/ns/docbook"
          version="5.0"
          xml:lang="en"
@@ -36,13 +36,12 @@
       </para>
     </abstract>
   </info>
-  <sect1 xml:id="scc-hypervisor-topology-whatis">
+  <sect1 xml:id="scc-hypervisor-collector-whatis">
     <title>What is ?</title>
-
     <para>
     </para>
   </sect1>
-  <sect1 xml:id="scc-hypervisor-topology-requirements">
+  <sect1 xml:id="scc-hypervisor-collector-requirements">
     <title>Requirements</title>
 
     <para>
@@ -58,19 +57,17 @@
       </listitem>
     </itemizedlist>
   </sect1>
-  <sect1 xml:id="scc-hypervisor-topology-how-it-works">
+  <sect1 xml:id="scc-hypervisor-collector-how-it-works">
     <title>How providing a hypervisor topology works?</title>
 
     <para></para>
   </sect1>
-  <sect1 xml:id="scc-hypervisor-topology-benefits">
+  <sect1 xml:id="scc-hypervisor-collector-benefits">
     <title>Benefits</title>
 
-    <para>
-    </para>
-
+    <para></para>
   </sect1>
-  <sect1 xml:id="scc-hypervisor-topology-related-topics">
+  <sect1 xml:id="scc-hypervisor-collector-related-topics">
     <title>Related topics</title>
 
     <itemizedlist>

@@ -4,8 +4,8 @@
 ## ---------------------------------
 ##
 ## Basics
-MAIN="art_suseconnect_visibility.xml"
-ROOTID=article-scc-hypervisor-topology
+MAIN="art_scc-hypervisor-collector.xml"
+ROOTID=article-scc-hypervisor-collector
 
 ## Profiling
 PROFOS="article"
