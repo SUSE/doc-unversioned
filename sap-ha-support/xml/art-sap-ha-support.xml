@@ -219,13 +219,16 @@
    <informalfigure>
     <mediaobject>
      <imageobject role="fo">
-      <imagedata fileref="overview-sr-single-nodes.png" width="80%%"/>
+      <imagedata fileref="overview-sr-single-nodes.png" width="80%"/>
      </imageobject>
      <imageobject role="html">
       <imagedata fileref="overview-sr-single-nodes.png" width="80%"/>
      </imageobject>
      <textobject role="description">
-      <phrase></phrase>
+      <phrase>
+       System replication from the primary system in data center 1 to the
+       secondary system in data center 2.
+      </phrase>
      </textobject>
     </mediaobject>
    </informalfigure>
@@ -368,7 +371,9 @@
           <imagedata fileref="performance-optimized.png" width="100%"/>
          </imageobject>
          <textobject role="description">
-          <phrase></phrase>
+          <phrase>
+           &hana; performance optimized configuration.
+          </phrase>
          </textobject>
         </mediaobject>
        </informalfigure>
@@ -396,7 +401,9 @@
           <imagedata fileref="cost-optimized.png" width="100%"/>
          </imageobject>
          <textobject role="description">
-          <phrase></phrase>
+          <phrase>
+           &hana; cost optimized configuration.
+          </phrase>
          </textobject>
         </mediaobject>
        </informalfigure>
@@ -428,7 +435,9 @@
           <imagedata fileref="multi-target.png" width="100%"/>
          </imageobject>
          <textobject role="description">
-          <phrase></phrase>
+          <phrase>
+           &hana; multi-target configuration.
+          </phrase>
          </textobject>
         </mediaobject>
        </informalfigure>
@@ -452,7 +461,9 @@
           <imagedata fileref="multi-tier.png" width="100%"/>
          </imageobject>
          <textobject role="description">
-          <phrase></phrase>
+          <phrase>
+           &hana; multi-tier configuration.
+          </phrase>
          </textobject>
         </mediaobject>
        </informalfigure>
@@ -488,7 +499,9 @@
       <imagedata fileref="pacemaker-cluster.png" width="100%"/>
      </imageobject>
      <textobject role="description">
-      <phrase></phrase>
+      <phrase>
+       System replication between clusters managed by &pace;.
+      </phrase>
      </textobject>
     </mediaobject>
    </informalfigure>
@@ -665,7 +678,9 @@
      <imagedata fileref="ensa2.png" width="100%"/>
     </imageobject>
     <textobject role="description">
-     <phrase></phrase>
+     <phrase>
+      &ensa2; two-node cluster configuration.
+     </phrase>
     </textobject>
    </mediaobject>
   </informalfigure>
@@ -738,7 +753,9 @@
      <imagedata fileref="ensa1.png" width="80%"/>
     </imageobject>
     <textobject role="description">
-     <phrase></phrase>
+     <phrase>
+      &ensa1; two-node cluster configuration.
+     </phrase>
     </textobject>
    </mediaobject>
   </informalfigure>
