@@ -260,27 +260,27 @@
      <tbody>
       <row>
        <entry>A, B, C</entry>
-       <entry>HANA scale-up instance or HANA scale-out site </entry>
+       <entry>HANA scale-up instance or HANA scale-out site</entry>
       </row>
       <row>
        <entry>=&gt;</entry>
-       <entry>Sync, syncmem replication </entry>
+       <entry>Sync, syncmem replication</entry>
       </row>
       <row>
        <entry>-&gt;</entry>
-       <entry>Async replication </entry>
+       <entry>Async replication</entry>
       </row>
       <row>
        <entry>'</entry>
-       <entry>Primary IP address </entry>
+       <entry>Primary IP address</entry>
       </row>
       <row>
        <entry>"</entry>
-       <entry>Secondary IP address </entry>
+       <entry>Secondary IP address</entry>
       </row>
       <row>
        <entry>()</entry>
-       <entry>&suse; cluster </entry>
+       <entry>&suse; cluster</entry>
       </row>
      </tbody>
     </tgroup>
@@ -310,7 +310,7 @@
         <entry>(A' =&gt; B) Secondary site is not read-only enabled, so does not accept client's inquiries.</entry>
        </row>
        <row>
-        <entry>HANA performance optimized, secondary site read-enabled </entry>
+        <entry>HANA performance optimized, secondary site read-enabled</entry>
         <entry>Supported (<link xlink:href="&dsc;/sbp/all/html/SLES4SAP-hana-sr-guide-PerfOpt-15/index.html">Documentation</link>)</entry>
         <entry>(A' =&gt; B”) Secondary site is read-enabled and can accept client's read-only inquiries.</entry>
        </row>
@@ -326,31 +326,31 @@
         in &pace; is supported. B to C system replication is not managed by &pace;.</entry>
        </row>
        <row>
-        <entry>HANA multi-target system replication, third site NOT managed by &pace; </entry>
+        <entry>HANA multi-target system replication, third site NOT managed by &pace;</entry>
         <entry>Supported (<link xlink:href="&dsc;/sbp/all/html/SLES4SAP-hana-sr-guide-PerfOpt-15/index.html">Documentation</link>)</entry>
         <entry>(B &lt;= A') -&gt; C topology is supported with conditions: A to B system replication
         in &pace; is supported. A to C system replication is not managed by &pace;.</entry>
        </row>
        <row>
-        <entry>Multi-tenancy or MDC </entry>
+        <entry>Multi-tenancy or MDC</entry>
         <entry>Supported</entry>
         <entry>This scenario is supported since &hana; 1.0 SPS09. The setup and configuration
         from a cluster point of view is the same for multi-tenancy and single container,
         so existing documentation can be used.</entry>
        </row>
        <row>
-        <entry>HANA multi-SID performance optimized in one cluster (MCOS) </entry>
+        <entry>HANA multi-SID performance optimized in one cluster (MCOS)</entry>
         <entry>Supported but undocumented</entry>
         <entry></entry>
        </row>
        <row>
-        <entry>HANA performance optimized and &s4hana; &ensa2; in one cluster </entry>
+        <entry>HANA performance optimized and &s4hana; &ensa2; in one cluster</entry>
         <entry>Supported but undocumented</entry>
         <entry></entry>
        </row>
        <row>
         <entry>HANA performance optimized cluster and stand-alone
-        application server </entry>
+        application server</entry>
         <entry>Supported but undocumented</entry>
         <entry></entry>
        </row>
@@ -480,10 +480,25 @@
         pure multi-tier replication.
        </para>
        <para>
-        (A' =&gt; B) -&gt; C topology is supported with conditions: A to B system replication in
-        &pace; is supported. B to C system replication is not managed by &pace;. After takeover
-        from A to B, manual intervention is needed for rejoining A.
+        (A' =&gt; B) -&gt; C topology is supported with the following conditions:
        </para>
+       <itemizedlist>
+        <listitem>
+         <para>
+          A to B system replication in &pace; is supported.
+         </para>
+        </listitem>
+        <listitem>
+         <para>
+          B to C system replication is not managed by &pace;.
+         </para>
+        </listitem>
+        <listitem>
+         <para>
+          After takeover from A to B, manual intervention is needed for rejoining A.
+         </para>
+        </listitem>
+       </itemizedlist>
       </listitem>
      </varlistentry>
     </variablelist>
@@ -584,19 +599,19 @@
      <tbody>
       <row>
        <entry><para>SAPHanaSR.py</para><para>SAPHanaSrMultiTarget.py</para></entry>
-       <entry>Mandatory for data integrity in case of cluster sr_takeover </entry>
+       <entry>Mandatory for data integrity in case of cluster sr_takeover</entry>
       </row>
       <row>
-       <entry>susTkOver.py </entry>
-       <entry>Protects from data inconsistency caused by manual sr_takeover </entry>
+       <entry>susTkOver.py</entry>
+       <entry>Protects from data inconsistency caused by manual sr_takeover</entry>
       </row>
       <row>
-       <entry>susChkSrv.py </entry>
-       <entry>Avoids downtime caused by local indexserver restart </entry>
+       <entry>susChkSrv.py</entry>
+       <entry>Avoids downtime caused by local indexserver restart</entry>
       </row>
       <row>
-       <entry>susCostOpt.py </entry>
-       <entry>Handles secondary site in case of cluster sr_takeover </entry>
+       <entry>susCostOpt.py</entry>
+       <entry>Handles secondary site in case of cluster sr_takeover</entry>
       </row>
      </tbody>
     </tgroup>
@@ -634,7 +649,7 @@
        <entry>SAPHanaSR.py scale-out</entry>
        <entry>-</entry>
        <entry>-</entry>
-       <entry>Legacy (mandatory for &hana; 1.0)</entry>
+       <entry>Legacy (mandatory for &hana;&nbsp;1.0)</entry>
       </row>
       <row>
        <entry>SAPHanaSrMultiTarget.py</entry>
@@ -705,24 +720,24 @@
     </thead>
     <tbody>
      <row>
-      <entry>2-node cluster </entry>
+      <entry>2-node cluster</entry>
       <entry>Supported <link xlink:href="&dsc;/sbp/all/html/SAP-S4HA10-setupguide-sle15/index.html">Documentation</link></entry>
       <entry>In a 2-node cluster, ASCS fails over to the same node where ERS is running.</entry>
      </row>
      <row>
-      <entry>3-node cluster </entry>
+      <entry>3-node cluster</entry>
       <entry>Supported <link xlink:href="&dsc;/sbp/sap/html/SAP-S4HA10-setupguide-simplemount-sle15/index.html">Documentation</link></entry>
       <entry>In a 3-node cluster, ASCS fails over to the online node where ERS is not running.</entry>
      </row>
      <row>
-      <entry>Simple mount file system structure </entry>
+      <entry>Simple mount file system structure</entry>
       <entry>Supported <link xlink:href="&dsc;/sbp/sap/html/SAP-S4HA10-setupguide-simplemount-sle15/index.html">Documentation</link></entry>
       <entry>Shared file system mounts are NOT managed by the cluster.
-      This is the recommended configuration over the 
+      This is the recommended configuration over the
        <emphasis>Filesystem</emphasis> resource-based solution.</entry>
      </row>
      <row>
-      <entry><emphasis>Filesystem</emphasis> resource-based </entry>
+      <entry><emphasis>Filesystem</emphasis> resource-based</entry>
       <entry>Supported <link xlink:href="&dsc;/sbp/all/html/SAP-S4HA10-setupguide-sle15/index.html">Documentation</link></entry>
       <entry>Shared file system mounts are managed by the cluster
       via the <emphasis>Filesystem</emphasis> resource agent.
@@ -731,12 +746,12 @@
       Use the simple mount file system structure instead.</entry>
      </row>
      <row>
-      <entry>Multi-SID </entry>
+      <entry>Multi-SID</entry>
       <entry>Supported <link xlink:href="&dsc;/sbp/all/html/SBP-SAP-MULTI-SID/index.html">Documentation</link></entry>
       <entry>Multiple &sap; ASCS/SCS clustered instances are supported in the same cluster.</entry>
      </row>
      <row>
-      <entry>Additional dialog or other instances in cluster </entry>
+      <entry>Additional dialog or other instances in cluster</entry>
       <entry>Supported but undocumented</entry>
       <entry>Although it is possible to run Application Servers in the same cluster where ASCS/ERS
       are running, it is not recommended for easy management of the cluster.</entry>
