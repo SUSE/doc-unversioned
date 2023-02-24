@@ -51,9 +51,10 @@
     <abstract>
       <para>
        &s4s; is the leading Linux platform for &hana;, &sap; &s4hana;, and &netweaver;,
-       and an Endorsed Apps by &sap;. Two of the key components of &productname; are the
-       &sleha; (HAE) and resource agents. The HAE provides &pace;, an open-source cluster framework.
-       The resource agents manage automated failover of &hanasr;, &s4hana; ASCS/ERS &ensa2;,
+       and an Endorsed App by &sap;. Two of the key components of &productname;
+       are the &sleha; (HAE) and resource agents. The HAE provides &pace;, an
+       open source cluster framework. The resource agents manage automated
+       failover of &hanasr;, &s4hana; ASCS/ERS &ensa2;,
        and &nwshort; ASCS/ERS &ensa1;.
       </para>
       <para>
@@ -185,7 +186,7 @@
    </para>
    <variablelist>
     <varlistentry>
-     <term>&hanasr; scale-up - cost optimized scenario</term>
+     <term>&hanasr; scale-up &ndash; cost optimized scenario</term>
      <listitem>
       <para>
        Supported starting with 15 SP2.
@@ -237,8 +238,8 @@
     Takeover can be performed using &hana; Cockpit or the command line. Manual failover requires
     continuous monitoring and could lead to higher recovery time. To automate the failover process,
     the &sleha; can be used. Using the &hasi; for the takeover process helps customers achieve
-    service level agreements for &hana; downtime by enabling faster recovery without any manual
-    intervention.
+    service-level agreements for &hana; downtime by enabling faster recovery
+    without any manual intervention.
    </para>
    <para>
     Multiple &hana; &ha; scenarios are supported based on &hanasr;. For variations, contact &suse;
@@ -348,7 +349,8 @@
         <entry></entry>
        </row>
        <row>
-        <entry>HANA performance optimized cluster and standalone application server </entry>
+        <entry>HANA performance optimized cluster and stand-alone
+        application server </entry>
         <entry>Supported but undocumented</entry>
         <entry></entry>
        </row>
@@ -380,7 +382,7 @@
        <para>
         In the performance optimized scenario, an &hana; RDBMS site A is synchronizing with an
         &hana; RDBMS site B on a second node. As the &hana; RDBMS on the second node is configured
-        to pre-load the tables, the takeover time is typically very short.
+        to preload the tables, the takeover time is typically very short.
        </para>
        <para>
         Read access can be allowed on the secondary site. To support this read-enabled scenario,
@@ -408,18 +410,21 @@
         </mediaobject>
        </informalfigure>
        <para>
-        In the cost optimized scenario, the second node is also used for a standalone
-        non-replicated &hana; RDBMS system (such as QAS or TST). Whenever a takeover is needed,
-        the non-replicated system must be stopped first. As the productive secondary system on this
-        node must be limited in using system resources, the table pre-load must be switched off.
-        A possible takeover needs longer than in the performance optimized use case. We recommend
-        running a PoC to determine the SLA before using it in production.
+        In the cost optimized scenario, the second node is also used for a
+        stand-alone non-replicated &hana; RDBMS system (such as QAS or TST).
+        Whenever a takeover is needed, the non-replicated system must be
+        stopped first. As the productive secondary system on this node must
+        be limited in using system resources, the table preload must be
+        switched off. A possible takeover needs more time than in the
+        performance optimized use case. We recommend running a
+        PoC to determine the SLA before using it in production.
        </para>
        <para>
-        The secondary productive needs to be running in a reduced memory consumption configuration,
-        so read-enabled must not be used in this scenario. The HADR provider script needs to remove
-        the memory restrictions when a takeover occurs, so multi-SID (MCOS) must not be used in
-        this scenario either.
+        The secondary productive system needs to be running in a reduced
+        memory consumption configuration, so read-enabled must not be
+        used in this scenario. The HADR provider script needs to remove
+        the memory restrictions when a takeover occurs, so multi-SID
+        (MCOS) must not be used in this scenario either.
        </para>
       </listitem>
      </varlistentry>
@@ -526,7 +531,7 @@
        <entry>Up to 30 HANA nodes including standby nodes.</entry>
       </row>
       <row>
-       <entry>HANA performance optimized, up to 12 nodes no standby</entry>
+       <entry>HANA performance optimized, up to 12 nodes, no standby</entry>
        <entry>Supported (<link xlink:href="&dsc;/sbp/sap/html/SLES4SAP-hana-scaleout-multitarget-perfopt-15/index.html">Documentation</link></entry>
        <entry>Up to 12 HANA nodes, NO standby nodes.</entry>
       </row>
@@ -613,9 +618,9 @@
        <entry align="center">Scale-out</entry>
       </row>
       <row>
-       <entry align="center">Cost-optimized</entry>
-       <entry align="center">Performance-optimized</entry>
-       <entry align="center">Performance-optimized</entry>
+       <entry align="center">Cost optimized</entry>
+       <entry align="center">Performance optimized</entry>
+       <entry align="center">Performance optimized</entry>
       </row>
      </thead>
      <tbody>
@@ -712,14 +717,17 @@
      <row>
       <entry>Simple mount file system structure </entry>
       <entry>Supported <link xlink:href="&dsc;/sbp/sap/html/SAP-S4HA10-setupguide-simplemount-sle15/index.html">Documentation</link></entry>
-      <entry>Shared filesystem mounts are NOT managed by the cluster. This is the recommended
-      configuration over the 'Filesystem' resource-based solution.</entry>
+      <entry>Shared file system mounts are NOT managed by the cluster.
+      This is the recommended configuration over the 
+       <emphasis>Filesystem</emphasis> resource-based solution.</entry>
      </row>
      <row>
-      <entry>'Filesystem' resource-based </entry>
+      <entry><emphasis>Filesystem</emphasis> resource-based </entry>
       <entry>Supported <link xlink:href="&dsc;/sbp/all/html/SAP-S4HA10-setupguide-sle15/index.html">Documentation</link></entry>
-      <entry>Shared filesystem mounts are managed by the cluster via the 'Filesystem' resource agent.
-      &suse; still supports this configuration, but it is not recommended for new installations.
+      <entry>Shared file system mounts are managed by the cluster
+      via the <emphasis>Filesystem</emphasis> resource agent.
+      &suse; still supports this configuration, but it is not
+      recommended for new installations.
       Use the simple mount file system structure instead.</entry>
      </row>
      <row>
@@ -741,8 +749,9 @@
  <sect1 xml:id="sap-ha-solutions-netweaver">
   <title>HA solutions for &netweaver; based on ABAP Platform 1709 or older</title>
   <para>
-   Under the &ensa1long; (&ensa1;), the ASCS has to failover to the cluster node where the active
-   ERS is running, because it needs to access the shared memory that stores the enqueue replication table.
+   Under the &ensa1long; (&ensa1;), the ASCS has to fail over to the
+   cluster node where the active ERS is running, because it needs to
+   access the shared memory that stores the enqueue replication table.
   </para>
   <informalfigure>
    <mediaobject>
@@ -787,14 +796,17 @@
      <row>
       <entry>Simple mount file system structure</entry>
       <entry>Supported but undocumented</entry>
-      <entry>Shared filesystem mounts are NOT managed by the cluster. This is the recommended
-      configuration over the 'Filesystem' resource-based solution.</entry>
+      <entry>Shared file system mounts are NOT managed by the cluster.
+      This is the recommended configuration over the
+      <emphasis>Filesystem</emphasis> resource-based solution.</entry>
      </row>
      <row>
-      <entry>'Filesystem' resource-based</entry>
+      <entry><emphasis>Filesystem</emphasis> resource-based</entry>
       <entry>Supported <link xlink:href="&dsc;/sbp/all/html/SAP-nw740-sle15-setupguide/index.html">Documentation</link></entry>
-      <entry>Shared filesystem mounts are managed by the cluster via the 'Filesystem' resource agent.
-      &suse; still supports this configuration, but it is not recommended for new installations.
+      <entry>Shared file system mounts are managed by the cluster via
+      the <emphasis>Filesystem</emphasis> resource agent.
+      &suse; still supports this configuration, but it is not recommended
+      for new installations.
       Use the simple mount file system structure instead.</entry>
      </row>
      <row>
@@ -816,7 +828,8 @@
  <sect1 xml:id="sap-ha-solutions-documentation">
   <title>Documentation and configuration guides</title>
   <para>
-   Refer to the official web sites for up-to-date documentation and configuration guides:
+   Refer to the official Web sites for up-to-date documentation and configuration
+   guides:
   </para>
   <itemizedlist>
    <listitem>
