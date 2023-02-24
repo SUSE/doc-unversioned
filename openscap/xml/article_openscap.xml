@@ -39,6 +39,20 @@
   </abstract>
  </info>
 
+ <important xml:id="openscap-disclaimer">
+  <title>Disclaimer</title>
+  <para>
+   &suse; seeks to provide customers with quick and easy guides that can
+   assist them in maintaining security compliance. Implementation of the
+   settings contained within this guide without its prior testing in a non-operational
+   environment is highly discouraged. The developers of these
+   profiles and documentation have made reasonable efforts to ensure overall
+   compliance. They assume no responsibility for its use by other parties, and
+   make no guarantee, expressed or implied, about its quality, reliability, or
+   any other characteristic.
+  </para>
+ </important>
+
  <sect1 xml:id="openscap-whatis">
   <title>What are SCAP and &openscap;?</title>
 
