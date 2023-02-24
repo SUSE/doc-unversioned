@@ -117,7 +117,7 @@
   </sect1>
 
   <sect1 xml:id="stig-openscap-sle15">
-   <title>Applying a &stiga; profile with &openscap;</title>
+   <title>Applying a &stiga; profile</title>
    <para>
     The contents delivered with the <citetitle>SCAP Security Guide</citetitle> can be used
     to check or check and remediate systems according to a specific profile.
@@ -207,12 +207,12 @@
     </para>
 
     <sect3 xml:id="oscap-remediate-sle-fly">
-    <title>Remediating &sle; (on the fly)</title>
+    <title>Remediating &sle; with oscap (on the fly)</title>
     <para>
      For remediation with <command>oscap</command> on the fly, use the <option>--remediate</option> command-line option.
     </para>
     <example xml:id="ex-oscap-remediate-sle15-fly">
-     <title>Remediating &slea; 15 (on the fly)</title>
+     <title>Remediating &slea; 15 with oscap (on the fly)</title>
      <screen>&prompt.sudo;<command>oscap</command> xccdf eval --remediate<co xml:id="co-oscap-remedy-fly"/> \
       --profile <replaceable>stig</replaceable><co xml:id="co-oscap-remedy-fly-profile"/> \
       --results <replaceable>/tmp/results.xml</replaceable><co xml:id="co-oscap-remedy-fly-results"/> \
@@ -259,12 +259,12 @@
     </sect3>
 
    <sect3 xml:id="oscap-remediate-sle-post">
-    <title>Remediating &sle; (after scanning)</title>
+    <title>Remediating &sle; with oscap (after scanning)</title>
     <para>
      In this example, we first execute a scan and then run the remediation as next step.
     </para>
     <example xml:id="ex-oscap-remediate-sle15-post">
-     <title>Remediating &slea; (after scanning)</title>
+     <title>Remediating &slea; with oscap (after scanning)</title>
      <procedure>
       <step>
        <screen>&prompt.sudo;<command>oscap</command> xccdf eval<co xml:id="co-oscap-remedy-post1"/> \
@@ -339,6 +339,54 @@
        </para>
       </step>
      </procedure>
+    </example>
+   </sect3>
+   <sect3 xml:id="stig-remediate-sle-ansible">
+    <title>Remediating a &slea; system with Ansible</title>
+    <para>
+     You can use the Ansible playbooks provided by the
+     <literal>SCAP Security Guide</literal> to remediate a
+     local system.
+    </para>
+    <para>
+     To install Ansible, register your &sle; system and enable
+     the <literal>SUSE Package Hub</literal> extension.
+     Install the <package>ansible</package> package with
+     <command>sudo zypper in ansible</command>.
+    </para>
+    <example xml:id="ex-remediate-sle15-ansible">
+     <title>Remediating &slea; 15 with Ansible</title>
+     <para>
+      For example, to remediate your system using the &stiga; Ansible playbook for &sle; 15
+      provided by the <literal>SCAP Security Guide</literal>, use the following command.
+     </para>
+     <warning>
+      <title>System configuration changes</title>
+      <para>
+       The following command will alter the configuration of
+       your system immediately. Make sure to test this thoroughly
+       in a non-production system first.
+      </para>
+     </warning>
+     <screen>&prompt.sudo;ansible-playbook -i "localhost," -c local \
+      /usr/share/scap-security-guide/ansible/sle15-playbook-stig.yml</screen>
+     <para>
+      After the playbook has finished, you will be prompted to log in to your
+      system, which is now compliant to the chosen policy.
+     </para>
+     <informalfigure>
+      <mediaobject>
+       <imageobject role="fo">
+        <imagedata fileref="gnome-login-screen-stig.png" width="95%"/>
+       </imageobject>
+       <imageobject role="html">
+        <imagedata fileref="gnome-login-screen-stig.png" width="90%"/>
+       </imageobject>
+       <textobject role="description">
+        <phrase>&gnome; login screen on a &stiga;-compliant system</phrase>
+       </textobject>
+      </mediaobject>
+     </informalfigure>
     </example>
    </sect3>
   </sect2>
