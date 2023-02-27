@@ -133,11 +133,11 @@
   <sect1 xml:id="stig-openscap-sle15">
    <title>Applying a &stiga; profile</title>
    <para>
-    The contents delivered with the <citetitle>SCAP Security Guide</citetitle> can be used
+    The contents delivered with the <citetitle>&ssg;</citetitle> can be used
     to check or check and remediate systems according to a specific profile.
    </para>
    <para>
-    Regarding &stiga;, &suse; supports the following <citetitle>SCAP Security Guide</citetitle>
+    Regarding &stiga;, &suse; supports the following <citetitle>&ssg;</citetitle>
     profiles:
    </para>
    <itemizedlist>
@@ -154,7 +154,7 @@
    </itemizedlist>
    <para>
     The following sections give some examples on how to scan &sle; with <command>oscap</command> for &stiga; compliance
-    and how to perform a remediation. For more background on &openscap; and the <citetitle>SCAP Security Guide</citetitle>, see the article <link
+    and how to perform a remediation. For more background on &openscap; and the <citetitle>&ssg;</citetitle>, see the article <link
      xlink:href="https://documentation.suse.com/compliance/all/html/SLES-openscap/article-openscap.html">
      <citetitle>Hardening &sle; with &openscap;</citetitle></link>.
    </para>
@@ -197,7 +197,7 @@
      </callout>
      <callout arearefs="co-oscap-eval-ssg">
       <para>
-       Specifies the <literal>SCAP Security Guide</literal> policy file to use. In this example,
+       Specifies the <literal>&ssg;</literal> policy file to use. In this example,
        we use a policy file in <literal>DataStream</literal> format that applies to &sle;
        code 15. To list all available policies, run:
        <command>ls -1 /usr/share/xml/scap/ssg/content/ssg-*-ds.xml</command>. For
@@ -250,7 +250,7 @@
       </callout>
       <callout arearefs="co-oscap-remedy-fly-ssg">
        <para>
-        Specifies the <literal>SCAP Security Guide</literal> policy file to use. In this example,
+        Specifies the <literal>&ssg;</literal> policy file to use. In this example,
         we use a policy file in <literal>DataStream</literal> format that applies to &sle;
         code 15. To list all available policies, run:
         <command>ls -1 /usr/share/xml/scap/ssg/content/ssg-*-ds.xml</command>. For
@@ -304,7 +304,7 @@
         </callout>
         <callout arearefs="co-oscap-remedy-post1-ssg">
          <para>
-          Specifies the <literal>SCAP Security Guide</literal> policy file to use. In this example,
+          Specifies the <literal>&ssg;</literal> policy file to use. In this example,
           we use a policy file in <literal>DataStream</literal> format that applies to &sle;
           code 15. To list all available policies, run:
           <command>ls -1 /usr/share/xml/scap/ssg/content/ssg-*-ds.xml</command>. For
@@ -359,7 +359,7 @@
     <title>Remediating a &slea; system with Ansible</title>
     <para>
      You can use the Ansible playbooks provided by the
-     <literal>SCAP Security Guide</literal> to remediate a
+     <literal>&ssg;</literal> to remediate a
      local system.
     </para>
     <para>
@@ -372,7 +372,7 @@
      <title>Remediating &slea; 15 with Ansible</title>
      <para>
       For example, to remediate your system using the &stiga; Ansible playbook for &sle; 15
-      provided by the <literal>SCAP Security Guide</literal>, use the following command.
+      provided by the <literal>&ssg;</literal>, use the following command.
      </para>
      <warning>
       <title>System configuration changes</title>
@@ -523,7 +523,7 @@
       </callout>
       <callout arearefs="co-stigviewer-oscap-eval-ssg">
        <para>
-        Specifies the <literal>SCAP Security Guide</literal> policy file to use. In this example,
+        Specifies the <literal>&ssg;</literal> policy file to use. In this example,
         we use a policy file in <literal>DataStream</literal> format that applies to &sle;
         code 15.
        </para>
