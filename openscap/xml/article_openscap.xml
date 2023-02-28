@@ -34,7 +34,7 @@
   <abstract>
    <para>
     This document introduces you to auditing and hardening &sle; with &openscap; and
-    the <literal>SCAP Security Guide</literal>.
+    the <literal>&ssg;</literal>.
    </para>
   </abstract>
  </info>
@@ -73,9 +73,9 @@
   <title>Benefits</title>
 
   <para>
-   The &openscap; tools, together with the <literal>SCAP
-    Security Guide</literal>, can be used for auditing your system in an
-   automated way. The <literal>SCAP Security Guide</literal> implements
+   The &openscap; tools, together with the <literal>&ssg;</literal>,
+   can be used for auditing your system in an
+   automated way. The <literal>&ssg;</literal> implements
    security guidances recommended by respected authorities. These security
    guidances are transformed into a machine-readable format which then can
    be used by &openscap; and other tools.
@@ -141,12 +141,12 @@
  </sect1>
 
  <sect1 xml:id="openscap-ssg">
-  <title>SCAP Security Guide content and directories</title>
+  <title>&ssg; content and directories</title>
 
   <para>
-   &suse; ships the <literal>SCAP Security Guide</literal> (SSG) toolset in the
+   &suse; ships the <literal>&ssg;</literal> (SSG) toolset in the
    <package>scap-security-guide</package>  package. It contains the latest set
-   of security polices for Linux systems. The <literal>SCAP Security Guide</literal>
+   of security polices for Linux systems. The <literal>&ssg;</literal>
    is maintained upstream in the <link xlink:href="https://github.com/ComplianceAsCode/"
     >ComplianceAsCode</link> repository.
    </para>
@@ -254,8 +254,8 @@
  </sect1>
 
  <sect1 xml:id="openscap-ssg-profiles">
-  <title>SCAP Security Guide profiles</title>
-  <para>The <literal>SCAP Security Guide</literal> contains multiple
+  <title>&ssg; profiles</title>
+  <para>The <literal>&ssg;</literal> contains multiple
    profiles. The profiles applicable to &sle; are codestream-specific
    and differ between code 12 and code 15.</para>
   <para>They are maintained and hosted here:
@@ -374,7 +374,7 @@
    </listitem>-->
   </itemizedlist>
    <figure>
-    <title>SCAP Security Guide profiles for &sle; 15</title>
+    <title>&ssg; profiles for &sle; 15</title>
     <mediaobject>
      <imageobject role="fo">
       <imagedata fileref="openscap-ssg-static-html-sle15.png" width="95%"/>
@@ -383,7 +383,7 @@
       <imagedata fileref="openscap-ssg-static-html-sle15.png" width="90%"/>
      </imageobject>
      <textobject role="description">
-      <phrase>SCAP Security Guide profiles for &sle; 15</phrase>
+      <phrase>&ssg; profiles for &sle; 15</phrase>
      </textobject>
     </mediaobject>
    </figure>
@@ -461,7 +461,7 @@
      </listitem>-->
    </itemizedlist>
    <figure>
-    <title>SCAP Security Guide profiles for &sle; 12</title>
+    <title>&ssg; profiles for &sle; 12</title>
     <mediaobject>
      <imageobject role="fo">
       <imagedata fileref="openscap-ssg-static-html-sle12.png" width="95%"/>
@@ -470,7 +470,7 @@
       <imagedata fileref="openscap-ssg-static-html-sle12.png" width="90%"/>
      </imageobject>
      <textobject role="description">
-      <phrase>SCAP Security Guide profiles for &sle; 12</phrase>
+      <phrase>&ssg; profiles for &sle; 12</phrase>
      </textobject>
     </mediaobject>
    </figure>
@@ -482,7 +482,7 @@
   <sect2 xml:id="openscap-scan-targets">
    <title>Targets to scan</title>
   <para>
-   The content provided by the <literal>SCAP Security Guide</literal> can be used to scan the following targets
+   The content provided by the <literal>&ssg;</literal> can be used to scan the following targets
    for vulnerabilities:
   </para>
   <itemizedlist>
@@ -586,7 +586,7 @@
     </callout>
     <callout arearefs="co-oscap-eval-ssg">
      <para>
-      Specifies the <literal>SCAP Security Guide</literal> policy file to use. In this example,
+      Specifies the <literal>&ssg;</literal> policy file to use. In this example,
       we use a policy file in the <literal>DataStream</literal> format that applies to &sle;
       code 15. To list all available policies, run:
       <command>ls -1 /usr/share/xml/scap/ssg/content/ssg-*-ds.xml</command>. For
@@ -607,7 +607,7 @@
   <title>Vulnerability remediation</title>
   <!--taroth 2022-10-20: todo: oscap, scap-workbench, ansible playbooks, bash scripts-->
   <para>
-   The security policy profiles in the <literal>SCAP Security Guide</literal> can not only be used to scan a
+   The security policy profiles in the <literal>&ssg;</literal> can not only be used to scan a
    target system and to generate reports, but also to automatically apply fixes to the target system
    (<literal>remediation</literal>), if possible.
   </para>
@@ -729,7 +729,7 @@
      </callout>
      <callout arearefs="co-oscap-remedy-fly-ssg">
       <para>
-       Specifies the <literal>SCAP Security Guide</literal> policy file to use. In this example,
+       Specifies the <literal>&ssg;</literal> policy file to use. In this example,
        we use a policy file in the <literal>DataStream</literal> format that applies to &sle;
        code 15. To list all available policies, run:
        <command>ls -1 /usr/share/xml/scap/ssg/content/ssg-*-ds.xml</command>. For
@@ -782,7 +782,7 @@
       </callout>
       <callout arearefs="co-oscap-remedy-post1-ssg">
        <para>
-        Specifies the <literal>SCAP Security Guide</literal> policy file to use. In this example,
+        Specifies the <literal>&ssg;</literal> policy file to use. In this example,
         we use a policy file in the <literal>DataStream</literal> format that applies to &sle;
         code 15. To list all available policies, run:
         <command>ls -1 /usr/share/xml/scap/ssg/content/ssg-*-ds.xml</command>. For
@@ -871,7 +871,7 @@
      </callout>
      <callout arearefs="co-oscap-generate-ssg">
       <para>
-       Specifies the <literal>SCAP Security Guide</literal> policy file to use. In this example,
+       Specifies the <literal>&ssg;</literal> policy file to use. In this example,
        we use a policy file in the <literal>DataStream</literal> format that applies to &sle;
        code 15. To list all available policies, run:
        <command>ls -1 /usr/share/xml/scap/ssg/content/ssg-*-ds.xml</command>. For
@@ -887,7 +887,7 @@
    <title>Remediating a &slea; system with Ansible</title>
    <para>
     You can use the Ansible playbooks provided by the
-    <literal>SCAP Security Guide</literal> to remediate a
+    <literal>&ssg;</literal> to remediate a
     local system.
    </para>
    <para>
@@ -900,7 +900,7 @@
     <title>Remediating &slea; 15 with Ansible</title>
     <para>
      For example, to remediate your system using the &stiga; Ansible playbook for &sle; 15
-     provided by the <literal>SCAP Security Guide</literal>, use the following command.
+     provided by the <literal>&ssg;</literal>, use the following command.
     </para>
     <warning>
      <title>System configuration changes</title>
@@ -925,14 +925,13 @@
 
   <itemizedlist>
    <listitem>
-    <para>Check out the <literal>SCAP Security Guide</literal> pages online
+    <para>Check out the <literal>&ssg;</literal> pages online
      at <link
      xlink:href="https://www.open-scap.org/security-policies/scap-security-guide/"/>.
      </para>
    </listitem>
    <listitem>
-    <para>For general instructions on how to use the <literal>SCAP Security
-     Guide</literal>, see the README in <link
+    <para>For general instructions on how to use the <literal>&ssg;</literal>, see the README in <link
       xlink:href="https://github.com/ComplianceAsCode/content/"/>.
     </para>
    </listitem>
