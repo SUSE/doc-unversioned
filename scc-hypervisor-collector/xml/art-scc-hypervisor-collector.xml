@@ -88,56 +88,62 @@
       <filename>/var/lib/scchvc/.config/scc-hypervisor-collector</filename> and
       sends the collected data to SCC.
     </para>
+  </sect1>
+  <sect1 xml:id="scc-hypervisor-collector-configuration">
+    <title>Configuration</title>
 
-    <sect2 xml:id="scc-hypervisor-collector-configuration">
-      <title>Configuration</title>
+    <para>
+      You need to configure &scchvc; and specify the hypervisors that it needs
+      to query and the credentials required to upload the collected details to
+      SCC. By default, &scchvc; checks configuration files with the
+      <literal>.yaml</literal> or <literal>.yml</literal> suffix in the
+      <filename>/var/lib/scchvc/.config/scc-hypervisor-collector/</filename>
+      directory.
+    </para>
+
+    <tip>
       <para>
-        You need to configure &scchvc; and specify the hypervisors that it
-        needs to query and the credentials required to upload the collected
-        details to SCC. By default, &scchvc; checks configuration files with
-        the <literal>.yaml</literal> or <literal>.yml</literal> suffix in the
-        <filename>/var/lib/scchvc/.config/scc-hypervisor-collector/</filename>
-        directory.
+        To include YAML configuration files from a different directory, specify
+        it with the <option>--config-dir</option> option. To include a single
+        YAML configuration file, specify it with the <option>--config</option>
+        option.
       </para>
-      <tip>
-        <para>
-          To include YAML configuration files from a different directory,
-          specify it with the <option>--config-dir</option> option. To include
-          a single YAML configuration file, specify it with the
-          <option>--config</option> option.
-        </para>
-      </tip>
-      <para>
-        The configuration file must include the following top level entries:
-      </para>
-      <variablelist>
-        <varlistentry>
-          <term>credentials</term>
-          <listitem>
-            <para>
-              Includes a collection of credentials that are used by the tool.
-            </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>backends</term>
-          <listitem>
-            <para>
-              Lists hypervisors that are queried to obtain the relevant
-              details.
-            </para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-      <para>
-        You can verify if the configuration is correct by using the
-        <option>--check</option>.
-      </para>
-      <para>
-        The following example configuration file allows querying &libvirt; and
-        &vmware; hypervisors, and specifies credentials for uploading the data
-        to SCC:
-      </para>
+    </tip>
+
+    <para>
+      The configuration file must include the following top level entries:
+    </para>
+
+    <variablelist>
+      <varlistentry>
+        <term>credentials</term>
+        <listitem>
+          <para>
+            Includes a collection of credentials that are used by the tool.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>backends</term>
+        <listitem>
+          <para>
+            Lists hypervisors that are queried to obtain the relevant details.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+    <para>
+      You can verify if the configuration is correct by using the
+      <option>--check</option> option.
+    </para>
+
+    <para>
+      The following example configuration file allows querying &libvirt; and
+      &vmware; hypervisors, and specifies credentials for uploading the data to
+      SCC:
+    </para>
+
 <screen>
 credentials:
   scc:
@@ -156,29 +162,107 @@ backends:
     module: 'Libvirt'
     uri: 'qemu+ssh://someuser@kvmhost1.example.com/system'
 </screen>
-      <tip>
-        <para>
-          For more details about configuration options, refer to the
-          corresponding man page <command>man 5
-          scc-hypervisor-collector</command>.
-        </para>
-      </tip>
-    </sect2>
 
-    <sect2 xml:id="scc-hypervisor-collector-service">
-      <title>&scchvc; &systemd; services</title>
+    <tip>
       <para>
-        The
-        <systemitem
-        class="daemon">scc-hypervisor-collector.service</systemitem>
-        and
-        <systemitem class="daemon">scc-hypervisor-collector.timer</systemitem>
-        services that take care of running the &scchvc; command regularly are
-        not enabled by default. To enable them, run the following command:
+        For more details about configuration options, refer to the
+        corresponding man page <command>man 5
+        scc-hypervisor-collector</command>.
       </para>
+    </tip>
+
+    <sect2 xml:id="scc-hypervisor-collector-separate-phases">
+      <title>Separate collection and upload phases</title>
+      <para>
+        You can separate the collection and upload phases by manually running
+        the &scchvc; command:
+      </para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            The <option>--output</option> option lets you specify the path to a
+            file to store the YAML formatted results of querying the
+            hypervisors. This option disables uploading results to the SCC.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            The <option>--input</option> option lets you specify the path to a
+            file that contains previously collected YAML formatted results of
+            querying hypervisors. These results will be uploaded to SCC instead
+            of querying the current state of hypervisors.
+          </para>
+        </listitem>
+      </itemizedlist>
+      <para>
+        This separation helps to fullfil the following scenarios:
+      </para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            The system that collects hypervisor data has no access to the
+            internet and cannot upload the results to SCC.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            You want to sanitize the collected data before they are uploaded to
+            SCC, for example, change host names or virtual machine names. Note
+            that some values, such as UUID identifiers, cannot be changed.
+          </para>
+        </listitem>
+      </itemizedlist>
+    </sect2>
+  </sect1>
+  <sect1 xml:id="scc-hypervisor-collector-service">
+    <title>&scchvc; &systemd; services</title>
+
+    <para>
+      The
+      <systemitem
+        class="daemon">scc-hypervisor-collector.service</systemitem>
+      and
+      <systemitem class="daemon">scc-hypervisor-collector.timer</systemitem>
+      services that take care of running the &scchvc; command regularly are not
+      enabled by default. To enable them, run the following command:
+    </para>
+
 <screen>
 &prompt.sudo;<command>systemctl enable scc-hypervisor-collector.service</command>
 &prompt.sudo;<command>systemctl enable scc-hypervisor-collector.timer</command>
+</screen>
+
+    <sect2 xml:id="scc-hypervisor-collector-service-custom">
+      <title>Customizing &systemd; unit files</title>
+      <para>
+        To modify the default behavior of the collector's &systemd; unit files,
+        create &systemd; unit <emphasis>drop-in</emphasis> files to override
+        it.
+      </para>
+      <para>
+        To change the user under which the
+        <systemitem
+        class="daemon">scc-hypervisor-collector.service</systemitem>
+        service runs the <command>scc-hypervisor-collector</command> command,
+        create a drop-in snippet with the following content:
+      </para>
+<screen>
+[Service]
+User=<replaceable>EXAMPLE_USER</replaceable>
+Group=<replaceable>EXAMPLE_GROUP</replaceable>
+</screen>
+      <para>
+        To change the timer to trigger the
+        <systemitem
+  class="daemon">scc-hypervisor-collector.service</systemitem>
+        service to a weekly cadence with a randomized skew of up to 6 hours
+        rather than 15 minutes, create a drop-in snippet with the following
+        content:
+      </para>
+<screen>
+[Timer]
+OnCalendar=weekly
+RandomizedDelaySec=6h
 </screen>
     </sect2>
   </sect1>
@@ -220,6 +304,13 @@ backends:
         <para>
           Detailed information about &scchvc; &systemd; units is described in
           the man page <command>man 8 scc-hypervisor-collector</command>.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Creating &systemd; drop-in files is described in the man page
+          <command>man 5 systemd.unit</command>, search for the
+          <literal>Overriding vendor settings</literal> title.
         </para>
       </listitem>
       <listitem>
