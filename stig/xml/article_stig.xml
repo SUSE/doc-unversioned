@@ -107,7 +107,6 @@
       For details, see <link
        xlink:href="https://documentation.suse.com/sles/15-SP4/html/SLES-all/cha-install.html#sec-yast-install-proposal-security-profile"><citetitle>&sles;
        &deploy;</citetitle></link>.
-      <remark>taroth 2023-02-16: ToDo: add link to AutoYaST Guide as soon as the PR has been merged</remark>
      </para>
     </listitem>
    </varlistentry>
@@ -554,7 +553,6 @@
      <guimenu>Help</guimenu><guimenu>View Readme</guimenu></menuchoice>.
    </para>
   </sect2>
-  <!--taroth 2023-02-16: document how to create a checklist?-->
  </sect1>
  <xi:include href="common_copyright_quick.xml"/>
  <xi:include href="common_license_gfdl1.2.xml"/>
