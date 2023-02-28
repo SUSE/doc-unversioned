@@ -61,15 +61,15 @@
    The <orgname>&disa; (&disaa;)</orgname> organization, which is a parent
    agency of the United States <orgname>Department of Defense (DoD)</orgname>,
    approves and publishes <systemitem>&stig;s (&stiga;s)</systemitem>
-   updates them every 90 days.</para>
+   and updates them every 90 days.</para>
    <para>
-   &stiga;s are a set of rules and best practices on how to configure systems
+   &stiga;s are a set of rules and best practices for configuring systems
    to defend against potential threats. Each implementation guide is tailored
    to a specific product and version, defining a configuration standard
    with cybersecurity requirements for this product and version.
    </para>
    <para>
-   Those requirements need to be met when this system connects to a DoD network.
+   These requirements must be met when the system connects to a DoD network.
    But &stig;s are also used outside of the government sector.
   </para>
  </sect1>
@@ -81,7 +81,7 @@
    are to minimize attacks and to prevent system access (both physically and
    via a network) and to define processes for maintenance (applying software updates)
    and vulnerability patching. &stig;s can also cover configuration settings,
-   for example for operating systems, routers, databases, firewalls, domain name
+   for example, for operating systems, routers, databases, firewalls, domain name
    servers and switches.
   </para>
   <para>
@@ -104,7 +104,7 @@
       a full scan or scan and remediation, respectively, at first
       boot of the system.</para>
      <para>
-      For details, see the <link
+      For details, see <link
        xlink:href="https://documentation.suse.com/sles/15-SP4/html/SLES-all/cha-install.html#sec-yast-install-proposal-security-profile"><citetitle>&sles;
        &deploy;</citetitle></link>.
       <remark>taroth 2023-02-16: ToDo: add link to AutoYaST Guide as soon as the PR has been merged</remark>
@@ -116,7 +116,7 @@
      <listitem>
       <para>You can scan or remediate an existing system to bring
        it to a compliant state. &openscap; can be used to check and remediate
-       local systems as well as on remote systems.
+       local systems as well as remote systems.
       </para>
      </listitem>
     </varlistentry>
@@ -198,8 +198,8 @@
      <callout arearefs="co-oscap-eval-ssg">
       <para>
        Specifies the <literal>&ssg;</literal> policy file to use. In this example,
-       we use a policy file in <literal>DataStream</literal> format that applies to &sle;
-       code 15. To list all available policies, run:
+       we use a policy file in the <literal>DataStream</literal> format that
+       applies to &sle; code 15. To list all available policies, run:
        <command>ls -1 /usr/share/xml/scap/ssg/content/ssg-*-ds.xml</command>. For
        more information about a particular policy, run
        <command>oscap info</command> on the file.
@@ -251,8 +251,8 @@
       <callout arearefs="co-oscap-remedy-fly-ssg">
        <para>
         Specifies the <literal>&ssg;</literal> policy file to use. In this example,
-        we use a policy file in <literal>DataStream</literal> format that applies to &sle;
-        code 15. To list all available policies, run:
+        we use a policy file in the <literal>DataStream</literal> format that
+        applies to &sle; code 15. To list all available policies, run:
         <command>ls -1 /usr/share/xml/scap/ssg/content/ssg-*-ds.xml</command>. For
         more information about a particular policy, run
         <command>oscap info</command> on the file.
@@ -266,8 +266,8 @@
       <emphasis>after</emphasis> applying the remediation. In the second <tag class="element">TestResult</tag>
       element, if the result of a rule is <literal>fixed</literal>, this means that the fix was successfully
       applied, and this rule now passes evaluation. If the result of a rule is
-      <literal>error</literal>, this means that remediation for this rule was
-      not successful, and the rule still does not pass evaluation.
+      <literal>error</literal>, this means that the remediation for this rule
+      was not successful, and the rule still does not pass evaluation.
      </para>
     </example>
     </sect3>
@@ -305,8 +305,8 @@
         <callout arearefs="co-oscap-remedy-post1-ssg">
          <para>
           Specifies the <literal>&ssg;</literal> policy file to use. In this example,
-          we use a policy file in <literal>DataStream</literal> format that applies to &sle;
-          code 15. To list all available policies, run:
+          we use a policy file in the <literal>DataStream</literal> format that
+          applies to &sle; code 15. To list all available policies, run:
           <command>ls -1 /usr/share/xml/scap/ssg/content/ssg-*-ds.xml</command>. For
           more information about a particular policy, run
           <command>oscap info</command> on the file.
@@ -348,7 +348,7 @@
         creates a new <tag class="element">xccdf:TestResult</tag> element in the file.
         The new element is based on the previous one and inherits all the data.
         The newly created <tag class="element">xccdf:TestResult</tag> element differs
-        only in the <tag class="element">rule-result</tag> elements which had failed
+        only in the <tag class="element">rule-result</tag> elements which failed
         in the first run. Only for those is the remediation executed.
        </para>
       </step>
@@ -409,7 +409,7 @@
  <sect1 xml:id="stig-viewer">
   <title>Working with checklists in &stigviewer;</title>
   <para>
-   <guimenu>&stigviewer;</guimenu> is a java-based graphical user
+   <guimenu>&stigviewer;</guimenu> is a Java-based graphical user
    interface to open content and create checklists for managing the &stiga;
    security settings on your system or network.
   </para>
@@ -417,7 +417,7 @@
    <title>Installing &stigviewer;</title>
    <para>
     The <guimenu>&stigviewer;</guimenu> application is available as
-    ZIP archive from <link
+    a ZIP archive from <link
      xlink:href="https://public.cyber.mil/stigs/stig-viewing-tools/"/>.
     Download the Linux version of the <guimenu>&stigviewer;</guimenu>.
    </para>
@@ -491,10 +491,10 @@
     </step>
    </procedure>
    <procedure>
-    <title>Importing from an XCCDF XML</title>
+    <title>Importing from XCCDF XML</title>
     <para>
-     Use the <command>oscap</command> command line tool to generate
-     a XCCDF XML file that can be opened with
+     Use the <command>oscap</command> command-line tool to generate
+     an XCCDF XML file that can be opened with
      <guimenu>&stigviewer;</guimenu>.
     </para>
     <step>
@@ -524,8 +524,8 @@
       <callout arearefs="co-stigviewer-oscap-eval-ssg">
        <para>
         Specifies the <literal>&ssg;</literal> policy file to use. In this example,
-        we use a policy file in <literal>DataStream</literal> format that applies to &sle;
-        code 15.
+        we use a policy file in the <literal>DataStream</literal> format that
+        applies to &sle; code 15.
        </para>
       </callout>
      </calloutlist>
@@ -548,7 +548,7 @@
     For more information about <guimenu>&stigviewer;</guimenu>, refer to the comprehensive
     <citetitle>STIG Viewer 2.x User Guide</citetitle>, which is available
     for download at <link
-     xlink:href="https://public.cyber.mil/stigs/downloads/"/> or the README
+     xlink:href="https://public.cyber.mil/stigs/downloads/"/>, or the README
     file that you can access from within <guimenu>&stigviewer;</guimenu>
     by selecting <menuchoice>
      <guimenu>Help</guimenu><guimenu>View Readme</guimenu></menuchoice>.
