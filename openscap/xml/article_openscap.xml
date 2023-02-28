@@ -883,6 +883,41 @@
     </example>
     </sect3>
   </sect2>
+  <sect2 xml:id="openscap-remediate-sle-ansible">
+   <title>Remediating a &slea; system with Ansible</title>
+   <para>
+    You can use the Ansible playbooks provided by the
+    <literal>SCAP Security Guide</literal> to remediate a
+    local system.
+   </para>
+   <para>
+    To install Ansible, register your &sle; system and enable
+    the <literal>SUSE Package Hub</literal> extension.
+    Install the <package>ansible</package> package with
+    <command>sudo zypper in ansible</command>.
+   </para>
+   <example xml:id="ex-remediate-sle15-ansible">
+    <title>Remediating &slea; 15 with Ansible</title>
+    <para>
+     For example, to remediate your system using the &stiga; Ansible playbook for &sle; 15
+     provided by the <literal>SCAP Security Guide</literal>, use the following command.
+    </para>
+    <warning>
+     <title>System configuration changes</title>
+     <para>
+      The following command will alter the configuration of
+      your system immediately. Make sure to test this thoroughly
+      in a non-production system first.
+     </para>
+    </warning>
+    <screen>&prompt.sudo;ansible-playbook -i "localhost," -c local \
+/usr/share/scap-security-guide/ansible/sle15-playbook-stig.yml</screen>
+    <para>
+     After the playbook has finished, you will be prompted to log in to your
+     system, which is now compliant to the chosen policy.
+    </para>
+   </example>
+  </sect2>
  </sect1>
 
  <sect1 xml:id="oscap-related-topics">
