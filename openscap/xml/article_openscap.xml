@@ -587,7 +587,7 @@
     <callout arearefs="co-oscap-eval-ssg">
      <para>
       Specifies the <literal>SCAP Security Guide</literal> policy file to use. In this example,
-      we use a policy file in <literal>DataStream</literal> format that applies to &sle;
+      we use a policy file in the <literal>DataStream</literal> format that applies to &sle;
       code 15. To list all available policies, run:
       <command>ls -1 /usr/share/xml/scap/ssg/content/ssg-*-ds.xml</command>. For
       more information about a particular policy, run
@@ -730,7 +730,7 @@
      <callout arearefs="co-oscap-remedy-fly-ssg">
       <para>
        Specifies the <literal>SCAP Security Guide</literal> policy file to use. In this example,
-       we use a policy file in <literal>DataStream</literal> format that applies to &sle;
+       we use a policy file in the <literal>DataStream</literal> format that applies to &sle;
        code 15. To list all available policies, run:
        <command>ls -1 /usr/share/xml/scap/ssg/content/ssg-*-ds.xml</command>. For
        more information about a particular policy, run
@@ -745,7 +745,7 @@
      <emphasis>after</emphasis> applying the remediation. In the second <tag class="element">TestResult</tag>
      element, if the result of a rule is <literal>fixed</literal>, this means that the fix was successfully
      applied, and this rule now passes evaluation. If the result of a rule is
-     <literal>error</literal>, this means that remediation for this rule was
+     <literal>error</literal>, this means that the remediation for this rule was
      not successful, and the rule still does not pass evaluation.
     </para>
    </example>
@@ -783,7 +783,7 @@
       <callout arearefs="co-oscap-remedy-post1-ssg">
        <para>
         Specifies the <literal>SCAP Security Guide</literal> policy file to use. In this example,
-        we use a policy file in <literal>DataStream</literal> format that applies to &sle;
+        we use a policy file in the <literal>DataStream</literal> format that applies to &sle;
         code 15. To list all available policies, run:
         <command>ls -1 /usr/share/xml/scap/ssg/content/ssg-*-ds.xml</command>. For
         more information about a particular policy, run
@@ -826,7 +826,7 @@
       creates a new <tag class="element">xccdf:TestResult</tag> element in the file.
       The new element is based on the previous one and inherits all the data.
       The newly created <tag class="element">xccdf:TestResult</tag> element differs
-      only in the <tag class="element">rule-result</tag> elements which had failed
+      only in the <tag class="element">rule-result</tag> elements which failed
       in the first run. Only for those is the remediation executed.
      </para>
     </step>
@@ -872,7 +872,7 @@
      <callout arearefs="co-oscap-generate-ssg">
       <para>
        Specifies the <literal>SCAP Security Guide</literal> policy file to use. In this example,
-       we use a policy file in <literal>DataStream</literal> format that applies to &sle;
+       we use a policy file in the <literal>DataStream</literal> format that applies to &sle;
        code 15. To list all available policies, run:
        <command>ls -1 /usr/share/xml/scap/ssg/content/ssg-*-ds.xml</command>. For
        more information about a particular policy, run
