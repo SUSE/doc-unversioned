@@ -236,3 +236,7 @@
 :zseries: IBM Z
 :zypper: Zypper
 :rh: Red Hat
+:skopeo: skopeo
+:distribution: Distribution
+:helm: Helm
+:sle-containers-module: {slea} Container Module

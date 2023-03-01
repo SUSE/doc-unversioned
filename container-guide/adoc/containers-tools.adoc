@@ -47,10 +47,10 @@ For information on installing and using {buildah}, refer to <<cha-buildah-overvi
 [[sec-tools-skopeo]]
 === {skopeo}
 
-https://github.com/containers/skopeo[{skopeo}] is a command line utility for coping, inspecting,
+https://github.com/containers/skopeo[{skopeo}] is a command-line utility for coping, inspecting,
 deleting and  signing on container images and image repositories. {skopeo} is able to inspect
 containers and repositories on remote or local container registries. {skopeo} can copy container
-images between various storage mechanisms. {skopeo} is part of the `Basesystem Module` of SLES.
+images between different storage mechanisms. {skopeo} is part of the `Basesystem Module` of SLES.
 
 [[sec-tools-helm]]
 === {helm}
@@ -58,7 +58,7 @@ images between various storage mechanisms. {skopeo} is part of the `Basesystem M
 https://helm.sh[{helm}] is the Kubernetes Package Manager, it's the de-facto standard to deploy
 containerized applications on Kubernetes clusters, via `charts`.
 It is able to install/update/uninstall applications on a single or multiple containers and the
-associated resources, liek configuration, storage volumes, etc.
+associated resources, like configuration, storage volumes, etc.
 For instance, It is used for instance to deploy our RMT server, refers to our
 https://documentation.suse.com/sles/15-SP4/single-html/SLES-rmt/index.html#sec-rmt-deploy-kubernetes[RMT documentation]
 for more information.
