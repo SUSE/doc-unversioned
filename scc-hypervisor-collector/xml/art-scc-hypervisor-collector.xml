@@ -49,20 +49,14 @@
     <title>Requirements</title>
 
     <para>
-      To collect hypervisor data and upload them to SCC, you need to:
+      To collect hypervisor data and upload them to SCC, you need:
     </para>
 
     <itemizedlist>
       <listitem>
         <para>
-          Run a supported and registered SLE-based host with all update patches
-          applied.
-        </para>
-      </listitem>
-      <listitem>
-        <para>
-          Configure a &vmhost; with a supported hypervisor that hosts one or
-          more supported &vmguest;s.
+          An existing &vmhost; running a supported hypervisor&mdash;&vmware; or
+          &libvirt;&mdash;.
         </para>
       </listitem>
       <listitem>
@@ -77,17 +71,53 @@
     <title>How does &scchvc; work?</title>
 
     <para>
-      The
-      <systemitem class="daemon">scc-hypervisor-collector.timer</systemitem>
-      &systemd; timer triggers the <systemitem class="daemon">
-      scc-hypervisor-collector.service</systemitem> &systemd; service on a
-      daily basis. This service runs the &scchvc; command under a restricted
-      <literal>scchvc</literal> user account and collects detailed data about
-      the specified hypervisors. It uses the credentials specified in the
-      configuration file
-      <filename>/var/lib/scchvc/.config/scc-hypervisor-collector</filename> and
-      sends the collected data to SCC.
+      The &scchvc; command collects details about supported hypervisors on the
+      host. It uses credentials specified in the configuration file to
+      correlate discovered data about &vmhost;s and &vmguest;s with system
+      registrations at SCC.
     </para>
+
+    <para>
+      You can run &scchvc; either manually, or enable a &systemd; timer to run
+      it regularly.
+    </para>
+  </sect1>
+  <sect1 xml:id="scc-hypervisor-collector-data">
+    <title>Collected data</title>
+
+    <para>
+      &scchvc; collects the following data:
+    </para>
+
+    <itemizedlist>
+      <listitem>
+        <para>
+          Basic hardware capabilities, such as RAM and CPUs, of the hypervisor
+          host
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Type of the hypervisor&mdash;&vmware; or &libvirt;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          The system UUID of a &libvirt; host
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          The system UUIDs of the managed virtual machines
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          The state of each discovered virtual machine&mdash;whether it is
+          running or stopped/shutoff.
+        </para>
+      </listitem>
+    </itemizedlist>
   </sect1>
   <sect1 xml:id="scc-hypervisor-collector-configuration">
     <title>Configuration</title>
@@ -95,8 +125,10 @@
     <para>
       You need to configure &scchvc; and specify the hypervisors that it needs
       to query and the credentials required to upload the collected details to
-      SCC. By default, &scchvc; checks configuration files with the
-      <literal>.yaml</literal> or <literal>.yml</literal> suffix in the
+      SCC. By default, &scchvc; runs under a restricted
+      <literal>scchvc</literal> user account and checks configuration files
+      with the <literal>.yaml</literal> or <literal>.yml</literal> suffix in
+      the
       <filename>/var/lib/scchvc/.config/scc-hypervisor-collector/</filename>
       directory.
     </para>
@@ -189,7 +221,7 @@ backends:
           <para>
             The <option>--input</option> option lets you specify the path to a
             file that contains previously collected YAML formatted results of
-            querying hypervisors. These results will be uploaded to SCC instead
+            querying hypervisors. These results is be uploaded to SCC instead
             of querying the current state of hypervisors.
           </para>
         </listitem>
@@ -208,23 +240,39 @@ backends:
           <para>
             You want to sanitize the collected data before they are uploaded to
             SCC, for example, change host names or virtual machine names. Note
-            that some values, such as UUID identifiers, cannot be changed.
+            that certain values, such as UUID identifiers, cannot be changed.
           </para>
         </listitem>
       </itemizedlist>
     </sect2>
   </sect1>
-  <sect1 xml:id="scc-hypervisor-collector-service">
+  <sect1 xml:id="scc-hypervisor-collector-">
     <title>&scchvc; &systemd; services</title>
 
     <para>
       The
-      <systemitem
-        class="daemon">scc-hypervisor-collector.service</systemitem>
-      and
       <systemitem class="daemon">scc-hypervisor-collector.timer</systemitem>
-      services that take care of running the &scchvc; command regularly are not
-      enabled by default. To enable them, run the following command:
+      timer triggers the
+      <systemitem
+      class="daemon">scc-hypervisor-collector.service</systemitem>
+      service that runs the &scchvc; command on a daily basis. These &systemd;
+      units are disabled by default.
+    </para>
+
+    <tip>
+      <title>Test &scchvc; manually</title>
+      <para>
+        Before enabling
+        <systemitem class="daemon">scc-hypervisor-collector.timer</systemitem>,
+        run &scchvc; manually via the <literal>scchvc</literal> user account,
+        then verify that it runs correctly when triggered by
+        <systemitem class="daemon">scc-hypervisor-collector.service</systemitem>.
+        When the result is satisfactory, consider enabling the timer.
+      </para>
+    </tip>
+
+    <para>
+      To enable the collector's service and timer, run the following commands:
     </para>
 
 <screen>
@@ -253,8 +301,7 @@ Group=<replaceable>EXAMPLE_GROUP</replaceable>
 </screen>
       <para>
         To change the timer to trigger the
-        <systemitem
-  class="daemon">scc-hypervisor-collector.service</systemitem>
+        <systemitem class="daemon">scc-hypervisor-collector.service</systemitem>
         service to a weekly cadence with a randomized skew of up to 6 hours
         rather than 15 minutes, create a drop-in snippet with the following
         content:
