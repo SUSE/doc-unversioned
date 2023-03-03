@@ -71,10 +71,14 @@
     <title>How does &scchvc; work?</title>
 
     <para>
-      The &scchvc; command collects details about supported hypervisors on the
-      host. It uses credentials specified in the configuration file to
-      correlate discovered data about &vmhost;s and &vmguest;s with system
-      registrations at SCC.
+      The &scchvc; command collects details (see
+      <xref linkend="scc-hypervisor-collector-data"/>) about the hypervisor
+      solutions it has been configured to collect data from.
+    </para>
+
+    <para>
+      The collected data, when uploaded to SCC, are correlated with existing
+      SCC registrations and subscription entitlements.
     </para>
 
     <para>
@@ -92,6 +96,18 @@
     <itemizedlist>
       <listitem>
         <para>
+          The system UUID of a &libvirt; host. It is the primary piece of
+          information used to correlate hypervisor hosts and virtual machines
+          to existing SCC registrations.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          The system UUIDs of the managed virtual machines
+        </para>
+      </listitem>
+      <listitem>
+        <para>
           Basic hardware capabilities, such as RAM and CPUs, of the hypervisor
           host
         </para>
@@ -99,16 +115,6 @@
       <listitem>
         <para>
           Type of the hypervisor&mdash;&vmware; or &libvirt;
-        </para>
-      </listitem>
-      <listitem>
-        <para>
-          The system UUID of a &libvirt; host
-        </para>
-      </listitem>
-      <listitem>
-        <para>
-          The system UUIDs of the managed virtual machines
         </para>
       </listitem>
       <listitem>
@@ -125,10 +131,8 @@
     <para>
       You need to configure &scchvc; and specify the hypervisors that it needs
       to query and the credentials required to upload the collected details to
-      SCC. By default, &scchvc; runs under a restricted
-      <literal>scchvc</literal> user account and checks configuration files
-      with the <literal>.yaml</literal> or <literal>.yml</literal> suffix in
-      the
+      SCC. &scchvc; checks configuration files with the
+      <literal>.yaml</literal> or <literal>.yml</literal> suffix in the
       <filename>/var/lib/scchvc/.config/scc-hypervisor-collector/</filename>
       directory.
     </para>
@@ -143,6 +147,14 @@
     </tip>
 
     <para>
+      &scchvc; can be run as any user with appropriate configuration settings.
+      If you intent to use the &systemd; integration (see
+      <xref linkend="scc-hypervisor-collector-service"/>) to run it
+      automatically on a regular basis, configure it to run under the default
+      restricted <literal>scchvc</literal> user account.
+    </para>
+
+    <para>
       The configuration file must include the following top level entries:
     </para>
 
@@ -153,6 +165,14 @@
           <para>
             Includes a collection of credentials that are used by the tool.
           </para>
+          <tip>
+            <para>
+              Provided credentials only need the privileges to retrieve the
+              specified details from hypervisor solution. It is highly
+              recommended that they do not have capabilities to modify the
+              state of the hypervisor.
+            </para>
+          </tip>
         </listitem>
       </varlistentry>
       <varlistentry>
@@ -232,8 +252,12 @@ backends:
       <itemizedlist>
         <listitem>
           <para>
-            The system that collects hypervisor data has no access to the
-            internet and cannot upload the results to SCC.
+            Customer systems that have the necessary access to be able to
+            collect the data from the configured hypervisor systems may not
+            have access to the internet to be able to upload the collected data
+            to SCC. Conversely, systems that have internet access to upload
+            data to the internet may not have sufficient access to be able to
+            collect the data from the customer hypervisor solutions.
           </para>
         </listitem>
         <listitem>
@@ -246,7 +270,7 @@ backends:
       </itemizedlist>
     </sect2>
   </sect1>
-  <sect1 xml:id="scc-hypervisor-collector-">
+  <sect1 xml:id="scc-hypervisor-collector-service">
     <title>&scchvc; &systemd; services</title>
 
     <para>
@@ -285,7 +309,8 @@ backends:
       <para>
         To modify the default behavior of the collector's &systemd; unit files,
         create &systemd; unit <emphasis>drop-in</emphasis> files to override
-        it.
+        the default behavior, using the <command>systemctl edit</command>
+        mechanism.
       </para>
       <para>
         To change the user under which the
