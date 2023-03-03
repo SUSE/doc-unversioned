@@ -362,10 +362,10 @@
      local system.
     </para>
     <para>
-     To install Ansible, register your &sle; system and enable
-     the <literal>SUSE Package Hub</literal> extension.
-     Install the <package>ansible</package> package with
-     <command>sudo zypper in ansible</command>.
+     The <package>ansible</package> package is available from
+     <literal>SUSE Package Hub</literal>. Register your &sle; system
+     and enable the <literal>SUSE Package Hub</literal> extension.
+     Then install the package with <command>sudo zypper in ansible</command>.
     </para>
     <example xml:id="ex-remediate-sle15-ansible">
      <title>Remediating &slea; 15 with Ansible</title>
