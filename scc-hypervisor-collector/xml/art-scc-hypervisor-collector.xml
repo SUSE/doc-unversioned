@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook50-profile.xsl"
+ type="text/xml"
+ title="Profiling step"?>
+<!DOCTYPE article
+[
+  <!ENTITY % entities SYSTEM "generic-entities.ent">
+    %entities;
+  <!ENTITY productnamex "<phrase xmlns='http://docbook.org/ns/docbook' os='sles;sled;osuse'>&productname;</phrase><phrase xmlns='http://docbook.org/ns/docbook' os='article'>&sls;</phrase>">
+   <!ENTITY productnumberx "<phrase xmlns='http://docbook.org/ns/docbook' os='sles;sled;osuse'>&productnumber;</phrase>">
+]>
+<article xml:id="article-scc-hypervisor-collector"
+         xmlns="http://docbook.org/ns/docbook"
+         version="5.0"
+         xml:lang="en"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Hypervisor details in &scc;</title>
+  <titleabbrev>Hypervisor details in &scc;</titleabbrev>
+  <info><productname>&productnamex;</productname>
+    <productnumber>&productnumberx;</productnumber><date>
+<?dbtimestamp format="B d, Y" ?></date>
+    <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
+      <dm:bugtracker>
+        <dm:url>https://bugzilla.suse.com/enter_bug.cgi</dm:url>
+        <dm:component>Documentation</dm:component>
+        <dm:assignee>tbazant@suse.com</dm:assignee>
+      </dm:bugtracker>
+      <dm:editurl>https://github.com/SUSE/doc-unversioned/blob/main/xml/</dm:editurl>
+      <dm:translation>yes</dm:translation>
+    </dm:docmanager>
+    <abstract>
+      <para>
+        This article describes how to provide customers with details about the
+        hypervisors they use. The collected data is available under the
+        customers' &scc; (SCC) account.
+      </para>
+    </abstract>
+  </info>
+  <sect1 xml:id="scc-hypervisor-collector-whatis">
+    <title>What is &scchvc;?</title>
+
+    <para>
+      &scchvc; is a command-line tool that collects details about customer
+      hypervisor solutions and uploads them to SCC.
+    </para>
+  </sect1>
+  <sect1 xml:id="scc-hypervisor-collector-requirements">
+    <title>Requirements</title>
+
+    <para>
+      To collect hypervisor data and upload it to SCC, you need:
+    </para>
+
+    <itemizedlist>
+      <listitem>
+        <para>
+          An existing &vmhost; running a supported hypervisor&mdash;&vmware; or
+          &libvirt;.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          To install the <package>scc-hypervisor-collector</package> package and
+          configure the collector to match your environment.
+        </para>
+      </listitem>
+    </itemizedlist>
+  </sect1>
+  <sect1 xml:id="scc-hypervisor-collector-how-it-works">
+    <title>How does &scchvc; work?</title>
+
+    <para>
+      The &scchvc; command collects details (see
+      <xref linkend="scc-hypervisor-collector-data"/>) about the hypervisor
+      solutions it has been configured to collect data from.
+    </para>
+
+    <para>
+      The collected data, when uploaded to SCC, is correlated with existing
+      SCC registrations and subscription entitlements.
+    </para>
+
+    <para>
+      You can either run &scchvc; manually or enable a &systemd; timer to run
+      it regularly.
+    </para>
+  </sect1>
+  <sect1 xml:id="scc-hypervisor-collector-data">
+    <title>Collected data</title>
+
+    <para>
+      &scchvc; collects the following data:
+    </para>
+
+    <itemizedlist>
+      <listitem>
+        <para>
+          The system UUID of a &libvirt; host&mdash;it is the primary piece of
+          information used to correlate hypervisor hosts and virtual machines
+          with existing SCC registrations
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          The system UUIDs of the managed virtual machines
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Basic hardware capabilities, such as RAM and CPUs, of the hypervisor
+          host
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Type of the hypervisor&mdash;&vmware; or &libvirt;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          The state of each discovered virtual machine&mdash;whether it is
+          running or stopped/shut off
+        </para>
+      </listitem>
+    </itemizedlist>
+  </sect1>
+  <sect1 xml:id="scc-hypervisor-collector-configuration">
+    <title>Configuration</title>
+
+    <para>
+      You need to configure &scchvc; and specify the hypervisors that it needs
+      to query, and the credentials required to upload the collected details to
+      SCC. &scchvc; checks configuration files with the
+      <literal>.yaml</literal> or <literal>.yml</literal> suffix in the
+      <filename>/var/lib/scchvc/.config/scc-hypervisor-collector/</filename>
+      directory.
+    </para>
+
+    <tip>
+      <para>
+        To include YAML configuration files from a different directory, specify
+        it with the <option>--config-dir</option> option. To include a single
+        YAML configuration file, specify it with the <option>--config</option>
+        option.
+      </para>
+    </tip>
+
+    <para>
+      &scchvc; can be run as any user with appropriate configuration settings.
+      If you intend to use the &systemd; integration (see
+      <xref linkend="scc-hypervisor-collector-service"/>) to run it
+      automatically on a regular basis, configure it to run under the default
+      restricted <literal>scchvc</literal> user account.
+    </para>
+
+    <para>
+      The configuration file must include the following top-level entries:
+    </para>
+
+    <variablelist>
+      <varlistentry>
+        <term>credentials</term>
+        <listitem>
+          <para>
+            Includes a collection of credentials that are used by the tool.
+          </para>
+          <tip>
+            <para>
+              The provided credentials only need the privileges to retrieve the
+              specified details from the hypervisor solution. It is highly
+              recommended that they do not have capabilities to modify the
+              state of the hypervisor.
+            </para>
+          </tip>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>backends</term>
+        <listitem>
+          <para>
+            Lists hypervisors that are queried to obtain the relevant details.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+    <para>
+      You can verify if the configuration is correct by using the
+      <option>--check</option> option.
+    </para>
+
+    <para>
+      The following example configuration file allows querying &libvirt; and
+      &vmware; hypervisors, and specifies credentials for uploading the data to
+      SCC:
+    </para>
+
+<screen>
+credentials:
+  scc:
+    username: 'SCC_USERNAME'
+    password: 'SCC_PASSWORD'
+
+backends:
+  - id: 'vcenter1'
+    module: 'VMware'
+    hostname: 'dc1-vcenter.example.com'
+    port: 443
+    username: 'VC1_USERNAME'
+    password: 'VC1_PASSWORD'
+
+  - id: 'kvmhost1'
+    module: 'Libvirt'
+    uri: 'qemu+ssh://someuser@kvmhost1.example.com/system'
+</screen>
+
+    <tip>
+      <para>
+        For more details about configuration options, refer to the
+        corresponding man page <command>man 5
+        scc-hypervisor-collector</command>.
+      </para>
+    </tip>
+
+    <sect2 xml:id="scc-hypervisor-collector-separate-phases">
+      <title>Separate collection and upload phases</title>
+      <para>
+        You can separate the collection and upload phases by manually running
+        the &scchvc; command:
+      </para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            The <option>--output</option> option lets you specify the path to a
+            file to store the results of querying the hypervisors in the YAML
+            format. This option disables uploading results to the SCC.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            The <option>--input</option> option lets you specify the path to the
+            file that contains the previously collected results of querying the
+            hypervisors in the YAML format. These results are uploaded
+            to SCC instead of querying the current state of hypervisors.
+          </para>
+        </listitem>
+      </itemizedlist>
+      <para>
+        This separation helps to fulfil the following scenarios:
+      </para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            Customer systems that have the necessary access to collect the
+            data from the configured hypervisor systems may not have
+            access to the Internet to upload the collected data to SCC.
+            Conversely, systems that have Internet access to upload
+            data to SCC may not have sufficient access to collect
+            the data from the customer hypervisor solutions.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            You want to sanitize the collected data before it is uploaded to
+            SCC, for example, change host names or virtual machine names. Note
+            that certain values, such as UUID identifiers, cannot be changed.
+          </para>
+        </listitem>
+      </itemizedlist>
+    </sect2>
+  </sect1>
+  <sect1 xml:id="scc-hypervisor-collector-service">
+    <title>&scchvc; &systemd; services</title>
+
+    <para>
+      The
+      <systemitem class="daemon">scc-hypervisor-collector.timer</systemitem>
+      timer triggers the
+      <systemitem
+      class="daemon">scc-hypervisor-collector.service</systemitem>
+      service that runs the &scchvc; command on a daily basis. These &systemd;
+      units are disabled by default.
+    </para>
+
+    <tip>
+      <title>Test &scchvc; manually</title>
+      <para>
+        Before enabling
+        <systemitem class="daemon">scc-hypervisor-collector.timer</systemitem>,
+        run &scchvc; manually via the <literal>scchvc</literal> user account,
+        then verify that it runs correctly when triggered by
+        <systemitem class="daemon">scc-hypervisor-collector.service</systemitem>.
+        When the result is satisfactory, consider enabling the timer.
+      </para>
+    </tip>
+
+    <para>
+      To enable the collector's service and timer, run the following commands:
+    </para>
+
+<screen>
+&prompt.sudo;<command>systemctl enable scc-hypervisor-collector.service</command>
+&prompt.sudo;<command>systemctl enable scc-hypervisor-collector.timer</command>
+</screen>
+
+    <sect2 xml:id="scc-hypervisor-collector-service-custom">
+      <title>Customizing &systemd; unit files</title>
+      <para>
+        To modify the default behavior of the collector's &systemd; unit files,
+        create &systemd; unit <emphasis>drop-in</emphasis> files to override
+        the default behavior, using the <command>systemctl edit</command>
+        mechanism.
+      </para>
+      <para>
+        To change the user under which the
+        <systemitem
+        class="daemon">scc-hypervisor-collector.service</systemitem>
+        service runs the <command>scc-hypervisor-collector</command> command,
+        create a drop-in snippet with the following content:
+      </para>
+<screen>
+[Service]
+User=<replaceable>EXAMPLE_USER</replaceable>
+Group=<replaceable>EXAMPLE_GROUP</replaceable>
+</screen>
+      <para>
+        To change the timer to trigger the
+        <systemitem class="daemon">scc-hypervisor-collector.service</systemitem>
+        service to a weekly cadence with a randomized skew of up to 6 hours
+        rather than 15 minutes, create a drop-in snippet with the following
+        content:
+      </para>
+<screen>
+[Timer]
+OnCalendar=weekly
+RandomizedDelaySec=6h
+</screen>
+    </sect2>
+  </sect1>
+  <sect1 xml:id="scc-hypervisor-collector-benefits">
+    <title>Benefits</title>
+
+    <para>
+      Collecting details about hypervisors and providing our customers with
+      them has the following benefits:
+    </para>
+
+    <itemizedlist>
+      <listitem>
+        <para>
+          Customers are proactively informed about their subscription
+          consumption. This allows them to stay compliant and purchase more
+          subscriptions if needed.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Customers can avoid license auditing which is a time consuming and
+          exhausting experience.
+        </para>
+      </listitem>
+    </itemizedlist>
+  </sect1>
+  <sect1 xml:id="scc-hypervisor-collector-related-topics">
+    <title>Related topics</title>
+
+    <itemizedlist>
+      <listitem>
+        <para>
+          Detailed configuration of &scchvc; is described in the man page
+          <command>man 5 scc-hypervisor-collector</command>.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Detailed information about &scchvc; &systemd; units is described in
+          the man page <command>man 8 scc-hypervisor-collector</command>.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Creating &systemd; drop-in files is described in the man page
+          <command>man 5 systemd.unit</command>, search for the
+          <literal>Overriding vendor settings</literal> title.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Virtualization limits and support information are described in
+          <link xlink:href="https://documentation.suse.com/sles/html/SLES-all/cha-virt-support.html"/>.
+        </para>
+      </listitem>
+    </itemizedlist>
+  </sect1>
+</article>
