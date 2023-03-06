@@ -256,7 +256,7 @@ backends:
             data from the configured hypervisor systems may not have
             access to the Internet to upload the collected data to SCC.
             Conversely, systems that have Internet access to upload
-            data to the Internet may not have sufficient access to collect
+            data to SCC may not have sufficient access to collect
             the data from the customer hypervisor solutions.
           </para>
         </listitem>
