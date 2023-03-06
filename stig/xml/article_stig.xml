@@ -364,7 +364,8 @@
     <para>
      The <package>ansible</package> package is available from
      <literal>SUSE Package Hub</literal>. Register your &sle; system
-     and enable the <literal>SUSE Package Hub</literal> extension.
+     and enable the <literal>SUSE Package Hub</literal> extension. For &sle; 12,
+     you additionally need to enable the <literal>Public Cloud</literal> module.
      Then install the package with <command>sudo zypper in ansible</command>.
     </para>
     <example xml:id="ex-remediate-sle15-ansible">
