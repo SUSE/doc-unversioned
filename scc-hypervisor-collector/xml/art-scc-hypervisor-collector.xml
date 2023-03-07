@@ -45,6 +45,30 @@
       hypervisor solutions and uploads them to SCC.
     </para>
   </sect1>
+  <sect1 xml:id="scc-hypervisor-collector-benefits">
+    <title>Benefits</title>
+
+    <para>
+      Collecting details about hypervisors and providing our customers with
+      them has the following benefits:
+    </para>
+
+    <itemizedlist>
+      <listitem>
+        <para>
+          Customers are proactively informed about their subscription
+          consumption. This allows them to stay compliant and purchase more
+          subscriptions if needed.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Customers can avoid license auditing which is a time consuming and
+          exhausting experience.
+        </para>
+      </listitem>
+    </itemizedlist>
+  </sect1>
   <sect1 xml:id="scc-hypervisor-collector-requirements">
     <title>Requirements</title>
 
@@ -337,30 +361,6 @@ OnCalendar=weekly
 RandomizedDelaySec=6h
 </screen>
     </sect2>
-  </sect1>
-  <sect1 xml:id="scc-hypervisor-collector-benefits">
-    <title>Benefits</title>
-
-    <para>
-      Collecting details about hypervisors and providing our customers with
-      them has the following benefits:
-    </para>
-
-    <itemizedlist>
-      <listitem>
-        <para>
-          Customers are proactively informed about their subscription
-          consumption. This allows them to stay compliant and purchase more
-          subscriptions if needed.
-        </para>
-      </listitem>
-      <listitem>
-        <para>
-          Customers can avoid license auditing which is a time consuming and
-          exhausting experience.
-        </para>
-      </listitem>
-    </itemizedlist>
   </sect1>
   <sect1 xml:id="scc-hypervisor-collector-related-topics">
     <title>Related topics</title>
