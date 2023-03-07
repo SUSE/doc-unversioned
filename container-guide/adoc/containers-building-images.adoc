@@ -31,7 +31,7 @@ When the container image is ready, you can customize it as described in <<sec-cu
 [[sec-customize-repo-registration]]
 === Repositories and Registration
 
-The pre-built images do not have any repositories configured and do not include any modules or extensions. They contain a https://github.com/SUSE/container-suseconnect[zypper service] that contacts either the {scc} or a {rmtool} ({rmt}) server, according to the configuration of the {sles} host that runs the container. The service obtains the list of repositories available for the product used by the container image. You can also directly declare extensions in your `Dockerfile`. For more information, see <<sec-docker-sle-images-customizing-the-images-extensions>>.
+The pre-built images do not have any repositories configured and do not include any modules or extensions. They contain a https://github.com/SUSE/container-suseconnect[zypper service] that contacts either the {scc} or a {rmtool} ({rmt}) server, according to the configuration of the {sles} host that runs the container. The service obtains the list of repositories available for the product used by the container image. You can also directly declare extensions in your `Dockerfile`. For more information, see <<sec-container-suseconnect>>.
 
 [NOTE]
 .SLE_BCI repository

@@ -12,7 +12,7 @@ include::attributes-product.adoc[]
 * General-purpose {bcia}s can be used for building custom container images and for deploying applications.
 * Language stack {bcia}s provide minimal environments for developing and deploying applications in specific programming languages.
 
-{bci}s are available from https://registry.suse.com. It contains tested and updated {slea} base container images. All images in the {suseregistry} undergo a maintenance process. The images are built to contain the latest available updates and fixes. The {suseregistry}'s Web user interface lists a subset of the available images. For information about the {suseregistry}, see <<sec-suse-registry>>.
+{bci}s are available from https://registry.suse.com. It contains tested and updated {slea} base container images. All images in the {suseregistry} undergo a maintenance process. The images are built to contain the latest available updates and fixes. The {suseregistry}'s Web user interface lists a subset of the available images. For information about the {suseregistry}, see <<sec-tools-suse-registry>>.
 
 {slea} base images in the {suse} Registry receive security updates and are covered by the {suse} support plans. For more information about these support plans, see <<cha-containers-support>>.
 
@@ -36,7 +36,7 @@ Redistribution::
 * {bcia}s are fully compatible with {slsa}, but **they do not require a subscription to run and distribute them.**
 * {bcia}s automatically run in FIPS-compatible mode when the host operating system is running in FIPS mode.
 * Each {bcia} includes the RPM database, which makes it possible to audit the contents of the container image. You can use the RPM database to determine the specific version of the RPM package any given file belongs to. This allows you to ensure that a container image is not susceptible to known and already fixed vulnerabilities.
-* All {bcia}s (except for those without {zypper}) come with the `container-suseconnect` service. This gives containers that run on a registered {slsa} host access to the full {slsa} repositories. `container-suseconnect` is invoked automatically when you run {zypper} for the first time, and the service adds the correct {slsa} repositories into the running container. On an unregistered {slsa} host or on a non-{slsa} host, the service does nothing. See <<cha-sle-containers-suseconnect>> for more information.
+* All {bcia}s (except for those without {zypper}) come with the `container-suseconnect` service. This gives containers that run on a registered {slsa} host access to the full {slsa} repositories. `container-suseconnect` is invoked automatically when you run {zypper} for the first time, and the service adds the correct {slsa} repositories into the running container. On an unregistered {slsa} host or on a non-{slsa} host, the service does nothing. See <<sec-sle-containers-suseconnect>> for more information.
 
 [NOTE]
 .{bcirepo} repository
@@ -398,7 +398,7 @@ registration credentials, it uses them to give the container access the
 SUSE Linux Enterprise repositories. This includes additional modules and
 previous package versions that are not part of the free `{bcirepo}`
 repository.
-Refer to  <<cha-container-suseconnect>> for more information on how to use the repository for SLES, openSUSE, and non-SLES hosts.
+Refer to  <<sec-container-suseconnect>> for more information on how to use the repository for SLES, openSUSE, and non-SLES hosts.
 
 [[sec-bci-task-examples]]
 ==== Common patterns

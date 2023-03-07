@@ -35,7 +35,7 @@ For further information about pods, refer to <<sec-orchestration-podman>>.
 [[sec-podman-install]]
 === {podman} installation
 
-To install {podman}, make sure you have the {slea} Containers Module enabled (see <<cha-sle-containers-module>>), run the command `sudo zypper in podman`. Then run `podman --version` to check whether {podman} has been installed successfully.
+To install {podman}, make sure you have the {slea} Containers Module enabled (see <<sec-sle-containers-module>>), run the command `sudo zypper in podman`. Then run `podman --version` to check whether {podman} has been installed successfully.
 
 By default, {podman} requires root privileges. To enable rootless mode, subuids and subgids must be assigned to the user running {podman}. If there is no entry in the `/etc/subuid` file, add an entry using the following command:
 

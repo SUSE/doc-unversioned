@@ -15,6 +15,17 @@ All our tools mentioned below are part of the *{sles} {productnumber} Containers
 the https://openbuildservice.org[Open Build Service]. You can see the full list of packages in the
 *Containers Module* in the https://scc.suse.com/packages[{scc}].
 
+[[sec-tools-suse-registry]]
+=== {SUSE Registry}
+https://registry.suse.com is the only source for official SUSE base container images.
+It contains tested, up to date and certified {slea} base container images. All images in the
+{suseregistry} undergo a maintenance process. The images are built to contain the latest available
+updates and fixes. The {suseregistry}'s Web user interface lists a subset of the available images:
+Base Container Images, Language Container Images, Application Container Images, SUSE Linux
+Enterprise Server Images and Releases Out of General Support.
+The Web UI also provide more details to any given images, like release date, support level, size,
+digest of the images and packages inside the image.
+
 [[sec-tools-docker]]
 === {docker}
 
