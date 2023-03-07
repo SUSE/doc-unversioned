@@ -239,4 +239,4 @@
 :skopeo: skopeo
 :distribution: Distribution
 :helm: Helm
-:sle-containers-module: {slea} Container Module
+:sle-containers-module: {slea} Containers Module
