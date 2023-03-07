@@ -134,6 +134,9 @@ openjdk-devel::
 ruby::
   * URL: https://registry.suse.com/bci/ruby/index.html
   * A standard development environment based on Ruby 2.5, featuring ruby, gem and bundler as well as git and curl.
+rust::
+  * URL: https://registry.suse.com/bci/rust/index.html
+  * Ships with the Rust compiler and the Cargo package manager.
 golang::
   * URL: https://registry.suse.com/bci/golang/index.html
   * Ships with the go compiler version specified in the tag.
