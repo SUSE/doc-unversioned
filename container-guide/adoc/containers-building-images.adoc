@@ -21,7 +21,7 @@ For example, for {sles}{nbsp}15, the command is as follows:
 > podman pull registry.suse.com/suse/sle15
 ....
 
-For information on obtaining specific base images, refer to <<sec-sle-base-images>>.
+For information on obtaining specific base images, refer to <<sec-bci-intro>>.
 
 When the container image is ready, you can customize it as described in <<sec-customize-prebuild-images>>.
 
