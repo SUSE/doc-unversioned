@@ -36,7 +36,7 @@ Redistribution::
 * {bcia}s are fully compatible with {slsa}, but **they do not require a subscription to run and distribute them.**
 * {bcia}s automatically run in FIPS-compatible mode when the host operating system is running in FIPS mode.
 * Each {bcia} includes the RPM database, which makes it possible to audit the contents of the container image. You can use the RPM database to determine the specific version of the RPM package any given file belongs to. This allows you to ensure that a container image is not susceptible to known and already fixed vulnerabilities.
-* All {bcia}s (except for those without {zypper}) come with the `container-suseconnect` service. This gives containers that run on a registered {slsa} host access to the full {slsa} repositories. `container-suseconnect` is invoked automatically when you run {zypper} for the first time, and the service adds the correct {slsa} repositories into the running container. On an unregistered {slsa} host or on a non-{slsa} host, the service does nothing. See <<sec-containers-suseconnect>> for more information.
+* All {bcia}s (except for those without {zypper}) come with the `container-suseconnect` service. This gives containers that run on a registered {slsa} host access to the full {slsa} repositories. `container-suseconnect` is invoked automatically when you run {zypper} for the first time, and the service adds the correct {slsa} repositories into the running container. On an unregistered {slsa} host or on a non-{slsa} host, the service does nothing. See <<sec-container-suseconnect>> for more information.
 
 [NOTE]
 .{bcirepo} repository
