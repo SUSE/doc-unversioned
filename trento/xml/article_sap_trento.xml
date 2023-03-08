@@ -2513,6 +2513,22 @@ trento-server-runner-*</screen>
     </section>
   </section>
 
+  <section xml:id="sec-known-issues-and-problems">
+    <title>Known issues and problems</title>
+    <para>TBD</para>
+    <!-- alberto: Would a FAQ here helpful? -->
+    <!--<qandaset>
+      <qandaentry>
+        <question>
+          <para>The first question</para>
+        </question>
+        <answer>
+          <para>The answer to the first question</para>
+        </answer>
+      </qandaentry>
+    </qandaset>-->
+  </section>
+
   <section xml:id="sec-trento-more-information">
     <title>More information</title>
     <itemizedlist>
