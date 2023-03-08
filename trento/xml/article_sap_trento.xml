@@ -169,7 +169,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
             <title>&k8s;:</title>
             <para> The &t.server; runs on any current Cloud Native
               Computing Foundation (CNCF)-certified &k8s;
-              distributions. Depending on your background and
+              distributions based on a x86_64 architecture. Depending on your background and
               needs, &suse; supports several usage scenarios:
             </para>
           </formalpara>
@@ -240,7 +240,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
           <para>RKE2</para>
         </listitem>
         <listitem>
-          <para>any other CNCF-certified &k8s;</para>
+          <para>any other CNCF-certified &k8s; running on x86_64 architecture</para>
         </listitem>
       </itemizedlist>
     </section>
