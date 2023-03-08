@@ -20,11 +20,11 @@
     <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
       <dm:bugtracker>
         <dm:url>https://bugzilla.suse.com/enter_bug.cgi</dm:url>
-        <dm:product>??</dm:product>
-        <dm:component>??</dm:component>
+        <dm:product>Documentation</dm:product>
+        <dm:component>Smart Docs</dm:component>
         <dm:assignee>tahlia.richardson@suse.com</dm:assignee>
       </dm:bugtracker>
-      <dm:editurl>https://github.com/&suse;/doc-unversioned/edit/main/sap-ha-support/xml/</dm:editurl>
+      <dm:editurl>https://github.com/SUSE/doc-unversioned/edit/main/sap-ha-support/xml/</dm:editurl>
     </dm:docmanager>
 
     <authorgroup>
