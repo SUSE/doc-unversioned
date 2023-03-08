@@ -72,8 +72,6 @@ To use a different set of credentials, put a custom `/etc/zypp/credentials.d/SCC
 
 Now you can create a custom container image by using a `Dockerfile` as described in <<sec-docker-sle-images-customizing-the-images-sles12sp3>>.
 
-If you want to move your application to a container, see <<cha-docker-containerize-app>>.
-
 After you have edited the `Dockerfile`, build the image by running the following command in the same directory in which the `Dockerfile` resides:
 
 ....
