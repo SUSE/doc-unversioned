@@ -81,7 +81,7 @@ After you have edited the `Dockerfile`, build the image by running the following
 For more information about `podman build` options, see the https://docs.podman.io/en/latest/markdown/podman-build.1.html[official Podman documentation] .
 
 [[sec-docker-sle-images-customizing-the-images-sles12sp3]]
-==== Creating a custom image for {slea}{nbsp}12 SP5 and later
+=== Creating a custom image for {slea}{nbsp}12 SP5 and later
 
 The following `Dockerfile` creates a simple container image based on {sles}{nbsp}15:
 
@@ -102,17 +102,10 @@ RUN update-ca-certificates && \
     zypper -n clean
 ....
 
-[[sec-sle-images-customizing-the-images-extensions]]
-==== Adding {slea} extensions and modules to images
-
-If you have subscriptions to {sles} extensions or modules that you want to use in your custom image, you can add them to the container image by specifying the `ADDITIONAL_MODULES` environment variable:
-
-....
-ENV ADDITIONAL_MODULES sle-module-desktop-applications,sle-module-development-tools
-....
+If you wish to add SLE extensions and modules to your images, please refer to: <<sec-container-suseconnect-modules>>
 
 [[sec-building-public-cloud]]
-==== Building container images in on-demand {slea} instances in the public cloud
+=== Building container images in on-demand {slea} instances in the public cloud
 Building container images on {slea} instances that were launched as on-demand or pay-as-you-go instances on a public cloud (AWS, GCE, or Azure) requires additional steps. To install packages and updates, the on-demand public cloud instances are connected to the update infrastructure. This infrastructure is based on {rmt} servers operated by {suse} on public cloud providers.
 
 Therefore, your machines need to locate the required services and authenticate with them. This can be done using the `containerbuild-regionsrv` service. This service is available in the public cloud images provided through the marketplaces of public cloud providers. Before building an image, this service must be started on the public cloud instance by running the following command:
