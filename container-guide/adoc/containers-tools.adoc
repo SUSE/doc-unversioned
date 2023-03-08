@@ -16,7 +16,7 @@ the https://openbuildservice.org[Open Build Service]. You can see the full list 
 *Containers Module* in the https://scc.suse.com/packages[{scc}].
 
 [[sec-tools-suse-registry]]
-=== {SUSE Registry}
+=== {suseregistry}
 https://registry.suse.com is the only source for official SUSE base container images.
 It contains tested, up to date and certified {slea} base container images. All images in the
 {suseregistry} undergo a maintenance process. The images are built to contain the latest available
@@ -75,7 +75,7 @@ https://documentation.suse.com/sles/15-SP4/single-html/SLES-rmt/index.html#sec-r
 for more information.
 
 [[sec-tools-distribution]]
-==== {distribution}
+=== {distribution}
 https://github.com/distribution/distribution[Distribution] is an Open Source Registry implementation
 for storing and distributing container images using the OCI Distribution Specification. It is the
 core for many registry operators including Docker Hub, GitHub Container Registry, GitLab Container
@@ -84,7 +84,7 @@ It's a toolset to provide a simple, secure, and scalable base for building a lar
 solution or running a simple private registry.
 
 [[sec-tools-obs]]
-==== Open Build Service
+=== Open Build Service
 
 The http://openbuildservice.org[Open Build Service (OBS)] provides free infrastructure for building
 and storing RPM packages including various container formats. The
@@ -107,7 +107,7 @@ possible to build officially supported images at https://build.opensuse.org.
 For more information about SLE BCI, refer to <<cha-bci>>.
 
 [[sec-tools-kiwi]]
-==== {kiwi}
+=== {kiwi}
 
 https://github.com/OSInside/kiwi[{kiwi}] Next Generation is a multi-purpose tool for building
 images. In addition to container images, regular installation ISO images, and images for virtual
