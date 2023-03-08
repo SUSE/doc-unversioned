@@ -1,0 +1,12 @@
+MAIN="art-sap-ha-support.xml"
+ROOTID="article-sap-ha-support"
+
+PROFCONDITION="suse-product"
+#PROFCONDITION="suse-product;beta"
+#PROFCONDITION="community-project"
+
+STYLEROOT="/usr/share/xml/docbook/stylesheet/suse2022-ns"
+FALLBACK_STYLEROOT="/usr/share/xml/docbook/stylesheet/suse2021-ns"
+
+# Setting the TOC depth to sect 2
+XSLTPARAM="--param toc.section.depth=2"
