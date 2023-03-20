@@ -1,0 +1,34 @@
+include::attributes-generic.adoc[]
+include::attributes-product.adoc[]
+
+[[cha-verify-containers]]
+== Signing and verifying images
+
+This chapter provides information on signing and verifying container images.
+
+[[sec-sign-images]]
+=== Signing images
+
+[[sec-verify-images]]
+=== Verifying images
+
+[[sec-verify-docker]]
+==== Docker
+Signatures for images available through {suseregistry} are stored in the Notary. You can verify the
+signature of a specific image using the following command:
+
+....
+docker trust inspect --pretty registry.suse.com/suse/IMAGE:TAG
+....
+
+For example, the command `docker trust inspect --pretty
+   registry.suse.com/suse/sle15:latest` verifies the signature of the latest SLE15 base image.
+
+To automatically validate an image when you pull it, set the environment `DOCKER_CONTENT_TRUST` to `1`. For example:
+
+....
+env DOCKER_CONTENT_TRUST=1 docker pull registry.suse.com/suse/sle15:latest
+....
+
+[[sec-verify-podman]]
+==== Podman
