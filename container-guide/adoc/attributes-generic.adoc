@@ -236,3 +236,4 @@
 :zseries: IBM Z
 :zypper: Zypper
 :rh: Red Hat
+:sle-containers-module: {slea} Containers module
