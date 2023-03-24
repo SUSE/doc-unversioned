@@ -228,7 +228,7 @@ The above example `Dockerfile` performs the following operations:
 {podman} allows sharing data between host and a container by using _volumes_. You can specify a mount point directly in the `Dockerfile`. However, you cannot specify a directory on the host system in the `Dockerfile`, as the directory may not be accessible at build time. Find the mounted directory under `/var/lib/docker/volumes/` on the host system.
 
 [NOTE]
-.Discarding changes to the directory to be shared
+.Applying changes to the shared directory
 ====
 After you specify a mount point by using the `VOLUME` instruction, all changes made to the directory with the `RUN` instruction are discarded. After the mount point is specified, the volume becomes a part of a temporary container, which is removed after a successful build. This means that for certain actions to take effect, they must be performed *before* specifying a mount point. For example, if you need to change permissions, do this before you specify the directory as a mount point in the `Dockerfile`.
 ====
