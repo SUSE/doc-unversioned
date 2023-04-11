@@ -37,7 +37,7 @@
 :sled: {sle} Desktop
 :sles: {sle} Server
 :ses: {suse} Enterprise Storage
-:jeos: JeOS
+:jeos: Minimal-VM
 :sleha: {sle} High Availability Extension
 :slehag: Geo Clustering for {sleha}
 :slert: {sle} Real Time
@@ -236,3 +236,7 @@
 :zseries: IBM Z
 :zypper: Zypper
 :rh: Red Hat
+:skopeo: skopeo
+:distribution: Distribution
+:helm: Helm
+:sle-containers-module: {slea} Containers Module

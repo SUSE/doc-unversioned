@@ -4,44 +4,458 @@ include::attributes-product.adoc[]
 [[cha-orchestration]]
 == Container orchestration
 
-[[sec-pod-deployment-with-podman]]
-=== Pod deployment with {podman}
+[[sec-orchestration-introduction]]
+=== Introduction
+Now that you have a better understanding of how to handle containers on your desktop or server, we
+can go to the next step: How to make use of containers in production?
+In a production environment you will likely have to manage multiple containers, be it locally on
+your single container host or on multiple Container Host. To manage multiple containers, you will
+have to group your containers (one or more) into a Pod, which will allow them to share storage and
+network resources but also a specification for how to be deployed and run. In short a pod
+encapsulates an application composed of multiple containers into a single unit. The pod concept was
+introduced by https://kubernetes.io/docs/concepts/workloads/pods/[Kubernetes] however Podman, which
+stand for Pod Manager, uses the same definition as Kubernetes. 
 
-In addition to building and managing images, {podman} makes it possible to work with pods. A pod is a group of one or more containers with shared resources, such as the network interface. A pod encapsulates an application composed of multiple containers into a single unit.
+[[sec-orchestration-podman]]
+=== Single Container Host with Podman
 
-The `podman pod` can be used to create, delete, query, and inspect pods. To create a new pod, run the `podman pod
-   create` command. This creates a pod with a random name. To list the existing pods, use the `podman pod list` command. To view a list of running pods, run `podman ps -a --pod`. The output of the command looks as follows (the `STATUS` and `CREATED` columns are omitted for brevity):
+[[sec-orchestration-architecture]]
+==== Architecture
+A pod is a group of containers that share the same name space, ports, and network connection.
+Usually, containers within one pod can communicate directly with each other. Each pod contains an
+infrastructure container (INFRA), whose purpose is to hold the name space. INFRA also enables Podman
+to add other containers to the pod. Port bindings, cgroup-parent values, and kernel name spaces are
+all assigned to the infrastructure container. Therefore, later changes of these values are not
+possible.
+
+image::pods_architecture.png[image,scaledwidth=80.0%]
+
+Each container in a pod has its own instance of a monitoring program. The monitoring program watches
+the container's process and if the container dies, the monitoring program saves its exit code. The
+program also holds open the tty interface for the particular container. The monitoring program
+enables you to run containers in the detached mode when Podman exits, because this program continues
+to run and enables you to attach tty later.
+
+[[sec-orchestration-podman-pod]]
+==== Podman pod
+podman pod is the command line tool for creating, removing, querying and inspecting pods. You can
+check all the subcommands of podman pod in the
+https://docs.podman.io/en/latest/markdown/podman-pod.1.html[official upstream documentation]. 
+
+[[sec-orchestration-pod-create]]
+==== Create and list pods
+podman pod create will create a pod with a random name, but you can use the --name parameter to
+assign the desired name to a pod.
 
 ....
-POD ID        NAME                # OF CONTAINERS   INFRA ID
-399a120a09ff  suspicious_curie    1                 e57820093817
+# podman pod create
+344940492c00b6a19ececbc5b109351bf0a3b8b19b3c279a097da7a653c592d0
 ....
 
-Notice that the command assigned a random name to the pod (`suspicious_curie` in this case). You can use the `--name` parameter to assign the desired name to a pod.
-
-To examine the pod and its contents, run the `podman ps -a
-   --pod` command and take a look at the output (the `COMMAND`, `CREATED`, `STATUS`, `PORTS`, and `POD
-   ID` columns are omitted for brevity):
+you can list our pods using the podman pod list command:
 
 ....
-CONTAINER ID  IMAGE                 NAMES              PODNAME
-e57820093817  k8s.gcr.io/pause:3.2  399a120a09ff-infra suspicious_curie
+# podman pod list
+POD ID        NAME          STATUS      CREATED        INFRA ID      # OF CONTAINERS
+344940492c00  suspicious_curie  Created     2 minutes ago  617d7e3ce399  1
 ....
 
-The created pod has an `infra` container identified by the `k8s.gcr.io` name. The purpose of this container is to reserve the namespaces associated with the pod and allow {podman} to add other containers to the pod.
+You can also list all containers with the pods they are associated with:
+....
+# podman ps -a --pod
+CONTAINER ID  IMAGE                 COMMAND     CREATED        STATUS      PORTS       NAMES               POD ID        PODNAME
+617d7e3ce399  localhost/podman-pause:4.3.1-1669118400              5 minutes ago  Created                 344940492c00-infra  344940492c00  suspicious_curie
+....
 
-Using the `podman run --pod` command, you can run a container and add it to the desired pod. For example, the command below runs a container based on the `suse/sle15` image and adds the container to the `suspicious_curie` pod:
+The created pod has an infra container identified by the `localhost/podman-pause:4.x` name. The
+purpose of this container is to reserve the namespaces associated with the pod and allow {podman} to
+add other containers to the pod.
+
+[[sec-orchestration-pod-add]]
+==== Run and add a container to a pod
+Using the podman run --pod command, you can run a container and add it to the desired pod. For
+example, the command below runs a container based on the suse/sle15 image and adds the container to
+the `suspicious_curie` pod: 
 
 ....
-podman run -d --pod suspicious_curie registry.suse.com/suse/sle15 sleep 1h
+# podman run -d --pod suspicious_curie registry.suse.com/bci/bci-base sleep 1h
+8f5af62a7c385bbd1a3a5cc3a53a8d0f8cf942adc26a065960d4232fcc93ac98
 ....
 
-The command above adds a container that sleeps for 60 minutes and then exits. Run the `podman ps -a --pod` command again and you should see that the pod now has two containers.
+WARNING: If this command shows the following warning, please refer
+http://https//documentation.suse.com/container/all/single-html/SLES-container/#sec-bci-suseconnect-podman-buildah-nerdctl[Using container-suseconnect on non-SLE hosts or with Podman, Buildah, and nerdctl]: 
+....
+WARN[0005] Path "/etc/SUSEConnect" from "/etc/containers/mounts.conf" doesn't exist, skipping 
+WARN[0005] Failed to mount subscriptions, skipping entry in /etc/containers/mounts.conf: open /etc/zypp/credentials.d/SCCcredentials: permission denied
+....
 
-Containers in a pod can be restarted, stopped, and started without affecting the overall status of the pod. For example, you can stop a container using the `sudo podman stop CONTAINER_NAME` command.
+The command above adds a container that sleeps for 60 minutes and then exits. Run the podman ps -a
+--pod command again and you should see that the pod now has two containers.
 
-To stop the pod, use the `podman pod stop` command:
+You can also check the command podman pod ps:
+....
+# podman pod ps
+POD ID        NAME          STATUS      CREATED         INFRA ID      # OF CONTAINERS
+344940492c00  suspicious_curie Running     21 minutes ago  617d7e3ce399  2
+....
+
+[[sec-orchestration-pod-stop]]
+==== Stoping pod or a container in a pod
+
+Let's stop our newly created container named objective_jemison
 
 ....
-podman pod stop suspicious_curie
+# podman ps -a --pod
+CONTAINER ID  IMAGE                                COMMAND     CREATED         STATUS            PORTS       NAMES               POD ID        PODNAME
+617d7e3ce399  localhost/podman-pause:4.3.1-1669118400                             14 minutes ago  Up 4 minutes ago              344940492c00-infra  344940492c00  suspicious_curie 8f5af62a7c38  registry.suse.com/bci/bci-base:latest  sleep 1h    4 minutes ago   Up 4 minutes ago              objective_jemison   344940492c00  suspicious_curie
+# podman stop objective_jemison
+objective_jemison
+# podman pod ps
+POD ID        NAME          STATUS      CREATED         INFRA ID      # OF CONTAINERS
+344940492c00  suspicious_curie  Degraded    25 minutes ago  617d7e3ce399  2
+# podman ps -a --pod
+CONTAINER ID  IMAGE                                COMMAND     CREATED         STATUS                       PORTS       NAMES               POD ID        PODNAME
+617d7e3ce399  localhost/podman-pause:4.3.1-1669118400                             25 minutes ago  Up 15 minutes ago                        344940492c00-infra  344940492c00  suspicious_curie 8f5af62a7c38  registry.suse.com/bci/bci-base:latest  sleep 1h    15 minutes ago  Exited (137) 14 seconds ago              objective_jemison   344940492c00  suspicious_curie
 ....
+
+You can also stop the pod and all of its containers using, podman pod stop
+
+....
+# podman pod stop suspicious_curie
+344940492c00b6a19ececbc5b109351bf0a3b8b19b3c279a097da7a653c592d0
+# podman ps -ap
+CONTAINER ID  IMAGE                                COMMAND     CREATED         STATUS                      PORTS       NAMES               POD ID        PODNAME
+617d7e3ce399  localhost/podman-pause:4.3.1-1669118400                             29 minutes ago  Exited (0) 7 seconds ago                344940492c00-infra  344940492c00  suspicious_curie 8f5af62a7c38  registry.suse.com/bci/bci-base:latest  sleep 1h    19 minutes ago  Exited (137) 3 minutes ago              objective_jemison   344940492c00  suspicious_curie
+....
+
+Of course you can also start and restart everything with sudo podman start yourcontainername,
+ podman pod start yourpodname or podman pod restart yourpodname.
+
+[[sec-orchestration-pod-rm]]
+==== Removing pods
+There are two ways to remove pods. You can use the `podman pod rm` command to remove one or more pods.
+Alternatively, you can remove all stopped pods using the `podman pod prune` command.
+To remove a pod or several pods, run the `podman pod rm` command as follows:
+
+....
+# podman pod rm POD
+....
+
+POD can be a pod name or a pod ID.
+To remove all currently stopped pods, use the `podman pod prune` command. Make sure that all stopped
+pods are intended to be removed before you run the `podman pod prune` command, otherwise you might
+remove pods that are still in use.
+
+[[sec-orchestreation-podman-systemd]]
+==== Creating systemd units for a pod
+
+A container runtime makes it easy to launch an application distributed as a
+single container. But things get more complicated when you need to run
+applications consisting of multiple containers, or when it's necessary to start
+the applications automatically on system boot and restart them after they
+crash. While container orchestration tools like Kubernetes are designed for that
+exact purpose, they are intended to be used for highly distributed and scalable
+systems with hundreds of nodes, and not for a single machine. systemd and Podman
+are much better suited for the single-machine scenario, as they do not add
+another layer complexity to your existing setup.
+
+===== Overview
+
+Starting with version 1.3.0, Podman supports creating systemd unit files with
+the `podman generate systemd` subcommand. The subcommand creates a systemd unit
+file, making it possible to control a container or pod via systemd. Using the
+unit file you can launch a container or pod on boot, automatically restart it if
+a failure occurs, and keep its logs in journald.
+
+
+===== Creating a new Systemd Unit File
+
+The following example uses a simple NGINX container:
+
+....
+❯ podman run -d --name web -p 8080:80 docker.io/nginx
+c0148d8476418a2da938a711542c55efc09e4119909aea70e287465c6fb51618
+....
+
+Generating a systemd unit for the container can be done as follows:
+....
+❯ podman generate systemd --name --new web
+# container-web.service
+# autogenerated by Podman 4.2.0
+# Tue Sep 13 10:58:54 CEST 2022
+
+[Unit]
+Description=Podman container-web.service
+Documentation=man:podman-generate-systemd(1)
+Wants=network-online.target
+After=network-online.target
+RequiresMountsFor=%t/containers
+
+[Service]
+Environment=PODMAN_SYSTEMD_UNIT=%n
+Restart=on-failure
+TimeoutStopSec=70
+ExecStartPre=/bin/rm -f %t/%n.ctr-id
+ExecStart=/usr/bin/podman run \
+        --cidfile=%t/%n.ctr-id \
+        --cgroups=no-conmon \
+        --rm \
+        --sdnotify=conmon \
+        --replace \
+        -d \
+        --name web \
+        -p 8080:80 docker.io/nginx
+ExecStop=/usr/bin/podman stop --ignore --cidfile=%t/%n.ctr-id
+ExecStopPost=/usr/bin/podman rm -f --ignore --cidfile=%t/%n.ctr-id
+Type=notify
+NotifyAccess=all
+
+[Install]
+WantedBy=default.target
+....
+
+Podman outputs a unit file to the console that can be put either into the user
+unit systemd directories (`~/.config/systemd/user/` or `/etc/systemd/user/`) or
+into the system unit systemd directory (`/etc/systemd/systtem`) and control the
+container via systemd. The `--new` flag instructs Podman to recreate the
+container on a restart. This ensures that the systemd unit is self-contained,
+and it does not depend on external state. The `--name` flag allows you to assign
+a user-friendly name to the container: without it Podman uses container IDs
+instead of their names.
+
+To control the container as a user unit, proceed as follows:
+
+....
+❯ podman generate systemd --name --new --files web
+/home/user/container-web.service
+❯ mv container-web.service ~/.config/systemd/user/
+❯ systemctl --user daemon-reload
+....
+
+Now the container can be started via `systemctl --user start container-web`:
+
+....
+❯ systemctl --user start container-web
+❯ systemctl --user is-active container-web.service
+active
+....
+
+Run the `podman ps` command to see the list of all running containers :
+
+....
+❯ podman ps
+CONTAINER ID  IMAGE                           COMMAND               CREATED         STATUS             PORTS                 NAMES
+af92743971d2  docker.io/library/nginx:latest  nginx -g daemon o...  15 minutes ago  Up 15 minutes ago  0.0.0.0:8080->80/tcp  web
+....
+
+
+One of the benefits of managing the container via systemd is the ability to
+automatically restart the container if it crashes. You can simulate a crash by
+sending `SIGKILL` to the main process in the container:
+
+....
+❯ podman ps
+CONTAINER ID  IMAGE                           COMMAND               CREATED             STATUS                 PORTS                 NAMES
+4c89582fa9cb  docker.io/library/nginx:latest  nginx -g daemon o...  About a minute ago  Up About a minute ago  0.0.0.0:8080->80/tcp  web
+
+❯ kill -9 $(podman inspect --format "{{.State.Pid}}" web)
+
+❯ podman ps
+CONTAINER ID  IMAGE                           COMMAND               CREATED        STATUS            PORTS                 NAMES
+0b5be4493251  docker.io/library/nginx:latest  nginx -g daemon o...  4 seconds ago  Up 4 seconds ago  0.0.0.0:8080->80/tcp  web
+....
+
+Note that the container is *not* restarted when it is stopped gracefully,
+e.g. via `podman stop web`. To always restart it, add the flag
+`--restart-policy=always` to `podman generate systemd`.
+
+=== Updating container images
+
+Using the described approach means that the container image is never
+updated. You can solve the problem by adding the `--pull=always` flag to the
+`ExecStart=` entry in the unit file. But be aware that this increases the
+startup time of the container and updates the image on *every* restart. The
+latter also means that a container image update can make the container
+unavailable outside of a scheduled maintenance window due to a newly
+introduced bug.
+
+
+The
+https://docs.podman.io/en/latest/markdown/podman-auto-update.1.html[`auto-update`]
+subcommand in Podman provides a possible solution. Add the label
+`io.containers.autoupdate=registry` to a container to make Podman pull a new
+version of the container image from the registry when running `podman
+auto-update`. This makes it possible to update all container images with a
+single command at a desired time, and without increasing the startup time of the
+systemd units.
+
+The auto update feature can be enabled by adding the line `--label
+"io.containers.autoupdate=registry" \` to the `ExecStart=` entry of the
+container's systemd unit file. for the NGINX example, modify
+`~/.config/systemd/user/container-web.service` as follows:
+
+....
+ExecStart=/usr/bin/podman run \
+        --cidfile=%t/%n.ctr-id \
+        --cgroups=no-conmon \
+        --rm \
+        --sdnotify=conmon \
+        --replace \
+        -d \
+        --name web \
+        --label "io.containers.autoupdate=registry" \
+        -p 8080:80 docker.io/nginx
+....
+
+
+After reloading the daemons and restarting the container, perform a dry
+run of the update (it will most likely not report any updates):
+
+....
+❯ podman auto-update --dry-run
+UNIT                   CONTAINER           IMAGE            POLICY      UPDATED
+container-web.service  87d263489307 (web)  docker.io/nginx  registry    false
+....
+
+It is good practice to have external testing in place to make sure that image
+updates are generally safe to be deployed. If you are confident in the quality
+of our container image, you can let Podman automatically apply image updates
+periodically by enabling the `podman-auto-update.timer`:
+
+....
+# just for the current user
+❯ systemctl --user enable podman-auto-update.timer
+Created symlink /home/user/.config/systemd/user/timers.target.wants/podman-auto-update.timer → /usr/lib/systemd/user/podman-auto-update.timer.
+# or as root
+❯ sudo systemctl enable podman-auto-update.timer
+Created symlink /etc/systemd/system/timers.target.wants/podman-auto-update.timer → /usr/lib/systemd/system/podman-auto-update.timer.
+....
+
+=== Managing multiple containers
+
+Certain applications rely on more than one container to function, for example a
+web frontend, a backend server and a
+database. https://docs.docker.com/compose/[Docker compose] is popular tool for
+deploying multi-container applications on a single machine. While Podman does
+not support the `compose` command natively, in most cases compose files can be
+ported to a Podman pod and multiple containers.
+
+The following example deploys a Drupal and PostgreSQL container in a single pod
+and manages these via systemd units. First, create a new pod that exposes the
+Drupal web interface:
+
+....
+❯ podman pod create -p 8080:80 --name drupal
+736cab072c49e68ad368ba819e9117be13ef8fa048a2eb88736b5968b3a19a64
+....
+
+Once the pod has been created, launch the Drupal frontend and the
+PostgreSQL database inside it:
+
+....
+❯ podman run -d --name drupal-frontend --pod drupal docker.io/drupal
+ffd2fbd6d445e63fb0c28abb8d25ced78f819211d3bce9d6174fe4912d89f0ca
+
+❯ podman run -d --name drupal-pg --pod drupal \
+      -e POSTGRES_DB=drupal \
+      -e POSTGRES_USER=user \
+      -e POSTGRES_PASSWORD=pass \
+      docker.io/postgres:11
+a4dc31b24000780d9ffd81a486d0d144c47c3adfbecf0f7effee24a00273fcde
+....
+
+This results in three running containers: the Drupal web interface, the
+PostgreSQL database and the pod's infrastructure container.
+
+....
+❯ podman ps
+CONTAINER ID  IMAGE                                    COMMAND               CREATED             STATUS                 PORTS                 NAMES
+2948fa1476c6  localhost/podman-pause:4.2.0-1660228937                        2 minutes ago       Up About a minute ago  0.0.0.0:8080->80/tcp  736cab072c49-infra
+ffd2fbd6d445  docker.io/library/drupal:latest          apache2-foregroun...  About a minute ago  Up About a minute ago  0.0.0.0:8080->80/tcp  drupal-frontend
+a4dc31b24000  docker.io/library/postgres:11            postgres              40 seconds ago      Up 41 seconds ago      0.0.0.0:8080->80/tcp  drupal-pg
+....
+
+Creating a systemd unit for the pod is done similar to a
+single container:
+[source,Shell]
+....
+❯ podman generate systemd --name --new --files drupal
+/home/user/pod-drupal.service
+/home/user/container-drupal-frontend.service
+/home/user/container-drupal-pg.service
+❯ mv *service ~/.config/systemd/user/
+❯ systemctl daemon-reload --user
+....
+
+Since Podman is aware of which containers belong to the `drupal` pod and how
+their systemd units are called, it can correctly add the dependencies to the
+pod's unit file. This means that when you start or stop the pod, systemd ensures
+that all containers inside the pod are started or stopped automatically.
+
+To check systemd's dependency handling, first stop the `drupal` pod and verify
+that no containers are currently running on the host:
+
+....
+❯ podman pod stop drupal
+736cab072c49e68ad368ba819e9117be13ef8fa048a2eb88736b5968b3a19a64
+❯ podman pod rm drupal
+736cab072c49e68ad368ba819e9117be13ef8fa048a2eb88736b5968b3a19a64
+❯ podman ps -a
+CONTAINER ID  IMAGE       COMMAND     CREATED     STATUS      PORTS       NAMES
+....
+
+Start the `drupal` pod via `systemctl start --user pod-drupal.service`, and
+systemd launches the containers inside the pod:
+
+....
+❯ systemctl start --user pod-drupal.service
+❯ podman ps
+CONTAINER ID  IMAGE                                    COMMAND               CREATED        STATUS            PORTS                 NAMES
+d1589d3ac68b  localhost/podman-pause:4.2.0-1660228937                        5 seconds ago  Up 5 seconds ago  0.0.0.0:8080->80/tcp  ca41b505bd13-infra
+a49bea53c20c  docker.io/library/postgres:11            postgres              4 seconds ago  Up 5 seconds ago  0.0.0.0:8080->80/tcp  drupal-pg
+dc9dca018dad  docker.io/library/drupal:latest          apache2-foregroun...  4 seconds ago  Up 5 seconds ago  0.0.0.0:8080->80/tcp  drupal-frontend
+....
+
+[[sec-orchestration-podman-more]]
+==== More on podman
+If you want to learn more on podman and in depth instruction on how to handle pod deployment,
+please check https://docs.podman.io/en/latest/ and https://github.com/containers/podman
+
+[[sec-orchestration-kubernetes]]
+=== Multi Container Host with Kubernetes
+
+https://kubernetes.io[Kubernetes] is an open source container orchestration engine for automating deployment, scaling, and
+management of containerized applications. The open source project is hosted by the Cloud Native
+Computing Foundation (https://www.cncf.io/about[CNCF]).
+
+With its wide range of features and capabilities, supported by a large community of developers, Kubernetes has become
+the go-to standard for most https://www.suse.com/suse-defines/definition/containers-service-caas/[container-as-a-service] platforms. It 
+provides an extensive set of functionalities essential for deploying containers at the production level, 
+including high availability, lifecycle management, storage, security, and networking.
+
+[[sec-k8s]]
+==== Kubernetes (k8s)
+Kubernetes allows multiple machines (or servers or nodes) to work together and create a cluster, which you can
+then interact with using APIs. There are many tools available to deploy a Kubernetes cluster, but 
+at SUSE, we recommend using https://ranchermanager.docs.rancher.com[Rancher]. 
+With Rancher, you can not only deploy a Kubernetes cluster but also manage applications running on top of it. Additionally, a 
+single Rancher setup can manage multiple Kubernetes clusters running anywhere from bare-metal, on-prem, or cloud service providers, making it easier to manage your applications while taking off the burden of managing the 
+machinery to deploy them.
+
+We won't describe here how to install and use
+https://www.rancher.com/products/rke[Rancher Kubernetes Engines (RKE)], as the
+https://ranchermanager.docs.rancher.com[Rancher's documentation] does that perfectly.
+
+
+
+[[sec-k3s]]
+==== Lightweight Kubernetes (k3s)
+
+https://k3s.io[K3s] is lightweight CNCF-certified Kubernetes distribution, made by Rancher, and
+built IoT & Edge computing. K3s differs from k8s as it is packaged as a single <60MB binary and
+optimised for ARM.
+
+We highly recommend to read our
+https://www.suse.com/c/rancher_blog/introduction-to-k3s/[Introduction to K3s] , as well as our
+documentation on
+https://documentation.suse.com/trd/kubernetes/single-html/kubernetes_ri_rancher-k3s-sles/index.html#id-introduction[how to install K3s and Rancher on {sles}]

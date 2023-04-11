@@ -20,12 +20,12 @@ Compared to {deng}, {buildah} offers the following advantages:
 * Similar to {podman}, {buildah} does not require a daemon to run and can be used by unprivileged users.
 * It is possible to build images inside a container without mounting the {docker} socket, which improves security.
 
-[[cha-podman-buildah]]
+[[sec-podman-buildah]]
 === {podman} and {buildah}
 
 Both {podman} and {buildah} can be used to build container images. While {podman} makes it possible to build images using Dockerfiles, {buildah} offers an expanded range of image building options and capabilities.
 
-[[cha-buildah-install]]
+[[sec-buildah-install]]
 === {buildah} installation
 
 To install {buildah}, run the command `sudo zypper in buildah`. Run the command `buildah --version` to check whether {buildah} has been installed successfully.
@@ -45,7 +45,7 @@ NOTE: {buildah} in rootless mode
 In rootless mode, {buildah} commands must be executed in a modified user namespace of the user. To enter this user namespace, run the command `buildah unshare`. Otherwise, the `buildah mount` command will fail.
 ====
 
-[[cha-buildah-build-images]]
+[[sec-buildah-build-images]]
 === Building images with {buildah}
 
 Instead of a special file with instructions, {buildah} uses individual commands to build an image. Building an image with {buildah} involves the following steps:
