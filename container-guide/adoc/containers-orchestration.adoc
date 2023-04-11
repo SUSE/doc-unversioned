@@ -435,12 +435,12 @@ including high availability, lifecycle management, storage, security, and networ
 
 [[sec-k8s]]
 ==== Kubernetes (k8s)
-Kubernetes makes multiple machines work together to create a cluster which you will be able to
-interact with using an API. The deployment of Kubernetes itself has seen a lot of tools emerge, but
-the one we do favour at SUSE is https://ranchermanager.docs.rancher.com[Rancher]. Rancher is able to
-deploy Kubernetes, but also to manage application running on top of k8s. To be even more precise, a
-single Rancher setup can manage multiple Kubernetes cluster, easing the burden of managing the
-software you deployed just to run you application.
+Kubernetes allows multiple machines (or servers or nodes) to work together and create a cluster, which you can
+then interact with using APIs. There are many tools available to deploy a Kubernetes cluster, but 
+at SUSE, we recommend using https://ranchermanager.docs.rancher.com[Rancher]. 
+With Rancher, you can not only deploy a Kubernetes cluster but also manage applications running on top of it. Additionally, a 
+single Rancher setup can manage multiple Kubernetes clusters running anywhere from bare-metal, on-prem, or cloud service providers, making it easier to manage your applications while taking off the burden of managing the 
+machinery to deploy them.
 
 We won't describe here how to install and use
 https://www.rancher.com/products/rke[Rancher Kubernetes Engines (RKE)], as the
