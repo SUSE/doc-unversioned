@@ -428,10 +428,10 @@ https://kubernetes.io[Kubernetes] is an open source container orchestration engi
 management of containerized applications. The open source project is hosted by the Cloud Native
 Computing Foundation (https://www.cncf.io/about[CNCF]).
 
-With its large community of developers and abundant features and capabilities, Kubernetes has become
-the de-facto standard and is included across most container-as-a-service platforms. Kubernetes
-provides a set of functionality that are required to deploy containers at production level: storage,
-high availability, lifecycle.
+With its wide range of features and capabilities, supported by a large community of developers, Kubernetes has become
+the go-to standard for most https://www.suse.com/suse-defines/definition/containers-service-caas/[container-as-a-service] platforms. It 
+provides an extensive set of functionalities essential for deploying containers at the production level, 
+including high availability, lifecycle management, storage, security, and networking.
 
 [[sec-k8s]]
 ==== Kubernetes (k8s)
