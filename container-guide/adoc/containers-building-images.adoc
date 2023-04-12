@@ -173,7 +173,7 @@ ENTRYPOINT ["/etc/bin/application"]
 CMD ["-i"]
 ....
 
-Build the image by running the following command in the directory that the `Dockerfile` resides in:
+Build the image by running the following command in the directory where the `Dockerfile` resides in:
 
 ....
 > podman build --tag tux_application:latest .
