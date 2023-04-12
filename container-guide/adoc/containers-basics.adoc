@@ -4,44 +4,79 @@ include::attributes-product.adoc[]
 [[cha-containers-basics]]
 == Introduction to Linux containers
 
-The Linux kernel's namespaces and kernel control groups features enable the container to be isolated from the rest of the host system and other containers. Linux containers offer a lightweight virtualization method to run multiple isolated environments simultaneously on a single host. Unlike Xen and KVM, where a full guest operating system is executed through a virtualization layer, Linux containers share and directly use the host OS kernel. This reduces the overhead required for accessing the operating system resources and allows for better overall performance compared to a generic Virtual Machine environment.
+Linux containers offer a lightweight virtualization method to run multiple isolated virtual
+environments simultaneously on a single host. This technology is based on the Linux kernel's
+namespaces for process isolation and kernel control groups (cgroups) for resource (CPU, memory,
+disk I/O, network, etc) management.
 
-* Containers make it possible to isolate applications in self-contained units.
-* Containers provide near-native performance, as the kernel overhead is lower compared to virtualization and emulation.
-* It is possible to control network interfaces and apply resources inside containers through kernel control groups (cgroups).
-* Portability and ease of development for application developers as the container holds all necessary libraries, dependencies, and files needed.
+Unlike Xen and KVM, where a full guest operating system is executed through a virtualization layer,
+Linux containers share and directly use the host OS kernel.
 
-* Containers run on the host system's kernel, so the containers have to use the specific kernel version provided by the host.
-* Only Linux-based applications can be containerized.
-* A container encapsulates binaries for a specific architecture ({x64} or {aarch64} for instance). So a container made for {x64} only runs on a {x64} system host.
-* Containers in themselves are no more secure than executing binaries outside of a container, and the overall security of containers depends on the host system. While containerized applications can be secured through AA or SELNX profiles, container security require putting in place tools and policies that ensure security of the container infrastructure and applications.
+Advantages of using containers::
+* *Size*: Container images should only include the content needed to run an application, whereas a
+virtual machine include an entire operating system,
+* *Performance*: Containers provide near-native performance, as the kernel overhead is lower compared
+to virtualization and emulation.
+* *Security*: Containers make it possible to isolate applications in self-contained units from the
+rest of the host system.
+* *Resources management*: It is possible to fine grained control CPU, memory, disk I/O, network
+interfaces, etc inside containers (cgroups).
+* *Flexibility*: Container images hold all necessary libraries, dependencies, and files needed to run
+an application, thus can be easily developed and deployed on multiple hosts.
+
+Limitations of containers::
+* Containers share the host system's kernel, so the containers have to use the specific kernel
+version provided by the host.
+* Only Linux-based applications can be containerized on a Linux host.
+* A container encapsulates binaries for a specific architecture ({x64} or {aarch64} for instance).
+So a container made for {x64} only runs on a {x64} system host.
+* Containers in themselves are no more secure than executing binaries outside of a container, and 
+the overall security of containers depends on the host system. While containerized applications can
+be secured through AppArmor or SELinux profiles, container security requires putting in place tools and
+policies that ensure security of the container infrastructure and applications.
 
 [[sec-concepts-workflow]]
-=== Key concepts and brief introduction to {podman}
+=== Key concepts and introduction to {podman}
 
-Although {deng} is a popular choice for working with images and containers, {podman} provides a drop-in replacement for {docker} that offers several advantages. While <<cha-podman-overview>> provides more information on {podman}, this chapter offers a quick introduction to key concepts and a basic procedure for creating a container image and using it to run a container.
+Although {deng} is a popular choice for working with images and containers, {podman} provides a
+drop-in replacement for {docker} that offers several advantages. While <<cha-podman-overview>>
+provides more information on {podman}, this chapter offers a quick introduction to key concepts and
+a basic procedure for creating a container image and using it to run a container.
 
 The basic {podman} workflow is as follows:
 
 image::container-workflow.png[image,scaledwidth=80.0%]
 
-Running a container, either on a local machine or cloud service, normally involves the following steps:
+Running a container, either on a local machine or cloud service, normally involves the following
+steps:
 
 [arabic]
 . Fetch a base image by pulling it from a registry to your local machine.
 . Create a `Dockerfile` and use it to build a custom image on top of the base image.
 . Use the created image to start one or more containers.
 
-To run a container, you need an image. An image includes all dependencies needed to run the application. For example, the {slea} {bcia}-Base image contains the {slea} distribution with a minimal package selection.
+To run a container, you need an image. An image includes all dependencies needed to run
+the application. For example, the {slea} {bcia}-Base image contains the {slea} distribution with a
+minimal package selection.
 
-While it is possible to create an image from scratch, few applications would work in such an empty environment. Thus, using an existing base image is more practical in most situations. A base image has no parent, meaning it is not based on another image.
+While it is possible to create an image from scratch, few applications would work in such an empty
+environment. Thus, using an existing base image is more practical in most situations. A base image
+has no parent, meaning it is not based on another image.
 
-Although you can use a base image for running containers, the main purpose of base images is to serve as foundations for creating custom images that can run containers with specific applications, servers, services, and so on.
+Although you can use a base image for running containers, the main purpose of base images is to
+serve as foundations for creating custom images that can run containers with specific applications,
+servers, services, and so on.
 
-Both base and custom images are usually available through a repository of images called a registry. Unless a registry is explicitly specified, {podman} pulls images from the {dhub} registry. While you can fetch a base image manually, {podman} can do that automatically when building a custom image.
+Both base and custom images are usually available through a repository of images called a registry.
+Unless a registry is explicitly specified, {podman} pulls images from the
+https://registry.opensuse.org[openSUSE] and  https://docker.io[{dhub}] registry. While you can
+fetch a base image manually, {podman} can do that automatically when building a custom image.
 
-To build a custom image, you must create a special file called a `Containerfile` or `Dockerfile` containing building instructions. For example, a `Dockerfile` can contain instructions to update the system software, install the desired application, open specific network ports, run commands, etc.
+To build a custom image, you must create a special file called a `Containerfile` or `Dockerfile`
+containing building instructions. For example, a `Dockerfile` can contain instructions to update the
+system software, install the desired application, open specific network ports, run commands, etc.
 
 image::container-image-layers.png[image,scaledwidth=80.0%]
 
-You can build images not only from base images, but also on top of custom images. So you can have an image consisting of multiple layers.
+You can build images not only from base images, but also on top of custom images. So you can have an
+image consisting of multiple layers. Please refer to <<cha-building-images>> for more information.
