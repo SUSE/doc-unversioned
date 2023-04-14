@@ -4,27 +4,33 @@ include::attributes-product.adoc[]
 [[cha-containers-tools]]
 == Tools for building images and managing containers
 
-This chapter provides a brief overview of tools offered by {suse}, for building, running and
-managing containers.
+This chapter provides a brief overview of tools, provided by SUSE, for building, running and
+managing containers. The frontier between building, running and managing is sometimes pretty thin,
+thus some tools are not exclusively targeting a topic and might be able to fulfill multiple roles.
 
-All the described tools are part of the *{sles} {productnumber} Containers Module*, except
+This article is not an exhaustive list of all available tools, but rather tries to provide you with
+a better understanding of which tools fits where and how you can combine them together.
+
+All our tools mentioned below are part of the *{sles} {productnumber} Containers Module*, except
 the https://openbuildservice.org[Open Build Service]. You can see the full list of packages in the
 *Containers Module* in the https://scc.suse.com/packages[{scc}].
 
-[[sec-tools-suse-registry]] === {suseregistry} https://registry.suse.com is the
-only source for official {suse} base container images. It contains tested, up to
-date and certified {slea} base container images. All images in the
-{suseregistry} are regularly rebuilt to include updates and fixes. The
-{suseregistry}'s Web user interface lists a subset of the available images: Base
-Container Images, Language Container Images, Application Container Images,
-{suse} {sles} Images, and Releases Out of General Support. The Web UI also
-provides additional information for each image, including release date, support
-level, size, digest of the images and packages inside the image.
+[[sec-tools-suse-registry]]
+=== {suseregistry}
+
+https://registry.suse.com is the only source for official SUSE base container images.
+It contains tested, up to date and certified {slea} base container images. All images in the
+{suseregistry} undergo a maintenance process. The images are built to contain the latest available
+updates and fixes. The {suseregistry}'s Web user interface lists a subset of the available images:
+Base Container Images, Language Container Images, Application Container Images, SUSE Linux
+Enterprise Server Images and Releases Out of General Support.
+The Web UI also provide more details to any given images, like release date, support level, size,
+digest of the images and packages inside the image.
 
 [[sec-tools-docker]]
 === {docker}
 
-{docker} is a system for creating and managing containers. Its core is the
+{docker} is a popular system for creating and managing containers. Its core is the
 https://github.com/moby/moby[{docker} Open Source Engine&#8212;]a lightweight virtualization
 solution to run containers simultaneously on a single host. {docker} containers are be built using
 Dockerfiles.
@@ -43,7 +49,7 @@ For a general introduction to {podman}, refer to <<cha-podman-overview>>.
 === {buildah}
 
 https://buildah.io[{buildah}] is an utility for building OCI container images. It is a complementary
-tool to {podman}, and the `podman build` command uses {buildah} to perform container image builds.
+tool to {podman}, and actually `podman build` uses {buildah} to perform container image builds.
 {buildah} makes it possible to build images from scratch, from existing images, and using
 Dockerfiles. OCI images built using the {buildah} command-line tool and the underlying OCI-based
 technologies (for example, `containers/image` and `containers/storage` ) are portable and can
@@ -53,30 +59,31 @@ For information on installing and using {buildah}, refer to <<cha-buildah-overvi
 [[sec-tools-skopeo]]
 === {skopeo}
 
-https://github.com/containers/skopeo[{skopeo}] is a command-line utility for
-managing, inspecting, and  signing container images and image repositories.
-{skopeo} is can inspect containers and repositories in remote or local
-container registries. {skopeo} can copy container images between different
-storage backends. {skopeo} is part of the `Basesystem Module` of {slesa}.
+https://github.com/containers/skopeo[{skopeo}] is a command-line utility for coping, inspecting,
+deleting and signing on container images and image repositories. {skopeo} is able to inspect
+containers and repositories on remote or local container registries. {skopeo} can copy container
+images between different storage mechanisms. {skopeo} is part of the `Basesystem Module` of SLES.
 
 [[sec-tools-helm]]
 === {helm}
 
-https://helm.sh[{helm}] is the Kubernetes package manager, and it is the
-de-facto standard for deploying containerized applications on Kubernetes
-clusters using charts. {helm} can be used to install, update, and remove
-applications in a single or multiple containers. It can also handle the
-associated resources, such as configuration, storage volumes, etc. For instance,
-it is used for instance to deploy the {rmt} server (see
-https://documentation.suse.com/sles/15-SP4/single-html/SLES-rmt/index.html#sec-rmt-deploy-kubernetes[RMT
-documentation] for more information).
+https://helm.sh[{helm}] is the Kubernetes Package Manager, it's the de-facto standard to deploy
+containerized applications on Kubernetes clusters, via `charts`.
+It is able to install/update/uninstall applications on a single or multiple containers and the
+associated resources, like configuration, storage volumes, etc.
+For instance, It is used for instance to deploy our RMT server, refers to our
+https://documentation.suse.com/sles/15-SP4/single-html/SLES-rmt/index.html#sec-rmt-deploy-kubernetes[RMT documentation]
+for more information.
 
-[[sec-tools-distribution]] === {distribution}
-https://github.com/distribution/distribution[Distribution] is an open-source
-registry implementation for storing and distributing container images using the
-OCI Distribution Specification. It provides a simple, secure, and scalable base
-for building a large scale registry solution or running a simple private
-registry.
+[[sec-tools-distribution]]
+=== {distribution}
+
+https://github.com/distribution/distribution[Distribution] is an Open Source Registry implementation
+for storing and distributing container images using the OCI Distribution Specification. It is the
+core for many registry operators including Docker Hub, GitHub Container Registry, GitLab Container
+Registry, CNCF Harbor Project, etc.
+It's a toolset to provide a simple, secure, and scalable base for building a large scale registry
+solution or running a simple private registry.
 
 [[sec-tools-obs]]
 === Open Build Service
