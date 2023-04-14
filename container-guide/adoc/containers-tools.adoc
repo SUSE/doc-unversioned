@@ -11,15 +11,18 @@ All the described tools are part of the *{sles} {productnumber} Containers Modul
 the https://openbuildservice.org[Open Build Service]. You can see the full list of packages in the
 *Containers Module* in the https://scc.suse.com/packages[{scc}].
 
-[[sec-tools-suse-registry]] === {suseregistry} https://registry.suse.com is the
-only source for official {suse} base container images. It contains tested, up to
-date and certified {slea} base container images. All images in the
-{suseregistry} are regularly rebuilt to include updates and fixes. The
-{suseregistry}'s Web user interface lists a subset of the available images: Base
-Container Images, Language Container Images, Application Container Images,
-{suse} {sles} Images, and Releases Out of General Support. The Web UI also
-provides additional information for each image, including release date, support
-level, size, digest of the images and packages inside the image.
+[[sec-tools-suse-registry]]
+=== {suseregistry}
+
+https://registry.suse.com[{suseregistry}] is the official source of {slea} base
+container images. It contains tested, updated, and certified {slea} base
+container images. All images in the {suseregistry} are regularly rebuilt to
+include updates and fixes. The {suseregistry}'s Web user interface lists a
+subset of the available images: Base Container Images, Language Container
+Images, Application Container Images, {suse} {sles} Images, and Releases Out of
+General Support. The Web UI also provides additional information for each image,
+including release date, support level, size, digest of the images and packages
+inside the image.
 
 [[sec-tools-docker]]
 === {docker}
@@ -43,7 +46,7 @@ For a general introduction to {podman}, refer to <<cha-podman-overview>>.
 === {buildah}
 
 https://buildah.io[{buildah}] is an utility for building OCI container images. It is a complementary
-tool to {podman}, and the `podman build` command uses {buildah} to perform container image builds.
+tool to {podman}. In fact, the `podman build` command uses {buildah} to perform container image builds.
 {buildah} makes it possible to build images from scratch, from existing images, and using
 Dockerfiles. OCI images built using the {buildah} command-line tool and the underlying OCI-based
 technologies (for example, `containers/image` and `containers/storage` ) are portable and can
@@ -54,8 +57,8 @@ For information on installing and using {buildah}, refer to <<cha-buildah-overvi
 === {skopeo}
 
 https://github.com/containers/skopeo[{skopeo}] is a command-line utility for
-managing, inspecting, and  signing container images and image repositories.
-{skopeo} is can inspect containers and repositories in remote or local
+managing, inspecting, and signing container images and image repositories.
+{skopeo} can be used to inspect containers and repositories on remote and local
 container registries. {skopeo} can copy container images between different
 storage backends. {skopeo} is part of the `Basesystem Module` of {slesa}.
 
@@ -71,8 +74,10 @@ it is used for instance to deploy the {rmt} server (see
 https://documentation.suse.com/sles/15-SP4/single-html/SLES-rmt/index.html#sec-rmt-deploy-kubernetes[RMT
 documentation] for more information).
 
-[[sec-tools-distribution]] === {distribution}
-https://github.com/distribution/distribution[Distribution] is an open-source
+[[sec-tools-distribution]]
+=== {distribution}
+
+https://github.com/distribution/distribution[{distribution}] is an open-source
 registry implementation for storing and distributing container images using the
 OCI Distribution Specification. It provides a simple, secure, and scalable base
 for building a large scale registry solution or running a simple private
@@ -81,21 +86,22 @@ registry.
 [[sec-tools-obs]]
 === Open Build Service
 
-The http://openbuildservice.org[Open Build Service (OBS)] provides free infrastructure for building
-and storing RPM packages including various container formats. The
-https://registry.opensuse.org[OBS Container Registry] provides a detailed listing of all container
-images built by the OBS, complete with commands for pulling the images into your local environment.
-The OBS https://build.opensuse.org/image_templates[{opensuse}container image templates] can be
-modified to specific needs, which offers the easiest way to create your own container branch.
-Container images can be built with native {docker} tools from an existing image using a 
-`Dockerfile`. Alternatively, images can be built from scratch using the {kiwi} image-building
-solution.
+The http://openbuildservice.org[Open Build Service (OBS)] provides free
+infrastructure for building and storing RPM packages including different container
+formats. The https://registry.opensuse.org[OBS Container Registry] provides a
+detailed listing of all container images built by the OBS, complete with
+commands for pulling the images into your local environment. The OBS
+https://build.opensuse.org/image_templates[{opensuse}container image templates]
+can be modified to specific needs, which offers the easiest way to create your
+own container branch. Container images can be built with {docker} tools
+from an existing image using a `Dockerfile`. Alternatively, images can be built
+from scratch using the {kiwi} image-building solution.
 
 Instructions on how to build images on OBS can be found
 https://openbuildservice.org/2018/05/09/container-building-and-distribution/[here].
 
-SUSE Container Images, called SUSE Linux Enterprise Base Container Images ({bcia}) are the only
-official SUSE container images,<<cha-bci>>. They are not available at https://build.opensuse.org,
+{suse} Container Images, called {sle} Base Container Images ({bcia}) are the only
+official {suse} container images,<<cha-bci>>. They are not available at https://build.opensuse.org,
 and the RPMs exported there are not identical to the internal ones. This means that it is not
 possible to build officially supported images at https://build.opensuse.org.
 
