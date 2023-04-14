@@ -30,7 +30,7 @@ digest of the images and packages inside the image.
 [[sec-tools-docker]]
 === {docker}
 
-{docker} is a popular system for creating and managing containers. Its core is the
+{docker} is a system for creating and managing containers. Its core is the
 https://github.com/moby/moby[{docker} Open Source Engine&#8212;]a lightweight virtualization
 solution to run containers simultaneously on a single host. {docker} containers are be built using
 Dockerfiles.
