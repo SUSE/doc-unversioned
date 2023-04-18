@@ -81,7 +81,7 @@ https://github.com/distribution/distribution[{distribution}] is an open-source r
 implementation for storing and distributing container images using the OCI Distribution
 Specification. It provides a simple, secure, and scalable base for building a large scale registry
 solution or running a simple private registry. {distribution} can also mirror Docker Hub but
-https://docs.docker.com/registry/recipes/mirror/#gotcha[not other private registry].
+https://docs.docker.com/registry/recipes/mirror/#gotcha[not any other private registry].
 
 [[sec-tools-obs]]
 === Open Build Service
