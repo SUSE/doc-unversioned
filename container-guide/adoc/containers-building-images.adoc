@@ -58,8 +58,6 @@ Note that if the {rmt} server is using a self-signed certificate, the matching C
 When the host system is registered with {scc}, this restriction does not apply.
 ====
 
-
-
 To obtain the list of repositories, use the following command:
 
 ....
