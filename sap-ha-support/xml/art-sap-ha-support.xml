@@ -367,10 +367,10 @@
        <informalfigure>
         <mediaobject>
          <imageobject role="fo">
-          <imagedata fileref="performance-optimized.png" width="100%"/>
+          <imagedata fileref="performance-optimized.svg" width="100%"/>
          </imageobject>
          <imageobject role="html">
-          <imagedata fileref="performance-optimized.png" width="100%"/>
+          <imagedata fileref="performance-optimized.svg" width="100%"/>
          </imageobject>
          <textobject role="description">
           <phrase>
@@ -397,10 +397,10 @@
        <informalfigure>
         <mediaobject>
          <imageobject role="fo">
-          <imagedata fileref="cost-optimized.png" width="100%"/>
+          <imagedata fileref="cost-optimized.svg" width="100%"/>
          </imageobject>
          <imageobject role="html">
-          <imagedata fileref="cost-optimized.png" width="100%"/>
+          <imagedata fileref="cost-optimized.svg" width="100%"/>
          </imageobject>
          <textobject role="description">
           <phrase>
@@ -434,10 +434,10 @@
        <informalfigure>
         <mediaobject>
          <imageobject role="fo">
-          <imagedata fileref="multi-target.png" width="100%"/>
+          <imagedata fileref="multi-target.svg" width="100%"/>
          </imageobject>
          <imageobject role="html">
-          <imagedata fileref="multi-target.png" width="100%"/>
+          <imagedata fileref="multi-target.svg" width="100%"/>
          </imageobject>
          <textobject role="description">
           <phrase>
@@ -460,10 +460,10 @@
        <informalfigure>
         <mediaobject>
          <imageobject role="fo">
-          <imagedata fileref="multi-tier.png" width="100%"/>
+          <imagedata fileref="multi-tier.svg" width="100%"/>
          </imageobject>
          <imageobject role="html">
-          <imagedata fileref="multi-tier.png" width="100%"/>
+          <imagedata fileref="multi-tier.svg" width="100%"/>
          </imageobject>
          <textobject role="description">
           <phrase>
