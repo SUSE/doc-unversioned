@@ -513,10 +513,10 @@
    <informalfigure>
     <mediaobject>
      <imageobject role="fo">
-      <imagedata fileref="pacemaker-cluster.png" width="100%"/>
+      <imagedata fileref="pacemaker-cluster.svg" width="100%"/>
      </imageobject>
      <imageobject role="html">
-      <imagedata fileref="pacemaker-cluster.png" width="100%"/>
+      <imagedata fileref="pacemaker-cluster.svg" width="100%"/>
      </imageobject>
      <textobject role="description">
       <phrase>
