@@ -308,11 +308,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="1"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.5221725"
-     inkscape:cx="445.41602"
-     inkscape:cy="192.50104"
+     inkscape:zoom="1.1026659"
+     inkscape:cx="364.09846"
+     inkscape:cy="252.58359"
      inkscape:document-units="mm"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="g173"
      inkscape:document-rotation="0"
      showgrid="true"
      units="px"
@@ -639,14 +639,14 @@
       <text
          xml:space="preserve"
          style="font-weight:500;font-size:3.70417px;line-height:1.25;font-family:Poppins;-inkscape-font-specification:'Poppins, Medium';letter-spacing:0px;stroke-width:0.264583"
-         x="157.83678"
+         x="158.31831"
          y="48.978859"
          id="text2622"><tspan
            sodipodi:role="line"
            id="tspan2620"
-           x="157.83678"
+           x="158.31831"
            y="48.978859"
-           style="font-size:3.70417px;fill:#0c322c;stroke-width:0.264583">SAP Hana Demoted</tspan></text>
+           style="font-size:3.70417px;fill:#0c322c;stroke-width:0.264583">SAPHana Demoted</tspan></text>
     </g>
     <g
        id="g173">
@@ -660,14 +660,14 @@
       <text
          xml:space="preserve"
          style="font-weight:500;font-size:3.70417px;line-height:1.25;font-family:Poppins;-inkscape-font-specification:'Poppins, Medium';letter-spacing:0px;stroke-width:0.264583"
-         x="157.83678"
-         y="61.678864"
+         x="158.79987"
+         y="61.678867"
          id="text2622-5"><tspan
            sodipodi:role="line"
            id="tspan2620-6"
-           x="157.83678"
-           y="61.678864"
-           style="font-size:3.70417px;fill:#0c322c;stroke-width:0.264583">SAP Hana Topology</tspan></text>
+           x="158.79987"
+           y="61.678867"
+           style="font-size:3.70417px;fill:#0c322c;stroke-width:0.264583">SAPHanaTopology</tspan></text>
     </g>
     <rect
        style="fill:#ffffff;stroke:#0c322c;stroke-width:0.926042;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;paint-order:markers fill stroke;stop-color:#000000"
@@ -761,14 +761,14 @@
       <text
          xml:space="preserve"
          style="font-weight:500;font-size:3.70417px;line-height:1.25;font-family:Poppins;-inkscape-font-specification:'Poppins, Medium';letter-spacing:0px;stroke-width:0.264583"
-         x="3.8487768"
-         y="61.678879"
+         x="4.7225332"
+         y="61.720943"
          id="text2622-5-9"><tspan
            sodipodi:role="line"
            id="tspan2620-6-3"
-           x="3.8487768"
-           y="61.678879"
-           style="font-size:3.70417px;fill:#0c322c;stroke-width:0.264583">SAP Hana Topology</tspan></text>
+           x="4.7225332"
+           y="61.720943"
+           style="font-size:3.70417px;fill:#0c322c;stroke-width:0.264583">SAPHana Topology</tspan></text>
     </g>
     <g
        id="g178"
@@ -783,14 +783,14 @@
       <text
          xml:space="preserve"
          style="font-weight:500;font-size:3.70417px;line-height:1.25;font-family:Poppins;-inkscape-font-specification:'Poppins, Medium';letter-spacing:0px;fill:#ffffff;stroke-width:0.264583"
-         x="3.8390875"
+         x="4.3206301"
          y="48.978878"
          id="text2622-5-9-7"><tspan
            sodipodi:role="line"
            id="tspan2620-6-3-4"
-           x="3.8390875"
+           x="4.3206301"
            y="48.978878"
-           style="font-size:3.70417px;fill:#ffffff;stroke-width:0.264583">SAP Hana Promoted</tspan></text>
+           style="font-size:3.70417px;fill:#ffffff;stroke-width:0.264583">SAPHana Promoted</tspan></text>
     </g>
     <g
        id="g1273-7"

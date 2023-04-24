@@ -652,11 +652,6 @@
        d="M 87.841666,51.858334 H 147.63749"
        id="path1651"
        sodipodi:nodetypes="cc" />
-    <path
-       style="fill:#0c322c;stroke:#fe7c3f;stroke-width:0.926042;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker8834229)"
-       d="M 87.312499,78.316663 H 147.63749"
-       id="path1653"
-       sodipodi:nodetypes="cc" />
     <g
        id="g2220"
        transform="translate(-0.03173142)">
@@ -683,22 +678,30 @@
            y="58.208332"
            style="font-size:4.23333px;fill:#0c322c;stroke-width:0.264583">active/active</tspan></text>
     </g>
-    <text
-       xml:space="preserve"
-       style="font-weight:500;font-size:4.23333px;line-height:1.25;font-family:Poppins;-inkscape-font-specification:'Poppins, Medium';letter-spacing:0px;stroke-width:0.264583;text-anchor:middle;text-align:center;"
-       x="117.93803"
-       y="86.783333"
-       id="text2224"><tspan
-         sodipodi:role="line"
-         id="tspan2222"
-         x="97.753517"
+    <g
+       id="g4540">
+      <path
+         style="fill:#0c322c;stroke:#fe7c3f;stroke-width:0.926042;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker8834229)"
+         d="M 87.312499,78.316663 H 147.63749"
+         id="path1653"
+         sodipodi:nodetypes="cc" />
+      <text
+         xml:space="preserve"
+         style="font-weight:500;font-size:4.23333px;line-height:1.25;font-family:Poppins;-inkscape-font-specification:'Poppins, Medium';text-align:center;letter-spacing:0px;text-anchor:middle;stroke-width:0.264583"
+         x="118.20897"
          y="86.783333"
-         style="font-size:4.23333px;fill:#0c322c;stroke-width:0.264583;text-anchor:middle;text-align:center;">System Replication</tspan><tspan
-         sodipodi:role="line"
-         x="97.753517"
-         y="92.074997"
-         style="font-size:4.23333px;fill:#0c322c;stroke-width:0.264583;text-anchor:middle;text-align:center;"
-         id="tspan171">PRD</tspan></text>
+         id="text2224"><tspan
+           sodipodi:role="line"
+           id="tspan2222"
+           x="118.20897"
+           y="86.783333"
+           style="font-size:4.23333px;text-align:center;text-anchor:middle;fill:#0c322c;stroke-width:0.264583">System Replication</tspan><tspan
+           sodipodi:role="line"
+           x="118.20897"
+           y="92.074997"
+           style="font-size:4.23333px;text-align:center;text-anchor:middle;fill:#0c322c;stroke-width:0.264583"
+           id="tspan171">PRD</tspan></text>
+    </g>
     <path
        style="fill:none;stroke:#2453ff;stroke-width:0.926042;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker8834794)"
        d="m 63.499999,92.604166 -2e-6,15.875004"
@@ -742,46 +745,46 @@
     <text
        xml:space="preserve"
        style="font-weight:500;font-size:3.70417px;line-height:1.25;font-family:Poppins;-inkscape-font-specification:'Poppins, Medium';letter-spacing:0px;stroke-width:0.264583"
-       x="194.87794"
+       x="195.35948"
        y="48.978859"
        id="text2622"><tspan
          sodipodi:role="line"
          id="tspan2620"
-         x="194.87794"
+         x="195.35948"
          y="48.978859"
-         style="font-size:3.70417px;fill:#0c322c;stroke-width:0.264583">SAP Hana Demoted</tspan></text>
+         style="font-size:3.70417px;fill:#0c322c;stroke-width:0.264583">SAPHana Demoted</tspan></text>
     <text
        xml:space="preserve"
        style="font-weight:500;font-size:3.70417px;line-height:1.25;font-family:Poppins;-inkscape-font-specification:'Poppins, Medium';letter-spacing:0px;stroke-width:0.264583"
-       x="194.87794"
-       y="61.678864"
+       x="195.84103"
+       y="61.678867"
        id="text2622-5"><tspan
          sodipodi:role="line"
          id="tspan2620-6"
-         x="194.87794"
-         y="61.678864"
-         style="font-size:3.70417px;fill:#0c322c;stroke-width:0.264583">SAP Hana Topology</tspan></text>
+         x="195.84103"
+         y="61.678867"
+         style="font-size:3.70417px;fill:#0c322c;stroke-width:0.264583">SAPHanaTopology</tspan></text>
     <text
        xml:space="preserve"
        style="font-weight:500;font-size:3.70417px;line-height:1.25;font-family:Poppins;-inkscape-font-specification:'Poppins, Medium';letter-spacing:0px;stroke-width:0.264583"
-       x="3.8487768"
-       y="61.678879"
+       x="5.2040758"
+       y="61.720943"
        id="text2622-5-9"><tspan
          sodipodi:role="line"
          id="tspan2620-6-3"
-         x="3.8487768"
-         y="61.678879"
-         style="font-size:3.70417px;fill:#0c322c;stroke-width:0.264583">SAP Hana Topology</tspan></text>
+         x="5.2040758"
+         y="61.720943"
+         style="font-size:3.70417px;fill:#0c322c;stroke-width:0.264583">SAPHanaTopology</tspan></text>
     <text
        xml:space="preserve"
        style="font-weight:500;font-size:3.70417px;line-height:1.25;font-family:Poppins;-inkscape-font-specification:'Poppins, Medium';letter-spacing:0px;fill:#ffffff;stroke-width:0.264583"
-       x="3.8390875"
+       x="4.3206301"
        y="48.978878"
        id="text2622-5-9-7"><tspan
          sodipodi:role="line"
          id="tspan2620-6-3-4"
-         x="3.8390875"
+         x="4.3206301"
          y="48.978878"
-         style="font-size:3.70417px;fill:#ffffff;stroke-width:0.264583">SAP Hana Promoted</tspan></text>
+         style="font-size:3.70417px;fill:#ffffff;stroke-width:0.264583">SAPHana Promoted</tspan></text>
   </g>
 </svg>

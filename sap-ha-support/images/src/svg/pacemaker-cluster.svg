@@ -253,13 +253,13 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1"
-     inkscape:cx="449.1802"
+     inkscape:zoom="1.4488055"
+     inkscape:cx="449.87042"
      inkscape:cy="331.62207"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
-     showgrid="false"
+     showgrid="true"
      units="px"
      inkscape:window-width="1920"
      inkscape:window-height="1031"
@@ -314,7 +314,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -1042,12 +1042,12 @@
     <text
        xml:space="preserve"
        style="font-weight:500;font-size:4.23333px;line-height:1.25;font-family:Poppins;-inkscape-font-specification:'Poppins, Medium';letter-spacing:0px;stroke-width:0.264583"
-       x="206.375"
+       x="200.55424"
        y="145.52083"
        id="text1247-3"><tspan
          sodipodi:role="line"
          id="tspan1245-9"
-         x="206.375"
+         x="200.55424"
          y="145.52083"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:Poppins;-inkscape-font-specification:Poppins;stroke-width:0.264583">secondary</tspan></text>
     <text
