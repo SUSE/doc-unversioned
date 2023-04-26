@@ -1,0 +1,29 @@
+prj:Container:
+- 'container-guide/*'
+
+prj:HIPAA:
+- 'hipaa/*'
+
+prj:hypervisor:
+- 'scc-hypervisor-collector/*'
+
+prj:kubevirt:
+- 'kubevirt/*'
+
+prj:openscap:
+- 'openscap/*'
+
+prj:PCI-DSS:
+- 'pcidss/*'
+
+prj:sap-ha-support:
+- 'sap-ha-support/*'
+
+prj:stig:
+- 'stig/*'
+
+prj:SUSEConnect:
+- 'suseconnect-visibility/*'
+
+prj:trento:
+- 'trento/*'
