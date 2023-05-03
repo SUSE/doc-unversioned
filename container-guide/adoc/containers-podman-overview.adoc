@@ -261,7 +261,6 @@ For instance
 
 Note that if you do not specify a `tag`, the tag `latest` will be used.
 
-The default location of pulled images is `/var/lib/containers/storage/overlay-images/`.
 
 [[sec-podman-tag]]
 === Renaming images and images tag
