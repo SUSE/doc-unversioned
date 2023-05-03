@@ -216,22 +216,25 @@ launch containers via `docker compose`, without running {deng}.
 
 
 [[sec-podman-get]]
-=== Getting container images
+=== Obtaining container images
 
 [[sec-podman-registries]]
 ==== Configuring container registries
 
-One of the advantages of {podman} over {deng} is that {podman} can be configured to search multiple registries. To make {podman} search the {suseregistry} first and use {dhub} as a fallback, add the following configuration to the `/etc/containers/registries.conf` file:
+One of the advantages of {podman} over {deng} is that {podman} can be configured to search multiple container registries. To make {podman} search the {suseregistry} first and use {dhub} as a fallback, add the following configuration to the `/etc/containers/registries.conf` file:
 
 ....
-[registries.search]
-registries = ["registry.suse.com", "docker.io"]
+unqualified-search-registries = ["registry.suse.com", "docker.io"]
 ....
+
+Note that this step can be skipped on {slea} or openSUSE. On both distributions, {suseregistry}
+and `registry.opensuse.org` have priority over {dhub}.
+
 
 [[sec-podman-search]]
 ==== Searching images in registries
 
-Using the `podman search` command allow you to list available containers in the registries defined 
+Using the `podman search` command allow you to list available containers in the registries defined
 in `/etc/containers/registries.conf`.
 
 To search in all registries:
