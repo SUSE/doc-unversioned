@@ -417,7 +417,7 @@ dc9dca018dad  docker.io/library/drupal:latest          apache2-foregroun...  4 s
 ....
 
 [[sec-orchestration-podman-more]]
-==== More on podman
+==== More on {podman}
 If you want to learn more on podman and in depth instruction on how to handle pod deployment,
 please check https://docs.podman.io/en/latest/  and https://github.com/containers/podman
 
