@@ -14,7 +14,7 @@ have to group your containers (one or more) into a Pod, which will allow them to
 network resources but also a specification for how to be deployed and run. In short a pod
 encapsulates an application composed of multiple containers into a single unit. The pod concept was
 introduced by https://kubernetes.io/docs/concepts/workloads/pods/[Kubernetes] however Podman, which
-stand for Pod Manager, uses the same definition as Kubernetes. 
+stand for Pod Manager, uses the same definition as Kubernetes.
 
 [[sec-orchestration-podman]]
 === Single Container Host with Podman
@@ -40,7 +40,7 @@ to run and enables you to attach tty later.
 ==== Podman pod
 podman pod is the command line tool for creating, removing, querying and inspecting pods. You can
 check all the subcommands of podman pod in the
-https://docs.podman.io/en/latest/markdown/podman-pod.1.html[official upstream documentation]. 
+https://docs.podman.io/en/latest/markdown/podman-pod.1.html[official upstream documentation].
 
 [[sec-orchestration-pod-create]]
 ==== Create and list pods
@@ -75,7 +75,7 @@ add other containers to the pod.
 ==== Run and add a container to a pod
 Using the podman run --pod command, you can run a container and add it to the desired pod. For
 example, the command below runs a container based on the suse/sle15 image and adds the container to
-the `suspicious_curie` pod: 
+the `suspicious_curie` pod:
 
 ....
 # podman run -d --pod suspicious_curie registry.suse.com/bci/bci-base sleep 1h
@@ -83,9 +83,9 @@ the `suspicious_curie` pod: 
 ....
 
 WARNING: If this command shows the following warning, please refer
-http://https//documentation.suse.com/container/all/single-html/SLES-container/#sec-bci-suseconnect-podman-buildah-nerdctl[Using container-suseconnect on non-SLE hosts or with Podman, Buildah, and nerdctl]: 
+http://https//documentation.suse.com/container/all/single-html/SLES-container/#sec-bci-suseconnect-podman-buildah-nerdctl[Using container-suseconnect on non-SLE hosts or with Podman, Buildah, and nerdctl]:
 ....
-WARN[0005] Path "/etc/SUSEConnect" from "/etc/containers/mounts.conf" doesn't exist, skipping 
+WARN[0005] Path "/etc/SUSEConnect" from "/etc/containers/mounts.conf" doesn't exist, skipping
 WARN[0005] Failed to mount subscriptions, skipping entry in /etc/containers/mounts.conf: open /etc/zypp/credentials.d/SCCcredentials: permission denied
 ....
 
@@ -429,17 +429,17 @@ management of containerized applications. The open source project is hosted by t
 Computing Foundation (https://www.cncf.io/about[CNCF]).
 
 With its wide range of features and capabilities, supported by a large community of developers, Kubernetes has become
-the go-to standard for most https://www.suse.com/suse-defines/definition/containers-service-caas/[container-as-a-service] platforms. It 
-provides an extensive set of functionalities essential for deploying containers at the production level, 
+the go-to standard for most https://www.suse.com/suse-defines/definition/containers-service-caas/[container-as-a-service] platforms. It
+provides an extensive set of functionalities essential for deploying containers at the production level,
 including high availability, lifecycle management, storage, security, and networking.
 
 [[sec-k8s]]
 ==== Kubernetes (k8s)
 Kubernetes allows multiple machines (or servers or nodes) to work together and create a cluster, which you can
-then interact with using APIs. There are many tools available to deploy a Kubernetes cluster, but 
-at SUSE, we recommend using https://ranchermanager.docs.rancher.com[Rancher]. 
-With Rancher, you can not only deploy a Kubernetes cluster but also manage applications running on top of it. Additionally, a 
-single Rancher setup can manage multiple Kubernetes clusters running anywhere from bare-metal, on-prem, or cloud service providers, making it easier to manage your applications while taking off the burden of managing the 
+then interact with using APIs. There are many tools available to deploy a Kubernetes cluster, but
+at SUSE, we recommend using https://ranchermanager.docs.rancher.com[Rancher].
+With Rancher, you can not only deploy a Kubernetes cluster but also manage applications running on top of it. Additionally, a
+single Rancher setup can manage multiple Kubernetes clusters running anywhere from bare-metal, on-prem, or cloud service providers, making it easier to manage your applications while taking off the burden of managing the
 machinery to deploy them.
 
 We won't describe here how to install and use
