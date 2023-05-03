@@ -41,23 +41,34 @@ For further information about pods, refer to <<sec-orchestration-podman>>.
 [[sec-podman-install]]
 === {podman} installation
 
-To install {podman}, make sure you have the {slea} Containers Module enabled (see <<sec-sle-containers-module>>), run the command `sudo zypper in podman`. Then run `podman --version` to check whether {podman} has been installed successfully.
+To install {podman}, make sure you have the {slea} Containers Module enabled (see <<sec-sle-containers-module>>), run the command `sudo zypper in podman`. Then run `podman info` to check whether {podman} has been installed successfully.
 
-By default, {podman} requires root privileges. To enable rootless mode, subuids and subgids must be assigned to the user running {podman}. If there is no entry in the `/etc/subuid` file, add an entry using the following command:
+{podman} will by default try to launch containers as the current user. For unprivileged users that
+implies launching containers in rootless mode. Support for rootless containers is enabled for all
+newly created users in {slea} by default and no additional steps are necessary.
+
+In case {podman} fails to launch containers in rootless mode, check whether the an entry for the
+current user is present in `/etc/subuid`:
+....
+ ❯ grep $(id -nu) /etc/subuid
+user:10000:65536
+....
+
+When no entry is found, add the required sub-UID and sub-GID entries via the following command:
 
 ....
-> sudo usermod --add-subuids 100000-165535 --add-subgids 100000-165535 USER
+> sudo usermod --add-subuids 100000-165535 --add-subgids 100000-165535 $(id -nu)
 ....
 
 To enable the change, reboot the machine or stop the session of the current user. To do the latter,
-run `loginctl list-sessions | grep USER` and note the session ID. Then run 
+run `loginctl list-sessions | grep USER` and note the session ID. Then run
 `loginctl kill-session SESSION_ID` to stop the session.
 
-The usermod command above defines a range of local UIDs to which the UIDs allocated to users inside
+The `usermod` command above defines a range of local UIDs to which the UIDs allocated to users inside
 the container are mapped on the host. Note that the ranges defined for different users must not
 overlap. It is also important that the ranges do not reuse the UID of an existing local user or
 group. By default, adding a user with the `useradd` command on {slsa}{nbsp}{productnumber}
-automatically allocates subUID and subGID ranges.
+automatically allocates sub-UID and sub-GID ranges.
 
 When using rootless containers with {podman}, it is recommended to use cgroups v2. cgroups v1 are
 limited in terms of functionality compared to v2. For example cgroups v1 allow every user to modify all existing control
@@ -73,7 +84,7 @@ the following error message:
 ....
 Refreshing service 'container-suseconnect-zypp'.
 Problem retrieving the repository index file for service 'container-suseconnect-zypp':
-[container-suseconnect-zypp|file:/usr/lib/zypp/plugins/services/container-suseconnect-zypp] 
+[container-suseconnect-zypp|file:/usr/lib/zypp/plugins/services/container-suseconnect-zypp]
 Warning: Skipping service 'container-suseconnect-zypp' because of the above error.
 Warning: There are no enabled repositories defined.
 Use 'zypper addrepo' or 'zypper modifyrepo' commands to add or enable repositories
@@ -83,7 +94,7 @@ To solve the problem, grant the current user the required access rights by runni
 command on the host:
 
 ....
-> sudo setfacl -m u:USER:r /etc/zypp/credentials.d/*
+> sudo setfacl -m u:$(id -nu):r /etc/zypp/credentials.d/*
 ....
 
 Log out and log in again to apply the changes.
