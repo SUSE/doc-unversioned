@@ -200,10 +200,20 @@ Note that this allows *all* unprivileged applications to bind to ports below 102
 [[sec-podman-docker]]
 ==== {podman}-docker
 
-Since {podman} is compatible with {deng}, it features the same commands and options. You can also
-install the package `podman-docker`, which will allow you to use an emulated docker CLI using
-podman, for example, the `docker pull` command will actually execute `podman pull`, which fetches a
-container image from a registry, or `docker build` will execute `podman build`.
+Since {podman} is compatible with {deng}, it features the same command-line interface. You can also
+install the package `podman-docker` that allows you to use an emulated docker CLI with podman. For
+example, the `docker pull` command, that fetches a container image from a registry, executes `podman
+pull` instead. The `docker build` command executes `podman build`, etc.
+
+{podman} also features a {deng} compatible socket that can be launched via:
+....
+ ❯ sudo systemctl start podman.socket
+....
+
+The {podman} socket can be used by applications designed to communicate with {deng} to launch
+containers transparently via {podman}. The {podman} socket can be used  to
+launch containers via `docker compose`, without running {deng}.
+
 
 [[sec-podman-get]]
 === Getting container images
