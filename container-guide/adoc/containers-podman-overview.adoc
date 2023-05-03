@@ -110,6 +110,93 @@ command. Then use the following command to change the group ownership and rights
 
 You can then grant a specific user write access by adding them to the created group.
 
+[[sec-podman-rootless-containers-tricks]]
+
+==== Tips and tricks for rootless containers
+
+{podman} remaps user IDs with rootless containers. In the following example, {podman} remaps the current user to the default user in the container:
+
+....
+❯ podman run --rm -it registry.suse.com/bci/bci-base id
+uid=0(root) gid=0(root) groups=0(root)
+....
+Note that even if you are root in the container, you cannot gain superuser privileges outside of it.
+
+This user remapping can have undesired side effects when sharing data with the host, where the
+shared files belong to different user IDs in the container and on the host. The issue can be solved
+using the the command line flag `--userns=keep-id` that makes it possible to keep the current user
+id in the container:
+
+....
+❯ podman run --userns=keep-id --rm -it registry.suse.com/bci/bci-base id
+uid=1000(user) gid=1000(users) groups=1000(users)
+....
+
+The flag `--userns=keep-id` has a similar effect when used with bind mounts:
+
+....
+ ❯ podman run --rm -it -v $(pwd):/share/ registry.suse.com/bci/bci-base stat /share/
+  File: /share/
+  Size: 318             Blocks: 0          IO Block: 4096   directory
+Device: 2ch/44d Inode: 3506170     Links: 1
+Access: (0755/drwxr-xr-x)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2023-05-03 12:52:18.636392618 +0000
+Modify: 2023-05-03 12:52:17.178380923 +0000
+Change: 2023-05-03 12:52:17.178380923 +0000
+ Birth: 2023-05-03 12:52:15.852370288 +0000
+
+ ❯ podman run --userns=keep-id --rm -it -v $(pwd):/share/ registry.suse.com/bci/bci-base stat /share/
+  File: /share/
+  Size: 318             Blocks: 0          IO Block: 4096   directory
+Device: 2ch/44d Inode: 3506170     Links: 1
+Access: (0755/drwxr-xr-x)  Uid: ( 1000/     user)   Gid: ( 1000/     users)
+Access: 2023-05-03 12:52:18.636392618 +0000
+Modify: 2023-05-03 12:52:17.178380923 +0000
+Change: 2023-05-03 12:52:17.178380923 +0000
+ Birth: 2023-05-03 12:52:15.852370288 +0000
+....
+
+{podman} stores the containers' data in the storage graph root (default is
+`~/.local/share/containers/storage`). Because of the way {podman} remaps user IDs in rootless
+containers, the graph root may contain files that are not owned by your current user but by a user
+ID in the sub-UID region assigned to your user. As these files do not belong to your current user,
+they can be inaccessible to you.
+
+To read or modify any file in the graph root, enter a shell as follows:
+
+....
+ ❯ podman unshare bash
+
+ ❯ id
+uid=0(root) gid=0(root) groups=0(root),65534(nobody)
+....
+
+Note that `podman unshare` performs the same user remapping as `podman run` does when launching a
+rootless container. You cannot gain elevated privileges via `podman unshare`.
+
+Refrain from modifying files in the graph root as this can corrupt {podman}'s internal state and
+render your containers, images and volumes inoperable.
+
+
+==== Caveats of rootless containers
+
+Because unprivileged users cannot configure network namespaces on
+Linux, {podman} relies on a userspace network implementation called `slirp4netns`. It emulates the full TCP-IP stack and can cause a heavy performance degradation for workloads relying on high network transfer rates. This means that rootless containers suffer from slow network transfers.
+
+On Linux, unprivileged users cannot open ports below port number 1024. This limitation also applies
+to {podman}, so by default, rootless containers cannot expose ports below port number
+1024. You can remove this limitation using the following command:
+....
+sysctl net.ipv4.ip_unprivileged_port_start=0
+....
+or make it persistent via:
+....
+sysctl -w net.ipv4.ip_unprivileged_port_start=0
+....
+
+Note that this allows *all* unprivileged applications to bind to ports below 1024.
+
+
 [[sec-podman-docker]]
 ==== {podman}-docker
 
