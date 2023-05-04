@@ -748,47 +748,18 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       </step>
       <step xml:id="st-trento-checks-settings">
         <para>Click the <guimenu>Settings</guimenu> button to change the cluster settings of the respective cluster. 
-          For checks to be executed, the connection settings must be maintained, and a checks selection must be made.
+          For checks to be executed, a checks selection must be made. Select the checks to be executed and click the button <guimenu>Select Checks for Execution</guimenu>.
+          See <xref linkend="fig-pacemaker-clustersettings-checks"/>:
         </para>
-        <substeps>
-                  <step>
-            <formalpara>
-              <title><guimenu>Connection Settings</guimenu></title>
-              <para>
-                Add the respective Trento service user, in this guide named <systemitem class="username">&trentoadmin;</systemitem>,
-                and click the button <guimenu>Apply Connection Settings</guimenu>.
-                <!--see <xref linkend="sec-trento-installation-prerequisites"/>.-->
-                The Trento service user was used in <xref linkend="pro-trento-installing-trentoagent"/>.
-              </para>
-            </formalpara>
-            <figure xml:id="fig-pacemaker-clustersettings-connection">
-              <title>&pace; Cluster Settings&mdash;Connection Settings</title>
-              <mediaobject>
-                <imageobject>
-                  <imagedata width="70%" fileref="trento-web-pacemaker-clustersettings-connection.png"/>
+        <figure xml:id="fig-pacemaker-clustersettings-checks">
+          <title>&pace; Cluster Settings&mdash;Checks Selection</title>
+            <mediaobject>
+              <imageobject>
+                <imagedata width="70%"
+                  fileref="trento-web-pacemaker-clustersettings-checks.png" />
                 </imageobject>
               </mediaobject>
             </figure>
-          </step>
-          <step>
-            <formalpara>
-              <title><guimenu>Checks Selections</guimenu></title>
-              <para>
-                Select the checks to be executed and click the button <guimenu>Select Checks for Execution</guimenu>. See <xref
-                  linkend="fig-pacemaker-clustersettings-checks"/>:
-              </para>
-            </formalpara>
-            <figure xml:id="fig-pacemaker-clustersettings-checks">
-              <title>&pace; Cluster Settings&mdash;Checks Selection</title>
-              <mediaobject>
-                <imageobject>
-                  <imagedata width="70%"
-                    fileref="trento-web-pacemaker-clustersettings-checks.png" />
-                </imageobject>
-              </mediaobject>
-            </figure>
-          </step>
-        </substeps>
       </step>
       <step>
         <para>
