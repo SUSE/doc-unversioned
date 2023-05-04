@@ -542,28 +542,28 @@
      <tbody>
       <row>
        <entry>HANA performance optimized, up to 30 nodes including standby</entry>
-       <entry>Supported (<link xlink:href="&dsc;/sbp/all/html/SLES4SAP-hana-scaleOut-PerfOpt-15/index.html">Documentation</link></entry>
+       <entry>Supported (<link xlink:href="&dsc;/sbp/all/html/SLES4SAP-hana-scaleOut-PerfOpt-15/index.html">Documentation</link>)</entry>
        <entry>Up to 30 HANA nodes including standby nodes.</entry>
       </row>
       <row>
        <entry>HANA performance optimized, up to 12 nodes, no standby</entry>
-       <entry>Supported (<link xlink:href="&dsc;/sbp/sap/html/SLES4SAP-hana-scaleout-multitarget-perfopt-15/index.html">Documentation</link></entry>
+       <entry>Supported (<link xlink:href="&dsc;/sbp/sap/html/SLES4SAP-hana-scaleout-multitarget-perfopt-15/index.html">Documentation</link>)</entry>
        <entry>Up to 12 HANA nodes, NO standby nodes.</entry>
       </row>
       <row>
        <entry>HANA performance optimized, up to 4 nodes, secondary site read-enabled</entry>
-       <entry>Supported (<link xlink:href="&dsc;/sbp/all/html/SLES4SAP-hana-scaleOut-PerfOpt-15/index.html">Documentation</link></entry>
+       <entry>Supported (<link xlink:href="&dsc;/sbp/all/html/SLES4SAP-hana-scaleOut-PerfOpt-15/index.html">Documentation</link>)</entry>
        <entry>Up to 4 HANA nodes, NO standby nodes.</entry>
       </row>
       <row>
        <entry>HANA multi-target system replication, third site NOT managed by the cluster</entry>
-       <entry>Supported (<link xlink:href="&dsc;/sbp/sap/html/SLES4SAP-hana-scaleout-multitarget-perfopt-15/index.html">Documentation</link></entry>
+       <entry>Supported (<link xlink:href="&dsc;/sbp/sap/html/SLES4SAP-hana-scaleout-multitarget-perfopt-15/index.html">Documentation</link>)</entry>
        <entry>( B &lt;= A' ) -&gt; C topology is supported with conditions: Site A to site B system
        replication in &pace; is supported. Site A to site C system replication is not managed by &pace;.</entry>
       </row>
       <row>
        <entry>HANA multi-tier system replication, third site NOT managed by the cluster</entry>
-       <entry>Supported (<link xlink:href="&dsc;/sbp/sap/html/SLES4SAP-hana-scaleout-multitarget-perfopt-15/index.html">Documentation</link></entry>
+       <entry>Supported (<link xlink:href="&dsc;/sbp/sap/html/SLES4SAP-hana-scaleout-multitarget-perfopt-15/index.html">Documentation</link>)</entry>
        <entry>(A' =&gt; B ) -&gt; C topology is supported with conditions: A to B system replication
        in &pace; is supported. B to C system replication is not managed by &pace;.</entry>
       </row>
@@ -721,24 +721,24 @@
     <tbody>
      <row>
       <entry>2-node cluster</entry>
-      <entry>Supported <link xlink:href="&dsc;/sbp/all/html/SAP-S4HA10-setupguide-sle15/index.html">Documentation</link></entry>
+      <entry>Supported (<link xlink:href="&dsc;/sbp/all/html/SAP-S4HA10-setupguide-sle15/index.html">Documentation</link>)</entry>
       <entry>In a 2-node cluster, ASCS fails over to the same node where ERS is running.</entry>
      </row>
      <row>
       <entry>3-node cluster</entry>
-      <entry>Supported <link xlink:href="&dsc;/sbp/sap/html/SAP-S4HA10-setupguide-simplemount-sle15/index.html">Documentation</link></entry>
+      <entry>Supported (<link xlink:href="&dsc;/sbp/sap/html/SAP-S4HA10-setupguide-simplemount-sle15/index.html">Documentation</link>)</entry>
       <entry>In a 3-node cluster, ASCS fails over to the online node where ERS is not running.</entry>
      </row>
      <row>
       <entry>Simple mount file system structure</entry>
-      <entry>Supported <link xlink:href="&dsc;/sbp/sap/html/SAP-S4HA10-setupguide-simplemount-sle15/index.html">Documentation</link></entry>
+      <entry>Supported (<link xlink:href="&dsc;/sbp/sap/html/SAP-S4HA10-setupguide-simplemount-sle15/index.html">Documentation</link>)</entry>
       <entry>Shared file system mounts are NOT managed by the cluster.
       This is the recommended configuration over the
        <emphasis>Filesystem</emphasis> resource-based solution.</entry>
      </row>
      <row>
       <entry><emphasis>Filesystem</emphasis> resource-based</entry>
-      <entry>Supported <link xlink:href="&dsc;/sbp/all/html/SAP-S4HA10-setupguide-sle15/index.html">Documentation</link></entry>
+      <entry>Supported (<link xlink:href="&dsc;/sbp/all/html/SAP-S4HA10-setupguide-sle15/index.html">Documentation</link>)</entry>
       <entry>Shared file system mounts are managed by the cluster
       via the <emphasis>Filesystem</emphasis> resource agent.
       &suse; still supports this configuration, but it is not
@@ -747,7 +747,7 @@
      </row>
      <row>
       <entry>Multi-SID</entry>
-      <entry>Supported <link xlink:href="&dsc;/sbp/all/html/SBP-SAP-MULTI-SID/index.html">Documentation</link></entry>
+      <entry>Supported (<link xlink:href="&dsc;/sbp/all/html/SBP-SAP-MULTI-SID/index.html">Documentation</link>)</entry>
       <entry>Multiple &sap; ASCS/SCS clustered instances are supported in the same cluster.</entry>
      </row>
      <row>
@@ -800,7 +800,7 @@
     <tbody>
      <row>
       <entry>2-node cluster</entry>
-      <entry>Supported <link xlink:href="&dsc;/sbp/all/html/SAP-nw740-sle15-setupguide/index.html">Documentation</link></entry>
+      <entry>Supported (<link xlink:href="&dsc;/sbp/all/html/SAP-nw740-sle15-setupguide/index.html">Documentation</link>)</entry>
       <entry>In a 2-node cluster, ASCS fails over to the same node where ERS is running.</entry>
      </row>
      <row>
@@ -817,7 +817,7 @@
      </row>
      <row>
       <entry><emphasis>Filesystem</emphasis> resource-based</entry>
-      <entry>Supported <link xlink:href="&dsc;/sbp/all/html/SAP-nw740-sle15-setupguide/index.html">Documentation</link></entry>
+      <entry>Supported (<link xlink:href="&dsc;/sbp/all/html/SAP-nw740-sle15-setupguide/index.html">Documentation</link>)</entry>
       <entry>Shared file system mounts are managed by the cluster via
       the <emphasis>Filesystem</emphasis> resource agent.
       &suse; still supports this configuration, but it is not recommended
@@ -826,7 +826,7 @@
      </row>
      <row>
       <entry>Multi-SID</entry>
-      <entry>Supported <link xlink:href="&dsc;/sbp/all/html/SBP-SAP-MULTI-SID/index.html">Documentation</link></entry>
+      <entry>Supported (<link xlink:href="&dsc;/sbp/all/html/SBP-SAP-MULTI-SID/index.html">Documentation</link>)</entry>
       <entry>Multiple &sap; ASCS/SCS clustered instances are supported in the same cluster.</entry>
      </row>
      <row>
