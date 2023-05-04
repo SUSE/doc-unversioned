@@ -303,11 +303,6 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
           host name of the &t.server; host.</para>
       </listitem>
       <listitem>
-        <para><replaceable>PRIVATE_SSH_KEY</replaceable>: the absolute path to the private
-          SSH key that &t.server; will use to connect to the &t.agent; hosts.
-        </para>
-      </listitem>
-      <listitem>
         <para>
           <replaceable>ADMIN_PASSWORD</replaceable>: the password that the &sap; administrator
           will use to access the web console.
@@ -334,8 +329,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         </para>
         <screen>HELM_EXPERIMENTAL_OCI=1 helm upgrade \
    --install trento-server oci://registry.suse.com/trento/trento-server \
-   --set trento-web.adminUser.password=<replaceable>ADMIN_PASSWORD</replaceable> \
-   --set-file trento-runner.privateKey=<replaceable>PRIVATE_SSH_KEY</replaceable></screen>
+   --set trento-web.adminUser.password=<replaceable>ADMIN_PASSWORD</replaceable>
        <para>
           Note that the experimental flag is not needed as of Helm version 3.8.0.
         </para>
@@ -400,8 +394,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         </para>
         <screen>HELM_EXPERIMENTAL_OCI=1 helm upgrade \
    --install trento-server oci://registry.suse.com/trento/trento-server \
-   --set trento-web.adminUser.password=<replaceable>ADMIN_PASSWORD</replaceable> \
-   --set-file trento-runner.privateKey=<replaceable>PRIVATE_SSH_KEY</replaceable></screen>
+   --set trento-web.adminUser.password=<replaceable>ADMIN_PASSWORD</replaceable>
        <para>
           Note that the experimental flag is not needed as of Helm version 3.8.0.
         </para>
@@ -446,7 +439,6 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       <screen>HELM_EXPERIMENTAL_OCI=1 helm upgrade \
    --install trento-server oci://registry.suse.com/trento/trento-server \
    --set trento-web.adminUser.password=<replaceable>ADMIN_PASSWORD</replaceable> \
-   --set-file trento-runner.privateKey=<replaceable>PRIVATE_SSH_KEY</replaceable>
    --set prometheus.server.nodeSelector.<replaceable>LABEL</replaceable>=<replaceable>VALUE</replaceable> \
    --set postgresql.primary.nodeSelector.<replaceable>LABEL</replaceable>=<replaceable>VALUE</replaceable> \
    --set trento-web.nodeSelector.<replaceable>LABEL</replaceable>=<replaceable>VALUE</replaceable> \
@@ -530,7 +522,6 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       <screen>HELM_EXPERIMENTAL_OCI=1 helm upgrade \
    --install trento-server oci://registry.suse.com/trento/trento-server \
    --set trento-web.adminUser.password=<replaceable>ADMIN_PASSWORD</replaceable> \
-   --set-file trento-runner.privateKey=<replaceable>PRIVATE_SSH_KEY</replaceable> \
    --set trento-web.alerting.enabled=true \
    --set trento-web.alerting.smtpServer=<replaceable>SMTP_SERVER</replaceable> \
    --set trento-web.alerting.smtpPort=<replaceable>SMTP_PORT</replaceable> \
