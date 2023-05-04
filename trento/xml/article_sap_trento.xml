@@ -51,7 +51,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
     <abstract>
       <para>
        &trentopremium; is an open cloud native web console that aims to help
-       &sap; Basis consultants and administrators to monitor the entire OS stack of their
+       &sap; Basis consultants and administrators to check the configuration, monitor and manage the entire OS stack of their
        &sap; environments, including HA features.
       </para>
     </abstract>
