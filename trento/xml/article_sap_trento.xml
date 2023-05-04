@@ -281,16 +281,6 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
             <para>A registered &sles4sap; distribution.</para>
           </formalpara>
         </listitem>
-        <listitem>
-          <formalpara>
-            <title>A Trento service user</title>
-            <para> Able to sudo to root without password in the &t.agent; hosts. In this example, we
-              will refer to it as <systemitem class="username"
-                >&trentoadmin;</systemitem>. You can use any
-              desired user name, but we recommend you use it
-              consistently across the landscape. </para>
-          </formalpara>
-        </listitem>
       </itemizedlist>
     </section>
   </section>
