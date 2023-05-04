@@ -1,0 +1,18 @@
+# https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+#
+# Pattern			Maintainer
+#
+# default
+#*				@SUSE/documentation
+
+
+# Specific maintainers
+container-guide/*			@dmpop
+kubevirt/*				@tbazant
+openscap/*				@taroth21
+pcidss/*				@taroth21
+sap-ha-support/*			@tahliar
+scc-hypervisor-collector/*	@tbazant
+stig/*				@taroth21
+suseconnect-visibility/*	@tbazant
+trento/*				@tomschr
