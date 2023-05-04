@@ -2085,8 +2085,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
         </para>
         <screen>HELM_EXPERIMENTAL_OCI=1 helm upgrade \
    --install trento-server oci://registry.suse.com/trento/trento-server \
-   --set trento-web.adminUser.password=<replaceable>ADMIN_PASSWORD</replaceable> \
-   --set-file trento-runner.privateKey=<replaceable>PRIVATE_SSH_KEY</replaceable>
+   --set trento-web.adminUser.password=<replaceable>ADMIN_PASSWORD</replaceable>
         </screen>
         <para>
           Note that the experimental flag is not needed as of Helm version 3.8.0.
@@ -2098,7 +2097,6 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
         <screen>HELM_EXPERIMENTAL_OCI=1 helm upgrade \
    --install trento-server oci://registry.suse.com/trento/trento-server \
    --set trento-web.adminUser.password=<replaceable>ADMIN_PASSWORD</replaceable> \
-   --set-file trento-runner.privateKey=<replaceable>PRIVATE_SSH_KEY</replaceable> \
    --set trento-web.alerting.enabled=true \
    --set trento-web.alerting.smtpServer=<replaceable>SMTP_SERVER</replaceable> \
    --set trento-web.alerting.smtpPort=<replaceable>SMTP_PORT</replaceable> \
