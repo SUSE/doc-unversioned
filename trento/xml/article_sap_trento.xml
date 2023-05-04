@@ -329,7 +329,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         </para>
         <screen>HELM_EXPERIMENTAL_OCI=1 helm upgrade \
    --install trento-server oci://registry.suse.com/trento/trento-server \
-   --set trento-web.adminUser.password=<replaceable>ADMIN_PASSWORD</replaceable>
+   --set trento-web.adminUser.password=<replaceable>ADMIN_PASSWORD</replaceable></screen>
        <para>
           Note that the experimental flag is not needed as of Helm version 3.8.0.
         </para>
@@ -394,7 +394,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         </para>
         <screen>HELM_EXPERIMENTAL_OCI=1 helm upgrade \
    --install trento-server oci://registry.suse.com/trento/trento-server \
-   --set trento-web.adminUser.password=<replaceable>ADMIN_PASSWORD</replaceable>
+   --set trento-web.adminUser.password=<replaceable>ADMIN_PASSWORD</replaceable></screen>
        <para>
           Note that the experimental flag is not needed as of Helm version 3.8.0.
         </para>
