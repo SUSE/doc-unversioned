@@ -213,15 +213,6 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         two CPU cores and 64&nbsp;GB of storage.
         When using K3s, such storage should be provided under <filename>/var/lib/rancher/k3s</filename>.
       </para>
-      <para>
-       &t.server; needs an SSH key to execute configuration checks in the &t.agent;s hosts.
-       You can use an existing SSH key pair or create one by running the following command:
-      </para>
-      <screen>ssh-keygen -f ~/.ssh/id_rsa -t rsa -b 4096 -N ''</screen>
-      <para>
-       The previous command creates two files in the <filename>~/.ssh</filename> directory:
-       file <filename>id_rsa</filename> as a private SSH key and file <filename>id_rsa.pub</filename> as a public SSH key.
-      </para>
       <para> While the &t.server; supports various usage scenarios,
         depending on the existing infrastructure, it is designed to be
         cloud native and OS agnostic. As such, the default installation
