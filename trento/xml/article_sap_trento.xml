@@ -613,38 +613,11 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       </step>
     </procedure>
     <para>
-      To install the &t.agent;, repeat the steps in <xref linkend="pro-trento-installing-trentoagent"/>
-      on each host to be monitored in your &sap; environment.
+      To install the &t.agent; on an SAP host and register it
+      with the &t.server;, repeat the steps in <xref linkend="pro-trento-installing-trentoagent"/>:
     </para>
-    <para> The procedure uses the following placeholders: </para>
-    <itemizedlist>
-      <listitem>
-        <para><replaceable>TRENTO_SERVER_IP</replaceable>: local IP
-          address of the &t.server; host</para>
-      </listitem>
-      <listitem>
-        <para><replaceable>TRENTO_AGENT_IP</replaceable>: local IP
-          address of the &t.agent; host</para>
-      </listitem>
-      <listitem>
-        <para><replaceable>TRENTO_AGENT</replaceable>: host name of the
-          &t.agent; host</para>
-      </listitem>
-    </itemizedlist>
-    <para> To install the &t.agent; software on the host and register it
-      with the &t.server;, proceed as follows: </para>
     <procedure xml:id="pro-trento-installing-trentoagent">
       <title>Installing &t.agent;s</title>
-      <step xml:id="step-trento-installing-trentoagent-sshkey">
-        <para>
-          On the &t.agent; host, add the public SSH key used for the
-          installation of &t.server; to the <filename>~/.ssh/authorized_keys</filename>
-          file of the user <systemitem
-          class="username">&trentoadmin;</systemitem>.
-          This step is necessary to enable the runner checks in the
-          &t.agent; host via SSH.
-        </para>
-      </step>
       <step>
         <para>
           Install the package:
@@ -656,12 +629,12 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         <para>
           Open the configuration file <filename>/etc/trento/agent.yml</filename>
           and uncomment (use <literal>#</literal>) the entries for
-          <parameter>ssh-address</parameter>, <parameter>server-url</parameter> and
+          <parameter>facts-service-url</parameter>, <parameter>server-url</parameter> and
           <parameter>api-key</parameter>. Update the values appropriately:
         </para>
         <itemizedlist>
           <listitem>
-            <para><parameter>ssh-address</parameter>: local IP address</para>
+            <para><parameter>facts-service-url</parameter>: the address of the AMQP service shared with the checks engine, where fact gathering requests are received.</para>
           </listitem>
           <listitem>
             <para><parameter>server-url</parameter>: URL for the Trento Server (<uri>http://TRENTO_SERVER_HOSTNAME</uri>)
@@ -722,7 +695,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
 [...]</screen>
       </step>
       <step>
-        <para> Repeat this procedure in all &t.agent; hosts. </para>
+        <para> Repeat this procedure in all SAP hosts that you want to monitor. </para>
       </step>
     </procedure>
   </section>
