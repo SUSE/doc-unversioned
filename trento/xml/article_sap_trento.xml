@@ -2142,14 +2142,14 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
       </step>
       <step>
         <para>
-          Ensure that entries <parameter>ssh-address</parameter>,
+          Ensure that entries <parameter>facts-service-url</parameter>,
           <parameter>server-url</parameter>, and <parameter>api-key</parameter>
           are maintained properly in the &t.agent; configuration file
           <filename>/etc/trento/agent.yaml</filename>:
         </para>
         <itemizedlist>
           <listitem>
-            <para><parameter>ssh-address</parameter>: local IP address</para>
+            <para><parameter>facts-service-url</parameter>: the address of the AMQP service shared with the checks engine where fact gathering requests are received.</para>
           </listitem>
           <listitem>
             <para><parameter>server-url</parameter>: HTTP URL for the &t.server;
