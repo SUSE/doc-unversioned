@@ -255,11 +255,6 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
             &t.server; must be reachable via HTTP (port TCP/80) or via HTTPS (port TCP/443) if SSL is enabled, from any &t.agent; host.
           </para>
         </listitem>
-        <listitem>
-          <para>
-            &t.server; must be able to reach the &t.agent; hosts via SSH (port TCP/22).
-          </para>
-        </listitem>
          <listitem>
           <para>
             &t.server; must be able to reach the Node Exporter in the &t.agent; hosts (port TCP/9100).
