@@ -6,7 +6,8 @@ include::attributes-product.adoc[]
 
 https://podman.io/[Podman] is short for Pod Manager Tool. It is a daemonless container engine for
 managing Open Container Initiative (OCI) containers on a Linux system, and it offers a drop-in
-alternative for {docker}.
+alternative for {docker}. Podman's notable feature is out-of-the-box support for rootless containers
+offering a reduced attack surface when running containers.
 {podman} can be used to create OCI-compliant container images using a `Dockerfile` and a range of
 commands identical to {deng}. For example, the `podman build` command performs the same task as
 `docker build`. In other words, {podman} provides a drop-in replacement for {deng}.
@@ -15,43 +16,59 @@ Moving from {deng} to {podman} does not require any changes in the established w
 need to rebuild images, and you can use the exact same commands to build and manage images as well
 as run and control containers.
 
-{podman} differs from {deng} in four main ways:
+{podman} differs from {deng} the following ways:
 
 * {podman} does not use a daemon, so the container engine interacts directly with an image registry,
 containers, and an image storage when needed.
-* {podman} has a native systemd integration. Allowing to control containers via systemd units which
+* {podman} features native systemd integration: Allowing to control containers via systemd units which
 can be created for existing containers as well as generate units that can start containers if they
 do not exist in the system. Moreover, {podman} can run systemd inside containers.
 * {podman} does not require root privileges to create and run containers. This means that {podman}
-can run in root mode as well as in an unprivileged environment. Moreover, a container created by an unprivileged user cannot get higher privileges on the host than the container's creator.
+can run in under the `root` user as well as in an unprivileged environment. Moreover, a container
+created by an unprivileged user cannot get higher privileges on the host than the container's
+creator.
 * {podman} can be configured to search multiple registries by reading
 `/etc/containers/registries.conf` file.
+* {podman} can deploy applications from Kubernetes manifests
+* {podman} supports launching systemd inside a container and requires no potentially dangerous
+  workarounds.
 
 Last but not least, {podman} enables you to organize your containers into pods. Pods share the same
-network interface and resources. A typical use case for organizing a group of containers into a pod
+network interface. A typical use case for organizing a group of containers into a pod
 is a container that runs a database and a container with a client that accesses the database.
 For further information about pods, refer to <<sec-orchestration-podman>>.
 
 [[sec-podman-install]]
 === {podman} installation
 
-To install {podman}, make sure you have the {slea} Containers Module enabled (see <<sec-sle-containers-module>>), run the command `sudo zypper in podman`. Then run `podman --version` to check whether {podman} has been installed successfully.
+To install {podman}, make sure you have the {slea} Containers Module enabled (see <<sec-sle-containers-module>>), run the command `sudo zypper in podman`. Then run `podman info` to check whether {podman} has been installed successfully.
 
-By default, {podman} requires root privileges. To enable rootless mode, subuids and subgids must be assigned to the user running {podman}. If there is no entry in the `/etc/subuid` file, add an entry using the following command:
+{podman} will by default try to launch containers as the current user. For unprivileged users that
+implies launching containers in rootless mode. Support for rootless containers is enabled for all
+newly created users in {slea} by default and no additional steps are necessary.
+
+In case {podman} fails to launch containers in rootless mode, check whether the an entry for the
+current user is present in `/etc/subuid`:
+....
+ ❯ grep $(id -nu) /etc/subuid
+user:10000:65536
+....
+
+When no entry is found, add the required sub-UID and sub-GID entries via the following command:
 
 ....
-> sudo usermod --add-subuids 100000-165535 --add-subgids 100000-165535 USER
+> sudo usermod --add-subuids 100000-165535 --add-subgids 100000-165535 $(id -nu)
 ....
 
 To enable the change, reboot the machine or stop the session of the current user. To do the latter,
-run `loginctl list-sessions | grep USER` and note the session ID. Then run 
+run `loginctl list-sessions | grep USER` and note the session ID. Then run
 `loginctl kill-session SESSION_ID` to stop the session.
 
-The usermod command above defines a range of local UIDs to which the UIDs allocated to users inside
+The `usermod` command above defines a range of local UIDs to which the UIDs allocated to users inside
 the container are mapped on the host. Note that the ranges defined for different users must not
 overlap. It is also important that the ranges do not reuse the UID of an existing local user or
 group. By default, adding a user with the `useradd` command on {slsa}{nbsp}{productnumber}
-automatically allocates subUID and subGID ranges.
+automatically allocates sub-UID and sub-GID ranges.
 
 When using rootless containers with {podman}, it is recommended to use cgroups v2. cgroups v1 are
 limited in terms of functionality compared to v2. For example cgroups v1 allow every user to modify all existing control
@@ -67,7 +84,7 @@ the following error message:
 ....
 Refreshing service 'container-suseconnect-zypp'.
 Problem retrieving the repository index file for service 'container-suseconnect-zypp':
-[container-suseconnect-zypp|file:/usr/lib/zypp/plugins/services/container-suseconnect-zypp] 
+[container-suseconnect-zypp|file:/usr/lib/zypp/plugins/services/container-suseconnect-zypp]
 Warning: Skipping service 'container-suseconnect-zypp' because of the above error.
 Warning: There are no enabled repositories defined.
 Use 'zypper addrepo' or 'zypper modifyrepo' commands to add or enable repositories
@@ -77,7 +94,7 @@ To solve the problem, grant the current user the required access rights by runni
 command on the host:
 
 ....
-> sudo setfacl -m u:USER:r /etc/zypp/credentials.d/*
+> sudo setfacl -m u:$(id -nu):r /etc/zypp/credentials.d/*
 ....
 
 Log out and log in again to apply the changes.
@@ -93,31 +110,131 @@ command. Then use the following command to change the group ownership and rights
 
 You can then grant a specific user write access by adding them to the created group.
 
+[[sec-podman-rootless-containers-tricks]]
+
+==== Tips and tricks for rootless containers
+
+{podman} remaps user IDs with rootless containers. In the following example, {podman} remaps the current user to the default user in the container:
+
+....
+❯ podman run --rm -it registry.suse.com/bci/bci-base id
+uid=0(root) gid=0(root) groups=0(root)
+....
+Note that even if you are root in the container, you cannot gain superuser privileges outside of it.
+
+This user remapping can have undesired side effects when sharing data with the host, where the
+shared files belong to different user IDs in the container and on the host. The issue can be solved
+using the the command line flag `--userns=keep-id` that makes it possible to keep the current user
+id in the container:
+
+....
+❯ podman run --userns=keep-id --rm -it registry.suse.com/bci/bci-base id
+uid=1000(user) gid=1000(users) groups=1000(users)
+....
+
+The flag `--userns=keep-id` has a similar effect when used with bind mounts:
+
+....
+ ❯ podman run --rm -it -v $(pwd):/share/ registry.suse.com/bci/bci-base stat /share/
+  File: /share/
+  Size: 318             Blocks: 0          IO Block: 4096   directory
+Device: 2ch/44d Inode: 3506170     Links: 1
+Access: (0755/drwxr-xr-x)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2023-05-03 12:52:18.636392618 +0000
+Modify: 2023-05-03 12:52:17.178380923 +0000
+Change: 2023-05-03 12:52:17.178380923 +0000
+ Birth: 2023-05-03 12:52:15.852370288 +0000
+
+ ❯ podman run --userns=keep-id --rm -it -v $(pwd):/share/ registry.suse.com/bci/bci-base stat /share/
+  File: /share/
+  Size: 318             Blocks: 0          IO Block: 4096   directory
+Device: 2ch/44d Inode: 3506170     Links: 1
+Access: (0755/drwxr-xr-x)  Uid: ( 1000/     user)   Gid: ( 1000/     users)
+Access: 2023-05-03 12:52:18.636392618 +0000
+Modify: 2023-05-03 12:52:17.178380923 +0000
+Change: 2023-05-03 12:52:17.178380923 +0000
+ Birth: 2023-05-03 12:52:15.852370288 +0000
+....
+
+{podman} stores the containers' data in the storage graph root (default is
+`~/.local/share/containers/storage`). Because of the way {podman} remaps user IDs in rootless
+containers, the graph root may contain files that are not owned by your current user but by a user
+ID in the sub-UID region assigned to your user. As these files do not belong to your current user,
+they can be inaccessible to you.
+
+To read or modify any file in the graph root, enter a shell as follows:
+
+....
+ ❯ podman unshare bash
+
+ ❯ id
+uid=0(root) gid=0(root) groups=0(root),65534(nobody)
+....
+
+Note that `podman unshare` performs the same user remapping as `podman run` does when launching a
+rootless container. You cannot gain elevated privileges via `podman unshare`.
+
+Refrain from modifying files in the graph root as this can corrupt {podman}'s internal state and
+render your containers, images and volumes inoperable.
+
+
+==== Caveats of rootless containers
+
+Because unprivileged users cannot configure network namespaces on
+Linux, {podman} relies on a userspace network implementation called `slirp4netns`. It emulates the full TCP-IP stack and can cause a heavy performance degradation for workloads relying on high network transfer rates. This means that rootless containers suffer from slow network transfers.
+
+On Linux, unprivileged users cannot open ports below port number 1024. This limitation also applies
+to {podman}, so by default, rootless containers cannot expose ports below port number
+1024. You can remove this limitation using the following command:
+....
+sysctl net.ipv4.ip_unprivileged_port_start=0
+....
+or make it persistent via:
+....
+sysctl -w net.ipv4.ip_unprivileged_port_start=0
+....
+
+Note that this allows *all* unprivileged applications to bind to ports below 1024.
+
+
 [[sec-podman-docker]]
 ==== {podman}-docker
 
-Since {podman} is compatible with {deng}, it features the same commands and options. You can also
-install the package `podman-docker`, which will allow you to use an emulated docker CLI using
-podman, for example, the `docker pull` command will actually execute `podman pull`, which fetches a
-container image from a registry, or `docker build` will execute `podman build`.
+Since {podman} is compatible with {deng}, it features the same command-line interface. You can also
+install the package `podman-docker` that allows you to use an emulated docker CLI with podman. For
+example, the `docker pull` command, that fetches a container image from a registry, executes `podman
+pull` instead. The `docker build` command executes `podman build`, etc.
+
+{podman} also features a {deng} compatible socket that can be launched via:
+....
+ ❯ sudo systemctl start podman.socket
+....
+
+The {podman} socket can be used by applications designed to communicate with {deng} to launch
+containers transparently via {podman}. The {podman} socket can be used  to
+launch containers via `docker compose`, without running {deng}.
+
 
 [[sec-podman-get]]
-=== Getting container images
+=== Obtaining container images
 
 [[sec-podman-registries]]
 ==== Configuring container registries
 
-One of the advantages of {podman} over {deng} is that {podman} can be configured to search multiple registries. To make {podman} search the {suseregistry} first and use {dhub} as a fallback, add the following configuration to the `/etc/containers/registries.conf` file:
+One of the advantages of {podman} over {deng} is that {podman} can be configured to search multiple container registries. To make {podman} search the {suseregistry} first and use {dhub} as a fallback, add the following configuration to the `/etc/containers/registries.conf` file:
 
 ....
-[registries.search]
-registries = ["registry.suse.com", "docker.io"]
+unqualified-search-registries = ["registry.suse.com", "docker.io"]
 ....
+
+Note that this step can be skipped on {slea} or openSUSE. On both distributions, {suseregistry}
+and `registry.opensuse.org` have priority over {dhub}.
+
 
 [[sec-podman-search]]
 ==== Searching images in registries
 
-Using the `podman search` command allow you to list available containers in the registries defined 
+Using the `podman search` command allow you to list available containers in the registries defined
 in `/etc/containers/registries.conf`.
 
 To search in all registries:
@@ -144,7 +261,6 @@ For instance
 
 Note that if you do not specify a `tag`, the tag `latest` will be used.
 
-The default location of pulled images is `/var/lib/containers/storage/overlay-images/`.
 
 [[sec-podman-tag]]
 === Renaming images and images tag

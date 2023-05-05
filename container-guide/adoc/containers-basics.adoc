@@ -14,13 +14,13 @@ Linux containers share and directly use the host OS kernel.
 
 Advantages of using containers::
 * *Size*: Container images should only include the content needed to run an application, whereas a
-virtual machine include an entire operating system,
+virtual machine includes an entire operating system,
 * *Performance*: Containers provide near-native performance, as the kernel overhead is lower compared
 to virtualization and emulation.
-* *Security*: Containers make it possible to isolate applications in self-contained units from the
-rest of the host system.
-* *Resources management*: It is possible to fine grained control CPU, memory, disk I/O, network
-interfaces, etc inside containers (cgroups).
+* *Security*: Containers make it possible to isolate applications into self-contained units,
+separated from the rest of the host system.
+* *Resources management*: It is possible to granularly control CPU, memory, disk I/O, network
+interfaces, etc inside containers (via cgroups).
 * *Flexibility*: Container images hold all necessary libraries, dependencies, and files needed to run
 an application, thus can be easily developed and deployed on multiple hosts.
 
@@ -29,8 +29,8 @@ Limitations of containers::
 version provided by the host.
 * Only Linux-based applications can be containerized on a Linux host.
 * A container encapsulates binaries for a specific architecture ({x64} or {aarch64} for instance).
-So a container made for {x64} only runs on a {x64} system host.
-* Containers in themselves are no more secure than executing binaries outside of a container, and 
+So a container made for {x64} only runs on a {x64} system host without the use of emulation.
+* Containers in themselves are no more secure than executing binaries outside of a container, and
 the overall security of containers depends on the host system. While containerized applications can
 be secured through AppArmor or SELinux profiles, container security requires putting in place tools and
 policies that ensure security of the container infrastructure and applications.
@@ -41,13 +41,13 @@ policies that ensure security of the container infrastructure and applications.
 Although {deng} is a popular choice for working with images and containers, {podman} provides a
 drop-in replacement for {docker} that offers several advantages. While <<cha-podman-overview>>
 provides more information on {podman}, this chapter offers a quick introduction to key concepts and
-a basic procedure for creating a container image and using it to run a container.
+a basic procedure for creating a container image and using {podman} to run a container.
 
 The basic {podman} workflow is as follows:
 
 image::container-workflow.png[image,scaledwidth=80.0%]
 
-Running a container, either on a local machine or cloud service, normally involves the following
+Running a container, either on a local machine or in a cloud service, usually involves the following
 steps:
 
 [arabic]
