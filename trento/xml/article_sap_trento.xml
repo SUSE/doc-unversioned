@@ -634,7 +634,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         </para>
         <itemizedlist>
           <listitem>
-            <para><parameter>facts-service-url</parameter>: the address of the AMQP service shared with the checks engine, where fact gathering requests are received.</para>
+            <para><parameter>facts-service-url</parameter>: the address of the AMQP (Advanced Message Queuing Protocol) service shared with the checks engine, where fact gathering requests are received.</para>
           </listitem>
           <listitem>
             <para><parameter>server-url</parameter>: URL for the Trento Server (<uri>http://TRENTO_SERVER_HOSTNAME</uri>)
