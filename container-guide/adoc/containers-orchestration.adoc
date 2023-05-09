@@ -100,7 +100,7 @@ POD ID        NAME          STATUS      CREATED         INFRA ID
 ....
 
 [[sec-orchestration-pod-stop]]
-==== Stoping pod or a container in a pod
+==== Stopping pod or a container in a pod
 
 Let's stop our newly created container named objective_jemison
 
