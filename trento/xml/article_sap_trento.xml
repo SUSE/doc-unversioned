@@ -2080,12 +2080,12 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
       </step>
       <step>
         <para>
-          With the same user, start the update of the &t.server;. It is exactly
-          the same command as for the installation:
+          With the same user, start the update of the &t.server; running the following command:
         </para>
         <screen>HELM_EXPERIMENTAL_OCI=1 helm upgrade \
    --install trento-server oci://registry.suse.com/trento/trento-server \
-   --set trento-web.adminUser.password=<replaceable>ADMIN_PASSWORD</replaceable>
+   --set trento-web.adminUser.password=<replaceable>ADMIN_PASSWORD</replaceable> \
+   --set rabbitmq.auth.erlangCookie=$(openssl rand -hex 16)
         </screen>
         <para>
           Note that the experimental flag is not needed as of Helm version 3.8.0.
@@ -2097,6 +2097,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
         <screen>HELM_EXPERIMENTAL_OCI=1 helm upgrade \
    --install trento-server oci://registry.suse.com/trento/trento-server \
    --set trento-web.adminUser.password=<replaceable>ADMIN_PASSWORD</replaceable> \
+   --set rabbitmq.auth.erlangCookie=$(openssl rand -hex 16) \
    --set trento-web.alerting.enabled=true \
    --set trento-web.alerting.smtpServer=<replaceable>SMTP_SERVER</replaceable> \
    --set trento-web.alerting.smtpPort=<replaceable>SMTP_PORT</replaceable> \
@@ -2105,8 +2106,8 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
    --set trento-web.alerting.recipient=<replaceable>ALERTING_RECIPIENT</replaceable></screen>
       </step>
       <step>
-        <para>Check the &t.server; processes:</para>
-        <screen>kubectl get pod</screen>
+        <para>Watch the &t.server; processes until they are all in ready/running status:</para>
+        <screen>watch kubectl get pods</screen>
       </step>
       <step>
         <para> Open the &t.web; URL
