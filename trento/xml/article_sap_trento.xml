@@ -2142,10 +2142,10 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
       </step>
       <step>
         <para>
-          Ensure that entries <parameter>facts-service-url</parameter>,
+          Copy file <filename>/etc/trento/agent.yaml.rpmnew</filename> onto <filename>/etc/trento/agent.yaml</filename>
+          and ensure that entries <parameter>facts-service-url</parameter>,
           <parameter>server-url</parameter>, and <parameter>api-key</parameter>
-          are maintained properly in the &t.agent; configuration file
-          <filename>/etc/trento/agent.yaml</filename>:
+          are maintained properly in the latter:
         </para>
         <itemizedlist>
           <listitem>
