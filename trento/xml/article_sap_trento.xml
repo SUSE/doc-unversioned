@@ -51,7 +51,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
     <abstract>
       <para>
        &trentopremium; is an open cloud native web console that aims to help
-       &sap; Basis consultants and administrators to monitor the entire OS stack of their
+       &sap; Basis consultants and administrators to check the configuration, monitor and manage the entire OS stack of their
        &sap; environments, including HA features.
       </para>
     </abstract>
@@ -213,15 +213,6 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         two CPU cores and 64&nbsp;GB of storage.
         When using K3s, such storage should be provided under <filename>/var/lib/rancher/k3s</filename>.
       </para>
-      <para>
-       &t.server; needs an SSH key to execute configuration checks in the &t.agent;s hosts.
-       You can use an existing SSH key pair or create one by running the following command:
-      </para>
-      <screen>ssh-keygen -f ~/.ssh/id_rsa -t rsa -b 4096 -N ''</screen>
-      <para>
-       The previous command creates two files in the <filename>~/.ssh</filename> directory:
-       file <filename>id_rsa</filename> as a private SSH key and file <filename>id_rsa.pub</filename> as a public SSH key.
-      </para>
       <para> While the &t.server; supports various usage scenarios,
         depending on the existing infrastructure, it is designed to be
         cloud native and OS agnostic. As such, the default installation
@@ -264,11 +255,6 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
             &t.server; must be reachable via HTTP (port TCP/80) or via HTTPS (port TCP/443) if SSL is enabled, from any &t.agent; host.
           </para>
         </listitem>
-        <listitem>
-          <para>
-            &t.server; must be able to reach the &t.agent; hosts via SSH (port TCP/22).
-          </para>
-        </listitem>
          <listitem>
           <para>
             &t.server; must be able to reach the Node Exporter in the &t.agent; hosts (port TCP/9100).
@@ -295,16 +281,6 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
             <para>A registered &sles4sap; distribution.</para>
           </formalpara>
         </listitem>
-        <listitem>
-          <formalpara>
-            <title>A Trento service user</title>
-            <para> Able to sudo to root without password in the &t.agent; hosts. In this example, we
-              will refer to it as <systemitem class="username"
-                >&trentoadmin;</systemitem>. You can use any
-              desired user name, but we recommend you use it
-              consistently across the landscape. </para>
-          </formalpara>
-        </listitem>
       </itemizedlist>
     </section>
   </section>
@@ -327,14 +303,9 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
           host name of the &t.server; host.</para>
       </listitem>
       <listitem>
-        <para><replaceable>PRIVATE_SSH_KEY</replaceable>: the absolute path to the private
-          SSH key that &t.server; will use to connect to the &t.agent; hosts.
-        </para>
-      </listitem>
-      <listitem>
         <para>
           <replaceable>ADMIN_PASSWORD</replaceable>: the password that the &sap; administrator
-          will use to access the web console.
+          will use to access the web console. It should have at least 8 characters. 
         </para>
       </listitem>
     </itemizedlist>
@@ -358,8 +329,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         </para>
         <screen>HELM_EXPERIMENTAL_OCI=1 helm upgrade \
    --install trento-server oci://registry.suse.com/trento/trento-server \
-   --set trento-web.adminUser.password=<replaceable>ADMIN_PASSWORD</replaceable> \
-   --set-file trento-runner.privateKey=<replaceable>PRIVATE_SSH_KEY</replaceable></screen>
+   --set trento-web.adminUser.password=<replaceable>ADMIN_PASSWORD</replaceable></screen>
        <para>
           Note that the experimental flag is not needed as of Helm version 3.8.0.
         </para>
@@ -424,8 +394,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         </para>
         <screen>HELM_EXPERIMENTAL_OCI=1 helm upgrade \
    --install trento-server oci://registry.suse.com/trento/trento-server \
-   --set trento-web.adminUser.password=<replaceable>ADMIN_PASSWORD</replaceable> \
-   --set-file trento-runner.privateKey=<replaceable>PRIVATE_SSH_KEY</replaceable></screen>
+   --set trento-web.adminUser.password=<replaceable>ADMIN_PASSWORD</replaceable></screen>
        <para>
           Note that the experimental flag is not needed as of Helm version 3.8.0.
         </para>
@@ -470,7 +439,6 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       <screen>HELM_EXPERIMENTAL_OCI=1 helm upgrade \
    --install trento-server oci://registry.suse.com/trento/trento-server \
    --set trento-web.adminUser.password=<replaceable>ADMIN_PASSWORD</replaceable> \
-   --set-file trento-runner.privateKey=<replaceable>PRIVATE_SSH_KEY</replaceable>
    --set prometheus.server.nodeSelector.<replaceable>LABEL</replaceable>=<replaceable>VALUE</replaceable> \
    --set postgresql.primary.nodeSelector.<replaceable>LABEL</replaceable>=<replaceable>VALUE</replaceable> \
    --set trento-web.nodeSelector.<replaceable>LABEL</replaceable>=<replaceable>VALUE</replaceable> \
@@ -554,7 +522,6 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       <screen>HELM_EXPERIMENTAL_OCI=1 helm upgrade \
    --install trento-server oci://registry.suse.com/trento/trento-server \
    --set trento-web.adminUser.password=<replaceable>ADMIN_PASSWORD</replaceable> \
-   --set-file trento-runner.privateKey=<replaceable>PRIVATE_SSH_KEY</replaceable> \
    --set trento-web.alerting.enabled=true \
    --set trento-web.alerting.smtpServer=<replaceable>SMTP_SERVER</replaceable> \
    --set trento-web.alerting.smtpPort=<replaceable>SMTP_PORT</replaceable> \
@@ -646,38 +613,11 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       </step>
     </procedure>
     <para>
-      To install the &t.agent;, repeat the steps in <xref linkend="pro-trento-installing-trentoagent"/>
-      on each host to be monitored in your &sap; environment.
+      To install the &t.agent; on an SAP host and register it
+      with the &t.server;, repeat the steps in <xref linkend="pro-trento-installing-trentoagent"/>:
     </para>
-    <para> The procedure uses the following placeholders: </para>
-    <itemizedlist>
-      <listitem>
-        <para><replaceable>TRENTO_SERVER_IP</replaceable>: local IP
-          address of the &t.server; host</para>
-      </listitem>
-      <listitem>
-        <para><replaceable>TRENTO_AGENT_IP</replaceable>: local IP
-          address of the &t.agent; host</para>
-      </listitem>
-      <listitem>
-        <para><replaceable>TRENTO_AGENT</replaceable>: host name of the
-          &t.agent; host</para>
-      </listitem>
-    </itemizedlist>
-    <para> To install the &t.agent; software on the host and register it
-      with the &t.server;, proceed as follows: </para>
     <procedure xml:id="pro-trento-installing-trentoagent">
       <title>Installing &t.agent;s</title>
-      <step xml:id="step-trento-installing-trentoagent-sshkey">
-        <para>
-          On the &t.agent; host, add the public SSH key used for the
-          installation of &t.server; to the <filename>~/.ssh/authorized_keys</filename>
-          file of the user <systemitem
-          class="username">&trentoadmin;</systemitem>.
-          This step is necessary to enable the runner checks in the
-          &t.agent; host via SSH.
-        </para>
-      </step>
       <step>
         <para>
           Install the package:
@@ -689,12 +629,12 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         <para>
           Open the configuration file <filename>/etc/trento/agent.yml</filename>
           and uncomment (use <literal>#</literal>) the entries for
-          <parameter>ssh-address</parameter>, <parameter>server-url</parameter> and
+          <parameter>facts-service-url</parameter>, <parameter>server-url</parameter> and
           <parameter>api-key</parameter>. Update the values appropriately:
         </para>
         <itemizedlist>
           <listitem>
-            <para><parameter>ssh-address</parameter>: local IP address</para>
+            <para><parameter>facts-service-url</parameter>: the address of the AMQP (Advanced Message Queuing Protocol) service shared with the checks engine, where fact gathering requests are received.</para>
           </listitem>
           <listitem>
             <para><parameter>server-url</parameter>: URL for the Trento Server (<uri>http://TRENTO_SERVER_HOSTNAME</uri>)
@@ -755,7 +695,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
 [...]</screen>
       </step>
       <step>
-        <para> Repeat this procedure in all &t.agent; hosts. </para>
+        <para> Repeat this procedure in all SAP hosts that you want to monitor. </para>
       </step>
     </procedure>
   </section>
@@ -808,47 +748,18 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       </step>
       <step xml:id="st-trento-checks-settings">
         <para>Click the <guimenu>Settings</guimenu> button to change the cluster settings of the respective cluster. 
-          For checks to be executed, the connection settings must be maintained, and a checks selection must be made.
+          For checks to be executed, a checks selection must be made. Select the checks to be executed and click the button <guimenu>Select Checks for Execution</guimenu>.
+          See <xref linkend="fig-pacemaker-clustersettings-checks"/>:
         </para>
-        <substeps>
-                  <step>
-            <formalpara>
-              <title><guimenu>Connection Settings</guimenu></title>
-              <para>
-                Add the respective Trento service user, in this guide named <systemitem class="username">&trentoadmin;</systemitem>,
-                and click the button <guimenu>Apply Connection Settings</guimenu>.
-                <!--see <xref linkend="sec-trento-installation-prerequisites"/>.-->
-                The Trento service user was used in <xref linkend="pro-trento-installing-trentoagent"/>.
-              </para>
-            </formalpara>
-            <figure xml:id="fig-pacemaker-clustersettings-connection">
-              <title>&pace; Cluster Settings&mdash;Connection Settings</title>
-              <mediaobject>
-                <imageobject>
-                  <imagedata width="70%" fileref="trento-web-pacemaker-clustersettings-connection.png"/>
+        <figure xml:id="fig-pacemaker-clustersettings-checks">
+          <title>&pace; Cluster Settings&mdash;Checks Selection</title>
+            <mediaobject>
+              <imageobject>
+                <imagedata width="70%"
+                  fileref="trento-web-pacemaker-clustersettings-checks.png" />
                 </imageobject>
               </mediaobject>
             </figure>
-          </step>
-          <step>
-            <formalpara>
-              <title><guimenu>Checks Selections</guimenu></title>
-              <para>
-                Select the checks to be executed and click the button <guimenu>Select Checks for Execution</guimenu>. See <xref
-                  linkend="fig-pacemaker-clustersettings-checks"/>:
-              </para>
-            </formalpara>
-            <figure xml:id="fig-pacemaker-clustersettings-checks">
-              <title>&pace; Cluster Settings&mdash;Checks Selection</title>
-              <mediaobject>
-                <imageobject>
-                  <imagedata width="70%"
-                    fileref="trento-web-pacemaker-clustersettings-checks.png" />
-                </imageobject>
-              </mediaobject>
-            </figure>
-          </step>
-        </substeps>
       </step>
       <step>
         <para>
@@ -2174,8 +2085,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
         </para>
         <screen>HELM_EXPERIMENTAL_OCI=1 helm upgrade \
    --install trento-server oci://registry.suse.com/trento/trento-server \
-   --set trento-web.adminUser.password=<replaceable>ADMIN_PASSWORD</replaceable> \
-   --set-file trento-runner.privateKey=<replaceable>PRIVATE_SSH_KEY</replaceable>
+   --set trento-web.adminUser.password=<replaceable>ADMIN_PASSWORD</replaceable>
         </screen>
         <para>
           Note that the experimental flag is not needed as of Helm version 3.8.0.
@@ -2187,7 +2097,6 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
         <screen>HELM_EXPERIMENTAL_OCI=1 helm upgrade \
    --install trento-server oci://registry.suse.com/trento/trento-server \
    --set trento-web.adminUser.password=<replaceable>ADMIN_PASSWORD</replaceable> \
-   --set-file trento-runner.privateKey=<replaceable>PRIVATE_SSH_KEY</replaceable> \
    --set trento-web.alerting.enabled=true \
    --set trento-web.alerting.smtpServer=<replaceable>SMTP_SERVER</replaceable> \
    --set trento-web.alerting.smtpPort=<replaceable>SMTP_PORT</replaceable> \
@@ -2233,14 +2142,14 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
       </step>
       <step>
         <para>
-          Ensure that entries <parameter>ssh-address</parameter>,
+          Ensure that entries <parameter>facts-service-url</parameter>,
           <parameter>server-url</parameter>, and <parameter>api-key</parameter>
           are maintained properly in the &t.agent; configuration file
           <filename>/etc/trento/agent.yaml</filename>:
         </para>
         <itemizedlist>
           <listitem>
-            <para><parameter>ssh-address</parameter>: local IP address</para>
+            <para><parameter>facts-service-url</parameter>: the address of the AMQP service shared with the checks engine where fact gathering requests are received.</para>
           </listitem>
           <listitem>
             <para><parameter>server-url</parameter>: HTTP URL for the &t.server;
