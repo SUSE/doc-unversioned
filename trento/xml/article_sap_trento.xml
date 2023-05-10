@@ -305,7 +305,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       <listitem>
         <para>
           <replaceable>ADMIN_PASSWORD</replaceable>: the password that the &sap; administrator
-          will use to access the web console.
+          will use to access the web console. It should have at least 8 characters. 
         </para>
       </listitem>
     </itemizedlist>
