@@ -2080,12 +2080,12 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
       </step>
       <step>
         <para>
-          With the same user, start the update of the &t.server;. It is exactly
-          the same command as for the installation:
+          With the same user, start the update of the &t.server; running the following command:
         </para>
         <screen>HELM_EXPERIMENTAL_OCI=1 helm upgrade \
    --install trento-server oci://registry.suse.com/trento/trento-server \
-   --set trento-web.adminUser.password=<replaceable>ADMIN_PASSWORD</replaceable>
+   --set trento-web.adminUser.password=<replaceable>ADMIN_PASSWORD</replaceable> \
+   --set rabbitmq.auth.erlangCookie=$(openssl rand -hex 16)
         </screen>
         <para>
           Note that the experimental flag is not needed as of Helm version 3.8.0.
@@ -2097,6 +2097,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
         <screen>HELM_EXPERIMENTAL_OCI=1 helm upgrade \
    --install trento-server oci://registry.suse.com/trento/trento-server \
    --set trento-web.adminUser.password=<replaceable>ADMIN_PASSWORD</replaceable> \
+   --set rabbitmq.auth.erlangCookie=$(openssl rand -hex 16) \
    --set trento-web.alerting.enabled=true \
    --set trento-web.alerting.smtpServer=<replaceable>SMTP_SERVER</replaceable> \
    --set trento-web.alerting.smtpPort=<replaceable>SMTP_PORT</replaceable> \
@@ -2105,8 +2106,8 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
    --set trento-web.alerting.recipient=<replaceable>ALERTING_RECIPIENT</replaceable></screen>
       </step>
       <step>
-        <para>Check the &t.server; processes:</para>
-        <screen>kubectl get pod</screen>
+        <para>Watch the &t.server; processes until they are all in ready/running status:</para>
+        <screen>watch kubectl get pods</screen>
       </step>
       <step>
         <para> Open the &t.web; URL
@@ -2142,10 +2143,10 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
       </step>
       <step>
         <para>
-          Ensure that entries <parameter>facts-service-url</parameter>,
+          Copy file <filename>/etc/trento/agent.yaml.rpmnew</filename> onto <filename>/etc/trento/agent.yaml</filename>
+          and ensure that entries <parameter>facts-service-url</parameter>,
           <parameter>server-url</parameter>, and <parameter>api-key</parameter>
-          are maintained properly in the &t.agent; configuration file
-          <filename>/etc/trento/agent.yaml</filename>:
+          are maintained properly in the latter:
         </para>
         <itemizedlist>
           <listitem>
@@ -2395,14 +2396,14 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
           <screen>&prompt.user;<command>export KUBECONFIG</command>=/etc/rancher/k3s/k3s.yaml</screen>
         </step>
         <step>
-          <para>List pods running in &k8s; cluster and their status:</para>
+          <para>List pods running in &k8s; cluster and their status. Trento Server currently consists of six pods: </para>
           <screen>&prompt.user;<command>kubectl get pods</command>
-Trento Server currently consists of five pods:
-trento-server-postgresql-*
 trento-server-grafana-*
 trento-server-prometheus-server-*
+trento-server-postgresql-0
 trento-server-web-*
-trento-server-runner-*</screen>
+trento-server-wanda-*
+trento-server-rabbitmq-0</screen>
         </step>
         <step>
           <para>Retrieve details about one particular pod:</para>
