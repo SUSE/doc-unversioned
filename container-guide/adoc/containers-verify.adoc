@@ -99,11 +99,11 @@ crypto/rsa: verification error
 [[sec-verify-podman]]
 == Verifying {bcia} with {podman}
 
-Verifying {bcia}s using {podman} is a three-step process. First, specify
+Before you can verify {bcia}s using {podman}, you must specify
 `registry.suse.com` as the registry for image verification.
 
 {{< hint type="note" >}}
-Skip this step on SLE or openSUSE, as the correct configuration is already in place.
+Skip this step on {slea}, as the correct configuration is already in place.
 {{< /hint >}}
 
 To do this, add the following configuration to
@@ -176,7 +176,7 @@ Fetch the public key used to sign {bcia}s from https://www.suse.com/support/secu
 This step is optional on {sle}. The signing key is already available in `/usr/share/pki/containers/suse-container-key.pem`.
 {{< /hint >}}
 
-{buildah}, {podman} and {skopeo} will automatically verify every image pulled
+{buildah}, {podman} and {skopeo} automatically verifies every image pulled
 from `registry.suse.com` from now on. There are no additional steps required.
 
 If verification fails, the command returns an error message as follows:
