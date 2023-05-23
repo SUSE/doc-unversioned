@@ -102,8 +102,7 @@ crypto/rsa: verification error
 Before you can verify {bcia}s using {podman}, you must specify
 `registry.suse.com` as the registry for image verification.
 
-NOTE: Skip this step on {slea}, as the correct configuration is already in place
-====
+NOTE: Skip this step on {slea}, as the correct configuration is already in place.
 
 To do this, add the following configuration to
 `/etc/containers/registries.d/default.yaml`:
