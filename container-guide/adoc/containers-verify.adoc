@@ -102,9 +102,8 @@ crypto/rsa: verification error
 Before you can verify {bcia}s using {podman}, you must specify
 `registry.suse.com` as the registry for image verification.
 
-{{< hint type="note" >}}
-Skip this step on {slea}, as the correct configuration is already in place.
-{{< /hint >}}
+NOTE: Skip this step on {slea}, as the correct configuration is already in place
+====
 
 To do this, add the following configuration to
 `/etc/containers/registries.d/default.yaml`:
@@ -160,9 +159,8 @@ images under the `registry.suse.com` repository. This way,{podman} checks the
 validity of the signature using the specified public key before pulling the
 image. It rejects the image if the validation fails.
 
-{{< hint type="note" >}}
-Do not remove existing entries in `transports.docker`. Append the entry for `registry.suse.com` to the list.
-{{< /hint >}}
+NOTE: Do not remove existing entries in `transports.docker`. Append the entry for `registry.suse.com` to the list
+====
 
 Fetch the public key used to sign {bcia}s from https://www.suse.com/support/security/keys/[SUSE Signing Keys], or use the following command:
 
@@ -172,9 +170,8 @@ Fetch the public key used to sign {bcia}s from https://www.suse.com/support/secu
     -o /usr/share/pki/containers/suse-container-key.pem
 ----
 
-{{< hint type="note" >}}
-This step is optional on {sle}. The signing key is already available in `/usr/share/pki/containers/suse-container-key.pem`.
-{{< /hint >}}
+NOTE: This step is optional on {sle}. The signing key is already available in `/usr/share/pki/containers/suse-container-key.pem`
+====
 
 {buildah}, {podman} and {skopeo} automatically verifies every image pulled
 from `registry.suse.com` from now on. There are no additional steps required.
