@@ -153,7 +153,7 @@ dotnet-sdk::
 [[sec-application-bci]]
 === Application {bcia}s
 
-Application {bcia}s are {bcia}-Base container images that include specific applications, such as the PostgreSQL database and the Grafana analytics and monitoring solution. Application {bcia}s are available in the dedicated section of https://registry.suse.com[{suseregistry}].
+Application {bcia}s are {bcia}-Base container images that include specific applications, such as the PostgreSQL database and the Performance Co-Pilot a system-level performance analysis toolkit. Application {bcia}s are available in the dedicated section of https://registry.suse.com/#apps[{suseregistry}].
 
 [[sec-status-lifecycle-bci]]
 === Important note on status and lifecycle
