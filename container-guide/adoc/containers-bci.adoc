@@ -44,6 +44,12 @@ Redistribution::
 There is a {bcirepo} repository for each {slea} service pack. This means that {bcia}s based on SP4 have access to the {bcirepo} repository for SP4, all {bcia}s based on SP5 use the SLE_BCI repository for SP5, and so on. Each SLE_BCI repository contains all SLE packages except kernels, bootloaders, installers (including {yast}), desktop environments, and hypervisors (such as KVM and Xen).
 ====
 
+[NOTE]
+.Requesting a missing package
+====
+If the {bcirepo} repository does not have a package you need, you have two options. As an existing {suse} customer, you can file a feature request. As a regular user, you can request a package to be created by creating an issue in https://bugzilla.suse.com/enter_bug.cgi?product=SUSE%20Linux%20Enterprise%20Base%20Container%20Images[Bugzilla].
+====
+
 [[sec-general-purpose-bci]]
 === General-purpose {bcia}s
 
