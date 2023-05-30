@@ -209,7 +209,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       &t.agent;s. </para>
     <section xml:id="sec-trento-server-requirements">
       <title>&t.server; requirements</title>
-      <para> Running all the &t.server; components requires a minimum of 2&nbsp;GB of RAM,
+      <para> Running all the &t.server; components requires a minimum of 3&nbsp;GB of RAM,
         two CPU cores and 64&nbsp;GB of storage.
         When using K3s, such storage should be provided under <filename>/var/lib/rancher/k3s</filename>.
       </para>
