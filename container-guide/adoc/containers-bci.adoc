@@ -198,6 +198,7 @@ com.suse.supportlevel::
   Shows the support level for the container.
   * `l2` Problem isolation, which means technical support designed to analyze data, reproduce customer problems, isolate problem areas, and provide a resolution for problems not resolved by Level 1, or prepare for Level 3.
   * `l3` Problem resolution, which means technical support designed to resolve problems by engaging engineering to resolve product defects which have been identified by Level 2 Support.
+  * `acc` Software delivered with the {bci} may require an external contract.
   * `techpreview` The image is unsupported and intended for use in proof-of-concept scenarios.
   * `unsupported` No support is provided for the image.
 com.suse.lifecycle-url::
