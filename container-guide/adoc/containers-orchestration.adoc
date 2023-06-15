@@ -8,23 +8,23 @@ include::attributes-product.adoc[]
 === Introduction
 Now that you have a better understanding of how to handle containers on your desktop or server, we
 can go to the next step: How to make use of containers in production?
-In a production environment you will likely have to manage multiple containers, be it locally on
-your single container host or on multiple Container Host. To manage multiple containers, you will
+In a production environment, you will likely have to manage multiple containers, be it locally on
+your single container host or on multiple container hosts. To manage multiple containers, you will
 have to group your containers (one or more) into a Pod, which will allow them to share storage and
-network resources but also a specification for how to be deployed and run. In short a pod
+network resources but also a specification for how to be deployed and run. In short, a pod
 encapsulates an application composed of multiple containers into a single unit. The pod concept was
-introduced by https://kubernetes.io/docs/concepts/workloads/pods/[Kubernetes] however Podman, which
-stand for Pod Manager, uses the same definition as Kubernetes.
+introduced by https://kubernetes.io/docs/concepts/workloads/pods/[Kubernetes]. However, Podman, which
+stands for Pod Manager, uses the same definition as Kubernetes.
 
 [[sec-orchestration-podman]]
 === Single Container Host with Podman
 
 [[sec-orchestration-architecture]]
 ==== Architecture
-A pod is a group of containers that share the same name space, ports, and network connection.
+A pod is a group of containers that share the same namespace, ports and network connection.
 Usually, containers within one pod can communicate directly with each other. Each pod contains an
-infrastructure container (INFRA), whose purpose is to hold the name space. INFRA also enables Podman
-to add other containers to the pod. Port bindings, cgroup-parent values, and kernel name spaces are
+infrastructure container (INFRA), whose purpose is to hold the namespace. INFRA also enables Podman
+to add other containers to the pod. Port bindings, cgroup-parent values and kernel namespaces are
 all assigned to the infrastructure container. Therefore, later changes of these values are not
 possible.
 
@@ -128,7 +128,7 @@ CONTAINER ID  IMAGE                                COMMAND   �
 617d7e3ce399  localhost/podman-pause:4.3.1-1669118400                             29 minutes ago  Exited (0) 7 seconds ago                344940492c00-infra  344940492c00  suspicious_curie 8f5af62a7c38  registry.suse.com/bci/bci-base:latest  sleep 1h    19 minutes ago  Exited (137) 3 minutes ago              objective_jemison   344940492c00  suspicious_curie
 ....
 
-Of course you can also start and restart everything with sudo podman start yourcontainername,
+Of course, you can also start and restart everything with sudo podman start yourcontainername,
  podman pod start yourpodname or podman pod restart yourpodname.
 
 [[sec-orchestration-pod-rm]]
@@ -333,8 +333,8 @@ Created symlink /etc/systemd/system/timers.target.wants/podman-auto-update.timer
 
 === Managing multiple containers
 
-Certain applications rely on more than one container to function, for example a
-web frontend, a backend server and a
+Certain applications rely on more than one container to function, for example, a
+web front-end, a back-end server and a
 database. https://docs.docker.com/compose/[Docker compose] is popular tool for
 deploying multi-container applications on a single machine. While Podman does
 not support the `compose` command natively, in most cases compose files can be
@@ -349,7 +349,7 @@ Drupal web interface:
 736cab072c49e68ad368ba819e9117be13ef8fa048a2eb88736b5968b3a19a64
 ....
 
-Once the pod has been created, launch the Drupal frontend and the
+Once the pod has been created, launch the Drupal front-end and the
 PostgreSQL database inside it:
 
 ....
@@ -424,14 +424,14 @@ please check https://docs.podman.io/en/latest/  and https://github.com/containe
 [[sec-orchestration-kubernetes]]
 === Multi Container Host with Kubernetes
 
-https://kubernetes.io[Kubernetes] is an open source container orchestration engine for automating deployment, scaling, and
+https://kubernetes.io[Kubernetes] is an open source container orchestration engine for automating deployment, scaling and
 management of containerized applications. The open source project is hosted by the Cloud Native
 Computing Foundation (https://www.cncf.io/about[CNCF]).
 
 With its wide range of features and capabilities, supported by a large community of developers, Kubernetes has become
 the go-to standard for most https://www.suse.com/suse-defines/definition/containers-service-caas/[container-as-a-service] platforms. It
 provides an extensive set of functionalities essential for deploying containers at the production level,
-including high availability, lifecycle management, storage, security, and networking.
+including high availability, lifecycle management, storage, security and networking.
 
 [[sec-k8s]]
 ==== Kubernetes (k8s)
@@ -439,7 +439,7 @@ Kubernetes allows multiple machines (or servers or nodes) to work together and c
 then interact with using APIs. There are many tools available to deploy a Kubernetes cluster, but
 at SUSE, we recommend using https://ranchermanager.docs.rancher.com[Rancher].
 With Rancher, you can not only deploy a Kubernetes cluster but also manage applications running on top of it. Additionally, a
-single Rancher setup can manage multiple Kubernetes clusters running anywhere from bare-metal, on-prem, or cloud service providers, making it easier to manage your applications while taking off the burden of managing the
+single Rancher setup can manage multiple Kubernetes clusters running anywhere from bare-metal, on-prem or cloud service providers, making it easier to manage your applications while taking off the burden of managing the
 machinery to deploy them.
 
 We won't describe here how to install and use
@@ -452,10 +452,10 @@ https://ranchermanager.docs.rancher.com[Rancher's documentation] does that perfe
 ==== Lightweight Kubernetes (k3s)
 
 https://k3s.io[K3s] is lightweight CNCF-certified Kubernetes distribution, made by Rancher, and
-built IoT & Edge computing. K3s differs from k8s as it is packaged as a single <60MB binary and
+built IoT & Edge computing. K3s differs from k8s as it is packaged as a single <60 MB binary and
 optimised for ARM.
 
-We highly recommend to read our
+We highly recommend that you read our
 https://www.suse.com/c/rancher_blog/introduction-to-k3s/[Introduction to K3s] , as well as our
 documentation on
 https://documentation.suse.com/trd/kubernetes/single-html/kubernetes_ri_rancher-k3s-sles/index.html#id-introduction[how to install K3s and Rancher on {sles}]
