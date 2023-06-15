@@ -7,7 +7,7 @@ include::attributes-product.adoc[]
 [[sec-bci-intro]]
 === Introduction to {bci}s
 
-{bci}s ({bcia}) are minimal {slsa} 15-based images that you can use to develop, deploy and share applications. There are two types of {bcia}s:
+{bci}s ({bcia}) are minimal {slsa} 15-based images that you can use to develop, deploy, and share applications. There are two types of {bcia}s:
 
 * General-purpose {bcia}s can be used for building custom container images and for deploying applications.
 * Language stack {bcia}s provide minimal environments for developing and deploying applications in specific programming languages.
@@ -19,12 +19,12 @@ include::attributes-product.adoc[]
 [[sec-bci-why]]
 === Why {bci}s
 
-{bcia}s offer a platform for creating {slsa}-based custom container images and containerized applications that can be distributed freely. {bcia}s feature the same predictable enterprise lifecycle as {slsa}. The {bcirepo} 15 SP3 and SP4 repository (which is a subset of the {slea} repository) gives {bcia}s access to 4000 packages available for the {x64}, {aarch64}, {ppc} and {zseries} architectures. The packages in the repository have undergone quality assurance and security audits by {suse}. The container images are FIPS-compliant when running on a host in FIPS mode. In addition to that, {suse} can provide official support for {bcia}s through {suse} subscription plans.
+{bcia}s offer a platform for creating {slsa}-based custom container images and containerized applications that can be distributed freely. {bcia}s feature the same predictable enterprise lifecycle as {slsa}. The {bcirepo} 15 SP3 and SP4 repository (which is a subset of the {slea} repository) gives {bcia}s access to 4000 packages available for the {x64}, {aarch64}, {ppc}, and {zseries} architectures. The packages in the repository have undergone quality assurance and security audits by {suse}. The container images are FIPS-compliant when running on a host in FIPS mode. In addition to that, {suse} can provide official support for {bcia}s through {suse} subscription plans.
 
 Security::
   Each package in the {bcirepo} repository undergoes security audits, and {bcia}s benefit from the same mechanism of dealing with CVEs as {sles}. All discovered and fixed vulnerabilities are announced via e-mail, the dedicated https://www.suse.com/security/cve/[CVE pages], and as OVAL and CVRF data. To ensure a secure supply chain, all container images are signed with Notary v1, {podman}'s GPG signatures, and Sigstore Cosign.
 Stability::
-  Since {bcia}s are based on {slsa}, they feature the same level of stability and quality assurance. Similar to {slsa}, {bcia}s receive maintenance updates that provide bug fixes, improvements and security patches.
+  Since {bcia}s are based on {slsa}, they feature the same level of stability and quality assurance. Similar to {slsa}, {bcia}s receive maintenance updates that provide bug fixes, improvements, and security patches.
 Tooling and integration::
   {bcia}s are designed to provide drop-in replacements for popular container images available on hub.docker.com. You can use the general-purpose {bcia}s and the tools they put at your disposal to create custom container images, while the language stack {bcia}s provide a foundation and the required tooling for building containerized applications.
 Redistribution::
@@ -41,7 +41,7 @@ Redistribution::
 [NOTE]
 .{bcirepo} repository
 ====
-There is a {bcirepo} repository for each {slea} service pack. This means that {bcia}s based on SP4 have access to the {bcirepo} repository for SP4, all {bcia}s based on SP5 use the SLE_BCI repository for SP5, and so on. Each SLE_BCI repository contains all SLE packages except kernels, boot loaders, installers (including {yast}), desktop environments and hypervisors (such as KVM and Xen).
+There is a {bcirepo} repository for each {slea} service pack. This means that {bcia}s based on SP4 have access to the {bcirepo} repository for SP4, all {bcia}s based on SP5 use the SLE_BCI repository for SP5, and so on. Each SLE_BCI repository contains all SLE packages except kernels, bootloaders, installers (including {yast}), desktop environments, and hypervisors (such as KVM and Xen).
 ====
 
 [NOTE]
@@ -55,9 +55,9 @@ If the {bcirepo} repository does not have a package you need, you have two optio
 
 There are four general purpose {bcia}s, and each container image comes with a minimum set of packages to keep its size low. You can use a general purpose {bcia} either as a starting point for building custom container images, or as a platform for deploying specific software.
 
-{suse} offers several general-purpose {bcia}s that are intended as deployment targets or as foundations for creating customized images: {bcia}-Base, {bcia}-Minimal, {bcia}-Micro and {bcia}-BusyBox. These images share the common {slsa} base, and none of them ship with a specific language or an application stack. All images feature the RPM database (even if the specific image does not include the RPM package manager) that can be used to verify the provenance of every file in the image. Each image includes the {slsa} certificate bundle, which allows the deployed applications to use the system's certificates to verify TLS connections.
+{suse} offers several general-purpose {bcia}s that are intended as deployment targets or as foundations for creating customized images: {bcia}-Base, {bcia}-Minimal, {bcia}-Micro, and {bcia}-BusyBox. These images share the common {slsa} base, and none of them ship with a specific language or an application stack. All images feature the RPM database (even if the specific image does not include the RPM package manager) that can be used to verify the provenance of every file in the image. Each image includes the {slsa} certificate bundle, which allows the deployed applications to use the system's certificates to verify TLS connections.
 
-The table below provides a quick overview of the differences between {bcia}-Base, {bcia}-Minimal, {bcia}-Micro and {bcia}-BusyBox.
+The table below provides a quick overview of the differences between {bcia}-Base, {bcia}-Minimal, {bcia}-Micro, and {bcia}-BusyBox.
 
 .Support matrix
 [cols="^,^,^,^,^",options="header",]
@@ -87,7 +87,7 @@ When using {bcia}-init container with {docker}, you must use the following argum
 > docker run -ti --tmpfs /run -v /sys/fs/cgroup:/sys/fs/cgroup:rw --cgroupns=host registry.suse.com/bci/bci-init:latest
 ....
 
-To correctly shut down the container, use the following command:
+To correctly shut down the container use the following command:
 
 ....
 > docker kill -s SIGRTMIN+3 CONTAINER_ID
@@ -378,7 +378,7 @@ If you have a working knowledge of containers, you will not have any difficultie
 [[sec-bci-package-manager]]
 ==== Package manager
 
-The default package manager in {slsa} is {zypper}. Similar to APT in Debian and APK in Alpine Linux, {zypper} offers a command-line interface for all package management tasks. Below is a brief overview of commonly used container-related {zypper} commands.
+The default package manager in {slsa} is {zypper}. Similar to APT in Debian and APK in Alpine Linux, {zypper} offers a command-line interface for all package management tasks. Below is brief overview of commonly used container-related {zypper} commands.
 
 Install packages::
   `zypper --non-interactive install
@@ -410,7 +410,7 @@ registration credentials, it uses them to give the container access the
 SUSE Linux Enterprise repositories. This includes additional modules and
 previous package versions that are not part of the free `{bcirepo}`
 repository.
-Refer to  <<sec-container-suseconnect>> for more information on how to use the repository for SLES, openSUSE and non-SLES hosts.
+Refer to  <<sec-container-suseconnect>> for more information on how to use the repository for SLES, openSUSE, and non-SLES hosts.
 
 [[sec-bci-task-examples]]
 ==== Common patterns
@@ -440,7 +440,7 @@ Verify GnuPG signatures::
 [[sec-bci-package-naming]]
 ==== Package naming conventions
 
-{slea} package naming conventions differ from Debian, Ubuntu and Alpine, and they are closer to those of RHEL. The main difference is that development packages of libraries (that is, packages containing headers and build description files) are named _PACKAGE-devel_ in {slea}, as opposed to _PACKAGE-dev_ as they are in Debian and Ubuntu. When in doubt, search for the package directly using the following command: `docker run --rm
+{slea} package naming conventions differ from Debian, Ubuntu, and Alpine, and they are closer to those of RHEL. The main difference is that development packages of libraries (that is, packages containing headers and build description files) are named _PACKAGE-devel_ in {slea}, as opposed to _PACKAGE-dev_ as they are in Debian and Ubuntu. When in doubt, search for the package directly using the following command: `docker run --rm
     registry.suse.com/bci/bci-base:OS_VERSION zypper
     search PACKAGE_NAME` (replace OS_VERSION with the appropriate service version number, for example: `15.3` or `15.4`).
 

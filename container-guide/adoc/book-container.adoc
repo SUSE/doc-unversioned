@@ -8,7 +8,7 @@ include::attributes-product.adoc[]
 
 [[cha-intro]]
 == About this guide
-The following guide covers the {sle} container ecosystem. Since containers are a constantly evolving technology, the guide is regularly updated, expanded and improved to reflect the latest technological developments.
+The following guide covers the {sle} container ecosystem. Since containers are a constantly evolving technology, the guide is regularly updated, expanded, and improved to reflect the latest technological developments.
 
 include::containers-basics.adoc[]
 include::containers-tools.adoc[]
