@@ -33,7 +33,7 @@ Consult the following support and compatibility matrix to make sure that the des
 {suse} provides limited support for {slsa} PRODUCT-GA-based containers running on {slsa} 12 SP5 hosts due to the fact that containerized applications can make system calls not available in the host's kernel. To avoid potential risks and compatibility problems, {suse} recommends using the same Service Pack release for both containers and hosts.
 ====
 
-BCIs support the following architectures: X86-64, AARCH64, POWER, and ZSERIES. Container architecture must match the architecture of the host. Mismatching container and host scenarios are not supported.
+BCIs support the following architectures: X86-64, AARCH64, POWER and ZSERIES. Container architecture must match the architecture of the host. Mismatching container and host scenarios are not supported.
 
 In most scenarios, all {slea} containers are expected to be interoperable if the application or its dependencies do not interact directly with kernel version-specific data structures (`ioctl`, `/proc`, `/sys`, `routing`, `iptables`, `nftables`, `eBPF`, etc.) or modules (KVM, OVS, SystemTap, etc.). Support for `ioctl` and access to `/proc` is limited to the most common scenarios needed by unprivileged users.
 
@@ -107,10 +107,10 @@ Container images labeled as _Tech Preview_ are provided by {suse} to give you an
 
 Technology previews come with the following limitations:
 
-* Technology previews can be functionally incomplete, unstable, and not suitable for production use.
+* Technology previews may be functionally incomplete, unstable, and not suitable for production use.
 * Technology previews are not supported.
-* Technology previews can be available only for specific hardware architectures.
+* Technology previews may be available only for specific hardware architectures.
 * Specifics and functionality of technology previews are subject to change. As a result, upgrading to subsequent releases of a technology preview may not be possible and may require a fresh installation.
-* Technology previews can be canceled at any time. For example, if {suse} discovers that a preview does not meet the customer or market needs, or it does not comply with enterprise standards. {suse} does not commit to providing a supported version of such technologies in the future.
+* Technology previews can be canceled at any time. For example, this might happen if {suse} discovers that a preview does not meet the customer or market needs, or that it does not comply with enterprise standards. {suse} does not commit to providing a supported version of such technologies in the future.
 
 Container images are labeled as _Tech Preview_ and are marked as such at https://registry.suse.com[registry.suse.com]. Additionally, container images that are technology previews include the `com.suse.supportlevel="techpreview"` label in the container image metadata. You can check whether the metadata includes the label using the `docker inspect` command, or an appropriate command in other container runtimes.

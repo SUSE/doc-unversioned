@@ -15,7 +15,7 @@ the https://openbuildservice.org[Open Build Service]. You can see the full list 
 === {suseregistry}
 
 https://registry.suse.com[{suseregistry}] is the official source of {slea} base
-container images. It contains tested, updated, and certified {slea} base
+container images. It contains tested, updated and certified {slea} base
 container images. All images in the {suseregistry} are regularly rebuilt to
 include updates and fixes. The {suseregistry}'s Web user interface lists a
 subset of the available images: Base Container Images, Language Container
@@ -36,7 +36,7 @@ Dockerfiles.
 === {podman}
 
 https://podman.io[{podman}] stands for Pod Manager tool. It is a daemonless container engine for
-developing, managing, and running
+developing, managing and running
 https://opencontainers.org/about/overview/[Open Container Initiative (OCI)] containers on a Linux
 system, and it offers a drop-in alternative for {docker}. {podman} is the recommended container
 runtime for {slesa}.
@@ -45,7 +45,7 @@ For a general introduction to {podman}, refer to <<cha-podman-overview>>.
 [[sec-tools-buildah]]
 === {buildah}
 
-https://buildah.io[{buildah}] is an utility for building OCI container images. It is a complementary
+https://buildah.io[{buildah}] is a utility for building OCI container images. It is a complementary
 tool to {podman}. In fact, the `podman build` command uses {buildah} to perform container image builds.
 {buildah} makes it possible to build images from scratch, from existing images, and using
 Dockerfiles. OCI images built using the {buildah} command-line tool and the underlying OCI-based
@@ -57,7 +57,7 @@ For information on installing and using {buildah}, refer to <<cha-buildah-overvi
 === {skopeo}
 
 https://github.com/containers/skopeo[{skopeo}] is a command-line utility for
-managing, inspecting, and signing container images and image repositories.
+managing, inspecting and signing container images and image repositories.
 {skopeo} can be used to inspect containers and repositories on remote and local
 container registries. {skopeo} can copy container images between different
 storage backends. {skopeo} is part of the `Basesystem Module` of {slesa}.
@@ -67,7 +67,7 @@ storage backends. {skopeo} is part of the `Basesystem Module` of {slesa}.
 
 https://helm.sh[{helm}] is the Kubernetes package manager, and it is the
 de-facto standard for deploying containerized applications on Kubernetes
-clusters using charts. {helm} can be used to install, update, and remove
+clusters using charts. {helm} can be used to install, update and remove
 applications in a single or multiple containers. It can also handle the
 associated resources, such as configuration, storage volumes, etc. For instance,
 it is used for instance to deploy the {rmt} server (see
@@ -79,7 +79,7 @@ documentation] for more information).
 
 https://github.com/distribution/distribution[{distribution}] is an open-source registry
 implementation for storing and distributing container images using the OCI Distribution
-Specification. It provides a simple, secure, and scalable base for building a large scale registry
+Specification. It provides a simple, secure and scalable base for building a large scale registry
 solution or running a simple private registry. {distribution} can also mirror Docker Hub but
 https://docs.docker.com/registry/recipes/mirror/#gotcha[not any other private registry].
 
@@ -132,4 +132,4 @@ http://osinside.github.io/kiwi/[{kiwi} documentation]. A collection of example i
 can be found on the https://github.com/OSInside/kiwi-descriptions[{kiwi} GitHub repository].
 
 {kiwi}'s man pages provide information on using the tool. To access the man pages, install the
-`kiwi-man-pages`` package.
+`kiwi-man-pages` package.

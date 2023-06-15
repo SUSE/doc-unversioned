@@ -6,7 +6,7 @@ include::attributes-product.adoc[]
 
 https://podman.io/[Podman] is short for Pod Manager Tool. It is a daemonless container engine for
 managing Open Container Initiative (OCI) containers on a Linux system, and it offers a drop-in
-alternative for {docker}. Podman's notable feature is out-of-the-box support for rootless containers
+alternative for {docker}. Podman's most notable feature is out-of-the-box support for rootless containers
 offering a reduced attack surface when running containers.
 {podman} can be used to create OCI-compliant container images using a `Dockerfile` and a range of
 commands identical to {deng}. For example, the `podman build` command performs the same task as
@@ -16,13 +16,13 @@ Moving from {deng} to {podman} does not require any changes in the established w
 need to rebuild images, and you can use the exact same commands to build and manage images as well
 as run and control containers.
 
-{podman} differs from {deng} the following ways:
+{podman} differs from {deng} in the following ways:
 
 * {podman} does not use a daemon, so the container engine interacts directly with an image registry,
-containers, and an image storage when needed.
-* {podman} features native systemd integration: Allowing to control containers via systemd units which
-can be created for existing containers as well as generate units that can start containers if they
-do not exist in the system. Moreover, {podman} can run systemd inside containers.
+containers and image storage when needed.
+* {podman} features native systemd integration that allows for the use of systemd to run containers.
+Generating the required systemd unit files is supported by {podman} via the `podman generate systemd` command.
+Moreover, {podman} can run systemd inside containers.
 * {podman} does not require root privileges to create and run containers. This means that {podman}
 can run in under the `root` user as well as in an unprivileged environment. Moreover, a container
 created by an unprivileged user cannot get higher privileges on the host than the container's
@@ -43,11 +43,11 @@ For further information about pods, refer to <<sec-orchestration-podman>>.
 
 To install {podman}, make sure you have the {slea} Containers Module enabled (see <<sec-sle-containers-module>>), run the command `sudo zypper in podman`. Then run `podman info` to check whether {podman} has been installed successfully.
 
-{podman} will by default try to launch containers as the current user. For unprivileged users that
+{podman} will by default try to launch containers as the current user. For unprivileged users, this
 implies launching containers in rootless mode. Support for rootless containers is enabled for all
-newly created users in {slea} by default and no additional steps are necessary.
+newly created users in {slea} by default, and no additional steps are necessary.
 
-In case {podman} fails to launch containers in rootless mode, check whether the an entry for the
+In case {podman} fails to launch containers in rootless mode, check whether an entry for the
 current user is present in `/etc/subuid`:
 ....
  ❯ grep $(id -nu) /etc/subuid
