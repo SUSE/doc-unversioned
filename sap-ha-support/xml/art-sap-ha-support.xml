@@ -771,10 +771,10 @@
   <informalfigure>
    <mediaobject>
     <imageobject role="fo">
-     <imagedata fileref="ensa1.png" width="80%"/>
+     <imagedata fileref="ensa1.svg" width="80%"/>
     </imageobject>
     <imageobject role="html">
-     <imagedata fileref="ensa1.png" width="80%"/>
+     <imagedata fileref="ensa1.svg" width="80%"/>
     </imageobject>
     <textobject role="description">
      <phrase>
