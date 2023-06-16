@@ -220,10 +220,10 @@
    <informalfigure>
     <mediaobject>
      <imageobject role="fo">
-      <imagedata fileref="overview-sr-single-nodes.png" width="80%"/>
+      <imagedata fileref="overview-sr-single-nodes.svg" width="80%"/>
      </imageobject>
      <imageobject role="html">
-      <imagedata fileref="overview-sr-single-nodes.png" width="80%"/>
+      <imagedata fileref="overview-sr-single-nodes.svg" width="80%"/>
      </imageobject>
      <textobject role="description">
       <phrase>
@@ -692,10 +692,10 @@
   <informalfigure>
    <mediaobject>
     <imageobject role="fo">
-     <imagedata fileref="ensa2.png" width="100%"/>
+     <imagedata fileref="ensa2.svg" width="100%"/>
     </imageobject>
     <imageobject role="html">
-     <imagedata fileref="ensa2.png" width="100%"/>
+     <imagedata fileref="ensa2.svg" width="100%"/>
     </imageobject>
     <textobject role="description">
      <phrase>
