@@ -308,11 +308,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="1"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.1026659"
-     inkscape:cx="364.09846"
-     inkscape:cy="252.58359"
+     inkscape:zoom="1.5975484"
+     inkscape:cx="364.72442"
+     inkscape:cy="202.50686"
      inkscape:document-units="mm"
-     inkscape:current-layer="g173"
+     inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
      showgrid="true"
      units="px"
@@ -565,7 +565,7 @@
          x="13.469124"
          y="120.79893"
          style="fill:#0c322c;stroke-width:0.264583"
-         id="tspan1354">primary</tspan></text>
+         id="tspan1354">secondary</tspan></text>
     <text
        xml:space="preserve"
        style="font-weight:500;font-size:4.9389px;line-height:1.25;font-family:Poppins;-inkscape-font-specification:'Poppins, Medium';text-align:end;letter-spacing:0px;text-anchor:end;stroke-width:0.264583"
@@ -581,7 +581,7 @@
          x="178.79279"
          y="121.00279"
          style="text-align:end;text-anchor:end;fill:#0c322c;stroke-width:0.264583"
-         id="tspan1354-6">secondary</tspan></text>
+         id="tspan1354-6">primary</tspan></text>
     <text
        xml:space="preserve"
        style="font-weight:500;font-size:4.9389px;line-height:1.25;font-family:Poppins;-inkscape-font-specification:'Poppins, Medium';letter-spacing:0px;stroke-width:0.264583"
