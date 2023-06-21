@@ -40,7 +40,8 @@ This command enables rootless mode for the current user. After running the comma
 
 The command above defines a range of local UIDs on the host, onto which the UIDs allocated to users inside the container are mapped. Note that the ranges defined for different users must not overlap. It is also important that the ranges do not reuse the UID of any existing local users or groups. By default, adding a user with the `useradd` command on {slsa}{nbsp}{productnumber} automatically allocates subUID and subGID ranges.
 
-NOTE: {buildah} in rootless mode
+[NOTE]
+.{buildah} in rootless mode
 ====
 In rootless mode, {buildah} commands must be executed in a modified user namespace of the user. To enter this user namespace, run the command `buildah unshare`. Otherwise, the `buildah mount` command will fail.
 ====
