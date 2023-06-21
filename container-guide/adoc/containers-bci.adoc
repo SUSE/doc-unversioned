@@ -395,7 +395,7 @@ Remove a package::
 Clean up temporary files::
   `zypper clean`
 
-For more information on using {zypper}, refer to https://documentation.suse.com/sles-15/html/{sles}-all/cha-sw-cl.html#sec-zypper.
+For more information on using {zypper}, refer to https://documentation.suse.com/sles/html/SLES-all/cha-sw-cl.html#sec-zypper.
 
 All the described commands use the `--non-interactive` flag to skip confirmations, since you cannot approve these manually during container builds. Keep in mind that you must use the flag with any command that modifies the system. Also note that `--non-interactive` is not a "yes to all" flag. Instead, `--non-interactive` confirms what is considered to be the intention of the user. For example, an installation command with the `--non-interactive` option fails if it needs to import new repository signing keys, as that is something that the user must verify themselves.
 
@@ -486,10 +486,10 @@ Step 4/4 : EXPOSE 8000
  ---> Using cache
  ---> 48b33ec590a6
 Successfully built 48b33ec590a6
- 
+
 > docker run -p 8000:8000 --rm -d 48b33ec590a6
 575ad7edf43e11c2c9474055f7f6b7a221078739fc8ce5765b0e34a0c899b46a
- 
+
 > curl localhost:8000
 Hello Green World!
 ....
