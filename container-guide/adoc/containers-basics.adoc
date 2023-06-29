@@ -45,7 +45,7 @@ a basic procedure for creating a container image and using {podman} to run a con
 
 The basic {podman} workflow is as follows:
 
-image::container-workflow.png[image,scaledwidth=80.0%]
+image::container-workflow.svg[image,scaledwidth=80.0%]
 
 Running a container, either on a local machine or in a cloud service, usually involves the following
 steps:
@@ -76,7 +76,7 @@ To build a custom image, you must create a special file called a `Containerfile`
 containing building instructions. For example, a `Dockerfile` can contain instructions to update the
 system software, install the desired application, open specific network ports, run commands, etc.
 
-image::container-image-layers.png[image,scaledwidth=80.0%]
+image::container-image-layers.svg[image,scaledwidth=80.0%]
 
 You can build images not only from base images, but also on top of custom images. So you can have an
 image consisting of multiple layers. Please refer to <<cha-building-images>> for more information.
