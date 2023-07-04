@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://docbook.org/xml/5.2/rng/assembly.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="http://docbook.org/xml/5.2/sch/assembly.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<!DOCTYPE assembly
+[
+    <!ENTITY % entities SYSTEM "../common/generic-entities.ent">
+    %entities;
+]>
+<assembly version="5.2" xml:lang="en"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns:trans="http://docbook.org/ns/transclusion"
+  xmlns="http://docbook.org/ns/docbook">
+  <resources>
+    <resource xml:id="_containers-intro" href="../concepts/containers-intro.xml"/>
+    <resource xml:id="_gfdl" href="../common/license_gfdl1.2.xml"/>
+  </resources>
+  <structure renderas="article" xml:id="container-guide" xml:lang="en">
+    <merge>
+      <title>Container guide</title>
+      <revhistory>
+        <title>Changelog</title>
+        <revision><revnumber>1</revnumber><date>2023-07-04</date>
+          <revdescription>
+            <para>
+              Initial version
+            </para>
+          </revdescription>
+        </revision>
+      </revhistory>
+      <!-- ISO date of last update as YYYY-MM-DD -->
+      <meta name="updated" content="2023-07-04"/>
+      <!-- enter the platform identifier or list of comma-separated list of identifiers -->
+      <meta name="architecture" content="x86_64;zseries;power;aarch64"/>
+      <!-- enter product name and version -->
+      <!--<meta name="productname">
+        <productname version="ALP">&sles;</productname>
+        <productname version="15-SP5">&sles;</productname>
+        <productname version="15-SP4">&sles;</productname>
+        <productname version="15-SP3">&sles;</productname>
+        <productname version="15-SP2">&sles;</productname>
+        <productname version="15-SP1">&sles;</productname>
+        <productname version="15-GA">&sles;</productname>
+        </meta>-->
+      <!-- SEO and social media -->
+      <meta name="title">&bcia; variants</meta>
+      <meta name="description">
+       Learn about &bcia; variants, and choose the one that's right for you.
+     </meta>
+      <meta name="social-descr">
+      Everything you need to know about general-purpose &bcia;s.
+     </meta>
+      <!-- suitable category, comma-separated list of categories -->
+      <meta name="category" content="Containerization"/>
+      <!-- Docmanager -->
+      <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
+        <dm:bugtracker>
+          <dm:url>https://bugzilla.suse.com/enter_bug.cgi</dm:url>
+          <dm:component>Smart Docs</dm:component>
+          <dm:product>Documentation</dm:product>
+          <dm:assignee>dpopov@suse.com</dm:assignee>
+        </dm:bugtracker>
+        <dm:editurl>https://github.com/SUSE/doc-modular/tree/main/articles/</dm:editurl>
+        <dm:translation>no</dm:translation>
+      </dm:docmanager>
+      <abstract>
+        <para>
+          The following guide covers the SUSE Linux Enterprise container
+          ecosystem. Since containers are a constantly evolving technology, the
+          guide is regularly updated, expanded and improved to reflect the
+          latest technological developments.
+        </para>
+      </abstract>
+    </merge>
+    <module resourceref="_containers-intro" renderas="section"/>
+  </structure>
+</assembly>
