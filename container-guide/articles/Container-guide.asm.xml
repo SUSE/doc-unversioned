@@ -12,6 +12,7 @@
   xmlns="http://docbook.org/ns/docbook">
   <resources>
     <resource xml:id="_containers-intro" href="../concepts/containers-intro.xml"/>
+    <resource xml:id="_containers-tools" href="../concepts/containers-tools.xml"/>
     <resource xml:id="_gfdl" href="../common/license_gfdl1.2.xml"/>
   </resources>
   <structure renderas="article" xml:id="container-guide" xml:lang="en">
@@ -42,12 +43,12 @@
         <productname version="15-GA">&sles;</productname>
         </meta>-->
       <!-- SEO and social media -->
-      <meta name="title">&bcia; variants</meta>
+      <meta name="title">Container guide</meta>
       <meta name="description">
-       Learn about &bcia; variants, and choose the one that's right for you.
+       The official guide to SUSE container-related products and technologies.
      </meta>
       <meta name="social-descr">
-      Everything you need to know about general-purpose &bcia;s.
+        The official guide to SUSE container-related products and technologies.
      </meta>
       <!-- suitable category, comma-separated list of categories -->
       <meta name="category" content="Containerization"/>
@@ -72,5 +73,6 @@
       </abstract>
     </merge>
     <module resourceref="_containers-intro" renderas="section"/>
+    <module resourceref="_containers-tools" renderas="section"/>
   </structure>
 </assembly>

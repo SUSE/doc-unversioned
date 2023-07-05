@@ -127,7 +127,7 @@
     <para>
       Although &deng; is a popular choice for working with images and
       containers, &podman; provides a drop-in replacement for Docker that
-      offers several advantages. While <xref linkend="cha-podman-overview"/>
+      offers several advantages. While <!--XREF <xref linkend="cha-podman-overview"/> -->
       provides more information on &podman;, this chapter offers a quick
       introduction to key concepts and a basic procedure for creating a
       container image and using &podman; to run a container.
@@ -213,7 +213,7 @@
     <para>
       You can build images not only from base images, but also on top of custom
       images. So you can have an image consisting of multiple layers. Please
-      refer to <xref linkend="cha-building-images"/> for more information.
+      refer to <!-- XREF <xref linkend="cha-building-images"/> --> for more information.
     </para>
   </section>
 </article>

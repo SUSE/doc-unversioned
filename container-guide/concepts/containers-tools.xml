@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file originates from the project https://github.com/openSUSE/doc-kit -->
+<!-- This file can be edited downstream. -->
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook51-profile.xsl"
+ type="text/xml"
+ title="Profiling step"?>
+<!DOCTYPE article
+[
+  <!ENTITY % entities SYSTEM "../common/generic-entities.ent">
+    %entities;
+]>
+<article xml:id="container-tools" xml:lang="en"
+ role="concept"
+ xmlns="http://docbook.org/ns/docbook" version="5.1"
+ xmlns:its="http://www.w3.org/2005/11/its"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+  <info>
+    <title>Tools for building images and managing containers</title>
+    <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
+      <dm:bugtracker>
+        <dm:url>https://bugzilla.suse.com/enter_bug.cgi</dm:url>
+        <dm:component>Smart Docs</dm:component>
+        <dm:product>Documentation</dm:product>
+        <dm:assignee>dpopov@suse.com</dm:assignee>
+      </dm:bugtracker>
+      <dm:translation>no</dm:translation>
+    </dm:docmanager>
+  </info>
+  <para>
+    All described tools described below are part of the
+    <emphasis role="strong">&sles; &productnumber; Containers
+    Module</emphasis>, except the
+    <link xlink:href="https://openbuildservice.org">Open Build Service</link>.
+    You can see the full list of packages in the
+    <emphasis role="strong">Containers Module</emphasis> in the
+    <link xlink:href="https://scc.suse.com/packages">SUSE Customer
+    Center</link>.
+  </para>
+  <section xml:id="sec-tools-suse-registry">
+    <title>&suseregistry;</title>
+    <para>
+      <link xlink:href="https://registry.suse.com">&suseregistry;</link> is the
+      official source of &bci;s. It contains tested, updated
+      and certified &bci;s. All images in the &suseregistry;
+      are regularly rebuilt to include updates and fixes. The &suseregistry;'s
+      Web user interface lists a subset of the available images: Base Container
+      Images, Language Container Images, Application Container Images, &sles; Images, and Releases Out of General Support.
+      The Web UI also provides additional information for each image, including
+      release date, support level, size, digest of the images and packages
+      inside the image.
+    </para>
+  </section>
+  <section xml:id="sec-tools-docker">
+    <title>&docker;</title>
+    <para>
+      &docker; is a system for creating and managing containers. Its core is the
+      <link xlink:href="https://github.com/moby/moby">&docker; Open Source
+      Engine—</link>a lightweight virtualization solution to run containers
+      simultaneously on a single host. &docker; containers are be built using
+      Dockerfiles.
+    </para>
+  </section>
+  <section xml:id="sec-tools-podman">
+    <title>&podman;</title>
+    <para>
+      <link xlink:href="https://podman.io">&podman;</link> stands for Pod Manager
+      tool. It is a daemonless container engine for developing, managing and
+      running
+      <link xlink:href="https://opencontainers.org/about/overview/">Open
+      Container Initiative (OCI)</link> containers on a Linux system, and it
+      offers a drop-in alternative for &docker;. &podman; is the recommended
+      container runtime for SLES. For a general introduction to &podman;, refer
+      to
+      <!-- XREF <xref linkend="cha-podman-overview"/> -->
+      .
+    </para>
+  </section>
+  <section xml:id="sec-tools-buildah">
+    <title>&buildah;</title>
+    <para>
+      <link xlink:href="https://buildah.io">&buildah;</link> is a utility for
+      building OCI container images. It is a complementary tool to &podman;. In
+      fact, the <command>podman build</command> command uses &buildah; to
+      perform container image builds. &buildah; makes it possible to build
+      images from scratch, from existing images, and using Dockerfiles. OCI
+      images built using the &buildah; command-line tool and the underlying
+      OCI-based technologies (for example, <literal>containers/image</literal>
+      and
+      <literal>containers/storage</literal> ) are portable and can therefore
+      run in a &deng; environment. For information on
+      installing and using &buildah;, refer to
+      <!-- XREF <xref linkend="cha-buildah-overview"/> -->
+      .
+    </para>
+  </section>
+  <section xml:id="sec-tools-skopeo">
+    <title>skopeo</title>
+    <para>
+      <link xlink:href="https://github.com/containers/skopeo">skopeo</link> is
+      a command-line utility for managing, inspecting and signing container
+      images and image repositories. skopeo can be used to inspect containers
+      and repositories on remote and local container registries. skopeo can
+      copy container images between different storage back-ends. skopeo is part
+      of the <literal>Basesystem Module</literal> of &sles;.
+    </para>
+  </section>
+  <section xml:id="sec-tools-helm">
+    <title>Helm</title>
+    <para>
+      <link xlink:href="https://helm.sh">Helm</link> is the Kubernetes package
+      manager, and it is the de-facto standard for deploying containerized
+      applications on Kubernetes clusters using charts. Helm can be used to
+      install, update and remove applications in a single or multiple
+      containers. It can also handle the associated resources, such as
+      configuration, storage volumes, etc. For instance, it is used for
+      instance to deploy the &rmt; server (see
+      <link xlink:href="https://documentation.suse.com/sles/15-SP4/single-html/SLES-rmt/index.html#sec-rmt-deploy-kubernetes">&rmt;
+      documentation</link> for more information).
+    </para>
+  </section>
+  <section xml:id="sec-tools-distribution">
+    <title>Distribution</title>
+    <para>
+      <link xlink:href="https://github.com/distribution/distribution">Distribution</link>
+      is an open-source registry implementation for storing and distributing
+      container images using the OCI Distribution Specification. It provides a
+      simple, secure and scalable base for building a large scale registry
+      solution or running a simple private registry. Distribution can also
+      mirror &dhub; but
+      <link xlink:href="https://docs.docker.com/registry/recipes/mirror/#gotcha">not
+      any other private registry</link>.
+    </para>
+  </section>
+  <section xml:id="sec-tools-obs">
+    <title>Open Build Service</title>
+    <para>
+      The <link xlink:href="http://openbuildservice.org">Open Build Service
+      (OBS)</link> provides free infrastructure for building and storing RPM
+      packages including different container formats. The
+      <link xlink:href="https://registry.opensuse.org">OBS Container
+      Registry</link> provides a detailed listing of all container images built
+      by the OBS, complete with commands for pulling the images into your local
+      environment. The OBS
+      <link xlink:href="https://build.opensuse.org/image_templates">openSUSEcontainer
+      image templates</link> can be modified to specific needs, which offers
+      the easiest way to create your own container branch. Container images can
+      be built with &docker; tools from an existing image using a
+      <filename>Dockerfile</filename>. Alternatively, images can be built from
+      scratch using the &kiwi; image-building solution.
+    </para>
+    <para>
+      Instructions on how to build images on OBS can be found
+      <link xlink:href="https://openbuildservice.org/2018/05/09/container-building-and-distribution/">here</link>.
+    </para>
+    <para>
+      SUSE Container Images, called &bci;s
+      (&bcia;) are the only official SUSE container images,
+      <!-- XREF <xref linkend="cha-bci"/> -->
+      . They are not available at
+      <link xlink:href="https://build.opensuse.org">https://build.opensuse.org</link>,
+      and the RPMs exported there are not identical to the internal ones. This
+      means that it is not possible to build officially supported images at
+      <link xlink:href="https://build.opensuse.org">https://build.opensuse.org</link>.
+    </para>
+    <para>
+      For more information about &bcia;s, refer to
+      <!-- XREF <xref linkend="cha-bci"/> -->
+      .
+    </para>
+  </section>
+  <section xml:id="sec-tools-kiwi">
+    <title>&kiwi;</title>
+    <para>
+      <link xlink:href="https://github.com/OSInside/kiwi">&kiwi;</link> Next
+      Generation is a multi-purpose tool for building images. In addition to
+      container images, regular installation ISO images, and images for virtual
+      machines, &kiwi; can build images that boot via PXE or Vagrant boxes. The
+      main building block in &kiwi; is an image XML description, a directory that
+      includes the <filename>config.xml</filename> or <filename>.kiwi</filename>
+      file along with scripts or configuration data. The process of creating
+      images with &kiwi; is fully automated and does not require any user
+      interaction. Any information required for the image creation process is
+      provided by the primary configuration file <filename>config.xml</filename>.
+      The image can be customized using the <filename>config.sh</filename> and
+      <filename>images.sh</filename> scripts. &kiwi; is the core engine of
+      <link xlink:href="http://openbuildservice.org">Open Build Service
+      (OBS)</link>.
+    </para>
+    <note>
+      <para>
+        It is important to distinguish between &kiwi; NG (currently version
+        9.20.9) and its unmaintained legacy versions (7.x.x or older), now
+        called <link xlink:href="https://documentation.suse.com/kiwi/">&kiwi;
+        Legacy</link>.
+      </para>
+    </note>
+    <para>
+      For information on how to install &kiwi; and use it to build
+      images, see the <link xlink:href="http://osinside.github.io/kiwi/">&kiwi;
+      documentation</link>. A collection of example image descriptions can be
+      found on the
+      <link xlink:href="https://github.com/OSInside/kiwi-descriptions">&kiwi;
+      GitHub repository</link>.
+    </para>
+    <para>
+      &kiwi;'s man pages provide information on using the tool. To access the man
+      pages, install the <literal>kiwi-man-pages</literal> package.
+    </para>
+  </section>
+</article>
