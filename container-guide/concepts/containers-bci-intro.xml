@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file originates from the project https://github.com/openSUSE/doc-kit -->
+<!-- This file can be edited downstream. -->
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook51-profile.xsl"
+ type="text/xml"
+ title="Profiling step"?>
+<!DOCTYPE article
+[
+  <!ENTITY % entities SYSTEM "../common/generic-entities.ent">
+    %entities;
+]>
+<article xml:id="container-bci-intro" xml:lang="en"
+ role="concept"
+ xmlns="http://docbook.org/ns/docbook" version="5.1"
+ xmlns:its="http://www.w3.org/2005/11/its"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+  <info>
+    <title>Introduction to &bci;s</title>
+    <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
+      <dm:bugtracker>
+        <dm:url>https://bugzilla.suse.com/enter_bug.cgi</dm:url>
+        <dm:component>Smart Docs</dm:component>
+        <dm:product>Documentation</dm:product>
+        <dm:assignee>dpopov@suse.com</dm:assignee>
+      </dm:bugtracker>
+      <dm:translation>no</dm:translation>
+    </dm:docmanager>
+  </info>
+  <para>
+    &bci; (&bcia;) are minimal &slsa; 15-based images that you can use to
+    develop, deploy and share applications. There are two types of &bcia;s:
+  </para>
+  <itemizedlist>
+    <listitem>
+      <para>
+        General-purpose &bcia;s can be used for building custom container
+        images and for deploying applications.
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+        Language stack &bcia;s provide minimal environments for developing and
+        deploying applications in specific programming languages.
+      </para>
+    </listitem>
+  </itemizedlist>
+  <para>
+    &bci;s are available from
+    <link xlink:href="https://registry.suse.com">https://registry.suse.com</link>.
+    It contains tested and updated &bci;s. All images in the &suseregistry;
+    undergo a maintenance process. The images are built to contain the latest
+    available updates and fixes. The &suseregistry;'s Web user interface lists
+    a subset of the available images. For information about the &suseregistry;,
+    see <!-- XREF <xref linkend="sec-tools-suse-registry"/> -->.
+  </para>
+  <para>
+    &slea; base images in the &suseregistry; receive security updates and are
+    covered by the &suse; support plans. For more information about these
+    support plans, see <!-- XREF <xref linkend="cha-containers-support"/> -->.
+  </para>
+  <section xml:id="sec-bci-why">
+    <title>Why &bci;s</title>
+    <para>
+      &bcia;s offer a platform for creating &slsa;-based custom container
+      images and containerized applications that can be distributed freely.
+      &bcia;s feature the same predictable enterprise lifecycle as &slsa;. The
+      SLE_BCI 15 SP3 and SP4 repository (which is a subset of the &slea;
+      repository) gives &bcia;s access to 4000 packages available for the
+      &x86-64;, &aarch64;, &power; and &zseries; architectures. The packages in
+      the repository have undergone quality assurance and security audits by
+      &suse;. The container images are FIPS-compliant when running on a host in
+      FIPS mode. In addition to that, &suse; can provide official support for
+      &bcia;s through &suse; subscription plans.
+    </para>
+    <variablelist>
+      <varlistentry>
+        <term>Security</term>
+        <listitem>
+          <para>
+            Each package in the SLE_BCI repository undergoes security audits,
+            and &bcia;s benefit from the same mechanism of dealing with CVEs as
+            &suse; Linux Enterprise Server. All discovered and fixed
+            vulnerabilities are announced via e-mail, the dedicated
+            <link xlink:href="https://www.suse.com/security/cve/">CVE
+            pages</link>, and as OVAL and CVRF data. To ensure a secure supply
+            chain, all container images are signed with Notary v1, Podman's GPG
+            signatures, and Sigstore Cosign.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Stability</term>
+        <listitem>
+          <para>
+            Since &bcia;s are based on &slsa;, they feature the same level of
+            stability and quality assurance. Similar to &slsa;, &bcia;s receive
+            maintenance updates that provide bug fixes, improvements and
+            security patches.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Tooling and integration</term>
+        <listitem>
+          <para>
+            &bcia;s are designed to provide drop-in replacements for popular
+            container images available on hub.docker.com. You can use the
+            general-purpose &bcia;s and the tools they put at your disposal to
+            create custom container images, while the language stack &bcia;s
+            provide a foundation and the required tooling for building
+            containerized applications.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Redistribution</term>
+        <listitem>
+          <para>
+            &bci;s are covered by a permissive
+            <link xlink:href="https://www.suse.com/de-de/licensing/eula/#bci">EULA</link>
+            that allows you to redistribute custom container images based on a
+            &bci;.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+  <section xml:id="sec-bci-highlights">
+    <title>Highlights</title>
+    <itemizedlist>
+      <listitem>
+        <para>
+          &bcia;s are fully compatible with &slsa;, but
+          <emphasis role="strong">they do not require a subscription to run and
+          distribute them.</emphasis>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          &bcia;s automatically run in FIPS-compatible mode when the host
+          operating system is running in FIPS mode.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Each &bcia; includes the RPM database, which makes it possible to
+          audit the contents of the container image. You can use the RPM
+          database to determine the specific version of the RPM package any
+          given file belongs to. This allows you to ensure that a container
+          image is not susceptible to known and already fixed vulnerabilities.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          All &bcia;s (except for those without &zypper;) come with the
+          <literal>container-suseconnect</literal> service. This gives
+          containers that run on a registered &slsa; host access to the full
+          &slsa; repositories. <literal>container-suseconnect</literal> is
+          invoked automatically when you run &zypper; for the first time, and
+          the service adds the correct &slsa; repositories into the running
+          container. On an unregistered &slsa; host or on a non-&slsa; host,
+          the service does nothing. See
+          <!-- XREF <xref linkend="sec-container-suseconnect"/> --> for more information.
+        </para>
+      </listitem>
+    </itemizedlist>
+    <note>
+      <title>SLE_BCI repository</title>
+      <para>
+        There is a SLE_BCI repository for each SLE service pack. This means
+        that &bcia;s based on SP4 have access to the SLE_BCI repository for
+        SP4, all &bcia;s based on SP5 use the SLE_BCI repository for SP5, and
+        so on. Each SLE_BCI repository contains all SLE packages except
+        kernels, boot loaders, installers (including YaST), desktop
+        environments and hypervisors (such as KVM and Xen).
+      </para>
+    </note>
+    <note>
+      <title>Requesting a missing package</title>
+      <para>
+        If the SLE_BCI repository does not have a package you need, you have
+        two options. As an existing &suse; customer, you can file a feature
+        request. As a regular user, you can request a package to be created by
+        creating an issue in
+        <link xlink:href="https://bugzilla.suse.com/enter_bug.cgi?product=&suse;%20Linux%20Enterprise%20Base%20Container%20Images">Bugzilla</link>.
+      </para>
+    </note>
+  </section>
+</article>
