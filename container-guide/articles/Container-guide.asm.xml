@@ -18,6 +18,7 @@
     <resource xml:id="_containers-bci-language" href="../concepts/containers-bci-language.xml"/>
     <resource xml:id="_containers-bci-app" href="../concepts/containers-bci-app.xml"/>
     <resource xml:id="_containers-bci-lifecycle" href="../concepts/containers-bci-lifecycle.xml"/>
+    <resource xml:id="_containers-bci-labels" href="../concepts/containers-bci-labels.xml"/>
     <resource xml:id="_gfdl" href="../common/license_gfdl1.2.xml"/>
   </resources>
   <structure renderas="article" xml:id="container-guide" xml:lang="en">
@@ -84,5 +85,6 @@
     <module resourceref="_containers-bci-language" renderas="section"/>
     <module resourceref="_containers-bci-app" renderas="section"/>
     <module resourceref="_containers-bci-lifecycle" renderas="section"/>
+    <module resourceref="_containers-bci-labels" renderas="section"/>
   </structure>
 </assembly>

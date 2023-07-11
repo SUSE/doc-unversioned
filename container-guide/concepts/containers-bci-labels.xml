@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file originates from the project https://github.com/openSUSE/doc-kit -->
+<!-- This file can be edited downstream. -->
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook51-profile.xsl"
+ type="text/xml"
+ title="Profiling step"?>
+<!DOCTYPE article
+[
+  <!ENTITY % entities SYSTEM "../common/generic-entities.ent">
+    %entities;
+]>
+<article xml:id="container-bci-labels" xml:lang="en"
+ role="concept"
+ xmlns="http://docbook.org/ns/docbook" version="5.1"
+ xmlns:its="http://www.w3.org/2005/11/its"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+  <info>
+    <title>&bci; labels</title>
+    <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
+      <dm:bugtracker>
+        <dm:url>https://bugzilla.suse.com/enter_bug.cgi</dm:url>
+        <dm:component>Smart Docs</dm:component>
+        <dm:product>Documentation</dm:product>
+        <dm:assignee>dpopov@suse.com</dm:assignee>
+      </dm:bugtracker>
+      <dm:translation>no</dm:translation>
+    </dm:docmanager>
+  </info>
+  <para>
+    &bcia;s feature the following labels.
+  </para>
+  <variablelist>
+    <varlistentry>
+      <term>com.suse.image-type</term>
+      <listitem>
+        <para>
+          Shows whether this is a pure &bcia; or an application container based
+          on another &bcia;.
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>com.suse.eula</term>
+      <listitem>
+        <para>
+          Marks which section of the &suse; EULA applies to the container
+          image.
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>com.suse.release-stage</term>
+      <listitem>
+        <para>
+          Indicates the current release stage of the image.
+        </para>
+        <itemizedlist>
+          <listitem>
+            <para>
+              <literal>prototype</literal> Indicates that the container image
+              is in the ALP prototype phase.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <literal>alpha</literal> Prevents the container image from
+              appearing in the registry.suse.com Web interface even if it is
+              available there. The value also indicates the alpha quality of
+              the container image.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <literal>beta</literal> Lists the container image in the Beta
+              Container Images section of the registry.suse.com Web interface
+              and adds the Beta label to the image. The value also indicates
+              the beta quality of the container image.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <literal>released</literal> Indicates that the container image is
+              released and suitable for production use.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>com.suse.supportlevel</term>
+      <listitem>
+        <para>
+          Shows the support level for the container.
+        </para>
+        <itemizedlist>
+          <listitem>
+            <para>
+              <literal>l2</literal> Problem isolation, which means technical
+              support designed to analyze data, reproduce customer problems,
+              isolate problem areas, and provide a resolution for problems not
+              resolved by Level 1, or prepare for Level 3.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <literal>l3</literal> Problem resolution, which means technical
+              support designed to resolve problems by engaging engineering to
+              resolve product defects which have been identified by Level 2
+              Support.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <literal>acc</literal> Software delivered with the &bci; may
+              require an external contract.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <literal>techpreview</literal> The image is unsupported and
+              intended for use in proof-of-concept scenarios.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <literal>unsupported</literal> No support is provided for the
+              image.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>com.suse.lifecycle-url</term>
+      <listitem>
+        <para>
+          Points to the
+          <link xlink:href="https://www.suse.com/lifecycle/">https://www.suse.com/lifecycle/</link>
+          page that offers information about the lifecycle of the image.
+        </para>
+      </listitem>
+    </varlistentry>
+  </variablelist>
+  <section xml:id="sec-bci-labels-query">
+    <title>Working with &bcia; labels</title>
+    <para>
+      Starting with &slea; 15 SP3, all base container images include information
+      such as a build time stamp and description. This information is provided
+      in the form of labels attached to the base images, and is therefore
+      available for derived images and containers.
+    </para>
+    <para>
+      Here is an example of the Labels information shown by <literal>podman
+      inspect</literal>:
+    </para>
+<screen>podman inspect registry.suse.com/suse/sle15
+    [...]
+    "Labels": {
+                "com.suse.bci.base.created": "2023-01-26T22:15:08.381030307Z",
+                "com.suse.bci.base.description": "Image for containers based on SUSE Linux Enterprise Server 15 SP4.",
+                "com.suse.bci.base.disturl": "obs://build.suse.de/SUSE:SLE-15-SP4:Update:CR/images/1477b070ae019f95b0f2c3c0dce13daf-sles15-image",
+                "com.suse.bci.base.eula": "sle-bci",
+                "com.suse.bci.base.image-type": "sle-bci",
+                "com.suse.bci.base.lifecycle-url": "https://www.suse.com/lifecycle",
+                "com.suse.bci.base.reference": "registry.suse.com/suse/sle15:15.4.27.14.31",
+                "com.suse.bci.base.release-stage": "released",
+                "com.suse.bci.base.source": "https://sources.suse.com/SUSE:SLE-15-SP4:Update:CR/sles15-image/1477b070ae019f95b0f2c3c0dce13daf/",
+                "com.suse.bci.base.supportlevel": "l3",
+                "com.suse.bci.base.title": "SLE 15 SP4 Base Container Image",
+                "com.suse.bci.base.url": "https://www.suse.com/products/server/",
+                "com.suse.bci.base.vendor": "SUSE LLC",
+                "com.suse.bci.base.version": "15.4.27.14.31",
+                "com.suse.eula": "sle-bci",
+                "com.suse.image-type": "sle-bci",
+                "com.suse.lifecycle-url": "https://www.suse.com/lifecycle",
+                "com.suse.release-stage": "released",
+                "com.suse.sle.base.created": "2023-01-26T22:15:08.381030307Z",
+                "com.suse.sle.base.description": "Image for containers based on &suse; Linux Enterprise Server 15 SP4.",
+                "com.suse.sle.base.disturl": "obs://build.suse.de/SUSE:SLE-15-SP4:Update:CR/images/1477b070ae019f95b0f2c3c0dce13daf-sles15-image",
+                "com.suse.sle.base.eula": "sle-bci",
+                "com.suse.sle.base.image-type": "sle-bci",
+                "com.suse.sle.base.lifecycle-url": "https://www.suse.com/lifecycle",
+                "com.suse.sle.base.reference": "registry.suse.com/suse/sle15:15.4.27.14.31",
+                "com.suse.sle.base.release-stage": "released",
+                "com.suse.sle.base.source": "https://sources.suse.com/SUSE:SLE-15-SP4:Update:CR/sles15-image/1477b070ae019f95b0f2c3c0dce13daf/",
+                "com.suse.sle.base.supportlevel": "l3",
+                "com.suse.sle.base.title": "SLE 15 SP4 Base Container Image",
+                "com.suse.sle.base.url": "https://www.suse.com/products/server/",
+                "com.suse.sle.base.vendor": "SUSE LLC",
+                "com.suse.sle.base.version": "15.4.27.14.31",
+                "com.suse.supportlevel": "l3",
+                "org.openbuildservice.disturl": "obs://build.suse.de/SUSE:SLE-15-SP4:Update:CR/images/1477b070ae019f95b0f2c3c0dce13daf-sles15-image",
+                "org.opencontainers.image.created": "2023-01-26T22:15:08.381030307Z",
+                "org.opencontainers.image.description": "Image for containers based on SUSE Linux Enterprise Server 15 SP4.",
+                "org.opencontainers.image.source": "https://sources.suse.com/SUSE:SLE-15-SP4:Update:CR/sles15-image/1477b070ae019f95b0f2c3c0dce13daf/",
+                "org.opencontainers.image.title": "SLE 15 SP4 Base Container Image",
+                "org.opencontainers.image.url": "https://www.suse.com/products/server/",
+                "org.opencontainers.image.vendor": "SUSE LLC",
+                "org.opencontainers.image.version": "15.4.27.14.31",
+                "org.opensuse.reference": "registry.suse.com/suse/sle15:15.4.27.14.31"
+            },
+    [...]</screen>
+    <para>
+      All labels are shown twice to ensure that the information in derived
+      images about the original base image is still visible and not
+      overwritten.
+    </para>
+    <para>
+      Use &podman; and the jq tool (<literal>sudo zypper in jq</literal>) to
+      retrieve labels of a local image. The following command lists all labels
+      and only the labels information of the <literal>bci-base:15.4</literal>
+      image:
+    </para>
+<screen>podman inspect registry.suse.com/bci/bci-base:15.4 | \
+    jq '.[0].Labels'</screen>
+    <para>
+      It is also possible to retrieve the value of a specific label:
+    </para>
+<screen>podman inspect registry.suse.com/bci/bci-base:15.4 | \
+    jq '.[0].Labels["com.suse.sle.base.supportlevel"]'</screen>
+    <para>
+      The preceding command retrieves the value of the
+      <literal>com.suse.sle.base.supportlevel</literal> label.
+    </para>
+    <para>
+      The skopeo tool makes it possible to examine labels of an image without
+      pulling it first. For example:
+    </para>
+<screen>skopeo inspect docker://registry.suse.com/bci/bci-base:15.4 | \
+    jq '.Labels'
+    skopeo inspect docker://registry.suse.com/bci/bci-base:15.4 | \
+    jq '.Labels["com.suse.sle.base.supportlevel"]'</screen>
+  </section>
+</article>
