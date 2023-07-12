@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file originates from the project https://github.com/openSUSE/doc-kit -->
+<!-- This file can be edited downstream. -->
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook51-profile.xsl"
+ type="text/xml"
+ title="Profiling step"?>
+<!DOCTYPE article
+[
+  <!ENTITY % entities SYSTEM "../common/generic-entities.ent">
+    %entities;
+]>
+<article xml:id="container-bci-understand" xml:lang="en"
+ role="concept"
+ xmlns="http://docbook.org/ns/docbook" version="5.1"
+ xmlns:its="http://www.w3.org/2005/11/its"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+  <info>
+    <title>Understanding &bcia;s</title>
+    <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
+      <dm:bugtracker>
+        <dm:url>https://bugzilla.suse.com/enter_bug.cgi</dm:url>
+        <dm:component>Smart Docs</dm:component>
+        <dm:product>Documentation</dm:product>
+        <dm:assignee>dpopov@suse.com</dm:assignee>
+      </dm:bugtracker>
+      <dm:translation>no</dm:translation>
+    </dm:docmanager>
+  </info>
+  <para>
+    If you have a working knowledge of containers, you will not have any
+    difficulties using &bcia;s. However, there are certain features that set
+    &bcia;s apart from similar offerings, like images based on Debian or Alpine
+    Linux. And understanding the specifics can help you to get the most out of
+    &bcia;s in the shortest time possible.
+  </para>
+  <section xml:id="sec-bci-package-manager">
+    <title>Package manager</title>
+    <para>
+      The default package manager in &slsa; is &zypper;. Similar to APT in
+      Debian and APK in Alpine Linux, &zypper; offers a command-line interface
+      for all package management tasks. Below is a brief overview of commonly
+      used container-related &zypper; commands.
+    </para>
+    <variablelist>
+      <varlistentry>
+        <term>Install packages</term>
+        <listitem>
+          <para>
+            <command>zypper --non-interactive install
+            <replaceable>PACKAGE_NAME</replaceable></command>
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Add a repository</term>
+        <listitem>
+          <para>
+            <command>zypper --non-interactive addrepo
+            <replaceable>REPOSITORY_URL</replaceable>;</command>
+            <command>zypper --non-interactive refresh</command>
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Update all packages</term>
+        <listitem>
+          <para>
+            <command>zypper --non-interactive update</command>
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Remove a package</term>
+        <listitem>
+          <para>
+            <command>zypper --non-interactive remove --clean-deps
+            <replaceable>PACKAGE_NAME</replaceable></command> (the
+            <option>--clean-deps</option> flag ensures that no longer required
+            dependencies are removed as well)
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Clean up temporary files</term>
+        <listitem>
+          <para>
+            <command>zypper clean</command>
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+    <para>
+      For more information on using &zypper;, refer to
+      <link xlink:href="https://documentation.suse.com/sles/html/&slsa;-all/cha-sw-cl.html#sec-zypper">https://documentation.suse.com/sles/html/&slsa;-all/cha-sw-cl.html#sec-zypper</link>.
+    </para>
+    <para>
+      All the described commands use the <option>--non-interactive</option>
+      flag to skip confirmations, since you cannot approve these manually
+      during container builds. Keep in mind that you must use the flag with any
+      command that modifies the system. Also note that
+      <option>--non-interactive</option> is not a "yes to all" flag. Instead,
+      <option>--non-interactive</option> confirms what is considered to be the
+      intention of the user. For example, an installation command with the
+      <option>--non-interactive</option> option fails if it needs to import new
+      repository signing keys, as that is something that the user must verify
+      themselves.
+    </para>
+  </section>
+</article>
