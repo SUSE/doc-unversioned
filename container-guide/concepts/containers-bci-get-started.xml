@@ -27,19 +27,28 @@
       <dm:translation>no</dm:translation>
     </dm:docmanager>
   </info>
-  <section xml:id="sec-getting-started-bci">
-    <title>Getting started with SLE Base Container Images</title>
-    <para>The &bcia;s are available as OCI-compatible container images directly from <link xlink:href="https://registry.suse.com">registry.suse.com</link> and can be used like any other container image. For example, using one of the general purpose containers:</para>
-    <screen>&prompt-user;podman run --rm -it registry.suse.com/bci/bci-base:15.4 grep '^NAME' /etc/os-release
+  <para>
+    The &bcia;s are available as OCI-compatible container images directly from
+    <link xlink:href="https://registry.suse.com">registry.suse.com</link> and
+    can be used like any other container image. For example, using one of the
+    general purpose containers:
+  </para>
+<screen>&prompt-user;podman run --rm -it registry.suse.com/bci/bci-base:15.4 grep '^NAME' /etc/os-release
     NAME="{sles}"</screen>
-    <para>Alternatively, you can use a &bcia; in <literal>Dockerfile</literal> as follows:</para>
-    <screen>FROM registry.suse.com/bci/bci-base:15.4
+  <para>
+    Alternatively, you can use a &bcia; in <literal>Dockerfile</literal> as
+    follows:
+  </para>
+<screen>FROM registry.suse.com/bci/bci-base:15.4
     RUN zypper -n in python3 &amp;&amp; \
         echo "Hello Green World!" &gt; index.html
     ENTRYPOINT ["/usr/bin/python3", "-m", "http.server"]
     EXPOSE 8000</screen>
-    <para>You can then build container images using the <command>docker build .</command> or <command>buildah bud .</command> commands:</para>
-    <screen>&gt; docker build .
+  <para>
+    You can then build container images using the <command>docker build
+    .</command> or <command>buildah bud .</command> commands:
+  </para>
+<screen>&gt; docker build .
     Sending build context to Docker daemon  2.048kB
     Step 1/4 : FROM registry.suse.com/bci/bci-base:15.4
      ---&gt; e34487b4c4e1
@@ -59,5 +68,4 @@
     
     &prompt-user;curl localhost:8000
     Hello Green World!</screen>
-    </section>
 </article>
