@@ -210,18 +210,29 @@
   <section xml:id="sec-bci-package-naming">
     <title>Package naming conventions</title>
     <para>
-      &slea; package naming conventions differ from Debian, Ubuntu and Alpine, and
-      they are closer to those of &rhl;. The main difference is that development
-      packages of libraries (that is, packages containing headers and build
-      description files) are named <filename>PACKAGE-devel</filename> in &slea;,
-      as opposed to <filename>PACKAGE-dev</filename> as they are in Debian and
-      Ubuntu. When in doubt, search for the package directly using the
-      following command: <command>docker run --rm
+      &slea; package naming conventions differ from Debian, Ubuntu and Alpine,
+      and they are closer to those of &rhel;. The main difference is that
+      development packages of libraries (that is, packages containing headers
+      and build description files) are named <filename>PACKAGE-devel</filename>
+      in &slea;, as opposed to <filename>PACKAGE-dev</filename> as they are in
+      Debian and Ubuntu. When in doubt, search for the package directly using
+      the following command: <command>docker run --rm
       registry.suse.com/bci/bci-base:<replaceable>OS_VERSION</replaceable>
       zypper search <replaceable>PACKAGE_NAME</replaceable></command> (replace
-      <replaceable>OS_VERSION</replaceable>
-      with the appropriate service version number, for example:
-      <literal>15.3</literal> or <literal>15.4</literal>).
+      <replaceable>OS_VERSION</replaceable> with the appropriate service
+      version number, for example: <literal>15.3</literal> or
+      <literal>15.4</literal>).
+    </para>
+  </section>
+  <section xml:id="sec-bci-gpg-keys">
+    <title>Adding GPG signing keys</title>
+    <para>
+      Adding external repositories to a container or container image normally
+      requires importing the GPG key used for signing the packages. This can be
+      done with the <command>rpm --import
+      <replaceable>KEY_URL</replaceable></command> command. This adds the key
+      to the RPM database, and all packages from the repository can be
+      installed afterwards.
     </para>
   </section>
 </article>

@@ -22,6 +22,7 @@
     <resource xml:id="_containers-bci-tags" href="../concepts/containers-bci-tags.xml"/>
     <resource xml:id="_containers-bci-verify" href="../concepts/containers-bci-verify.xml"/>
     <resource xml:id="_containers-bci-understand" href="../concepts/containers-bci-understand.xml"/>
+    <resource xml:id="_containers-bci-get-started" href="../concepts/containers-bci-get-started.xml"/>
     <resource xml:id="_gfdl" href="../common/license_gfdl1.2.xml"/>
   </resources>
   <structure renderas="article" xml:id="container-guide" xml:lang="en">
@@ -92,5 +93,6 @@
     <module resourceref="_containers-bci-tags" renderas="section"/>
     <module resourceref="_containers-bci-verify" renderas="section"/>
     <module resourceref="_containers-bci-understand" renderas="section"/>
+    <module resourceref="_containers-bci-get-started" renderas="section"/>
   </structure>
 </assembly>
