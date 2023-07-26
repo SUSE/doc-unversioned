@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file originates from the project https://github.com/openSUSE/doc-kit -->
+<!-- This file can be edited downstream. -->
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook51-profile.xsl"
+ type="text/xml"
+ title="Profiling step"?>
+<!DOCTYPE article
+[
+  <!ENTITY % entities SYSTEM "../common/generic-entities.ent">
+    %entities;
+]>
+<article xml:id="container-docker" xml:lang="en"
+ role="concept"
+ xmlns="http://docbook.org/ns/docbook" version="5.1"
+ xmlns:its="http://www.w3.org/2005/11/its"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+  <info>
+    <title>Setting up &deng;</title>
+    <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
+      <dm:bugtracker>
+        <dm:url>https://bugzilla.suse.com/enter_bug.cgi</dm:url>
+        <dm:component>Smart Docs</dm:component>
+        <dm:product>Documentation</dm:product>
+        <dm:assignee>dpopov@suse.com</dm:assignee>
+      </dm:bugtracker>
+      <dm:translation>no</dm:translation>
+    </dm:docmanager>
+  </info>
+  <section xml:id="sec-preparation">
+    <title>Preparing the host</title>
+    <para>
+      Before installing any &docker;-related packages, you need to enable the
+      Containers Module:
+    </para>
+    <note>
+      <title>Built-in &docker; orchestration support</title>
+      <para>
+        Container orchestration is a part of &deng;. Even though this feature
+        is available in &productname;, it is not supported by &suse;, and is
+        only provided as a technology preview. Use Kubernetes for container
+        orchestration. For details, refer to the
+        <!-- XREF <link xlink:href="http://kubernetes.io/docs/getting-started-guides/kubeadm/">Kubernetes documentation</link> -->
+        .
+      </para>
+    </note>
+    <section xml:id="id-installing-and-configuring-docker-open-source-engine">
+      <title>Installing and configuring &deng;</title>
+      <orderedlist numeration="arabic">
+        <listitem>
+          <para>
+            Install the <package>docker</package> package:
+          </para>
+<screen>&prompt.user;sudo zypper install docker</screen>
+        </listitem>
+        <listitem>
+          <para>
+            Enable the &docker; service, so it starts automatically at boot
+            time:
+          </para>
+<screen>&prompt.user;sudo systemctl enable docker.service</screen>
+          <para>
+            This also enables <literal>docker.socket</literal>.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Open the <filename>/etc/sysconfig/docker</filename> file. Search
+            for the parameter <option>DOCKER_OPTS</option> and add
+            <option>--insecure-registry ADDRESS_OF_YOUR_REGISTRY</option>.
+          </para>
+          <orderedlist numeration="loweralpha">
+            <listitem>
+              <para>
+                Add CA certificates to the directory
+                <filename>/etc/docker/certs.d/REGISTRY_ADDRESS</filename>:
+              </para>
+<screen>&prompt.user;sudo cp CA /etc/pki/trust/anchors/</screen>
+            </listitem>
+            <listitem>
+              <para>
+                Copy the CA certificates to your system:
+              </para>
+<screen>&prompt.user;sudo update-ca-certificates</screen>
+            </listitem>
+          </orderedlist>
+        </listitem>
+        <listitem>
+          <para>
+            Start the &docker; service:
+          </para>
+<screen>&prompt.user;sudo systemctl start docker.service</screen>
+          <para>
+            This also starts <literal>docker.socket</literal>.
+          </para>
+        </listitem>
+      </orderedlist>
+      <para>
+        The &docker; daemon listens on a local socket accessible only by the
+        root user and by the members of the docker group. The docker group is
+        automatically created during package installation.
+      </para>
+      <para>
+        To allow a certain user to connect to the local &docker; daemon, use
+        the following command:
+      </para>
+<screen>&prompt.user;sudo /usr/sbin/usermod -aG docker USERNAME</screen>
+      <para>
+        This allows the user to communicate with the local &docker; daemon.
+      </para>
+    </section>
+  </section>
+  <section xml:id="sec-docker-setup-net">
+    <title>Configuring the network</title>
+    <para>
+      To give the containers access to the external network, enable the
+      <literal>ipv4 ip_forward</literal> rule.
+    </para>
+    <section xml:id="sec-docker-setup-net-docs">
+      <title>How &deng; interacts with iptables</title>
+      <para>
+        To learn more about how containers interact with each other and the
+        system firewall, see the
+        <link xlink:href="https://docs.docker.com/v17.09/engine/userguide/networking/default_network/container-communication/">&docker;
+        documentation</link>.
+      </para>
+      <para>
+        It is also possible to prevent &deng; from manipulating
+        <literal>iptables</literal>. See the
+        <link xlink:href="https://docs.docker.com/network/iptables/#prevent-docker-from-manipulating-iptables">&docker;
+        documentation</link>.
+      </para>
+    </section>
+  </section>
+  <section xml:id="sec-docker-storaged">
+    <title>Storage drivers</title>
+    <para>
+      &deng; supports different storage drivers:
+    </para>
+    <itemizedlist>
+      <listitem>
+        <para>
+          vfs: This driver is automatically used when the &docker; host file
+          system does not support copy-on-write. This driver is simpler than
+          the others listed and does not offer certain advantages of &deng;
+          such as shared layers. It is a slow but reliable driver.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          devicemapper: This driver relies on the device-mapper thin
+          provisioning module. It supports copy-on-write, so it provides all
+          the advantages of &deng;.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          btrfs: This driver relies on Btrfs to offer all the features required
+          by &deng;. To use this driver, the
+          <filename>/var/lib/docker</filename> directory must be on a Btrfs
+          file system.
+        </para>
+      </listitem>
+    </itemizedlist>
+    <para>
+      &productname; uses the Btrfs file system by default. This forces &deng;
+      to use the btrfs driver.
+    </para>
+    <para>
+      It is possible to specify what driver to use by changing the value of the
+      <option>DOCKER_OPTS</option> variable defined in the
+      <filename>/etc/sysconfig/docker</filename> file. This can be done either
+      manually or using &yast; by browsing to the
+      <menuchoice><guimenu>System</guimenu><guimenu>/etc/sysconfig
+      Editor</guimenu><guimenu>System</guimenu><guimenu>Management</guimenu><guimenu>DOCKER_OPTS</guimenu></menuchoice>
+      menu and entering the <literal>-s storage_driver</literal> string.
+    </para>
+    <para>
+      For example, to enable the devicemapper driver, enter the following text:
+    </para>
+<screen>DOCKER_OPTS="-s devicemapper"</screen>
+    <important>
+      <title>Mounting <filename>/var/lib/docker</filename></title>
+      <para>
+        It is recommended to mount <filename>/var/lib/docker</filename> on a
+        separate partition or volume. In case of file system corruption, this
+        allows the operating system to run &deng; unaffected.
+      </para>
+      <para>
+        If you choose the Btrfs file system for
+        <filename>/var/lib/docker</filename>, it is strongly recommended to
+        create a subvolume for it. This ensures that the directory is excluded
+        from file system snapshots. If you do not exclude
+        <filename>/var/lib/docker</filename> from snapshots, there is a risk of
+        the file system running out of disk space soon after you start
+        deploying containers. Moreover, a rollback to a previous snapshot will
+        also reset the &docker; database and images. For more information, see
+        <link xlink:href="https://documentation.suse.com/sles/html/SLES-all/cha-snapper.html#sec-snapper-setup-customizing-new-subvolume">https://documentation.suse.com/sles/html/SLES-all/cha-snapper.html#sec-snapper-setup-customizing-new-subvolume</link>.
+      </para>
+    </important>
+  </section>
+  <section xml:id="sec-docker-setup-updates">
+    <title>Updates</title>
+    <para>
+      All updates to the <package>docker</package> package are marked as
+      interactive (that is, no automatic updates) to avoid accidental updates
+      that can break running container workloads. Stop all running containers
+      before applying a &deng; update.
+    </para>
+    <para>
+      To prevent data loss, avoid workloads that rely on containers which
+      automatically start after &deng; update. Although it is technically
+      possible to keep containers running during an update via the
+      <option>--live-restore</option> option, such updates can introduce
+      regressions. &suse; does not support this feature.
+    </para>
+  </section>
+</article>
