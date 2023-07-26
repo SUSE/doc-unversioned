@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file originates from the project https://github.com/openSUSE/doc-kit -->
+<!-- This file can be edited downstream. -->
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook51-profile.xsl"
+ type="text/xml"
+ title="Profiling step"?>
+<!DOCTYPE article
+[
+  <!ENTITY % entities SYSTEM "../common/generic-entities.ent">
+    %entities;
+]>
+<article xml:id="container-verify" xml:lang="en"
+ role="concept"
+ xmlns="http://docbook.org/ns/docbook" version="5.1"
+ xmlns:its="http://www.w3.org/2005/11/its"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+  <info>
+    <title>Verifying container images</title>
+    <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
+      <dm:bugtracker>
+        <dm:url>https://bugzilla.suse.com/enter_bug.cgi</dm:url>
+        <dm:component>Smart Docs</dm:component>
+        <dm:product>Documentation</dm:product>
+        <dm:assignee>dpopov@suse.com</dm:assignee>
+      </dm:bugtracker>
+      <dm:translation>no</dm:translation>
+    </dm:docmanager>
+  </info>
+  <para>
+    Verifying container images allows you to confirm their provenance, thus
+    ensuring the supply chain security. This chapter provides information on
+    signing and verifying container images.
+  </para>
+  <section xml:id="sec-verify-docker">
+    <title>Verifying &bci;s with &docker;</title>
+    <para>
+      Signatures for images available through &suseregistry; are stored in the
+      Notary. You can verify the signature of a specific image using the
+      following command:
+    </para>
+<screen>&prompt.user;docker trust inspect --pretty registry.suse.com/suse/IMAGE:TAG</screen>
+    <para>
+      For example, the command <command>docker trust inspect --pretty
+      registry.suse.com/suse/sle15:latest</command> verifies the signature of
+      the latest SLE15 base image.
+    </para>
+    <para>
+      To automatically validate an image when you pull it, set the environment
+      <literal>DOCKER_CONTENT_TRUST</literal> to <literal>1</literal>. For
+      example:
+    </para>
+<screen>env DOCKER_CONTENT_TRUST=1 docker pull registry.suse.com/suse/sle15:latest</screen>
+  </section>
+  <section xml:id="sec-verify-cosign">
+    <title>Verifying &bci;s with Cosign</title>
+    <para>
+      To verify a &bcia;, run Cosign in the container. The command below
+      fetches the signing key from the &suse; server and uses it to verify the
+      latest &bcia;-Base container image.
+    </para>
+<screen>&prompt.user;podman run --rm -it gcr.io/projectsigstore/cosign verify \
+        --key https://ftp.suse.com/pub/projects/security/keys/container-key.pem \
+        registry.suse.com/bci/bci-base:latest | tail -1 | jq
+    
+    [
+      {
+        "critical": {
+          "identity": {
+            "docker-reference": "registry.suse.com/bci/bci-base"
+          },
+          "image": {
+            "docker-manifest-digest": "sha256:52a828600279746ef669cf02a599660cd53faf4b2430a6b211d593c3add047f5"
+          },
+          "type": "cosign container image signature"
+        },
+        "optional": {
+          "creator": "OBS"
+        }
+      }
+    ]</screen>
+    <para>
+      The signing key can be used to verify all &bcia;s, and it also ships with
+      &productname; (the
+      <filename>/usr/share/container-keys/suse-container-key.pem</filename>
+      file).
+    </para>
+    <para>
+      You can also check &bcia;s against
+      <link xlink:href="https://github.com/sigstore/rekor">rekor</link>, the
+      immutable tamper resistant ledger. For example:
+    </para>
+<screen>&prompt.user;podman run --rm -it -e COSIGN_EXPERIMENTAL=1 gcr.io/projectsigstore/cosign \
+        verify --key https://ftp.suse.com/pub/projects/security/keys/container–key.pem \
+        registry.suse.com/bci/bci-base:latest | tail -1 | jq
+    [
+      {
+        "critical": {
+          "identity": {
+            "docker-reference": "registry.suse.com/bci/bci-base"
+          },
+          "image": {
+            "docker-manifest-digest": "sha256:52a828600279746ef669cf02a599660cd53faf4b2430a6b211d593c3add047f5"
+          },
+          "type": "cosign container image signature"
+        },
+        "optional": {
+          "creator": "OBS"
+        }
+      }
+    ]</screen>
+    <para>
+      If verification fails, the output of the <command>cosign verify</command>
+      command is similar to the one below.
+    </para>
+<screen>Error: no matching signatures:
+    crypto/rsa: verification error
+    main.go:62: error during command execution: no matching signatures:
+    crypto/rsa: verification error</screen>
+  </section>
+  <section xml:id="sec-verify-podman">
+    <title>Verifying &bci;s with &podman;</title>
+    <para>
+      Before you can verify &bcia;s using &podman;, you must specify
+      <literal>registry.suse.com</literal> as the registry for image
+      verification.
+    </para>
+    <note>
+      <para>
+        Skip this step on &productname;, as the correct configuration is
+        already in place.
+      </para>
+    </note>
+    <para>
+      To do this, add the following configuration to
+      <filename>/etc/containers/registries.d/default.yaml</filename>:
+    </para>
+<screen language="YAML" linenumbering="unnumbered">docker:
+      registry.suse.com:
+        use-sigstore-attachments: true</screen>
+    <para>
+      Instead of editing the <filename>default.yaml</filename>, you can create
+      a new file in <filename>/etc/containers/registries.d/</filename> with a
+      filename of your choice.
+    </para>
+    <para>
+      Next, modify the
+      <link xlink:href="https://github.com/containers/image/blob/main/docs/containers-policy.json.5.md">/etc/containers/policy.json</link>
+      file. Under the <literal>docker</literal> attribute, add the
+      <literal>registry.suse.com</literal> configuration similar to the
+      following:
+    </para>
+<screen language="json" linenumbering="unnumbered">{
+      "default": [
+        {
+          "type": "insecureAcceptAnything"
+        }
+      ],
+      "transports": {
+        "docker-daemon": {
+          "": [
+            {
+              "type": "insecureAcceptAnything"
+            }
+          ]
+        },
+        "docker": {
+          "registry.suse.com": [
+            {
+              "type": "sigstoreSigned",
+              "keyPath": "/usr/share/pki/containers/suse-container-key.pem",
+              "signedIdentity": {
+                "type": "matchRepository"
+              }
+            }
+          ]
+        }
+      }
+    }</screen>
+    <para>
+      The specified configuration instructs &podman;, skopeo and &buildah; to
+      verify images under the <literal>registry.suse.com</literal> repository.
+      This way,&podman; checks the validity of the signature using the
+      specified public key before pulling the image. It rejects the image if
+      the validation fails.
+    </para>
+    <note>
+      <para>
+        Do not remove existing entries in
+        <filename>transports.docker</filename>. Append the entry for
+        <literal>registry.suse.com</literal> to the list
+      </para>
+    </note>
+    <informalexample>
+      <para>
+        Fetch the public key used to sign &bcia;s from
+        <link xlink:href="https://www.suse.com/support/security/keys/">&suse;
+        Signing Keys</link>, or use the following command:
+      </para>
+<screen language="ShellSession" linenumbering="unnumbered">&gt; sudo curl -s https://ftp.suse.com/pub/projects/security/keys/container–key.pem \
+        -o /usr/share/pki/containers/suse-container-key.pem</screen>
+      <note>
+        <para>
+          This step is optional on &productname;. The signing key is already
+          available in
+          <filename>/usr/share/pki/containers/suse-container-key.pem</filename>
+        </para>
+      </note>
+    </informalexample>
+    <para>
+      &buildah;, &podman; and skopeo automatically verifies every image pulled
+      from <literal>registry.suse.com</literal> from now on. There are no
+      additional steps required.
+    </para>
+    <para>
+      If verification fails, the command returns an error message as follows:
+    </para>
+<screen language="ShellSession" linenumbering="unnumbered">&prompt.user;podman pull registry.suse.com/bci/bci-base:latest
+    Trying to pull registry.suse.com/bci/bci-base:latest...
+    Error: copying system image from manifest list: Source image rejected: Signature for identity registry.suse.com/bci/bci-base is not accepted</screen>
+    <para>
+      If there are no issues with the signed image and your configuration, you
+      can proceed with using the container image.
+    </para>
+  </section>
+</article>

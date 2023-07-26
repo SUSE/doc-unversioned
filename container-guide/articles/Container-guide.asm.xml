@@ -20,13 +20,13 @@
     <resource xml:id="_containers-bci-lifecycle" href="../concepts/containers-bci-lifecycle.xml"/>
     <resource xml:id="_containers-bci-labels" href="../concepts/containers-bci-labels.xml"/>
     <resource xml:id="_containers-bci-tags" href="../concepts/containers-bci-tags.xml"/>
-    <resource xml:id="_containers-bci-verify" href="../concepts/containers-bci-verify.xml"/>
     <resource xml:id="_containers-bci-understand" href="../concepts/containers-bci-understand.xml"/>
     <resource xml:id="_containers-bci-get-started" href="../concepts/containers-bci-get-started.xml"/>
     <resource xml:id="_containers-bci-repo-reg" href="../concepts/containers-bci-repo-reg.xml"/>
     <resource xml:id="_containers-podman" href="../concepts/containers-podman.xml"/>
     <resource xml:id="_containers-docker" href="../concepts/containers-docker.xml"/>
     <resource xml:id="_containers-docker-registry" href="../concepts/containers-docker-registry.xml"/>
+    <resource xml:id="_containers-verify" href="../concepts/containers-verify.xml"/>
     <resource xml:id="_gfdl" href="../common/license_gfdl1.2.xml"/>
   </resources>
   <structure renderas="article" xml:id="container-guide" xml:lang="en">
@@ -79,7 +79,7 @@
       </dm:docmanager>
       <abstract>
         <para>
-          The following guide covers the SUSE Linux Enterprise container
+          The following guide covers the &sls; container
           ecosystem. Since containers are a constantly evolving technology, the
           guide is regularly updated, expanded and improved to reflect the
           latest technological developments.
@@ -95,12 +95,12 @@
     <module resourceref="_containers-bci-lifecycle" renderas="section"/>
     <module resourceref="_containers-bci-labels" renderas="section"/>
     <module resourceref="_containers-bci-tags" renderas="section"/>
-    <module resourceref="_containers-bci-verify" renderas="section"/>
     <module resourceref="_containers-bci-understand" renderas="section"/>
     <module resourceref="_containers-bci-get-started" renderas="section"/>
     <module resourceref="_containers-bci-repo-reg" renderas="section"/>
     <module resourceref="_containers-podman" renderas="section"/>
     <module resourceref="_containers-docker" renderas="section"/>
     <module resourceref="_containers-docker-registry" renderas="section"/>
+    <module resourceref="_containers-verify" renderas="section"/>
   </structure>
 </assembly>
