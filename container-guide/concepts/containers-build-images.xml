@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file originates from the project https://github.com/openSUSE/doc-kit -->
+<!-- This file can be edited downstream. -->
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook51-profile.xsl"
+ type="text/xml"
+ title="Profiling step"?>
+<!DOCTYPE article
+[
+  <!ENTITY % entities SYSTEM "../common/generic-entities.ent">
+    %entities;
+]>
+<article xml:id="container-build-images" xml:lang="en"
+ role="concept"
+ xmlns="http://docbook.org/ns/docbook" version="5.1"
+ xmlns:its="http://www.w3.org/2005/11/its"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+  <info>
+    <title>Creating custom container images</title>
+    <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
+      <dm:bugtracker>
+        <dm:url>https://bugzilla.suse.com/enter_bug.cgi</dm:url>
+        <dm:component>Smart Docs</dm:component>
+        <dm:product>Documentation</dm:product>
+        <dm:assignee>dpopov@suse.com</dm:assignee>
+      </dm:bugtracker>
+      <dm:translation>no</dm:translation>
+    </dm:docmanager>
+  </info>
+  <para>
+    To create a custom image, you need a base image of &sls;. You can use any
+    of the pre-built &sls; images.
+  </para>
+  <section xml:id="sec-download-prebuild-images">
+    <title>Pulling base &sls; images</title>
+    <para>
+      To obtain a pre-built base image, use the following command:
+    </para>
+<screen>&prompt.user;podman pull registry.suse.com/suse/<replaceable>IMAGENAME</replaceable></screen>
+    <para>
+      For example, for &sls; 15, the command is as follows:
+    </para>
+<screen>&prompt.user;podman pull registry.suse.com/suse/sle15</screen>
+    <para>
+      For information on obtaining specific base images, refer to
+      <!-- XREF <xref linkend="sec-bci-intro"/> -->.
+    </para>
+    <para>
+      When the container image is ready, you can customize it as described in
+      <!-- XREF <xref linkend="sec-customize-prebuild-images"/> -->.
+    </para>
+  </section>
+  <section xml:id="sec-customize-images">
+    <title>Customizing container images</title>
+    <section xml:id="sec-customize-repo-registration">
+      <title>Repositories and Registration</title>
+      <para>
+        The pre-built images do not have any repositories configured and do not
+        include any modules or extensions. They contain a
+        <link xlink:href="https://github.com/SUSE/container-suseconnect">zypper
+        service</link> that contacts either the SUSE Customer Center or a
+        Repository Mirroring Tool (&rmt;) server, according to the
+        configuration of the &sls; host that runs the container. The service
+        obtains the list of repositories available for the product used by the
+        container image. You can also directly declare extensions in your
+        <literal>Dockerfile</literal>. For more information, see
+        <!-- XREF <xref linkend="sec-container-suseconnect"/> -->.
+      </para>
+      <note>
+        <title>SLE_BCI repository</title>
+        <para>
+          The default base image includes the <literal>SLE_BCI</literal>
+          repository. This repository is only used when a container is built or
+          runs on a non-registered &slsa; host, or when registration
+          credentials are not made available to the container. The repository
+          provides a subset of &slea; packages useful for customizing &slsa;
+          container images. The repository is available without any
+          registration, and it is not supported.
+        </para>
+      </note>
+      <para>
+        You do not need to add any credentials to the container image, because
+        the machine credentials are automatically injected into the
+        <filename>/run/secrets</filename> directory in the container by the
+        docker daemon. The same applies to the
+        <filename>/etc/SUSEConnect</filename> file of the host system, which is
+        automatically injected into the <filename>/run/secrets</filename>
+        directory.
+      </para>
+      <note>
+        <title>Credentials and security</title>
+        <para>
+          The contents of the <filename>/run/secrets</filename> directory are
+          never included in a container image, hence there is no risk of your
+          credentials leaking.
+        </para>
+      </note>
+      <note xml:id="note-build-images-different-codebase">
+        <title>Building images on systems registered with &rmt;</title>
+        <para>
+          When the host system used for building container images is registered
+          with &rmt;, the default behavior allows only building containers of
+          the same code base as the host. For example, if your container host
+          is an &slea; 15 system, you can only build &slea; 15-based images on
+          that host by default. To build images for a different &slea; version,
+          for example, &slea; 12 on an &slea; 15 host, the host machine
+          credentials for the target release can be injected into the container
+          as outlined below.
+        </para>
+        <para>
+          Note that if the &rmt; server is using a self-signed certificate, the
+          matching CA certificate needs to be added into the container at
+          <filename>CA_TRUSTSTORE/rmt-server.pem</filename> for the certificate
+          to be accepted.
+        </para>
+        <para>
+          When the host system is registered with SUSE Customer Center, this
+          restriction does not apply.
+        </para>
+      </note>
+      <para>
+        To obtain the list of repositories, use the following command:
+      </para>
+<screen>&prompt.user;sudo zypper repos</screen>
+      <para>
+        This automatically adds all the repositories to the container. For each
+        repository added to the system, a new file is created under
+        <filename>/etc/zypp/repos.d</filename> . The URLs of these repositories
+        include an access token that automatically expires after 12 hours. To
+        renew the token, run the command <command>zypper ref -s</command> .
+        Including these files in a container image does not pose any security
+        risk.
+      </para>
+      <para>
+        To use a different set of credentials, put a custom
+        <filename>/etc/zypp/credentials.d/SCCcredentials</filename> file inside
+        the container image. It contains the machine credentials that have the
+        subscription you want to use. The same applies to the
+        <filename>SUSEConnect</filename> file: to override the existing file on
+        the host system running the container, add a custom
+        <filename>/etc/SUSEConnect</filename> file inside the container image.
+      </para>
+      <para>
+        Now you can create a custom container image by using a
+        <filename>Dockerfile</filename> as described in
+        <xref linkend="sec-docker-sle-images-customizing-the-images-sles12sp3"/>.
+      </para>
+      <para>
+        After you have edited the <filename>Dockerfile</filename>, build the
+        image by running the following command in the same directory in which
+        the <filename>Dockerfile</filename> resides:
+      </para>
+<screen>&prompt.user;podman build .</screen>
+      <para>
+        For more information about <literal>podman build</literal> options, see
+        the
+        <link xlink:href="https://docs.podman.io/en/latest/markdown/podman-build.1.html">official
+        &podman; documentation</link> .
+      </para>
+    </section>
+    <section xml:id="sec-docker-sle-images-customizing-the-images-sles12sp3">
+      <title>Creating a custom image for &slea; 12 SP5 and later</title>
+      <para>
+        The following <literal>Dockerfile</literal> creates a simple container
+        image based on &sls; 15:
+      </para>
+<screen>FROM registry.suse.com/suse/sle15
+    RUN zypper ref -s &amp;&amp; zypper -n in vim &amp;&amp; zypper -n clean</screen>
+      <para>
+        When the &podman; host machine is registered with an internal &rmt;
+        server, the image requires the SSL certificate used by &rmt;:
+      </para>
+<screen>FROM registry.suse.com/suse/sle15
+    # Import the crt file of our private SMT server
+    ADD http://smt./smt.crt /etc/pki/trust/anchors/smt.crt
+    RUN update-ca-certificates &amp;&amp; \
+        zypper ref -s &amp;&amp; \
+        zypper -n in vim &amp;&amp; \
+        zypper -n clean</screen>
+      <para>
+        If you wish to add &slea; extensions and modules to your images, please
+        refer to <!-- XREF <xref linkend="sec-container-suseconnect-modules"/>. -->
+      </para>
+    </section>
+    <section xml:id="sec-building-public-cloud">
+      <title>Building container images in on-demand &slea; instances in the public cloud</title>
+      <para>
+        Building container images on &slea; instances that were launched as
+        on-demand or pay-as-you-go instances on a public cloud (AWS, GCE, or
+        Azure) requires additional steps. To install packages and updates, the
+        on-demand public cloud instances are connected to the update
+        infrastructure. This infrastructure is based on &rmt; servers operated
+        by SUSE on public cloud providers.
+      </para>
+      <para>
+        Therefore, your machines need to locate the required services and
+        authenticate with them. This can be done using the
+        <literal>containerbuild-regionsrv</literal> service. This service is
+        available in the public cloud images provided through the marketplaces
+        of public cloud providers. Before building an image, this service must
+        be started on the public cloud instance by running the following
+        command:
+      </para>
+<screen>&prompt.user;sudo systemctl start containerbuild-regionsrv</screen>
+      <para>
+        To start it automatically on system start-up, enable it:
+      </para>
+<screen>&prompt.user;sudo systemctl enable containerbuild-regionsrv</screen>
+      <para>
+        The Zypper plug-ins provided by the &slea; base images connect to this
+        service and retrieve authentication details and information about which
+        update server to talk to. For this to work, the container has to be
+        built with host networking enabled, for example:
+      </para>
+<screen>&prompt.user;podman build --network host build-directory/</screen>
+      <para>
+        Since update infrastructure in the public clouds is based upon &rmt;,
+        the restrictions on building &slea; images for &slea; versions
+        different from the &slea; version of the host apply as well (see
+        <xref linkend="note-build-images-different-codebase"/>).
+      </para>
+    </section>
+  </section>
+</article>
