@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file originates from the project https://github.com/openSUSE/doc-kit -->
+<!-- This file can be edited downstream. -->
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook51-profile.xsl"
+ type="text/xml"
+ title="Profiling step"?>
+<!DOCTYPE article
+[
+  <!ENTITY % entities SYSTEM "../common/generic-entities.ent">
+    %entities;
+]>
+<article xml:id="container-registry" xml:lang="en"
+ role="concept"
+ xmlns="http://docbook.org/ns/docbook" version="5.1"
+ xmlns:its="http://www.w3.org/2005/11/its"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+  <info>
+    <title>Configuring image storage</title>
+    <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
+      <dm:bugtracker>
+        <dm:url>https://bugzilla.suse.com/enter_bug.cgi</dm:url>
+        <dm:component>Smart Docs</dm:component>
+        <dm:product>Documentation</dm:product>
+        <dm:assignee>dpopov@suse.com</dm:assignee>
+      </dm:bugtracker>
+      <dm:translation>no</dm:translation>
+    </dm:docmanager>
+  </info>
+  <para>
+    Before creating custom images, decide where you want to store images. The
+    easiest solution is to push images to
+    <link xlink:href="https://hub.docker.com">&dhub;</link>. By default, all
+    images pushed to &dhub; are public. Make sure not to publish sensitive data
+    or software not licensed for public use.
+  </para>
+  <para>
+    You can restrict access to custom container images with the following:
+  </para>
+  <itemizedlist>
+    <listitem>
+      <para>
+        &dhub; allows creating private repositories for paid subscribers.
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+        An on-site &dreg; allows storing all the container images used by your
+        organization.
+      </para>
+    </listitem>
+  </itemizedlist>
+  <para>
+    Instead of using &dhub; you can run a local instance of &dreg;, an open
+    source platform for storing and retrieving container images.
+  </para>
+  <section xml:id="sec-docker-registry-installation">
+    <title>Running a &dreg;</title>
+    <para>
+      The &suseregistry; provides a container image that makes it possible to
+      run a local &dreg; as a container. Before you start a container, create a
+      <filename>config.yml</filename> file with the following example
+      configuration:
+    </para>
+<screen>version: 0.1
+    log:
+      level: info
+    storage:
+      filesystem:
+        rootdirectory: /var/lib/docker-registry
+    http:
+      addr: 0.0.0.0:5000</screen>
+    <para>
+      Also create an empty directory to map the
+      <filename>/var/lib/docker-registry</filename> directory outside the
+      container. This directory is used for storing container images.
+    </para>
+    <para>
+      Run the following command to pull the registry container image from the
+      &suseregistry; and start a container that can be accessed on port 5000:
+    </para>
+<screen>&prompt.user;podman run -d --restart=always --name registry -p 5000:5000 \
+    -v /PATH/config.yml:/etc/docker/registry/config.yml \
+    -v /PATH/DIR:/var/lib/ \ docker-registry registry.suse.com/sles12/registry:2.6.2</screen>
+    <para>
+      To make it easier to manage the registry, create a corresponding system
+      unit:
+    </para>
+<screen>&prompt.user; sudo podman generate systemd registry &gt;  \
+     /etc/systemd/system/suse_registry.service</screen>
+    <para>
+      Enable and start the registry service, then verify its status:
+    </para>
+<screen>&prompt.user;sudo systemctl enable suse_registry.service
+      &prompt.user;sudo systemctl start suse_registry.service
+      &prompt.user;sudo systemctl status suse_registry.service</screen>
+    <para>
+      For more details about &dreg; and its configuration, see the official
+      documentation at
+      <link xlink:href="https://docs.docker.com/registry/">https://docs.docker.com/registry/</link>.
+    </para>
+  </section>
+  <section xml:id="sec-docker-registry-limitations">
+    <title>Limitations</title>
+    <para>
+      &dreg; has two major limitations:
+    </para>
+    <itemizedlist>
+      <listitem>
+        <para>
+          It lacks any form of authentication. That means everybody with access
+          to &dreg; can push and pull images to it. That includes overwriting
+          existing images.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          It is not possible to see which images have been pushed to &dreg;.
+          You need to keep a record of what is being stored on it. There is
+          also no search functionality.
+        </para>
+      </listitem>
+    </itemizedlist>
+  </section>
+</article>

@@ -26,6 +26,7 @@
     <resource xml:id="_containers-bci-repo-reg" href="../concepts/containers-bci-repo-reg.xml"/>
     <resource xml:id="_containers-podman" href="../concepts/containers-podman.xml"/>
     <resource xml:id="_containers-docker" href="../concepts/containers-docker.xml"/>
+    <resource xml:id="_containers-docker-registry" href="../concepts/containers-docker-registry.xml"/>
     <resource xml:id="_gfdl" href="../common/license_gfdl1.2.xml"/>
   </resources>
   <structure renderas="article" xml:id="container-guide" xml:lang="en">
@@ -100,5 +101,6 @@
     <module resourceref="_containers-bci-repo-reg" renderas="section"/>
     <module resourceref="_containers-podman" renderas="section"/>
     <module resourceref="_containers-docker" renderas="section"/>
+    <module resourceref="_containers-docker-registry" renderas="section"/>
   </structure>
 </assembly>
