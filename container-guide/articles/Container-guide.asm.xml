@@ -28,6 +28,7 @@
     <resource xml:id="_containers-docker-registry" href="../concepts/containers-docker-registry.xml"/>
     <resource xml:id="_containers-verify" href="../concepts/containers-verify.xml"/>
     <resource xml:id="_containers-build-images" href="../concepts/containers-build-images.xml"/>
+    <resource xml:id="_containers-build-app-images" href="../concepts/containers-build-app-images.xml"/>
     <resource xml:id="_gfdl" href="../common/license_gfdl1.2.xml"/>
   </resources>
   <structure renderas="article" xml:id="container-guide" xml:lang="en">
@@ -104,5 +105,6 @@
     <module resourceref="_containers-docker-registry" renderas="section"/>
     <module resourceref="_containers-verify" renderas="section"/>
     <module resourceref="_containers-build-images" renderas="section"/>
+    <module resourceref="_containers-build-app-images" renderas="section"/>
   </structure>
 </assembly>
