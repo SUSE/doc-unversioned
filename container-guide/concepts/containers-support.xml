@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file originates from the project https://github.com/openSUSE/doc-kit -->
+<!-- This file can be edited downstream. -->
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook51-profile.xsl"
+ type="text/xml"
+ title="Profiling step"?>
+<!DOCTYPE article
+[
+  <!ENTITY % entities SYSTEM "../common/generic-entities.ent">
+    %entities;
+]>
+<article xml:id="container-support" xml:lang="en"
+ role="concept"
+ xmlns="http://docbook.org/ns/docbook" version="5.1"
+ xmlns:its="http://www.w3.org/2005/11/its"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+  <info>
+    <title>Compatibility and support conditions</title>
+    <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
+      <dm:bugtracker>
+        <dm:url>https://bugzilla.suse.com/enter_bug.cgi</dm:url>
+        <dm:component>Smart Docs</dm:component>
+        <dm:product>Documentation</dm:product>
+        <dm:assignee>dpopov@suse.com</dm:assignee>
+      </dm:bugtracker>
+      <dm:translation>no</dm:translation>
+    </dm:docmanager>
+  </info>
+  <para>
+    The term "support" refers to two distinct concepts: a) technical enablement
+    of a feature or combination of, for example, host and container, and b)
+    enterprise support as delivered by &suse; to &suse; customers. Enterprise
+    support requires a subscription for &suse; products according to
+    <link xlink:href="https://www.suse.com/products/terms_and_conditions.pdf">https://www.suse.com/products/terms_and_conditions.pdf</link>.
+    Technical enablement is described below.
+  </para>
+  <section xml:id="sec-sle-container-non-sle-host-support">
+    <title>Support for &slsa; hosts</title>
+    <para>
+      Consult the following support and compatibility matrix to make sure that
+      the desired host system and container combination is compatible and
+      supported.
+    </para>
+    <table frame="all" rowsep="1" colsep="1">
+      <title>Support matrix</title>
+      <tgroup cols="3">
+        <colspec colname="col_1" colwidth="33.3333*"/>
+        <colspec colname="col_2" colwidth="33.3333*"/>
+        <colspec colname="col_3" colwidth="33.3334*"/>
+        <thead>
+          <row>
+            <entry align="center" valign="top">Host ↓ Container image →</entry>
+            <entry align="center" valign="top">&slsa; 12</entry>
+            <entry align="center" valign="top">&slsa; 15</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry align="center" valign="top">
+              <para>
+                <emphasis role="strong">&slsa; 12 SP5</emphasis>
+              </para>
+            </entry>
+            <entry align="center" valign="top">
+              <para>
+                ✓
+              </para>
+            </entry>
+            <entry align="center" valign="top">
+              <para>
+                ❋
+              </para>
+            </entry>
+          </row>
+          <row>
+            <entry align="center" valign="top">
+              <para>
+                <emphasis role="strong">&slsa; 15</emphasis>
+              </para>
+            </entry>
+            <entry align="center" valign="top">
+              <para>
+                ✓
+              </para>
+            </entry>
+            <entry align="center" valign="top">
+              <para>
+                ✓
+              </para>
+            </entry>
+          </row>
+          <row>
+            <entry align="center" valign="top">
+              <para>
+                <emphasis role="strong">&slea; Micro</emphasis>
+              </para>
+            </entry>
+            <entry align="center" valign="top">
+              <para>
+                ✓
+              </para>
+            </entry>
+            <entry align="center" valign="top">
+              <para>
+                ✓
+              </para>
+            </entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+    <para>
+      ✓ Fully supported
+    </para>
+    <para>
+      ❋ Limited support (see the Limited support note)
+    </para>
+    <important>
+      <title>Limited support note</title>
+      <para>
+        &suse; provides limited support for &slsa; PRODUCT-GA-based containers
+        running on &slsa; 12 SP5 hosts due to the fact that containerized
+        applications can make system calls not available in the host's kernel.
+        To avoid potential risks and compatibility problems, &suse; recommends
+        using the same Service Pack release for both containers and hosts.
+      </para>
+    </important>
+    <para>
+      &bcia;s support the following architectures: &x86-64;, &aarch64;, &power;
+      and &zsystems;. Container architecture must match the architecture of the
+      host. Mismatching container and host scenarios are not supported.
+    </para>
+    <para>
+      In most scenarios, all &slea; containers are expected to be interoperable
+      if the application or its dependencies do not interact directly with
+      kernel version-specific data structures (<literal>ioctl</literal>,
+      <literal>/proc</literal>, <literal>/sys</literal>,
+      <literal>routing</literal>, <literal>iptables</literal>,
+      <literal>nftables</literal>, <literal>eBPF</literal>, etc.) or modules
+      (KVM, OVS, SystemTap, etc.). Support for <literal>ioctl</literal> and
+      access to <literal>/proc</literal> is limited to the most common
+      scenarios needed by unprivileged users.
+    </para>
+  </section>
+  <section xml:id="sec-sle-container-sle-host-support">
+    <title>Support for non-&slsa; hosts</title>
+    <para>
+      While &suse;-based containers are fully supported, issues in the host
+      environment must be handled by the host environment vendor. &suse;
+      supports components that are part of the &suse; base containers. Packages
+      from &suse; repositories are also supported. Additional components and
+      applications in the containers are not covered by &suse; support. A
+      &slea; subscription is required for building derived containers.
+    </para>
+    <para>
+      Containers based on &slsa; 12 SP5 and &slsa; 15 (all service packs) are
+      supported according to their official lifecycles and the following table.
+    </para>
+    <para>
+      <emphasis role="strong">The following third-party container host
+      platforms are supported.</emphasis>
+    </para>
+    <table frame="all" rowsep="1" colsep="1">
+      <title>Support for non-&slsa; hosts</title>
+      <tgroup cols="3">
+        <colspec colname="col_1" colwidth="33.3333*"/>
+        <colspec colname="col_2" colwidth="33.3333*"/>
+        <colspec colname="col_3" colwidth="33.3334*"/>
+        <thead>
+          <row>
+            <entry align="center" valign="top">Container host platform</entry>
+            <entry align="center" valign="top">Container runtime</entry>
+            <entry align="center" valign="top">Support status</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry align="center" valign="top">
+              <para>
+                <emphasis role="strong">Rancher Kubernetes Engine
+                (RKE)</emphasis>
+              </para>
+            </entry>
+            <entry align="center" valign="top">
+              <para>
+                docker
+              </para>
+            </entry>
+            <entry align="center" valign="top">
+              <para>
+                ✓
+              </para>
+            </entry>
+          </row>
+          <row>
+            <entry align="center" valign="top">
+              <para>
+                <emphasis role="strong">Rancher Kubernetes Engine 2
+                (RKE2)</emphasis>
+              </para>
+            </entry>
+            <entry align="center" valign="top">
+              <para>
+                containerd
+              </para>
+            </entry>
+            <entry align="center" valign="top">
+              <para>
+                ✓
+              </para>
+            </entry>
+          </row>
+          <row>
+            <entry align="center" valign="top">
+              <para>
+                <emphasis role="strong">K3S</emphasis>
+              </para>
+            </entry>
+            <entry align="center" valign="top">
+              <para>
+                containerd
+              </para>
+            </entry>
+            <entry align="center" valign="top">
+              <para>
+                ✓
+              </para>
+            </entry>
+          </row>
+          <row>
+            <entry align="center" valign="top">
+              <para>
+                <emphasis role="strong">Red Hat OpenShift</emphasis>
+              </para>
+            </entry>
+            <entry align="center" valign="top">
+              <para>
+                cri-o
+              </para>
+            </entry>
+            <entry align="center" valign="top">
+              <para>
+                ✓
+              </para>
+            </entry>
+          </row>
+          <row>
+            <entry align="center" valign="top">
+              <para>
+                <emphasis role="strong">Microsoft Azure Kubernetes Service
+                (AKS)</emphasis>
+              </para>
+            </entry>
+            <entry align="center" valign="top">
+              <para>
+                containerd
+              </para>
+            </entry>
+            <entry align="center" valign="top">
+              <para>
+                ✓
+              </para>
+            </entry>
+          </row>
+          <row>
+            <entry align="center" valign="top">
+              <para>
+                <emphasis role="strong">Google Kubernetes Engine
+                (GKE)</emphasis>
+              </para>
+            </entry>
+            <entry align="center" valign="top">
+              <para>
+                containerd
+              </para>
+            </entry>
+            <entry align="center" valign="top">
+              <para>
+                ❋
+              </para>
+            </entry>
+          </row>
+          <row>
+            <entry align="center" valign="top">
+              <para>
+                <emphasis role="strong">Amazon Elastic Container Service for
+                Kubernetes (EKS)</emphasis>
+              </para>
+            </entry>
+            <entry align="center" valign="top">
+              <para>
+                containerd
+              </para>
+            </entry>
+            <entry align="center" valign="top">
+              <para>
+                ✓
+              </para>
+            </entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+    <para>
+      ✓ Fully compatible and fully supported
+    </para>
+    <para>
+      ❋ Workload specific: fully supported but compatibility depends on type of
+      container (privileged or unprivileged) and on the application
+      interactions (direct with kernel-version-specific data structures,
+      kernel-version-specific modules, etc.)
+    </para>
+    <para>
+      Refer to the
+      <link xlink:href="https://www.suse.com/suse-rancher/support-matrix/all-supported-versions/">Rancher
+      Support Matrix</link> for more information regarding support for
+      Rancher-related products.
+    </para>
+  </section>
+  <section xml:id="sec-sle-container-support-plans">
+    <title>Support plans</title>
+    <para>
+      There are three guiding principles of &suse; container support.
+    </para>
+    <orderedlist numeration="arabic">
+      <listitem>
+        <para>
+          The container image lifecycle follows the lifecycle of the related
+          products.
+        </para>
+        <para>
+          For example, &slsa;S 15 SP4 container images follow the &slsa; 15 SP4
+          lifecycle.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Container release status also matches the status of the related
+          product.
+        </para>
+        <para>
+          For example, if &slsa; 15 SP4 is in Alpha, Beta, RC or GA stage, the
+          related containers have the same release status.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Containers are built using the packages from the related products.
+        </para>
+        <para>
+          For example, &slaa; 15 SP4 container images are built using the same
+          packages as the main &slsa; 15 SP4 release.
+        </para>
+      </listitem>
+    </orderedlist>
+    <para>
+      For further information, refer to the
+      <link xlink:href="https://www.suse.com/lifecycle">Product Support
+      Lifecycle</link> page and the documentation available for specific
+      container images on
+      <link xlink:href="https://registry.suse.com">&suseregistry;</link>.
+    </para>
+    <para>
+      Container images can have different support status, and they can have
+      limited support. Refer to the appropriate
+      <link xlink:href="https://registry.suse.com">&suseregistry;</link> page
+      for the further information about a specific container image.
+    </para>
+  </section>
+  <section xml:id="sec-supported-containers-hosts">
+    <title>Containers and host environments support overview</title>
+    <para>
+      The following support options are valid for &slsa; containers on &suse;
+      host environments.
+    </para>
+    <para>
+      Containers and host environments delivered by &suse; are fully supported.
+      This also applies to all products under support, including both general
+      support and
+      <link xlink:href="https://www.suse.com/products/long-term-service-pack-support/">Long
+      Term Service Pack Support</link> (LTSS).
+    </para>
+    <para>
+      Partner containers and host environments with a joint engineering
+      collaboration agreement are fully supported. This applies to both the
+      container and host environment as well as all products under support
+      (both general and LTSS) covered by the agreement.
+    </para>
+    <para>
+      While &suse;-based containers are fully supported, issues in the host
+      environment must be handled by the host environment vendor. &suse;
+      supports components that come from the &suse; base containers. Packages
+      from &suse; repositories are also supported. Additional components and
+      applications in the containers are not covered by &suse; support. No
+      subscription is required for building derived containers based on the
+      content of the &slea; &bcia;s or the SLE_BCI Repository. To build
+      containers that include packages from the full &slea; universe, you need
+      a subscription that grants you access to the repositories containing
+      these packages.
+    </para>
+    <para>
+      Any container and host environment not mentioned above has limited
+      support. Details can be discussed with the &suse; Support Team
+      responsible for triaging the issue and recommending alternative
+      solutions. In any other case, issues in the host environment must be
+      handled by the host environment vendor.
+    </para>
+  </section>
+  <section xml:id="sec-tech-previews">
+    <title>Technology previews</title>
+    <para>
+      Container images labeled as <emphasis>Tech Preview</emphasis> are
+      provided by &suse; to give you an opportunity to test new technologies
+      within your environment and share your feedback. If you test a technology
+      preview, contact your &suse; representative to share your experiences and
+      use cases. Your input is helpful for future development.
+    </para>
+    <para>
+      Technology previews come with the following limitations:
+    </para>
+    <itemizedlist>
+      <listitem>
+        <para>
+          Technology previews may be functionally incomplete, unstable, and not
+          suitable for production use.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Technology previews are not supported.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Technology previews may be available only for specific hardware
+          architectures.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Specifics and functionality of technology previews are subject to
+          change. As a result, upgrading to subsequent releases of a technology
+          preview may not be possible and may require a fresh installation.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Technology previews can be canceled at any time. For example, this
+          might happen if &suse; discovers that a preview does not meet the
+          customer or market needs, or that it does not comply with enterprise
+          standards. &suse; does not commit to providing a supported version of
+          such technologies in the future.
+        </para>
+      </listitem>
+    </itemizedlist>
+    <para>
+      Container images are labeled as <emphasis>Tech Preview</emphasis> and are
+      marked as such at
+      <link xlink:href="https://registry.suse.com">registry.suse.com</link>.
+      Additionally, container images that are technology previews include the
+      <literal>com.suse.supportlevel="techpreview"</literal> label in the
+      container image metadata. You can check whether the metadata includes the
+      label using the <literal>docker inspect</literal> command, or an
+      appropriate command in other container runtimes.
+    </para>
+  </section>
+</article>
