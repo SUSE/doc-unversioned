@@ -33,7 +33,7 @@
     can be used like any other container image. For example, using one of the
     general purpose containers:
   </para>
-<screen>&prompt-user;podman run --rm -it registry.suse.com/bci/bci-base:15.4 grep '^NAME' /etc/os-release
+<screen>&prompt.user;podman run --rm -it registry.suse.com/bci/bci-base:15.4 grep '^NAME' /etc/os-release
     NAME="{sles}"</screen>
   <para>
     Alternatively, you can use a &bcia; in <literal>Dockerfile</literal> as
@@ -63,9 +63,9 @@
      ---&gt; 48b33ec590a6
     Successfully built 48b33ec590a6
     
-    &prompt-user;docker run -p 8000:8000 --rm -d 48b33ec590a6
+    &prompt.user;docker run -p 8000:8000 --rm -d 48b33ec590a6
     575ad7edf43e11c2c9474055f7f6b7a221078739fc8ce5765b0e34a0c899b46a
     
-    &prompt-user;curl localhost:8000
+    &prompt.user;curl localhost:8000
     Hello Green World!</screen>
 </article>
