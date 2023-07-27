@@ -349,7 +349,7 @@
           Containers are built using the packages from the related products.
         </para>
         <para>
-          For example, &slaa; 15 SP4 container images are built using the same
+          For example, &slsa; 15 SP4 container images are built using the same
           packages as the main &slsa; 15 SP4 release.
         </para>
       </listitem>
