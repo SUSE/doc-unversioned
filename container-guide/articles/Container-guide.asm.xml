@@ -33,6 +33,7 @@
     <resource xml:id="_containers-orchestration" href="../concepts/containers-orchestration.xml"/>
     <resource xml:id="_containers-support" href="../concepts/containers-support.xml"/>
     <resource xml:id="_containers-troubleshoot" href="../concepts/containers-troubleshoot.xml"/>
+    <resource xml:id="_containers-terms" href="../concepts/containers-terms.xml"/>
     <resource xml:id="_gfdl" href="../common/license_gfdl1.2.xml"/>
   </resources>
   <structure renderas="article" xml:id="container-guide" xml:lang="en">
@@ -114,5 +115,6 @@
     <module resourceref="_containers-orchestration" renderas="section"/>
     <module resourceref="_containers-support" renderas="section"/>
     <module resourceref="_containers-troubleshoot" renderas="section"/>
+    <module resourceref="_containers-terms" renderas="section"/>
   </structure>
 </assembly>
