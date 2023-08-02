@@ -299,6 +299,23 @@
               </para>
             </entry>
           </row>
+          <row>
+            <entry align="center" valign="top">
+              <para>
+                <emphasis role="strong">IBM Hyper Protect Platform</emphasis>
+              </para>
+            </entry>
+            <entry align="center" valign="top">
+              <para>
+                docker/podman
+              </para>
+            </entry>
+            <entry align="center" valign="top">
+              <para>
+                ❋❋
+              </para>
+            </entry>
+          </row>
         </tbody>
       </tgroup>
     </table>
@@ -310,6 +327,9 @@
       container (privileged or unprivileged) and on the application
       interactions (direct with kernel-version-specific data structures,
       kernel-version-specific modules, etc.)
+    </para>
+    <para>
+      ❋❋ Provisional support status until testing is completed for full compatibility and full support.
     </para>
     <para>
       Refer to the
