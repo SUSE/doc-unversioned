@@ -213,7 +213,7 @@
     <para>
       You can build images not only from base images, but also on top of custom
       images. So you can have an image consisting of multiple layers. Please
-      refer to <!-- XREF <xref linkend="cha-building-images"/> --> for more information.
+      refer to <xref linkend="container-build-images"/> for more information.
     </para>
   </section>
 </article>

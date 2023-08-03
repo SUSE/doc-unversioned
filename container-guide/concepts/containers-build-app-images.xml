@@ -87,7 +87,7 @@
     The following section provides examples and recommendations on creating
     container images for applications. Before proceeding, make sure that you
     have activated your &sls; base image as described in
-    <!-- XREF <xref linkend="sec-download-prebuild-images"/> -->
+    <xref linkend="sec-download-prebuild-images"/>
     .
   </para>
   <section xml:id="sec-application-with-specific-dependencies">
@@ -178,8 +178,7 @@
       <callout arearefs="CO1-1">
         <para>
           Pulls the <literal>sle15</literal> base image as described in
-          <!-- XREF <xref linkend="sec-download-prebuild-images"/> -->
-          .
+          <xref linkend="sec-download-prebuild-images"/>.
         </para>
       </callout>
       <callout arearefs="CO1-2">

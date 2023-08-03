@@ -72,8 +72,7 @@
       offers a drop-in alternative for &docker;. &podman; is the recommended
       container runtime for SLES. For a general introduction to &podman;, refer
       to
-      <!-- XREF <xref linkend="cha-podman-overview"/> -->
-      .
+      <xref linkend="container-podman"/>.
     </para>
   </section>
   <section xml:id="sec-tools-buildah">
@@ -90,8 +89,7 @@
       <literal>containers/storage</literal> ) are portable and can therefore
       run in a &deng; environment. For information on
       installing and using &buildah;, refer to
-      <!-- XREF <xref linkend="cha-buildah-overview"/> -->
-      .
+      <xref linkend="container-buildah"/>.
     </para>
   </section>
   <section xml:id="sec-tools-skopeo">
@@ -154,10 +152,8 @@
       <link xlink:href="https://openbuildservice.org/2018/05/09/container-building-and-distribution/">here</link>.
     </para>
     <para>
-      SUSE Container Images, called &bci;s
-      (&bcia;) are the only official SUSE container images,
-      <!-- XREF <xref linkend="cha-bci"/> -->
-      . They are not available at
+      &suse; Container Images, called &bci;s
+      (&bcia;) are the only official container images. They are not available at
       <link xlink:href="https://build.opensuse.org">https://build.opensuse.org</link>,
       and the RPMs exported there are not identical to the internal ones. This
       means that it is not possible to build officially supported images at
@@ -165,7 +161,7 @@
     </para>
     <para>
       For more information about &bcia;s, refer to
-      <!-- XREF <xref linkend="cha-bci"/> -->
+      <xref linkend="container-bci-general"/>
       .
     </para>
   </section>

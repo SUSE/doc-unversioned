@@ -97,15 +97,15 @@
     same network interface. A typical scenario for grouping containers into a
     pod is a container that runs a database and a container with a client that
     accesses the database. For further information about pods, refer to
-    <!-- XREF <xref linkend="sec-orchestration-podman"/ -->.
+    <xref linkend="sec-orchestration-podman"/>.
   </para>
   <section xml:id="sec-podman-install">
     <title>&podman; installation</title>
     <para>
       To install &podman;, make sure you have the &slea; Containers Module
-      enabled (see <!-- XREF <xref linkend="sec-sle-containers-module"/> -->), run the
-      command <literal>sudo zypper in podman</literal>. Then run
-      <literal>podman info</literal> to check whether &podman; has been
+      enabled (see <xref linkend="container-repo-reg"/>), run the
+      command <command>sudo zypper in podman</command>. Then run
+      <command>podman info</command> to check whether &podman; has been
       installed successfully.
     </para>
     <para>
@@ -420,9 +420,9 @@
       build</command>, and it accepts the same options.
     </para>
     <para>
-      Podman’s companion tool Buildah provides an alternative way to build
-      images. For further information about Buildah, refer to
-      <!-- XREF <xref linkend="cha-buildah-overview"/> -->.
+      Podman’s companion tool &buildah; provides an alternative way to build
+      images. For further information about &buildah;, refer to
+      <xref linkend="container-buildah"/>.
     </para>
   </section>
 </article>

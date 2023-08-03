@@ -43,11 +43,11 @@
 <screen>&prompt.user;podman pull registry.suse.com/suse/sle15</screen>
     <para>
       For information on obtaining specific base images, refer to
-      <!-- XREF <xref linkend="sec-bci-intro"/> -->.
+      <xref linkend="container-bci-intro"/>.
     </para>
     <para>
       When the container image is ready, you can customize it as described in
-      <!-- XREF <xref linkend="sec-customize-prebuild-images"/> -->.
+      <xref linkend="sec-customize-images"/>.
     </para>
   </section>
   <section xml:id="sec-customize-images">
@@ -64,7 +64,7 @@
         obtains the list of repositories available for the product used by the
         container image. You can also directly declare extensions in your
         <literal>Dockerfile</literal>. For more information, see
-        <!-- XREF <xref linkend="sec-container-suseconnect"/> -->.
+        <xref linkend="sec-container-suseconnect"/>.
       </para>
       <note>
         <title>SLE_BCI repository</title>
@@ -179,7 +179,7 @@
         zypper -n clean</screen>
       <para>
         If you wish to add &slea; extensions and modules to your images, please
-        refer to <!-- XREF <xref linkend="sec-container-suseconnect-modules"/>. -->
+        refer to <xref linkend="sec-container-suseconnect-modules"/>.
       </para>
     </section>
     <section xml:id="sec-building-public-cloud">

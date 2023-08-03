@@ -52,12 +52,12 @@
     undergo a maintenance process. The images are built to contain the latest
     available updates and fixes. The &suseregistry;'s Web user interface lists
     a subset of the available images. For information about the &suseregistry;,
-    see <!-- XREF <xref linkend="sec-tools-suse-registry"/> -->.
+    see <xref linkend="sec-tools-suse-registry"/>.
   </para>
   <para>
     &slea; base images in the &suseregistry; receive security updates and are
     covered by the &suse; support plans. For more information about these
-    support plans, see <!-- XREF <xref linkend="cha-containers-support"/> -->.
+    support plans, see <xref linkend="container-support"/>.
   </para>
   <section xml:id="sec-bci-why">
     <title>Why &bci;s</title>
@@ -161,7 +161,7 @@
           the service adds the correct &slsa; repositories into the running
           container. On an unregistered &slsa; host or on a non-&slsa; host,
           the service does nothing. See
-          <!-- XREF <xref linkend="sec-container-suseconnect"/> --> for more information.
+          <xref linkend="sec-bci-suseconnect"/> for more information.
         </para>
       </listitem>
     </itemizedlist>

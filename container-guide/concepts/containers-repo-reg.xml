@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file originates from the project https://github.com/openSUSE/doc-kit -->
+<!-- This file can be edited downstream. -->
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook51-profile.xsl"
+ type="text/xml"
+ title="Profiling step"?>
+<!DOCTYPE article
+[
+  <!ENTITY % entities SYSTEM "../common/generic-entities.ent">
+    %entities;
+]>
+<article xml:id="container-repo-reg" xml:lang="en"
+ role="concept"
+ xmlns="http://docbook.org/ns/docbook" version="5.1"
+ xmlns:its="http://www.w3.org/2005/11/its"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+  <info>
+    <title>Registration and Online Repositories</title>
+    <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
+      <dm:bugtracker>
+        <dm:url>https://bugzilla.suse.com/enter_bug.cgi</dm:url>
+        <dm:component>Smart Docs</dm:component>
+        <dm:product>Documentation</dm:product>
+        <dm:assignee>dpopov@suse.com</dm:assignee>
+      </dm:bugtracker>
+      <dm:translation>no</dm:translation>
+    </dm:docmanager>
+  </info>
+  <para>
+    As a pre-requisite to work with containers on a &sls;, you have to enable
+    the &slea; Containers Module. It consists of container-related packages,
+    including container engine and core container tools like on-premise
+    registry. For more information about &slea; Modules, refer to
+    <link xlink:href="https://documentation.suse.com/sles/html/&slea;S-all/article-modules.html">https://documentation.suse.com/sles/html/&slea;S-all/article-modules.html</link>.
+  </para>
+  <para>
+    The regular &slea;S subscription include &slea; Containers Module free of
+    charge.
+  </para>
+  <section xml:id="sec-sle-containers-module-yast">
+    <title>Enabling the Containers Module using the &yast; graphical interface</title>
+    <procedure>
+      <step>
+        <para>
+          Start &yast;, and select
+          <menuchoice><guimenu>Software</guimenu><guimenu>Software
+          Repositories</guimenu></menuchoice>.
+        </para>
+      </step>
+      <step>
+        <para>
+          Click <guimenu>Add</guimenu> to open the add-on dialog.
+        </para>
+      </step>
+      <step>
+        <para>
+          Select <option>Extensions and Modules</option> from
+          <option>Registration Server</option> and click
+          <guimenu>Next</guimenu>.
+        </para>
+      </step>
+      <step>
+        <para>
+          From the list of available extensions and modules, select
+          <option>Containers Module 15 SP4 x86_64</option> and click
+          <guimenu>Next</guimenu>. This adds the <literal>Containers
+          Module</literal> and its repositories to the system.
+        </para>
+      </step>
+      <step>
+        <para>
+          If you use Repository Mirroring Tool, update the list of repositories
+          on the &rmt; server.
+        </para>
+      </step>
+    </procedure>
+  </section>
+  <section xml:id="sec-sle-containers-module-cli">
+    <title>Enabling the Containers Module from the command line using &suseconnect;</title>
+    <para>
+      The <emphasis>Containers Module</emphasis> can also be added with the
+      following command:
+    </para>
+<screen>&gt; sudo SUSEConnect -p sle-module-containers/15.4/x86_64</screen>
+  </section>
+  <section xml:id="sec-container-suseconnect">
+    <title>container-suseconnect</title>
+    <section xml:id="sec-container-suseconnect-intro">
+      <title>What is container-suseconnect?</title>
+      <para>
+        <link xlink:href="https://github.com/SUSE/container-suseconnect"><literal>container-suseconnect</literal></link>
+        is a plugin available in all &bci;s that ship with &zypper;. When the
+        plugin detects the host's &sls; registration credentials, it uses them
+        to give the container access the &sle; repositories. This includes
+        additional modules and previous package versions that are not part of
+        the free SLE_BCI repository.
+      </para>
+    </section>
+    <section xml:id="sec-container-suseconnect-sle">
+      <title>How to use container-suseconnect on &slsa; and &opensuse;</title>
+      <para>
+        If you are running a registered &slsa; system with &docker;,
+        <literal>container-suseconnect</literal> automatically detects and uses
+        the subscription, without requiring any action on your part.
+      </para>
+      <para>
+        On &opensuse; systems with &docker;, you must copy the files
+        <filename>/etc/SUSEConnect</filename> and
+        <filename>/etc/zypp/credentials.d/SCCcredentials</filename> from a
+        registered &slsa; machine to your local machine. Note that the
+        <filename>/etc/SUSEConnect</filename> file is required only if you are
+        using &rmt; for managing your registration credentials.
+      </para>
+    </section>
+    <section xml:id="sec-container-suseconnect-nonsle">
+      <title>How to use container-suseconnect on non-&slsa; hosts or with &podman; and &buildah;</title>
+      <para>
+        You need a registered &slsa; system to use
+        <literal>container-suseconnect</literal> on non-&slea; hosts or with
+        &podman; and &buildah;. This can be a physical machine, a virtual
+        machine, or the &bcia;-Base container with
+        <package>SUSEConnect</package> installed and registered.
+      </para>
+      <para>
+        If you do not use RMT, copy
+        <filename>/etc/zypp/credentials.d/SCCcredentials</filename> to the
+        development machine. Otherwise, copy both the
+        <filename>/etc/zypp/credentials.d/SCCcredentials</filename> and
+        <filename>/etc/SUSEConnect</filename> files.
+      </para>
+      <para>
+        You can use the following command to obtain
+        <literal>SCCcredentials</literal> (replace
+        <replaceable>REGISTRATION_CODE</replaceable> with your SCC registration
+        code)
+      </para>
+<screen>podman run --rm registry.suse.com/suse/sle15:latest bash -c \
+        "zypper -n in SUSEConnect; SUSEConnect --regcode <replaceable>REGISTRATION_CODE</replaceable>; \
+         cat /etc/zypp/credentials.d/SCCcredentials"</screen>
+      <para>
+        If you are running a container based on a &bcia;, mount
+        <filename>SCCcredentials</filename> (and optionally
+        <filename>/etc/SUSEConnect</filename>) in the correct destination. The
+        following example shows how to mount
+        <filename>SCCcredentials</filename> in the current working directory:
+      </para>
+<screen>podman run -v /path/to/SCCcredentials:/etc/zypp/credentials.d/SCCcredentials \
+        -it --pull=always registry.suse.com/bci/bci-base:latest</screen>
+      <para>
+        Do not copy the <filename>SCCcredentials</filename> and
+        <filename>SUSEConnect</filename> files into the container image to
+        avoid inadvertently adding them to the final image. Use secrets
+        instead, as they are only available to a single layer and are not part
+        of the built image. To do this, put a copy of
+        <literal>SCCcredentials</literal> (and optionally
+        <filename>SUSEConnect</filename>) somewhere on the file system and
+        modify the <command>RUN</command> instructions that invoke Zypper as
+        follows:
+      </para>
+<screen>FROM registry.suse.com/bci/bci-base:latest
+    
+    RUN --mount=type=secret,id=SUSEConnect \
+        --mount=type=secret,id=SCCcredentials \
+        zypper -n in fluxbox</screen>
+      <para>
+        &buildah; support mounting secrets via the <literal>--secret</literal>
+        flag as follows:
+      </para>
+<screen>buildah bud --layers --secret=id=SCCcredentials,src=/path/to/SCCcredentials \
+        --secret=id=SUSEConnect,src=/path/to/SUSEConnect .</screen>
+      <note>
+        <title>known issue</title>
+        <para>
+          container-suseconnect runs automatically every time you invoke
+          &zypper;. If you are not using a registered &slsa; host, you may see
+          the following error message:
+        </para>
+<screen>&gt; zypper ref
+    Refreshing service 'container-suseconnect-zypp'.
+    Problem retrieving the repository index file for service 'container-suseconnect-zypp':
+    [container-suseconnect-zypp|file:/usr/lib/zypp/plugins/services/container-suseconnect-zypp]
+    Warning: Skipping service 'container-suseconnect-zypp' because of the above error.</screen>
+        <para>
+          Ignore the message, as it simply indicates that container-suseconnect
+          was not able to retrieve your SUSE Customer Center credentials, and
+          thus could not add the full &slea; repositories. You still have full
+          access to the SLE_BCI repository, and can continue using the
+          container as intended.
+        </para>
+      </note>
+    </section>
+    <section xml:id="sec-container-suseconnect-modules">
+      <title>Adding modules into the container or container Image</title>
+      <para>
+        <literal>container-suseconnect</literal> allows you to automatically
+        add &slea; Modules into a container or container image. What modules
+        are added is determined by the environment variable
+        <literal>ADDITIONAL_MODULES</literal> that includes a comma-separated
+        list of the module names. In a <filename>Dockerfile</filename>, this is
+        done using the <literal>ENV</literal> directive as follows:
+      </para>
+<screen>FROM registry.suse.com/bci/bci-base:latest
+    ENV ADDITIONAL_MODULES sle-module-desktop-applications,sle-module-development-tools
+    
+    RUN --mount=type=secret,id=SCCcredentials zypper -n in fluxbox &amp;&amp; zypper -n clean</screen>
+    </section>
+  </section>
+</article>
