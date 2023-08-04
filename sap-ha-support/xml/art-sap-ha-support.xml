@@ -245,6 +245,9 @@
     Multiple &hana; &ha; scenarios are supported based on &hanasr;. For variations, contact &suse;
     to discuss defining a PoC for a scenario that is not mentioned in the documentation.
    </para>
+   <para>
+    You can use &hana; Fast Restart on RAM-tmpfs and &hana; on persistent memory if they are transparent to the &ha; cluster.
+   </para>
   </sect2>
 
   <sect2 xml:id="sap-ha-solutions-sap-hana-notation">
