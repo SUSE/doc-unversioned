@@ -810,7 +810,7 @@
      </row>
      <row>
       <entry>Simple mount file system structure</entry>
-      <entry>Supported but undocumented</entry>
+      <entry>Supported (<link xlink:href="&dsc;/sbp/all/html/SAP-nw740-sle15-setupguide/index.html#id-example-for-the-two-node-cluster-with-simple-mount-setup">Documentation</link>)</entry>
       <entry>Shared file system mounts are NOT managed by the cluster.
       This is the recommended configuration over the
       <emphasis>Filesystem</emphasis> resource-based solution.</entry>
