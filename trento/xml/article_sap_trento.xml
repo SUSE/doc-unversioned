@@ -83,8 +83,8 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         <para>A simplified, reactive web UI targeting &sap; admins </para>
       </listitem>
       <listitem>
-        <para>Automated discovery of &sap; Systems, &sap; Instances, and
-          &hana; clusters</para>
+        <para>Automated discovery of &sap; Systems, &sap; Instances,
+          &hana; clusters and ASCS/ERS clusters</para>
       </listitem>
       <listitem>
         <para>Configuration validation for &hana; Scale-Up
