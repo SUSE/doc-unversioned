@@ -777,7 +777,8 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       <step>
         <para>
           Investigate the result in the Checks Results view. Each row in this view shows you a check ID,
-          a short description of the check and the check execution result. See <xref linkend="fig-pacemaker-checkresult"/>:
+          a short description of the check and the check execution result. By clicking on a row, a section will open
+         providing information about the execution on each node of the cluster. See <xref linkend="fig-pacemaker-checkresult"/>:
         </para>
         <figure xml:id="fig-pacemaker-checkresult">
           <title>Check results for a cluster</title>
@@ -812,11 +813,26 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       </step>
       <step>
         <para>
-          Click the corresponding row to open the <guimenu>Details</guimenu> view of this check. This shows you
+          Click a check's link to open the <guimenu>Details</guimenu> view of this check. This shows you
           an abstract and how to remedy the problem. The <guimenu>References</guimenu> section contains links to the documentation
           of the different vendors to provide more context when necessary.
           Close the view with the <keycap function="escape"/> key or click outside of the view.
         </para>
+      </step>
+      <step>
+        <para>
+         For each not-met expectation, there will be a detailed view providing information about it: what facts were gathered,
+         what values were expected and what was the result of the evaluation. This will help users understand better why a
+         certain configuration check is failing: 
+        </para>
+        <figure xml:id="fig-non-met-expectation-detail">
+          <title>Non-met expectation detail view</title>
+          <mediaobject>
+            <imageobject>
+              <imagedata width="70%" fileref="trento-web-nonmetexpectation.png"/>
+            </imageobject>
+          </mediaobject>
+        </figure>
       </step>
     </procedure>
     <para>
