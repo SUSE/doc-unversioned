@@ -1149,9 +1149,9 @@ The health boxes in the dashboard are clickable. By clicking on one particular b
               respective column to open the corresponding <guimenu>&pace; cluster details</guimenu> view.
               If the list is too big, reduce the list by providing filters.
             </para>
-            <para> This view provides the following: </para>
+            <para> The detail views of a HANA scale-up cluster and an ASCS/ERS cluster are different: </para>
             <itemizedlist>
-              <title><guimenu>&pace; cluster details</guimenu> view</title>
+              <title><guimenu>HANA cluster details</guimenu> view</title>
               <listitem>
                 <para>The <guimenu>Settings</guimenu>, <guimenu>Show
                     Results</guimenu>, and <guimenu>Start Execution</guimenu> buttons.
@@ -1192,8 +1192,55 @@ The health boxes in the dashboard are clickable. By clicking on one particular b
                 <para><guimenu>SBD/Fencing</guimenu> section: with a status and the SBD device.</para>
               </listitem>
             </itemizedlist>
+                       <itemizedlist>
+              <title><guimenu>ASCS/ERS cluster details</guimenu> view</title>
+              <listitem>
+                <para>The <guimenu>Settings</guimenu>, <guimenu>Show
+                    Results</guimenu>, and <guimenu>Start Execution</guimenu> buttons.
+                  These buttons are used to enable or disable checks and to start
+                  them. If you want to perform specific checks, proceed with
+                    <xref linkend="st-trento-checks-settings" /> of <xref
+                    linkend="pro-trento-checks" />. </para>
+              </listitem>
+              <listitem>
+                <para>
+                  A section showing the cloud provider, the cluster type, fencing type and when the CIB was last written.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  Another section showing the SAP SID, the Enqueue Server version, whether the ASCS and ERS are running
+                 on different hosts or not and whether the instance filesystems are resource based or not. This is a multi-tab
+                 section. When multiple systems share the same cluster, there will be a tab for each system in the cluster and
+                 you can scroll left and right to go through the different systems.
+                </para>
+              </listitem>                        
+              <listitem>
+                <para>A <guimenu>Check Result</guimenu> section, which is disabled at the moment because we don't have yet
+                 configuration checks for this type of clusters. 
+                </para>
+              </listitem>
+              <listitem>
+                <para>A <guimenu>Stopped resources</guimenu> section: with a summary
+                of resources which have been stopped on the cluster.
+                </para>
+              </listitem>
+              <listitem>
+                <para>A <guimenu>Node details</guimenu> section showing the following for each
+                 node in the cluster: the host name, the role, the virtual IP address and, in case of 
+                 resource managed filesystems, the full mounting path. If you click on <guimenu>Details</guimenu>,
+                 you can view the attributes and resources associated to that particular role. Close this view with
+                 the <keycap function="escape"/> key. 
+                 <para>
+                  This section is system specific. It will show the information corresponding to the system selected
+                  in the multi-tab section above. 
+                </para>
+              </listitem>
+              <listitem>
+                <para><guimenu>SBD/Fencing</guimenu> section: with a status and a list of the SBD decices.</para>
+              </listitem>
+            </itemizedlist>
           </step>
-          
         </procedure>
       </section>
       <section xml:id="sec-trento-status-sapsystems">
