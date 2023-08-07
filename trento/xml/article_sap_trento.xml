@@ -1230,7 +1230,7 @@ The health boxes in the dashboard are clickable. By clicking on one particular b
                  node in the cluster: the host name, the role, the virtual IP address and, in case of 
                  resource managed filesystems, the full mounting path. If you click on <guimenu>Details</guimenu>,
                  you can view the attributes and resources associated to that particular role. Close this view with
-                 the <keycap function="escape"/> key. 
+                 the <keycap function="escape"/> key.</para> 
                  <para>
                   This section is system specific. It will show the information corresponding to the system selected
                   in the multi-tab section above. 
