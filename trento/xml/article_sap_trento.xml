@@ -1388,6 +1388,7 @@ The health boxes in the dashboard are clickable. By clicking on one particular b
      <para> 
     When the heartbeat of an agent fails, an option to clean-up the corresponding host will show up both in the Hosts
     overview and the corresponding Hos details view.
+     </para>
            <figure>
               <title>clean up button in Hosts overview</title>
               <mediaobject>
@@ -1406,6 +1407,12 @@ The health boxes in the dashboard are clickable. By clicking on one particular b
                 </imageobject>
               </mediaobject>
             </figure>
+      <para>When the user clicks on the cleanup button, a box will open asking for confirmation and,
+       if the user grants it, all the components discovered by the agent in that particular host, including the host
+       itself and other components that might depend on the ones running on the host, will be removed from the console.
+       For example, if the user cleans up the host where the Primary Application Server of an SAP System is deregistered,
+       the entire SAP System will be removed from the console.
+      </para>
     </section>
      
    
