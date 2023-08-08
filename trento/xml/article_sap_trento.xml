@@ -188,7 +188,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
               <para> If you do not have a &k8s; enterprise solution and you would
                 like to test Trento, &suse; Rancher's K3s could be an easy
                 way to get started. But beware that K3s default installation process 
-                ]deploys a single node &k8s; cluster, which is not a recommended 
+                deploys a single node &k8s; cluster, which is not a recommended 
                 setup for a stable Trento production instance.
                </para>
             </listitem>
@@ -234,9 +234,9 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         </listitem>
       </itemizedlist>
      <para> A proper, production ready installation of Trento Server requires &k8s;
-      knowledge. The Helm chart is meant to be used by customers lacking such knowledge,
-      but it delivers a basic deployment of the &t.server; with all the components running
-      on a single node of the cluster.
+      knowledge. The Helm chart is meant to be used by customers lacking such knowledge
+      or wanting a quick start, but it delivers a basic deployment of the &t.server; with all the components running
+      on a single node of the cluster.</para>
     </section>
     <section xml:id="sec-trento-agent-requirements">
       <title>&t.agent; requirements</title>
