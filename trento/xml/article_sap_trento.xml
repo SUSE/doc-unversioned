@@ -2082,61 +2082,36 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
 -->
   <section xml:id="sec-trento-updating-trentoserver">
     <title>Updating &t.server;</title>
-    <para> To update the &t.server;, do the following: </para>
-    <procedure>
-      <step>
-        <para> Ensure the &t.server; is running. </para>
-      </step>
-      <step>
-        <para>
-          Ensure that credentials for &kube; are set up correctly.
-          For example, if you installed K3s, export the <envar>KUBECONFIG</envar>
-          environment variable for the same user that performed the
-          installation:
-        </para>
-        <screen>export KUBECONFIG=/etc/rancher/k3s/k3s.yaml</screen>
-      </step>
-      <step>
-        <para>
-          With the same user, start the update of the &t.server; running the following command:
-        </para>
-        <screen>HELM_EXPERIMENTAL_OCI=1 helm upgrade \
+    <para> The procedure to update &t.server; depends on how it was installed.
+     If it was installed manually, then it must be updated manually using the latest versions
+     of the container images available in SUSE public registry. If was installed using the
+     Helm chart, it can be updated using the same Helm command as for the installation:</para>
+   <screen>helm upgrade \
+   --install trento-server oci://registry.suse.com/trento/trento-server \
+   --set trento-web.adminUser.password=<replaceable>ADMIN_PASSWORD</replaceable>
+        </screen>
+   <para>A few things to consider:</para>
+      <itemizedlist>
+        <listitem>
+          <para>Remember to add set the helm experimental flag if you are using a version of Helm lower than 3.8.0.
+          </para>
+        </listitem>
+        <listitem>
+        <para>When updating from a Trento version lower than 2.0.0 to version 2.0.0 or higher, an additional parameter
+    must be set in the Helm command. This is a workaround for an existing bug for which we are currently working
+    on a fix:</para>
+   <screen>helm upgrade \
    --install trento-server oci://registry.suse.com/trento/trento-server \
    --set trento-web.adminUser.password=<replaceable>ADMIN_PASSWORD</replaceable> \
    --set rabbitmq.auth.erlangCookie=$(openssl rand -hex 16)
         </screen>
-        <para>
-          Note that the experimental flag is not needed as of Helm version 3.8.0.
-        </para>
-        <para>
-          If email alerting is enabled in the environment, then the update command
-          should include the corresponding options:
-        </para>
-        <screen>HELM_EXPERIMENTAL_OCI=1 helm upgrade \
-   --install trento-server oci://registry.suse.com/trento/trento-server \
-   --set trento-web.adminUser.password=<replaceable>ADMIN_PASSWORD</replaceable> \
-   --set rabbitmq.auth.erlangCookie=$(openssl rand -hex 16) \
-   --set trento-web.alerting.enabled=true \
-   --set trento-web.alerting.smtpServer=<replaceable>SMTP_SERVER</replaceable> \
-   --set trento-web.alerting.smtpPort=<replaceable>SMTP_PORT</replaceable> \
-   --set trento-web.alerting.smtpUser=<replaceable>SMTP_USER</replaceable> \
-   --set trento-web.alerting.smtpPassword=<replaceable>SMTP_PASSWORD</replaceable> \
-   --set trento-web.alerting.recipient=<replaceable>ALERTING_RECIPIENT</replaceable></screen>
-      </step>
-      <step>
-        <para>Watch the &t.server; processes until they are all in ready/running status:</para>
-        <screen>watch kubectl get pods</screen>
-      </step>
-      <step>
-        <para> Open the &t.web; URL
-          <uri>http://<replaceable>TRENTO_SERVER_HOSTNAME</replaceable></uri>.
-        </para>
-      </step>
-      <step>
-        <para> To check the new version, hover the mouse pointer over
-          the info button in the lower-left corner. </para>
-      </step>
-    </procedure>
+        </listitem>
+        <listitem>
+          <para> If email alerting has been enabled, then the corresponding trento-web.alerting parameters
+           should be set in the Helm command as well.
+          </para>
+        </listitem>
+      </itemizedlist>
   </section>
 
   <section xml:id="sec-trento-updating-trentoagent">
@@ -2154,7 +2129,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
       </step>
       <step>
         <para>
-          Install the package:
+          Install the new package:
         </para>
         <screen>&prompt.user;sudo zypper ref
 &prompt.user;sudo zypper install trento-agent</screen>
@@ -2185,9 +2160,9 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
       </step>
       <step>
         <para>
-          Restart the &t.agent;:
+          Start the &t.agent;:
         </para>
-        <screen>&prompt.user;sudo systemctl restart trento-agent</screen>
+        <screen>&prompt.user;sudo systemctl start trento-agent</screen>
       </step>
       <step>
         <para>Check the status of the &t.agent;:</para>
@@ -2204,7 +2179,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
 [...]</screen>
       </step>
       <step>
-        <para>Check the version on the &t.web; (URL
+        <para>Check the version in the Hosts overview of the &t.web; (URL
               <uri>http://<replaceable>TRENTO_SERVER_HOSTNAME</replaceable></uri>).</para>
       </step>
       <step>
@@ -2216,23 +2191,9 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
 
    <section xml:id="sec-trento-uninstall-trentoserver">
     <title>Uninstalling &t.server;</title>
-    <para> To uninstall &t.server;, perform the following steps:</para>
-    <procedure>
-      <step>
-        <para>
-          Ensure that credentials for &kube; are set up correctly.
-          For example, if you installed K3s, set the <envar>KUBECONFIG</envar>
-          environment variable for the user that performed the installation:
-        </para>
-        <screen>export KUBECONFIG=/etc/rancher/k3s/k3s.yaml</screen>
-      </step>
-      <step>
-        <para>
-          With the same user, run the following command:
-        </para>
-        <screen>helm uninstall trento-server</screen>
-      </step>
-    </procedure>
+    <para> If &t.server; was deployed manually, then you need to uninstall it manually.
+     If  &t.server; was deployed using the helm chart, then w can use Helm to uninstall it as follows:</para>
+     <screen>helm uninstall trento-server</screen>
   </section>
 
   <section xml:id="sec-trento-uninstall-trentoagent">
