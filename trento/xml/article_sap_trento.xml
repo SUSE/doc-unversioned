@@ -2311,11 +2311,11 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
       <section>
         <title>Trento Support Plugin</title>
         <para> The Trento Support Plugin automates the collection of logs and relevant
-          runtime information on the server side. Using the Pluging requires a host 
+          runtime information on the server side. Using the plugin requires a host 
          with the following setup:</para>
                    <itemizedlist>
           <listitem>
-            <para>Packages jq and python3-yq installed.</para>
+            <para>Packages jq and python3-yq are installed.</para>
           </listitem>
           <listitem>
             <para>helm is installed;.</para>
@@ -2350,11 +2350,9 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
         <para>The scenario dump is a dump of the Trento database. It helps the Trento team
           to recreate a mock environment with the same status as the customer's. Using the script
         that generates the dump requires a host with the following setup:</para>
-       sing the Pluging requires a host 
-         with the following setup:</para>
                    <itemizedlist>
           <listitem>
-            <para>kubectl installed and connected to the K8s cluster where Trento Server is running.
+            <para>kubectl is installed and connected to the K8s cluster where Trento Server is running.
            </para>
           </listitem>
         </itemizedlist>
