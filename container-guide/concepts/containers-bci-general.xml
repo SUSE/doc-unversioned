@@ -16,7 +16,7 @@
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink">
   <info>
-    <title>General purpose &bci;s</title>
+    <title>General-purpose &bci;s</title>
     <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
       <dm:bugtracker>
         <dm:url>https://bugzilla.suse.com/enter_bug.cgi</dm:url>
@@ -28,10 +28,10 @@
     </dm:docmanager>
   </info>
   <para>
-    There are four general purpose &bcia;s, and each container image comes with
-    a minimum set of packages to keep its size low. You can use a general
-    purpose &bcia; either as a starting point for building custom container
-    images, or as a platform for deploying specific software.
+    There are four general-purpose &bcia;s, and each container image comes with
+    a minimum set of packages to keep its size low. You can use a
+    general-purpose &bcia; either as a starting point for building custom
+    container images, or as a platform for deploying specific software.
   </para>
   <para>
     &suse; offers several general-purpose &bcia;s that are intended as
@@ -276,13 +276,13 @@
       <title>Using &bcia;-init with Docker</title>
       <para>
         When using &bcia;-init container with Docker, you must use the
-        following arguments for SYSTEMD to work correctly in the container:
+        following arguments for &systemd; to work correctly in the container:
       </para>
 <screen>&gt; docker run -ti --tmpfs /run -v /sys/fs/cgroup:/sys/fs/cgroup:rw --cgroupns=host registry.suse.com/bci/bci-init:latest</screen>
       <para>
         To correctly shut down the container, use the following command:
       </para>
-<screen>&gt; docker kill -s SIGRTMIN+3 CONTAINER_ID</screen>
+<screen>&gt; docker kill -s SIGRTMIN+3 <replaceable>CONTAINER_ID</replaceable></screen>
     </important>
   </section>
   <section xml:id="id-sle-bci-minimal-when-you-do-not-need-zypper">

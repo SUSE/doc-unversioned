@@ -28,7 +28,7 @@
     </dm:docmanager>
   </info>
   <para>
-    &bci; (&bcia;) are minimal &slsa; 15-based images that you can use to
+    &bci;s (&bcia;s) are minimal &slsa; 15-based images that you can use to
     develop, deploy and share applications. There are two types of &bcia;s:
   </para>
   <itemizedlist>
@@ -46,8 +46,8 @@
     </listitem>
   </itemizedlist>
   <para>
-    &bci;s are available from
-    <link xlink:href="https://registry.suse.com">https://registry.suse.com</link>.
+    &bci;s are available from the
+    <link xlink:href="https://registry.suse.com">&suseregistry;</link>.
     It contains tested and updated &bci;s. All images in the &suseregistry;
     undergo a maintenance process. The images are built to contain the latest
     available updates and fixes. The &suseregistry;'s Web user interface lists
@@ -67,7 +67,7 @@
       &bcia;s feature the same predictable enterprise lifecycle as &slsa;. The
       SLE_BCI 15 SP3 and SP4 repository (which is a subset of the &slea;
       repository) gives &bcia;s access to 4000 packages available for the
-      &x86-64;, &aarch64;, &power; and &zseries; architectures. The packages in
+      &x86-64;, &aarch64;, &power;, and &zseries; architectures. The packages in
       the repository have undergone quality assurance and security audits by
       &suse;. The container images are FIPS-compliant when running on a host in
       FIPS mode. In addition to that, &suse; can provide official support for

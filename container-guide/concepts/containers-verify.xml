@@ -39,7 +39,7 @@
       Notary. You can verify the signature of a specific image using the
       following command:
     </para>
-<screen>&prompt.user;docker trust inspect --pretty registry.suse.com/suse/IMAGE:TAG</screen>
+<screen>&prompt.user;docker trust inspect --pretty registry.suse.com/suse/<replaceable>IMAGE</replaceable>:<replaceable>TAG</replaceable></screen>
     <para>
       For example, the command <command>docker trust inspect --pretty
       registry.suse.com/suse/sle15:latest</command> verifies the signature of
@@ -188,7 +188,7 @@
       <para>
         Do not remove existing entries in
         <filename>transports.docker</filename>. Append the entry for
-        <literal>registry.suse.com</literal> to the list
+        <literal>registry.suse.com</literal> to the list.
       </para>
     </note>
     <informalexample>

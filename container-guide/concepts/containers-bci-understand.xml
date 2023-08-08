@@ -28,11 +28,9 @@
     </dm:docmanager>
   </info>
   <para>
-    If you have a working knowledge of containers, you will not have any
-    difficulties using &bcia;s. However, there are certain features that set
-    &bcia;s apart from similar offerings, like images based on Debian or Alpine
-    Linux. And understanding the specifics can help you to get the most out of
-    &bcia;s in the shortest time possible.
+    There are certain features that set &bcia;s apart from similar offerings,
+    like images based on Debian or Alpine Linux. Understanding the specifics
+    can help you to get the most out of &bcia;s in the shortest time possible.
   </para>
   <section xml:id="sec-bci-package-manager">
     <title>Package manager</title>
@@ -115,18 +113,16 @@
       plugin detects the host's &suse; Linux Enterprise Server registration
       credentials, it uses them to give the container access the &suse; Linux
       Enterprise repositories. This includes additional modules and previous
-      package versions that are not part of the free <literal>SLE_BCI</literal>
-      repository.
-      Refer to <xref linkend="sec-container-suseconnect"/> for more
-        information on how to use the repository for &slsa;, openSUSE and
-        non-&slsa; hosts.
+      package versions that are not part of the free SLE_BCI repository. Refer
+      to <xref linkend="sec-container-suseconnect"/> for more information on
+      how to use the repository for &slsa;, &opensuse;, and non-&slsa; hosts.
     </para>
   </section>
   <section xml:id="sec-bci-tasks">
     <title>Common patterns</title>
     <para>
-      Here are a few examples that can give you an idea how to accomplish
-      certain tasks in a &bcia; compared to Debian.
+      The following examples demonstrate how to accomplish certain tasks in a
+      &bcia; compared to Debian.
     </para>
     <variablelist>
       <varlistentry>
@@ -214,9 +210,9 @@
       and they are closer to those of &rhel;. The main difference is that
       development packages of libraries (that is, packages containing headers
       and build description files) are named <filename>PACKAGE-devel</filename>
-      in &slea;, as opposed to <filename>PACKAGE-dev</filename> as they are in
-      Debian and Ubuntu. When in doubt, search for the package directly using
-      the following command: <command>docker run --rm
+      in &slea;, as opposed to <filename>PACKAGE-dev</filename> in Debian and
+      Ubuntu. When in doubt, search for the package using the following
+      command: <command>docker run --rm
       registry.suse.com/bci/bci-base:<replaceable>OS_VERSION</replaceable>
       zypper search <replaceable>PACKAGE_NAME</replaceable></command> (replace
       <replaceable>OS_VERSION</replaceable> with the appropriate service

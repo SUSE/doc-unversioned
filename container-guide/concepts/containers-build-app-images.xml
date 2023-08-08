@@ -87,8 +87,7 @@
     The following section provides examples and recommendations on creating
     container images for applications. Before proceeding, make sure that you
     have activated your &sls; base image as described in
-    <xref linkend="sec-download-prebuild-images"/>
-    .
+    <xref linkend="sec-download-prebuild-images"/> .
   </para>
   <section xml:id="sec-application-with-specific-dependencies">
     <title>Running an application with specific package versions</title>
@@ -228,7 +227,7 @@
         After you specify a mount point by using the <literal>VOLUME</literal>
         instruction, all changes made to the directory with the
         <command>RUN</command> instruction are discarded. After the mount point
-        is specified, the volume becomes a part of a temporary container, which
+        is specified, the volume becomes a part of a temporary container which
         is removed after a successful build. This means that for certain
         actions to take effect, they must be performed
         <emphasis role="strong">before</emphasis> specifying a mount point. For
@@ -278,7 +277,7 @@
       port is as follows:
     </para>
 <screen xml:id="ex-docker-dockerfile-apache2">FROM registry.suse.com/suse/sle15 <co xml:id="CO2-1"/>
-    LABEL maintainer=EXAMPLEUSER_PLAIN <co xml:id="CO2-2"/>
+    LABEL maintainer=<replaceable>EXAMPLEUSER_PLAIN</replaceable> <co xml:id="CO2-2"/>
     ADD etc/ /etc/zypp/ <co xml:id="CO2-3"/>
     RUN zypper refs &amp;&amp; zypper refresh <co xml:id="CO2-4"/>
     RUN zypper --non-interactive in apache2 <co xml:id="CO2-5"/>
@@ -401,9 +400,9 @@
         <para>
           Build the container. Set a tag for your image with the
           <option>-t</option> option (in the command below, it is
-          <literal>EXAMPLEUSER_PLAIN/apache2</literal>):
+          <replaceable>EXAMPLEUSER_PLAIN</replaceable>):
         </para>
-<screen>&prompt.user;docker build -t EXAMPLEUSER_PLAIN/apache2 .</screen>
+<screen>&prompt.user;docker build -t <replaceable>EXAMPLEUSER_PLAIN</replaceable>/apache2 .</screen>
         <para>
           &deng; executes the instructions provided in the
           <filename>Dockerfile</filename>: pull the base image, copy content,
@@ -415,7 +414,7 @@
           Start a container instance from the image created in the previous
           step:
         </para>
-<screen>&prompt.user;docker run --detach --interactive --tty EXAMPLEUSER_PLAIN/apache2</screen>
+<screen>&prompt.user;docker run --detach --interactive --tty <replaceable>EXAMPLEUSER_PLAIN</replaceable>/apache2</screen>
         <para>
           &deng; returns the container ID, for example:
         </para>
@@ -479,7 +478,7 @@
         <para>
           Run the image in detached mode:
         </para>
-<screen>&prompt.user;docker run --detach --interactive --tty EXAMPLEUSER_PLAIN/apache2</screen>
+<screen>&prompt.user;docker run --detach --interactive --tty <replaceable>EXAMPLEUSER_PLAIN</replaceable>/apache2</screen>
         <para>
           &deng; responds with the container ID, for example:
         </para>

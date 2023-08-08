@@ -35,7 +35,7 @@
     <link xlink:href="https://documentation.suse.com/sles/html/&slea;S-all/article-modules.html">https://documentation.suse.com/sles/html/&slea;S-all/article-modules.html</link>.
   </para>
   <para>
-    The regular &slea;S subscription include &slea; Containers Module free of
+    The regular &slea; subscription includes &slea; Containers Module free of
     charge.
   </para>
   <section xml:id="sec-sle-containers-module-yast">
@@ -79,15 +79,13 @@
   <section xml:id="sec-sle-containers-module-cli">
     <title>Enabling the Containers Module from the command line using &suseconnect;</title>
     <para>
-      The <emphasis>Containers Module</emphasis> can also be added with the
+      The Containers Module can also be added with the
       following command:
     </para>
 <screen>&gt; sudo SUSEConnect -p sle-module-containers/15.4/x86_64</screen>
   </section>
   <section xml:id="sec-container-suseconnect">
     <title>container-suseconnect</title>
-    <section xml:id="sec-container-suseconnect-intro">
-      <title>What is container-suseconnect?</title>
       <para>
         <link xlink:href="https://github.com/SUSE/container-suseconnect"><literal>container-suseconnect</literal></link>
         is a plugin available in all &bci;s that ship with &zypper;. When the
@@ -96,9 +94,9 @@
         additional modules and previous package versions that are not part of
         the free SLE_BCI repository.
       </para>
-    </section>
+
     <section xml:id="sec-container-suseconnect-sle">
-      <title>How to use container-suseconnect on &slsa; and &opensuse;</title>
+      <title>Using container-suseconnect on &slsa; and &opensuse;</title>
       <para>
         If you are running a registered &slsa; system with &docker;,
         <literal>container-suseconnect</literal> automatically detects and uses
@@ -114,7 +112,7 @@
       </para>
     </section>
     <section xml:id="sec-container-suseconnect-nonsle">
-      <title>How to use container-suseconnect on non-&slsa; hosts or with &podman; and &buildah;</title>
+      <title>Using container-suseconnect on non-&slsa; hosts or with &podman; and &buildah;</title>
       <para>
         You need a registered &slsa; system to use
         <literal>container-suseconnect</literal> on non-&slea; hosts or with

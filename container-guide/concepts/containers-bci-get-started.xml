@@ -29,12 +29,10 @@
   </info>
   <para>
     The &bcia;s are available as OCI-compatible container images directly from
-    <link xlink:href="https://registry.suse.com">registry.suse.com</link> and
-    can be used like any other container image. For example, using one of the
-    general purpose containers:
+    the <link xlink:href="https://registry.suse.com">&suseregistry;</link>, and
+    they can be used like any other container image, for example:
   </para>
-<screen>&prompt.user;podman run --rm -it registry.suse.com/bci/bci-base:15.4 grep '^NAME' /etc/os-release
-    NAME="{sles}"</screen>
+<screen>&prompt.user;podman run --rm -it registry.suse.com/bci/bci-base:15.4 grep '^NAME' /etc/os-release NAME="{sles}"</screen>
   <para>
     Alternatively, you can use a &bcia; in <literal>Dockerfile</literal> as
     follows:

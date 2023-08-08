@@ -127,7 +127,7 @@
     are much better suited for the single-machine scenario, as they do not add
     another layer complexity to your existing setup.</para>
 
-    <para>Starting with version 1.3.0, &podman; supports creating systemd unit files with
+    <para>&podman; supports creating systemd unit files with
     the <command>podman generate systemd</command> subcommand. The subcommand creates a systemd unit
     file, making it possible to control a container or pod via systemd. Using the
     unit file you can launch a container or pod on boot, automatically restart it if

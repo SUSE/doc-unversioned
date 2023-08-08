@@ -145,13 +145,13 @@
   <section xml:id="sec-bci-labels-query">
     <title>Working with &bcia; labels</title>
     <para>
-      Starting with &slea; 15 SP3, all base container images include information
-      such as a build time stamp and description. This information is provided
-      in the form of labels attached to the base images, and is therefore
-      available for derived images and containers.
+      All &bci;s include information such as a build time stamp and
+      description. This information is provided in the form of labels attached
+      to the base images, and is therefore available for derived images and
+      containers.
     </para>
     <para>
-      Here is an example of the Labels information shown by <literal>podman
+      Here is an example of the labels information shown by <literal>podman
       inspect</literal>:
     </para>
 <screen>podman inspect registry.suse.com/suse/sle15
@@ -207,10 +207,9 @@
       overwritten.
     </para>
     <para>
-      Use &podman; and the jq tool (<literal>sudo zypper in jq</literal>) to
-      retrieve labels of a local image. The following command lists all labels
-      and only the labels information of the <literal>bci-base:15.4</literal>
-      image:
+      Use &podman; and the jq tool to retrieve labels of a local image. The
+      following command lists all labels and only the labels information of the
+      <package>bci-base:15.4</package> image:
     </para>
 <screen>podman inspect registry.suse.com/bci/bci-base:15.4 | \
     jq '.[0].Labels'</screen>

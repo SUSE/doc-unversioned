@@ -64,12 +64,12 @@
             </entry>
             <entry align="center" valign="top">
               <para>
-                ✓
+                &#10003;
               </para>
             </entry>
             <entry align="center" valign="top">
               <para>
-                ❋
+                &#10059;
               </para>
             </entry>
           </row>
@@ -81,12 +81,12 @@
             </entry>
             <entry align="center" valign="top">
               <para>
-                ✓
+                &#10003;
               </para>
             </entry>
             <entry align="center" valign="top">
               <para>
-                ✓
+                &#10003;
               </para>
             </entry>
           </row>
@@ -98,12 +98,12 @@
             </entry>
             <entry align="center" valign="top">
               <para>
-                ✓
+                &#10003;
               </para>
             </entry>
             <entry align="center" valign="top">
               <para>
-                ✓
+                &#10003;
               </para>
             </entry>
           </row>
@@ -111,15 +111,15 @@
       </tgroup>
     </table>
     <para>
-      ✓ Fully supported
+      &#10003; Fully supported
     </para>
     <para>
-      ❋ Limited support (see the Limited support note)
+      &#10059; Limited support (see the Limited support note)
     </para>
     <important>
       <title>Limited support note</title>
       <para>
-        &suse; provides limited support for &slsa; PRODUCT-GA-based containers
+        &suse; provides limited support for &slsa; &PRODUCT-GA;-based containers
         running on &slsa; 12 SP5 hosts due to the fact that containerized
         applications can make system calls not available in the host's kernel.
         To avoid potential risks and compatibility problems, &suse; recommends
@@ -127,7 +127,7 @@
       </para>
     </important>
     <para>
-      &bcia;s support the following architectures: &x86-64;, &aarch64;, &power;
+      &bcia;s support the following architectures: &x86-64;, &aarch64;, &power;,
       and &zsystems;. Container architecture must match the architecture of the
       host. Mismatching container and host scenarios are not supported.
     </para>
@@ -189,7 +189,7 @@
             </entry>
             <entry align="center" valign="top">
               <para>
-                ✓
+                &#10003;
               </para>
             </entry>
           </row>
@@ -207,7 +207,7 @@
             </entry>
             <entry align="center" valign="top">
               <para>
-                ✓
+                &#10003;
               </para>
             </entry>
           </row>
@@ -224,7 +224,7 @@
             </entry>
             <entry align="center" valign="top">
               <para>
-                ✓
+                &#10003;
               </para>
             </entry>
           </row>
@@ -241,7 +241,7 @@
             </entry>
             <entry align="center" valign="top">
               <para>
-                ✓
+                &#10003;
               </para>
             </entry>
           </row>
@@ -259,7 +259,7 @@
             </entry>
             <entry align="center" valign="top">
               <para>
-                ✓
+                &#10003;
               </para>
             </entry>
           </row>
@@ -277,7 +277,7 @@
             </entry>
             <entry align="center" valign="top">
               <para>
-                ❋
+                &#10059;
               </para>
             </entry>
           </row>
@@ -295,7 +295,7 @@
             </entry>
             <entry align="center" valign="top">
               <para>
-                ✓
+                &#10003;
               </para>
             </entry>
           </row>
@@ -312,7 +312,7 @@
             </entry>
             <entry align="center" valign="top">
               <para>
-                ❋❋
+                &#10059;&#10059;
               </para>
             </entry>
           </row>
@@ -320,16 +320,16 @@
       </tgroup>
     </table>
     <para>
-      ✓ Fully compatible and fully supported
+      &#10003; Fully compatible and fully supported
     </para>
     <para>
-      ❋ Workload specific: fully supported but compatibility depends on type of
+      &#10059; Workload specific: fully supported but compatibility depends on type of
       container (privileged or unprivileged) and on the application
       interactions (direct with kernel-version-specific data structures,
       kernel-version-specific modules, etc.)
     </para>
     <para>
-      ❋❋ Provisional support status until testing is completed for full compatibility and full support.
+      &#10059;&#10059; Provisional support status until testing is completed for full compatibility and full support.
     </para>
     <para>
       Refer to the

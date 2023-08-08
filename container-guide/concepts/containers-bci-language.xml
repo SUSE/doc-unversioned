@@ -36,197 +36,98 @@
     well as the language specific package manager.
   </para>
   <para>
-    Below is an overview of the available language stack &bcia;s.
+    Below is an overview of the language stack &bcia;s available in the
+    <link xlink:href="https://registry.suse.com">&suseregistry;</link>.
   </para>
   <variablelist>
     <varlistentry>
       <term>python</term>
       <listitem>
-        <itemizedlist>
-          <listitem>
-            <para>
-              URL:
-              <link xlink:href="https://registry.suse.com/bci/python/index.html">https://registry.suse.com/bci/python/index.html</link>
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Ships with the python3 version from the tag and pip3, curl, git
-              tools.
-            </para>
-          </listitem>
-        </itemizedlist>
+        <para>
+          Ships with the python3 version from the tag and pip3, curl, git
+          tools.
+        </para>
       </listitem>
     </varlistentry>
     <varlistentry>
       <term>node</term>
       <listitem>
-        <itemizedlist>
-          <listitem>
-            <para>
-              URL:
-              <link xlink:href="https://registry.suse.com/bci/nodejs/index.html">https://registry.suse.com/bci/nodejs/index.html</link>
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Comes with nodejs version from the tag, npm and git. The yarn
-              package manager can be installed with the <literal>npm install -g
-              yarn</literal> command.
-            </para>
-          </listitem>
-        </itemizedlist>
+        <para>
+          Comes with nodejs version from the tag, npm and git. The yarn package
+          manager can be installed with the <literal>npm install -g
+          yarn</literal> command.
+        </para>
       </listitem>
     </varlistentry>
     <varlistentry>
       <term>openjdk</term>
       <listitem>
-        <itemizedlist>
-          <listitem>
-            <para>
-              URL:
-              <link xlink:href="https://registry.suse.com/bci/openjdk/index.html">https://registry.suse.com/bci/openjdk/index.html</link>
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Ships with the OpenJDK runtime. Designed for deploying Java
-              applications.
-            </para>
-          </listitem>
-        </itemizedlist>
+        <para>
+          Ships with the OpenJDK runtime. Designed for deploying Java
+          applications.
+        </para>
       </listitem>
     </varlistentry>
     <varlistentry>
       <term>openjdk-devel</term>
       <listitem>
-        <itemizedlist>
-          <listitem>
-            <para>
-              URL:
-              <link xlink:href="https://registry.suse.com/bci/openjdk-devel/index.html">https://registry.suse.com/bci/openjdk-devel/index.html</link>
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Includes the development part of OpenJDK in addition to the
-              OpenJDK runtime. Instead of Bash, the default entry point is the
-              jshell shell.
-            </para>
-          </listitem>
-        </itemizedlist>
+        <para>
+          Includes the development part of OpenJDK in addition to the OpenJDK
+          runtime. Instead of Bash, the default entry point is the jshell
+          shell.
+        </para>
       </listitem>
     </varlistentry>
     <varlistentry>
       <term>ruby</term>
       <listitem>
-        <itemizedlist>
-          <listitem>
-            <para>
-              URL:
-              <link xlink:href="https://registry.suse.com/bci/ruby/index.html">https://registry.suse.com/bci/ruby/index.html</link>
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              A standard development environment based on Ruby 2.5, featuring
-              ruby, gem and bundler as well as git and curl.
-            </para>
-          </listitem>
-        </itemizedlist>
+        <para>
+          A standard development environment based on Ruby 2.5, featuring ruby,
+          gem and bundler as well as git and curl.
+        </para>
       </listitem>
     </varlistentry>
     <varlistentry>
       <term>rust</term>
       <listitem>
-        <itemizedlist>
-          <listitem>
-            <para>
-              URL:
-              <link xlink:href="https://registry.suse.com/bci/rust/index.html">https://registry.suse.com/bci/rust/index.html</link>
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Ships with the Rust compiler and the Cargo package manager.
-            </para>
-          </listitem>
-        </itemizedlist>
+        <para>
+          Ships with the Rust compiler and the Cargo package manager.
+        </para>
       </listitem>
     </varlistentry>
     <varlistentry>
       <term>golang</term>
       <listitem>
-        <itemizedlist>
-          <listitem>
-            <para>
-              URL:
-              <link xlink:href="https://registry.suse.com/bci/golang/index.html">https://registry.suse.com/bci/golang/index.html</link>
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Ships with the go compiler version specified in the tag.
-            </para>
-          </listitem>
-        </itemizedlist>
+        <para>
+          Ships with the go compiler version specified in the tag.
+        </para>
       </listitem>
     </varlistentry>
     <varlistentry>
       <term>dotnet-runtime</term>
       <listitem>
-        <itemizedlist>
-          <listitem>
-            <para>
-              URL:
-              <link xlink:href="https://registry.suse.com/bci/dotnet-runtime/index.html">https://registry.suse.com/bci/dotnet-runtime/index.html</link>
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Includes the .NET runtime from Microsoft and the Microsoft .NET
-              repository.
-            </para>
-          </listitem>
-        </itemizedlist>
+        <para>
+          Includes the .NET runtime from Microsoft and the Microsoft .NET
+          repository.
+        </para>
       </listitem>
     </varlistentry>
     <varlistentry>
       <term>dotnet-aspnet</term>
       <listitem>
-        <itemizedlist>
-          <listitem>
-            <para>
-              URL:
-              <link xlink:href="https://registry.suse.com/bci/dotnet-aspnet/index.html">https://registry.suse.com/bci/dotnet-aspnet/index.html</link>
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Ships with the ASP.NET runtime from Microsoft and the Microsoft
-              .NET repository.
-            </para>
-          </listitem>
-        </itemizedlist>
+        <para>
+          Ships with the ASP.NET runtime from Microsoft and the Microsoft .NET
+          repository.
+        </para>
       </listitem>
     </varlistentry>
     <varlistentry>
       <term>dotnet-sdk</term>
       <listitem>
-        <itemizedlist>
-          <listitem>
-            <para>
-              URL:
-              <link xlink:href="https://registry.suse.com/static/bci/dotnet-sdk">https://registry.suse.com/static/bci/dotnet-sdk</link>
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              Comes with the .NET and ASP.NET SDK from Microsoft as well as the
-              Microsoft .NET repository.
-            </para>
-          </listitem>
-        </itemizedlist>
+        <para>
+          Comes with the .NET and ASP.NET SDK from Microsoft as well as the
+          Microsoft .NET repository.
+        </para>
       </listitem>
     </varlistentry>
   </variablelist>

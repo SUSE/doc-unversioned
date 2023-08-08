@@ -69,13 +69,13 @@
       <note>
         <title>SLE_BCI repository</title>
         <para>
-          The default base image includes the <literal>SLE_BCI</literal>
-          repository. This repository is only used when a container is built or
-          runs on a non-registered &slsa; host, or when registration
-          credentials are not made available to the container. The repository
-          provides a subset of &slea; packages useful for customizing &slsa;
-          container images. The repository is available without any
-          registration, and it is not supported.
+          The default base image includes the SLE_BCI repository. This
+          repository is only used when a container is built or runs on a
+          non-registered &slsa; host, or when registration credentials are not
+          made available to the container. The repository provides a subset of
+          &slea; packages useful for customizing &slsa; container images. The
+          repository is available without any registration, and it is not
+          supported.
         </para>
       </note>
       <para>
@@ -91,8 +91,8 @@
         <title>Credentials and security</title>
         <para>
           The contents of the <filename>/run/secrets</filename> directory are
-          never included in a container image, hence there is no risk of your
-          credentials leaking.
+          never included in a container image, which means that there is no
+          risk of your credentials leaking.
         </para>
       </note>
       <note xml:id="note-build-images-different-codebase">
@@ -147,8 +147,8 @@
       </para>
       <para>
         After you have edited the <filename>Dockerfile</filename>, build the
-        image by running the following command in the same directory in which
-        the <filename>Dockerfile</filename> resides:
+        image by running the following command in the directory where the
+        <filename>Dockerfile</filename> resides:
       </para>
 <screen>&prompt.user;podman build .</screen>
       <para>
@@ -178,8 +178,8 @@
         zypper -n in vim &amp;&amp; \
         zypper -n clean</screen>
       <para>
-        If you wish to add &slea; extensions and modules to your images, please
-        refer to <xref linkend="sec-container-suseconnect-modules"/>.
+        If you wish to add &slea; extensions and modules to your images, refer
+        to <xref linkend="sec-container-suseconnect-modules"/>.
       </para>
     </section>
     <section xml:id="sec-building-public-cloud">
@@ -203,7 +203,7 @@
       </para>
 <screen>&prompt.user;sudo systemctl start containerbuild-regionsrv</screen>
       <para>
-        To start it automatically on system start-up, enable it:
+        To start it automatically on system boot, enable it:
       </para>
 <screen>&prompt.user;sudo systemctl enable containerbuild-regionsrv</screen>
       <para>
