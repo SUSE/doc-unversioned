@@ -2261,7 +2261,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
     <title>Reporting a Problem</title>
     <para>
       Any &suse; customer, with a registered &sles4sap;&nbsp;15 (SP1 or higher) distribution,
-     experiencing an issue with &trentopremium;, can report the problem either directly in the &suse; Customer Center
+     experiencing an issue with &trentopremium;, can report the problem either directly in the &scc;
      or through the corresponding vendor, depending on their licensing model. Any how, the problem has to reported under
      &sles4sap;&nbsp;15 and component trento. 
     </para>
