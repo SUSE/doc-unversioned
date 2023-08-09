@@ -251,7 +251,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         <listitem>
           <para>
             <remark>toms 2021-12-06: do we have UDP here too?</remark>
-            The web component of the &t.server; must be reachable via HTTP (port TCP/80) or via HTTPS (port TCP/443) if SSL is enabled, from any &t.agent; host.
+            From any &t.agent; host, the web component of the &t.server; must be reachable via HTTP (port TCP/80) or via HTTPS (port TCP/443) if SSL is enabled.
           </para>
         </listitem>
         <listitem>
