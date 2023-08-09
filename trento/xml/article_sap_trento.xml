@@ -1386,8 +1386,8 @@ The health boxes in the dashboard are clickable. By clicking on one particular b
     <section xml:id="sec-trento-cleanup-hosts">
       <title>Cleaning up hosts</title>
      <para> 
-    When the heartbeat of an agent fails, an option to clean-up the corresponding host will show up both in the Hosts
-    overview and the corresponding Hos details view.
+    When the heartbeat of an agent fails, an option to clean-up the corresponding host will show up both in the 
+    <guimenu>Hosts</guimenu> overview and the corresponding <guimenu>Host details</guimenu> view.
      </para>
            <figure>
               <title>clean up button in Hosts overview</title>
