@@ -2178,7 +2178,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
 [...]</screen>
       </step>
       <step>
-        <para>Check the version in the Hosts overview of the &t.web; (URL
+        <para>Check the version in the <guimenu>Hosts</guimenu> overview of the &t.web; (URL
               <uri>http://<replaceable>TRENTO_SERVER_HOSTNAME</replaceable></uri>).</para>
       </step>
       <step>
