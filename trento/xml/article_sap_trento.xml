@@ -233,7 +233,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
           <para>any other CNCF-certified &k8s; running on x86_64 architecture</para>
         </listitem>
       </itemizedlist>
-     <para> A proper, production ready installation of Trento Server requires &k8s;
+     <para> A proper, production ready installation of &t.server; requires &k8s;
       knowledge. The Helm chart is meant to be used by customers lacking such knowledge
       or wanting a quick start, but it delivers a basic deployment of the &t.server; with all the components running
       on a single node of the cluster.</para>
