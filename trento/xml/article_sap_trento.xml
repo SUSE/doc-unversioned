@@ -2352,7 +2352,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
         that generates the dump requires a host with the following setup:</para>
                    <itemizedlist>
           <listitem>
-            <para>kubectl is installed and connected to the K8s cluster where Trento Server is running.
+            <para>The command <command>kubectl</command> is installed and connected to the K8s cluster where Trento Server is running.
            </para>
           </listitem>
         </itemizedlist>
