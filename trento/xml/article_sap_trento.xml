@@ -2191,7 +2191,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
    <section xml:id="sec-trento-uninstall-trentoserver">
     <title>Uninstalling &t.server;</title>
     <para> If &t.server; was deployed manually, then you need to uninstall it manually.
-     If  &t.server; was deployed using the helm chart, then w can use Helm to uninstall it as follows:</para>
+     If  &t.server; was deployed using the Helm chart, use Helm to uninstall it as follows:</para>
      <screen>helm uninstall trento-server</screen>
   </section>
 
