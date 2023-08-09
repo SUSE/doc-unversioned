@@ -2348,7 +2348,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
       <section>
         <title>Scenario dump</title>
         <para>The scenario dump is a dump of the Trento database. It helps the Trento team
-          to recreate a mock environment with the same status as the customer's. Using the script
+          to recreate the scenario to test it. Using the script
         that generates the dump requires a host with the following setup:</para>
                    <itemizedlist>
           <listitem>
