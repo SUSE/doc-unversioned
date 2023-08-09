@@ -2098,8 +2098,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
         </listitem>
         <listitem>
         <para>When updating from a Trento version lower than 2.0.0 to version 2.0.0 or higher, an additional flag
-    must be set in the Helm command. This is a workaround for an existing bug for which we are currently working
-    on a fix:</para>
+    must be set in the Helm command:</para>
    <screen>helm upgrade \
    --install trento-server oci://registry.suse.com/trento/trento-server \
    --set trento-web.adminUser.password=<replaceable>ADMIN_PASSWORD</replaceable> \
