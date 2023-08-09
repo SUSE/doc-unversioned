@@ -2310,7 +2310,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
 
       <section>
         <title>Trento Support Plugin</title>
-        <para> The Trento Support Plugin automates the collection of logs and relevant
+        <para> The Trento support plugin automates the collection of logs and relevant
           runtime information on the server side. Using the plugin requires a host 
          with the following setup:</para>
                    <itemizedlist>
