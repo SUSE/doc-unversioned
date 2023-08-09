@@ -2106,7 +2106,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
         </screen>
         </listitem>
         <listitem>
-          <para> If email alerting has been enabled, then the corresponding trento-web.alerting parameters
+          <para> If email alerting has been enabled, then the corresponding <parameter>trento-web.alerting</parameter> parameters
            should be set in the Helm command as well.
           </para>
         </listitem>
