@@ -1390,7 +1390,7 @@ The health boxes in the dashboard are clickable. By clicking on one particular b
     <guimenu>Hosts</guimenu> overview and the corresponding <guimenu>Host details</guimenu> view.
      </para>
            <figure>
-              <title>clean up button in Hosts overview</title>
+              <title>Clean up button in <guimenu>Hosts</guimenu> overview</title>
               <mediaobject>
                 <imageobject>
                   <imagedata fileref="trento-cleanup-hosts-overview.png"
