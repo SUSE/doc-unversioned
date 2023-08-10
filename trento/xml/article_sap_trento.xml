@@ -2082,7 +2082,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
 -->
   <section xml:id="sec-trento-updating-trentoserver">
     <title>Updating &t.server;</title>
-    <para> The procedure to update &t.server; depends on how it was installed.
+    <para> The procedure to update the &t.server; depends on how it was installed.
      If it was installed manually, then it must be updated manually using the latest versions
      of the container images available in SUSE public registry. If was installed using the
      Helm chart, it can be updated using the same Helm command as for the installation:</para>
