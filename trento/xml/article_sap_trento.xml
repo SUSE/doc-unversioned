@@ -2084,7 +2084,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
     <title>Updating &t.server;</title>
     <para> The procedure to update the &t.server; depends on how it was installed.
      If it was installed manually, then it must be updated manually using the latest versions
-     of the container images available in SUSE public registry. If was installed using the
+     of the container images available in the SUSE public registry. If it was installed using
      Helm chart, it can be updated using the same Helm command as for the installation:</para>
    <screen>helm upgrade \
    --install trento-server oci://registry.suse.com/trento/trento-server \
