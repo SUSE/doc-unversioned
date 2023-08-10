@@ -2261,7 +2261,8 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
     <title>Reporting a Problem</title>
     <para>
       Any &suse; customer, with a registered &sles4sap;&nbsp;15 (SP1 or higher) distribution,
-     experiencing an issue with &trentopremium;, can report the problem in the &suse; Customer Center under
+     experiencing an issue with &trentopremium;, can report the problem either directly in the &scc;
+     or through the corresponding vendor, depending on their licensing model. Any how, the problem has to reported under
      &sles4sap;&nbsp;15 and component trento. 
     </para>
       <para>
@@ -2309,15 +2310,25 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
 
       <section>
         <title>Trento Support Plugin</title>
-        <para> The Trento Support Plugin automates the collection of relevant
-          runtime information. To use it, proceed as follows: </para>
+        <para> The Trento support plugin automates the collection of logs and relevant
+          runtime information on the server side. Using the plugin requires a host 
+         with the following setup:</para>
+                   <itemizedlist>
+          <listitem>
+            <para>The packages <package>jq</package> and <package>python3-yq</package> are installed.</para>
+          </listitem>
+          <listitem>
+            <para>Helm is installed;.</para>
+          </listitem>
+          <listitem>
+            <para>The command <command>kubectl</command> is installed and connected to the K8s cluster where &t.server; is running.
+           </para>
+          </listitem>
+        </itemizedlist>
+       <para>To use it, proceed as follows: </para>
         <procedure>
           <step>
-            <para>Install the following packages:</para>
-            <screen>&prompt.root;<command>zypper install</command> jq python3-yq</screen>
-          </step>
-          <step>
-            <para>Download the Trento Support Plugin script:</para>
+            <para>Download the Trento support plugin script:</para>
             <screen>&prompt.root;<command>wget</command> https://raw.githubusercontent.com/trento-project/helm-charts/main/scripts/trento-support.sh</screen>
           </step>
           <step>
@@ -2336,9 +2347,16 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
 
       <section>
         <title>Scenario dump</title>
-        <para>The scenario dump is a dump of the Trento database. It helps the core team
-          to recreate a mock environment with the same status as the customer's.
-          To generate the dump, proceed as follows:</para>
+        <para>The scenario dump is a dump of the Trento database. It helps the Trento team
+          to recreate the scenario to test it. Using the script
+        that generates the dump requires a host with the following setup:</para>
+                   <itemizedlist>
+          <listitem>
+            <para>The command <command>kubectl</command> is installed and connected to the K8s cluster where Trento Server is running.
+           </para>
+          </listitem>
+        </itemizedlist>
+          <para>To generate the dump, proceed as follows:</para>
         <procedure>
           <step>
             <para>Download the latest version of the dump script:</para>
