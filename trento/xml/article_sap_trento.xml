@@ -417,7 +417,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
    --set trento-web.adminUser.password=<replaceable>ADMIN_PASSWORD</replaceable></screen>
       </step>
        <step>
-        <para> Monitor the creation and start-up of the Trento Server pods and wait until they are all in ready/running status:</para>
+        <para> Monitor the creation and start-up of the &t.server; pods and wait until they are all ready and running:</para>
         <screen>watch kubectl get pods</screen>
       </step>
        <step>
