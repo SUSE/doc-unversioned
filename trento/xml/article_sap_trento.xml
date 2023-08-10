@@ -2093,7 +2093,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
    <para>A few things to consider:</para>
       <itemizedlist>
         <listitem>
-          <para>Remember to add set the helm experimental flag if you are using a version of Helm lower than 3.8.0.
+          <para>Remember to set the helm experimental flag if you are using a version of Helm lower than 3.8.0.
           </para>
         </listitem>
         <listitem>
