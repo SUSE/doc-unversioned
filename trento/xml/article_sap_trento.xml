@@ -322,7 +322,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
        to be deployed on a &k8s; cluster. A manual deployment of these components in a production
        ready fashion requires &k8s; knowledge. Customers lacking such knowledge or who want to get started quickly
        with Trento, can use the Trento Helm chart. This approach automates the deployment of all the required components
-       on a single &k8s; cluster node. You can use the Trento helm chart in order to install Trento Server
+       on a single &k8s; cluster node. You can use the Trento Helm chart in order to install &t.server;
        on a existing &k8s; cluster as follows:
       </para>
       <procedure>
