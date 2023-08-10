@@ -256,7 +256,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         </listitem>
         <listitem>
           <para>
-            The checks engine component of the &t.server;, called Wanda, must be reachable via Advanced Message Queuing Protocol or AMQP (port TCP/5672), from any &t.agent; host.
+            From any &t.agent; host, the checks engine component of the &t.server;, called Wanda, must be reachable via Advanced Message Queuing Protocol or AMQP (port TCP/5672).
           </para>
         </listitem>
          <listitem>
