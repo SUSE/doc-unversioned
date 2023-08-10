@@ -2318,7 +2318,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
             <para>The packages <package>jq</package> and <package>python3-yq</package> are installed.</para>
           </listitem>
           <listitem>
-            <para>helm is installed;.</para>
+            <para>Helm is installed;.</para>
           </listitem>
           <listitem>
             <para>The command <command>kubectl</command> is installed and connected to the K8s cluster where Trento Server is running.
