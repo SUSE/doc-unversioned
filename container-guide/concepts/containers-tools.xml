@@ -11,21 +11,12 @@
 ]>
 <article xml:id="container-tools" xml:lang="en"
  role="concept"
- xmlns="http://docbook.org/ns/docbook" version="5.1"
+ xmlns="http://docbook.org/ns/docbook" version="5.2"
  xmlns:its="http://www.w3.org/2005/11/its"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink">
   <info>
     <title>Tools for building images and managing containers</title>
-    <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
-      <dm:bugtracker>
-        <dm:url>https://bugzilla.suse.com/enter_bug.cgi</dm:url>
-        <dm:component>Smart Docs</dm:component>
-        <dm:product>Documentation</dm:product>
-        <dm:assignee>dpopov@suse.com</dm:assignee>
-      </dm:bugtracker>
-      <dm:translation>no</dm:translation>
-    </dm:docmanager>
   </info>
   <para>
     All described tools described below are part of the
@@ -40,7 +31,7 @@
   <section xml:id="sec-tools-suse-registry">
     <title>&suseregistry;</title>
     <para>
-      <link xlink:href="https://registry.suse.com">&suseregistry;</link> is the
+      <link xlink:href="https://registry.suse.com"/> is the
       official source of &bci;s. It contains tested, updated
       and certified &bci;s. All images in the &suseregistry;
       are regularly rebuilt to include updates and fixes. The &suseregistry;'s
@@ -148,16 +139,16 @@
       scratch using the &kiwi; image-building solution.
     </para>
     <para>
-      Instructions on how to build images on OBS can be found
-      <link xlink:href="https://openbuildservice.org/2018/05/09/container-building-and-distribution/">here</link>.
+      Instructions on how to build images on OBS can be found in the following
+      <link xlink:href="https://openbuildservice.org/2018/05/09/container-building-and-distribution/">blog post</link>.
     </para>
     <para>
       &suse; Container Images, called &bci;s
       (&bcia;s) are the only official container images. They are not available at
-      <link xlink:href="https://build.opensuse.org">https://build.opensuse.org</link>,
+      <link xlink:href="https://build.opensuse.org"/>,
       and the RPMs exported there are not identical to the internal ones. This
       means that it is not possible to build officially supported images at
-      <link xlink:href="https://build.opensuse.org">https://build.opensuse.org</link>.
+      <link xlink:href="https://build.opensuse.org"/>.
     </para>
     <para>
       For more information about &bcia;s, refer to

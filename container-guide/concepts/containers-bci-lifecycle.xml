@@ -11,21 +11,12 @@
 ]>
 <article xml:id="container-bci-lifecycle" xml:lang="en"
  role="concept"
- xmlns="http://docbook.org/ns/docbook" version="5.1"
+ xmlns="http://docbook.org/ns/docbook" version="5.2"
  xmlns:its="http://www.w3.org/2005/11/its"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink">
   <info>
     <title>Important note on status and lifecycle &bci;s</title>
-    <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
-      <dm:bugtracker>
-        <dm:url>https://bugzilla.suse.com/enter_bug.cgi</dm:url>
-        <dm:component>Smart Docs</dm:component>
-        <dm:product>Documentation</dm:product>
-        <dm:assignee>dpopov@suse.com</dm:assignee>
-      </dm:bugtracker>
-      <dm:translation>no</dm:translation>
-    </dm:docmanager>
   </info>
   <para>
     All container images, except for base, are currently classified as tech
@@ -37,10 +28,10 @@
     the skopeo and jq utilities to check the status of the desired &bcia; as
     follows:
   </para>
-<screen>&gt; skopeo inspect docker://registry.suse.com/bci/bci-micro:15.4 | jq '.Labels["com.suse.supportlevel"]'
+<screen>&prompt.user;skopeo inspect docker://registry.suse.com/bci/bci-micro:15.4 | jq '.Labels["com.suse.supportlevel"]'
     "techpreview"
     
-    &gt; skopeo inspect docker://registry.suse.com/bci/bci-base:15.4 | jq '.Labels["com.suse.supportlevel"]'
+    &prompt.user;skopeo inspect docker://registry.suse.com/bci/bci-base:15.4 | jq '.Labels["com.suse.supportlevel"]'
     "l3"</screen>
   <para>
     In the example above, the <literal>com.suse.supportlevel</literal> label is
@@ -53,8 +44,8 @@
     other words, new versions of &bcia;s (indicated by the OCI tags) may be
     released during the lifecycle of a &slsa; Service Pack, while older
     versions may become unsupported. Refer to
-    <link xlink:href="https://suse.com/lifecycle">suse.com/lifecycle</link> to
-    find out whether the container in question is still under support.
+    <link xlink:href="https://suse.com/lifecycle"/> to find out whether the
+    container in question is still under support.
   </para>
   <important>
     <para>

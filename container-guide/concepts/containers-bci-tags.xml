@@ -11,21 +11,12 @@
 ]>
 <article xml:id="container-bci-tags" xml:lang="en"
  role="concept"
- xmlns="http://docbook.org/ns/docbook" version="5.1"
+ xmlns="http://docbook.org/ns/docbook" version="5.2"
  xmlns:its="http://www.w3.org/2005/11/its"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink">
   <info>
     <title>&bcia; tags</title>
-    <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
-      <dm:bugtracker>
-        <dm:url>https://bugzilla.suse.com/enter_bug.cgi</dm:url>
-        <dm:component>Smart Docs</dm:component>
-        <dm:product>Documentation</dm:product>
-        <dm:assignee>dpopov@suse.com</dm:assignee>
-      </dm:bugtracker>
-      <dm:translation>no</dm:translation>
-    </dm:docmanager>
   </info>
   <para>
     Tags are used to refer to images. A tag forms a part of the image's name.

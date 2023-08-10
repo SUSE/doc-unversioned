@@ -11,21 +11,12 @@
 ]>
 <article xml:id="container-feedback" xml:lang="en"
  role="concept"
- xmlns="http://docbook.org/ns/docbook" version="5.1"
+ xmlns="http://docbook.org/ns/docbook" version="5.2"
  xmlns:its="http://www.w3.org/2005/11/its"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink">
   <info>
     <title>Improving the documentation</title>
-    <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
-      <dm:bugtracker>
-        <dm:url>https://bugzilla.suse.com/enter_bug.cgi</dm:url>
-        <dm:component>Smart Docs</dm:component>
-        <dm:product>Documentation</dm:product>
-        <dm:assignee>dpopov@suse.com</dm:assignee>
-      </dm:bugtracker>
-      <dm:translation>no</dm:translation>
-    </dm:docmanager>
   </info>
   <para>
     Feedback and contributions to this documentation can be submitted using any
@@ -37,11 +28,11 @@
       <listitem>
         <para>
           For services and support options available for your product, see
-          <link xlink:href="https://www.suse.com/support/">https://www.suse.com/support/</link>.
-          To open a service request, you need a SUSE subscription registered at
-          SUSE Customer Center. Go to
-          <link xlink:href="https://scc.suse.com/support/requests">https://scc.suse.com/support/requests</link>,
-          log in, and click <emphasis>Create New</emphasis>.
+          <link xlink:href="https://www.suse.com/support/"/>. To open a service
+          request, you need a SUSE subscription registered at SUSE Customer
+          Center. Go to
+          <link xlink:href="https://scc.suse.com/support/requests"/>, log in,
+          and click <emphasis>Create New</emphasis>.
         </para>
       </listitem>
     </varlistentry>
@@ -50,15 +41,14 @@
       <listitem>
         <para>
           Report issues with the documentation at
-          <link xlink:href="https://bugzilla.suse.com/">https://bugzilla.suse.com/</link>
-          (this requires a Bugzilla account). To simplify the process, use the
-          <emphasis>Report an issue link</emphasis> in the HTML version of this
-          document. Point the cursor to the desired sentence, and click
-          <emphasis>Report an issue</emphasis> in the <emphasis>Give
-          feedback</emphasis> section of the right-side navigation panel. This
-          automatically selects the correct product and category in Bugzilla
-          and adds a link to the current section. You can now write your bug
-          report.
+          <link xlink:href="https://bugzilla.suse.com/"/> (this requires a
+          Bugzilla account). To simplify the process, use the <emphasis>Report
+          an issue link</emphasis> in the HTML version of this document. Point
+          the cursor to the desired sentence, and click <emphasis>Report an
+          issue</emphasis> in the <emphasis>Give feedback</emphasis> section of
+          the right-side navigation panel. This automatically selects the
+          correct product and category in Bugzilla and adds a link to the
+          current section. You can now write your bug report.
         </para>
       </listitem>
     </varlistentry>
@@ -87,9 +77,9 @@
   </note>
   <para>
     For more information about the documentation environment used for this
-    documentation, refer to the repository’s <emphasis>README</emphasis> file
+    documentation, refer to the repository's <emphasis>README</emphasis> file
     at
-    <link xlink:href="https://github.com/SUSE/doc-unversioned/blob/main/README.adoc">https://github.com/SUSE/doc-unversioned/blob/main/README.adoc</link>
+    <link xlink:href="https://github.com/SUSE/doc-unversioned/blob/main/README.adoc"/>
   </para>
   <variablelist>
     <varlistentry>
@@ -97,12 +87,11 @@
       <listitem>
         <para>
           You can also report errors and send feedback concerning the
-          documentation to
-          <link xlink:href="mailto:doc-team@suse.com">doc-team@suse.com</link>.
-          Include the document title, the product version, and the publication
-          date of the document. Additionally, include the relevant section
-          number and title (or provide the URL), and provide a concise
-          description of the problem.
+          documentation to <email>doc-team@suse.com</email>. Include the
+          document title, the product version, and the publication date of the
+          document. Additionally, include the relevant section number and title
+          (or provide the URL), and provide a concise description of the
+          problem.
         </para>
       </listitem>
     </varlistentry>

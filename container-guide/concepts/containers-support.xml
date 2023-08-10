@@ -11,28 +11,19 @@
 ]>
 <article xml:id="container-support" xml:lang="en"
  role="concept"
- xmlns="http://docbook.org/ns/docbook" version="5.1"
+ xmlns="http://docbook.org/ns/docbook" version="5.2"
  xmlns:its="http://www.w3.org/2005/11/its"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink">
   <info>
     <title>Compatibility and support conditions</title>
-    <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
-      <dm:bugtracker>
-        <dm:url>https://bugzilla.suse.com/enter_bug.cgi</dm:url>
-        <dm:component>Smart Docs</dm:component>
-        <dm:product>Documentation</dm:product>
-        <dm:assignee>dpopov@suse.com</dm:assignee>
-      </dm:bugtracker>
-      <dm:translation>no</dm:translation>
-    </dm:docmanager>
   </info>
   <para>
     The term "support" refers to two distinct concepts: a) technical enablement
     of a feature or combination of, for example, host and container, and b)
     enterprise support as delivered by &suse; to &suse; customers. Enterprise
     support requires a subscription for &suse; products according to
-    <link xlink:href="https://www.suse.com/products/terms_and_conditions.pdf">https://www.suse.com/products/terms_and_conditions.pdf</link>.
+    <link xlink:href="https://www.suse.com/products/terms_and_conditions.pdf"/>.
     Technical enablement is described below.
   </para>
   <section xml:id="sec-sle-container-non-sle-host-support">
@@ -119,7 +110,7 @@
     <important>
       <title>Limited support note</title>
       <para>
-        &suse; provides limited support for &slsa; &PRODUCT-GA;-based containers
+        &suse; provides limited support for &slsa; 15 GA-based containers
         running on &slsa; 12 SP5 hosts due to the fact that containerized
         applications can make system calls not available in the host's kernel.
         To avoid potential risks and compatibility problems, &suse; recommends
@@ -343,7 +334,7 @@
     <para>
       There are three guiding principles of &suse; container support.
     </para>
-    <orderedlist numeration="arabic">
+    <orderedlist>
       <listitem>
         <para>
           The container image lifecycle follows the lifecycle of the related
@@ -384,7 +375,7 @@
     <para>
       Container images can have different support status, and they can have
       limited support. Refer to the appropriate
-      <link xlink:href="https://registry.suse.com">&suseregistry;</link> page
+      <link xlink:href="https://registry.suse.com"/> page
       for the further information about a specific container image.
     </para>
   </section>

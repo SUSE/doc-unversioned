@@ -11,21 +11,12 @@
 ]>
 <article xml:id="container-bci-understand" xml:lang="en"
  role="concept"
- xmlns="http://docbook.org/ns/docbook" version="5.1"
+ xmlns="http://docbook.org/ns/docbook" version="5.2"
  xmlns:its="http://www.w3.org/2005/11/its"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink">
   <info>
     <title>Understanding &bcia;s</title>
-    <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
-      <dm:bugtracker>
-        <dm:url>https://bugzilla.suse.com/enter_bug.cgi</dm:url>
-        <dm:component>Smart Docs</dm:component>
-        <dm:product>Documentation</dm:product>
-        <dm:assignee>dpopov@suse.com</dm:assignee>
-      </dm:bugtracker>
-      <dm:translation>no</dm:translation>
-    </dm:docmanager>
   </info>
   <para>
     There are certain features that set &bcia;s apart from similar offerings,
@@ -90,7 +81,7 @@
     </variablelist>
     <para>
       For more information on using &zypper;, refer to
-      <link xlink:href="https://documentation.suse.com/sles/html/&slsa;-all/cha-sw-cl.html#sec-zypper">https://documentation.suse.com/sles/html/&slsa;-all/cha-sw-cl.html#sec-zypper</link>.
+      <link xlink:href="https://documentation.suse.com/sles/html/&slsa;-all/cha-sw-cl.html#sec-zypper"/>.
     </para>
     <para>
       All the described commands use the <option>--non-interactive</option>

@@ -11,28 +11,19 @@
 ]>
 <article xml:id="container-repo-reg" xml:lang="en"
  role="concept"
- xmlns="http://docbook.org/ns/docbook" version="5.1"
+ xmlns="http://docbook.org/ns/docbook" version="5.2"
  xmlns:its="http://www.w3.org/2005/11/its"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink">
   <info>
     <title>Registration and Online Repositories</title>
-    <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
-      <dm:bugtracker>
-        <dm:url>https://bugzilla.suse.com/enter_bug.cgi</dm:url>
-        <dm:component>Smart Docs</dm:component>
-        <dm:product>Documentation</dm:product>
-        <dm:assignee>dpopov@suse.com</dm:assignee>
-      </dm:bugtracker>
-      <dm:translation>no</dm:translation>
-    </dm:docmanager>
   </info>
   <para>
     As a pre-requisite to work with containers on a &sls;, you have to enable
     the &slea; Containers Module. It consists of container-related packages,
     including container engine and core container tools like on-premise
     registry. For more information about &slea; Modules, refer to
-    <link xlink:href="https://documentation.suse.com/sles/html/&slea;S-all/article-modules.html">https://documentation.suse.com/sles/html/&slea;S-all/article-modules.html</link>.
+    <link xlink:href="https://documentation.suse.com/sles/html/&slea;S-all/article-modules.html"/>.
   </para>
   <para>
     The regular &slea; subscription includes &slea; Containers Module free of

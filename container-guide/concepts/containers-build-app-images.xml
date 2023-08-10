@@ -11,21 +11,12 @@
 ]>
 <article xml:id="container-build-app-images" xml:lang="en"
  role="concept"
- xmlns="http://docbook.org/ns/docbook" version="5.1"
+ xmlns="http://docbook.org/ns/docbook" version="5.2"
  xmlns:its="http://www.w3.org/2005/11/its"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink">
   <info>
     <title>Creating application container images</title>
-    <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
-      <dm:bugtracker>
-        <dm:url>https://bugzilla.suse.com/enter_bug.cgi</dm:url>
-        <dm:component>Smart Docs</dm:component>
-        <dm:product>Documentation</dm:product>
-        <dm:assignee>dpopov@suse.com</dm:assignee>
-      </dm:bugtracker>
-      <dm:translation>no</dm:translation>
-    </dm:docmanager>
   </info>
   <para>
     Applications that are suitable for running inside containers include
@@ -115,7 +106,7 @@
       The <filename>Dockerfile</filename> example shown above performs the
       following operations during the image build process:
     </para>
-    <orderedlist numeration="arabic">
+    <orderedlist>
       <listitem>
         <para>
           Updates the &sls; repositories.
@@ -345,7 +336,7 @@
     <para>
       To use the container, proceed as follows:
     </para>
-    <orderedlist numeration="arabic">
+    <orderedlist>
       <listitem>
         <para>
           Prepare the host system for the build process.
@@ -447,7 +438,7 @@
       You can use the resulting container to serve your data with the Apache2
       Web server by following these steps:
     </para>
-    <orderedlist numeration="arabic">
+    <orderedlist>
       <listitem>
         <para>
           In the <filename>Dockerfile</filename> :
@@ -493,7 +484,7 @@
     <para>
       To avoid copying Web site data into the container, share a directory of
       the host with the container. For more information, see
-      <link xlink:href="https://docs.docker.com/storage/volumes/">https://docs.docker.com/storage/volumes/</link>
+      <link xlink:href="https://docs.docker.com/storage/volumes/"/>
       .
     </para>
   </section>

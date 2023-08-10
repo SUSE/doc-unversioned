@@ -11,21 +11,12 @@
 ]>
 <article xml:id="container-bci-get-started" xml:lang="en"
  role="concept"
- xmlns="http://docbook.org/ns/docbook" version="5.1"
+ xmlns="http://docbook.org/ns/docbook" version="5.2"
  xmlns:its="http://www.w3.org/2005/11/its"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink">
   <info>
     <title>Getting started with &bci;s</title>
-    <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
-      <dm:bugtracker>
-        <dm:url>https://bugzilla.suse.com/enter_bug.cgi</dm:url>
-        <dm:component>Smart Docs</dm:component>
-        <dm:product>Documentation</dm:product>
-        <dm:assignee>dpopov@suse.com</dm:assignee>
-      </dm:bugtracker>
-      <dm:translation>no</dm:translation>
-    </dm:docmanager>
   </info>
   <para>
     The &bcia;s are available as OCI-compatible container images directly from
@@ -38,7 +29,7 @@
     follows:
   </para>
 <screen>FROM registry.suse.com/bci/bci-base:15.4
-    RUN zypper -n in python3 &amp;&amp; \
+    RUN zypper --non-interactive in python3 &amp;&amp; \
         echo "Hello Green World!" &gt; index.html
     ENTRYPOINT ["/usr/bin/python3", "-m", "http.server"]
     EXPOSE 8000</screen>
@@ -50,7 +41,7 @@
     Sending build context to Docker daemon  2.048kB
     Step 1/4 : FROM registry.suse.com/bci/bci-base:15.4
      ---&gt; e34487b4c4e1
-    Step 2/4 : RUN zypper -n in python3 &amp;&amp;     echo "Hello Green World!" &gt; index.html
+    Step 2/4 : RUN zypper --non-interactive in python3 &amp;&amp;     echo "Hello Green World!" &gt; index.html
      ---&gt; Using cache
      ---&gt; 9b527dfa45e8
     Step 3/4 : ENTRYPOINT ["/usr/bin/python3", "-m", "http.server"]

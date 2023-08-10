@@ -603,7 +603,7 @@ NAME="SLES"</screen>
     或者，可以如下所示在 Dockerfile 中使用 SLE BCI：
    </para>
 <screen>FROM registry.suse.com/bci/bci-base:15.4
-RUN zypper -n in python3 &amp;&amp; \
+RUN zypper --non-interactive in python3 &amp;&amp; \
     echo "Hello Green World!" &gt; index.html
 ENTRYPOINT ["/usr/bin/python3", "-m", "http.server"]
 EXPOSE 8000</screen>
@@ -614,7 +614,7 @@ EXPOSE 8000</screen>
 Sending build context to Docker daemon  2.048kB
 Step 1/4 : FROM registry.suse.com/bci/bci-base:15.4
  ---&gt; e34487b4c4e1
-Step 2/4 : RUN zypper -n in python3 &amp;&amp;     echo "Hello Green World!" &gt; index.html
+Step 2/4 : RUN zypper --non-interactive in python3 &amp;&amp;     echo "Hello Green World!" &gt; index.html
  ---&gt; Using cache
  ---&gt; 9b527dfa45e8
 Step 3/4 : ENTRYPOINT ["/usr/bin/python3", "-m", "http.server"]
@@ -2174,7 +2174,7 @@ http:
         FROM registry.suse.com/suse/sle15
 
         RUN zypper ref -s
-        RUN zypper -n in vim
+        RUN zypper --non-interactive in vim
       </screen>
    <para>
     如果 Docker 主机计算机已在内部 RMT 服务器中注册，则该映像需要 RMT 使用的 SSL 证书：
@@ -2187,7 +2187,7 @@ http:
         RUN update-ca-certificates
 
         RUN zypper ref -s
-        RUN zypper -n in vim
+        RUN zypper --non-interactive in vim
       </screen>
   </sect2>
 
@@ -3152,7 +3152,7 @@ e57820093817  k8s.gcr.io/pause:3.2  399a120a09ff-infra suspicious_curie
    有三项 SUSE 容器支持的指导原则。
   </para>
 
-  <orderedlist numeration="arabic">
+  <orderedlist>
    <listitem>
     <para>
      容器映像生命周期遵循相关产品的生命周期。
