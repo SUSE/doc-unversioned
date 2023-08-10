@@ -320,8 +320,8 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       <para>
         &t.server; consists of a few components which are delivered as container images and meant
        to be deployed on a &k8s; cluster. A manual deployment of these components in a production
-       ready fashion requires &k8s; knowledge. Customers lacking such knowledge or wanting a quick start
-       with Trento, can use the Trento helm chart, which automates the deployment of all the required components
+       ready fashion requires &k8s; knowledge. Customers lacking such knowledge or who want to get started quickly
+       with Trento, can use the Trento Helm chart. This approach automates the deployment of all the required components
        on a single &k8s; cluster node. You can use the Trento helm chart in order to install Trento Server
        on a existing &k8s; cluster as follows:
       </para>
