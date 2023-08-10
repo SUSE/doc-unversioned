@@ -335,7 +335,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         </step>
         <step>
         <para>
-          Install the &t.server; pulling the Trento helm chart with Helm:
+          Install the &t.server; by pulling the Trento Helm chart with Helm:
         </para>
         <screen>helm upgrade \
    --install trento-server oci://registry.suse.com/trento/trento-server \
