@@ -4,11 +4,12 @@
  title="Profiling step"?>
 <article xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:base="art_security_pcidss.xml" xml:id="article-security-pcidss" version="5.0" xml:lang="zh-cn">
 
- <title><citetitle>支付卡行业数据安全标准 (PCI DSS) 指南</citetitle></title>
- <titleabbrev><citetitle>支付卡行业数据安全标准 (PCI DSS) 指南</citetitle></titleabbrev>
+ <title><citetitle>Payment Card Industry Data Security Standard (PCI DSS) Guide</citetitle></title>
+ <titleabbrev><citetitle>Payment Card Industry Data Security Standard (PCI DSS) Guide</citetitle></titleabbrev>
  <info>
   <productname><phrase os="article">SUSE Linux Enterprise Server</phrase></productname>
   <productnumber><phrase os="article">code stream 15</phrase></productnumber>
+  <productname role="abbrev"><phrase role="productname"/></productname>
   <date><?dbtimestamp format="Y"?> 年 <?dbtimestamp format="B" padding="0"?> 月 <?dbtimestamp format="d" padding="0"?> 日
 </date>
   <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
@@ -16,9 +17,9 @@
     <dm:url>https://bugzilla.suse.com/enter_bug.cgi</dm:url>
     <dm:component>Security</dm:component>
     <dm:product>Documentation</dm:product>
-    <dm:assignee>cschroder@suse.com</dm:assignee>
+    <dm:assignee>taroth@suse.com</dm:assignee>
    </dm:bugtracker>
-   
+   <dm:editurl>https://github.com/SUSE/doc-unversioned/tree/main/pcidss/xml/</dm:editurl>
    <dm:translation>yes</dm:translation>
   </dm:docmanager>
 
@@ -335,7 +336,7 @@
      在安装 <phrase os="article">SUSE Linux Enterprise Server</phrase> 期间，管理员已设置一般系统口令。该设置还会使用口令检查器 (<command>cracklib</command>) 根据某个字典来识别输入的弱口令。这意味着，标准配置已包含客户为大多数服务定义的安全选项。
     </para>
     <para>
-     有关操作系统安全性的详细信息，请参见<phrase os="article"><citetitle><phrase os="article">《SUSE Linux Enterprise Server</phrase> 安全指南</citetitle>》</phrase>。
+     有关操作系统安全性的详细信息，请参见 <phrase os="article"><citetitle><phrase os="article">SUSE Linux Enterprise Server</phrase> Security Guide</citetitle>。</phrase>
     </para>
     <variablelist>
      <varlistentry>
@@ -381,7 +382,7 @@
         </listitem>
         <listitem>
          <para>
-          感叹号 (<literal>! </literal>) 表示已锁定的帐户，可能会独行显示，也可能显示在口令哈希的前面。
+          感叹号 (<literal>!</literal>) 表示已锁定的帐户，可能会独行显示，也可能显示在口令哈希的前面。
          </para>
         </listitem>
        </itemizedlist>
@@ -410,7 +411,7 @@
         </listitem>
        </orderedlist>
        <para>
-        由于未明确规定 PCI DSS 要求，安全强化标准与具体要求之间没有直接的关系。不过，其他的一些安全强化资源也能帮助您遵循这些规范，其中包括<phrase os="article"><citetitle><phrase os="article">《SUSE Linux Enterprise Server</phrase> 安全指南</citetitle>》</phrase>。
+        由于未明确规定 PCI DSS 要求，安全强化标准与具体要求之间没有直接的关系。不过，其他安全强化资源也可为符合这些规范提供帮助，其中包括 <phrase os="article"><citetitle><phrase os="article">SUSE Linux Enterprise Server</phrase> Security Guide</citetitle>。</phrase>
        </para>
       </listitem>
      </varlistentry>
@@ -431,12 +432,14 @@
        <itemizedlist>
         <listitem>
          <para>
-          有关虚拟化的信息，请参见《<phrase os="article"><citetitle><phrase os="article">SUSE Linux Enterprise Server</phrase> 虚拟化指南</citetitle></phrase>》。
+          有关虚拟化的信息，请参见<phrase os="article"><citetitle><phrase os="article">SUSE Linux Enterprise Server</phrase> Virtualization
+          Guide</citetitle></phrase>。
          </para>
         </listitem>
         <listitem>
          <para>
-          有关容器化的信息，请参见《<phrase os="article"><citetitle><phrase os="article">SUSE Linux Enterprise Server</phrase> Docker Open Source Engine Guide</citetitle></phrase>》（SUSE Linux Enterprise Server Docker 开源引擎指南）。
+          有关容器化的信息，请参见<phrase os="article"><citetitle><phrase os="article">SUSE Linux Enterprise Server</phrase> Docker Open Source Engine
+          Guide</citetitle></phrase>。
          </para>
         </listitem>
        </itemizedlist>
@@ -484,12 +487,14 @@
        <itemizedlist>
         <listitem>
          <para>
-          有关 SELinux 的信息，请参见<phrase os="article"><citetitle><phrase os="article">《SUSE Linux Enterprise Server</phrase> 安全指南》中的“配置 SELinux</citetitle>”一章</phrase>。
+          有关 SELinux 的信息，请参见 <phrase os="article"><citetitle><phrase os="article">SUSE Linux Enterprise Server</phrase> Security Guide,
+          Chapter Configuring SELinux</citetitle>。</phrase>
          </para>
         </listitem>
         <listitem>
          <para>
-          有关 <phrase>AppArmor</phrase> 的信息，请参见<phrase os="article"><citetitle><phrase os="article">《SUSE Linux Enterprise Server</phrase> 安全指南》中的“通过 <phrase>AppArmor</phrase></citetitle> 限制特权”部分</phrase>。
+          有关 <phrase>AppArmor</phrase> 的信息，请参见 <phrase os="article"><citetitle><phrase os="article">SUSE Linux Enterprise Server</phrase> Security Guide,
+          Part Confining Privileges with <phrase>AppArmor</phrase></citetitle>。</phrase>
          </para>
         </listitem>
        </itemizedlist>
@@ -511,7 +516,7 @@
        </para>
        <screen>install floppy /bin/true</screen>
        <para>
-        <literal>floppy</literal> 模块通常是在初始 RAM 磁盘执行期间装载的。因此，请使用 <command>dracut</command> 将此项配置更改传播到 <filename>initrd</filename> 文件（请将 <replaceable>NAME</replaceable>替换为当前 initrd 的名称，将 <replaceable>KERNELVERSION</replaceable> 替换为当前运行的内核）。
+        <literal>floppy</literal> 模块通常是在初始 RAM 磁盘执行期间装载的。因此，请使用 <command>dracut</command> 将此项配置更改传播到 <filename>initrd</filename> 文件（请将 <replaceable>NAME</replaceable> 替换为当前 initrd 的名称，将 <replaceable>KERNELVERSION</replaceable> 替换为当前运行的内核）。
        </para>
        <screen><prompt>&gt; </prompt><command>sudo</command> <command>/usr/bin/dracut --logfile /var/log/YaST2/mkinitrd.log --force /boot/$initrd-<replaceable>NAME</replaceable> $<replaceable>KERNELVERSION</replaceable></command></screen>
        <para>
@@ -665,10 +670,12 @@
        软件包管理器 Zypper 是 <phrase os="article">SUSE Linux Enterprise Server</phrase> 的一个强大工具。除其他众多功能外，它还能解析软件包、产品、软件集和补丁的依赖关系，具有一项锁定机制用于防止安装软件包，并提供了一个完整的更新堆栈，用于确保系统处于最新状态并使其能够防范已知安全问题。
       </para>
       <para>
-       <command>zypper</command> 是所有 <phrase os="article">SUSE Linux Enterprise Server</phrase> 安装的组成部分，当系统注册之后便可直接访问更新软件源。
+       <command>zypper</command> 是所有 <phrase os="article">SUSE Linux Enterprise Server</phrase> 安装的组成部分，当系统注册之后便可直接访问更新储存库。
       </para>
       <para>
-       有关 Zypper 的信息，请参见<phrase os="article"><citetitle><phrase os="article">《SUSE Linux Enterprise Server</phrase> 管理指南》的“使用命令行工具管理软件”一章中的“使用 Zypper”一节</citetitle></phrase>。
+       有关 Zypper 的信息，请参见 <phrase os="article"><citetitle><phrase os="article">SUSE Linux Enterprise Server</phrase> Administration Guide,
+       Chapter Managing Software with Command Line Tools, Section Using
+       Zypper</citetitle>。</phrase>
       </para>
      </listitem>
      <listitem>
@@ -676,7 +683,8 @@
        SUSE 提供了 SUSE Manager 用于进行系统管理，该程序提供了有效的方法确保系统处于最新状态。它提供 <phrase os="article">SUSE Linux Enterprise Server</phrase> 和 Red Hat Enterprise Linux 客户端系统的无缝管理。在大型系统环境中，当您需要检查每个系统的当前更新状态以及需要应对已知安全问题时，这一点极为有用。
       </para>
       <para>
-       有关 SUSE Manager 的信息，请参见 <link xlink:href="https://documentation.suse.com/suma/">SUSE Manager 文档页面</link>。
+       有关 SUSE Manager 的信息，请参见 <link xlink:href="https://documentation.suse.com/suma/">SUSE Manager
+       documentation page</link>。
       </para>
      </listitem>
     </itemizedlist>
@@ -726,7 +734,9 @@
         要自动执行更新，可以使用所有 Zypper 子命令都支持的 <option>--non-interactive</option> 参数。
        </para>
       <para>
-       有关 Zypper 的详细信息，请参见<phrase os="article"><citetitle><phrase os="article">《SUSE Linux Enterprise Server</phrase> 管理指南》的“使用命令行工具管理软件”一章中的“使用 Zypper”一节</citetitle></phrase>。
+       有关 Zypper 的详细信息，请参见 <phrase os="article"><citetitle><phrase os="article">SUSE Linux Enterprise Server</phrase> Administration Guide,
+       Chapter Managing Software with Command Line Tools, Section Using
+       Zypper</citetitle>。</phrase>
       </para>
       </listitem>
      </varlistentry>
@@ -743,7 +753,8 @@
        可以使用传统的 Unix 权限设置通过特定的用户和用户组来控制访问。
       </para>
       <para>
-       有关管理权限的信息，请参见<phrase os="article"><citetitle><phrase os="article">《SUSE Linux Enterprise Server</phrase> 安全指南》中的“Linux 中的访问控制列表”一章</citetitle></phrase>。
+       有关管理权限的信息，请参见 <phrase os="article"><citetitle><phrase os="article">SUSE Linux Enterprise Server</phrase> Security Guide,
+       Chapter Access Control Lists in Linux</citetitle>。</phrase>
       </para>
      </listitem>
      <listitem>
@@ -753,12 +764,14 @@
       <itemizedlist>
        <listitem>
         <para>
-         有关 SELinux 的信息，请参见<phrase os="article"><citetitle><phrase os="article">《SUSE Linux Enterprise Server</phrase> 安全指南》中的“配置 SELinux</citetitle>”一章</phrase>。
+         有关 SELinux 的信息，请参见 <phrase os="article"><citetitle><phrase os="article">SUSE Linux Enterprise Server</phrase> Security Guide,
+         Chapter Configuring SELinux</citetitle>。</phrase>
         </para>
        </listitem>
        <listitem>
         <para>
-         有关 <phrase>AppArmor</phrase> 的信息，请参见<phrase os="article"><citetitle><phrase os="article">《SUSE Linux Enterprise Server</phrase> 安全指南》中的“通过 <phrase>AppArmor</phrase></citetitle> 限制特权”部分</phrase>。
+         有关 <phrase>AppArmor</phrase> 的信息，请参见 <phrase os="article"><citetitle><phrase os="article">SUSE Linux Enterprise Server</phrase> Security Guide,
+         Part Confining Privileges with <phrase>AppArmor</phrase></citetitle>。</phrase>
         </para>
        </listitem>
       </itemizedlist>
@@ -804,10 +817,10 @@ other::r--
         标准 Unix 权限包括所谓的粘滞位。这允许使用比正在执行特定程序的用户更高的特权来执行这些程序。此功能最典型的示例是 <command>passwd</command> 工具，它需要修改 <filename>/etc/shadow</filename> 才能更改用户口令。
        </para>
        <para>
-        要以更循序渐进的方式显式允许对二进制文件的特定操作或行为，请使用扩展功能。一个默认使用扩展功能的命令的示例是 <command>ping</command>（包含在软件包 <package>iputils</package>).
+        要以更循序渐进的方式显式允许对二进制文件的特定操作或行为，请使用扩展功能。一个默认使用扩展功能的示例命令是 <command>ping</command>（包含在软件包 <package>iputils</package> 中）。
        </para>
        <para>
-        <command>ping</command> 通过网卡发送 ICMP IP 包。为此，它需要 <literal>CAP_NET_RAW</literal> 功能有效且受到允许 (<literal>+ep</literal>)：
+        <command>ping</command> 通过网卡发送 ICMP IP 包。为此，它需要将 <literal>CAP_NET_RAW</literal> 功能设置为“有效且允许”(<literal>+ep</literal>)：
        </para>
 <screen>
 <prompt>&gt; </prompt><command>sudo</command> <command>getcap /usr/bin/ping</command>
@@ -817,7 +830,8 @@ other::r--
         可以使用可插入身份验证模块 (PAM) 来管理系统的登录访问控制。<phrase os="article">SUSE Linux Enterprise Server</phrase> 中提供了多个模块，允许记录登录时间、多个身份验证机制以及中心数据库（例如 NIS、LDAP 或 Active Directory）等设置。
        </para>
       <para>
-       有关管理权限的详细信息，请参见<phrase os="article"><citetitle><phrase os="article">《SUSE Linux Enterprise Server</phrase> 安全指南》中的“Linux 中的访问控制列表”一章</citetitle></phrase>。
+       有关管理权限的详细信息，请参见 <phrase os="article"><citetitle><phrase os="article">SUSE Linux Enterprise Server</phrase> Security Guide,
+       Chapter Access Control Lists in Linux</citetitle>。</phrase>
       </para>
       </listitem>
      </varlistentry>
@@ -829,7 +843,7 @@ other::r--
      理想情况下，应使用包含用户信息的中心数据库以及唯一标识符 (UID) 来授予或拒绝对特定系统组件的访问。这样就可以轻松为管理员授予对一组服务器的特殊访问权限，或者为数据库工程师授予对特定 DBMS 系统的权限。
     </para>
     <para>
-     在独立服务器上，唯一标识符通过标准 Linux 用户和组 ID 来管理。<filename>/etc/passwd</filename> 和 <filename>/etc/group</filename> 中列出了这些 ID。
+     在独立服务器上，唯一标识符通过标准 Linux 用户和组 ID 来管理。这些 ID 列在 <filename>/etc/passwd</filename> 和 <filename>/etc/group</filename> 中。
     </para>
     <variablelist>
      <varlistentry xml:id="vle-pcidss-disable-user">
@@ -897,7 +911,8 @@ other::r--
           第三方一次性口令 (OTP) 产品通常也有一个 Linux PAM 模块。
          </para>
          <para>
-          有关 PAM 的信息，请参见<phrase os="article"><citetitle><phrase os="article">《SUSE Linux Enterprise Server</phrase> 安全指南》中的“通过 PAM 进行身份验证”一章</citetitle></phrase>。
+          有关 PAM 的信息，请参见 <phrase os="article"><citetitle><phrase os="article">SUSE Linux Enterprise Server</phrase> Security Guide,
+          Chapter Authentication with PAM</citetitle>。</phrase>
          </para>
         </listitem>
         <listitem>
@@ -938,7 +953,8 @@ other::r--
      使用同步时间参考可以更轻松地关联所记录的日志文件中的事件。此参考可以包括中心系统日志服务器收集的一般系统日志项，或 <systemitem class="daemon">audit</systemitem> 守护程序生成的内核审计消息。
     </para>
     <para>
-     有关审计的信息，请参见<phrase os="article"><citetitle><phrase os="article">《SUSE Linux Enterprise Server</phrase> 安全指南》中的“<citetitle>Linux 审计框架”部分</citetitle></citetitle></phrase>。
+     有关审计的信息，请参见 <phrase os="article"><citetitle><phrase os="article">SUSE Linux Enterprise Server</phrase>, Security Guide,
+     Part <citetitle>The Linux Audit Framework</citetitle></citetitle>。</phrase>
     </para>
     <para>
      可以通过定义集中储存的审计规则来满足本节中所述的所有审计要求。
@@ -953,7 +969,8 @@ other::r--
      <phrase os="article">SUSE Linux Enterprise Server</phrase> 随附了高级入侵检测环境 (AIDE)，用于跟踪系统完整性。AIDE 会创建所有相关操作系统文件的哈希值数据库。初始化后，可以使用它来校验以前保存的所有文件的完整性。要采用 AIDE，最好定期创建数据库快照并将其保存到一个中心系统，以便在此系统上评估可能发生的修改。
     </para>
     <para>
-     有关 AIDE 的详细信息，请参见<phrase os="article"><citetitle><phrase os="article">《SUSE Linux Enterprise Server</phrase> 安全指南》中的“使用 AIDE 进行入侵检测”一章</citetitle></phrase>。
+     有关 AIDE 的详细信息，请参见 <phrase os="article"><citetitle><phrase os="article">SUSE Linux Enterprise Server</phrase> Security Guide,
+     Chapter Intrusion Detection with AIDE</citetitle>。</phrase>
     </para>
    </sect2>
    <sect2 xml:id="sec-pcidss-requirement-12">
@@ -966,4 +983,6 @@ other::r--
     </para>
    </sect2>
  </sect1>
+ <xi:include href="common_copyright_quick.xml"/>
+ <xi:include href="common_license_gfdl1.2.xml"/>
 </article>
