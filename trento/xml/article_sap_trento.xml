@@ -2328,7 +2328,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
        <para>To use it, proceed as follows: </para>
         <procedure>
           <step>
-            <para>Download the Trento Support Plugin script:</para>
+            <para>Download the Trento support plugin script:</para>
             <screen>&prompt.root;<command>wget</command> https://raw.githubusercontent.com/trento-project/helm-charts/main/scripts/trento-support.sh</screen>
           </step>
           <step>
