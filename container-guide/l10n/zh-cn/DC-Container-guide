@@ -1,0 +1,4 @@
+MAIN="SLES-container_bigfile.xml"
+## stylesheet location
+STYLEROOT="/usr/share/xml/docbook/stylesheet/suse2022-ns"
+FALLBACK_STYLEROOT="/usr/share/xml/docbook/stylesheet/suse-ns"
