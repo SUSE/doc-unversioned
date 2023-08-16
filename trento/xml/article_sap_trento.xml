@@ -818,8 +818,6 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
           of the different vendors to provide more context when necessary.
           Close the view with the <keycap function="escape"/> key or click outside of the view.
         </para>
-      </step>
-      <step>
         <para>
          For each not-met expectation, there will be a detailed view providing information about it: what facts were gathered,
          what values were expected and what was the result of the evaluation. This will help users understand better why a
