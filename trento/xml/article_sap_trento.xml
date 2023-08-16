@@ -1408,7 +1408,7 @@ The health boxes in the dashboard are clickable. By clicking on one particular b
       <para>When the user clicks on the cleanup button, a box will open asking for confirmation.
        If the user grants it, all the components discovered by the agent in that particular host, including the host
        itself and other components that might depend on the ones running on the host, will be removed from the console.
-       For example, if the user cleans up the host where the Primary Application Server of an SAP System is deregistered,
+       For example, if the user cleans up the host where the primary application server of an SAP System is registered,
        the entire SAP System will be removed from the console.
       </para>
     </section>
