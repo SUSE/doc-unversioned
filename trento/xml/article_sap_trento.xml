@@ -1424,8 +1424,8 @@ The health boxes in the dashboard are clickable. By clicking on one particular b
        the entire SAP System will be removed from the console.
       </para>
     </section>
-     
-   
+
+
     <section xml:id="sec-trento-manage-tags">
       <title>Managing tags</title>
       <para>
@@ -2514,8 +2514,6 @@ trento-server-rabbitmq-0</screen>
     </section>
   </section>
 
-
-
   <section xml:id="sec-trento-compatibility-matrix">
     <title>Compatibility matrix between &t.server; and &t.agent;s</title>
     <para></para>
@@ -2601,6 +2599,229 @@ trento-server-rabbitmq-0</screen>
         </tbody>
       </tgroup>
     </table>
+  </section>
+
+
+  <section xml:id="sec-trento-version-history">
+    <title>Highlights of Trento versions</title>
+    <para>
+      The following lists show the most important user-facing features in the different versions
+     of Trento. For a more detailed information about the changes included in each new version, visit
+      the GitHub project at <link xlink:href="https://github.com/trento-project"/>. Particularly:
+    </para>
+   <itemizedlist>
+      <listitem>
+        <para>For changes in the Trento Helm Chart, visit <link xlink:href="https://github.com/trento-project/helm-charts/releases"/>.</para>
+      </listitem>
+      <listitem>
+        <para>For changes in the &t.server; web component, visit <link xlink:href="https://github.com/trento-project/web/releases"/>.</para>
+      </listitem>
+          <listitem>
+        <para>For changes in the &t.server; old checks engine component (runner), visit <link xlink:href="https://github.com/trento-project/runner/releases"/>.</para>
+      </listitem>
+      <listitem>
+        <para>For changes in the &t.server; new checks engine component (wanda), visit <link xlink:href="https://github.com/trento-project/wanda/releases"/>.</para>
+      </listitem>
+      <listitem>
+        <para>For changes in the &t.agent;, visit <link xlink:href="https://github.com/trento-project/agent/releases"/>.</para>
+      </listitem>
+    </itemizedlist>
+    <!-- HINT: The list should be sorted by versions, having the most recent version at the
+               first item.
+    -->
+    <variablelist>
+      <varlistentry>
+        <term>Version 2.1.0 (released on 2023/08/02)</term>
+        <listitem>
+          <para> Consisting of Helm chart 2.1.0, web 2.1.0, checks engine
+            (wanda) 1.1.0 and agent 2.1.0.</para>
+          <itemizedlist>
+            <listitem>
+              <para>ASCS/ERS cluster discovery, from single-sid, two-node
+                scenarios to multi-sid, multi-node setups. The discovery covers
+                both versions of the enqueue server, ENSA1 and ENSA2, and both
+                scenarios with resource managed instance filesystems and simple
+                mount setups.</para>
+            </listitem>
+            <listitem>
+              <para>Host clean-up capabilities, allowing users to get rid of
+                hosts that are no longer part of their SAP environment.</para>
+            </listitem>
+            <listitem>
+              <para>New checks results view that leverages the potential of the
+                new checks engine (wanda) and provides the user with insightful
+                information about the check execution.</para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Version 2.0.0 (released on 2023/04/26)</term>
+        <listitem>
+          <para>Consisting of Helm chart 2.0.0, web 2.0.0, cchecks engine
+            (wanda) 1.0.0 and agent 2.0.0.</para>
+          <itemizedlist>
+            <listitem>
+              <para>A brand-new safer, faster, ligher SSH-less configuration
+                checks engine (wanda) which not only opens the door to
+                configuration checks for other HA scenarios (ASCS/ER, HANA
+                scaleup cost optimized, &hana; scale-out) and other targes in
+                the environment (hosts, &hana; databases, &netweaver;
+                instances), but also will allow customization of existing checks
+                and addtion of custom checks.</para>
+            </listitem>
+            <listitem>
+              <para>Addition of VMware to the list of known platforms.</para>
+            </listitem>
+            <listitem>
+              <para>Versioned external APIs for both the web and the checks
+                engine (wanda) components. The full list of available APIs can
+                be found at <link
+                  xlink:href="https://www.trento-project.io/web/swaggerui/" />
+                and <link
+                  xlink:href="https://www.trento-project.io/wanda/swaggerui/" />
+                respectiverly.</para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Version 1.2.0 (released on 2022/11/04)</term>
+        <listitem>
+          <para> Consisting of Helm chart 1.2.0, web 1.2.0, runner 1.1.0 and
+            agent 1.1.0.</para>
+          <itemizedlist>
+            <listitem>
+              <para>Configration checks for HANA scale-up peformance optimized
+                two-node clusters on on-premise bare metal platforms, including
+                KVM and Nutanix.</para>
+            </listitem>
+            <listitem>
+              <para>A dynamic dashboard that allows you to determine, at a
+                glance, the overall health status of your SAP
+                environment.</para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Version 1.1.0, released on 2022/07/14</term>
+        <listitem>
+          <para> Consisting of Helm chart 1.1.0, web 1.1.0, runner 1.0.1 and
+            agent 1.1.0.</para>
+          <itemizedlist>
+            <listitem>
+              <para>Fix for major bug in the runner component that prevented the
+                web component to load properly.</para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Version 1.0.0 (general availability), released on
+          2022/04/29</term>
+        <listitem>
+          <para>New checks results view that leverages the potential of the new
+            checks engine (wanda) and provides the user with insightful
+            information about the check execution.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Version 2.0.0, released on 2023/04/26</term>
+        <listitem>
+          <para> Consisting of Helm chart 2.0.0, web 2.0.0, cchecks engine
+            (wanda) 1.0.0 and agent 2.0.0.</para>
+          <itemizedlist>
+            <listitem>
+              <para>A brand-new safer, faster, ligher SSH-less configuration
+                checks engine (wanda) which not only opens the door to
+                configuration checks for other HA scenarios (ASCS/ER, HANA
+                scaleup cost optimized, &hana; scale-out) and other targes in
+                the environment (hosts, &hana; databases, &netweaver;
+                instances), but also will allow customization of existing checks
+                and addtion of custom checks.</para>
+            </listitem>
+            <listitem>
+              <para>Addition of VMware to the list of known platforms.</para>
+            </listitem>
+            <listitem>
+              <para>Versioned external APIs for both the web and the checks
+                engine (wanda) components. The full list of available APIs can
+                be found at <link
+                  xlink:href="https://www.trento-project.io/web/swaggerui/" />
+                and <link
+                  xlink:href="https://www.trento-project.io/wanda/swaggerui/" />
+                respectiverly.</para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Version 1.2.0, released on 2022/11/04</term>
+        <listitem>
+          <para> Consisting of Helm chart 1.2.0, web 1.2.0, runner 1.1.0 and
+            agent 1.1.0. </para>
+          <itemizedlist>
+            <listitem>
+              <para>Configration checks for HANA scale-up peformance optimized
+                two-node clusters on on-premise bare metal platforms, including
+                KVM and Nutanix.</para>
+            </listitem>
+            <listitem>
+              <para>A dynamic dashboard that allows you to determine, at a
+                glance, the overall health status of your SAP
+                environment.</para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Version 1.1.0, released on 2022/07/14</term>
+        <listitem>
+          <para> Consisting of Helm chart 1.1.0, web 1.1.0, runner 1.0.1 and
+            agent 1.1.0. </para>
+          <itemizedlist>
+            <listitem>
+              <para>Fix for major bug in the runner component that prevented the
+                web component to load properly.</para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Version 1.0.0 (general availability), released on
+          2022/04/29</term>
+        <listitem>
+          <para> Consisting of Helm chart 1.0.0, web 1.0.0, runner 1.0.0 and
+            agent 1.0.0. </para>
+          <itemizedlist>
+            <listitem>
+              <para>Clean, simple web console designed with SAP basis in mind.
+                It reacts in real time to changes happening in the backend
+                environment thanks to the event-driven technology behind
+                it.</para>
+            </listitem>
+            <listitem>
+              <para>Automated discovery of SAP systems, SAP instances and &hana;
+                scale-up clusters.</para>
+            </listitem>
+            <listitem>
+              <para>Configuration checks for &hana; scale-up performance
+                optimized two-node clusters on Azure, AWS and GCP.</para>
+            </listitem>
+            <listitem>
+              <para>Basic integration with Grafana and Prometheus to provide
+                graphic dashboards about CPU and memory utilization in each
+                discovered host.</para>
+            </listitem>
+            <listitem>
+              <para>Basis alert emails for critical events happening in the
+                monitored environment.</para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+    </variablelist>
   </section>
 
   <section xml:id="sec-trento-more-information">
