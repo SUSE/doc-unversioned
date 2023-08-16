@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file originates from the project https://github.com/openSUSE/doc-kit -->
+<!-- This file can be edited downstream. -->
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook51-profile.xsl"
+ type="text/xml"
+ title="Profiling step"?>
+<!DOCTYPE article
+[
+  <!ENTITY % entities SYSTEM "../common/generic-entities.ent">
+    %entities;
+]>
+<article xml:id="container-basics" xml:lang="en"
+ role="concept"
+ xmlns="http://docbook.org/ns/docbook" version="5.2"
+ xmlns:its="http://www.w3.org/2005/11/its"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+  <info>
+    <title>Introduction to Linux containers</title>
+  </info>
+  <para>
+    Linux containers offer a lightweight virtualization method to run multiple
+    isolated virtual environments simultaneously on a single host. This
+    technology is based on the Linux kernel's namespaces for process isolation
+    and kernel control groups (cgroups) for resource (CPU, memory, disk I/O,
+    network, etc.) management.
+  </para>
+  <para>
+    Unlike &xen; and &kvm;, where a full guest operating system is executed
+    through a virtualization layer, Linux containers share and directly use the
+    host OS kernel.
+  </para>
+  <variablelist>
+    <varlistentry>
+      <term>Advantages of using containers</term>
+      <listitem>
+        <itemizedlist>
+          <listitem>
+            <para>
+              <emphasis role="strong">Size</emphasis>: Container images should
+              only include the content needed to run an application, whereas a
+              virtual machine includes an entire operating system,
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis role="strong">Performance</emphasis>: Containers
+              provide near-native performance, as the kernel overhead is lower
+              compared to virtualization and emulation.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis role="strong">Security</emphasis>: Containers make it
+              possible to isolate applications into self-contained units,
+              separated from the rest of the host system.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis role="strong">Resources management</emphasis>: It is
+              possible to granularly control CPU, memory, disk I/O, network
+              interfaces, etc. inside containers (via cgroups).
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis role="strong">Flexibility</emphasis>: Container images
+              hold all necessary libraries, dependencies, and files needed to
+              run an application, thus can be easily developed and deployed on
+              multiple hosts.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>Limitations of containers</term>
+      <listitem>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Containers share the host system's kernel, so the containers have
+              to use the specific kernel version provided by the host.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Only Linux-based applications can be containerized on a Linux
+              host.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              A container encapsulates binaries for a specific architecture
+              (&x86-64; or &aarch64; for instance). So a container made for
+              &x86-64; only runs on a &x86-64; system host without the use of
+              emulation.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Containers in themselves are no more secure than executing
+              binaries outside of a container, and the overall security of
+              containers depends on the host system. While containerized
+              applications can be secured through AppArmor or SELinux profiles,
+              container security requires putting in place tools and policies
+              that ensure security of the container infrastructure and
+              applications.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </listitem>
+    </varlistentry>
+  </variablelist>
+  <section xml:id="sec-concepts-workflow">
+    <title>Key concepts and introduction to &podman;</title>
+    <para>
+      Although &deng; is a popular choice for working with images and
+      containers, &podman; provides a drop-in replacement for Docker that
+      offers several advantages. While <!--XREF <xref linkend="cha-podman-overview"/> -->
+      provides more information on &podman;, this chapter offers a quick
+      introduction to key concepts and a basic procedure for creating a
+      container image and using &podman; to run a container.
+    </para>
+    <para>
+      The basic &podman; workflow is as follows:
+    </para>
+    <informalfigure>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="container-workflow.svg" width="80.0%"/>
+        </imageobject>
+        <textobject><phrase>image</phrase>
+        </textobject>
+      </mediaobject>
+    </informalfigure>
+    <para>
+      Running a container, either on a local machine or in a cloud service,
+      normally involves the following steps:
+    </para>
+    <orderedlist>
+      <listitem>
+        <para>
+          Fetch a base image by pulling it from a registry to your local
+          machine.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Create a <literal>Dockerfile</literal> and use it to build a custom
+          image on top of the base image.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Use the created image to start one or more containers.
+        </para>
+      </listitem>
+    </orderedlist>
+    <para>
+      To run a container, you need an image. An image includes all dependencies
+      needed to run the application. For example, the &bcia;-Base image
+      contains the &slea; distribution with a minimal package selection.
+    </para>
+    <para>
+      While it is possible to create an image from scratch, few applications
+      would work in such an empty environment. Thus, using an existing base
+      image is more practical in most situations. A base image has no parent,
+      meaning it is not based on another image.
+    </para>
+    <para>
+      Although you can use a base image for running containers, the main
+      purpose of base images is to serve as foundations for creating custom
+      images that can run containers with specific applications, servers,
+      services, and so on.
+    </para>
+    <para>
+      Both base and custom images are available through a repository of images
+      called a registry. Unless a registry is explicitly specified, &podman;
+      pulls images from the
+      <link xlink:href="https://registry.opensuse.org">openSUSE</link> and
+      <link xlink:href="https://docker.io">Docker Hub</link> registry. While
+      you can fetch a base image manually, &podman; can do that automatically
+      when building a custom image.
+    </para>
+    <para>
+      To build a custom image, you must create a special file called a
+      <filename>Containerfile</filename> or <filename>Dockerfile</filename>
+      containing building instructions. For example, a
+      <filename>Dockerfile</filename> can contain instructions to update the
+      system software, install the desired application, open specific network
+      ports, run commands, etc.
+    </para>
+    <informalfigure>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="container-image-layers.svg" width="80.0%"/>
+        </imageobject>
+        <textobject><phrase>image</phrase>
+        </textobject>
+      </mediaobject>
+    </informalfigure>
+    <para>
+      You can build images not only from base images, but also on top of custom
+      images. So you can have an image consisting of multiple layers. Please
+      refer to <xref linkend="container-build-images"/> for more information.
+    </para>
+  </section>
+</article>

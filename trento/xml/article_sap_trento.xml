@@ -175,21 +175,22 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
           </formalpara>
           <itemizedlist>
             <listitem>
-              <para> If you already use a CNCF-certified &k8s;,
+              <para> If you already use a CNCF-certified &k8s; cluster,
                 you can run the &t.server; in it. </para>
             </listitem>
             <listitem>
-              <para> If you have no &k8s; and want enterprise
+              <para> If you have no &k8s; cluster and want enterprise
                 support, &suse; recommends &suse; Rancher with
                 &rancher.k8s.engine; (RKE) version 1 or
                 2. </para>
             </listitem>
             <listitem>
-              <para> If you do not have &k8s; enterprise solution and you would
-                like to test Trento, an easy option could be &suse;'s K3s
-                project which provides a single node &k8s; cluster. Note, this
-                is not a recommended solution for a stable Trento production,
-                but a viable way to get started. </para>
+              <para> If you do not have a &k8s; enterprise solution and you would
+                like to test &trentopremium;, &suse; Rancher's K3s could be an easy
+                way to get started. Keep in mind that K3s default installation process 
+                deploys a single node &k8s; cluster, which is not a recommended 
+                setup for a stable Trento production instance.
+               </para>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -215,9 +216,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       </para>
       <para> While the &t.server; supports various usage scenarios,
         depending on the existing infrastructure, it is designed to be
-        cloud native and OS agnostic. As such, the default installation
-        method provisions a minimal, single node, K3S &k8s; cluster for
-        running its components in Linux containers. The &t.server; can
+        cloud native and OS agnostic. It can
         be installed on the following services: </para>
       <!--
         toms 2021-12-06: taken from "Draft - Various Tidbits regarding Productization"
@@ -234,6 +233,10 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
           <para>any other CNCF-certified &k8s; running on x86_64 architecture</para>
         </listitem>
       </itemizedlist>
+     <para> A proper, production ready installation of &t.server; requires &k8s;
+      knowledge. The Helm chart is meant to be used by customers lacking such knowledge
+      or who want to get started quickly. However, Helm chart delivers a basic deployment of the &t.server; with all the components running
+      on a single node of the cluster.</para>
     </section>
     <section xml:id="sec-trento-agent-requirements">
       <title>&t.agent; requirements</title>
@@ -246,27 +249,23 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       <title>Network requirements</title>
       <itemizedlist>
         <listitem>
-          <para> The Trento component running &k8s; has
-            network access to the &sap; Landscape. </para>
-        </listitem>
-        <listitem>
           <para>
             <remark>toms 2021-12-06: do we have UDP here too?</remark>
-            &t.server; must be reachable via HTTP (port TCP/80) or via HTTPS (port TCP/443) if SSL is enabled, from any &t.agent; host.
+            From any &t.agent; host, the web component of the &t.server; must be reachable via HTTP (port TCP/80) or via HTTPS (port TCP/443) if SSL is enabled.
           </para>
         </listitem>
         <listitem>
           <para>
-            &t.server; must be reachable via Advanced Message Queuing Protocol or AMQP (port TCP/5672), from any &t.agent; host.
+            From any &t.agent; host, the checks engine component of the &t.server;, called Wanda, must be reachable via Advanced Message Queuing Protocol or AMQP (port TCP/5672).
           </para>
         </listitem>
          <listitem>
           <para>
-            &t.server; must be able to reach the Node Exporter in the &t.agent; hosts (port TCP/9100).
+            The Prometheus component of the &t.server; must be able to reach the Node Exporter in the &t.agent; hosts (port TCP/9100).
           </para>
         </listitem>
         <listitem>
-          <para>The &sap; administrator also needs access to &t.server; via HTTP (port TCP/80) or via HTTPS (port TCP/443) if SSL is enabled. </para>
+          <para>The &sap; Basis administrator needs access to the web component of the &t.server; via HTTP (port TCP/80) or via HTTPS (port TCP/443) if SSL is enabled. </para>
         </listitem>
       </itemizedlist>
     </section>
@@ -277,13 +276,13 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         <listitem>
           <formalpara>
             <title>&t.server;</title>
-            <para>Access to &suse; registry for the deployment of &t.server; premium containers.</para>
+            <para>Access to &suse; public registry for the deployment of &t.server; premium containers.</para>
           </formalpara>
         </listitem>
         <listitem>
           <formalpara>
             <title>&t.agent;s</title>
-            <para>A registered &sles4sap; distribution.</para>
+            <para>A registered &sles4sap; 15 (SP1 or higher) distribution.</para>
           </formalpara>
         </listitem>
       </itemizedlist>
@@ -319,25 +318,34 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
     <section xml:id="sec-trento-install-trentoserver-on-existing-k8s-cluster">
       <title>Installing &t.server; on an existing &k8s; cluster</title>
       <para>
-        &t.server; is delivered as a Helm chart to facilitate the
-      installation process. If you already have a &k8s; cluster in place and
-      want to use it to run &t.server;, proceed as follows:
+        &t.server; consists of a few components which are delivered as container images and meant
+       to be deployed on a &k8s; cluster. A manual deployment of these components in a production
+       ready fashion requires &k8s; knowledge. Customers lacking such knowledge or who want to get started quickly
+       with Trento, can use the Trento Helm chart. This approach automates the deployment of all the required components
+       on a single &k8s; cluster node. You can use the Trento Helm chart in order to install &t.server;
+       on a existing &k8s; cluster as follows:
       </para>
       <procedure>
         <step>
           <para>Install Helm:</para>
           <screen>curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash</screen>
         </step>
+         <step>
+          <para>Connect Helm to the existing &k8s; cluster.</para>
+        </step>
         <step>
         <para>
-          Install the &t.server; Helm chart using Helm:
+          Install the &t.server; by pulling the Trento Helm chart with Helm:
         </para>
-        <screen>HELM_EXPERIMENTAL_OCI=1 helm upgrade \
+        <screen>helm upgrade \
    --install trento-server oci://registry.suse.com/trento/trento-server \
    --set trento-web.adminUser.password=<replaceable>ADMIN_PASSWORD</replaceable></screen>
        <para>
-          Note that the experimental flag is not needed as of Helm version 3.8.0.
+          When using a Helm version lower than 3.8.0, a experimental flag must be set before the helm command:
         </para>
+         <screen>HELM_EXPERIMENTAL_OCI=1 helm upgrade \
+   --install trento-server oci://registry.suse.com/trento/trento-server \
+   --set trento-web.adminUser.password=<replaceable>ADMIN_PASSWORD</replaceable></screen>
       </step>
         <step>
           <para> To verify that the &t.server; installation was
@@ -351,7 +359,8 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
     <section xml:id="sec-trento-install-trentoserver-on-k3s">
       <title>Installing &t.server; on K3s</title>
       <para> If you do not have a &k8s; cluster or have one but do not want to use
-        it for Trento, you can deploy a small VM (see <xref
+        it for Trento, &suse; Rancher's K3s provides you with an easy way to get started.
+       All you need is a small server or VM (see <xref
           linkend="sec-trento-server-requirements" /> for minimum requirements)
         and follow steps in <xref linkend="pro-trento-manually-installing" /> to
         get &t.server; up and running. </para>
@@ -359,7 +368,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
      <important>
       <title>Deploying Trento on K3s</title>
       <para>
-        &suse; does not recommend using Trento on K3s for production purposes.
+        The following procedure deploys &t.server; on a single-node K3s cluster. Such set up is not recommended for production purposes.
       </para>
     </important>
 
@@ -370,7 +379,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         </para>
       </step>
       <step xml:id="st-install-k3s">
-        <para>Install &k8s;:</para>
+        <para>Install K3s:</para>
         <stepalternatives>
           <step>
             <para>Installing as user &rootuser;</para>
@@ -387,25 +396,28 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         <screen>&prompt.root;curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash</screen>
       </step>
       <step>
-        <para>Export the <envar>KUBECONFIG</envar> environment variable for the
+        <para>Set the <envar>KUBECONFIG</envar> environment variable for the
           same user that installed K3s:
         </para>
         <screen>export KUBECONFIG=/etc/rancher/k3s/k3s.yaml</screen>
       </step>
       <step xml:id="st-deploy-k3s">
         <para>
-          With the same user that installed K3s, install the &t.server; Helm chart
+          With the same user that installed K3s, install &t.server; by pulling the Helm chart
           using Helm:
         </para>
-        <screen>HELM_EXPERIMENTAL_OCI=1 helm upgrade \
+        <screen>helm upgrade \
    --install trento-server oci://registry.suse.com/trento/trento-server \
    --set trento-web.adminUser.password=<replaceable>ADMIN_PASSWORD</replaceable></screen>
        <para>
-          Note that the experimental flag is not needed as of Helm version 3.8.0.
+          When using a Helm version lower than 3.8.0, a experimental flag must be set before the helm command:
         </para>
+         <screen>HELM_EXPERIMENTAL_OCI=1 helm upgrade \
+   --install trento-server oci://registry.suse.com/trento/trento-server \
+   --set trento-web.adminUser.password=<replaceable>ADMIN_PASSWORD</replaceable></screen>
       </step>
        <step>
-        <para> Monitor the creation and start-up of the Trento &k8s; pods and wait until they are all in running status:</para>
+        <para> Monitor the creation and start-up of the &t.server; pods and wait until they are all ready and running:</para>
         <screen>watch kubectl get pods</screen>
       </step>
        <step>
@@ -2164,61 +2176,35 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
 -->
   <section xml:id="sec-trento-updating-trentoserver">
     <title>Updating &t.server;</title>
-    <para> To update the &t.server;, do the following: </para>
-    <procedure>
-      <step>
-        <para> Ensure the &t.server; is running. </para>
-      </step>
-      <step>
-        <para>
-          Ensure that credentials for &kube; are set up correctly.
-          For example, if you installed K3s, export the <envar>KUBECONFIG</envar>
-          environment variable for the same user that performed the
-          installation:
-        </para>
-        <screen>export KUBECONFIG=/etc/rancher/k3s/k3s.yaml</screen>
-      </step>
-      <step>
-        <para>
-          With the same user, start the update of the &t.server; running the following command:
-        </para>
-        <screen>HELM_EXPERIMENTAL_OCI=1 helm upgrade \
+    <para> The procedure to update the &t.server; depends on how it was installed.
+     If it was installed manually, then it must be updated manually using the latest versions
+     of the container images available in the SUSE public registry. If it was installed using
+     Helm chart, it can be updated using the same Helm command as for the installation:</para>
+   <screen>helm upgrade \
+   --install trento-server oci://registry.suse.com/trento/trento-server \
+   --set trento-web.adminUser.password=<replaceable>ADMIN_PASSWORD</replaceable>
+        </screen>
+   <para>A few things to consider:</para>
+      <itemizedlist>
+        <listitem>
+          <para>Remember to set the helm experimental flag if you are using a version of Helm lower than 3.8.0.
+          </para>
+        </listitem>
+        <listitem>
+        <para>When updating from a Trento version lower than 2.0.0 to version 2.0.0 or higher, an additional flag
+    must be set in the Helm command:</para>
+   <screen>helm upgrade \
    --install trento-server oci://registry.suse.com/trento/trento-server \
    --set trento-web.adminUser.password=<replaceable>ADMIN_PASSWORD</replaceable> \
    --set rabbitmq.auth.erlangCookie=$(openssl rand -hex 16)
         </screen>
-        <para>
-          Note that the experimental flag is not needed as of Helm version 3.8.0.
-        </para>
-        <para>
-          If email alerting is enabled in the environment, then the update command
-          should include the corresponding options:
-        </para>
-        <screen>HELM_EXPERIMENTAL_OCI=1 helm upgrade \
-   --install trento-server oci://registry.suse.com/trento/trento-server \
-   --set trento-web.adminUser.password=<replaceable>ADMIN_PASSWORD</replaceable> \
-   --set rabbitmq.auth.erlangCookie=$(openssl rand -hex 16) \
-   --set trento-web.alerting.enabled=true \
-   --set trento-web.alerting.smtpServer=<replaceable>SMTP_SERVER</replaceable> \
-   --set trento-web.alerting.smtpPort=<replaceable>SMTP_PORT</replaceable> \
-   --set trento-web.alerting.smtpUser=<replaceable>SMTP_USER</replaceable> \
-   --set trento-web.alerting.smtpPassword=<replaceable>SMTP_PASSWORD</replaceable> \
-   --set trento-web.alerting.recipient=<replaceable>ALERTING_RECIPIENT</replaceable></screen>
-      </step>
-      <step>
-        <para>Watch the &t.server; processes until they are all in ready/running status:</para>
-        <screen>watch kubectl get pods</screen>
-      </step>
-      <step>
-        <para> Open the &t.web; URL
-          <uri>http://<replaceable>TRENTO_SERVER_HOSTNAME</replaceable></uri>.
-        </para>
-      </step>
-      <step>
-        <para> To check the new version, hover the mouse pointer over
-          the info button in the lower-left corner. </para>
-      </step>
-    </procedure>
+        </listitem>
+        <listitem>
+          <para> If email alerting has been enabled, then the corresponding <parameter>trento-web.alerting</parameter> parameters
+           should be set in the Helm command as well.
+          </para>
+        </listitem>
+      </itemizedlist>
   </section>
 
   <section xml:id="sec-trento-updating-trentoagent">
@@ -2236,7 +2222,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
       </step>
       <step>
         <para>
-          Install the package:
+          Install the new package:
         </para>
         <screen>&prompt.user;sudo zypper ref
 &prompt.user;sudo zypper install trento-agent</screen>
@@ -2267,9 +2253,9 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
       </step>
       <step>
         <para>
-          Restart the &t.agent;:
+          Start the &t.agent;:
         </para>
-        <screen>&prompt.user;sudo systemctl restart trento-agent</screen>
+        <screen>&prompt.user;sudo systemctl start trento-agent</screen>
       </step>
       <step>
         <para>Check the status of the &t.agent;:</para>
@@ -2286,7 +2272,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
 [...]</screen>
       </step>
       <step>
-        <para>Check the version on the &t.web; (URL
+        <para>Check the version in the <guimenu>Hosts</guimenu> overview of the &t.web; (URL
               <uri>http://<replaceable>TRENTO_SERVER_HOSTNAME</replaceable></uri>).</para>
       </step>
       <step>
@@ -2298,23 +2284,9 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
 
    <section xml:id="sec-trento-uninstall-trentoserver">
     <title>Uninstalling &t.server;</title>
-    <para> To uninstall &t.server;, perform the following steps:</para>
-    <procedure>
-      <step>
-        <para>
-          Ensure that credentials for &kube; are set up correctly.
-          For example, if you installed K3s, set the <envar>KUBECONFIG</envar>
-          environment variable for the user that performed the installation:
-        </para>
-        <screen>export KUBECONFIG=/etc/rancher/k3s/k3s.yaml</screen>
-      </step>
-      <step>
-        <para>
-          With the same user, run the following command:
-        </para>
-        <screen>helm uninstall trento-server</screen>
-      </step>
-    </procedure>
+    <para> If &t.server; was deployed manually, then you need to uninstall it manually.
+     If  &t.server; was deployed using the Helm chart, use Helm to uninstall it as follows:</para>
+     <screen>helm uninstall trento-server</screen>
   </section>
 
   <section xml:id="sec-trento-uninstall-trentoagent">
@@ -2355,7 +2327,8 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
     <title>Reporting a Problem</title>
     <para>
       Any &suse; customer, with a registered &sles4sap;&nbsp;15 (SP1 or higher) distribution,
-     experiencing an issue with &trentopremium;, can report the problem in the &suse; Customer Center under
+     experiencing an issue with &trentopremium;, can report the problem either directly in the &scc;
+     or through the corresponding vendor, depending on their licensing model. Any how, the problem has to reported under
      &sles4sap;&nbsp;15 and component trento. 
     </para>
       <para>
@@ -2403,15 +2376,25 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
 
       <section>
         <title>Trento Support Plugin</title>
-        <para> The Trento Support Plugin automates the collection of relevant
-          runtime information. To use it, proceed as follows: </para>
+        <para> The Trento support plugin automates the collection of logs and relevant
+          runtime information on the server side. Using the plugin requires a host 
+         with the following setup:</para>
+                   <itemizedlist>
+          <listitem>
+            <para>The packages <package>jq</package> and <package>python3-yq</package> are installed.</para>
+          </listitem>
+          <listitem>
+            <para>Helm is installed;.</para>
+          </listitem>
+          <listitem>
+            <para>The command <command>kubectl</command> is installed and connected to the K8s cluster where &t.server; is running.
+           </para>
+          </listitem>
+        </itemizedlist>
+       <para>To use it, proceed as follows: </para>
         <procedure>
           <step>
-            <para>Install the following packages:</para>
-            <screen>&prompt.root;<command>zypper install</command> jq python3-yq</screen>
-          </step>
-          <step>
-            <para>Download the Trento Support Plugin script:</para>
+            <para>Download the Trento support plugin script:</para>
             <screen>&prompt.root;<command>wget</command> https://raw.githubusercontent.com/trento-project/helm-charts/main/scripts/trento-support.sh</screen>
           </step>
           <step>
@@ -2430,9 +2413,16 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
 
       <section>
         <title>Scenario dump</title>
-        <para>The scenario dump is a dump of the Trento database. It helps the core team
-          to recreate a mock environment with the same status as the customer's.
-          To generate the dump, proceed as follows:</para>
+        <para>The scenario dump is a dump of the Trento database. It helps the Trento team
+          to recreate the scenario to test it. Using the script
+        that generates the dump requires a host with the following setup:</para>
+                   <itemizedlist>
+          <listitem>
+            <para>The command <command>kubectl</command> is installed and connected to the K8s cluster where Trento Server is running.
+           </para>
+          </listitem>
+        </itemizedlist>
+          <para>To generate the dump, proceed as follows:</para>
         <procedure>
           <step>
             <para>Download the latest version of the dump script:</para>

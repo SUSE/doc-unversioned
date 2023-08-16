@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file originates from the project https://github.com/openSUSE/doc-kit -->
+<!-- This file can be edited downstream. -->
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook51-profile.xsl"
+ type="text/xml"
+ title="Profiling step"?>
+<!DOCTYPE article
+[
+  <!ENTITY % entities SYSTEM "../common/generic-entities.ent">
+    %entities;
+]>
+<article xml:id="container-feedback" xml:lang="en"
+ role="concept"
+ xmlns="http://docbook.org/ns/docbook" version="5.2"
+ xmlns:its="http://www.w3.org/2005/11/its"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+  <info>
+    <title>Improving the documentation</title>
+  </info>
+  <para>
+    Feedback and contributions to this documentation can be submitted using any
+    of the following options.
+  </para>
+  <variablelist>
+    <varlistentry>
+      <term>Service requests and support</term>
+      <listitem>
+        <para>
+          For services and support options available for your product, see
+          <link xlink:href="https://www.suse.com/support/"/>. To open a service
+          request, you need a SUSE subscription registered at SUSE Customer
+          Center. Go to
+          <link xlink:href="https://scc.suse.com/support/requests"/>, log in,
+          and click <emphasis>Create New</emphasis>.
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>Bug reports</term>
+      <listitem>
+        <para>
+          Report issues with the documentation at
+          <link xlink:href="https://bugzilla.suse.com/"/> (this requires a
+          Bugzilla account). To simplify the process, use the <emphasis>Report
+          an issue link</emphasis> in the HTML version of this document. Point
+          the cursor to the desired sentence, and click <emphasis>Report an
+          issue</emphasis> in the <emphasis>Give feedback</emphasis> section of
+          the right-side navigation panel. This automatically selects the
+          correct product and category in Bugzilla and adds a link to the
+          current section. You can now write your bug report.
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>Contributions</term>
+      <listitem>
+        <para>
+          To contribute to this documentation, use the <emphasis>Edit source
+          document</emphasis> link in the HTML version of this document (this
+          requires a GitHub account). Point the cursor to the desired sentence,
+          and click <emphasis>Report an issue</emphasis> in the <emphasis>Give
+          feedback</emphasis> section of the right-side navigation panel. This
+          takes you to the source code on GitHub, where you can open a pull
+          request.
+        </para>
+      </listitem>
+    </varlistentry>
+  </variablelist>
+  <note>
+    <title>Edit source document only available for English</title>
+    <para>
+      The <emphasis>Edit source</emphasis> document links are only available
+      for the English version of each document. For all other languages, use
+      the <emphasis>Report an issue link</emphasis> as described above.
+    </para>
+  </note>
+  <para>
+    For more information about the documentation environment used for this
+    documentation, refer to the repository's <emphasis>README</emphasis> file
+    at
+    <link xlink:href="https://github.com/SUSE/doc-unversioned/blob/main/README.adoc"/>
+  </para>
+  <variablelist>
+    <varlistentry>
+      <term>Mail</term>
+      <listitem>
+        <para>
+          You can also report errors and send feedback concerning the
+          documentation to <email>doc-team@suse.com</email>. Include the
+          document title, the product version, and the publication date of the
+          document. Additionally, include the relevant section number and title
+          (or provide the URL), and provide a concise description of the
+          problem.
+        </para>
+      </listitem>
+    </varlistentry>
+  </variablelist>
+</article>
