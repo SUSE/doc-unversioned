@@ -2605,7 +2605,7 @@ trento-server-rabbitmq-0</screen>
   <section xml:id="sec-trento-version-history">
     <title>Highlights of Trento versions</title>
     <para>
-      The following lists show the most important user-facing features in the different versions
+      The following list shows the most important user-facing features in the different versions
      of Trento. For a more detailed information about the changes included in each new version, visit
       the GitHub project at <link xlink:href="https://github.com/trento-project"/>. Particularly:
     </para>
