@@ -20,7 +20,7 @@
   </info>
   <para>
     Application &bcia;s are &bcia;-Base container images that include specific
-    applications, such as the PostgreSQL database and the Performance Co-Pilot
+    applications, such as the PostgreSQL database and the Performance Co-Pilot,
     a system-level performance analysis toolkit. Application &bcia;s are
     available in the dedicated section of the
     <link xlink:href="https://registry.suse.com/#apps">&suseregistry;</link>.
