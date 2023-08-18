@@ -331,6 +331,17 @@
        2021-05-05 (the last time that the system contacted SCC or RMT)
       </entry>
      </row>
+     <row>
+      <entry>
+       Total Memory
+      </entry>
+      <entry>
+       int
+      </entry>
+      <entry>
+       4096 (in MiB)
+      </entry>
+     </row>
     </tbody>
    </tgroup>
   </table>
