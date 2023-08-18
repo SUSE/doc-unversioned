@@ -759,6 +759,31 @@
       <entry>Although it is possible to run Application Servers in the same cluster where ASCS/ERS
       are running, it is not recommended for easy management of the cluster.</entry>
      </row>
+     <row>
+       <entry>&sap; Web Dispatcher in cluster</entry>
+       <entry>Supported (<link xlink:href="https://www.suse.com/c/yes-sap-web-dispatcher-high-availability-on-premise-and-cloud/">Documentation</link>
+       for the <emphasis>Filesystem</emphasis> resource-based setup; not yet documented for
+       the simple mount structure)</entry>
+       <entry><para>This solution combines the following resources into one cluster resource group:</para>
+         <itemizedlist>
+           <listitem>
+             <para>
+               An &sap; instance including the <literal>sapwebdisp</literal> service
+             </para>
+           </listitem>
+           <listitem>
+             <para>
+               A file system where the &sap; instance is running
+             </para>
+           </listitem>
+           <listitem>
+             <para>
+               An IP address used by the clients of the service
+             </para>
+           </listitem>
+         </itemizedlist>
+       </entry>
+     </row>
     </tbody>
    </tgroup>
   </table>
@@ -837,6 +862,31 @@
       <entry>Supported but undocumented</entry>
       <entry>Although it is possible to run Application Servers in the same cluster where
       ASCS/ERS are running, it is not recommended for easy management of the cluster.</entry>
+     </row>
+     <row>
+       <entry>&sap; Web Dispatcher in cluster</entry>
+       <entry>Supported (<link xlink:href="https://www.suse.com/c/yes-sap-web-dispatcher-high-availability-on-premise-and-cloud/">Documentation</link>
+       for the <emphasis>Filesystem</emphasis> resource-based setup; not yet documented for
+       the simple mount structure)</entry>
+       <entry><para>This solution combines the following resources into one cluster resource group:</para>
+         <itemizedlist>
+           <listitem>
+             <para>
+               An &sap; instance including the <literal>sapwebdisp</literal> service
+             </para>
+           </listitem>
+           <listitem>
+             <para>
+               A file system where the &sap; instance is running
+             </para>
+           </listitem>
+           <listitem>
+             <para>
+               An IP address used by the clients of the service
+             </para>
+           </listitem>
+         </itemizedlist>
+       </entry>
      </row>
     </tbody>
    </tgroup>
