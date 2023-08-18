@@ -2630,7 +2630,7 @@ trento-server-rabbitmq-0</screen>
                first item.
     -->
     <variablelist>
-      <varlistentry xml:id="trento">
+      <varlistentry xml:id="trento-version-210">
         <term>Version 2.1.0 (released on 2023/08/02)</term>
         <listitem>
           <para> Consisting of Helm chart 2.1.0, web 2.1.0, checks engine
@@ -2655,7 +2655,7 @@ trento-server-rabbitmq-0</screen>
           </itemizedlist>
         </listitem>
       </varlistentry>
-      <varlistentry>
+      <varlistentry xml:id="trento-version-200">
         <term>Version 2.0.0 (released on 2023/04/26)</term>
         <listitem>
           <para>Consisting of Helm chart 2.0.0, web 2.0.0, cchecks engine
@@ -2685,7 +2685,7 @@ trento-server-rabbitmq-0</screen>
           </itemizedlist>
         </listitem>
       </varlistentry>
-      <varlistentry>
+      <varlistentry xml:id="trento-version-120">
         <term>Version 1.2.0 (released on 2022/11/04)</term>
         <listitem>
           <para> Consisting of Helm chart 1.2.0, web 1.2.0, runner 1.1.0 and
@@ -2704,7 +2704,7 @@ trento-server-rabbitmq-0</screen>
           </itemizedlist>
         </listitem>
       </varlistentry>
-      <varlistentry>
+      <varlistentry xml:id="trento-version-110">
         <term>Version 1.1.0 (released on 2022/07/14)</term>
         <listitem>
           <para> Consisting of Helm chart 1.1.0, web 1.1.0, runner 1.0.1 and
@@ -2717,7 +2717,7 @@ trento-server-rabbitmq-0</screen>
           </itemizedlist>
         </listitem>
       </varlistentry>
-      <varlistentry>
+      <varlistentry xml:id="trento-version-100">
         <term>Version 1.0.0 (general availability, released on 2022/04/29)</term>
         <listitem>
           <para> Consisting of Helm chart 1.0.0, web 1.0.0, runner 1.0.0 and
