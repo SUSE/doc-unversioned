@@ -2630,7 +2630,7 @@ trento-server-rabbitmq-0</screen>
                first item.
     -->
     <variablelist>
-      <varlistentry>
+      <varlistentry xml:id="trento">
         <term>Version 2.1.0 (released on 2023/08/02)</term>
         <listitem>
           <para> Consisting of Helm chart 2.1.0, web 2.1.0, checks engine
@@ -2700,6 +2700,19 @@ trento-server-rabbitmq-0</screen>
               <para>A dynamic dashboard that allows you to determine, at a
                 glance, the overall health status of your SAP
                 environment.</para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Version 1.1.0 (released on 2022/07/14)</term>
+        <listitem>
+          <para> Consisting of Helm chart 1.1.0, web 1.1.0, runner 1.0.1 and
+            agent 1.1.0.</para>
+          <itemizedlist>
+            <listitem>
+              <para>Fix for major bug in the runner component that prevented the
+                web component to load properly.</para>
             </listitem>
           </itemizedlist>
         </listitem>
