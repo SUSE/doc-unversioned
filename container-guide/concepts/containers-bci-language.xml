@@ -116,7 +116,7 @@
       <term>dotnet-sdk</term>
       <listitem>
         <para>
-          Comes with the .NET and ASP.NET SDK from Microsoft as well as the
+          Comes with the .NET and ASP.NET SDK from Microsoft and the
           Microsoft .NET repository.
         </para>
       </listitem>

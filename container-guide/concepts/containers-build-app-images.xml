@@ -75,7 +75,7 @@
     </listitem>
   </itemizedlist>
   <para>
-    The following section provides examples and recommendations on creating
+    The following section provides examples and recommendations for creating
     container images for applications. Before proceeding, make sure that you
     have activated your &sls; base image as described in
     <xref linkend="sec-download-prebuild-images"/> .
@@ -205,7 +205,7 @@
   <section xml:id="sec-run-application-with-volumes">
     <title>Sharing data between an application and the host system</title>
     <para>
-      &podman; allows sharing data between host and a container by using
+      &podman; allows sharing data between the host and a container by using
       volumes. You can specify a mount point directly in the
       <filename>Dockerfile</filename>. However, you cannot specify a directory
       on the host system in the <filename>Dockerfile</filename>, as the

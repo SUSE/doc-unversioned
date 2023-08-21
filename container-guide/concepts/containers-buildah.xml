@@ -19,7 +19,7 @@
     <title>&buildah; overview</title>
   </info>
   <para>
-    <link xlink:href="https://buildah.io/">&buildah;</link> is tool for
+    <link xlink:href="https://buildah.io/">&buildah;</link> is a tool for
     building OCI-compliant container images. &buildah; can handle the following
     tasks:
   </para>

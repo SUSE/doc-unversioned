@@ -88,7 +88,7 @@
       flag to skip confirmations, since you cannot approve these manually
       during container builds. Keep in mind that you must use the flag with any
       command that modifies the system. Also note that
-      <option>--non-interactive</option> is not a "yes to all" flag. Instead,
+      <option>--non-interactive</option> is not a <quote>yes to all</quote> flag. Instead,
       <option>--non-interactive</option> confirms what is considered to be the
       intention of the user. For example, an installation command with the
       <option>--non-interactive</option> option fails if it needs to import new
@@ -100,9 +100,9 @@
     <title>Using container-suseconnect with &bcia;s</title>
     <para>
       <link xlink:href="https://github.com/&suse;/container-suseconnect"><literal>container-suseconnect</literal></link>
-      is a plugin available in all &bcia;s that ship with &zypper;. When the
-      plugin detects the host's &suse; Linux Enterprise Server registration
-      credentials, it uses them to give the container access the &suse; Linux
+      is a plug-in available in all &bcia;s that ship with &zypper;. When the
+      plug-in detects the host's &suse; Linux Enterprise Server registration
+      credentials, it uses them to give the container access to the &suse; Linux
       Enterprise repositories. This includes additional modules and previous
       package versions that are not part of the free SLE_BCI repository. Refer
       to <xref linkend="sec-container-suseconnect"/> for more information on

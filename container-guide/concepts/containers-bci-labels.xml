@@ -44,7 +44,7 @@
       <term>com.suse.release-stage</term>
       <listitem>
         <para>
-          Indicates the current release stage of the image.
+          Shows the current release stage of the image.
         </para>
         <itemizedlist>
           <listitem>
@@ -71,7 +71,7 @@
           </listitem>
           <listitem>
             <para>
-              <literal>released</literal> Indicates that the container image is
+              <literal>released</literal> Shows that the container image is
               released and suitable for production use.
             </para>
           </listitem>
