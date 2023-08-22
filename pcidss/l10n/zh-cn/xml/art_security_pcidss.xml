@@ -4,8 +4,8 @@
  title="Profiling step"?>
 <article xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:base="art_security_pcidss.xml" xml:id="article-security-pcidss" version="5.0" xml:lang="zh-cn">
 
- <title><citetitle>Payment Card Industry Data Security Standard (PCI DSS) Guide</citetitle></title>
- <titleabbrev><citetitle>Payment Card Industry Data Security Standard (PCI DSS) Guide</citetitle></titleabbrev>
+ <title><citetitle>支付卡行业数据安全标准 (PCI DSS) 指南</citetitle></title>
+ <titleabbrev><citetitle>支付卡行业数据安全标准 (PCI DSS) 指南</citetitle></titleabbrev>
  <info>
   <productname><phrase os="article">SUSE Linux Enterprise Server</phrase></productname>
   <productnumber><phrase os="article">code stream 15</phrase></productnumber>
