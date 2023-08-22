@@ -438,7 +438,7 @@
         </listitem>
         <listitem>
          <para>
-          有关容器化的信息，请参见<phrase os="article"><citetitle><phrase os="article">SUSE Linux Enterprise Server</phrase> Docker Open Source Engine
+          有关容器化的信息，请参见 <phrase os="article"><citetitle><phrase os="article">SUSE Linux Enterprise Server</phrase> Docker Open Source Engine
           Guide</citetitle></phrase>。
          </para>
         </listitem>
@@ -557,10 +557,10 @@
      </listitem>
     </itemizedlist>
     <para>
-     持卡人数据和身份验证数据之间的主要差别在于，绝对不允许储存身份验证数据。相比之下，PAN 等数据是可以储存的，但必须经过加密且不可读，以防攻击者访问这些储存的数据。
+     持卡人数据和身份验证数据之间的主要差别在于，绝对不允许存储身份验证数据。相比之下，PAN 等数据是可以存储的，但必须经过加密且不可读，以防攻击者访问这些存储的数据。
     </para>
     <para>
-     用于储存持卡人数据的数据库设计不在本文档的范畴内。不过，您可通过不同的方式加密数据：
+     用于存储持卡人数据的数据库设计不在本文档的范畴内。不过，您可通过不同的方式加密数据：
     </para>
     <itemizedlist>
      <listitem>
@@ -575,7 +575,7 @@
      </listitem>
      <listitem>
       <para>
-       <phrase os="article">SUSE Linux Enterprise Server</phrase> 支持全盘加密，因此始终会加密整个数据库储存区。不过，访问加密磁盘的方式与访问非加密磁盘的方式相同。要求 3.4.1 中对此进行了详细介绍。
+       <phrase os="article">SUSE Linux Enterprise Server</phrase> 支持全盘加密，因此始终会加密整个数据库存储区。不过，访问加密磁盘的方式与访问非加密磁盘的方式相同。要求 3.4.1 中对此进行了详细介绍。
       </para>
      </listitem>
     </itemizedlist>
@@ -586,7 +586,7 @@
       </term>
       <listitem>
        <para>
-        PCI DSS 文档的指导说明对此项要求的规定如下：<quote>全盘加密有助于在磁盘实物丢失时保护数据，因此可能适合对储存持卡人数据的便携式设备使用。</quote>
+        PCI DSS 文档的指导说明对此项要求的规定如下：<quote>全盘加密有助于在磁盘实物丢失时保护数据，因此可能适合对存储持卡人数据的便携式设备使用。</quote>
        </para>
        <para>
         从管理员的角度而言，使用 Linux 统一密钥设置 (LUKS)/dm-crypt 实现的块设备加密可提供一个抽象层，通过该抽象层可以像使用未加密磁盘那样使用加密磁盘。
@@ -604,11 +604,11 @@
      </varlistentry>
      <varlistentry>
       <term>
-       3.4.1.c 检查配置并观察流程，以校验可移动媒体上的持卡人数据是否无论储存在何处都会加密。
+       3.4.1.c 检查配置并观察流程，以校验可移动媒体上的持卡人数据是否无论存储在何处都会加密。
       </term>
       <listitem>
        <para>
-        如<xref linkend="vle-pcidss-encrypt-disk"/>中所述，LUKS/dm-crypt 提供的全盘加密可以满足此项要求。用户只能通过挂载磁盘时必须输入的解密口令来访问储存的数据。
+        如<xref linkend="vle-pcidss-encrypt-disk"/>中所述，LUKS/dm-crypt 提供的全盘加密可以满足此项要求。用户只能通过挂载磁盘时必须输入的解密口令来访问存储的数据。
        </para>
       </listitem>
      </varlistentry>
@@ -698,7 +698,7 @@
         要识别需要安装以保护系统安全的补丁，请执行以下操作：
        </para>
        <para>
-        首先刷新所有软件源，以获得最新信息：
+        首先刷新所有储存库，以获得最新信息：
        </para>
        <screen><prompt>&gt; </prompt><command>sudo</command> <command>zypper refresh</command></screen>
        <para>
@@ -852,7 +852,7 @@ other::r--
       </term>
       <listitem>
       <para>
-       在此环境中，对用户帐户使用集中式基础结构（例如 NIS、LDAP 或 Active Directory）会带来许多优势：
+       在此环境中，对用户帐户使用集中式基础架构（例如 NIS、LDAP 或 Active Directory）会带来许多优势：
       </para>
       <itemizedlist>
        <listitem>
@@ -862,7 +862,7 @@ other::r--
        </listitem>
        <listitem>
         <para>
-         只需在一个位置禁用用户帐户。撤消用户的访问权限后，他们将无法使用任何依赖于集中式帐户基础结构的服务。
+         只需在一个位置禁用用户帐户。撤消用户的访问权限后，他们将无法使用任何依赖于集中式帐户基础架构的服务。
         </para>
        </listitem>
       </itemizedlist>
@@ -880,7 +880,7 @@ other::r--
       </term>
       <listitem>
        <para>
-        如<xref linkend="vle-pcidss-disable-user"/>中所述，集中式帐户基础结构可提供此功能。在 <phrase os="article">SUSE Linux Enterprise Server</phrase> 系统上，可以使用 <systemitem>pam_tally2</systemitem> PAM 模块检查和限制访问尝试。该模块将在登录时执行，会检查自上次成功登录以来所记录的失败尝试。要检查和重设置帐户状态，请使用 <command>pam_tally2</command> 工具。
+        如<xref linkend="vle-pcidss-disable-user"/>中所述，集中式帐户基础架构可提供此功能。在 <phrase os="article">SUSE Linux Enterprise Server</phrase> 系统上，可以使用 <systemitem>pam_tally2</systemitem> PAM 模块检查和限制访问尝试。该模块将在登录时执行，会检查自上次成功登录以来所记录的失败尝试。要检查和重设置帐户状态，请使用 <command>pam_tally2</command> 工具。
        </para>
       </listitem>
      </varlistentry>
@@ -957,7 +957,7 @@ other::r--
      Part <citetitle>The Linux Audit Framework</citetitle></citetitle>。</phrase>
     </para>
     <para>
-     可以通过定义集中储存的审计规则来满足本节中所述的所有审计要求。
+     可以通过定义集中存储的审计规则来满足本节中所述的所有审计要求。
     </para>
    </sect2>
    <sect2 xml:id="sec-pcidss-requirement-11">

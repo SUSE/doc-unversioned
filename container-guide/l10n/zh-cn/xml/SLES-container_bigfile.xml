@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0"?>
 <?asciidoc-toc?><?asciidoc-numbered?><book xmlns="http://docbook.org/ns/docbook" xmlns:xl="http://www.w3.org/1999/xlink" version="5.0" xml:lang="zh-cn">
 <info>
 <title>容器指南</title>
@@ -61,7 +61,7 @@
 <para>容器封装特定体系结构（例如 AMD64/Intel 64 或 AArch64）的二进制文件。因此，在不使用仿真的情况下，为 AMD64/Intel 64 创建的容器只能在 AMD64/Intel 64 系统主机上运行。</para>
 </listitem>
 <listitem>
-<para>容器本身并不比在容器外部执行二进制文件更安全，容器的整体安全性取决于主机系统。虽然可以通过 AppArmor 或 SELinux 配置文件来保护容器化应用程序，但容器安全性需要部署工具和策略来确保容器基础结构和应用程序的安全性。</para>
+<para>容器本身并不比在容器外部执行二进制文件更安全，容器的整体安全性取决于主机系统。虽然可以通过 AppArmor 或 SELinux 配置文件来保护容器化应用程序，但容器安全性需要部署工具和策略来确保容器基础架构和应用程序的安全性。</para>
 </listitem>
 </itemizedlist>
 </listitem>
@@ -94,7 +94,7 @@
 <para>要运行容器，需要有一个映像。映像包含运行应用程序所需的全部依赖项。例如，SLE SLE BCI 基本映像包含选择了极少量软件包的 SLE 发行套件。</para>
 <para>尽管可以从头开始创建映像，但很少有应用程序能够在这种空环境中正常运行。因此，在大多数情况下，使用现有的基本映像更为可行。基本映像没有父项，也就是说，它不以其他映像为基础。</para>
 <para>尽管您可以使用基本映像来运行容器，但基本映像的主要用途是充当创建自定义映像的基础，自定义映像可以运行包含特定应用程序、服务器、服务等的容器。</para>
-<para>基本映像和自定义映像通常都可以通过称作“注册表”的映像软件源获得。除非显式指定了注册表，否则 Podman 将从 <link xl:href="https://registry.opensuse.org">openSUSE</link> 和 <link xl:href="https://docker.io">Docker Hub</link> 注册表中提取映像。尽管您可以手动提取基本映像，但 Podman 可以在构建自定义映像时自动提取基本映像。</para>
+<para>基本映像和自定义映像通常都可以通过称作“注册表”的映像储存库获得。除非显式指定了注册表，否则 Podman 将从 <link xl:href="https://registry.opensuse.org">openSUSE</link> 和 <link xl:href="https://docker.io">Docker Hub</link> 注册表中提取映像。尽管您可以手动提取基本映像，但 Podman 可以在构建自定义映像时自动提取基本映像。</para>
 <para>要构建自定义映像，必须创建一个名为 <literal>Containerfile</literal> 或 <literal>Dockerfile</literal> 的特殊文件，其中包含构建指令。例如，<literal>Dockerfile</literal> 可以包含用于更新系统软件、安装所需应用程序、打开特定网络端口、运行命令等的指令</para>
 <informalfigure>
 <mediaobject>
@@ -110,7 +110,7 @@
 <chapter xml:id="cha-containers-tools">
 <title>用于构建映像和管理容器的工具</title>
 <para>本章简要概述了 SUSE 提供的用于构建、运行和管理容器的工具。</para>
-<para>所述的所有工具（<link xl:href="https://openbuildservice.org">Open Build Service</link> 除外）都包含在 <emphasis role="strong">SUSE Linux Enterprise Server 15 SP4 容器模块</emphasis>中。您可以在 <link xl:href="https://scc.suse.com/packages">SUSE Customer Center</link> 的 <emphasis role="strong">Containers 模块</emphasis>中查看完整的软件包列表。</para>
+<para>所述的所有工具（<link xl:href="https://openbuildservice.org">Open Build Service</link> 除外）都包含在 <emphasis role="strong">SUSE Linux Enterprise Server 15 SP4 Containers 模块</emphasis>中。您可以在 <link xl:href="https://scc.suse.com/packages">SUSE Customer Center</link> 的 <emphasis role="strong">Containers 模块</emphasis>中查看完整的软件包列表。</para>
 <section xml:id="sec-tools-suse-registry">
 <title>SUSE 注册表</title>
 <para><link xl:href="https://registry.suse.com">SUSE Registry</link> 是 SLE 基本容器映像的官方来源。其中包含已经过测试、更新和认证的 SLE 基本容器映像。SUSE 注册表中的所有映像会定期重构建，以包含更新和修复。SUSE 注册表的 Web 用户界面列出了一部分可用映像：基本容器映像、语言容器映像、应用程序容器映像、SUSE SUSE Linux Enterprise Server 映像，以及不再享受一般支持的版本。Web UI 还提供了每个映像的附加信息，包括发布日期、支持级别、大小、映像摘要以及映像中的软件包。</para>
@@ -137,7 +137,7 @@
 documentation</link>）。</para>
 </section>
 <section xml:id="sec-tools-distribution">
-<title>发行套件</title>
+<title>Distribution</title>
 <para><link xl:href="https://github.com/distribution/distribution">Distribution</link> 是一个开源的注册表实现，用于通过 OCI 分发规范存储和分发容器映像。它为构建大规模注册表解决方案或运行简单专用注册表提供简单、安全且可缩放的基础。Distribution 还可以镜像 Docker Hub，但<link xl:href="https://docs.docker.com/registry/recipes/mirror/#gotcha">not any other private registry</link>。</para>
 </section>
 <section xml:id="sec-tools-obs">
@@ -175,7 +175,7 @@ documentation</link>）。</para>
 </section>
 <section xml:id="sec-bci-why">
 <title>为何使用选择 SLE 基本容器映像</title>
-<para>SLE BCI 提供一个平台用于创建基于 SLES 的自定义容器映像和可任意分发的容器化应用程序。SLE BCI 具有与 SLES 相同的可预测企业生命周期。SLE_BCI 15 SP3 和 SP4 储存库（SLE 储存库的子集）使 SLE BCI 能够访问 4000 个适用于 AMD64/Intel 64、AArch64、PowerPC 和 IBM Z 体系结构的软件包。软件源中的软件包享有 SUSE 的质量保证并接受其安全审计。以 FIPS 模式在主机上运行时，容器映像符合 FIPS 规范。除此之外，SUSE 还可以通过 SUSE 订阅计划为 SLE BCI 提供官方支持。</para>
+<para>SLE BCI 提供一个平台用于创建基于 SLES 的自定义容器映像和可任意分发的容器化应用程序。SLE BCI 具有与 SLES 相同的可预测企业生命周期。SLE_BCI 15 SP3 和 SP4 储存库（SLE 储存库的子集）使 SLE BCI 能够访问 4000 个适用于 AMD64/Intel 64、AArch64、PowerPC 和 IBM Z 体系结构的软件包。储存库中的软件包享有 SUSE 的质量保证并接受其安全审计。以 FIPS 模式在主机上运行时，容器映像符合 FIPS 规范。除此之外，SUSE 还可以通过 SUSE 订阅计划为 SLE BCI 提供官方支持。</para>
 <variablelist>
 <varlistentry>
 <term>安全性</term>
@@ -215,11 +215,11 @@ documentation</link>）。</para>
 <para>每个 SLE BCI 都包含 RPM 数据库，因此可以审计容器映像的内容。您可以使用 RPM 数据库来确定任意给定文件所属的 RPM 软件包的特定版本。这可以确保容器映像不容易受到已知漏洞和已修复漏洞的影响。</para>
 </listitem>
 <listitem>
-<para>所有 SLE BCI（不包含 Zypper 的 SLE BCI 除外）都附带 <literal>container-suseconnect</literal> 服务。因此，在已注册的 SLES 主机上运行的容器可以访问完整的 SLES 软件源。当您首次运行 Zypper 时会自动调用 <literal>container-suseconnect</literal>，该服务会将正确的 SLES 储存库添加到正在运行的容器中。在未注册的 SLES 主机或非 SLES 主机上，该服务不执行任何操作。有关更多信息，请参见<xref linkend="sec-container-suseconnect"/>。</para>
+<para>所有 SLE BCI（不包含 Zypper 的 SLE BCI 除外）都附带 <literal>container-suseconnect</literal> 服务。因此，在已注册的 SLES 主机上运行的容器可以访问完整的 SLES 储存库。当您首次运行 Zypper 时会自动调用 <literal>container-suseconnect</literal>，该服务会将正确的 SLES 储存库添加到正在运行的容器中。在未注册的 SLES 主机或非 SLES 主机上，该服务不执行任何操作。有关更多信息，请参见<xref linkend="sec-container-suseconnect"/>。</para>
 </listitem>
 </itemizedlist>
 <note>
-<title>SLE_BCI 软件源</title>
+<title>SLE_BCI 储存库</title>
 <para>每个 SLE 服务包都有一个 SLE_BCI 储存库。这意味着，基于 SP4 的 SLE BCI 可以访问 SP4 的 SLE_BCI 储存库，所有基于 SP5 的 SLE BCI 可以使用 SP5 的 SLE_BCI 储存库，依此类推。每个 SLE_BCI 储存库包含除内核、引导加载程序、安装程序（包括 YaST）、桌面环境和超级管理程序（例如 KVM 和 Xen）之外的其他所有 SLE 软件包。</para>
 </note>
 <note>
@@ -305,7 +305,7 @@ documentation</link>）。</para>
 </table>
 <section xml:id="id-sle-bci-base-and-sle-bci-init-when-you-need-flexibility">
 <title>SLE BCI-Base 和 SLE BCI-Init：需要灵活性时</title>
-<para>此 SLE BCI 附带 Zypper 软件包管理器和免费的 SLE_BCI 储存库。这样，您便可以安装软件源中提供的软件并在构建期间自定义映像。该映像的缺点在于其大小。它是最大的通用 SLE BCI，因此它不一定是最佳的部署映像选项。</para>
+<para>此 SLE BCI 附带 Zypper 软件包管理器和免费的 SLE_BCI 储存库。这样，您便可以安装储存库中提供的软件并在构建期间自定义映像。该映像的缺点在于其大小。它是最大的通用 SLE BCI，因此它不一定是最佳的部署映像选项。</para>
 <para>名为 SLE BCI-Init 的 SLE BCI-Base 变体中预安装了 systemd。在需要通过 systemd 在单个容器中管理服务的方案中，SLE BCI-Init 容器映像可能很有用。</para>
 <important>
 <title>将 SLE BCI-init 与 Docker 配合使用</title>
@@ -317,7 +317,7 @@ documentation</link>）。</para>
 </section>
 <section xml:id="id-sle-bci-minimal-when-you-do-not-need-zypper">
 <title>SLE BCI-Minimal：不需要 Zypper 时</title>
-<para>这是 SLE BCI-Base 映像的精简版本。SLE BCI-Minimal 不包含 Zypper，不过其中安装了 RPM 软件包管理器。这样就大幅减小了该映像的大小。但是，虽然 RPM 可以安装和去除软件包，但它缺乏对软件源和自动依赖项解析的支持。因此，SLE BCI-Minimal 映像旨在用于创建部署容器，然后在容器中安装所需的 RPM 软件包。尽管您可以安装所需的依赖项，但需要手动下载和解析这些依赖项。不过，不建议采用这种方法，因为它很容易出错。</para>
+<para>这是 SLE BCI-Base 映像的精简版本。SLE BCI-Minimal 不包含 Zypper，不过其中安装了 RPM 软件包管理器。这样就大幅减小了该映像的大小。但是，虽然 RPM 可以安装和去除软件包，但它缺乏对储存库和自动依赖项解析的支持。因此，SLE BCI-Minimal 映像旨在用于创建部署容器，然后在容器中安装所需的 RPM 软件包。尽管您可以安装所需的依赖项，但需要手动下载和解析这些依赖项。不过，不建议采用这种方法，因为它很容易出错。</para>
 </section>
 <section xml:id="sec-bci-variants-micro">
 <title>SLE BCI-Micro：需要部署静态二进制文件时</title>
@@ -365,7 +365,7 @@ documentation</link>）。</para>
 </listitem>
 </varlistentry>
 <varlistentry>
-<term>节点</term>
+<term>node</term>
 <listitem>
 <itemizedlist>
 <listitem>
@@ -450,7 +450,7 @@ documentation</link>）。</para>
 <para>URL：<link xl:href="https://registry.suse.com/bci/dotnet-runtime/index.html">https://registry.suse.com/bci/dotnet-runtime/index.html</link></para>
 </listitem>
 <listitem>
-<para>包括 Microsoft 的 .NET 运行时和 Microsoft .NET 软件源。</para>
+<para>包括 Microsoft 的 .NET 运行时和 Microsoft .NET 储存库。</para>
 </listitem>
 </itemizedlist>
 </listitem>
@@ -463,7 +463,7 @@ documentation</link>）。</para>
 <para>URL：<link xl:href="https://registry.suse.com/bci/dotnet-aspnet/index.html">https://registry.suse.com/bci/dotnet-aspnet/index.html</link></para>
 </listitem>
 <listitem>
-<para>随附 Microsoft 的 ASP.NET 运行时和 Microsoft .NET 软件源。</para>
+<para>随附 Microsoft 的 ASP.NET 运行时和 Microsoft .NET 储存库。</para>
 </listitem>
 </itemizedlist>
 </listitem>
@@ -476,7 +476,7 @@ documentation</link>）。</para>
 <para>URL：<link xl:href="https://registry.suse.com/static/bci/dotnet-sdk">https://registry.suse.com/static/bci/dotnet-sdk</link></para>
 </listitem>
 <listitem>
-<para>随附 Microsoft 的 .NET 和 ASP.NET SDK，以及 Microsoft .NET 软件源。</para>
+<para>随附 Microsoft 的 .NET 和 ASP.NET SDK，以及 Microsoft .NET 储存库。</para>
 </listitem>
 </itemizedlist>
 </listitem>
@@ -696,14 +696,14 @@ crypto/rsa: verification error</screen>
 <para>SLES 中的默认软件包管理器是 Zypper。与 Debian 中的 APT 和 Alpine Linux 中的 APK 类似，Zypper 为所有软件包管理任务提供一个命令行界面。下面是常用的容器相关 Zypper 命令的简要概览。</para>
 <variablelist>
 <varlistentry>
-<term>安装包</term>
+<term>安装软件包</term>
 <listitem>
 <para><literal>zypper --non-interactive install
        PACKAGE_NAME</literal></para>
 </listitem>
 </varlistentry>
 <varlistentry>
-<term>添加软件源</term>
+<term>添加储存库</term>
 <listitem>
 <para><literal>zypper --non-interactive addrepo
        REPOSITORY_URL;</literal> <literal>zypper
@@ -810,7 +810,7 @@ FILE_TO_VERIFY; zypper -n remove
 </section>
 <section xml:id="sec-bci-gpg-keys">
 <title>添加 GPG 签名密钥</title>
-<para>将外部软件源添加到容器或容器映像通常需要导入用于对软件包进行签名的 GPG 密钥。这可以使用 <literal>rpm --import KEY_URL</literal> 命令来完成。这会将密钥添加到 RPM 数据库，然后可以安装软件源中的所有软件包。</para>
+<para>将外部储存库添加到容器或容器映像通常需要导入用于对软件包进行签名的 GPG 密钥。这可以使用 <literal>rpm --import KEY_URL</literal> 命令来完成。这会将密钥添加到 RPM 数据库，然后可以安装储存库中的所有软件包。</para>
 </section>
 </section>
 <section xml:id="sec-getting-started-bci">
@@ -869,7 +869,7 @@ Hello Green World!</screen>
 <para>在可用扩展和模块列表中选择“Containers Module 15 SP4 x86_64”，然后单击<emphasis>下一步</emphasis>。这会将 <emphasis>Containers 模块</emphasis>及其储存库添加到系统中。</para>
 </listitem>
 <listitem>
-<para>如果您使用 Repository Mirroring Tool，请更新 RMT 服务器上的软件源列表。</para>
+<para>如果您使用 Repository Mirroring Tool，请更新 RMT 服务器上的储存库列表。</para>
 </listitem>
 </orderedlist>
 </section>
@@ -1163,8 +1163,8 @@ ADDRESS_OF_YOUR_REGISTRY</literal>。</para>
 </section>
 </section>
 <section xml:id="sec-docker-storaged">
-<title>储存驱动程序</title>
-<para>Docker 开源引擎支持不同的储存驱动程序：</para>
+<title>存储驱动程序</title>
+<para>Docker 开源引擎支持不同的存储驱动程序：</para>
 <itemizedlist>
 <listitem>
 <para>vfs：如果 Docker 主机文件系统不支持写入时复制，将自动使用此驱动程序。此驱动程序比其他所列驱动程序更简单，未利用 Docker 开源引擎的某些优势，例如共享层。此驱动程序很可靠，但速度较慢。</para>
@@ -1183,7 +1183,7 @@ ADDRESS_OF_YOUR_REGISTRY</literal>。</para>
 <important>
 <title>挂载 <literal>/var/lib/docker</literal></title>
 <para>建议在单独的分区或卷上挂载 <literal>/var/lib/docker</literal>。这样，当文件系统损坏时，运行 Docker 开源引擎的操作系统将不受影响。</para>
-<para>如果您为 <literal>/var/lib/docker</literal> 选择了 Btrfs 文件系统，强烈建议为其创建一个子卷。这可以确保从文件系统快照中排除该目录。如果不从快照中排除 <literal>/var/lib/docker</literal>，当您开始部署容器后，文件系统可能很快就会耗尽磁盘空间。此外，回滚到以前的快照也会重设置 Docker 数据库和映像。有关详细信息，请参见 <link xl:href="https://documentation.suse.com/sles/html/SLES-all/cha-snapper.html#sec-snapper-setup-customizing-new-subvolume">https://documentation.suse.com/sles/html/SLES-all/cha-snapper.html#sec-snapper-setup-customizing-new-subvolume</link>。</para>
+<para>如果您为 <literal>/var/lib/docker</literal> 选择了 Btrfs 文件系统，强烈建议为其创建一个子卷。这可以确保从文件系统快照中排除该目录。如果不从快照中排除 <literal>/var/lib/docker</literal>，当您开始部署容器后，文件系统可能很快就会耗尽磁盘空间。此外，回滚到以前的快照也会重置 Docker 数据库和映像。有关详细信息，请参见 <link xl:href="https://documentation.suse.com/sles/html/SLES-all/cha-snapper.html#sec-snapper-setup-customizing-new-subvolume">https://documentation.suse.com/sles/html/SLES-all/cha-snapper.html#sec-snapper-setup-customizing-new-subvolume</link>。</para>
 </important>
 </section>
 <section xml:id="sec-docker-setup-updates">
@@ -1193,20 +1193,20 @@ ADDRESS_OF_YOUR_REGISTRY</literal>。</para>
 </section>
 </chapter>
 <chapter xml:id="cha-registry-installation">
-<title>配置映像储存</title>
-<para>在创建自定义映像之前，需要确定映像的储存位置。最简单的解决方案是将映像推送到 <link xl:href="https://hub.docker.com">Docker Hub</link>。默认情况下，推送到 Docker Hub 的所有映像都是公用映像。切勿发布敏感数据或未授权的软件供公众使用。</para>
+<title>配置映像存储设备</title>
+<para>在创建自定义映像之前，需要确定映像的存储位置。最简单的解决方案是将映像推送到 <link xl:href="https://hub.docker.com">Docker Hub</link>。默认情况下，推送到 Docker Hub 的所有映像都是公用映像。切勿发布敏感数据或未授权的软件供公众使用。</para>
 <para>您可以通过以下方式限制对自定义容器映像的访问：</para>
 <itemizedlist>
 <listitem>
-<para>付费订阅者可以通过 Docker Hub 创建私用软件源。</para>
+<para>付费订阅者可以通过 Docker Hub 创建私用储存库。</para>
 </listitem>
 <listitem>
-<para>使用现场 Docker 注册表可以储存您的组织所用的全部容器映像。</para>
+<para>使用现场 Docker 注册表可以存储您的组织所用的全部容器映像。</para>
 </listitem>
 </itemizedlist>
 <section xml:id="sec-docker-registry-definition">
 <title>什么是 Docker 注册表？</title>
-<para>Docker 注册表是用于储存和检索容器映像的开源平台。可以通过运行 Docker 注册表的本地实例来避免使用 Docker Hub。</para>
+<para>Docker 注册表是用于存储和检索容器映像的开源平台。可以通过运行 Docker 注册表的本地实例来避免使用 Docker Hub。</para>
 <para>Docker Hub 也会使用 Docker 注册表。但从用户的角度而言，Docker Hub 由以下组件构成：</para>
 <variablelist>
 <varlistentry>
@@ -1218,11 +1218,11 @@ ADDRESS_OF_YOUR_REGISTRY</literal>。</para>
 <varlistentry>
 <term>身份验证组件</term>
 <listitem>
-<para>此组件用于保护 Docker Hub 中储存的映像。它会验证所有推送、提取和搜索请求。该组件是闭源的。</para>
+<para>此组件用于保护 Docker Hub 中存储的映像。它会验证所有推送、提取和搜索请求。该组件是闭源的。</para>
 </listitem>
 </varlistentry>
 <varlistentry>
-<term>储存后端</term>
+<term>存储后端</term>
 <listitem>
 <para>将映像上传到以及从中下载映像的位置。它由 Docker 注册表提供。此组件是开源的。</para>
 </listitem>
@@ -1240,7 +1240,7 @@ storage:
     rootdirectory: /var/lib/docker-registry
 http:
   addr: 0.0.0.0:5000</screen>
-<para>另外，创建一个空目录以映射容器外部的 <literal>/var/lib/docker-registry</literal> 目录。此目录用于储存容器映像。</para>
+<para>另外，创建一个空目录以映射容器外部的 <literal>/var/lib/docker-registry</literal> 目录。此目录用于存储容器映像。</para>
 <para>运行以下命令以从 SUSE 注册表提取注册表容器映像，并启动一个可以通过端口 5000 访问的容器：</para>
 <screen>podman run -d --restart=always --name registry -p 5000:5000 \
 -v /PATH/config.yml:/etc/docker/registry/config.yml \
@@ -1272,7 +1272,7 @@ http:
 <para>校验容器映像可以确认其来源，从而确保供应链的安全性。本章提供有关为容器映像签名和校验容器映像的信息。</para>
 <section xml:id="sec-verify-docker">
 <title>使用 Docker 校验 SLE BCI</title>
-<para>通过 SUSE 注册表提供的映像签名储存在 Notary 中。您可以使用以下命令校验特定映像的签名：</para>
+<para>通过 SUSE 注册表提供的映像签名存储在 Notary 中。您可以使用以下命令校验特定映像的签名：</para>
 <screen>docker trust inspect --pretty registry.suse.com/suse/IMAGE:TAG</screen>
 <para>例如，命令 <literal>docker trust inspect --pretty
    registry.suse.com/suse/sle15:latest</literal> 校验最新 SLE15 基本映像的签名。</para>
@@ -1406,10 +1406,10 @@ Error: copying system image from manifest list: Source image rejected: Signature
 </section>
 <section xml:id="sec-customize-repo-registration">
 <title>储存库和注册</title>
-<para>预构建的映像未配置任何软件源，也不包含任何模块或扩展。它们包含一个 <link xl:href="https://github.com/SUSE/container-suseconnect">zypper service</link>，该服务根据运行容器的 SUSE Linux Enterprise Server 主机的配置联系 SUSE Customer Center 或 Repository Mirroring Tool (RMT) 服务器。该服务会获取容器映像所用产品的可用软件源列表。您还可以直接在 <literal>Dockerfile</literal> 中声明扩展。有关详细信息，请参见<xref linkend="sec-container-suseconnect"/>。</para>
+<para>预构建的映像未配置任何储存库，也不包含任何模块或扩展。它们包含一个 <link xl:href="https://github.com/SUSE/container-suseconnect">zypper service</link>，该服务根据运行容器的 SUSE Linux Enterprise Server 主机的配置联系 SUSE Customer Center 或 Repository Mirroring Tool (RMT) 服务器。该服务会获取容器映像所用产品的可用储存库列表。您还可以直接在 <literal>Dockerfile</literal> 中声明扩展。有关详细信息，请参见<xref linkend="sec-container-suseconnect"/>。</para>
 <note>
-<title>SLE_BCI 软件源</title>
-<para>从 SLE 15 SP3 开始，默认基本映像包含 <literal>SLE_BCI</literal> 储存库。仅当某个容器是在未注册的 SLES 主机上构建的或是在此类主机上运行时，或者当容器无法使用注册身份凭证时，才使用此储存库。该储存库提供一部分可用于自定义 SLES 容器映像的 SLE 软件包。无需注册即可使用该软件源，但 SUSE 不对其提供支持。</para>
+<title>SLE_BCI 储存库</title>
+<para>从 SLE 15 SP3 开始，默认基本映像包含 <literal>SLE_BCI</literal> 储存库。仅当某个容器是在未注册的 SLES 主机上构建的或是在此类主机上运行时，或者当容器无法使用注册身份凭证时，才使用此储存库。该储存库提供一部分可用于自定义 SLES 容器映像的 SLE 软件包。无需注册即可使用该储存库，但 SUSE 不对其提供支持。</para>
 </note>
 <para>您不需要在容器映像中添加任何身份凭证，因为 docker 守护程序会自动将计算机身份凭证插入到容器中的 <literal>/run/secrets</literal> 目录。这同样适用于主机系统的 <literal>/etc/SUSEConnect</literal> 文件，该文件会自动插入到 <literal>/run/secrets</literal> 目录中。</para>
 <note>
@@ -1422,9 +1422,9 @@ Error: copying system image from manifest list: Source image rejected: Signature
 <para>请注意，如果 RMT 服务器使用自我签名证书，则需要将匹配的 CA 证书添加到 <literal>CA_TRUSTSTORE/rmt-server.pem</literal> 中的容器才能接受证书。</para>
 <para>如果主机系统已在 SUSE Customer Center 中注册，则此限制不适用。</para>
 </note>
-<para>要获取软件源列表，请使用以下命令：</para>
+<para>要获取储存库列表，请使用以下命令：</para>
 <screen>&gt; sudo zypper repos</screen>
-<para>这会自动将所有软件源添加到容器中。对于添加到系统的每个储存库，都会在 <literal>/etc/zypp/repos.d</literal> 下创建一个新文件。这些软件源的 URL 包含一个在 12 小时后自动失效的访问令牌。要续订令牌，请运行命令 <literal>zypper ref -s</literal>。将这些文件包含在容器映像中不会带来任何安全风险。</para>
+<para>这会自动将所有储存库添加到容器中。对于添加到系统的每个储存库，都会在 <literal>/etc/zypp/repos.d</literal> 下创建一个新文件。这些储存库的 URL 包含一个在 12 小时后自动失效的访问令牌。要续订令牌，请运行命令 <literal>zypper ref -s</literal>。将这些文件包含在容器映像中不会带来任何安全风险。</para>
 <para>要使用一组不同的身份凭证，请将自定义 <literal>/etc/zypp/credentials.d/SCCcredentials</literal> 文件放入容器映像中。该文件中的计算机身份凭证包含您要使用的订阅。这同样适用于 <literal>SUSEConnect</literal> 文件：要覆盖运行容器的主机系统上的现有文件，请将自定义 <literal>/etc/SUSEConnect</literal> 文件添加到容器映像中。</para>
 <para>现在，您便可以按照<xref linkend="sec-docker-sle-images-customizing-the-images-sles12sp3"/>中所述使用 <literal>Dockerfile</literal> 来创建自定义容器映像。</para>
 <para>编辑 <literal>Dockerfile</literal> 后，通过在 <literal>Dockerfile</literal> 所在的同一目录中运行以下命令来构建映像：</para>
@@ -1455,7 +1455,7 @@ RUN update-ca-certificates &amp;&amp; \
 <screen>&gt; sudo systemctl enable containerbuild-regionsrv</screen>
 <para>SLE 基本映像提供的 Zypper 插件将连接到此服务，并检索身份验证细节以及有关要与哪个更新服务器通讯的信息。为此，必须在启用主机网络的情况下构建容器，例如：</para>
 <screen>&gt; podman build --network host build-directory/</screen>
-<para>由于公有云中的更新基础结构基于 RMT 工作，因此，为不同于主机 SLE 版本的 SLE 版本构建 SLE 映像也存在同样的限制（参见<xref linkend="note-build-images-different-codebase"/>）。</para>
+<para>由于公有云中的更新基础架构基于 RMT 工作，因此，为不同于主机 SLE 版本的 SLE 版本构建 SLE 映像也存在同样的限制（参见<xref linkend="note-build-images-different-codebase"/>）。</para>
 </section>
 </chapter>
 <chapter xml:id="sec-building-app-images">
@@ -1467,7 +1467,7 @@ RUN update-ca-certificates &amp;&amp; \
 <para>包含应用程序的映像可在运行不同 Linux 主机发行套件和版本的服务器之间移植。</para>
 </listitem>
 <listitem>
-<para>可以使用软件源来共享应用程序的映像。</para>
+<para>可以使用储存库来共享应用程序的映像。</para>
 </listitem>
 <listitem>
 <para>可以在容器和主机系统中使用不同的软件版本，而不会造成依赖关系方面的问题。</para>
@@ -1601,7 +1601,7 @@ CMD ["-D", "FOREGROUND"]</screen>
 <para>要复制到 <literal>/etc/zypp/repos.d</literal> 和 <literal>/etc/zypp/services.d</literal> 的储存库和服务文件。如此这些文件便可在容器中的主机上使用。</para>
 </callout>
 <callout arearefs="CO2-4">
-<para>用于刷新软件源和服务的命令。</para>
+<para>用于刷新储存库和服务的命令。</para>
 </callout>
 <callout arearefs="CO2-5">
 <para>用于安装 Apache2 的命令。</para>
@@ -1634,11 +1634,11 @@ CMD ["-D", "FOREGROUND"]</screen>
 <para>将 <literal>Dockerfile</literal> 保存到 <literal>docker</literal> 目录中。</para>
 </listitem>
 <listitem>
-<para>在容器中，您需要访问已在主机上注册的软件源和服务。要使这些储存库和服务可用，请将主机中其对应的文件复制到 <literal>docker/etc</literal> 目录：</para>
+<para>在容器中，您需要访问已在主机上注册的储存库和服务。要使这些储存库和服务可用，请将主机中其对应的文件复制到 <literal>docker/etc</literal> 目录：</para>
 <screen>&gt; cd docker
 &gt; mkdir etc
 &gt; sudo cp -a /etc/zypp/{repos.d,services.d} etc/</screen>
-<para>您也可以不复制所有软件源和服务文件，只复制容器所需的一部分文件。</para>
+<para>您也可以不复制所有储存库和服务文件，只复制容器所需的一部分文件。</para>
 </listitem>
 <listitem>
 <para>将网站数据（例如 HTML 文件）添加到 <literal>docker/data</literal> 目录中。此目录的内容将复制到容器映像，从而由 Web 服务器发布。</para>
@@ -2107,7 +2107,7 @@ buildah rm $container <co xml:id="CO3-7"/></screen>
 </section>
 <section xml:id="sec-sle-container-sle-host-support">
 <title>对非 SLES 主机的支持</title>
-<para>虽然基于 SUSE 的容器受到完全支持，主机环境中的问题仍必须由主机环境供应商负责处理。SUSE 支持属于 SUSE 基本容器的组件。还支持来自 SUSE 软件源的软件包。容器中的其他组件和应用程序不在 SUSE 支持的范围内。构建派生容器需要 SLE 订阅。</para>
+<para>虽然基于 SUSE 的容器受到完全支持，主机环境中的问题仍必须由主机环境供应商负责处理。SUSE 支持属于 SUSE 基本容器的组件。还支持来自 SUSE 储存库的软件包。容器中的其他组件和应用程序不在 SUSE 支持的范围内。构建派生容器需要 SLE 订阅。</para>
 <para>基于 SLES 12 SP5 和 SLES 15（所有服务包）的容器根据其官方生命周期和下表所述内容享受支持。</para>
 <para><emphasis role="strong">支持以下第三方容器主机平台。</emphasis></para>
 <table frame="all" rowsep="1" colsep="1">
@@ -2184,15 +2184,15 @@ buildah rm $container <co xml:id="CO3-7"/></screen>
 <para>例如，SLES 15 SP4 容器映像是使用与 SLES 15 SP4 主版本相同的软件包构建的。</para>
 </listitem>
 </orderedlist>
-<para>有关更多信息，请参见<link xl:href="https://www.suse.com/lifecycle">Product Support Lifecycle</link>页面，以及适用于 <link xl:href="https://registry.suse.com">SUSE Registry</link>中特定容器映像的文档。</para>
+<para>有关更多信息，请参见 <link xl:href="https://www.suse.com/lifecycle">Product Support Lifecycle</link> 页面，以及适用于 <link xl:href="https://registry.suse.com">SUSE Registry</link>中特定容器映像的文档。</para>
 <para>容器映像可以处于不同的支持状态，因此对它们的支持可能有限制。有关特定容器映像的更多信息，请参见相应的 <link xl:href="https://registry.suse.com">SUSE Registry</link>页面。</para>
 </section>
 <section xml:id="sec-supported-containers-hosts">
 <title>容器和主机环境支持概览</title>
 <para>以下支持选项对 SUSE 主机环境中的 SLES 容器有效。</para>
-<para>SUSE 提供的容器和主机环境完全受支持。这也适用于所有受支持的产品，包括一般支持和<link xl:href="https://www.suse.com/products/long-term-service-pack-support/">Long Term Service Pack Support</link> (LTSS)。</para>
+<para>SUSE 提供的容器和主机环境完全受支持。这也适用于所有受支持的产品，包括一般支持和 <link xl:href="https://www.suse.com/products/long-term-service-pack-support/">Long Term Service Pack Support</link> (LTSS)。</para>
 <para>签署了联合工程协作协议的合作伙伴容器和主机环境受到完全支持。此层级适用于协议涵盖的容器、主机环境以及支持（包括标准支持和 LTSS）下的所有产品。</para>
-<para>虽然基于 SUSE 的容器受到完全支持，主机环境中的问题仍必须由主机环境供应商负责处理。SUSE 支持来自 SUSE 基本容器的组件，还支持来自 SUSE 软件源的软件包。容器中的其他组件和应用程序不在 SUSE 支持的范围内。基于 SLE BCI 或 SLE BCI 储存库的内容构建派生容器不需要订阅。要构建包含完整 SLE 系列中的软件包的容器，您需要购买订阅，使自己能够访问包含这些软件包的储存库。</para>
+<para>虽然基于 SUSE 的容器受到完全支持，主机环境中的问题仍必须由主机环境供应商负责处理。SUSE 支持来自 SUSE 基本容器的组件，还支持来自 SUSE 储存库的软件包。容器中的其他组件和应用程序不在 SUSE 支持的范围内。基于 SLE BCI 或 SLE BCI 储存库的内容构建派生容器不需要订阅。要构建包含完整 SLE 系列中的软件包的容器，您需要购买订阅，使自己能够访问包含这些软件包的储存库。</para>
 <para>上面未提到的任何容器和主机环境享受有限支持。相关细节请与 SUSE 支持团队讨论，该团队负责就问题和建议的备用解决方案进行会审。在任何其他情况下，主机环境中的问题都必须由主机环境供应商负责处理。</para>
 </section>
 <section xml:id="sec-tech-previews">
@@ -2281,13 +2281,13 @@ buildah rm $container <co xml:id="CO3-7"/></screen>
 <varlistentry>
 <term>映像</term>
 <listitem>
-<para><emphasis>映像</emphasis>是用于创建<emphasis>容器</emphasis>的只读模板。Docker 映像由一系列相互叠加构建的层组成。每个层对应于一项永久性更改，例如，应用程序的一项更新。更改储存在称作 <emphasis>Dockerfile</emphasis> 的文件中。有关更多细节，请参见<link xl:href="http://docs.docker.com/engine/reference/glossary#image">the official Docker documentation</link>。</para>
+<para><emphasis>映像</emphasis>是用于创建<emphasis>容器</emphasis>的只读模板。Docker 映像由一系列相互叠加构建的层组成。每个层对应于一项永久性更改，例如，应用程序的一项更新。更改存储在称作 <emphasis>Dockerfile</emphasis> 的文件中。有关更多细节，请参见<link xl:href="http://docs.docker.com/engine/reference/glossary#image">the official Docker documentation</link>。</para>
 </listitem>
 </varlistentry>
 <varlistentry>
 <term>容器映像</term>
 <listitem>
-<para><emphasis>容器映像</emphasis>是一个不可更改的静态文件，它包含可执行代码，因此可以在 IT 基础结构上运行独立的进程。映像由系统库、系统工具以及在容器化平台上运行程序所需的其他平台设置组成。容器映像通过在父映像或基本映像上构建的文件系统层进行编译。</para>
+<para><emphasis>容器映像</emphasis>是一个不可更改的静态文件，它包含可执行代码，因此可以在 IT 基础架构上运行独立的进程。映像由系统库、系统工具以及在容器化平台上运行程序所需的其他平台设置组成。容器映像通过在父映像或基本映像上构建的文件系统层进行编译。</para>
 </listitem>
 </varlistentry>
 <varlistentry>
@@ -2318,7 +2318,7 @@ buildah rm $container <co xml:id="CO3-7"/></screen>
 <varlistentry>
 <term>注册表</term>
 <listitem>
-<para><emphasis>注册表</emphasis>是已创建映像的储存区。它通常包含多个<emphasis>软件源</emphasis>。注册表有两种类型：+</para>
+<para><emphasis>注册表</emphasis>是已创建映像的存储区。它通常包含多个<emphasis>储存库</emphasis>。注册表有两种类型：+</para>
 <itemizedlist>
 <listitem>
 <para>公共注册表：任何用户（通常是已注册的用户）都可以下载和使用映像。公共注册表的典型示例是 <link xl:href="https://hub.docker.com/">Docker Hub</link>。</para>
@@ -2330,7 +2330,7 @@ buildah rm $container <co xml:id="CO3-7"/></screen>
 </listitem>
 </varlistentry>
 <varlistentry>
-<term>软件源</term>
+<term>储存库</term>
 <listitem>
 <para><emphasis>储存库</emphasis>是<emphasis>注册表</emphasis>中映像的存储区。</para>
 </listitem>
