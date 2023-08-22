@@ -39,7 +39,7 @@
             <para>
               <emphasis role="strong">Size</emphasis>: Container images should
               only include the content needed to run an application, whereas a
-              virtual machine includes an entire operating system,
+              virtual machine includes an entire operating system.
             </para>
           </listitem>
           <listitem>
@@ -93,8 +93,8 @@
           <listitem>
             <para>
               A container encapsulates binaries for a specific architecture
-              (&x86-64; or &aarch64; for instance). So a container made for
-              &x86-64; only runs on a &x86-64; system host without the use of
+              (&x86-64; or &aarch64;, for instance). So a container made for
+              &x86-64; only runs on an &x86-64; system host without the use of
               emulation.
             </para>
           </listitem>
@@ -118,7 +118,7 @@
     <para>
       Although &deng; is a popular choice for working with images and
       containers, &podman; provides a drop-in replacement for Docker that
-      offers several advantages. While <!--XREF <xref linkend="cha-podman-overview"/> -->
+      offers several advantages. While <!--XREF <xref linkend="cha-podman-overview"/>  -->
       provides more information on &podman;, this chapter offers a quick
       introduction to key concepts and a basic procedure for creating a
       container image and using &podman; to run a container.
@@ -160,8 +160,8 @@
     </orderedlist>
     <para>
       To run a container, you need an image. An image includes all dependencies
-      needed to run the application. For example, the &bcia;-Base image
-      contains the &slea; distribution with a minimal package selection.
+      needed to run the application. For example, the &bcia;-Base image contains
+      the &slea; distribution with a minimal package selection.
     </para>
     <para>
       While it is possible to create an image from scratch, few applications
@@ -202,7 +202,7 @@
       </mediaobject>
     </informalfigure>
     <para>
-      You can build images not only from base images, but also on top of custom
+      You can build images not only from base images but also on top of custom
       images. So you can have an image consisting of multiple layers. Please
       refer to <xref linkend="container-build-images"/> for more information.
     </para>

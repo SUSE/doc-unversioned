@@ -132,7 +132,7 @@
         <para>
           vfs: This driver is automatically used when the &docker; host file
           system does not support copy-on-write. This driver is simpler than
-          the others listed and does not offer certain advantages of &deng;
+          the others listed and does not offer certain advantages of &deng;,
           such as shared layers. It is a slow but reliable driver.
         </para>
       </listitem>
@@ -172,14 +172,14 @@
     <important>
       <title>Mounting <filename>/var/lib/docker</filename></title>
       <para>
-        It is recommended to mount <filename>/var/lib/docker</filename> on a
+        We recommend mounting <filename>/var/lib/docker</filename> on a
         separate partition or volume. In case of file system corruption, this
         allows the operating system to run &deng; unaffected.
       </para>
       <para>
         If you choose the Btrfs file system for
-        <filename>/var/lib/docker</filename>, it is strongly recommended to
-        create a subvolume for it. This ensures that the directory is excluded
+        <filename>/var/lib/docker</filename>, we strongly recommend
+        creating a subvolume for it. This ensures that the directory is excluded
         from file system snapshots. If you do not exclude
         <filename>/var/lib/docker</filename> from snapshots, there is a risk of
         the file system running out of disk space soon after you start
@@ -199,7 +199,7 @@
     </para>
     <para>
       To prevent data loss, avoid workloads that rely on containers which
-      automatically start after &deng; update. Although it is technically
+      automatically start after the &deng; update. Although it is technically
       possible to keep containers running during an update via the
       <option>--live-restore</option> option, such updates can introduce
       regressions. &suse; does not support this feature.
