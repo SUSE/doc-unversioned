@@ -432,8 +432,7 @@
        <itemizedlist>
         <listitem>
          <para>
-          有关虚拟化的信息，请参见<phrase os="article"><citetitle><phrase os="article">SUSE Linux Enterprise Server</phrase> Virtualization
-          Guide</citetitle></phrase>。
+          有关虚拟化的信息，请参见<phrase os="article"><citetitle>《<phrase os="article">SUSE Linux Enterprise Server</phrase> 虚拟化指南》</citetitle></phrase>。
          </para>
         </listitem>
         <listitem>
@@ -487,14 +486,12 @@
        <itemizedlist>
         <listitem>
          <para>
-          有关 SELinux 的信息，请参见 <phrase os="article"><citetitle><phrase os="article">SUSE Linux Enterprise Server</phrase> Security Guide,
-          Chapter Configuring SELinux</citetitle>。</phrase>
+          有关 SELinux 的信息，请参见 <phrase os="article"><citetitle><phrase os="article">SUSE Linux Enterprise Server</phrase> 的“Configuring SELinux”一章</citetitle>。</phrase>
          </para>
         </listitem>
         <listitem>
          <para>
-          有关 <phrase>AppArmor</phrase> 的信息，请参见 <phrase os="article"><citetitle><phrase os="article">SUSE Linux Enterprise Server</phrase> Security Guide,
-          Part Confining Privileges with <phrase>AppArmor</phrase></citetitle>。</phrase>
+          有关 <phrase>AppArmor</phrase> 的信息，请参见 <phrase os="article"><citetitle><phrase os="article">SUSE Linux Enterprise Server</phrase> Security Guide 的“Confining Privileges with <phrase>AppArmor</phrase>”部分</citetitle>。</phrase>
          </para>
         </listitem>
        </itemizedlist>
@@ -673,9 +670,7 @@
        <command>zypper</command> 是所有 <phrase os="article">SUSE Linux Enterprise Server</phrase> 安装的组成部分，当系统注册之后便可直接访问更新储存库。
       </para>
       <para>
-       有关 Zypper 的信息，请参见 <phrase os="article"><citetitle><phrase os="article">SUSE Linux Enterprise Server</phrase> Administration Guide,
-       Chapter Managing Software with Command Line Tools, Section Using
-       Zypper</citetitle>。</phrase>
+       有关 Zypper 的信息，请参见 <phrase os="article"><citetitle>《<phrase os="article">SUSE Linux Enterprise Server</phrase> 管理指南》的“使用命令行工具管理软件”一章中的“使用 Zypper”一节</citetitle>。</phrase>
       </para>
      </listitem>
      <listitem>
@@ -684,7 +679,7 @@
       </para>
       <para>
        有关 SUSE Manager 的信息，请参见 <link xlink:href="https://documentation.suse.com/suma/">SUSE Manager
-       documentation page</link>。
+       文档页面</link>。
       </para>
      </listitem>
     </itemizedlist>
@@ -734,9 +729,7 @@
         要自动执行更新，可以使用所有 Zypper 子命令都支持的 <option>--non-interactive</option> 参数。
        </para>
       <para>
-       有关 Zypper 的详细信息，请参见 <phrase os="article"><citetitle><phrase os="article">SUSE Linux Enterprise Server</phrase> Administration Guide,
-       Chapter Managing Software with Command Line Tools, Section Using
-       Zypper</citetitle>。</phrase>
+       有关 Zypper 的详细信息，请参见 <phrase os="article"><citetitle>《<phrase os="article">SUSE Linux Enterprise Server</phrase> 管理指南》的“使用命令行工具管理软件”一章中的“使用 Zypper”一节</citetitle>。</phrase>
       </para>
       </listitem>
      </varlistentry>
@@ -753,8 +746,7 @@
        可以使用传统的 Unix 权限设置通过特定的用户和用户组来控制访问。
       </para>
       <para>
-       有关管理权限的信息，请参见 <phrase os="article"><citetitle><phrase os="article">SUSE Linux Enterprise Server</phrase> Security Guide,
-       Chapter Access Control Lists in Linux</citetitle>。</phrase>
+       有关管理权限的信息，请参见 <phrase os="article"><citetitle><phrase os="article">SUSE Linux Enterprise Server</phrase> Security Guide 的“Access Control Lists in Linux”一章</citetitle>。</phrase>
       </para>
      </listitem>
      <listitem>
@@ -764,14 +756,12 @@
       <itemizedlist>
        <listitem>
         <para>
-         有关 SELinux 的信息，请参见 <phrase os="article"><citetitle><phrase os="article">SUSE Linux Enterprise Server</phrase> Security Guide,
-         Chapter Configuring SELinux</citetitle>。</phrase>
+         有关 SELinux 的信息，请参见 <phrase os="article"><citetitle><phrase os="article">SUSE Linux Enterprise Server</phrase> 的“Configuring SELinux”一章</citetitle>。</phrase>
         </para>
        </listitem>
        <listitem>
         <para>
-         有关 <phrase>AppArmor</phrase> 的信息，请参见 <phrase os="article"><citetitle><phrase os="article">SUSE Linux Enterprise Server</phrase> Security Guide,
-         Part Confining Privileges with <phrase>AppArmor</phrase></citetitle>。</phrase>
+         有关 <phrase>AppArmor</phrase> 的信息，请参见 <phrase os="article"><citetitle><phrase os="article">SUSE Linux Enterprise Server</phrase> Security Guide 的“Confining Privileges with <phrase>AppArmor</phrase>”部分</citetitle>。</phrase>
         </para>
        </listitem>
       </itemizedlist>
@@ -830,8 +820,7 @@ other::r--
         可以使用可插入身份验证模块 (PAM) 来管理系统的登录访问控制。<phrase os="article">SUSE Linux Enterprise Server</phrase> 中提供了多个模块，允许记录登录时间、多个身份验证机制以及中心数据库（例如 NIS、LDAP 或 Active Directory）等设置。
        </para>
       <para>
-       有关管理权限的详细信息，请参见 <phrase os="article"><citetitle><phrase os="article">SUSE Linux Enterprise Server</phrase> Security Guide,
-       Chapter Access Control Lists in Linux</citetitle>。</phrase>
+       有关管理权限的详细信息，请参见 <phrase os="article"><citetitle><phrase os="article">SUSE Linux Enterprise Server</phrase> Security Guide 的“Access Control Lists in Linux”一章</citetitle>。</phrase>
       </para>
       </listitem>
      </varlistentry>
@@ -911,8 +900,7 @@ other::r--
           第三方一次性口令 (OTP) 产品通常也有一个 Linux PAM 模块。
          </para>
          <para>
-          有关 PAM 的信息，请参见 <phrase os="article"><citetitle><phrase os="article">SUSE Linux Enterprise Server</phrase> Security Guide,
-          Chapter Authentication with PAM</citetitle>。</phrase>
+          有关 PAM 的信息，请参见 <phrase os="article"><citetitle><phrase os="article">SUSE Linux Enterprise Server</phrase> Security Guide 的“Authentication with PAM”一章</citetitle>。</phrase>
          </para>
         </listitem>
         <listitem>
@@ -953,8 +941,7 @@ other::r--
      使用同步时间参考可以更轻松地关联所记录的日志文件中的事件。此参考可以包括中心系统日志服务器收集的一般系统日志项，或 <systemitem class="daemon">audit</systemitem> 守护程序生成的内核审计消息。
     </para>
     <para>
-     有关审计的信息，请参见 <phrase os="article"><citetitle><phrase os="article">SUSE Linux Enterprise Server</phrase>, Security Guide,
-     Part <citetitle>The Linux Audit Framework</citetitle></citetitle>。</phrase>
+     有关审计的信息，请参见 <phrase os="article"><citetitle><phrase os="article">SUSE Linux Enterprise Server</phrase> Security Guide 的“<citetitle>The Linux Audit Framework</citetitle>”部分</citetitle>。</phrase>
     </para>
     <para>
      可以通过定义集中存储的审计规则来满足本节中所述的所有审计要求。
@@ -969,8 +956,7 @@ other::r--
      <phrase os="article">SUSE Linux Enterprise Server</phrase> 随附了高级入侵检测环境 (AIDE)，用于跟踪系统完整性。AIDE 会创建所有相关操作系统文件的哈希值数据库。初始化后，可以使用它来校验以前保存的所有文件的完整性。要采用 AIDE，最好定期创建数据库快照并将其保存到一个中心系统，以便在此系统上评估可能发生的修改。
     </para>
     <para>
-     有关 AIDE 的详细信息，请参见 <phrase os="article"><citetitle><phrase os="article">SUSE Linux Enterprise Server</phrase> Security Guide,
-     Chapter Intrusion Detection with AIDE</citetitle>。</phrase>
+     有关 AIDE 的详细信息，请参见 <phrase os="article"><citetitle><phrase os="article">SUSE Linux Enterprise Server</phrase> Security Guide 的“Intrusion Detection with AIDE”一章</citetitle>。</phrase>
     </para>
    </sect2>
    <sect2 xml:id="sec-pcidss-requirement-12">
