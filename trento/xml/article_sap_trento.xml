@@ -2454,7 +2454,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
        is installed and connected to the K8s cluster where Trento Server is running.
       <procedure>
         <step>
-          <para>List the pods running in &k8s; cluster and their status. Trento Server currently consists of the following six pods: </para>
+          <para>List the pods running in &k8s; cluster and their status. &t.server; currently consists of the following six pods: </para>
           <screen>&prompt.user;<command>kubectl get pods</command>
 trento-server-grafana-*
 trento-server-prometheus-server-*
