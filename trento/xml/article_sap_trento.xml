@@ -2451,7 +2451,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
       <para> In additon to the output of the Trento Support Plugin and the Dump Scenario script, the descriptions and logs of the
        pods of the &t.server; can also be useful for analysis and troubleshooting purposes. These descriptions and logs can be 
        easily retrieved with the <command>kubectl</command> command, for which you need a host where command <command>kubectl</command>
-       is installed and connected to the K8s cluster where Trento Server is running.
+       is installed and connected to the K8s cluster where &t.server; is running.</para>
       <procedure>
         <step>
           <para>List the pods running in &k8s; cluster and their status. &t.server; currently consists of the following six pods: </para>
