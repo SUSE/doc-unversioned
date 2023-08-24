@@ -2472,7 +2472,7 @@ trento-server-rabbitmq-0</screen>
           <screen>&prompt.user;<command>kubectl logs</command> <replaceable>POD_NAME</replaceable></screen>
         </step>
         <step>
-          <para>Monitor log of one particular pod as follows:</para>
+          <para>Monitor the log of one particular pod as follows:</para>
           <screen>&prompt.user;<command>kubectl logs</command> <replaceable>POD_NAME</replaceable> --follow</screen>
         </step>
       </procedure>
