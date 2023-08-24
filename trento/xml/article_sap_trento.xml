@@ -402,7 +402,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       </step>
       <step xml:id="st-deploy-k3s">
         <para>
-          With the same user that installed K3s, use Helm to install &t.server; using the Helm chart:
+          With the same user that installed K3s, use Helm to install &t.server; with the Helm chart:
         </para>
         <screen>helm upgrade \
    --install trento-server oci://registry.suse.com/trento/trento-server \
