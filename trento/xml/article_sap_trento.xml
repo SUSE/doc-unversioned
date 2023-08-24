@@ -2187,7 +2187,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
       <itemizedlist>
                 <listitem>
           <para>Before updating &t.server; ensure that all the &t.agent;s in the environment are supported by the target version.
-           See ssection <xref linkend="sec-trento-compatibility-matrix" /> for details. 
+           See section <xref linkend="sec-trento-compatibility-matrix" /> for details. 
           </para>
         </listitem>
         <listitem>
