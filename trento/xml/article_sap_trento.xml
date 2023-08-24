@@ -2437,7 +2437,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
             <screen>&prompt.user;<command>chmod</command> +x dump_scenario_from_k8.sh</screen>
           </step>
           <step>
-            <para>Ensure <command>kubectl</command> is connected to the K8s cluster where &t.server; is running and exceute the script as follows:</para>
+            <para>Ensure <command>kubectl</command> is connected to the K8s cluster where &t.server; is running and execute the script as follows:</para>
             <screen>&prompt.user;<command>./dump_scenario_from_k8.sh</command> -n <replaceable>SCENARIO_NAME</replaceable> -p <replaceable>PATH</replaceable></screen>
           </step>
           <step>
