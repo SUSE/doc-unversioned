@@ -83,7 +83,7 @@
           <dm:product>Documentation</dm:product>
           <dm:assignee>dpopov@suse.com</dm:assignee>
         </dm:bugtracker>
-        <dm:editurl>https://github.com/SUSE/doc-unversioned/tree/main/container-guide</dm:editurl>
+        <dm:editurl>https://github.com/SUSE/doc-unversioned/tree/main/container-guide/</dm:editurl>
         <dm:translation>no</dm:translation>
       </dm:docmanager>
       <abstract>
