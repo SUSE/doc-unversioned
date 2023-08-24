@@ -161,8 +161,8 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         <listitem>
           <formalpara>
             <title>Delivery mechanism:</title>
-            <para> A set of container images from the &suse;
-              registry together with a Helm chart for easy
+            <para> A set of container images from the &suse; public
+              registry together with a Helm chart that facilitates their
               installation. </para>
           </formalpara>
           <formalpara>
@@ -180,14 +180,13 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
             </listitem>
             <listitem>
               <para> If you have no &k8s; cluster and want enterprise
-                support, &suse; recommends &suse; Rancher with
-                &rancher.k8s.engine; (RKE) version 1 or
+                support, &suse; recommends &suse; &rancher.k8s.engine; (RKE) version 1 or
                 2. </para>
             </listitem>
             <listitem>
-              <para> If you do not have a &k8s; enterprise solution and you would
-                like to test &trentopremium;, &suse; Rancher's K3s could be an easy
-                way to get started. Keep in mind that K3s default installation process 
+              <para> If you do not have a &k8s; enterprise solution but you still want
+                to try &trentopremium;, &suse; Rancher's K3s provides you with an easy
+                way to get started. But keep in mind that K3s default installation process 
                 deploys a single node &k8s; cluster, which is not a recommended 
                 setup for a stable Trento production instance.
                </para>
@@ -210,7 +209,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       &t.agent;s. </para>
     <section xml:id="sec-trento-server-requirements">
       <title>&t.server; requirements</title>
-      <para> Running all the &t.server; components requires a minimum of 3&nbsp;GB of RAM,
+      <para> Running all the &t.server; components requires a minimum of 4&nbsp;GB of RAM,
         two CPU cores and 64&nbsp;GB of storage.
         When using K3s, such storage should be provided under <filename>/var/lib/rancher/k3s</filename>.
       </para>
@@ -335,7 +334,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         </step>
         <step>
         <para>
-          Install the &t.server; by pulling the Trento Helm chart with Helm:
+          Use Helm to install &t.server; with the Trento Helm chart:
         </para>
         <screen>helm upgrade \
    --install trento-server oci://registry.suse.com/trento/trento-server \
@@ -403,8 +402,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       </step>
       <step xml:id="st-deploy-k3s">
         <para>
-          With the same user that installed K3s, install &t.server; by pulling the Helm chart
-          using Helm:
+          With the same user that installed K3s, use Helm to install &t.server; with the Helm chart:
         </para>
         <screen>helm upgrade \
    --install trento-server oci://registry.suse.com/trento/trento-server \
@@ -419,6 +417,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
        <step>
         <para> Monitor the creation and start-up of the &t.server; pods and wait until they are all ready and running:</para>
         <screen>watch kubectl get pods</screen>
+        <para> All pods should be in ready and running status.</para>
       </step>
        <step>
         <para> Log out of the &t.server; host. </para>
@@ -2186,6 +2185,11 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
         </screen>
    <para>A few things to consider:</para>
       <itemizedlist>
+                <listitem>
+          <para>Before updating &t.server; ensure that all the &t.agent;s in the environment are supported by the target version.
+           See section <xref linkend="sec-trento-compatibility-matrix" /> for details. 
+          </para>
+        </listitem>
         <listitem>
           <para>Remember to set the helm experimental flag if you are using a version of Helm lower than 3.8.0.
           </para>
@@ -2200,7 +2204,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
         </screen>
         </listitem>
         <listitem>
-          <para> If email alerting has been enabled, then the corresponding <parameter>trento-web.alerting</parameter> parameters
+          <para> If email alerting has been enabled, then the corresponding <parameter>trento-web.alerting</parameter> flags
            should be set in the Helm command as well.
           </para>
         </listitem>
@@ -2285,7 +2289,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
    <section xml:id="sec-trento-uninstall-trentoserver">
     <title>Uninstalling &t.server;</title>
     <para> If &t.server; was deployed manually, then you need to uninstall it manually.
-     If  &t.server; was deployed using the Helm chart, use Helm to uninstall it as follows:</para>
+     If  &t.server; was deployed using the Helm chart, you can also use Helm to uninstall it as follows:</para>
      <screen>helm uninstall trento-server</screen>
   </section>
 
@@ -2328,8 +2332,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
     <para>
       Any &suse; customer, with a registered &sles4sap;&nbsp;15 (SP1 or higher) distribution,
      experiencing an issue with &trentopremium;, can report the problem either directly in the &scc;
-     or through the corresponding vendor, depending on their licensing model. Any how, the problem has to reported under
-     &sles4sap;&nbsp;15 and component trento. 
+     or through the corresponding vendor, depending on their licensing model. Please report the problem under &sles4sap;&nbsp;15 and component trento.
     </para>
       <para>
       When opening a support case for Trento, provide the following information, which can be retrieved
@@ -2402,7 +2405,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
             <screen>&prompt.root;<command>chmod</command> +x trento-support.sh</screen>
           </step>
           <step>
-            <para>Ensure <command>kubectl</command> is connected to the K8s cluster where &t.server; is running  and execute the script:</para>
+            <para>Ensure <command>kubectl</command> is connected to the K8s cluster where &t.server; is running and execute the script:</para>
             <screen>&prompt.root;<command>./trento-support.sh</command> --output file-tgz --collect all</screen>
           </step>
           <step>
@@ -2433,10 +2436,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
             <screen>&prompt.user;<command>chmod</command> +x dump_scenario_from_k8.sh</screen>
           </step>
           <step>
-            <para>Set the environment variable <envar>KUBECONFIG</envar> appropriately.</para>
-          </step>
-          <step>
-            <para>Generate the dump:</para>
+            <para>Ensure <command>kubectl</command> is connected to the K8s cluster where &t.server; is running and execute the script as follows:</para>
             <screen>&prompt.user;<command>./dump_scenario_from_k8.sh</command> -n <replaceable>SCENARIO_NAME</replaceable> -p <replaceable>PATH</replaceable></screen>
           </step>
           <step>
@@ -2445,6 +2445,39 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
           </step>
         </procedure>
       </section>
+
+    <section>
+      <title>Pods descriptions and logs</title>
+      <para> In additon to the output of the Trento Support Plugin and the Dump Scenario script, the descriptions and logs of the
+       pods of the &t.server; can also be useful for analysis and troubleshooting purposes. These descriptions and logs can be 
+       easily retrieved with the <command>kubectl</command> command, for which you need a host where command <command>kubectl</command>
+       is installed and connected to the K8s cluster where &t.server; is running.</para>
+      <procedure>
+        <step>
+          <para>List the pods running in &k8s; cluster and their status. &t.server; currently consists of the following six pods: </para>
+          <screen>&prompt.user;<command>kubectl get pods</command>
+trento-server-grafana-*
+trento-server-prometheus-server-*
+trento-server-postgresql-0
+trento-server-web-*
+trento-server-wanda-*
+trento-server-rabbitmq-0</screen>
+        </step>
+        <step>
+          <para>Retrieve the description of one particular pod as follows:</para>
+          <screen>&prompt.user;<command>kubectl describe pod</command> <replaceable>POD_NAME</replaceable></screen>
+        </step>
+        <step>
+          <para>Retrieve the log of one particular pod as follows:</para>
+          <screen>&prompt.user;<command>kubectl logs</command> <replaceable>POD_NAME</replaceable></screen>
+        </step>
+        <step>
+          <para>Monitor the log of one particular pod as follows:</para>
+          <screen>&prompt.user;<command>kubectl logs</command> <replaceable>POD_NAME</replaceable> --follow</screen>
+        </step>
+      </procedure>
+    </section>
+     
     </section>
 
     <section>
@@ -2475,43 +2508,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
       </procedure>
     </section>
 
-    <section>
-      <title>Platform</title>
-      <para />
-          <section>
-      <title>Platform-independent</title>
-      <para />
-      <procedure>
-        <step>
-          <para>Set environment variable <envar>KUBECONFIG</envar> appropriately. When working with K3s:</para>
-          <screen>&prompt.user;<command>export KUBECONFIG</command>=/etc/rancher/k3s/k3s.yaml</screen>
-        </step>
-        <step>
-          <para>List pods running in &k8s; cluster and their status. Trento Server currently consists of six pods: </para>
-          <screen>&prompt.user;<command>kubectl get pods</command>
-trento-server-grafana-*
-trento-server-prometheus-server-*
-trento-server-postgresql-0
-trento-server-web-*
-trento-server-wanda-*
-trento-server-rabbitmq-0</screen>
-        </step>
-        <step>
-          <para>Retrieve details about one particular pod:</para>
-          <screen>&prompt.user;<command>kubectl describe pod</command> <replaceable>POD_NAME</replaceable></screen>
-        </step>
-        <step>
-          <para>Retrieve the log of one particular pod:</para>
-          <screen>&prompt.user;<command>kubectl logs</command> <replaceable>POD_NAME</replaceable></screen>
-        </step>
-        <step>
-          <para>Follow the log of one particular pod:</para>
-          <screen>&prompt.user;<command>kubectl logs</command> <replaceable>POD_NAME</replaceable> --follow</screen>
-        </step>
-      </procedure>
-    </section>
 
-    </section>
   </section>
 
   <section xml:id="sec-trento-compatibility-matrix">
@@ -2633,7 +2630,7 @@ trento-server-rabbitmq-0</screen>
       <varlistentry xml:id="trento-version-210">
         <term>Version 2.1.0 (released on 2023/08/02)</term>
         <listitem>
-          <para> Consisting of Helm chart 2.1.0, web 2.1.0, checks engine
+          <para> Consisting of Helm chart 2.1.0, web component 2.1.0, checks engine
             (wanda) 1.1.0 and agent 2.1.0.</para>
           <itemizedlist>
             <listitem>
@@ -2658,14 +2655,14 @@ trento-server-rabbitmq-0</screen>
       <varlistentry xml:id="trento-version-200">
         <term>Version 2.0.0 (released on 2023/04/26)</term>
         <listitem>
-          <para>Consisting of Helm chart 2.0.0, web 2.0.0, cchecks engine
+          <para>Consisting of Helm chart 2.0.0, web component 2.0.0, checks engine
             (wanda) 1.0.0 and agent 2.0.0.</para>
           <itemizedlist>
             <listitem>
               <para>A brand-new safer, faster, ligher SSH-less configuration
                 checks engine (wanda) which not only opens the door to
                 configuration checks for other HA scenarios (ASCS/ER, HANA
-                scaleup cost optimized, &hana; scale-out) and other targes in
+                scale-up cost optimized, &hana; scale-out) and other targes in
                 the environment (hosts, &hana; databases, &netweaver;
                 instances), but also will allow customization of existing checks
                 and addtion of custom checks.</para>
@@ -2688,7 +2685,7 @@ trento-server-rabbitmq-0</screen>
       <varlistentry xml:id="trento-version-120">
         <term>Version 1.2.0 (released on 2022/11/04)</term>
         <listitem>
-          <para> Consisting of Helm chart 1.2.0, web 1.2.0, runner 1.1.0 and
+          <para> Consisting of Helm chart 1.2.0, web component 1.2.0, checks engine (runner) 1.1.0 and
             agent 1.1.0.</para>
           <itemizedlist>
             <listitem>
@@ -2707,11 +2704,11 @@ trento-server-rabbitmq-0</screen>
       <varlistentry xml:id="trento-version-110">
         <term>Version 1.1.0 (released on 2022/07/14)</term>
         <listitem>
-          <para> Consisting of Helm chart 1.1.0, web 1.1.0, runner 1.0.1 and
+          <para> Consisting of Helm chart 1.1.0, web component 1.1.0, checks engine (runner) 1.0.1 and
             agent 1.1.0.</para>
           <itemizedlist>
             <listitem>
-              <para>Fix for major bug in the runner component that prevented the
+              <para>Fix for major bug in the checks engine that prevented the
                 web component to load properly.</para>
             </listitem>
           </itemizedlist>
@@ -2720,7 +2717,7 @@ trento-server-rabbitmq-0</screen>
       <varlistentry xml:id="trento-version-100">
         <term>Version 1.0.0 (general availability, released on 2022/04/29)</term>
         <listitem>
-          <para> Consisting of Helm chart 1.0.0, web 1.0.0, runner 1.0.0 and
+          <para> Consisting of Helm chart 1.0.0, web component 1.0.0, checks engine (runner) 1.0.0 and
             agent 1.0.0. </para>
           <itemizedlist>
             <listitem>
@@ -2731,7 +2728,7 @@ trento-server-rabbitmq-0</screen>
             </listitem>
             <listitem>
               <para>Automated discovery of SAP systems, SAP instances and &hana;
-                scale-up clusters.</para>
+                scale-up two-node clusters</para>
             </listitem>
             <listitem>
               <para>Configuration checks for &hana; scale-up performance
@@ -2743,7 +2740,7 @@ trento-server-rabbitmq-0</screen>
                 discovered host.</para>
             </listitem>
             <listitem>
-              <para>Basis alert emails for critical events happening in the
+              <para>Basic alert emails for critical events happening in the
                 monitored environment.</para>
             </listitem>
           </itemizedlist>
