@@ -19,14 +19,14 @@
     <title>Registration and Online Repositories</title>
   </info>
   <para>
-    As a pre-requisite to work with containers on a &sls;, you have to enable
+    As a pre-requisite to work with containers on a &sls;, enable
     the &slea; Containers Module. It consists of container-related packages,
     including container engine and core container tools like on-premise
     registry. For more information about &slea; Modules, refer to
     <link xlink:href="https://documentation.suse.com/sles/html/&slea;S-all/article-modules.html"/>.
   </para>
   <para>
-    The regular &slea; subscription includes &slea; Containers Module free of
+    The regular &slea; subscription includes the &slea; Containers Module free of
     charge.
   </para>
   <section xml:id="sec-sle-containers-module-yast">
@@ -34,7 +34,7 @@
     <procedure>
       <step>
         <para>
-          Start &yast;, and select
+          Start &yast; and select
           <menuchoice><guimenu>Software</guimenu><guimenu>Software
           Repositories</guimenu></menuchoice>.
         </para>
@@ -79,9 +79,9 @@
     <title>container-suseconnect</title>
       <para>
         <link xlink:href="https://github.com/SUSE/container-suseconnect"><literal>container-suseconnect</literal></link>
-        is a plugin available in all &bci;s that ship with &zypper;. When the
-        plugin detects the host's &sls; registration credentials, it uses them
-        to give the container access the &sle; repositories. This includes
+        is a plug-in available in all &bci;s that ship with &zypper;. When the
+        plug-in detects the host's &sls; registration credentials, it uses them
+        to give the container access to the &sle; repositories. This includes
         additional modules and previous package versions that are not part of
         the free SLE_BCI repository.
       </para>
@@ -91,7 +91,7 @@
       <para>
         If you are running a registered &slsa; system with &docker;,
         <literal>container-suseconnect</literal> automatically detects and uses
-        the subscription, without requiring any action on your part.
+        the subscription, requiring no action on your part.
       </para>
       <para>
         On &opensuse; systems with &docker;, you must copy the files
@@ -122,7 +122,7 @@
         You can use the following command to obtain
         <literal>SCCcredentials</literal> (replace
         <replaceable>REGISTRATION_CODE</replaceable> with your SCC registration
-        code)
+        code):
       </para>
 <screen>podman run --rm registry.suse.com/suse/sle15:latest bash -c \
         "zypper -n in SUSEConnect; SUSEConnect --regcode <replaceable>REGISTRATION_CODE</replaceable>; \
@@ -153,7 +153,7 @@
         --mount=type=secret,id=SCCcredentials \
         zypper -n in fluxbox</screen>
       <para>
-        &buildah; support mounting secrets via the <literal>--secret</literal>
+        &buildah; supports mounting secrets via the <literal>--secret</literal>
         flag as follows:
       </para>
 <screen>buildah bud --layers --secret=id=SCCcredentials,src=/path/to/SCCcredentials \
@@ -180,7 +180,7 @@
       </note>
     </section>
     <section xml:id="sec-container-suseconnect-modules">
-      <title>Adding modules into the container or container Image</title>
+      <title>Adding modules into the container or container image</title>
       <para>
         <literal>container-suseconnect</literal> allows you to automatically
         add &slea; Modules into a container or container image. What modules

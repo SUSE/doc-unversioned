@@ -20,7 +20,7 @@
   </info>
     <para>In a production environment, you are likely to manage multiple containers. To work with multiple containers, you
     have to group the containers into a pod that provides a specification for deploying and running the containers as well as allows them to share storage and network resources. In other words, a pod
-    encapsulates an application composed of multiple containers into a single unit. The concept of pod was
+    encapsulates an application composed of multiple containers into a single unit. The concept of the pod was
     introduced by <link xlink:href="https://kubernetes.io/docs/concepts/workloads/pods/">&kube;</link>. &podman; uses the same definition as &kube;.</para>
 
       <para>Usually, containers within a pod can communicate directly with each other. Each pod contains an
@@ -36,10 +36,10 @@
       </mediaobject>
       </informalfigure>
       <para>Each container in a pod has its own instance of a monitoring program. The monitoring program watches
-      the container's process and if the container dies, the monitoring program saves its exit code. The
-      program also holds open the tty interface for the particular container. The monitoring program
-      enables you to run containers in the detached mode when &podman; exits, because this program continues
-      to run and enables you to attach tty later.</para>
+      the container's process and if the container dies, the monitoring program saves its exit code. This
+      program also holds open the tty interface for the particular container. With the monitoring program,
+      you can run containers in the detached mode when &podman; exits, and attach tty later because the program continues
+      running.</para>
 
     <section xml:id="sec-orchestration-podman">
     <title>Single container host with &podman;</title>
@@ -52,7 +52,7 @@
     assign the desired name to a pod.</para>
     <screen>&prompt.user;podman pod create
     344940492c00b6a19ececbc5b109351bf0a3b8b19b3c279a097da7a653c592d0</screen>
-    <para>you can list our pods using the <command>podman pod list</command> command:</para>
+    <para>You can list your pods using the <command>podman pod list</command> command:</para>
     <screen>&prompt.user;podman pod list
     POD ID        NAME          STATUS      CREATED        INFRA ID      # OF CONTAINERS
     344940492c00  suspicious_curie  Created     2 minutes ago  617d7e3ce399  1</screen>
@@ -80,7 +80,7 @@
     <screen>&prompt.user;podman pod ps
     POD ID        NAME          STATUS      CREATED         INFRA ID      # OF CONTAINERS
     344940492c00  suspicious_curie Running     21 minutes ago  617d7e3ce399  2</screen>
-    <para>To stop our newly created container named <literal>objective_jemison</literal></para>
+    <para>To stop our newly created container named <literal>objective_jemison</literal>:</para>
     <screen>&prompt.user;podman ps -a --pod
     CONTAINER ID  IMAGE                                COMMAND     CREATED         STATUS            PORTS       NAMES               POD ID        PODNAME
     617d7e3ce399  localhost/podman-pause:4.3.1-1669118400                             14 minutes ago  Up 4 minutes ago              344940492c00-infra  344940492c00  suspicious_curie 8f5af62a7c38  registry.suse.com/bci/bci-base:latest  sleep 1h    4 minutes ago   Up 4 minutes ago              objective_jemison   344940492c00  suspicious_curie
@@ -92,13 +92,13 @@
     &prompt.user;podman ps -a --pod
     CONTAINER ID  IMAGE                                COMMAND     CREATED         STATUS                       PORTS       NAMES               POD ID        PODNAME
     617d7e3ce399  localhost/podman-pause:4.3.1-1669118400                             25 minutes ago  Up 15 minutes ago                        344940492c00-infra  344940492c00  suspicious_curie 8f5af62a7c38  registry.suse.com/bci/bci-base:latest  sleep 1h    15 minutes ago  Exited (137) 14 seconds ago              objective_jemison   344940492c00  suspicious_curie</screen>
-    <para>You can also stop the pod and all of its containers using, podman pod stop</para>
+    <para>You can also stop the pod and all of its containers using <command>podman pod stop</command>.</para>
     <screen># podman pod stop suspicious_curie
     344940492c00b6a19ececbc5b109351bf0a3b8b19b3c279a097da7a653c592d0
     &prompt.user;podman ps -ap
     CONTAINER ID  IMAGE                                COMMAND     CREATED         STATUS                      PORTS       NAMES               POD ID        PODNAME
     617d7e3ce399  localhost/podman-pause:4.3.1-1669118400                             29 minutes ago  Exited (0) 7 seconds ago                344940492c00-infra  344940492c00  suspicious_curie 8f5af62a7c38  registry.suse.com/bci/bci-base:latest  sleep 1h    19 minutes ago  Exited (137) 3 minutes ago              objective_jemison   344940492c00  suspicious_curie</screen>
-    <para>You can also start and restart everything with <command>sudo podman start <replaceable>CONTAINER_NAME</replaceable></command>,
+    <para>Start and restart everything with <command>sudo podman start <replaceable>CONTAINER_NAME</replaceable></command>,
     <command>podman pod start <replaceable>POD_NAME</replaceable></command> or <command>podman pod restart <replaceable>POD_NAME</replaceable></command> .</para>
     <para>There are two ways to remove pods. You can use the <command>podman pod rm</command> command to remove one or more pods.
     Alternatively, you can remove all stopped pods using the <command>podman pod prune</command> command.
@@ -106,22 +106,22 @@
     <screen>&prompt.user;podman pod rm <replaceable>POD</replaceable></screen>
     <para>POD can be a pod name or a pod ID.
     To remove all currently stopped pods, use the <command>podman pod prune</command> command. Make sure that all stopped
-    pods are intended to be removed before you run the <command>podman pod prune</command> command, otherwise there is a risk of removing pods that are still in use.</para>
+    pods are removed before you run the <command>podman pod prune</command> command, otherwise there is a risk of removing pods that are still in use.</para>
 
     <para>A container runtime makes it easy to launch an application distributed as a
     single container. But things get more complicated when you need to run
-    applications consisting of multiple containers, or when it's necessary to start
+    applications consisting of multiple containers, or when it is necessary to start
     the applications automatically on system boot and restart them after they
     crash. While container orchestration tools like &kube; are designed for that
     exact purpose, they are intended to be used for highly distributed and scalable
     systems with hundreds of nodes, and not for a single machine. systemd and &podman;
     are much better suited for the single-machine scenario, as they do not add
-    another layer complexity to your existing setup.</para>
+    another layer of complexity to your existing setup.</para>
 
     <para>&podman; supports creating systemd unit files with
     the <command>podman generate systemd</command> subcommand. The subcommand creates a systemd unit
     file, making it possible to control a container or pod via systemd. Using the
-    unit file you can launch a container or pod on boot, automatically restart it if
+    unit file, you can launch a container or pod on boot, automatically restart it if
     a failure occurs, and keep its logs in journald.</para>
 
     <para>The following example uses a simple NGINX container:</para>
@@ -178,11 +178,11 @@
     <screen>&prompt.user;systemctl --user start container-web
     &prompt.user;systemctl --user is-active container-web.service
     active</screen>
-    <para>Run the <command>podman ps</command> command to see the list of all running containers :</para>
+    <para>Run the <command>podman ps</command> command to see the list of all running containers:</para>
     <screen>&prompt.user;podman ps
     CONTAINER ID  IMAGE                           COMMAND               CREATED         STATUS             PORTS                 NAMES
     af92743971d2  docker.io/library/nginx:latest  nginx -g daemon o...  15 minutes ago  Up 15 minutes ago  0.0.0.0:8080-&gt;80/tcp  web</screen>
-    <para>One of the benefits of managing the container via systemd is the ability to
+    <para>One benefit of managing the container via systemd is the ability to
     automatically restart the container if it crashes. You can simulate a crash by
     sending <literal>SIGKILL</literal> to the main process in the container:</para>
     <screen>&prompt.user;podman ps
@@ -217,7 +217,7 @@
     systemd units.</para>
     <para>The auto update feature can be enabled by adding the line <option>--label
     "io.containers.autoupdate=registry" \</option> to the <option>ExecStart=</option> entry of the
-    container's systemd unit file. for the NGINX example, modify
+    container's systemd unit file. For the NGINX example, modify
     <literal>~/.config/systemd/user/container-web.service</literal> as follows:</para>
     <screen>ExecStart=/usr/bin/podman run \
             --cidfile=%t/%n.ctr-id \
@@ -250,7 +250,7 @@
     <title>Managing multiple containers</title>
     <para>Certain applications rely on more than one container to function, for example, a
     web front-end, a back-end server and a
-    database. <link xlink:href="https://docs.docker.com/compose/">Docker compose</link> is popular tool for
+    database. <link xlink:href="https://docs.docker.com/compose/">Docker compose</link> is a popular tool for
     deploying multi-container applications on a single machine. While &podman; does
     not support the <command>compose</command> command natively, in most cases compose files can be
     ported to a &podman; pod and multiple containers.</para>
@@ -309,7 +309,7 @@
     <section xml:id="sec-orchestration-podman-more">
     <title>More on &podman;</title>
     <para>If you want to learn more about &podman; and handling pod deployment,
-    please check <link xlink:href="https://docs.podman.io/en/latest/">https://docs.podman.io/en/latest/</link> and <link xlink:href="https://github.com/containers/podman">https://github.com/containers/podman</link></para>
+    please check <link xlink:href="https://docs.podman.io/en/latest/">https://docs.podman.io/en/latest/</link> and <link xlink:href="https://github.com/containers/podman">https://github.com/containers/podman</link>.</para>
     </section>
     <section xml:id="sec-orchestration-kubernetes">
     <title>Multi-container host with &kube;</title>
@@ -318,16 +318,16 @@
     Computing Foundation (<link xlink:href="https://www.cncf.io/about">CNCF</link>).</para>
     
     <para>&kube; makes it possible for multiple machines (or servers or nodes) to work together and create a cluster that you can
-    then interact with through APIs. We recommend using <link xlink:href="https://ranchermanager.docs.rancher.com">Rancher</link> for deploying &kube; clusters and managing applications running on top of them. A single Rancher setup can manage multiple &kube; clusters running anywhere: from bare-metal, to on-prem or cloud service providers.</para>
-    <para>For more information on Ranger, refer to the <link xlink:href="https://ranchermanager.docs.rancher.com">official Rancher documentation</link>.</para>
+    then interact with through APIs. We recommend using <link xlink:href="https://ranchermanager.docs.rancher.com">Rancher</link> for deploying &kube; clusters and managing applications running on top of them. A single Rancher setup can manage multiple &kube; clusters running anywhere: from bare-metal to on-premises or cloud service providers.</para>
+    <para>For more information on Rancher, refer to the <link xlink:href="https://ranchermanager.docs.rancher.com">official Rancher documentation</link>.</para>
     </section>
     <section xml:id="sec-k3s">
     <title>Lightweight &kube; (k3s)</title>
-    <para><link xlink:href="https://k3s.io">K3s</link> is lightweight CNCF-certified &kube; distribution
-    built for IoT &amp; Edge computing. Unlike &kube; K3s is packaged as a single &lt;60 MB binary and
+    <para><link xlink:href="https://k3s.io">K3s</link> is a lightweight CNCF-certified &kube; distribution
+    built for IoT &amp; Edge computing. Unlike &kube;, K3s is packaged as a single &lt;60 MB binary and
     optimized for the &arm; architecture.</para>
     <para>For more info, refer to
     <link xlink:href="https://www.suse.com/c/rancher_blog/introduction-to-k3s/">Introduction to K3s</link> and
-    <link xlink:href="https://documentation.suse.com/trd/kubernetes/single-html/kubernetes_ri_rancher-k3s-sles/index.html#id-introduction">how to install K3s and Rancher on SUSE Linux Enterprise Server</link></para>
+    <link xlink:href="https://documentation.suse.com/trd/kubernetes/single-html/kubernetes_ri_rancher-k3s-sles/index.html#id-introduction">how to install K3s and Rancher on SUSE Linux Enterprise Server</link>.</para>
     </section>
 </article>

@@ -19,7 +19,7 @@
     <title>Compatibility and support conditions</title>
   </info>
   <para>
-    The term "support" refers to two distinct concepts: a) technical enablement
+    The term <emphasis>support</emphasis> refers to two distinct concepts: a) technical enablement
     of a feature or combination of, for example, host and container, and b)
     enterprise support as delivered by &suse; to &suse; customers. Enterprise
     support requires a subscription for &suse; products according to
@@ -30,7 +30,7 @@
     <title>Support for &slsa; hosts</title>
     <para>
       Consult the following support and compatibility matrix to make sure that
-      the desired host system and container combination is compatible and
+      the desired host system and container combination are compatible and
       supported.
     </para>
     <table frame="all" rowsep="1" colsep="1">
@@ -111,7 +111,7 @@
       <title>Limited support note</title>
       <para>
         &suse; provides limited support for &slsa; 15 GA-based containers
-        running on &slsa; 12 SP5 hosts due to the fact that containerized
+        running on &slsa; 12 SP5 hosts because containerized
         applications can make system calls not available in the host's kernel.
         To avoid potential risks and compatibility problems, &suse; recommends
         using the same Service Pack release for both containers and hosts.
@@ -314,13 +314,13 @@
       &#10003; Fully compatible and fully supported
     </para>
     <para>
-      &#10059; Workload specific: fully supported but compatibility depends on type of
+      &#10059; Workload specific: fully supported but compatibility depends on the type of
       container (privileged or unprivileged) and on the application
       interactions (direct with kernel-version-specific data structures,
       kernel-version-specific modules, etc.)
     </para>
     <para>
-      &#10059;&#10059; Provisional support status until testing is completed for full compatibility and full support.
+      &#10059;&#10059; Provisional support status until testing is completed for full compatibility and full support
     </para>
     <para>
       Refer to the
@@ -376,7 +376,7 @@
       Container images can have different support status, and they can have
       limited support. Refer to the appropriate
       <link xlink:href="https://registry.suse.com"/> page
-      for the further information about a specific container image.
+      for further information about a specific container image.
     </para>
   </section>
   <section xml:id="sec-supported-containers-hosts">
@@ -411,7 +411,7 @@
       these packages.
     </para>
     <para>
-      Any container and host environment not mentioned above has limited
+      Any container and host environment not mentioned above have limited
       support. Details can be discussed with the &suse; Support Team
       responsible for triaging the issue and recommending alternative
       solutions. In any other case, issues in the host environment must be
