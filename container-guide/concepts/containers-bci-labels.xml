@@ -198,17 +198,15 @@
       overwritten.
     </para>
     <para>
-      Use &podman; and the jq tool to retrieve labels of a local image. The
-      following command lists all labels and only the labels information of the
-      <package>bci-base:15.4</package> image:
+      Use &podman; to retrieve labels of a local image. The following command
+      lists all labels and only the labels information of the
+      <package>bci-base:15.5</package> image:
     </para>
-<screen>podman inspect registry.suse.com/bci/bci-base:15.4 | \
-    jq '.[0].Labels'</screen>
+<screen>podman inspect -f {{.Labels | json}} registry.suse.com/bci/bci-base:15.5</screen>
     <para>
       It is also possible to retrieve the value of a specific label:
     </para>
-<screen>podman inspect registry.suse.com/bci/bci-base:15.4 | \
-    jq '.[0].Labels["com.suse.sle.base.supportlevel"]'</screen>
+<screen>podman inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} registry.suse.com/bci/bci-base:15.5</screen>
     <para>
       The preceding command retrieves the value of the
       <literal>com.suse.sle.base.supportlevel</literal> label.
@@ -217,9 +215,8 @@
       The skopeo tool makes it possible to examine labels of an image without
       pulling it first. For example:
     </para>
-<screen>skopeo inspect docker://registry.suse.com/bci/bci-base:15.4 | \
-    jq '.Labels'
-    skopeo inspect docker://registry.suse.com/bci/bci-base:15.4 | \
-    jq '.Labels["com.suse.sle.base.supportlevel"]'</screen>
+<screen>skopeo inspect -f {{.Labels | json}} docker://registry.suse.com/bci/bci-base:15.5
+skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker://registry.suse.com/bci/bci-base:15.5
+</screen>
   </section>
 </article>
