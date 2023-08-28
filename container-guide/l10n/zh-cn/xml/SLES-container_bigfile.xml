@@ -113,7 +113,7 @@
 <para>所述的所有工具（<link xl:href="https://openbuildservice.org">Open Build Service</link> 除外）都包含在 <emphasis role="strong">SUSE Linux Enterprise Server 15 SP4 Containers 模块</emphasis>中。您可以在 <link xl:href="https://scc.suse.com/packages">SUSE Customer Center</link> 的 <emphasis role="strong">Containers 模块</emphasis>中查看完整的软件包列表。</para>
 <section xml:id="sec-tools-suse-registry">
 <title>SUSE 注册表</title>
-<para><link xl:href="https://registry.suse.com">SUSE Registry</link> 是 SLE 基本容器映像的官方来源。其中包含已经过测试、更新和认证的 SLE 基本容器映像。SUSE 注册表中的所有映像会定期重构建，以包含更新和修复。SUSE 注册表的 Web 用户界面列出了一部分可用映像：基本容器映像、语言容器映像、应用程序容器映像、SUSE SUSE Linux Enterprise Server 映像，以及不再享受一般支持的版本。Web UI 还提供了每个映像的附加信息，包括发布日期、支持级别、大小、映像摘要以及映像中的软件包。</para>
+<para><link xl:href="https://registry.suse.com">SUSE 注册表</link> 是 SLE 基本容器映像的官方来源。其中包含已经过测试、更新和认证的 SLE 基本容器映像。SUSE 注册表中的所有映像会定期重构建，以包含更新和修复。SUSE 注册表的 Web 用户界面列出了一部分可用映像：基本容器映像、语言容器映像、应用程序容器映像、SUSE SUSE Linux Enterprise Server 映像，以及不再享受一般支持的版本。Web UI 还提供了每个映像的附加信息，包括发布日期、支持级别、大小、映像摘要以及映像中的软件包。</para>
 </section>
 <section xml:id="sec-tools-docker">
 <title>Docker</title>
@@ -133,17 +133,16 @@
 </section>
 <section xml:id="sec-tools-helm">
 <title>Helm</title>
-<para><link xl:href="https://helm.sh">Helm</link> 是 Kubernetes 软件包管理器，它是使用图表在 Kubernetes 群集上部署容器化应用程序的事实标准。Helm 可用于在一个或多个容器中安装、更新和去除应用程序。它还可以处理关联的资源，如配置、存储卷等。例如，可以使用它来部署 RMT 服务器（有关详细信息，请参见 <link xl:href="https://documentation.suse.com/sles/15-SP4/single-html/SLES-rmt/index.html#sec-rmt-deploy-kubernetes">RMT
-documentation</link>）。</para>
+<para><link xl:href="https://helm.sh">Helm</link> 是 Kubernetes 软件包管理器，它是使用图表在 Kubernetes 群集上部署容器化应用程序的事实标准。Helm 可用于在一个或多个容器中安装、更新和去除应用程序。它还可以处理关联的资源，如配置、存储卷等。例如，可以使用它来部署 RMT 服务器（有关详细信息，请参见 <link xl:href="https://documentation.suse.com/sles/15-SP4/single-html/SLES-rmt/index.html#sec-rmt-deploy-kubernetes">RMT 文档</link>）。</para>
 </section>
 <section xml:id="sec-tools-distribution">
 <title>Distribution</title>
-<para><link xl:href="https://github.com/distribution/distribution">Distribution</link> 是一个开源的注册表实现，用于通过 OCI 分发规范存储和分发容器映像。它为构建大规模注册表解决方案或运行简单专用注册表提供简单、安全且可缩放的基础。Distribution 还可以镜像 Docker Hub，但<link xl:href="https://docs.docker.com/registry/recipes/mirror/#gotcha">not any other private registry</link>。</para>
+<para><link xl:href="https://github.com/distribution/distribution">Distribution</link> 是一个开源的注册表实现，用于通过 OCI 分发规范存储和分发容器映像。它为构建大规模注册表解决方案或运行简单专用注册表提供简单、安全且可缩放的基础。Distribution 还可以镜像 Docker Hub，但<link xl:href="https://docs.docker.com/registry/recipes/mirror/#gotcha">不会镜像任何其他私有注册表</link>。</para>
 </section>
 <section xml:id="sec-tools-obs">
 <title>Open Build Service</title>
 <para><link xl:href="http://openbuildservice.org">Open Build Service (OBS)</link> 提供用于构建和存储 RPM 软件包（包括不同的容器格式）的免费基础架构。<link xl:href="https://registry.opensuse.org">OBS Container Registry</link> 提供由 OBS 构建的所有容器映像的详细列表，使用命令完成将映像提取到本地环境的操作。您可以根据特定需求修改 OBS <link xl:href="https://build.opensuse.org/image_templates">openSUSEcontainer image templates</link>，这是创建您自己的容器分支的最简单方法。您可以使用 <literal>Dockerfile</literal> 通过 Docker 工具从现有映像构建容器映像。也可以使用 KIWI 映像构建解决方案从头开始构建映像。</para>
-<para><link xl:href="https://openbuildservice.org/2018/05/09/container-building-and-distribution/">here</link>提供了有关如何在 OBS 上构建映像的说明。</para>
+<para><link xl:href="https://openbuildservice.org/2018/05/09/container-building-and-distribution/">此处</link>提供了有关如何在 OBS 上构建映像的说明。</para>
 <para>SUSE 容器映像称为 SUSE Linux Enterprise 基本容器映像 (SLE BCI)，它们是仅有的官方 SUSE 容器映像，具体请参见<xref linkend="cha-bci"/>。它们未在 <link xl:href="https://build.opensuse.org">https://build.opensuse.org</link> 上提供，导出到该网站的 RPM 与内部 RPM 不同。这意味着无法在 <link xl:href="https://build.opensuse.org">https://build.opensuse.org</link> 上构建官方支持的映像。</para>
 <para>有关 SLE BCI 的详细信息，请参见<xref linkend="cha-bci"/>。</para>
 </section>
@@ -153,7 +152,7 @@ documentation</link>）。</para>
 <note>
 <para>请务必区分 KIWI NG（当前版本 9.20.9）及其不再维护的旧版本（7.x.x 或更早版本，现在称为 <link xl:href="https://documentation.suse.com/kiwi/">KIWI Legacy</link>）。</para>
 </note>
-<para>有关如何安装 KIWI 以及使用它来构建映像的具体信息，请参见 <link xl:href="http://osinside.github.io/kiwi/">KIWI documentation</link>。<link xl:href="https://github.com/OSInside/kiwi-descriptions">KIWI GitHub repository</link>上提供了一系列示例映像说明。</para>
+<para>有关如何安装 KIWI 以及使用它来构建映像的具体信息，请参见 <link xl:href="http://osinside.github.io/kiwi/">KIWI 文档</link>。<link xl:href="https://github.com/OSInside/kiwi-descriptions">KIWI GitHub 储存库</link>上提供了一系列示例映像说明。</para>
 <para>KIWI 手册页提供了使用该工具的相关信息。要访问手册页，请安装 <literal>kiwi-man-pages</literal> 软件包。</para>
 </section>
 </chapter>
@@ -180,7 +179,7 @@ documentation</link>）。</para>
 <varlistentry>
 <term>安全性</term>
 <listitem>
-<para>SLE_BCI 储存库中的每个软件包都接受安全审计，SLE BCI 受益于与 SUSE Linux Enterprise Server 相同的 CVE 处理机制。所有发现和修复的漏洞将通过电子邮件、专门的 <link xl:href="https://www.suse.com/security/cve/">CVE pages</link>以 OVAL 和 CVRF 数据的形式公布。为确保供应链的安全，所有容器映像均已使用 Notary v1、Podman 的 GPG 签名和 Sigstore Cosign 进行签名。</para>
+<para>SLE_BCI 储存库中的每个软件包都接受安全审计，SLE BCI 受益于与 SUSE Linux Enterprise Server 相同的 CVE 处理机制。所有发现和修复的漏洞将通过电子邮件、专门的 <link xl:href="https://www.suse.com/security/cve/">CVE 页面</link>以 OVAL 和 CVRF 数据的形式公布。为确保供应链的安全，所有容器映像均已使用 Notary v1、Podman 的 GPG 签名和 Sigstore Cosign 进行签名。</para>
 </listitem>
 </varlistentry>
 <varlistentry>
@@ -485,7 +484,7 @@ documentation</link>）。</para>
 </section>
 <section xml:id="sec-application-bci">
 <title>应用程序 SLE BCI</title>
-<para>应用程序 SLE BCI 是基于 SLE BCI 的容器映像，其中包含特定的应用程序，例如 PostgreSQL 数据库和 Performance Co-Pilot（系统级性能分析工具包）。应用程序 SLE BCI 在 <link xl:href="https://registry.suse.com/#apps">SUSE Registry</link>的专门部分中提供。</para>
+<para>应用程序 SLE BCI 是基于 SLE BCI 的容器映像，其中包含特定的应用程序，例如 PostgreSQL 数据库和 Performance Co-Pilot（系统级性能分析工具包）。应用程序 SLE BCI 在 <link xl:href="https://registry.suse.com/#apps">SUSE 注册表</link>的专门部分中提供。</para>
 </section>
 <section xml:id="sec-status-lifecycle-bci">
 <title>有关状态和生命周期的重要说明</title>
@@ -1406,7 +1405,7 @@ Error: copying system image from manifest list: Source image rejected: Signature
 </section>
 <section xml:id="sec-customize-repo-registration">
 <title>储存库和注册</title>
-<para>预构建的映像未配置任何储存库，也不包含任何模块或扩展。它们包含一个 <link xl:href="https://github.com/SUSE/container-suseconnect">zypper service</link>，该服务根据运行容器的 SUSE Linux Enterprise Server 主机的配置联系 SUSE Customer Center 或 Repository Mirroring Tool (RMT) 服务器。该服务会获取容器映像所用产品的可用储存库列表。您还可以直接在 <literal>Dockerfile</literal> 中声明扩展。有关详细信息，请参见<xref linkend="sec-container-suseconnect"/>。</para>
+<para>预构建的映像未配置任何储存库，也不包含任何模块或扩展。它们包含一个 <link xl:href="https://github.com/SUSE/container-suseconnect">zypper 服务</link>，该服务根据运行容器的 SUSE Linux Enterprise Server 主机的配置联系 SUSE Customer Center 或 Repository Mirroring Tool (RMT) 服务器。该服务会获取容器映像所用产品的可用储存库列表。您还可以直接在 <literal>Dockerfile</literal> 中声明扩展。有关详细信息，请参见<xref linkend="sec-container-suseconnect"/>。</para>
 <note>
 <title>SLE_BCI 储存库</title>
 <para>从 SLE 15 SP3 开始，默认基本映像包含 <literal>SLE_BCI</literal> 储存库。仅当某个容器是在未注册的 SLES 主机上构建的或是在此类主机上运行时，或者当容器无法使用注册身份凭证时，才使用此储存库。该储存库提供一部分可用于自定义 SLES 容器映像的 SLE 软件包。无需注册即可使用该储存库，但 SUSE 不对其提供支持。</para>
@@ -1429,7 +1428,7 @@ Error: copying system image from manifest list: Source image rejected: Signature
 <para>现在，您便可以按照<xref linkend="sec-docker-sle-images-customizing-the-images-sles12sp3"/>中所述使用 <literal>Dockerfile</literal> 来创建自定义容器映像。</para>
 <para>编辑 <literal>Dockerfile</literal> 后，通过在 <literal>Dockerfile</literal> 所在的同一目录中运行以下命令来构建映像：</para>
 <screen>&gt; podman build .</screen>
-<para>有关 <literal>podman build</literal> 选项的详细信息，请参见<link xl:href="https://docs.podman.io/en/latest/markdown/podman-build.1.html">official Podman documentation</link>。</para>
+<para>有关 <literal>podman build</literal> 选项的详细信息，请参见<link xl:href="https://docs.podman.io/en/latest/markdown/podman-build.1.html">官方 Podman 文档</link>。</para>
 </section>
 <section xml:id="sec-docker-sle-images-customizing-the-images-sles12sp3">
 <title>为 SLE 12 SP5 和更高版本创建自定义映像</title>
@@ -1719,7 +1718,7 @@ tux/apache2         "/usr/sbin/httpd -..."   [...]</screen>
 </section>
 <section xml:id="sec-orchestration-podman-pod">
 <title>podman pod</title>
-<para>podman pod 是用于创建、去除、查询和检查 Pod 的命令行工具。您可以在<link xl:href="https://docs.podman.io/en/latest/markdown/podman-pod.1.html">official upstream documentation</link>中查看所有子命令。</para>
+<para>podman pod 是用于创建、去除、查询和检查 Pod 的命令行工具。您可以在<link xl:href="https://docs.podman.io/en/latest/markdown/podman-pod.1.html">官方上游文档</link>中查看所有子命令。</para>
 </section>
 <section xml:id="sec-orchestration-pod-create">
 <title>创建和列出 Pod</title>
@@ -1935,11 +1934,11 @@ dc9dca018dad  docker.io/library/drupal:latest          apache2-foregroun...  4 s
 <section xml:id="sec-orchestration-kubernetes">
 <title>包含 Kubernetes 的多容器主机</title>
 <para><link xl:href="https://kubernetes.io">Kubernetes</link> 是一个开源容器编制引擎，用于自动化容器化应用程序的部署、缩放和管理。该开源项目由云原生计算基金会 (<link xl:href="https://www.cncf.io/about">CNCF</link>) 主办。</para>
-<para>凭借其多样化的特性和功能并受到大型开发者社区的支持，Kubernetes 已成为大多数<link xl:href="https://www.suse.com/suse-defines/definition/containers-service-caas/">container-as-a-service</link>平台的首选标准。它提供广泛的且至关重要的功能来部署生产级的容器，其中包括高可用性、生命周期管理、存储、安全性和网络。</para>
+<para>凭借其多样化的特性和功能并受到大型开发者社区的支持，Kubernetes 已成为大多数<link xl:href="https://www.suse.com/suse-defines/definition/containers-service-caas/">容器即服务</link>平台的首选标准。它提供广泛的且至关重要的功能来部署生产级的容器，其中包括高可用性、生命周期管理、存储、安全性和网络。</para>
 <section xml:id="sec-k8s">
 <title>Kubernetes (k8s)</title>
 <para>使用 Kubernetes 可使多台计算机（或者服务器或节点）能够协同工作，并可以创建群集，然后您可以使用 API 来与此群集交互。有许多工具可用于部署 Kubernetes 群集，但 SUSE 建议使用 <link xl:href="https://ranchermanager.docs.rancher.com">Rancher</link>。使用 Rancher 不仅可以部署 Kubernetes 群集，而且还可以管理群集上运行的应用程序。此外，单个 Rancher 设置可以管理在裸机、本地或云服务提供商的任何位置运行的多个 Kubernetes 群集，使您可以更轻松地管理应用程序，同时减轻用于部署应用程序的设备的管理负担。</para>
-<para>本指南不会介绍如何安装和使用 <link xl:href="https://www.rancher.com/products/rke">Rancher Kubernetes Engines (RKE)</link>，因为在 <link xl:href="https://ranchermanager.docs.rancher.com">Rancher’s documentation</link>中可以找到详细说明。</para>
+<para>本指南不会介绍如何安装和使用 <link xl:href="https://www.rancher.com/products/rke">Rancher Kubernetes Engines (RKE)</link>，因为在 <link xl:href="https://ranchermanager.docs.rancher.com">Rancher 的文档</link>中可以找到详细说明。</para>
 </section>
 <section xml:id="sec-k3s">
 <title>轻量级 Kubernetes (k3s)</title>
@@ -2164,7 +2163,7 @@ buildah rm $container <co xml:id="CO3-7"/></screen>
 </table>
 <para>✓ 完全兼容且完全受支持</para>
 <para>❋ 工作负载特定：完全受支持，但兼容性视容器类型（特权或非特权）和应用程序交互（直接与内核版本特定的数据结构、内核版本特定的模块等交互）而定</para>
-<para>有关对 Rancher 相关产品的支持的详细信息，请参见 <link xl:href="https://www.suse.com/suse-rancher/support-matrix/all-supported-versions/">Rancher Support Matrix</link>。</para>
+<para>有关对 Rancher 相关产品的支持的详细信息，请参见 <link xl:href="https://www.suse.com/suse-rancher/support-matrix/all-supported-versions/">Rancher 支持矩阵</link>。</para>
 </section>
 </section>
 <section xml:id="sec-sle-container-support-plans">
@@ -2184,8 +2183,8 @@ buildah rm $container <co xml:id="CO3-7"/></screen>
 <para>例如，SLES 15 SP4 容器映像是使用与 SLES 15 SP4 主版本相同的软件包构建的。</para>
 </listitem>
 </orderedlist>
-<para>有关更多信息，请参见 <link xl:href="https://www.suse.com/lifecycle">Product Support Lifecycle</link> 页面，以及适用于 <link xl:href="https://registry.suse.com">SUSE Registry</link>中特定容器映像的文档。</para>
-<para>容器映像可以处于不同的支持状态，因此对它们的支持可能有限制。有关特定容器映像的更多信息，请参见相应的 <link xl:href="https://registry.suse.com">SUSE Registry</link>页面。</para>
+<para>有关更多信息，请参见 <link xl:href="https://www.suse.com/lifecycle">Product Support Lifecycle</link> 页面，以及适用于 <link xl:href="https://registry.suse.com">SUSE 注册表</link>中特定容器映像的文档。</para>
+<para>容器映像可以处于不同的支持状态，因此对它们的支持可能有限制。有关特定容器映像的更多信息，请参见相应的 <link xl:href="https://registry.suse.com">SUSE 注册表</link>页面。</para>
 </section>
 <section xml:id="sec-supported-containers-hosts">
 <title>容器和主机环境支持概览</title>
