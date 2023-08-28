@@ -19,7 +19,7 @@
     <title>Tools for building images and managing containers</title>
   </info>
   <para>
-    All described tools described below are part of the
+    All the tools described below are part of the
     <emphasis role="strong">&sles; &productnumber; Containers
     Module</emphasis>, except the
     <link xlink:href="https://openbuildservice.org">Open Build Service</link>.
@@ -48,7 +48,7 @@
       &docker; is a system for creating and managing containers. Its core is the
       <link xlink:href="https://github.com/moby/moby">&docker; Open Source
       Engine—</link>a lightweight virtualization solution to run containers
-      simultaneously on a single host. &docker; containers are be built using
+      simultaneously on a single host. &docker; containers are built using
       Dockerfiles.
     </para>
   </section>
@@ -77,7 +77,7 @@
       images built using the &buildah; command-line tool and the underlying
       OCI-based technologies (for example, <literal>containers/image</literal>
       and
-      <literal>containers/storage</literal> ) are portable and can therefore
+      <literal>containers/storage</literal>) are portable and can therefore
       run in a &deng; environment. For information on
       installing and using &buildah;, refer to
       <xref linkend="container-buildah"/>.
@@ -98,12 +98,12 @@
     <title>Helm</title>
     <para>
       <link xlink:href="https://helm.sh">Helm</link> is the Kubernetes package
-      manager, and it is the de-facto standard for deploying containerized
+      manager, and it is the de facto standard for deploying containerized
       applications on Kubernetes clusters using charts. Helm can be used to
       install, update and remove applications in a single or multiple
       containers. It can also handle the associated resources, such as
-      configuration, storage volumes, etc. For instance, it is used for
-      instance to deploy the &rmt; server (see
+      configuration, storage volumes, etc. For instance, it is used
+      to deploy the &rmt; server (see
       <link xlink:href="https://documentation.suse.com/sles/15-SP4/single-html/SLES-rmt/index.html#sec-rmt-deploy-kubernetes">&rmt;
       documentation</link> for more information).
     </para>
@@ -116,7 +116,7 @@
       container images using the OCI Distribution Specification. It provides a
       simple, secure and scalable base for building a large scale registry
       solution or running a simple private registry. Distribution can also
-      mirror &dhub; but
+      mirror &dhub;, but
       <link xlink:href="https://docs.docker.com/registry/recipes/mirror/#gotcha">not
       any other private registry</link>.
     </para>
@@ -125,8 +125,8 @@
     <title>Open Build Service</title>
     <para>
       The <link xlink:href="http://openbuildservice.org">Open Build Service
-      (OBS)</link> provides free infrastructure for building and storing RPM
-      packages including different container formats. The
+      (OBS)</link> provides a free infrastructure for building and storing RPM
+      packages, including different container formats. The
       <link xlink:href="https://registry.opensuse.org">OBS Container
       Registry</link> provides a detailed listing of all container images built
       by the OBS, complete with commands for pulling the images into your local
@@ -152,8 +152,7 @@
     </para>
     <para>
       For more information about &bcia;s, refer to
-      <xref linkend="container-bci-general"/>
-      .
+      <xref linkend="container-bci-general"/>.
     </para>
   </section>
   <section xml:id="sec-tools-kiwi">
@@ -186,7 +185,7 @@
       For information on how to install &kiwi; and use it to build
       images, see the <link xlink:href="http://osinside.github.io/kiwi/">&kiwi;
       documentation</link>. A collection of example image descriptions can be
-      found on the
+      found in the
       <link xlink:href="https://github.com/OSInside/kiwi-descriptions">&kiwi;
       GitHub repository</link>.
     </para>

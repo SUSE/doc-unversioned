@@ -21,8 +21,8 @@
   <section xml:id="sec-container-diff">
     <title>Analyze container images with <package>container-diff</package></title>
     <para>
-      In case a custom &deng; container image built on top of the &slea;-Base
-      container image is not working as expected, the
+      If a custom &deng; container image built on top of the &bci;
+      is not working as expected, the
       <package>container-diff</package> tool can help you analyze the image and
       collect information relevant for troubleshooting.
     </para>

@@ -48,7 +48,7 @@
     <para>
       To verify a &bcia;, run Cosign in the container. The command below
       fetches the signing key from the &suse; server and uses it to verify the
-      latest &bcia;-Base container image.
+      latest &bcia;-Base container image. 
     </para>
 <screen>&prompt.user;podman run --rm -it gcr.io/projectsigstore/cosign verify \
         --key https://ftp.suse.com/pub/projects/security/keys/container-key.pem \
@@ -171,7 +171,7 @@
     <para>
       The specified configuration instructs &podman;, skopeo and &buildah; to
       verify images under the <literal>registry.suse.com</literal> repository.
-      This way,&podman; checks the validity of the signature using the
+      This way, &podman; checks the validity of the signature using the
       specified public key before pulling the image. It rejects the image if
       the validation fails.
     </para>
@@ -199,7 +199,7 @@
       </note>
     </informalexample>
     <para>
-      &buildah;, &podman; and skopeo automatically verifies every image pulled
+      &buildah;, &podman; and skopeo automatically verify every image pulled
       from <literal>registry.suse.com</literal> from now on. There are no
       additional steps required.
     </para>

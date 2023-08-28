@@ -34,9 +34,9 @@
       <listitem>
         <para>
           <emphasis>Control groups</emphasis>, also called
-          <literal>cgroups</literal> , are a Linux kernel feature that allows
+          <literal>cgroups</literal>, are a Linux kernel feature that allows
           aggregating or partitioning tasks (processes) and all their children
-          into hierarchically-organized groups, to manage their resource
+          into hierarchically organized groups to manage their resource
           limits.
         </para>
       </listitem>
@@ -47,12 +47,12 @@
         <para>
           Docker Open Source Engine is a server-client type application that
           performs all tasks related to containers. Docker Open Source Engine
-          comprises the following: +
+          comprises the following:
         </para>
         <itemizedlist>
           <listitem>
             <para>
-              <emphasis role="strong">Daemon:.</emphasis> + The server side of
+              <emphasis role="strong">Daemon:</emphasis> The server side of
               Docker Open Source Engine, which manages all Docker objects
               (images, containers, network connections used by containers,
               etc.).
@@ -60,13 +60,13 @@
           </listitem>
           <listitem>
             <para>
-              <emphasis role="strong">REST API:.</emphasis> + Applications can
+              <emphasis role="strong">REST API:</emphasis> Applications can
               use this API to communicate directly with the daemon.
             </para>
           </listitem>
           <listitem>
             <para>
-              <emphasis role="strong">CLI client:.</emphasis> + Enables you to
+              <emphasis role="strong">CLI client:</emphasis> Enables you to
               communicate with the daemon. If the daemon is running on a
               different machine than the CLI client, the CLI client can
               communicate by using network sockets or the REST API provided by
@@ -108,7 +108,7 @@
         <para>
           A <emphasis>container image</emphasis> is an unchangeable, static
           file that includes executable code so it can run an isolated process
-          on IT infrastructure. The image is comprised of system libraries,
+          on IT infrastructure. The image consists of system libraries,
           system tools, and other platform settings a program needs to run on a
           containerization platform. A container image is compiled from file
           system layers built on top of a parent or base image.
@@ -152,7 +152,7 @@
       <listitem>
         <para>
           In a production environment, you typically need a cluster with many
-          containers on each cluster node. The containers must cooperate and
+          containers on each cluster node. The containers must cooperate, and
           you need a framework that enables you to automatically manage the
           containers. The act of automatic container management is called
           container orchestration and is typically handled by Kubernetes.
@@ -166,7 +166,6 @@
           A <emphasis>registry</emphasis> is storage for already-created
           images. It typically contains several
           <emphasis>repositories</emphasis>. There are two types of registries:
-          +
         </para>
         <itemizedlist>
           <listitem>
