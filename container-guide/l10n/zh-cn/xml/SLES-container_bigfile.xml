@@ -1401,8 +1401,9 @@ Error: copying system image from manifest list: Source image rejected: Signature
 </section>
 <section xml:id="sec-customize-prebuild-images">
 <title>自定义 SLES 容器映像</title>
+<para>
+</para>
 
-</section>
 <section xml:id="sec-customize-repo-registration">
 <title>储存库和注册</title>
 <para>预构建的映像未配置任何储存库，也不包含任何模块或扩展。它们包含一个 <link xl:href="https://github.com/SUSE/container-suseconnect">zypper 服务</link>，该服务根据运行容器的 SUSE Linux Enterprise Server 主机的配置联系 SUSE Customer Center 或 Repository Mirroring Tool (RMT) 服务器。该服务会获取容器映像所用产品的可用储存库列表。您还可以直接在 <literal>Dockerfile</literal> 中声明扩展。有关详细信息，请参见<xref linkend="sec-container-suseconnect"/>。</para>
@@ -1455,6 +1456,7 @@ RUN update-ca-certificates &amp;&amp; \
 <para>SLE 基本映像提供的 Zypper 插件将连接到此服务，并检索身份验证细节以及有关要与哪个更新服务器通讯的信息。为此，必须在启用主机网络的情况下构建容器，例如：</para>
 <screen>&gt; podman build --network host build-directory/</screen>
 <para>由于公有云中的更新基础架构基于 RMT 工作，因此，为不同于主机 SLE 版本的 SLE 版本构建 SLE 映像也存在同样的限制（参见<xref linkend="note-build-images-different-codebase"/>）。</para>
+</section>
 </section>
 </chapter>
 <chapter xml:id="sec-building-app-images">
