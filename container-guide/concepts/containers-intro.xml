@@ -118,7 +118,7 @@
     <para>
       Although &deng; is a popular choice for working with images and
       containers, &podman; provides a drop-in replacement for Docker that
-      offers several advantages. While <!--XREF <xref linkend="cha-podman-overview"/> -->
+      offers several advantages. While <xref linkend="container-podman"/>
       provides more information on &podman;, this chapter offers a quick
       introduction to key concepts and a basic procedure for creating a
       container image and using &podman; to run a container.

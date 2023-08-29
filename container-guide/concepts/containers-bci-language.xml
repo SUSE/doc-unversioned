@@ -19,8 +19,8 @@
     <title>Language stack &bci;s</title>
   </info>
   <para>
-    Language stack &bcia;s are built on top of the &bcia;-Base general-purpose
-    &bcia;. Each container image comes with the &zypper; stack and the free
+    Language stack &bcia;s are built on top of the &bcia;-Base. Each container
+    image comes with the &zypper; stack and the free
     <literal>SLE_BCI</literal> repository. Additionally, each image includes
     most common tools for building and deploying applications in the specific
     language environment. This includes tools like a compiler or interpreter as
