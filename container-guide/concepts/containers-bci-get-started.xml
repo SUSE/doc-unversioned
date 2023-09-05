@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file originates from the project https://github.com/openSUSE/doc-kit -->
+<!-- This file can be edited downstream. -->
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook51-profile.xsl"
+ type="text/xml"
+ title="Profiling step"?>
+<!DOCTYPE article
+[
+  <!ENTITY % entities SYSTEM "../common/generic-entities.ent">
+    %entities;
+]>
+<article xml:id="container-bci-get-started" xml:lang="en"
+ role="concept"
+ xmlns="http://docbook.org/ns/docbook" version="5.2"
+ xmlns:its="http://www.w3.org/2005/11/its"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+  <info>
+    <title>Getting started with &bci;s</title>
+  </info>
+  <para>
+    The &bcia;s are available as OCI-compatible container images directly from
+    the <link xlink:href="https://registry.suse.com">&suseregistry;</link>, and
+    they can be used like any other container image, for example:
+  </para>
+<screen>&prompt.user;podman run --rm -it registry.suse.com/bci/bci-base:15.4 grep '^NAME' /etc/os-release NAME="{sles}"</screen>
+  <para>
+    Alternatively, you can use a &bcia; in <literal>Dockerfile</literal> as
+    follows:
+  </para>
+<screen>FROM registry.suse.com/bci/bci-base:15.4
+    RUN zypper --non-interactive in python3 &amp;&amp; \
+        echo "Hello Green World!" &gt; index.html
+    ENTRYPOINT ["/usr/bin/python3", "-m", "http.server"]
+    EXPOSE 8000</screen>
+  <para>
+    You can then build container images using the <command>docker build
+    .</command> or <command>buildah bud .</command> commands:
+  </para>
+<screen>&gt; docker build .
+    Sending build context to Docker daemon  2.048kB
+    Step 1/4 : FROM registry.suse.com/bci/bci-base:15.4
+     ---&gt; e34487b4c4e1
+    Step 2/4 : RUN zypper --non-interactive in python3 &amp;&amp;     echo "Hello Green World!" &gt; index.html
+     ---&gt; Using cache
+     ---&gt; 9b527dfa45e8
+    Step 3/4 : ENTRYPOINT ["/usr/bin/python3", "-m", "http.server"]
+     ---&gt; Using cache
+     ---&gt; 953080e91e1e
+    Step 4/4 : EXPOSE 8000
+     ---&gt; Using cache
+     ---&gt; 48b33ec590a6
+    Successfully built 48b33ec590a6
+    
+    &prompt.user;docker run -p 8000:8000 --rm -d 48b33ec590a6
+    575ad7edf43e11c2c9474055f7f6b7a221078739fc8ce5765b0e34a0c899b46a
+    
+    &prompt.user;curl localhost:8000
+    Hello Green World!</screen>
+</article>

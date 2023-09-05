@@ -330,8 +330,7 @@ spec:
       path: /hostDisks/sles15sp2/disk.raw
       type: Disk
       shared: true
-    name: host-disk
-    status: {}</screen>
+    name: host-disk</screen>
 
     <para>
       Applying this VMI manifest to the cluster will create a virt-launcher

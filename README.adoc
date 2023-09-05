@@ -3,12 +3,17 @@
 This is the source for the official SUSE Linux Enterprise unversioned
 documentation.
 
-This repository hosts the documentation sources for the following products:
+This repository hosts the documentation sources for the following products (directories in parenthesis):
 
-* The Container Guide
-* PCI DSS
-* SUSEConnect visibility
-* Trento
+* The Container Guide (`container`)
+* Payment Card Industry Data Security Standard (PCI DSS) Guide (`pcidss`)
+* Enriched system visibility in the SUSE Customer Cente (`suseconnect-visibility`)
+* Getting started with Trento Premium (`trento`)
+* Hardening SUSE Linux Enterprise with OpenSCAP (`openscap`)
+* Hypervisor details in SUSE Customer Center (`scc-hypervisor-collector`)
+* Using KubeVirt on SUSE Linux Enterprise (`kubevirt`)
+* Supported High Availability Solutions by SLES for SAP Applications (`sap-ha-support`)
+* Hardening SUSE Linux Enterprise with STIG (`stig`)
 
 Released versions of the SLE documentation are published at
 https://documentation.suse.com/.

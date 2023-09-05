@@ -1,0 +1,927 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook50-profile.xsl"
+ type="text/xml"
+ title="Profiling step"?>
+<!DOCTYPE article
+[
+  <!ENTITY % entities SYSTEM "generic-entities.ent">
+    %entities;
+]>
+<article xml:id="article-sap-ha-support"
+         xmlns="http://docbook.org/ns/docbook"
+         version="5.0"
+         xml:lang="en"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Supported &ha; Solutions by &productname;</title>
+  <info>
+   <date><?dbtimestamp format="B d, Y" ?></date>
+   <xi:include href="common_copyright_gfdl.xml"/>
+    <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
+      <dm:bugtracker>
+        <dm:url>https://bugzilla.suse.com/enter_bug.cgi</dm:url>
+        <dm:product>Documentation</dm:product>
+        <dm:component>SLE Family</dm:component>
+        <dm:assignee>tahlia.richardson@suse.com</dm:assignee>
+      </dm:bugtracker>
+      <dm:editurl>https://github.com/SUSE/doc-unversioned/edit/main/sap-ha-support/xml/</dm:editurl>
+    </dm:docmanager>
+
+    <authorgroup>
+      <author><personname><firstname>Fabian</firstname><surname>Herschel</surname></personname>
+        <affiliation>
+          <jobtitle>Distinguished Architect</jobtitle>
+          <orgname>&suse;</orgname>
+        </affiliation>
+      </author>
+      <author><personname><firstname>Lars</firstname><surname>Pinne</surname></personname>
+        <affiliation>
+          <jobtitle>System Engineer</jobtitle>
+          <orgname>&suse;</orgname>
+        </affiliation>
+      </author>
+      <author><personname><firstname>Sherry</firstname><surname>Yu</surname></personname>
+       <affiliation>
+         <jobtitle>Global Alliance Director</jobtitle>
+         <orgname>&suse;</orgname>
+       </affiliation>
+     </author>
+    </authorgroup>
+
+    <abstract>
+      <para>
+       &s4s; is the leading Linux platform for &hana;, &sap; &s4hana;, and &netweaver;,
+       and an Endorsed App by &sap;. Two of the key components of &productname;
+       are the &sleha; (HAE) and resource agents. The HAE provides &pace;, an
+       open source cluster framework. The resource agents manage automated
+       failover of &hanasr;, &s4hana; ASCS/ERS &ensa2;,
+       and &nwshort; ASCS/ERS &ensa1;.
+      </para>
+      <para>
+       This document provides an overview of &ha; solutions that &suse; supports for &hana;,
+       &s4hana;, and &nwshort; on &sles; 15. New solutions will be added when they become available.
+      </para>
+    </abstract>
+  </info>
+
+ <sect1 xml:id="sap-ha-support-statement">
+  <title>Support statement</title>
+  <sect2 xml:id="sap-ha-support-definition">
+   <title>Supportability definition</title>
+   <informaltable>
+    <tgroup cols="2">
+     <thead>
+      <row>
+       <entry>Category</entry>
+       <entry>Definition</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>Mandatory</entry>
+       <entry>De facto, must be implemented this way.</entry>
+      </row>
+      <row>
+       <entry>Supported</entry>
+       <entry>Supported, with a published configuration guide.</entry>
+      </row>
+      <row>
+       <entry>Supported but undocumented</entry>
+       <entry>Supported, but a configuration guide is not published. &suse; will
+        accept bug reports and fix code, if needed.</entry>
+      </row>
+      <row>
+       <entry>Supported with consulting PoC</entry>
+       <entry>Support is possible if the consulting PoC proves to be working.</entry>
+      </row>
+      <row>
+       <entry>Non-supported</entry>
+       <entry>Not supported or not applicable.</entry>
+      </row>
+      <row>
+       <entry>Planned</entry>
+       <entry>On the roadmap to be tested and supported.</entry>
+      </row>
+      <row>
+       <entry>Legacy</entry>
+       <entry>Only supported for older release legacy systems.</entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </informaltable>
+  </sect2>
+
+  <sect2  xml:id="sap-ha-support-infrastructure">
+   <title>Infrastructure support</title>
+   <para>
+    The infrastructure can be on-premises, physical, virtualization, or in public cloud.
+    The infrastructure must be supported by both &sap; and the &hasi; so that important
+    functions like &stonith; and virtual IP are supported.
+   </para>
+   <para>
+    Public cloud deployment usually needs additional documentation focusing on the cloud-specific
+    implementation details. Check the documentation provided by the respective public cloud vendor.
+   </para>
+   <para>
+    The support details for &suse; &ha; solutions for &sap; and the support process for each
+    public cloud vendor are defined in the following &sap; Notes:
+   </para>
+   <informaltable>
+    <tgroup cols="2">
+     <thead>
+      <row>
+       <entry>Company</entry>
+       <entry>&sap; Note</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>&suse;</entry>
+       <entry><link xlink:href="https://launchpad.support.sap.com/#/notes/1763512">
+       &sap; Note 1763512</link>: Support details for &suse; Linux Enterprise for
+       &sap; Applications - HA Solution for &netweaver; and &sap; &s4hana;</entry>
+      </row>
+      <row>
+       <entry>&ms; Azure</entry>
+       <entry><link xlink:href="https://launchpad.support.sap.com/#/notes/2513384">
+       &sap; Note 2513384</link>: &s4s; on Azure</entry>
+      </row>
+      <row>
+       <entry>&aws;</entry>
+       <entry><link xlink:href="https://launchpad.support.sap.com/#/notes/1656099">
+       &sap; Note 1656099</link>: &sap; Applications on &aws;: Supported DB/OS and &aws; EC2 products</entry>
+      </row>
+      <row>
+       <entry>&gcloud;</entry>
+       <entry><link xlink:href="https://launchpad.support.sap.com/#/notes/2456432">
+       &sap; Note 2456432</link>: &sap; Applications on &gcloud;: Supported Products
+       and GCP VM types</entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </informaltable>
+   <para>
+    For more details, see the &suse; knowledgebase article
+    <link xlink:href="https://www.suse.com/support/kb/doc/?id=000019000">
+    SLES for &sap; - How To Engage &sap; and &suse; to address Product Issues</link>.
+   </para>
+   <note>
+    <para>
+     If necessary, all documented &suse; &ha; scenarios can run the &sap; workload while the
+     &ha; cluster is temporarily disabled.
+    </para>
+   </note>
+  </sect2>
+
+  <sect2  xml:id="sap-ha-support-software">
+   <title>Supported &suse; software versions</title>
+   <para>
+    The general &suse; software lifecycle applies for the described scenarios.
+    See the &suse; lifecycle page for details:
+    <link xlink:href="https://www.suse.com/lifecycle/#suse-linux-enterprise-server-for-sap-applications-15"/>.
+   </para>
+   <para>
+    Usually all mentioned &ha; scenarios are supported on all currently supported service packs of
+    &productname; 15. Exceptions are documented in detail in the setup guides and are listed below:
+   </para>
+   <variablelist>
+    <varlistentry>
+     <term>&hanasr; scale-up &ndash; cost optimized scenario</term>
+     <listitem>
+      <para>
+       Supported starting with 15 SP2.
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+   <note>
+    <para>
+     This document applies to &productname; 15. Version 12 SP5 is still supported but not covered by
+     this document, as &suse; strongly recommends using version 15 for new installations.
+     If you need details about version 12, check the individual guides available at
+     <link xlink:href="&dsc;/sbp/sap/"/>.
+    </para>
+   </note>
+  </sect2>
+ </sect1>
+
+ <sect1 xml:id="sap-ha-solutions-sap-hana">
+  <title>HA solutions for &hanasr;</title>
+  <sect2 xml:id="sap-ha-solutions-sap-hana-overview">
+   <title>Overview of &hanasr; </title>
+   <para>
+    &hanasr; (HSR) provides the ability to copy and continuously synchronize an &hana; database
+    to a secondary location in the same or another data center. &hanasr; is implemented between
+    two different &hana; systems with the same number of active nodes. After system replication
+    is set up between the two &hana; systems, it replicates all the data from the primary &hana;
+    system to the secondary &hana; system (initial copy). After this, any logged changes in the
+    primary system are also sent to the secondary system.
+   </para>
+   <informalfigure>
+    <mediaobject>
+     <imageobject role="fo">
+      <imagedata fileref="overview-sr-single-nodes.svg" width="80%"/>
+     </imageobject>
+     <imageobject role="html">
+      <imagedata fileref="overview-sr-single-nodes.svg" width="80%"/>
+     </imageobject>
+     <textobject role="description">
+      <phrase>
+       System replication from the primary system in data center 1 to the
+       secondary system in data center 2.
+      </phrase>
+     </textobject>
+    </mediaobject>
+   </informalfigure>
+   <para>
+    If the primary &hana; system fails, the system administrator must perform a manual takeover.
+    Takeover can be performed using &hana; Cockpit or the command line. Manual failover requires
+    continuous monitoring and could lead to higher recovery time. To automate the failover process,
+    the &sleha; can be used. Using the &hasi; for the takeover process helps customers achieve
+    service-level agreements for &hana; downtime by enabling faster recovery
+    without any manual intervention.
+   </para>
+   <para>
+    Multiple &hana; &ha; scenarios are supported based on &hanasr;. For variations, contact &suse;
+    to discuss defining a PoC for a scenario that is not mentioned in the documentation.
+   </para>
+   <para>
+    You can use &hana; Fast Restart on RAM-tmpfs and &hana; on persistent memory if they are transparent to the &ha; cluster.
+   </para>
+  </sect2>
+
+  <sect2 xml:id="sap-ha-solutions-sap-hana-notation">
+   <title>Notation formula</title>
+   <informaltable>
+    <tgroup cols="2">
+     <thead>
+      <row>
+       <entry>Notation</entry>
+       <entry>Definition</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>A, B, C</entry>
+       <entry>HANA scale-up instance or HANA scale-out site</entry>
+      </row>
+      <row>
+       <entry>=&gt;</entry>
+       <entry>Sync, syncmem replication</entry>
+      </row>
+      <row>
+       <entry>-&gt;</entry>
+       <entry>Async replication</entry>
+      </row>
+      <row>
+       <entry>'</entry>
+       <entry>Primary IP address</entry>
+      </row>
+      <row>
+       <entry>"</entry>
+       <entry>Secondary IP address</entry>
+      </row>
+      <row>
+       <entry>()</entry>
+       <entry>&suse; cluster</entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </informaltable>
+  </sect2>
+
+  <sect2 xml:id="sap-ha-solutions-sap-hana-scale-up">
+   <title>HA solutions for automated &hanasr; in HANA scale-up</title>
+    <para>
+     The support details are for high level overview only. Refer to the official documentation
+     for the full conditions.
+    </para>
+    <table xml:id="table-sap-ha-solutions-sap-hana-scale-up">
+     <title>Supported configurations for automated &hanasr; in HANA scale-up</title>
+     <tgroup cols="3">
+      <thead>
+       <row>
+        <entry>Supported configurations</entry>
+        <entry>Status</entry>
+        <entry>Support details</entry>
+       </row>
+      </thead>
+      <tbody>
+       <row>
+        <entry>HANA performance optimized, plain setup</entry>
+        <entry>Supported (<link xlink:href="&dsc;/sbp/all/html/SLES4SAP-hana-sr-guide-PerfOpt-15/index.html">Documentation</link>)</entry>
+        <entry>(A' =&gt; B) Secondary site is not read-only enabled, so does not accept client's inquiries.</entry>
+       </row>
+       <row>
+        <entry>HANA performance optimized, secondary site read-enabled</entry>
+        <entry>Supported (<link xlink:href="&dsc;/sbp/all/html/SLES4SAP-hana-sr-guide-PerfOpt-15/index.html">Documentation</link>)</entry>
+        <entry>(A' =&gt; B”) Secondary site is read-enabled and can accept client's read-only inquiries.</entry>
+       </row>
+       <row>
+        <entry>HANA cost optimized</entry>
+        <entry>Supported (<link xlink:href="&dsc;/sbp/all/html/SLES4SAP-hana-sr-guide-costopt-15/index.html">Documentation</link>)</entry>
+        <entry>(A' =&gt; B, Q”) topology is supported. Q is a QA instance running on the secondary site.</entry>
+       </row>
+       <row>
+        <entry>HANA multi-tier system replication (replication chain), third site NOT managed by &pace;</entry>
+        <entry>Supported (<link xlink:href="&dsc;/sbp/all/html/SLES4SAP-hana-sr-guide-PerfOpt-15/index.html">Documentation</link>)</entry>
+        <entry>(A' =&gt; B) -&gt; C topology is supported with conditions: A to B system replication
+        in &pace; is supported. B to C system replication is not managed by &pace;.</entry>
+       </row>
+       <row>
+        <entry>HANA multi-target system replication, third site NOT managed by &pace;</entry>
+        <entry>Supported (<link xlink:href="&dsc;/sbp/all/html/SLES4SAP-hana-sr-guide-PerfOpt-15/index.html">Documentation</link>)</entry>
+        <entry>(B &lt;= A') -&gt; C topology is supported with conditions: A to B system replication
+        in &pace; is supported. A to C system replication is not managed by &pace;.</entry>
+       </row>
+       <row>
+        <entry>Multi-tenancy or MDC</entry>
+        <entry>Supported</entry>
+        <entry>This scenario is supported since &hana; 1.0 SPS09. The setup and configuration
+        from a cluster point of view is the same for multi-tenancy and single container,
+        so existing documentation can be used.</entry>
+       </row>
+       <row>
+        <entry>HANA multi-SID performance optimized in one cluster (MCOS)</entry>
+        <entry>Supported but undocumented</entry>
+        <entry></entry>
+       </row>
+       <row>
+        <entry>HANA performance optimized and &s4hana; &ensa2; in one cluster</entry>
+        <entry>Supported but undocumented</entry>
+        <entry></entry>
+       </row>
+       <row>
+        <entry>HANA performance optimized cluster and stand-alone
+        application server</entry>
+        <entry>Supported but undocumented</entry>
+        <entry></entry>
+       </row>
+      </tbody>
+     </tgroup>
+    </table>
+    <para>
+     Below is a summary of the most common configurations:
+    </para>
+    <variablelist>
+     <varlistentry>
+      <term>Performance optimized, including read-enabled on the secondary site (A =&gt; B) </term>
+      <listitem>
+       <informalfigure>
+        <mediaobject>
+         <imageobject role="fo">
+          <imagedata fileref="performance-optimized.svg" width="100%"/>
+         </imageobject>
+         <imageobject role="html">
+          <imagedata fileref="performance-optimized.svg" width="100%"/>
+         </imageobject>
+         <textobject role="description">
+          <phrase>
+           &hana; performance optimized configuration.
+          </phrase>
+         </textobject>
+        </mediaobject>
+       </informalfigure>
+       <para>
+        In the performance optimized scenario, an &hana; RDBMS site A is synchronizing with an
+        &hana; RDBMS site B on a second node. As the &hana; RDBMS on the second node is configured
+        to preload the tables, the takeover time is typically very short.
+       </para>
+       <para>
+        Read access can be allowed on the secondary site. To support this read-enabled scenario,
+        a second virtual IP address is added to the cluster and bound to the secondary role of
+        the system replication.
+       </para>
+      </listitem>
+     </varlistentry>
+     <varlistentry>
+      <term>Cost optimized (A =&gt; B, Q) </term>
+      <listitem>
+       <informalfigure>
+        <mediaobject>
+         <imageobject role="fo">
+          <imagedata fileref="cost-optimized.svg" width="100%"/>
+         </imageobject>
+         <imageobject role="html">
+          <imagedata fileref="cost-optimized.svg" width="100%"/>
+         </imageobject>
+         <textobject role="description">
+          <phrase>
+           &hana; cost optimized configuration.
+          </phrase>
+         </textobject>
+        </mediaobject>
+       </informalfigure>
+       <para>
+        In the cost optimized scenario, the second node is also used for a
+        stand-alone non-replicated &hana; RDBMS system (such as QAS or TST).
+        Whenever a takeover is needed, the non-replicated system must be
+        stopped first. As the productive secondary system on this node must
+        be limited in using system resources, the table preload must be
+        switched off. A possible takeover needs more time than in the
+        performance optimized use case. We recommend running a
+        PoC to determine the SLA before using it in production.
+       </para>
+       <para>
+        The secondary productive system needs to be running in a reduced
+        memory consumption configuration, so read-enabled must not be
+        used in this scenario. The HADR provider script needs to remove
+        the memory restrictions when a takeover occurs, so multi-SID
+        (MCOS) must not be used in this scenario either.
+       </para>
+      </listitem>
+     </varlistentry>
+     <varlistentry>
+      <term>Multi-target (B &lt;= A' ) -&gt; C</term>
+      <listitem>
+       <informalfigure>
+        <mediaobject>
+         <imageobject role="fo">
+          <imagedata fileref="multi-target.svg" width="100%"/>
+         </imageobject>
+         <imageobject role="html">
+          <imagedata fileref="multi-target.svg" width="100%"/>
+         </imageobject>
+         <textobject role="description">
+          <phrase>
+           &hana; multi-target configuration.
+          </phrase>
+         </textobject>
+        </mediaobject>
+       </informalfigure>
+       <para>
+        Multi-target system replication is supported in &hana; 2.0 SPS04 or newer. Only the first
+        replication pair (A and B) is managed by the cluster. The main difference between
+        multi-target and multi-tier (chain) replication is that multi-target allows
+        auto-registration for HANA after takeover.
+       </para>
+      </listitem>
+     </varlistentry>
+     <varlistentry>
+      <term>Multi-tier (A' =&gt; B ) -&gt; C</term>
+      <listitem>
+       <informalfigure>
+        <mediaobject>
+         <imageobject role="fo">
+          <imagedata fileref="multi-tier.svg" width="100%"/>
+         </imageobject>
+         <imageobject role="html">
+          <imagedata fileref="multi-tier.svg" width="100%"/>
+         </imageobject>
+         <textobject role="description">
+          <phrase>
+           &hana; multi-tier configuration.
+          </phrase>
+         </textobject>
+        </mediaobject>
+       </informalfigure>
+       <para>
+        In &hana; 2.0 SPS03 or older, where multi-target system replication is not available,
+        the third side replicates the secondary in a chain topology. Only the first replication pair
+        (A and B) is managed by the cluster. Because of the mandatory chain topology, the
+        resource agent feature <literal>AUTOMATED_REGISTER=true</literal> is not possible with
+        pure multi-tier replication.
+       </para>
+       <para>
+        (A' =&gt; B) -&gt; C topology is supported with the following conditions:
+       </para>
+       <itemizedlist>
+        <listitem>
+         <para>
+          A to B system replication in &pace; is supported.
+         </para>
+        </listitem>
+        <listitem>
+         <para>
+          B to C system replication is not managed by &pace;.
+         </para>
+        </listitem>
+        <listitem>
+         <para>
+          After takeover from A to B, manual intervention is needed for rejoining A.
+         </para>
+        </listitem>
+       </itemizedlist>
+      </listitem>
+     </varlistentry>
+    </variablelist>
+  </sect2>
+
+  <sect2 xml:id="sap-ha-solutions-sap-hana-scale-out">
+   <title>HA solutions for automated &hanasr; in HANA scale-out</title>
+   <para>
+    &pace; manages the automated failover of &hanasr; between two sites of HANA scale-out clusters.
+    An auxiliary third site is needed for the decision-maker node.
+   </para>
+   <informalfigure>
+    <mediaobject>
+     <imageobject role="fo">
+      <imagedata fileref="pacemaker-cluster.svg" width="100%"/>
+     </imageobject>
+     <imageobject role="html">
+      <imagedata fileref="pacemaker-cluster.svg" width="100%"/>
+     </imageobject>
+     <textobject role="description">
+      <phrase>
+       System replication between clusters managed by &pace;.
+      </phrase>
+     </textobject>
+    </mediaobject>
+   </informalfigure>
+   <para>
+    The support details are for high level overview only. Refer to the official documentation
+    for the full conditions.
+   </para>
+   <table xml:id="table-sap-ha-solutions-sap-hana-scale-out">
+    <title>Supported configurations for automated &hanasr; in HANA scale-out</title>
+    <tgroup cols="3">
+     <thead>
+      <row>
+       <entry>Supported configurations</entry>
+       <entry>Status</entry>
+       <entry>Support details</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>HANA performance optimized, up to 30 nodes including standby</entry>
+       <entry>Supported (<link xlink:href="&dsc;/sbp/all/html/SLES4SAP-hana-scaleOut-PerfOpt-15/index.html">Documentation</link>)</entry>
+       <entry>Up to 30 HANA nodes including standby nodes.</entry>
+      </row>
+      <row>
+       <entry>HANA performance optimized, up to 12 nodes, no standby</entry>
+       <entry>Supported (<link xlink:href="&dsc;/sbp/sap/html/SLES4SAP-hana-scaleout-multitarget-perfopt-15/index.html">Documentation</link>)</entry>
+       <entry>Up to 12 HANA nodes, NO standby nodes.</entry>
+      </row>
+      <row>
+       <entry>HANA performance optimized, up to 4 nodes, secondary site read-enabled</entry>
+       <entry>Supported (<link xlink:href="&dsc;/sbp/all/html/SLES4SAP-hana-scaleOut-PerfOpt-15/index.html">Documentation</link>)</entry>
+       <entry>Up to 4 HANA nodes, NO standby nodes.</entry>
+      </row>
+      <row>
+       <entry>HANA multi-target system replication, third site NOT managed by the cluster</entry>
+       <entry>Supported (<link xlink:href="&dsc;/sbp/sap/html/SLES4SAP-hana-scaleout-multitarget-perfopt-15/index.html">Documentation</link>)</entry>
+       <entry>( B &lt;= A' ) -&gt; C topology is supported with conditions: Site A to site B system
+       replication in &pace; is supported. Site A to site C system replication is not managed by &pace;.</entry>
+      </row>
+      <row>
+       <entry>HANA multi-tier system replication, third site NOT managed by the cluster</entry>
+       <entry>Supported (<link xlink:href="&dsc;/sbp/sap/html/SLES4SAP-hana-scaleout-multitarget-perfopt-15/index.html">Documentation</link>)</entry>
+       <entry>(A' =&gt; B ) -&gt; C topology is supported with conditions: A to B system replication
+       in &pace; is supported. B to C system replication is not managed by &pace;.</entry>
+      </row>
+      <row>
+       <entry>Performance optimized, multi-tenancy (MDC)</entry>
+       <entry>Supported</entry>
+       <entry>Multi-tenancy is available for all of the supported scenarios and use cases.
+       This scenario is supported since &hana; 1.0 SPS12, and the default installation type for
+       &hana; 2.0. The setup and configuration from a cluster point of view is the same for
+       multi-tenancy and single containers because the tenants are managed all together by
+       the &pace; cluster.</entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </table>
+  </sect2>
+
+  <sect2 xml:id="sap-ha-solutions-sap-hana-hook-scripts">
+   <title>HANA database HADR provider hook scripts</title>
+   <para>
+    &suse; provides several hook scripts to enhance the integration between &hana; and the
+    &suse; &ha; cluster. The &suse; best practice configuration guides explain how to use and
+    configure these hooks.
+   </para>
+   <informaltable>
+    <tgroup cols="2">
+     <thead>
+      <row>
+       <entry>Script</entry>
+       <entry>Usage</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry><para>SAPHanaSR.py</para><para>SAPHanaSrMultiTarget.py</para></entry>
+       <entry>Mandatory for data integrity in case of cluster sr_takeover</entry>
+      </row>
+      <row>
+       <entry>susTkOver.py</entry>
+       <entry>Protects from data inconsistency caused by manual sr_takeover</entry>
+      </row>
+      <row>
+       <entry>susChkSrv.py</entry>
+       <entry>Avoids downtime caused by local indexserver restart</entry>
+      </row>
+      <row>
+       <entry>susCostOpt.py</entry>
+       <entry>Handles secondary site in case of cluster sr_takeover</entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </informaltable>
+   <table xml:id="table-sap-ha-solutions-sap-hana-hook-scripts">
+    <title>Supported scenarios for HADR provider hook scripts</title>
+    <tgroup cols="4">
+    <colspec colname='c1'/>
+    <colspec colname='c2'/>
+    <colspec colname='c3'/>
+    <colspec colname='c4'/>
+     <thead>
+      <row>
+       <entry morerows="2" align="center">HADR provider hook script</entry>
+       <entry namest="c2" nameend="c4" align="center">Scenario</entry>
+      </row>
+      <row>
+       <entry namest="c2" nameend="c3" align="center">Scale-up</entry>
+       <entry align="center">Scale-out</entry>
+      </row>
+      <row>
+       <entry align="center">Cost optimized</entry>
+       <entry align="center">Performance optimized</entry>
+       <entry align="center">Performance optimized</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>SAPHanaSR.py scale-up</entry>
+       <entry>Mandatory</entry>
+       <entry>Mandatory</entry>
+       <entry>-</entry>
+      </row>
+      <row>
+       <entry>SAPHanaSR.py scale-out</entry>
+       <entry>-</entry>
+       <entry>-</entry>
+       <entry>Legacy (mandatory for &hana;&nbsp;1.0)</entry>
+      </row>
+      <row>
+       <entry>SAPHanaSrMultiTarget.py</entry>
+       <entry>-</entry>
+       <entry>-</entry>
+       <entry>Mandatory</entry>
+      </row>
+      <row>
+       <entry>susTkOver.py</entry>
+       <entry>Supported but undocumented</entry>
+       <entry>Not mandatory but recommended</entry>
+       <entry>Supported but undocumented</entry>
+      </row>
+      <row>
+       <entry>susChkSrv.py</entry>
+       <entry>-</entry>
+       <entry>Not mandatory but recommended</entry>
+       <entry>Not mandatory but recommended</entry>
+      </row>
+      <row>
+       <entry>susCostOpt.py</entry>
+       <entry>Mandatory</entry>
+       <entry>-</entry>
+       <entry>-</entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </table>
+  </sect2>
+ </sect1>
+
+ <sect1 xml:id="sap-ha-solutions-s4hana">
+  <title>HA solutions for &s4hana; based on ABAP Platform 1809 or newer</title>
+  <para>
+   &ensa2long; (&ensa2;) is the successor to &ensa1long; (&ensa1;). Starting from
+   ABAP Platform 1809, &ensa2long; is the default installation. The use of the new
+   &ensa2long; and Enqueue Replicator 2 provides an improved high availability architecture
+   with robust and fast replication, and failover.
+  </para>
+  <informalfigure>
+   <mediaobject>
+    <imageobject role="fo">
+     <imagedata fileref="ensa2.svg" width="100%"/>
+    </imageobject>
+    <imageobject role="html">
+     <imagedata fileref="ensa2.svg" width="100%"/>
+    </imageobject>
+    <textobject role="description">
+     <phrase>
+      &ensa2; two-node cluster configuration.
+     </phrase>
+    </textobject>
+   </mediaobject>
+  </informalfigure>
+  <para>
+   The support details are for high level overview only. Refer to the official documentation
+   for the full conditions.
+  </para>
+  <table xml:id="table-sap-ha-solutions-s4hana">
+   <title>Supported configurations for &s4hana; based on ABAP Platform 1809 or newer</title>
+   <tgroup cols="3">
+    <thead>
+     <row>
+      <entry>Supported configuration</entry>
+      <entry>Status</entry>
+      <entry>Support details</entry>
+     </row>
+    </thead>
+    <tbody>
+     <row>
+      <entry>2-node cluster</entry>
+      <entry>Supported (<link xlink:href="&dsc;/sbp/all/html/SAP-S4HA10-setupguide-sle15/index.html">Documentation</link>)</entry>
+      <entry>In a 2-node cluster, ASCS fails over to the same node where ERS is running.</entry>
+     </row>
+     <row>
+      <entry>3-node cluster</entry>
+      <entry>Supported (<link xlink:href="&dsc;/sbp/sap/html/SAP-S4HA10-setupguide-simplemount-sle15/index.html">Documentation</link>)</entry>
+      <entry>In a 3-node cluster, ASCS fails over to the online node where ERS is not running.</entry>
+     </row>
+     <row>
+      <entry>Simple mount file system structure</entry>
+      <entry>Supported (<link xlink:href="&dsc;/sbp/sap/html/SAP-S4HA10-setupguide-simplemount-sle15/index.html">Documentation</link>)</entry>
+      <entry>Shared file system mounts are NOT managed by the cluster.
+      This is the recommended configuration over the
+       <emphasis>Filesystem</emphasis> resource-based solution.</entry>
+     </row>
+     <row>
+      <entry><emphasis>Filesystem</emphasis> resource-based</entry>
+      <entry>Supported (<link xlink:href="&dsc;/sbp/all/html/SAP-S4HA10-setupguide-sle15/index.html">Documentation</link>)</entry>
+      <entry>Shared file system mounts are managed by the cluster
+      via the <emphasis>Filesystem</emphasis> resource agent.
+      &suse; still supports this configuration, but it is not
+      recommended for new installations.
+      Use the simple mount file system structure instead.</entry>
+     </row>
+     <row>
+      <entry>Multi-SID</entry>
+      <entry>Supported (<link xlink:href="&dsc;/sbp/all/html/SBP-SAP-MULTI-SID/index.html">Documentation</link>)</entry>
+      <entry>Multiple &sap; ASCS/SCS clustered instances are supported in the same cluster.</entry>
+     </row>
+     <row>
+      <entry>Additional dialog or other instances in cluster</entry>
+      <entry>Supported but undocumented</entry>
+      <entry>Although it is possible to run Application Servers in the same cluster where ASCS/ERS
+      are running, it is not recommended for easy management of the cluster.</entry>
+     </row>
+     <row>
+       <entry>&sap; Web Dispatcher in cluster</entry>
+       <entry>Supported (<link xlink:href="https://www.suse.com/c/yes-sap-web-dispatcher-high-availability-on-premise-and-cloud/">Documentation</link>
+       for the <emphasis>Filesystem</emphasis> resource-based setup; not yet documented for
+       the simple mount structure)</entry>
+       <entry><para>This solution combines the following resources into one cluster resource group:</para>
+         <itemizedlist>
+           <listitem>
+             <para>
+               An &sap; instance including the <literal>sapwebdisp</literal> service
+             </para>
+           </listitem>
+           <listitem>
+             <para>
+               A file system where the &sap; instance is running
+             </para>
+           </listitem>
+           <listitem>
+             <para>
+               An IP address used by the clients of the service
+             </para>
+           </listitem>
+         </itemizedlist>
+       </entry>
+     </row>
+    </tbody>
+   </tgroup>
+  </table>
+ </sect1>
+
+ <sect1 xml:id="sap-ha-solutions-netweaver">
+  <title>HA solutions for &netweaver; based on ABAP Platform 1709 or older</title>
+  <para>
+   Under the &ensa1long; (&ensa1;), the ASCS has to fail over to the
+   cluster node where the active ERS is running, because it needs to
+   access the shared memory that stores the enqueue replication table.
+  </para>
+  <informalfigure>
+   <mediaobject>
+    <imageobject role="fo">
+     <imagedata fileref="ensa1.svg" width="80%"/>
+    </imageobject>
+    <imageobject role="html">
+     <imagedata fileref="ensa1.svg" width="80%"/>
+    </imageobject>
+    <textobject role="description">
+     <phrase>
+      &ensa1; two-node cluster configuration.
+     </phrase>
+    </textobject>
+   </mediaobject>
+  </informalfigure>
+  <para>
+   The support details are for high level overview only. Refer to the official documentation
+   for the full conditions.
+  </para>
+  <table xml:id="table-sap-ha-solutions-netweaver">
+   <title>Supported configurations for &netweaver; based on ABAP Platform 1709 or older</title>
+   <tgroup cols="3">
+    <thead>
+     <row>
+      <entry>Supported configuration</entry>
+      <entry>Status</entry>
+      <entry>Support details</entry>
+     </row>
+    </thead>
+    <tbody>
+     <row>
+      <entry>2-node cluster</entry>
+      <entry>Supported (<link xlink:href="&dsc;/sbp/all/html/SAP-nw740-sle15-setupguide/index.html">Documentation</link>)</entry>
+      <entry>In a 2-node cluster, ASCS fails over to the same node where ERS is running.</entry>
+     </row>
+     <row>
+      <entry>3-node cluster</entry>
+      <entry>Supported but undocumented</entry>
+      <entry>A 3-node cluster is supported, but the extra node is not used for ASCS failover.</entry>
+     </row>
+     <row>
+      <entry>Simple mount file system structure</entry>
+      <entry>Supported (<link xlink:href="&dsc;/sbp/all/html/SAP-nw740-sle15-setupguide/index.html#id-example-for-the-two-node-cluster-with-simple-mount-setup">Documentation</link>)</entry>
+      <entry>Shared file system mounts are NOT managed by the cluster.
+      This is the recommended configuration over the
+      <emphasis>Filesystem</emphasis> resource-based solution.</entry>
+     </row>
+     <row>
+      <entry><emphasis>Filesystem</emphasis> resource-based</entry>
+      <entry>Supported (<link xlink:href="&dsc;/sbp/all/html/SAP-nw740-sle15-setupguide/index.html">Documentation</link>)</entry>
+      <entry>Shared file system mounts are managed by the cluster via
+      the <emphasis>Filesystem</emphasis> resource agent.
+      &suse; still supports this configuration, but it is not recommended
+      for new installations.
+      Use the simple mount file system structure instead.</entry>
+     </row>
+     <row>
+      <entry>Multi-SID</entry>
+      <entry>Supported (<link xlink:href="&dsc;/sbp/all/html/SBP-SAP-MULTI-SID/index.html">Documentation</link>)</entry>
+      <entry>Multiple &sap; ASCS/SCS clustered instances are supported in the same cluster.</entry>
+     </row>
+     <row>
+      <entry>Additional dialog or other instances in cluster</entry>
+      <entry>Supported but undocumented</entry>
+      <entry>Although it is possible to run Application Servers in the same cluster where
+      ASCS/ERS are running, it is not recommended for easy management of the cluster.</entry>
+     </row>
+     <row>
+       <entry>&sap; Web Dispatcher in cluster</entry>
+       <entry>Supported (<link xlink:href="https://www.suse.com/c/yes-sap-web-dispatcher-high-availability-on-premise-and-cloud/">Documentation</link>
+       for the <emphasis>Filesystem</emphasis> resource-based setup; not yet documented for
+       the simple mount structure)</entry>
+       <entry><para>This solution combines the following resources into one cluster resource group:</para>
+         <itemizedlist>
+           <listitem>
+             <para>
+               An &sap; instance including the <literal>sapwebdisp</literal> service
+             </para>
+           </listitem>
+           <listitem>
+             <para>
+               A file system where the &sap; instance is running
+             </para>
+           </listitem>
+           <listitem>
+             <para>
+               An IP address used by the clients of the service
+             </para>
+           </listitem>
+         </itemizedlist>
+       </entry>
+     </row>
+    </tbody>
+   </tgroup>
+  </table>
+ </sect1>
+
+ <sect1 xml:id="sap-ha-solutions-documentation">
+  <title>Documentation and configuration guides</title>
+  <para>
+   Refer to the official Web sites for up-to-date documentation and configuration
+   guides:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     &suse;: <link xlink:href="&dsc;/sbp/sap/"/>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     &ms; Azure: <link xlink:href="https://azure.microsoft.com/en-us/solutions/sap/azure-solutions/#documentation "/>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     &aws;: <link xlink:href="https://aws.amazon.com/sap/docs/ "/>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     &gcloud;: <link xlink:href="https://cloud.google.com/solutions/sap/docs "/>
+    </para>
+   </listitem>
+  </itemizedlist>
+ </sect1>
+
+ <xi:include href="common_legal.xml"/>
+</article>

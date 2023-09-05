@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file originates from the project https://github.com/openSUSE/doc-kit -->
+<!-- This file can be edited downstream. -->
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook51-profile.xsl"
+ type="text/xml"
+ title="Profiling step"?>
+<!DOCTYPE article
+[
+  <!ENTITY % entities SYSTEM "../common/generic-entities.ent">
+    %entities;
+]>
+<article xml:id="container-bci-understand" xml:lang="en"
+ role="concept"
+ xmlns="http://docbook.org/ns/docbook" version="5.2"
+ xmlns:its="http://www.w3.org/2005/11/its"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+  <info>
+    <title>Understanding &bcia;s</title>
+  </info>
+  <para>
+    There are certain features that set &bcia;s apart from similar offerings,
+    like images based on Debian or Alpine Linux. Understanding the specifics
+    can help you to get the most out of &bcia;s in the shortest time possible.
+  </para>
+  <section xml:id="sec-bci-package-manager">
+    <title>Package manager</title>
+    <para>
+      The default package manager in &slsa; is &zypper;. Similar to APT in
+      Debian and APK in Alpine Linux, &zypper; offers a command-line interface
+      for all package management tasks. Below is a brief overview of commonly
+      used container-related &zypper; commands.
+    </para>
+    <variablelist>
+      <varlistentry>
+        <term>Install packages</term>
+        <listitem>
+          <para>
+            <command>zypper --non-interactive install
+            <replaceable>PACKAGE_NAME</replaceable></command>
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Add a repository</term>
+        <listitem>
+          <para>
+            <command>zypper --non-interactive addrepo
+            <replaceable>REPOSITORY_URL</replaceable>;</command>
+            <command>zypper --non-interactive refresh</command>
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Update all packages</term>
+        <listitem>
+          <para>
+            <command>zypper --non-interactive update</command>
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Remove a package</term>
+        <listitem>
+          <para>
+            <command>zypper --non-interactive remove --clean-deps
+            <replaceable>PACKAGE_NAME</replaceable></command> (the
+            <option>--clean-deps</option> flag ensures that no longer required
+            dependencies are removed as well)
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Clean up temporary files</term>
+        <listitem>
+          <para>
+            <command>zypper clean</command>
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+    <para>
+      For more information on using &zypper;, refer to
+      <link xlink:href="https://documentation.suse.com/sles/html/&slsa;-all/cha-sw-cl.html#sec-zypper"/>.
+    </para>
+    <para>
+      All the described commands use the <option>--non-interactive</option>
+      flag to skip confirmations, since you cannot approve these manually
+      during container builds. Keep in mind that you must use the flag with any
+      command that modifies the system. Also note that
+      <option>--non-interactive</option> is not a "yes to all" flag. Instead,
+      <option>--non-interactive</option> confirms what is considered to be the
+      intention of the user. For example, an installation command with the
+      <option>--non-interactive</option> option fails if it needs to import new
+      repository signing keys, as that is something that the user must verify
+      themselves.
+    </para>
+  </section>
+  <section xml:id="sec-bci-suseconnect">
+    <title>Using container-suseconnect with &bcia;s</title>
+    <para>
+      <link xlink:href="https://github.com/&suse;/container-suseconnect"><literal>container-suseconnect</literal></link>
+      is a plugin available in all &bcia;s that ship with &zypper;. When the
+      plugin detects the host's &suse; Linux Enterprise Server registration
+      credentials, it uses them to give the container access the &suse; Linux
+      Enterprise repositories. This includes additional modules and previous
+      package versions that are not part of the free SLE_BCI repository. Refer
+      to <xref linkend="sec-container-suseconnect"/> for more information on
+      how to use the repository for &slsa;, &opensuse;, and non-&slsa; hosts.
+    </para>
+  </section>
+  <section xml:id="sec-bci-tasks">
+    <title>Common patterns</title>
+    <para>
+      The following examples demonstrate how to accomplish certain tasks in a
+      &bcia; compared to Debian.
+    </para>
+    <variablelist>
+      <varlistentry>
+        <term>Remove orphaned packages</term>
+        <listitem>
+          <itemizedlist>
+            <listitem>
+              <para>
+                Debian: <command>apt-get autoremove -y</command>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                &bcia;: Not required if you remove installed packages using the
+                <command>zypper --non-interactive remove --clean-deps
+                <replaceable>PACKAGE_NAME</replaceable></command>
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Obtain container's architecture</term>
+        <listitem>
+          <itemizedlist>
+            <listitem>
+              <para>
+                Debian: <command>dpkgArch="$(dpkg --print-architecture | awk
+                -F- '{ print $NF }')"</command>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                &bcia;: <command>arch="$(uname -p)"</command>
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Install packages required for compilation</term>
+        <listitem>
+          <itemizedlist>
+            <listitem>
+              <para>
+                Debian: <command>apt-get install -y build-essential</command>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                &bcia;: <command>zypper -n in gcc gcc-c++ make</command>
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Verify GnuPG signatures</term>
+        <listitem>
+          <itemizedlist>
+            <listitem>
+              <para>
+                Debian: <command>gpg --batch --verify
+                <replaceable>SIGNATURE_URL</replaceable>
+                <replaceable>FILE_TO_VERIFY</replaceable></command>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                &bcia;: <command>zypper -n in dirmngr; gpg --batch --verify
+                <replaceable>SIGNATURE_URL</replaceable>
+                <replaceable>FILE_TO_VERIFY</replaceable>; zypper -n remove
+                --clean-deps dirmngr; zypper -n clean</command>
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+  <section xml:id="sec-bci-package-naming">
+    <title>Package naming conventions</title>
+    <para>
+      &slea; package naming conventions differ from Debian, Ubuntu and Alpine,
+      and they are closer to those of &rhel;. The main difference is that
+      development packages of libraries (that is, packages containing headers
+      and build description files) are named <filename>PACKAGE-devel</filename>
+      in &slea;, as opposed to <filename>PACKAGE-dev</filename> in Debian and
+      Ubuntu. When in doubt, search for the package using the following
+      command: <command>docker run --rm
+      registry.suse.com/bci/bci-base:<replaceable>OS_VERSION</replaceable>
+      zypper search <replaceable>PACKAGE_NAME</replaceable></command> (replace
+      <replaceable>OS_VERSION</replaceable> with the appropriate service
+      version number, for example: <literal>15.3</literal> or
+      <literal>15.4</literal>).
+    </para>
+  </section>
+  <section xml:id="sec-bci-gpg-keys">
+    <title>Adding GPG signing keys</title>
+    <para>
+      Adding external repositories to a container or container image normally
+      requires importing the GPG key used for signing the packages. This can be
+      done with the <command>rpm --import
+      <replaceable>KEY_URL</replaceable></command> command. This adds the key
+      to the RPM database, and all packages from the repository can be
+      installed afterwards.
+    </para>
+  </section>
+</article>

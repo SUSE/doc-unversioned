@@ -41,7 +41,7 @@
     <title>What is &scchvc;?</title>
 
     <para>
-      &scchvc; is a command line tool that collects details about customer
+      &scchvc; is a command-line tool that collects details about customer
       hypervisor solutions and uploads them to SCC.
     </para>
   </sect1>
@@ -73,19 +73,19 @@
     <title>Requirements</title>
 
     <para>
-      To collect hypervisor data and upload them to SCC, you need:
+      To collect hypervisor data and upload it to SCC, you need:
     </para>
 
     <itemizedlist>
       <listitem>
         <para>
           An existing &vmhost; running a supported hypervisor&mdash;&vmware; or
-          &libvirt;&mdash;.
+          &libvirt;.
         </para>
       </listitem>
       <listitem>
         <para>
-          Install the <package>scc-hypervisor-collector</package> package and
+          To install the <package>scc-hypervisor-collector</package> package and
           configure the collector to match your environment.
         </para>
       </listitem>
@@ -101,12 +101,12 @@
     </para>
 
     <para>
-      The collected data, when uploaded to SCC, are correlated with existing
+      The collected data, when uploaded to SCC, is correlated with existing
       SCC registrations and subscription entitlements.
     </para>
 
     <para>
-      You can run &scchvc; either manually, or enable a &systemd; timer to run
+      You can either run &scchvc; manually or enable a &systemd; timer to run
       it regularly.
     </para>
   </sect1>
@@ -120,9 +120,9 @@
     <itemizedlist>
       <listitem>
         <para>
-          The system UUID of a &libvirt; host. It is the primary piece of
+          The system UUID of a &libvirt; host&mdash;it is the primary piece of
           information used to correlate hypervisor hosts and virtual machines
-          to existing SCC registrations.
+          with existing SCC registrations
         </para>
       </listitem>
       <listitem>
@@ -144,7 +144,7 @@
       <listitem>
         <para>
           The state of each discovered virtual machine&mdash;whether it is
-          running or stopped/shutoff.
+          running or stopped/shut off
         </para>
       </listitem>
     </itemizedlist>
@@ -154,7 +154,7 @@
 
     <para>
       You need to configure &scchvc; and specify the hypervisors that it needs
-      to query and the credentials required to upload the collected details to
+      to query, and the credentials required to upload the collected details to
       SCC. &scchvc; checks configuration files with the
       <literal>.yaml</literal> or <literal>.yml</literal> suffix in the
       <filename>/var/lib/scchvc/.config/scc-hypervisor-collector/</filename>
@@ -172,14 +172,14 @@
 
     <para>
       &scchvc; can be run as any user with appropriate configuration settings.
-      If you intent to use the &systemd; integration (see
+      If you intend to use the &systemd; integration (see
       <xref linkend="scc-hypervisor-collector-service"/>) to run it
       automatically on a regular basis, configure it to run under the default
       restricted <literal>scchvc</literal> user account.
     </para>
 
     <para>
-      The configuration file must include the following top level entries:
+      The configuration file must include the following top-level entries:
     </para>
 
     <variablelist>
@@ -191,8 +191,8 @@
           </para>
           <tip>
             <para>
-              Provided credentials only need the privileges to retrieve the
-              specified details from hypervisor solution. It is highly
+              The provided credentials only need the privileges to retrieve the
+              specified details from the hypervisor solution. It is highly
               recommended that they do not have capabilities to modify the
               state of the hypervisor.
             </para>
@@ -257,36 +257,36 @@ backends:
         <listitem>
           <para>
             The <option>--output</option> option lets you specify the path to a
-            file to store the YAML formatted results of querying the
-            hypervisors. This option disables uploading results to the SCC.
+            file to store the results of querying the hypervisors in the YAML
+            format. This option disables uploading results to the SCC.
           </para>
         </listitem>
         <listitem>
           <para>
-            The <option>--input</option> option lets you specify the path to a
-            file that contains previously collected YAML formatted results of
-            querying hypervisors. These results is be uploaded to SCC instead
-            of querying the current state of hypervisors.
+            The <option>--input</option> option lets you specify the path to the
+            file that contains the previously collected results of querying the
+            hypervisors in the YAML format. These results are uploaded
+            to SCC instead of querying the current state of hypervisors.
           </para>
         </listitem>
       </itemizedlist>
       <para>
-        This separation helps to fullfil the following scenarios:
+        This separation helps to fulfil the following scenarios:
       </para>
       <itemizedlist>
         <listitem>
           <para>
-            Customer systems that have the necessary access to be able to
-            collect the data from the configured hypervisor systems may not
-            have access to the internet to be able to upload the collected data
-            to SCC. Conversely, systems that have internet access to upload
-            data to the internet may not have sufficient access to be able to
-            collect the data from the customer hypervisor solutions.
+            Customer systems that have the necessary access to collect the
+            data from the configured hypervisor systems may not have
+            access to the Internet to upload the collected data to SCC.
+            Conversely, systems that have Internet access to upload
+            data to SCC may not have sufficient access to collect
+            the data from the customer hypervisor solutions.
           </para>
         </listitem>
         <listitem>
           <para>
-            You want to sanitize the collected data before they are uploaded to
+            You want to sanitize the collected data before it is uploaded to
             SCC, for example, change host names or virtual machine names. Note
             that certain values, such as UUID identifiers, cannot be changed.
           </para>

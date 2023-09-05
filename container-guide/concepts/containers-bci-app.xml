@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file originates from the project https://github.com/openSUSE/doc-kit -->
+<!-- This file can be edited downstream. -->
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook51-profile.xsl"
+ type="text/xml"
+ title="Profiling step"?>
+<!DOCTYPE article
+[
+  <!ENTITY % entities SYSTEM "../common/generic-entities.ent">
+    %entities;
+]>
+<article xml:id="container-bci-app" xml:lang="en"
+ role="concept"
+ xmlns="http://docbook.org/ns/docbook" version="5.2"
+ xmlns:its="http://www.w3.org/2005/11/its"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+  <info>
+    <title>Application &bci;s</title>
+  </info>
+  <para>
+    Application &bcia;s are &bcia;-Base container images that include specific
+    applications, such as the PostgreSQL database and the Performance Co-Pilot
+    a system-level performance analysis toolkit. Application &bcia;s are
+    available in the dedicated section of the
+    <link xlink:href="https://registry.suse.com/#apps">&suseregistry;</link>.
+  </para>
+</article>
