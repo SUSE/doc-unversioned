@@ -19,7 +19,6 @@
     <dm:product>Documentation</dm:product>
     <dm:assignee>taroth@suse.com</dm:assignee>
    </dm:bugtracker>
-   <dm:editurl>https://github.com/SUSE/doc-unversioned/tree/main/pcidss/xml/</dm:editurl>
    <dm:translation>yes</dm:translation>
   </dm:docmanager>
 
