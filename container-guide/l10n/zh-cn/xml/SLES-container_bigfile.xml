@@ -12,7 +12,6 @@
      <dm:product>Documentation</dm:product>
      <dm:assignee>dmitri.popov@suse.com</dm:assignee>
   </dm:bugtracker>
-  <dm:editurl>https://github.com/SUSE/doc-unversioned/edit/main/container-guide/xml/</dm:editurl>
   <dm:translation>yes</dm:translation>
 </dm:docmanager>
 </info>
