@@ -1,0 +1,38 @@
+<!-- This file originates from the project https://github.com/openSUSE/doc-kit -->
+<!-- This file can be edited downstream. -->
+
+<!-- PRODUCT NAME AND VERSIONS -->
+<!ENTITY productname            "&slsa; for &sap; Applications">
+<!ENTITY productnameshort       "&s4sa;">
+<!ENTITY product-ga             "15">
+<!ENTITY product-sp             "Code stream">
+<!ENTITY productnumber          "&product-ga; &product-sp;">
+
+
+<!-- PROJECT REPOSITORY URL -->
+<!ENTITY repo-url               "https://github.com/SUSE/doc-unversioned">
+<!ENTITY repo-readme            "&repo-url;/blob/main/README.adoc">
+
+<!-- DOCUMENTATION.SUSE.COM PRODUCT URL -->
+<!--ENTITY doc-url                "&dsc;/[PRODUCT]/[VERSION]"-->
+
+<!-- RELEASE NOTES URL -->
+<!--ENTITY rn-url                 "&sc-rn;/x86_64/[PRODUCT]/[VERSION]"-->
+
+
+<!-- START YEAR OF COPYRIGHT -->
+<!ENTITY copyrightstart         "2023">
+<!-- COPYRIGHT HOLDER(S) -->
+<!ENTITY copyrightholder        "SUSE LLC">
+
+
+<!-- PRODUCT NAMES -->
+<!ENTITY s4hana "S/4HANA">
+<!ENTITY nwshort "NetWeaver">
+<!ENTITY hanasr "&hana; system replication">
+<!ENTITY aws "AWS">
+<!ENTITY gcloud "Google Cloud">
+<!ENTITY ensa2long "Standalone Enqueue Server 2">
+<!ENTITY ensa2 "ENSA2">
+<!ENTITY ensa1long "Standalone Enqueue Server">
+<!ENTITY ensa1 "ENSA1">

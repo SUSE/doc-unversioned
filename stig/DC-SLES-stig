@@ -1,0 +1,17 @@
+## ---------------------------- 
+## STIG, unversioned
+## repo: SUSE/doc-unversioned
+## ----------------------------
+##
+## Basics
+MAIN="article_stig.xml"
+ROOTID=article-stig
+
+## Profiling
+PROFOS="sles"
+PROFARCH="x86_64;zseries;power;aarch64"
+PROFCONDITION="suse-product"
+
+## stylesheet location
+STYLEROOT="/usr/share/xml/docbook/stylesheet/suse2022-ns"
+FALLBACK_STYLEROOT="/usr/share/xml/docbook/stylesheet/suse-ns"
