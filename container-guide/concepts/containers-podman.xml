@@ -192,8 +192,8 @@
       <para>
         This user remapping can have undesired side effects when sharing data
         with the host, where the shared files belong to different user IDs in
-        the container and on the host. The issue can be solved using the the
-        command line flag <option>--userns=keep-id</option> that makes it
+        the container and on the host. The issue can be solved using the
+        command-line flag <option>--userns=keep-id</option> that makes it
         possible to keep the current user id in the container:
       </para>
 <screen>&prompt.user;podman run --userns=keep-id --rm -it registry.suse.com/bci/bci-base id
