@@ -248,6 +248,14 @@
    <para>
     You can use &hana; Fast Restart on RAM-tmpfs and &hana; on persistent memory if they are transparent to the &ha; cluster.
    </para>
+   <para>
+     &hana; Native Storage Extension (NSE) is supported in &ha; solutions for automated &hanasr;
+     in both Scale-up and Scale-out. This feature does <emphasis>not</emphasis> change the
+     &hana; topology or interfaces to the &ha; cluster. However, unlike &hana; NSE, the
+     HANA Extension Nodes <emphasis>do</emphasis> change the topology and are therefore not
+     currently supported by &sleha;. Refer to the &sap; documentation for details
+     of &hana; NSE and its functional restrictions.
+   </para>
   </sect2>
 
   <sect2 xml:id="sap-ha-solutions-sap-hana-notation">
