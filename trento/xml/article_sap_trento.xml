@@ -214,8 +214,8 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         When using K3s, such storage should be provided under <filename>/var/lib/rancher/k3s</filename>.
       </para>
      <para>
-      Trento is powered by event driven technology. Registered events are stored in a postgresql database with a retention
-      period of 10 days. For each host registered with Trento, you need to allocate at least 1.5GB of space in the postgresql database.
+      Trento is powered by event driven technology. Registered events are stored in a  &postgresql; database with a retention
+      period of 10 days. For each host registered with Trento, you need to allocate at least 1.5GB of space in the &postgresql; database.
      </para>
       <para> While the &t.server; supports various usage scenarios,
         depending on the existing infrastructure, it is designed to be
