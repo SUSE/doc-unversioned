@@ -247,8 +247,8 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         impact the performance of the host it runs on. </para>
       <para> The &t.agent; component needs to interact with several
         low-level system components that are part of the &sles4sap; distribution. </para>
-           <para> Trento requireds unique machine ids on the hosts to be registered. Therefore, if any host in your environment is a clone of another one,
-           please ensure that you change the machine id before starting the Trento Agent on it. </para>
+           <para> Trento requires unique machine ids on the hosts to be registered. Therefore, if any host in your environment is built as a clone of another one,
+           please ensure that you change the machine id as part of the cloning process before starting the Trento Agent on it. </para>
     </section>
     <section xml:id="sec-trento-network-requirements">
       <title>Network requirements</title>
