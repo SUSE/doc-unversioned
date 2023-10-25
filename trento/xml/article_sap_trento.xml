@@ -2418,6 +2418,12 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
             <para>Send the generated archive file to support for analysis.</para>
           </step>
         </procedure>
+           <para>The Trento support plugin admits the following Options:
+        -o, --output        Output type. Options: stdout|file|file-tgz
+        -c, --collect       Collection options: configuration|base|kubernetes|all
+        -r, --release-name  Release name to use for the chart installation. "trento-server" by default.
+        -n, --namespace     Kubernetes namespace used when installing the chart. "default" by default.
+        -h, --help</para>
       </section>
 
       <section>
