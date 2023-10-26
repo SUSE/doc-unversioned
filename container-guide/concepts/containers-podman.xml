@@ -21,14 +21,13 @@
   <para>
     <link xlink:href="https://podman.io/">&podman;</link> is short for Pod
     Manager Tool. It is a daemonless container engine for managing Open
-    Container Initiative (OCI) containers on a Linux system, and it offers a
-    drop-in alternative for Docker. Podman's by default supports for rootless
-    containers, which reduces reduced attack surface when running containers.
-    &podman; can be used to create OCI-compliant container images using a
-    <literal>Dockerfile</literal> and a range of commands identical to &deng;.
-    For example, the <literal>podman build</literal> command performs the same
-    task as <literal>docker build</literal>. In other words, &podman; provides
-    a drop-in replacement for &deng;.
+    Container Initiative (OCI) containers on a Linux system. Podman's by default
+    supports for rootless containers, which reduces attack surface when running
+    containers. &podman; can be used to create OCI-compliant container images
+    using a <literal>Dockerfile</literal> and a range of commands identical to
+    &deng;. For example, the <literal>podman build</literal> command performs
+    the same task as <literal>docker build</literal>. In other words, &podman;
+    provides a drop-in replacement for &deng;.
   </para>
   <para>
     Moving from &deng; to &podman; does not require any changes in the
