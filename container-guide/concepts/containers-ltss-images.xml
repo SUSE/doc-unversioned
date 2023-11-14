@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file originates from the project https://github.com/openSUSE/doc-kit -->
+<!-- This file can be edited downstream. -->
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook51-profile.xsl"
+ type="text/xml"
+ title="Profiling step"?>
+<!DOCTYPE article
+[
+  <!ENTITY % entities SYSTEM "../common/generic-entities.ent">
+    %entities;
+]>
+<article xml:id="container-ltss-images" xml:lang="en"
+ role="concept"
+ xmlns="http://docbook.org/ns/docbook" version="5.2"
+ xmlns:its="http://www.w3.org/2005/11/its"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+  <info>
+    <title>Using Long Term Service Pack Support container images from the &suseregistry;</title>
+  </info>
+  <para>
+    Long Term Service Pack Support (LTSS) container images are available at <link xlink:href="registry.suse.com/suse/ltss/"/>. To access and use the container images, you must have a valid LTSS subscription.
+  </para>
+  <para>
+    Before you can pull or download LTSS container images, you must log in to the &suseregistry; as a user. There are three ways to do that.
+  </para>
+  <variablelist>
+    <varlistentry>
+      <term>
+        Reuse the system registration of your host system
+      </term>
+      <listitem>
+        <para>
+          If the host system you are using to build or run a container
+          is already registered with the correct subscription required for
+          accessing the LTSS container images, you can reuse the registration
+          information from the host to log in to the registry.
+        </para>
+        <para>
+          The login information can be found in the file <filename>/etc/zypp/credentials.d/SCCcredentials</filename>. The credentials allow you to access any container that is available under the subscription of the respective host system. You can use these credentials to log in to &suseregistry; using the following commands (use the leading space before the <command>echo</command> command to avoid storing the credentials in the shell history):
+        </para>
+
+<screen>&prompt.user;set +o history
+  &prompt.user;echo $password | podman login -u SCC_$longstring --password-stdin registry.suse.com
+  &prompt.user;set -o history</screen>
+       </listitem>
+    </varlistentry>
+    <varlistentry>
+    <term>
+      Use a separate &scc; registration code
+    </term>
+    <listitem>
+    <para>
+      If the host system is not registered with &scc;, you can use a valid &scc;
+      registration code to log in to the registry:
+    </para>
+<screen>set +o history
+  echo <replaceable>SCC_REGISTRATION_CODE</replaceable> | podman login -u "regcode" --password-stdin registry.suse.com
+set -o history</screen>
+      <para>
+      The user parameter in this case is the verbatim string
+      <literal>regcode</literal>, and
+      <replaceable>SCC_REGISTRATION_CODE</replaceable> is the actual
+      registration code obtained from &suse;.
+    </para>
+    </listitem>
+    </varlistentry>
+    <varlistentry>
+    <term>
+      Use the organization mirroring credentials
+    </term>
+    <listitem>
+    <para>
+      You can also use the organization mirroring credentials to log in to the
+      &suseregistry;:
+    </para>
+<screen>set +o history
+ echo <replaceable>SCC_MIRRORING_PASSWORD</replaceable> | podman login -u "<replaceable>SCC_MIRRORING_USER</replaceable>" --password-stdin registry.suse.com
+set -o history</screen>
+    <para>
+      These credentials give you access to all subscriptions the
+      organization owns including those related to container images in the
+      &suseregistry;. These are highly privileged and should be preferably used
+      for a private mirroring registry only.
+    </para>
+    </listitem>
+    </varlistentry>
+  </variablelist>
+</article>
