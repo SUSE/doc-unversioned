@@ -82,9 +82,9 @@ set -o history</screen>
 set -o history</screen>
         <para>
           These credentials give you access to all subscriptions the
-          organization owns including those related to container images in the
-          &suseregistry;. These are highly privileged and should be preferably
-          used for a private mirroring registry only.
+          organization owns, including those related to container images in the
+          &suseregistry;. The credentials are highly privileged and should be
+          preferably used for a private mirroring registry only.
         </para>
       </listitem>
     </varlistentry>
