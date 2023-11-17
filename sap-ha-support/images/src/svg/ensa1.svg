@@ -964,14 +964,14 @@
     <text
        xml:space="preserve"
        style="font-weight:500;font-size:3.70417px;line-height:1.25;font-family:Poppins;-inkscape-font-specification:'Poppins, Medium';letter-spacing:0px;fill:#30ba78;stroke-width:0.264583"
-       x="50.458611"
+       x="59.458611"
        y="172.96758"
        id="text2734"><tspan
          sodipodi:role="line"
          id="tspan2732"
-         x="50.458611"
+         x="59.458611"
          y="172.96758"
-         style="font-size:3.70417px;fill:#30ba78;stroke-width:0.264583">Managed by SUSE Linux Enterprise High Availability Extension (Pacemaker)</tspan></text>
+         style="font-size:3.70417px;fill:#30ba78;stroke-width:0.264583">Managed by SUSE Linux Enterprise High Availability (Pacemaker)</tspan></text>
   </g>
   <style
      type="text/css"
