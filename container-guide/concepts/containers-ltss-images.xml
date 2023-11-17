@@ -40,7 +40,7 @@
         <para>
           The file
           <filename>/etc/zypp/credentials.d/SCCcredentials</filename> contains
-          username and password. These credentials allow you to access any
+          a username and a password. These credentials allow you to access any
           container that is available under the subscription of the respective
           host system. You can use these credentials to log in to &suseregistry;
           using the following commands (use the leading space before the
