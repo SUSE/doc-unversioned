@@ -20,7 +20,7 @@
   </info>
   <para>
     All described tools described below are part of the
-    <emphasis role="strong">&sles; &productnumber; Containers
+    <emphasis role="strong">&sles; Containers
     Module</emphasis>, except the
     <link xlink:href="https://openbuildservice.org">Open Build Service</link>.
     You can see the full list of packages in the
@@ -159,8 +159,8 @@
   <section xml:id="sec-tools-kiwi">
     <title>&kiwi;</title>
     <para>
-      <link xlink:href="https://github.com/OSInside/kiwi">&kiwi;</link> Next
-      Generation is a multi-purpose tool for building images. In addition to
+      <link xlink:href="https://github.com/OSInside/kiwi">KIWI</link> Next
+      Generation (&kiwi;) is a multi-purpose tool for building images. In addition to
       container images, regular installation ISO images, and images for virtual
       machines, &kiwi; can build images that boot via PXE or Vagrant boxes. The
       main building block in &kiwi; is an image XML description, a directory that
@@ -176,9 +176,9 @@
     </para>
     <note>
       <para>
-        It is important to distinguish between &kiwi; NG (currently version
+        It is important to distinguish between &kiwi; (currently version
         9.20.9) and its unmaintained legacy versions (7.x.x or older), now
-        called <link xlink:href="https://documentation.suse.com/kiwi/">&kiwi;
+        called <link xlink:href="https://documentation.suse.com/kiwi/">KIWI
         Legacy</link>.
       </para>
     </note>
