@@ -973,14 +973,14 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       <itemizedlist>
         <listitem>
           <formalpara>
-            <title>Database cluster</guimenu>:</title>
+            <title>Database cluster:</title>
             <para>the status here is based on the running status of the database cluster and the results
               of the selected configuration checks.</para>
           </formalpara>
         </listitem>
          <listitem>
           <formalpara>
-            <title>Application cluster</guimenu>:</title>
+            <title>Application cluster:</title>
             <para>the status here is based on the running status of the ASCS/ERS cluster and, eventually, the results
               of the selected configuration checks.</para>
           </formalpara>
