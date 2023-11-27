@@ -1151,10 +1151,8 @@ The health boxes in the dashboard are clickable. By clicking on one particular b
       </figure>   
               </listitem>
                <listitem>
-                <para>Checks results summary section: it shows the
-                  status of both the &t.agent; and the Node Exporter and
-                  provides the host name, the cluster name (when applicable),
-                  the &t.agent; version and the host IP addresses. </para>
+                <para>Checks results summary section: as soon as host specific checks become available in the catalog, this section
+                 will show a summary of the execution results. </para>
               </listitem>
               <listitem>
                 <para>
@@ -1266,14 +1264,6 @@ The health boxes in the dashboard are clickable. By clicking on one particular b
                        <itemizedlist>
               <title><guimenu>ASCS/ERS cluster details</guimenu> view</title>
               <listitem>
-                <para>The <guimenu>Settings</guimenu>, <guimenu>Show
-                    Results</guimenu>, and <guimenu>Start Execution</guimenu> buttons.
-                  These buttons are used to enable or disable checks and to start
-                  them. If you want to perform specific checks, proceed with
-                    <xref linkend="st-trento-checks-settings" /> of <xref
-                    linkend="pro-trento-checks" />. </para>
-              </listitem>
-              <listitem>
                 <para>
                   A section showing the cloud provider, the cluster type, fencing type and when the CIB was last written.
                 </para>
@@ -1287,8 +1277,8 @@ The health boxes in the dashboard are clickable. By clicking on one particular b
                 </para>
               </listitem>                        
               <listitem>
-                <para>A <guimenu>Check Result</guimenu> section, which is disabled at the moment because we don't have yet
-                 configuration checks for this type of clusters. 
+                <para>A <guimenu>Check Result</guimenu> section, which will become enabled as soon as 
+                 configuration checks for this type of clusters are added to the catalog. 
                 </para>
               </listitem>
               <listitem>
@@ -1455,7 +1445,7 @@ The health boxes in the dashboard are clickable. By clicking on one particular b
     </section>
 
     <section xml:id="sec-trento-cleanup-hosts">
-      <title>Cleaning up hosts</title>
+      <title>Cleaning up hosts and instances</title>
      <para> 
     When the heartbeat of an agent fails, an option to clean-up the corresponding host will show up both in the 
     <guimenu>Hosts</guimenu> overview and the corresponding <guimenu>Host details</guimenu> view.
@@ -1482,6 +1472,32 @@ The health boxes in the dashboard are clickable. By clicking on one particular b
        If the user grants it, all the components discovered by the agent in that particular host, including the host
        itself and other components that might depend on the ones running on the host, will be removed from the console.
        For example, if the user cleans up the host where the primary application server of an SAP System is registered,
+       the entire SAP System will be removed from the console.
+      </para>
+      <para>Similalirly, when a registered application or HANA instance is no longer discovered, an option to clean it up
+       will show up both in the corresponding overview and the corresponding details view.
+      </para>
+           <figure>
+              <title>Clean up button SAP systems overview</title>
+              <mediaobject>
+                <imageobject>
+                  <imagedata fileref="trento-cleanup-sap-instance-overview.png"
+                    width="70%" />
+                </imageobject>
+              </mediaobject>
+            </figure>
+                 <figure>
+              <title>Clean up button in SAP system details view</title>
+              <mediaobject>
+                <imageobject>
+                  <imagedata fileref="trento-cleanup-sap-instance-details-view.png"
+                    width="70%" />
+                </imageobject>
+              </mediaobject>
+            </figure>
+           <para>When the user clicks on the cleanup button, a box will open asking for confirmation.
+       If the user grants it, the instance will be removed from the console along with any possible dependencies
+       For example, if the user cleans up the ASCS instance of an SAP System,
        the entire SAP System will be removed from the console.
       </para>
     </section>
