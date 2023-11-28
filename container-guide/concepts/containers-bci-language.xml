@@ -121,5 +121,13 @@
         </para>
       </listitem>
     </varlistentry>
+    <varlistentry>
+      <term>php</term>
+      <listitem>
+        <para>
+          Ships with the PHP version specified in the tag.
+        </para>
+      </listitem>
+    </varlistentry>
   </variablelist>
 </article>
