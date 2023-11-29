@@ -968,7 +968,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         </listitem>
       </itemizedlist>
       <para>
-        Complementing the Operating System layer, you also have information about the health status of the HA components, whenever they exit:
+        Complementing the operating system layer, you also have information about the health status of the HA components, whenever they exit:
       </para>
       <itemizedlist>
         <listitem>
