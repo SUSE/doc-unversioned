@@ -1474,7 +1474,7 @@ The health boxes in the dashboard are clickable. By clicking on one particular b
        For example, if the user cleans up the host where the primary application server of an SAP System is registered,
        the entire SAP System will be removed from the console.
       </para>
-      <para>Similalirly, when a registered application or HANA instance is no longer discovered, an option to clean it up
+      <para>Similarly, when a registered application or &hana; instance is no longer discovered, an option to clean it up
        will show up both in the corresponding overview and the corresponding details view.
       </para>
            <figure>
