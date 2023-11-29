@@ -1040,7 +1040,7 @@ The health boxes in the dashboard are clickable. By clicking on one particular b
          <listitem>
           <formalpara>
             <title><guimenu>Database cluster health icon</guimenu>:</title>
-            <para>Link to the corresponding HANA Cluster Details view.</para>
+            <para>Link to the corresponding &hana; Cluster Details view.</para>
           </formalpara>
          </listitem>
         <listitem>
