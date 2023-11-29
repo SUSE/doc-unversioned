@@ -1127,7 +1127,7 @@ The health boxes in the dashboard are clickable. By clicking on one particular b
               <listitem>
                 <para>saptune summary section: saptune is a solution that comes with &sles5sap;
                  and allows &sap; administrators to ensure that their &sap; hosts are properly configured to run the corresponding &sap; workloads.
-                 The integration of saptune in the Trento console gives the SAP admin visibility over the tool even when they are not
+                 The integration of saptune in the Trento console gives the &sap; administrator visibility over the tool even when they are not
                  working at operating system level. The integration supports saptune 3.1.0 and higher, and includes the addition of
                  the host tuning status in the aggregated health status of the host.</para>
                      <figure xml:id="fig-saptune-summary-section">
