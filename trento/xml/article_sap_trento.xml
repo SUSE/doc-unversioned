@@ -1487,7 +1487,7 @@ The health boxes in the dashboard are clickable. By clicking on one particular b
               </mediaobject>
             </figure>
                  <figure>
-              <title>Clean up button in SAP system details view</title>
+              <title>Clean up button in &sap; system details view</title>
               <mediaobject>
                 <imageobject>
                   <imagedata fileref="trento-cleanup-sap-instance-details-view.png"
