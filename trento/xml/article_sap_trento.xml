@@ -937,7 +937,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       </para>
       <para>
         The health status of a registered &sap; system is the compound of its health status at
-        three<remark>tom 2023-01-16: really? In former times, we had a grey state, but it seems it vanished.</remark>
+        three
         different layers representing the &sap; architecture:
       </para>
       <itemizedlist>
