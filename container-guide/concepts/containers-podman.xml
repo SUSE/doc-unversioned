@@ -210,7 +210,7 @@
     Modify: 2023-05-03 12:52:17.178380923 +0000
     Change: 2023-05-03 12:52:17.178380923 +0000
      Birth: 2023-05-03 12:52:15.852370288 +0000
-    
+
      &prompt.user;podman run --userns=keep-id --rm -it -v $(pwd):/share/ registry.suse.com/bci/bci-base stat /share/
       File: /share/
       Size: 318             Blocks: 0          IO Block: 4096   directory
@@ -232,7 +232,7 @@
         To read or modify any file in the graph root, enter a shell as follows:
       </para>
 <screen>&prompt.user;podman unshare bash
-    
+
     &prompt.user;id
     uid=0(root) gid=0(root) groups=0(root),65534(nobody)</screen>
       <para>
@@ -403,14 +403,35 @@
 <screen>&prompt.user;podman run --rm -ti suse/sle15</screen>
 <note>
 <title>
-Solving network connection issues with rootful containers
+Fixing the lost network access to rootful containers
 </title>
 <para>
-Rootful containers may occasionally lose network connectivity due to another process deleting the firewall rules configured by &netavark;. Starting with version 1.9.0, &netavark; comes with the <systemitem>netavark-firewalld-reload.service</systemitem> service that solves the problem. Enable and start the service as follows:
+Rootful containers may occasionally become inaccessible from the outside. The
+issue is caused by firewalld reloading its permanent rules and discarding any
+temporary rules created by &podman;'s networking backend (either CNI or
+&netavark;).
+
+A temporary workaround is to reload the &podman; network using the
+<command>podman network reload --all</command> command.
+
+A permanent solution exists if you are using &netavark; as the network backend,
+then as of version 1.9.0 of &netavark, you can use the
+<systemitem>netavark-firewalld-reload.service</systemitem> service to solve
+this issue. Enable and start the service as follows:
 </para>
 <screen>&prompt.root;systemctl enable netavark-firewalld-reload.service
 &prompt.root;systemctl restart netavark-firewalld-reload.service
 </screen>
+You can check which backend and version you are using by running
+<replaceable>podman info --format "{{.Host.NetworkBackend}}"</replaceable> and
+<replaceable>podman info --format
+"{{.Host.NetworkBackendInfo.Version}}"</replaceable>, respectively.
+
+We recommend to add permanent firewall rules for containers you want to be
+accessible from outside of the host. This ensures that the rules persist on
+firewall reloads and system reboots. This approach also offers greater
+flexibility (for example, it allows you to assign the rules to a certain
+firewalld zone).
 </note>
   </section>
   <section xml:id="sec-podman-build-images">
