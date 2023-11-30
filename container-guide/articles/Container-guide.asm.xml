@@ -83,7 +83,7 @@
           <dm:product>Documentation</dm:product>
           <dm:assignee>dmitri.popov@suse.de</dm:assignee>
         </dm:bugtracker>
-        <dm:editurl>https://github.com/SUSE/doc-unversioned/tree/main/container-guide/</dm:editurl>
+        <dm:editurl>https://bugzilla.suse.com/enter_bug.cgi</dm:editurl>
         <dm:translation>no</dm:translation>
       </dm:docmanager>
       <abstract>
