@@ -401,6 +401,17 @@
       following command:
     </para>
 <screen>&prompt.user;podman run --rm -ti suse/sle15</screen>
+<note>
+<title>
+Solving network connection issues with rootful containers
+</title>
+<para>
+Rootful containers may occasionally lose network connectivity due to another process deleting the firewall rules configured by Netavark. Starting with version 1.9.0, Netavark comes with the <systemitem>netavark-firewalld-reload.service</systemitem> service that solves the problem. Enable and start the service as follows:
+</para>
+<screen>&prompt.root;systemctl enable netavark-firewalld-reload.service
+&prompt.root;systemctl restart netavark-firewalld-reload.service
+</screen>
+</note>
   </section>
   <section xml:id="sec-podman-build-images">
     <title>Building images with &podman;</title>
@@ -410,7 +421,7 @@
       build</command>, and it accepts the same options.
     </para>
     <para>
-      Podman’s companion tool &buildah; provides an alternative way to build
+      Podman's companion tool &buildah; provides an alternative way to build
       images. For further information about &buildah;, refer to
       <xref linkend="container-buildah"/>.
     </para>
