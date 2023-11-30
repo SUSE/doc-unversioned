@@ -406,7 +406,7 @@
 Solving network connection issues with rootful containers
 </title>
 <para>
-Rootful containers may occasionally lose network connectivity due to another process deleting the firewall rules configured by Netavark. Starting with version 1.9.0, Netavark comes with the <systemitem>netavark-firewalld-reload.service</systemitem> service that solves the problem. Enable and start the service as follows:
+Rootful containers may occasionally lose network connectivity due to another process deleting the firewall rules configured by &netavark;. Starting with version 1.9.0, &netavark; comes with the <systemitem>netavark-firewalld-reload.service</systemitem> service that solves the problem. Enable and start the service as follows:
 </para>
 <screen>&prompt.root;systemctl enable netavark-firewalld-reload.service
 &prompt.root;systemctl restart netavark-firewalld-reload.service
