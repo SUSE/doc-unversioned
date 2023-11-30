@@ -42,7 +42,6 @@
     <merge>
       <title>&sle_container_guide;</title>
       <revhistory>
-        <title>Changelog</title>
         <revision><revnumber>1</revnumber><date>2023-08-10</date>
           <revdescription>
             <para>
