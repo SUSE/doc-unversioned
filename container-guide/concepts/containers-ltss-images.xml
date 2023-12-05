@@ -48,7 +48,7 @@
           the shell history):
         </para>
 <screen>&prompt.user;set +o history
-  &prompt.user;echo <replaceabble>PASSWORD</replaceabble> | podman login -u <replaceable>USERNAME</replaceable> --password-stdin registry.suse.com
+  &prompt.user;echo <replaceable>PASSWORD</replaceable> | podman login -u <replaceable>USERNAME</replaceable> --password-stdin registry.suse.com
   &prompt.user;set -o history</screen>
       </listitem>
     </varlistentry>
