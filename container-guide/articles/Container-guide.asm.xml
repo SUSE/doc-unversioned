@@ -50,6 +50,13 @@
             </para>
           </revdescription>
         </revision>
+        <revision><revnumber>2</revnumber><date>2023-11-17</date>
+          <revdescription>
+            <para>
+              Add the Using Long Term Service Pack Support container images from the &suseregistry; chapter.
+            </para>
+          </revdescription>
+        </revision>
       </revhistory>
       <!-- ISO date of last update as YYYY-MM-DD -->
       <meta name="updated" content="2023-07-04"/>
