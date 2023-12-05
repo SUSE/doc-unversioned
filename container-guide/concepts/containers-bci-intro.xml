@@ -75,7 +75,7 @@
             vulnerabilities are announced via e-mail, the dedicated
             <link xlink:href="https://www.suse.com/security/cve/">CVE
             pages</link>, and as OVAL and CVRF data. To ensure a secure supply
-            chain, all container images are signed with Notary v1, Podman's GPG
+            chain, all container images are signed with Notary v1, &podman;'s GPG
             signatures, and Sigstore Cosign.
           </para>
         </listitem>

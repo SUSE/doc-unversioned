@@ -421,7 +421,7 @@ Rootful containers may occasionally lose network connectivity due to another pro
       build</command>, and it accepts the same options.
     </para>
     <para>
-      Podman's companion tool &buildah; provides an alternative way to build
+      &podman;'s companion tool &buildah; provides an alternative way to build
       images. For further information about &buildah;, refer to
       <xref linkend="container-buildah"/>.
     </para>
