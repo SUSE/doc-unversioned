@@ -414,10 +414,9 @@ temporary rules created by &podman;'s networking backend (either CNI or
 A temporary workaround is to reload the &podman; network using the
 <command>podman network reload --all</command> command.
 
-A permanent solution exists if you are using &netavark; as the network backend,
-then as of version 1.9.0 of &netavark, you can use the
-<systemitem>netavark-firewalld-reload.service</systemitem> service to solve
-this issue. Enable and start the service as follows:
+If you use &netavark; 1.9.0 or higher as the network back-end, a permanent fix to the problem is to use the
+<systemitem>netavark-firewalld-reload.service</systemitem> service. Enable and
+start the service as follows:
 </para>
 <screen>&prompt.root;systemctl enable netavark-firewalld-reload.service
 &prompt.root;systemctl restart netavark-firewalld-reload.service
@@ -427,7 +426,7 @@ You can check which backend and version you are using by running
 <replaceable>podman info --format
 "{{.Host.NetworkBackendInfo.Version}}"</replaceable>, respectively.
 
-We recommend to add permanent firewall rules for containers you want to be
+We recommend adding permanent firewall rules for containers you want to be
 accessible from outside of the host. This ensures that the rules persist on
 firewall reloads and system reboots. This approach also offers greater
 flexibility (for example, it allows you to assign the rules to a certain
