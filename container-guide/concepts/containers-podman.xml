@@ -408,7 +408,7 @@ Fixing the lost network access to rootful containers
 <para>
 Rootful containers may occasionally become inaccessible from the outside. The
 issue is caused by firewalld reloading its permanent rules and discarding any
-temporary rules created by &podman;'s networking backend (either CNI or
+temporary rules created by &podman;'s networking back-end (either CNI or
 &netavark;).
 
 A temporary workaround is to reload the &podman; network using the
@@ -421,16 +421,19 @@ start the service as follows:
 <screen>&prompt.root;systemctl enable netavark-firewalld-reload.service
 &prompt.root;systemctl restart netavark-firewalld-reload.service
 </screen>
-You can check which backend and version you are using by running
-<replaceable>podman info --format "{{.Host.NetworkBackend}}"</replaceable> and
-<replaceable>podman info --format
-"{{.Host.NetworkBackendInfo.Version}}"</replaceable>, respectively.
-
-We recommend adding permanent firewall rules for containers you want to be
-accessible from outside of the host. This ensures that the rules persist on
-firewall reloads and system reboots. This approach also offers greater
-flexibility (for example, it allows you to assign the rules to a certain
-firewalld zone).
+<para>
+  You can check which backend and version you are using by running
+  <replaceable>podman info --format "{{.Host.NetworkBackend}}"</replaceable> and
+  <replaceable>podman info --format
+  "{{.Host.NetworkBackendInfo.Version}}"</replaceable>, respectively.
+</para>
+<para>
+  We recommend adding permanent firewall rules for containers you want to be
+  accessible from outside of the host. This ensures that the rules persist on
+  firewall reloads and system reboots. This approach also offers greater
+  flexibility (for example, it allows you to assign the rules to a certain
+  firewalld zone).
+</para>
 </note>
   </section>
   <section xml:id="sec-podman-build-images">
