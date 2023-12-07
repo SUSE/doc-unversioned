@@ -422,7 +422,7 @@ start the service as follows:
 &prompt.root;systemctl restart netavark-firewalld-reload.service
 </screen>
 <para>
-  You can check which backend and version you are using by running
+  You can check which back-end and version you are using by running
   <replaceable>podman info --format "{{.Host.NetworkBackend}}"</replaceable> and
   <replaceable>podman info --format
   "{{.Host.NetworkBackendInfo.Version}}"</replaceable>, respectively.
