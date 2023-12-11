@@ -937,14 +937,14 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       </para>
       <para>
         The health status of a registered &sap; system is the compound of its health status at
-        four<remark>tom 2023-01-16: really? In former times, we had a grey state, but it seems it vanished.</remark>
-        different layers, which are a reflection of the &sap; architecture:
+        three
+        different layers representing the &sap; architecture:
       </para>
       <itemizedlist>
         <listitem>
           <formalpara>
             <title><guimenu>Hosts</guimenu>:</title>
-            <para>it reflects the heartbeat of the &t.agent;.</para>
+            <para>it reflects the heartbeat of the &t.agent; and, when applicable, the compliance status.</para>
           </formalpara>
         </listitem>
         <listitem>
@@ -962,12 +962,30 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         </listitem>
         <listitem>
           <formalpara>
-            <title><guimenu>SAP instances</guimenu>:</title>
-            <para>it summarizes the status of the ABAP instances as returned by <command>sapcontrol</command>.</para>
+            <title><guimenu>Application instances</guimenu>:</title>
+            <para>it summarizes the status of the application instances as returned by <command>sapcontrol</command>.</para>
           </formalpara>
         </listitem>
       </itemizedlist>
-
+      <para>
+        Complementing the operating system layer, you also have information about the health status of the HA components, whenever they exit:
+      </para>
+      <itemizedlist>
+        <listitem>
+          <formalpara>
+            <title>Database cluster:</title>
+            <para>the status here is based on the running status of the database cluster and the results
+              of the selected configuration checks.</para>
+          </formalpara>
+        </listitem>
+         <listitem>
+          <formalpara>
+            <title>Application cluster:</title>
+            <para>the status here is based on the running status of the ASCS/ERS cluster and, eventually, the results
+              of the selected configuration checks.</para>
+          </formalpara>
+        </listitem>
+      </itemizedlist>
       <para>
         The dashboard groups systems in three different health boxes (see <xref linkend="fig-trento-web-home"/>):
       </para>
@@ -1021,20 +1039,26 @@ The health boxes in the dashboard are clickable. By clicking on one particular b
          </listitem>
          <listitem>
           <formalpara>
-            <title><guimenu>Cluster health icon</guimenu>:</title>
-            <para>Link to the corresponding &pace; Cluster Details view.</para>
+            <title><guimenu>Database cluster health icon</guimenu>:</title>
+            <para>Link to the corresponding &hana; Cluster Details view.</para>
           </formalpara>
          </listitem>
-         <listitem>
+        <listitem>
           <formalpara>
             <title><guimenu>Database health icon</guimenu>:</title>
             <para>Link to the corresponding HANA Database Details view.</para>
           </formalpara>
          </listitem>
+          <listitem>
+          <formalpara>
+            <title><guimenu>Application cluster health icon</guimenu>:</title>
+            <para>Link to the corresponding ASCS/ERS Cluster Details view.</para>
+          </formalpara>
+         </listitem>
          <listitem>
           <formalpara>
-            <title><guimenu>SAP Instances health icon</guimenu>:</title>
-            <para>Link to the corresponding SAP System Details view.</para>
+            <title><guimenu>Application Instances health icon</guimenu>:</title>
+            <para>Link to the corresponding &sap; System Details view.</para>
           </formalpara>
          </listitem>
        </itemizedlist> 
@@ -1097,8 +1121,38 @@ The health boxes in the dashboard are clickable. By clicking on one particular b
               <listitem>
                 <para><guimenu>Hosts details</guimenu> section: it shows the
                   status of both the &t.agent; and the Node Exporter and
-                  provides the host name, the cluster name (when applicable) and
-                  the &t.agent; version. </para>
+                  provides the host name, the cluster name (when applicable),
+                  the &t.agent; version and the host IP addresses. </para>
+              </listitem>
+              <listitem>
+                <para>saptune summary section: saptune is a solution that comes with &sles4sap;
+                 and allows &sap; administrators to ensure that their &sap; hosts are properly configured to run the corresponding &sap; workloads.
+                 The integration of saptune in the Trento console gives the &sap; administrator visibility over the tool even when they are not
+                 working at operating system level. The integration supports saptune 3.1.0 and higher, and includes the addition of
+                 the host tuning status in the aggregated health status of the host.</para>
+                     <figure xml:id="fig-saptune-summary-section">
+        <title>saptune summary section</title>
+        <mediaobject>
+          <imageobject>
+            <imagedata width="80%" fileref="saptune-summary-section.png" />
+          </imageobject>
+        </mediaobject>
+      </figure>
+                 <para>If an SAP workload is running on the host but no saptune or a version lower than 3.1.0 is installed, a warning
+                 is added to the aggregated health status of the host. When saptune version 3.1.0 or higher, is installed, a details view
+                 is also available showing detailed information about the saptune status:</para>
+                       <figure xml:id="fig-saptune-details-view">
+        <title>saptune details view</title>
+        <mediaobject>
+          <imageobject>
+            <imagedata width="80%" fileref="saptune-details-view.png" />
+          </imageobject>
+        </mediaobject>
+      </figure>   
+              </listitem>
+               <listitem>
+                <para>Checks results summary section: as soon as host specific checks become available in the catalog, this section
+                 will show a summary of the execution results. </para>
               </listitem>
               <listitem>
                 <para>
@@ -1210,14 +1264,6 @@ The health boxes in the dashboard are clickable. By clicking on one particular b
                        <itemizedlist>
               <title><guimenu>ASCS/ERS cluster details</guimenu> view</title>
               <listitem>
-                <para>The <guimenu>Settings</guimenu>, <guimenu>Show
-                    Results</guimenu>, and <guimenu>Start Execution</guimenu> buttons.
-                  These buttons are used to enable or disable checks and to start
-                  them. If you want to perform specific checks, proceed with
-                    <xref linkend="st-trento-checks-settings" /> of <xref
-                    linkend="pro-trento-checks" />. </para>
-              </listitem>
-              <listitem>
                 <para>
                   A section showing the cloud provider, the cluster type, fencing type and when the CIB was last written.
                 </para>
@@ -1231,8 +1277,8 @@ The health boxes in the dashboard are clickable. By clicking on one particular b
                 </para>
               </listitem>                        
               <listitem>
-                <para>A <guimenu>Check Result</guimenu> section, which is disabled at the moment because we don't have yet
-                 configuration checks for this type of clusters. 
+                <para>A <guimenu>Check Result</guimenu> section, which will become enabled as soon as 
+                 configuration checks for this type of clusters are added to the catalog. 
                 </para>
               </listitem>
               <listitem>
@@ -1399,7 +1445,7 @@ The health boxes in the dashboard are clickable. By clicking on one particular b
     </section>
 
     <section xml:id="sec-trento-cleanup-hosts">
-      <title>Cleaning up hosts</title>
+      <title>Cleaning up hosts and instances</title>
      <para> 
     When the heartbeat of an agent fails, an option to clean-up the corresponding host will show up both in the 
     <guimenu>Hosts</guimenu> overview and the corresponding <guimenu>Host details</guimenu> view.
@@ -1427,6 +1473,32 @@ The health boxes in the dashboard are clickable. By clicking on one particular b
        itself and other components that might depend on the ones running on the host, will be removed from the console.
        For example, if the user cleans up the host where the primary application server of an SAP System is registered,
        the entire SAP System will be removed from the console.
+      </para>
+      <para>Similarly, when a registered application or &hana; instance is no longer discovered, an option to clean it up
+       will show up both in the corresponding overview and the corresponding details view.
+      </para>
+           <figure>
+              <title>Clean up button &sap; systems overview</title>
+              <mediaobject>
+                <imageobject>
+                  <imagedata fileref="trento-cleanup-sap-instance-overview.png"
+                    width="70%" />
+                </imageobject>
+              </mediaobject>
+            </figure>
+                 <figure>
+              <title>Clean up button in &sap; system details view</title>
+              <mediaobject>
+                <imageobject>
+                  <imagedata fileref="trento-cleanup-sap-instance-details-view.png"
+                    width="70%" />
+                </imageobject>
+              </mediaobject>
+            </figure>
+           <para>When the user clicks the cleanup button, a box will open asking for confirmation.
+       If the user grants it, the instance will be removed from the console along with any possible dependencies
+       For example, if the user cleans up the ASCS instance of an &sap; system,
+       the entire &sap; system will be removed from the console.
       </para>
     </section>
 
@@ -2555,14 +2627,15 @@ trento-server-rabbitmq-0</screen>
     <para></para>
     <table>
       <title>Compatibility matrix between &t.server; and &t.agent;s</title>
-      <tgroup cols="7">
+      <tgroup cols="8">
         <colspec colname="agent-start" colnum="1"/>
         <colspec colname="agent-end" colnum="2"/>
         <colspec colname="server-start" colnum="3" align="center"/>
         <colspec colnum="4" align="center"/>
         <colspec colnum="5" align="center"/>
         <colspec colnum="6" align="center"/>
-        <colspec colname="server-end" colnum="7" align="center"/>
+        <colspec colnum="7" align="center"/>
+        <colspec colnum="8" colname="server-end" align="center"/>
         <spanspec spanname="tserver" namest="server-start" nameend="server-end"/>
         <spanspec spanname="tagent" namest="agent-start" nameend="agent-end"/>
         <thead>
@@ -2580,17 +2653,19 @@ trento-server-rabbitmq-0</screen>
             <entry>1.2.0</entry>
             <entry>2.0.0</entry>
             <entry>2.1.0</entry>
+            <entry>2.2.0</entry>
           </row>
         </thead>
         <tbody>
           <row>
             <!-- HINT: If you add more rows, raise add +1 to the morerows attribute value -->
-            <entry morerows="4" align="center" valign="middle">
+            <entry morerows="5" align="center" valign="middle">
               <para>&t.agent;</para>
               <para>versions</para>
             </entry>
             <entry>1.0.0</entry>
             <entry><phrase role="color:suse-jungle-green">✓</phrase></entry>
+            <entry></entry>
             <entry></entry>
             <entry></entry>
             <entry></entry>
@@ -2604,6 +2679,7 @@ trento-server-rabbitmq-0</screen>
             <entry></entry>
             <entry></entry>
             <entry></entry>
+            <entry></entry>
           </row>
           <row>
             <!-- <entry/> -->
@@ -2611,6 +2687,7 @@ trento-server-rabbitmq-0</screen>
             <entry><phrase role="color:suse-jungle-green">✓</phrase></entry>
             <entry><phrase role="color:suse-jungle-green">✓</phrase></entry>
             <entry><phrase role="color:suse-jungle-green">✓</phrase></entry>
+            <entry></entry>
             <entry></entry>
             <entry></entry>
           </row>
@@ -2622,6 +2699,7 @@ trento-server-rabbitmq-0</screen>
             <entry></entry>
             <entry><phrase role="color:suse-jungle-green">✓</phrase></entry>
             <entry></entry>
+            <entry></entry>
           </row>
           <row>
             <!-- <entry/> -->
@@ -2629,6 +2707,17 @@ trento-server-rabbitmq-0</screen>
             <entry></entry>
             <entry></entry>
             <entry></entry>
+            <entry><phrase role="color:suse-jungle-green">✓</phrase></entry>
+            <entry><phrase role="color:suse-jungle-green">✓</phrase></entry>
+            <entry></entry>
+          </row>
+           <row>
+            <!-- <entry/> -->
+            <entry>2.2.0</entry>
+            <entry></entry>
+            <entry></entry>
+            <entry></entry>
+            <entry><phrase role="color:suse-jungle-green">✓</phrase></entry>
             <entry><phrase role="color:suse-jungle-green">✓</phrase></entry>
             <entry><phrase role="color:suse-jungle-green">✓</phrase></entry>
           </row>
@@ -2666,6 +2755,24 @@ trento-server-rabbitmq-0</screen>
                first item.
     -->
     <variablelist>
+      <varlistentry xml:id="trento-version-220">
+        <term>Version 2.2.0 (released on 2023/MM/DD)</term>
+        <listitem>
+          <para> Consisting of Helm chart 2.2.0, web component 2.2.0, checks engine
+            (wanda) 1.2.0 and agent 2.2.0.</para>
+          <itemizedlist>
+            <listitem>
+              <para>saptune web integration.</para>
+            </listitem>
+            <listitem>
+              <para>Intance clean-up capabilities.</para>
+            </listitem>
+            <listitem>
+              <para>Ability to run host-level configuration checks.</para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
       <varlistentry xml:id="trento-version-210">
         <term>Version 2.1.0 (released on 2023/08/02)</term>
         <listitem>
