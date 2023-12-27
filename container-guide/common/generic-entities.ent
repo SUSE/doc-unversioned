@@ -58,11 +58,12 @@
 
 <!ENTITY sliberty               "&suse; Liberty Linux">
 <!ENTITY neuvector              "NeuVector">
+<!ENTITY ranchelemental         "Rancher Elemental">
 
 <!-- SLE -->
 <!ENTITY jeos                   "JeOS"><!-- Just enough OS -->
 <!ENTITY jeosfirstboot          "&jeos; Firstboot">
-<!ENTITY minvm                  "Minimal VM">
+<!ENTITY minvm                  "&slsa; Minimal VM">
 <!ENTITY leanos                 "Unified Installer">
 <!ENTITY sle                    "&suse; Linux Enterprise">
 <!ENTITY sled                   "&sle; Desktop">
