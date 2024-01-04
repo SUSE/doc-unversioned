@@ -31,7 +31,7 @@
         is available in &productname;, it is not supported by &suse;, and is
         only provided as a technology preview. Use Kubernetes for container
         orchestration. For details, refer to the
-        <link xlink:href="http://kubernetes.io/docs/getting-started-guides/kubeadm/">Kubernetes documentation</link>.
+        <link xlink:href="https://kubernetes.io/docs/getting-started-guides/kubeadm/">Kubernetes documentation</link>.
       </para>
     </note>
     <section xml:id="id-installing-and-configuring-docker-open-source-engine">

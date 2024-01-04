@@ -414,7 +414,7 @@
       <listitem>
         <para>
           Point a browser to
-          <link xlink:href="http://localhost:80/test.html">http://localhost:80/test.html</link>
+          <link xlink:href="https://localhost:80/test.html">https://localhost:80/test.html</link>
           . You should see the message <emphasis>The Web server is
           running</emphasis>.
         </para>
@@ -478,7 +478,7 @@
     </orderedlist>
     <para>
       To view the published data, point a browser at
-      <link xlink:href="http://localhost:80/test.html">http://localhost:80/test.html</link>
+      <link xlink:href="https://localhost:80/test.html">https://localhost:80/test.html</link>
       .
     </para>
     <para>

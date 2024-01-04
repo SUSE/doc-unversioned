@@ -124,7 +124,7 @@
   <section xml:id="sec-tools-obs">
     <title>Open Build Service</title>
     <para>
-      The <link xlink:href="http://openbuildservice.org">Open Build Service
+      The <link xlink:href="https://openbuildservice.org">Open Build Service
       (OBS)</link> provides free infrastructure for building and storing RPM
       packages including different container formats. The
       <link xlink:href="https://registry.opensuse.org">OBS Container
@@ -171,7 +171,7 @@
       provided by the primary configuration file <filename>config.xml</filename>.
       The image can be customized using the <filename>config.sh</filename> and
       <filename>images.sh</filename> scripts. &kiwi; is the core engine of
-      <link xlink:href="http://openbuildservice.org">Open Build Service
+      <link xlink:href="https://openbuildservice.org">Open Build Service
       (OBS)</link>.
     </para>
     <note>
@@ -184,7 +184,7 @@
     </note>
     <para>
       For information on how to install &kiwi; and use it to build
-      images, see the <link xlink:href="http://osinside.github.io/kiwi/">&kiwi;
+      images, see the <link xlink:href="https://osinside.github.io/kiwi/">&kiwi;
       documentation</link>. A collection of example image descriptions can be
       found on the
       <link xlink:href="https://github.com/OSInside/kiwi-descriptions">&kiwi;
