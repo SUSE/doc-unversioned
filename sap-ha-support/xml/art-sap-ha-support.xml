@@ -199,7 +199,7 @@
      This document applies to &productname; 15. Version 12 SP5 is still supported but not covered by
      this document, as &suse; strongly recommends using version 15 for new installations.
      If you need details about version 12, check the individual guides available at
-     <link xlink:href="&dsc;/sbp/sap/"/>.
+     <link xlink:href="&dsc;/sbp/sap-12/"/>.
     </para>
    </note>
   </sect2>
@@ -553,12 +553,12 @@
      <tbody>
       <row>
        <entry>HANA performance optimized, up to 30 nodes including standby</entry>
-       <entry>Supported (<link xlink:href="&dsc;/sbp/all/html/SLES4SAP-hana-scaleOut-PerfOpt-15/index.html">Documentation</link>)</entry>
+       <entry>Supported (<link xlink:href="&dsc;/sbp/sap-15/html/SLES4SAP-hana-scaleOut-PerfOpt-15/index.html">Documentation</link>)</entry>
        <entry>Up to 30 HANA nodes including standby nodes.</entry>
       </row>
       <row>
        <entry>HANA performance optimized, up to 12 nodes, no standby</entry>
-       <entry>Supported (<link xlink:href="&dsc;/sbp/sap/html/SLES4SAP-hana-scaleout-multitarget-perfopt-15/index.html">Documentation</link>)</entry>
+       <entry>Supported (<link xlink:href="&dsc;/sbp/sap-15/html/SLES4SAP-hana-scaleout-multitarget-perfopt-15/index.html">Documentation</link>)</entry>
        <entry>Up to 12 HANA nodes, NO standby nodes.</entry>
       </row>
       <row>
@@ -568,13 +568,13 @@
       </row>
       <row>
        <entry>HANA multi-target system replication, third site NOT managed by the cluster</entry>
-       <entry>Supported (<link xlink:href="&dsc;/sbp/sap/html/SLES4SAP-hana-scaleout-multitarget-perfopt-15/index.html">Documentation</link>)</entry>
+       <entry>Supported (<link xlink:href="&dsc;/sbp/sap-15/html/SLES4SAP-hana-scaleout-multitarget-perfopt-15/index.html">Documentation</link>)</entry>
        <entry>( B &lt;= A' ) -&gt; C topology is supported with conditions: Site A to site B system
        replication in &pace; is supported. Site A to site C system replication is not managed by &pace;.</entry>
       </row>
       <row>
        <entry>HANA multi-tier system replication, third site NOT managed by the cluster</entry>
-       <entry>Supported (<link xlink:href="&dsc;/sbp/sap/html/SLES4SAP-hana-scaleout-multitarget-perfopt-15/index.html">Documentation</link>)</entry>
+       <entry>Supported (<link xlink:href="&dsc;/sbp/sap-15/html/SLES4SAP-hana-scaleout-multitarget-perfopt-15/index.html">Documentation</link>)</entry>
        <entry>(A' =&gt; B ) -&gt; C topology is supported with conditions: A to B system replication
        in &pace; is supported. B to C system replication is not managed by &pace;.</entry>
       </row>
@@ -732,17 +732,17 @@
     <tbody>
      <row>
       <entry>2-node cluster</entry>
-      <entry>Supported (<link xlink:href="&dsc;/sbp/all/html/SAP-S4HA10-setupguide-sle15/index.html">Documentation</link>)</entry>
+      <entry>Supported (<link xlink:href="&dsc;/sbp/sap-15/html/SAP-S4HA10-setupguide-sle15/index.html">Documentation</link>)</entry>
       <entry>In a 2-node cluster, ASCS fails over to the same node where ERS is running.</entry>
      </row>
      <row>
       <entry>3-node cluster</entry>
-      <entry>Supported (<link xlink:href="&dsc;/sbp/sap/html/SAP-S4HA10-setupguide-simplemount-sle15/index.html">Documentation</link>)</entry>
+      <entry>Supported (<link xlink:href="&dsc;/sbp/sap-15/html/SAP-S4HA10-setupguide-simplemount-sle15/index.html">Documentation</link>)</entry>
       <entry>In a 3-node cluster, ASCS fails over to the online node where ERS is not running.</entry>
      </row>
      <row>
       <entry>Simple mount file system structure</entry>
-      <entry>Supported (<link xlink:href="&dsc;/sbp/sap/html/SAP-S4HA10-setupguide-simplemount-sle15/index.html">Documentation</link>)</entry>
+      <entry>Supported (<link xlink:href="&dsc;/sbp/sap-15/html/SAP-S4HA10-setupguide-simplemount-sle15/index.html">Documentation</link>)</entry>
       <entry>Shared file system mounts are NOT managed by the cluster.
       This is the recommended configuration over the
        <emphasis>Filesystem</emphasis> resource-based solution.</entry>
@@ -910,7 +910,7 @@
   <itemizedlist>
    <listitem>
     <para>
-     &suse;: <link xlink:href="&dsc;/sbp/sap/"/>
+     &suse;: <link xlink:href="&dsc;/sbp/sap-15/"/>
     </para>
    </listitem>
    <listitem>
@@ -925,7 +925,7 @@
    </listitem>
    <listitem>
     <para>
-     &gcloud;: <link xlink:href="https://cloud.google.com/solutions/sap/docs "/>
+     &gcloud;: <link xlink:href="https://cloud.google.com/solutions/sap/"/>
     </para>
    </listitem>
   </itemizedlist>
