@@ -71,7 +71,7 @@
     8f5af62a7c385bbd1a3a5cc3a53a8d0f8cf942adc26a065960d4232fcc93ac98</screen>
     <warning>
     <para>If this command shows the following warning,  refer to
-    <link xlink:href="http://https//documentation.suse.com/container/all/single-html/SLES-container/#sec-bci-suseconnect-podman-buildah-nerdctl">Using container-suseconnect on non-SLE hosts or with &podman;, &buildah;, and nerdctl</link>:</para>
+    <link xlink:href="https://documentation.suse.com/container/all/single-html/SLES-container/#sec-bci-suseconnect-podman-buildah-nerdctl">Using container-suseconnect on non-SLE hosts or with &podman;, &buildah;, and nerdctl</link>:</para>
     </warning>
     <screen>WARN[0005] Path "/etc/SUSEConnect" from "/etc/containers/mounts.conf" doesn't exist, skipping
     WARN[0005] Failed to mount subscriptions, skipping entry in /etc/containers/mounts.conf: open /etc/zypp/credentials.d/SCCcredentials: permission denied</screen>

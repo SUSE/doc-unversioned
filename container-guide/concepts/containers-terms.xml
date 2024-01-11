@@ -97,7 +97,7 @@
           permanent change, for example, an update of an application. The
           changes are stored in a file called a
           <emphasis>Dockerfile</emphasis>. For more details, see
-          <link xlink:href="http://docs.docker.com/engine/reference/glossary#image">the
+          <link xlink:href="https://docs.docker.com/engine/reference/glossary#image">the
           official Docker documentation</link>.
         </para>
       </listitem>
