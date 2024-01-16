@@ -19,7 +19,7 @@
     <title>Container orchestration</title>
   </info>
     <para>In a production environment, you are likely to manage multiple containers. To work with multiple containers, you
-    have to group the containers into a pod that provides a specification for deploying and running the containers as well as allows them to share storage and network resources. In other words, a pod
+    have to group the containers into a pod that provides a specification for deploying and running the containers as well as allowing them to share storage and network resources. In other words, a pod
     encapsulates an application composed of multiple containers into a single unit. The concept of pod was
     introduced by <link xlink:href="https://kubernetes.io/docs/concepts/workloads/pods/">&kube;</link>. &podman; uses the same definition as &kube;.</para>
 
