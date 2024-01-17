@@ -19,11 +19,11 @@
     <title>Configuring image storage</title>
   </info>
   <para>
-    Before creating custom images, decide where you want to store images. The
-    easiest solution is to push images to
-    <link xlink:href="https://hub.docker.com">&dhub;</link>. By default, all
-    images pushed to &dhub; are public. Make sure not to publish sensitive data
-    or software not licensed for public use.
+    Before creating custom images, decide where you want to store images. A
+    simple solution is to push images to <link
+    xlink:href="https://hub.docker.com">&dhub;</link>. By default, all images
+    pushed to &dhub; are public. Make sure not to publish sensitive data or
+    software not licensed for public use.
   </para>
   <para>
     You can restrict access to custom container images with the following:
@@ -49,36 +49,34 @@
     <title>Running a &dreg;</title>
     <para>
       The &suseregistry; provides a container image that makes it possible to
-      run a local &dreg; as a container. Before you start a container, create a
-      <filename>config.yml</filename> file with the following example
-      configuration:
-    </para>
-<screen>version: 0.1
-    log:
-      level: info
-    storage:
-      filesystem:
-        rootdirectory: /var/lib/docker-registry
-    http:
-      addr: 0.0.0.0:5000</screen>
-    <para>
-      Also create an empty directory to map the
-      <filename>/var/lib/docker-registry</filename> directory outside the
-      container. This directory is used for storing container images.
+      run a local &dreg; as a container. It stores the pushed images in a
+      container volume corresponding to the directory
+      <filename>/var/lib/docker-registry</filename>. It is recommended to
+      either create a named volume for the registry or to bind mount a
+      persistent directory on the host to
+      <filename>/var/lib/docker-registry</filename> in the container. This
+      ensures that pushed images persist deleting the container.
     </para>
     <para>
       Run the following command to pull the registry container image from the
-      &suseregistry; and start a container that can be accessed on port 5000:
+      &suseregistry; and start a container that can be accessed on port 5000
+      with the container storage bind mounted locally to
+      <replaceable>/PATH/DIR/</replaceable>:
     </para>
 <screen>&prompt.user;podman run -d --restart=always --name registry -p 5000:5000 \
-    -v /PATH/config.yml:/etc/docker/registry/config.yml \
-    -v /PATH/DIR:/var/lib/ \ docker-registry registry.suse.com/sles12/registry:2.6.2</screen>
+    -v /PATH/DIR:/var/lib/docker-registry registry.suse.com/suse/registry</screen>
     <para>
+      Alternatively, create a named volume <replaceable>registry</replaceable>
+      for the &suseregistry; container as follows:
+    </para>
+<screen>&prompt.user;podman run -d --restart=always --name registry -p 5000:5000 \
+     -v registry:/var/lib/docker-registry registry.suse.com/suse/registry</screen>
+     <para>
       To make it easier to manage the registry, create a corresponding system
       unit:
     </para>
-<screen>&prompt.user; sudo podman generate systemd registry &gt;  \
-     /etc/systemd/system/suse_registry.service</screen>
+<screen>&prompt.user; podman generate systemd registry | \
+     sudo tee /etc/systemd/system/suse_registry.service</screen>
     <para>
       Enable and start the registry service, then verify its status:
     </para>
@@ -98,10 +96,11 @@
     </para>
     <itemizedlist>
       <listitem>
-        <para>
-          It lacks any form of authentication. That means everybody with access
-          to &dreg; can push and pull images to it. That includes overwriting
-          existing images.
+        <para> It lacks any form of authentication. That means everybody with
+        access to &dreg; can push and pull images to it. That includes
+        overwriting existing images. It is recommended to setup some form of
+        access restriction as described in the upstream documentation <link
+        xlink:href="https://distribution.github.io/distribution/about/deploying/#restricting-access"/>.
         </para>
       </listitem>
       <listitem>
