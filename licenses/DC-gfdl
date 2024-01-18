@@ -1,6 +1,6 @@
 #
 
-MAIN="gfdl.xml"
+MAIN="gfdl_1.2.xml"
 STYLEROOT="/usr/share/xml/docbook/stylesheet/suse2022-ns"
 FALLBACK_STYLEROOT="/usr/share/xml/docbook/stylesheet/suse-ns"
 DOCBOOK5_RNG_URI="http://docbook.org/xml/5.2/rng/docbookxi.rng"
