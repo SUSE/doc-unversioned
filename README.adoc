@@ -6,14 +6,14 @@ documentation.
 This repository hosts the documentation sources for the following products (directories in parenthesis):
 
 * The Container Guide (`container`)
+* Licenses (`licenses`)
+* Hardening SUSE Linux Enterprise with OpenSCAP (`openscap`)
 * Payment Card Industry Data Security Standard (PCI DSS) Guide (`pcidss`)
+* Supported High Availability Solutions by SLES for SAP Applications (`sap-ha-support`)
+* Hypervisor details in SUSE Customer Center (`scc-hypervisor-collector`)
+* Hardening SUSE Linux Enterprise with STIG (`stig`)
 * Enriched system visibility in the SUSE Customer Cente (`suseconnect-visibility`)
 * Getting started with Trento Premium (`trento`)
-* Hardening SUSE Linux Enterprise with OpenSCAP (`openscap`)
-* Hypervisor details in SUSE Customer Center (`scc-hypervisor-collector`)
-* Using KubeVirt on SUSE Linux Enterprise (`kubevirt`)
-* Supported High Availability Solutions by SLES for SAP Applications (`sap-ha-support`)
-* Hardening SUSE Linux Enterprise with STIG (`stig`)
 
 Released versions of the SLE documentation are published at
 https://documentation.suse.com/.
