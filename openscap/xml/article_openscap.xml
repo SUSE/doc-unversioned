@@ -22,7 +22,7 @@
         <dm:url>https://bugzilla.suse.com/enter_bug.cgi</dm:url>
         <dm:component>Security</dm:component>
         <dm:product>Documentation</dm:product>
-        <dm:assignee>taroth@suse.com</dm:assignee>
+        <dm:assignee>ssarkar@suse.com</dm:assignee>
       </dm:bugtracker>
       <dm:editurl>https://github.com/SUSE/doc-unversioned/edit/main/openscap/xml/</dm:editurl>
       <dm:translation>no</dm:translation>
@@ -77,6 +77,77 @@
       machine-readable format which then can be used by &openscap; and other
       tools.
     </para>
+  </sect1>
+  <sect1 xml:id="openscap-installation">
+    <title>Installation</title>
+
+    <para>
+      To use the &openscap; tools and the <literal>&ssg;</literal> for
+      hardening your target system by scanning and remediating vulnerabilities,
+      install the following core packages:
+    </para>
+
+    <itemizedlist>
+      <listitem>
+        <para>
+          <package>openscap</package>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <package>openscap-utils</package>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <package>scap-security-guide</package>
+        </para>
+      </listitem>
+    </itemizedlist>
+
+<screen>&prompt.sudo;<command>zypper install openscap openscap-utils scap-security-guide</command>
+</screen>
+
+    <note>
+      <para>
+        These packages are dependencies for other optional packages discussed
+        below.
+      </para>
+    </note>
+
+    <para>
+      Optionally, install the following packages:
+    </para>
+
+    <itemizedlist>
+      <listitem>
+        <para>
+          <package>scap-workbench</package>: This package provides the SCAP
+          Workbench graphical utility to perform common
+          <systemitem>oscap</systemitem> tasks.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <package>ssg-apply</package>: When used along with SCAP Workbench,
+          this package helps you conveniently apply a tailoring file for
+          customized hardening.
+        </para>
+      </listitem>
+    </itemizedlist>
+
+<screen>&prompt.sudo;<command>zypper install scap-workbench scap-workbench-doc ssg-apply</command></screen>
+
+    <tip>
+      <title>Security best practice for SCAP Workbench</title>
+      <para>
+        As a security best practice, avoid installing an application software
+        such as SCAP Workbench on the target system that you are planning to
+        harden. Instead, install SCAP Workbench on a client machine and apply
+        the hardening on the target system, while maintaining an air gap before
+        the target system is connected to a potentially insecure network.
+      </para>
+    </tip>
   </sect1>
   <sect1 xml:id="openscap-components">
     <title>Important SCAP components</title>
@@ -360,29 +431,35 @@
             ANSSI-BP-028 (minimal)
           </para>
         </listitem>
-        <!--<listitem>
+        <listitem>
           <para>
-          CIS SUSE &sle; 15 Benchmark Level 2 (Workstation)
+            CIS SUSE &sle; 15 Benchmark Level 2 (Workstation)
           </para>
-          </listitem>
-          <listitem>
+        </listitem>
+        <listitem>
           <para>
-          CIS &sle; 15 Benchmark for Level 1 (Server)
+            CIS &sle; 15 Benchmark for Level 1 (Server)
           </para>
-          </listitem>
-          <listitem>
+        </listitem>
+        <listitem>
           <para>
-          CIS &sle; 15 Benchmark for Level 1 (Workstation)
+            CIS &sle; 15 Benchmark for Level 1 (Workstation)
           </para>
-          </listitem>
-          <listitem>
+        </listitem>
+        <listitem>
           <para>
-          CIS &sle; 15 Benchmark for Level 2 (Server)
+            CIS &sle; 15 Benchmark for Level 2 (Server)
           </para>
-          </listitem>-->
+        </listitem>
         <listitem>
           <para>
             DISA STIG for &sle; 15
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Hardening for Public Cloud Image of &sles; (SLES) for SAP
+            Applications 15
           </para>
         </listitem>
         <listitem>
@@ -392,7 +469,12 @@
         </listitem>
         <listitem>
           <para>
-            PCI-DSS v.3.2.1 Control Baseline for &sle; 15
+            PCI-DSS v3.2.1 Control Baseline for &sle; 15
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            PCI-DSS v4 Control Baseline for &sle; 15
           </para>
         </listitem>
         <listitem>
@@ -400,11 +482,11 @@
             Public Cloud Hardening for &sle; 15
           </para>
         </listitem>
-        <!--<listitem>
+        <listitem>
           <para>
-          Standard System Security Profile for &sle; 15
+            Standard System Security Profile for &sle; 15
           </para>
-          </listitem>-->
+        </listitem>
       </itemizedlist>
       <figure>
         <title>&ssg; profiles for &sle; 15</title>
@@ -447,51 +529,46 @@
             ANSSI-BP-028 (minimal)
           </para>
         </listitem>
-        <!--<listitem>
+        <listitem>
           <para>
-          CIS SUSE &sle; 12 Benchmark Level 2 (Workstation)
+            CIS SUSE &sle; 12 Benchmark Level 2 (Workstation)
           </para>
-          </listitem>
-          <listitem>
+        </listitem>
+        <listitem>
           <para>
-          CIS &sle; 12 Benchmark for Level 1 (Server)
+            CIS &sle; 12 Benchmark for Level 1 (Server)
           </para>
-          </listitem>
-          <listitem>
+        </listitem>
+        <listitem>
           <para>
-          CIS &sle; 12 Benchmark for Level 1 (Workstation)
+            CIS &sle; 12 Benchmark for Level 1 (Workstation)
           </para>
-          </listitem>
-          <listitem>
+        </listitem>
+        <listitem>
           <para>
-          CIS &sle; 12 Benchmark for Level 2 (Server)
+            CIS &sle; 12 Benchmark for Level 2 (Server)
           </para>
-          </listitem>-->
+        </listitem>
         <listitem>
           <para>
             DISA STIG for &sle; 12
           </para>
         </listitem>
-        <!--<listitem>
+        <listitem>
           <para>
-          Health Insurance Portability and Accountability Act (HIPAA)
+            PCI-DSS v3.2.1 Control Baseline for &sle; 12
           </para>
-          </listitem>
-          <listitem>
+        </listitem>
+        <listitem>
           <para>
-          PCI-DSS v.3.2.1 Control Baseline for &sle; 12
+            PCI-DSS v.4 Control Baseline for &sle; 12
           </para>
-          </listitem>
-          <listitem>
+        </listitem>
+        <listitem>
           <para>
-          Public Cloud Hardening for &sle; 12
+            Standard System Security Profile for &sle; 12
           </para>
-          </listitem>-->
-        <!--<listitem>
-          <para>
-          Standard System Security Profile for &sle; 12
-          </para>
-          </listitem>-->
+        </listitem>
       </itemizedlist>
       <figure>
         <title>&ssg; profiles for &sle; 12</title>
@@ -554,6 +631,14 @@
 
     <sect2 xml:id="openscap-scan-tools">
       <title>Tools for scanning</title>
+      <note>
+        <para>
+          Before using the tools described in this section, ensure that you
+          have installed them as described in
+          <xref linkend="openscap-installation"></xref>, as they are
+          interdependent.
+        </para>
+      </note>
       <para>
         Depending on your setup and the target to scan (remote or local), you
         can use either of the following tools:
@@ -568,18 +653,42 @@
               <package>scap-security-guide</package> package need to be
               installed on the local machine.
             </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>SCAP Workbench</term>
-          <listitem>
             <para>
-              A graphical user interface that can be used for scanning a single
-              machine, either local or remote (via SSH). Both the
-              <package>scap-workbench</package> and
-              <package>scap-security-guide</package> packages need to be
-              installed on the local machine. On the remote machine, the
-              <package>openscap-utils</package> package needs to be installed.
+              To understand the basic usage of <command>oscap</command>, run it
+              with the <command>-h</command> option:
+            </para>
+<screen>&prompt.user;<command>oscap -h</command>
+
+  oscap
+
+  OpenSCAP command-line tool
+
+  Usage: oscap [options] module operation [operation-options-and-arguments]
+
+  Common options:
+    --verbose &lt;verbosity_level&gt;   - Turn on verbose mode at specified verbosity level.
+                                    Verbosity level must be one of: DEVEL, INFO, WARNING, ERROR.
+    --verbose-log-file &lt;file&gt;     - Write verbose information into file.
+
+  oscap options:
+    -h --help                     - show this help
+    -q --quiet                    - quiet mode
+    -V --version                  - print info about supported SCAP versions
+
+  Commands:
+      ds - Data stream utilities
+      oval - Open Vulnerability and Assessment Language
+      xccdf - eXtensible Configuration Checklist Description Format
+      cvss - Common Vulnerability Scoring System
+      cpe - Common Platform Enumeration
+      cve - Common Vulnerabilities and Exposures
+      cvrf - Common Vulnerability Reporting Framework
+      info - Print information about a SCAP file.
+
+</screen>
+            <para>
+              To understand <literal>oscap</literal> in greater detail, read
+              its man pages by running the <command>man oscap</command>.
             </para>
           </listitem>
         </varlistentry>
@@ -593,6 +702,117 @@
               <package>openscap-utils</package> needs to be installed. On the
               remote machine, the <package>openscap-utils</package> package
               needs to be installed.
+            </para>
+            <para>
+              To understand the basic usage of <command>oscap-ssh</command>,
+              run it with the <command>-h</command> option:
+            </para>
+<screen>&prompt.user;<command>oscap -h</command>
+
+  oscap-ssh -- Tool for running oscap over SSH and collecting results.
+
+  Usage:
+
+  $ oscap-ssh user@host 22 info INPUT_CONTENT
+  $ oscap-ssh user@host 22 xccdf eval [options] INPUT_CONTENT
+
+  Only source data streams are supported as INPUT_CONTENT!
+
+  supported oscap xccdf eval options are:
+    --profile
+    --tailoring-file
+    --tailoring-id
+    --cpe (external OVAL dependencies are not supported yet!)
+    --oval-results
+    --results
+    --results-arf
+    --report
+    --skip-valid
+    --skip-validation
+    --fetch-remote-resources
+    --local-files
+    --progress
+    --datastream-id
+    --xccdf-id
+    --benchmark-id
+    --remediate
+
+  $ oscap-ssh user@host 22 oval eval [options] INPUT_CONTENT
+
+  supported oscap oval eval options are:
+    --id
+    --variables
+    --directives
+    --results
+    --report
+    --skip-valid
+    --skip-validation
+    --datastream-id
+    --oval-id
+
+  $ oscap-ssh user@host 22 oval collect [options] INPUT_CONTENT
+
+  supported oscap oval collect options are:
+    --id
+    --syschar
+    --variables
+    --skip-valid
+    --skip-validation
+
+  specific option for oscap-ssh (must be first argument):
+    --sudo
+
+  To supply additional options to ssh/scp, define the SSH_ADDITIONAL_OPTIONS variable
+  For instance, to ignore known hosts records, define SSH_ADDITIONAL_OPTIONS='-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
+
+  specific option for oscap-ssh (must be first argument):
+
+  See `man oscap` to learn more about semantics of these options.
+
+</screen>
+            <para>
+              To understand <literal>oscap-ssh</literal> in greater detail,
+              read its man pages by running <command>man oscap-ssh</command>.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>SCAP Workbench</term>
+          <listitem>
+            <para>
+              SCAP Workbench is a graphical user interface for &openscap;. You
+              can use it for convenience instead of using
+              <literal>oscap</literal>. For example, you can use SCAP Workbench
+              for scanning a single machine, either local or remote (via SSH).
+            </para>
+            <para>
+              To use SCAP Workbench, both the <package>scap-workbench</package>
+              and <package>scap-security-guide</package> packages need to be
+              installed on the local machine. On the remote machine, the
+              <package>openscap-utils</package> package needs to be installed.
+            </para>
+            <para>
+              To start SCAP Workbench, run the following command:
+            </para>
+<screen>&prompt.user;<command>scap-workbench</command></screen>
+            <figure>
+              <title>SCAP Workbench</title>
+              <mediaobject>
+                <imageobject role="fo">
+                  <imagedata fileref="scap-workbench.png" width="90%"/>
+                </imageobject>
+                <imageobject role="html">
+                  <imagedata fileref="scap-workbench.png" width="95%"/>
+                </imageobject>
+                <textobject role="description"><phrase>Start screen of SCAP Workbench</phrase>
+                </textobject>
+              </mediaobject>
+            </figure>
+            <para>
+              Although not recommended, you can invoke and perform certain
+              basic operations by using SCAP Workbench as a command-line tool.
+              To know more, read its man page by running <command>man
+              scap-workbench</command>.
             </para>
           </listitem>
         </varlistentry>
@@ -613,7 +833,7 @@
     --profile <replaceable>stig</replaceable><co xml:id="co-oscap-eval-profile"/> \
     --results <replaceable>/tmp/results.xml</replaceable><co xml:id="co-oscap-eval-results"/> \
     --report <replaceable>/tmp/report.html</replaceable><co xml:id="co-oscap-eval-report"/> \
-    /usr/share/xml/scap/ssg/content/ssg-sle15-ds-1.2.xml<co xml:id="co-oscap-eval-ssg"/></screen>
+    /usr/share/xml/scap/ssg/content/ssg-sle15-ds.xml<co xml:id="co-oscap-eval-ssg"/></screen>
         <calloutlist>
           <callout arearefs="co-oscap-eval">
             <para>
@@ -782,7 +1002,7 @@
 <screen>&prompt.sudo;<command>oscap</command> xccdf eval --remediate<co xml:id="co-oscap-remedy-fly"/> \
      --profile <replaceable>stig</replaceable><co xml:id="co-oscap-remedy-fly-profile"/> \
      --results <replaceable>/tmp/results.xml</replaceable><co xml:id="co-oscap-remedy-fly-results"/> \
-     /usr/share/xml/scap/ssg/content/ssg-sle15-ds-1.2.xml<co xml:id="co-oscap-remedy-fly-ssg"/></screen>
+     /usr/share/xml/scap/ssg/content/ssg-sle15-ds.xml<co xml:id="co-oscap-remedy-fly-ssg"/></screen>
           <calloutlist>
             <callout arearefs="co-oscap-remedy-fly">
               <para>
@@ -845,7 +1065,7 @@
 <screen>&prompt.sudo;<command>oscap</command> xccdf eval<co xml:id="co-oscap-remedy-post1"/> \
       --profile <replaceable>stig</replaceable><co xml:id="co-oscap-remedy-post1-profile"/> \
       --results <replaceable>/tmp/results.xml</replaceable><co xml:id="co-oscap-remedy-post1-results"/> \
-      /usr/share/xml/scap/ssg/content/ssg-sle15-ds-1.2.xml<co xml:id="co-oscap-remedy-post1-ssg"/></screen>
+      /usr/share/xml/scap/ssg/content/ssg-sle15-ds.xml<co xml:id="co-oscap-remedy-post1-ssg"/></screen>
               <calloutlist>
                 <callout arearefs="co-oscap-remedy-post1">
                   <para>
@@ -941,7 +1161,7 @@
      --template urn:xccdf:fix:script:sh<co xml:id="co-oscap-generate-template"/> \
      --profile <replaceable>stig</replaceable><co xml:id="co-oscap-generate-profile"/> \
      --output <replaceable>my-remediation-script.sh</replaceable><co xml:id="co-oscap-generate-output"/> \
-     /usr/share/xml/scap/ssg/content/ssg-sle15-ds-1.2.xml<co xml:id="co-oscap-generate-ssg"/></screen>
+     /usr/share/xml/scap/ssg/content/ssg-sle15-ds.xml<co xml:id="co-oscap-generate-ssg"/></screen>
           <calloutlist>
             <callout arearefs="co-oscap-generate-fix">
               <para>
