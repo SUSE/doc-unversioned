@@ -672,7 +672,7 @@
        <entry>susTkOver.py</entry>
        <entry>Supported but undocumented</entry>
        <entry>Not mandatory but recommended</entry>
-       <entry>Supported but undocumented</entry>
+       <entry>Supported (<link xlink:href="https://documentation.suse.com/sbp/sap-15/html/SLES4SAP-hana-scaleout-multitarget-perfopt-15/index.html#id-implementing-sustkover-py-for-pretakeover">Documentation</link>)</entry>
       </row>
       <row>
        <entry>susChkSrv.py</entry>
