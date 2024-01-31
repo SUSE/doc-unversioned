@@ -2477,6 +2477,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
           <step>
             <para>Download the Trento support plugin script:</para>
             <screen>&prompt.root;<command>wget</command> https://raw.githubusercontent.com/trento-project/helm-charts/main/scripts/trento-support.sh</screen>
+           <para>Note: customers of SLES4SAP 15 SP3+ can install the trento-supportconfig-plugin package directly from the official SLES4SAP 15 repos using zypper.</para>
           </step>
           <step>
             <para>Make the script executable:</para>
