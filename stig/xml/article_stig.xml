@@ -22,7 +22,7 @@
         <dm:url>https://bugzilla.suse.com/enter_bug.cgi</dm:url>
         <dm:component>Security</dm:component>
         <dm:product>Documentation</dm:product>
-        <dm:assignee>taroth@suse.com</dm:assignee>
+        <dm:assignee>ssarkar@suse.com</dm:assignee>
       </dm:bugtracker>
       <dm:editurl>https://github.com/SUSE/doc-unversioned/edit/main/stig/xml/</dm:editurl>
       <dm:translation>no</dm:translation>
@@ -186,7 +186,7 @@
      --profile <replaceable>stig</replaceable><co xml:id="co-oscap-eval-profile"/> \
      --results <replaceable>/tmp/results.xml</replaceable><co xml:id="co-oscap-eval-results"/> \
      --report <replaceable>/tmp/report.html</replaceable><co xml:id="co-oscap-eval-report"/> \
-     /usr/share/xml/scap/ssg/content/ssg-sle15-ds-1.2.xml<co xml:id="co-oscap-eval-ssg"/></screen>
+     /usr/share/xml/scap/ssg/content/ssg-sle15-ds.xml<co xml:id="co-oscap-eval-ssg"/></screen>
         <calloutlist>
           <callout arearefs="co-oscap-eval">
             <para>
@@ -250,7 +250,7 @@
 <screen>&prompt.sudo;<command>oscap</command> xccdf eval --remediate<co xml:id="co-oscap-remedy-fly"/> \
       --profile <replaceable>stig</replaceable><co xml:id="co-oscap-remedy-fly-profile"/> \
       --results <replaceable>/tmp/results.xml</replaceable><co xml:id="co-oscap-remedy-fly-results"/> \
-      /usr/share/xml/scap/ssg/content/ssg-sle15-ds-1.2.xml<co xml:id="co-oscap-remedy-fly-ssg"/></screen>
+      /usr/share/xml/scap/ssg/content/ssg-sle15-ds.xml<co xml:id="co-oscap-remedy-fly-ssg"/></screen>
           <calloutlist>
             <callout arearefs="co-oscap-remedy-fly">
               <para>
@@ -313,7 +313,7 @@
 <screen>&prompt.sudo;<command>oscap</command> xccdf eval<co xml:id="co-oscap-remedy-post1"/> \
         --profile <replaceable>stig</replaceable><co xml:id="co-oscap-remedy-post1-profile"/> \
         --results <replaceable>/tmp/results.xml</replaceable><co xml:id="co-oscap-remedy-post1-results"/> \
-        /usr/share/xml/scap/ssg/content/ssg-sle15-ds-1.2.xml<co xml:id="co-oscap-remedy-post1-ssg"/></screen>
+        /usr/share/xml/scap/ssg/content/ssg-sle15-ds.xml<co xml:id="co-oscap-remedy-post1-ssg"/></screen>
               <calloutlist>
                 <callout arearefs="co-oscap-remedy-post1">
                   <para>
@@ -445,6 +445,625 @@
       </sect3>
     </sect2>
   </sect1>
+  <sect1 xml:id="stig-custom-tailoring">
+    <title>Using a tailored &stiga; profile</title>
+
+    <para>
+      The standard or default &stiga; profile is sufficient for most
+      deployments. In addition, you can create, use for evaluation and apply
+      <emphasis>tailoring files</emphasis> to tailor &ssg; content. Using
+      tailoring files, you can change the behavior of a profile without
+      directly modifying its standard configurations.
+    </para>
+
+    <para>
+      The following sections provide examples of creating tailoring files using
+      either SCAP Workbench or the <command>autotailor</command> command-line
+      utility, and then applying the tailoring file using the
+      <command>ssg-apply</command> command-line utility.
+    </para>
+
+    <tip>
+      <title>Generalized tailoring</title>
+      <para>
+        Although the following sections provide examples of tailoring for the
+        &stiga; profile, you use a similar procedure for tailoring other
+        profiles that are valid for your target system.
+      </para>
+    </tip>
+
+    <sect2 xml:id="stig-create-tailoring">
+      <title>Creating a tailoring file</title>
+      <para>
+        Tailoring files are XML files containing information about the
+        deviation from the standard &ssg; content for a profile. You create a
+        tailoring file when you override certain default rules of a standard
+        profile, and save that information along with necessary metadata as an
+        XML file. Once created, you can apply the tailoring file using a
+        suitable program such as the <command>ssg-apply</command> utility.
+      </para>
+      <para>
+        &suse; recommends using any of the following methods of creating a
+        tailoring file:
+      </para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            Manually, using the SCAP Workbench. This method is best suited when
+            you are unsure of the rules that you want to override in the
+            standard content of a profile, and would prefer the convenience of
+            a graphical software.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Automatically, using the <command>autotailor</command> command-line
+            tool which is bundled with the <package>openscap-utils</package>
+            package. This method is best suited when you are sure of all the
+            information that you need to create a tailoring file.
+          </para>
+        </listitem>
+      </itemizedlist>
+      <sect3 xml:id="stig-create-tailoring-scap-workbench">
+        <title>Creating tailoring files using SCAP Workbench</title>
+        <para>
+          This section provides an example procedure for creating a tailoring
+          file based on the standard &stiga; profile, using the SCAP Workbench
+          graphical software. You can use a similar procedure to create
+          tailoring files for any other valid profile.
+        </para>
+        <para>
+          As a prerequisite, ensure that you have installed the necessary
+          packages, as described in the section
+          <link
+          xlink:href="https://documentation.suse.com/compliance/all/html/SLES-openscap/index.html#openscap-installation"></link>.
+        </para>
+        <procedure>
+          <step>
+            <para>
+              Start SCAP Workbench by invoking it in the terminal:
+            </para>
+<screen>&prompt.user;<command>scap-workbench</command></screen>
+          </step>
+          <step>
+            <para>
+              Depending on whether you are using &sle; 15 or &sle; 12, select
+              either <guilabel>SLe15</guilabel> or <guilabel>SLe12</guilabel>
+              from the <guimenu>Select content to load</guimenu> drop-down
+              list. In this example procedure, we select
+              <guilabel>SLe15</guilabel>.
+            </para>
+            <figure>
+              <title>SCAP Workbench&mdash;select content to load</title>
+              <mediaobject>
+                <imageobject role="fo">
+                  <imagedata fileref="scap-workbench-select-content-to-load.png" width="90%"/>
+                </imageobject>
+                <imageobject role="html">
+                  <imagedata fileref="scap-workbench-select-content-to-load.png" width="95%"/>
+                </imageobject>
+                <textobject role="description"><phrase>SCAP Workbench&dash;Select Content to Load</phrase>
+                </textobject>
+              </mediaobject>
+            </figure>
+          </step>
+          <step>
+            <para>
+              Click <guilabel>Load Content</guilabel>.
+            </para>
+          </step>
+          <step>
+            <para>
+              In the next window, titled <guilabel>Guide to the Secure
+              Configuation of SUSE Linux Enterprise 15</guilabel>, perform the
+              following steps:
+            </para>
+            <substeps>
+              <step>
+                <para>
+                  From the <guimenu>Profile</guimenu> drop-down list, select
+                  the profile that you want to customize. In this example, we
+                  select <guilabel>DISA &stiga; for SUSE Linux Enterprise 15
+                  (242)</guilabel>. The number within parenthesis at the end of
+                  the profile name represents the number of rules that comprise
+                  your selected profile. For example, DISA &stiga; for SUSE
+                  Linux Enterprise 15 has 242 rules.
+                </para>
+              </step>
+              <step>
+                <para>
+                  <emphasis>Optionally</emphasis>, if your target is a remote
+                  system, select the <guimenu>Remote Machine (over
+                  SSH)</guimenu> and provide necessary information.
+                </para>
+                <para>
+                  In this example procedure, we assume that the target system
+                  is your <guimenu>Local Machine</guimenu>.
+                </para>
+                <figure>
+                  <title>SCAP Workbench&mdash;DISA &stiga; profile</title>
+                  <mediaobject>
+                    <imageobject role="fo">
+                      <imagedata fileref="scap-workbench-profile-disa-stig.png" width="90%"/>
+                    </imageobject>
+                    <imageobject role="html">
+                      <imagedata fileref="scap-workbench-profile-disa-stig.png" width="95%"/>
+                    </imageobject>
+                    <textobject role="description"><phrase>SCAP Workbench&dash;DISA &stiga; profile</phrase>
+                    </textobject>
+                  </mediaobject>
+                </figure>
+              </step>
+              <step>
+                <para>
+                  Click <guimenu>Customize</guimenu>, edit the <guilabel>New
+                  Profile ID</guilabel> field if necessary, and click
+                  <guimenu>OK</guimenu>. The default <guilabel>New Profile
+                  ID</guilabel> provided by SCAP Workbench for the selected
+                  profile is
+                  <literal>xccdf_org.ssgproject.content_profile_stig_customized</literal>.
+                </para>
+                <figure>
+                  <title>SCAP Workbench&mdash;customize &stiga; profile</title>
+                  <mediaobject>
+                    <imageobject role="fo">
+                      <imagedata fileref="scap-workbench-profile-stig-customize.png" width="90%"/>
+                    </imageobject>
+                    <imageobject role="html">
+                      <imagedata fileref="scap-workbench-profile-stig-customize.png" width="95%"/>
+                    </imageobject>
+                    <textobject role="description"><phrase>SCAP Workbench&dash;Customize &stiga; profile</phrase>
+                    </textobject>
+                  </mediaobject>
+                </figure>
+              </step>
+            </substeps>
+          </step>
+          <step>
+            <para>
+              In the next window titled <guilabel>Customizing "DISA STIG for
+              SUSE Linux Enterprise 15 [CUSTOMIZED]"&mdash;SCAP
+              Workbench</guilabel>, perform the following steps:
+            </para>
+            <substeps>
+              <step>
+                <para>
+                  Override the default rules by selecting or deselecting them.
+                  For example, we select the checkbox next to the rule
+                  <guilabel>Limit Users' SSH Access</guilabel> to further
+                  harden the target system's access over SSH. You can select or
+                  deselect multiple rules.
+                </para>
+                <tip>
+                  <title>When unsure, read the rule's description</title>
+                  <para>
+                    Before selecting or deselecting the checkbox next to the
+                    rule, you can click the rule and read the
+                    <guilabel>Description</guilabel> provide at the right pane
+                    of the window.
+                  </para>
+                </tip>
+                <figure>
+                  <title>SCAP Workbench&mdash;select rule</title>
+                  <mediaobject>
+                    <imageobject role="fo">
+                      <imagedata fileref="scap-workbench-select-rule.png" width="90%"/>
+                    </imageobject>
+                    <imageobject role="html">
+                      <imagedata fileref="scap-workbench-select-rule.png" width="95%"/>
+                    </imageobject>
+                    <textobject role="description"><phrase>SCAP Workbench&dash;Select Rule</phrase>
+                    </textobject>
+                  </mediaobject>
+                </figure>
+              </step>
+              <step>
+                <para>
+                  When you are sure about the override of rules, click
+                  <guimenu>OK</guimenu>.
+                </para>
+              </step>
+            </substeps>
+          </step>
+          <step>
+            <para>
+              On returning to the <emphasis>home</emphasis> window of SCAP
+              Workbench, notice that the <guilabel>Customization</guilabel>
+              field has changed to <guilabel>(unsaved changes)</guilabel>.
+            </para>
+            <para>
+              Using the menu at the top left of the window, save the
+              customization by clicking
+              <menuchoice><guimenu>File</guimenu><guimenu>Save Customization
+              Only</guimenu></menuchoice> and choosing the path of the
+              tailoring file as
+              <filename>/tmp/ssg-sle15-ds-tailoring.xml</filename>.
+            </para>
+            <para>
+              When saved, the <guilabel>Customization</guilabel> field displays
+              the path to the tailoring file. In addition, the name of the new
+              <guilabel>Profile</guilabel> contains the suffix
+              <literal>(243)</literal>, which indicates that an additional rule
+              has been selected, as compared to the default of 242 rules.
+            </para>
+            <figure>
+              <title>SCAP Workbench&mdash;save tailoring file</title>
+              <mediaobject>
+                <imageobject role="fo">
+                  <imagedata fileref="scap-workbench-tailor-file-save.png" width="90%"/>
+                </imageobject>
+                <imageobject role="html">
+                  <imagedata fileref="scap-workbench-tailor-file-save.png" width="95%"/>
+                </imageobject>
+                <textobject role="description"><phrase>SCAP Workbench&dash;Save Tailoring File</phrase>
+                </textobject>
+              </mediaobject>
+            </figure>
+          </step>
+          <step>
+            <para>
+              <emphasis>Optionally</emphasis>, inspect the tailoring file by
+              opening it with a text editor of your choice. Based on the
+              example override of rules, the tailoring file contains the
+              following information.
+            </para>
+<screen><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<xccdf:Tailoring xmlns:xccdf="http://checklists.nist.gov/xccdf/1.2" id="xccdf_scap-workbench_tailoring_default">
+  <xccdf:benchmark href="/tmp/scap-workbench-sbgnfq/ssg-sle15-ds.xml"/>
+  <xccdf:version time="2024-01-25T07:21:34">1</xccdf:version>
+  <xccdf:Profile id="xccdf_org.ssgproject.content_profile_stig_customized" extends="xccdf_org.ssgproject.content_profile_stig">
+    <xccdf:title xmlns:xhtml="http://www.w3.org/1999/xhtml" xml:lang="en-US" override="true">DISA STIG for SUSE Linux Enterprise 15 [CUSTOMIZED]</xccdf:title>
+    <xccdf:description xmlns:xhtml="http://www.w3.org/1999/xhtml" xml:lang="en-US" override="true">This profile contains configuration checks that align to the
+DISA STIG for SUSE Linux Enterprise 15 V1R4.</xccdf:description>
+    <xccdf:select idref="xccdf_org.ssgproject.content_rule_sshd_limit_user_access" selected="true"/>
+  </xccdf:Profile>
+</xccdf:Tailoring>]]></screen>
+          </step>
+        </procedure>
+      </sect3>
+      <sect3 xml:id="stig-create-taloring-autotailor">
+        <title>Creating tailoring files using <command>autotailor</command></title>
+        <para>
+          There might be deployments where installing a graphical software such
+          as SCAP Workbench is not suitable. In even more sensitive
+          deployments, the customization of a remote target machine over SSH
+          from a client machine running SCAP Workbench might also not be an
+          option.
+        </para>
+        <para>
+          In such situations, the <command>autotailor</command> command-line
+          tool that comes bundled with the <package>openscap-utils</package> is
+          a suitable choice. However, you must be sure of all the information
+          necessary for creating the tailoring file.
+        </para>
+        <para>
+          To create a tailoring file with <command>autotailor</command>, use
+          the following syntax:
+        </para>
+<screen>&prompt.user;<command>autotailor</command> \
+  --select <replaceable>RULE_ID</replaceable><co xml:id="autotailor-select-rule-id"></co> \
+  --unselect <replaceable>RULE_ID</replaceable><co xml:id="autotailor-unselect-rule-id"></co> \
+  --var-value <replaceable>VAR=VALUE</replaceable><co xml:id="autotailor-var-value"></co> \
+  --output <replaceable>TAILORING_FILE</replaceable><co xml:id="autotailor-tailoring-file-path"></co> \
+  --new-profile-id <replaceable>NEW_PROFILE_ID</replaceable><co xml:id="autotailor-new-profile-id"/> \
+  <replaceable>DS_FILENAME</replaceable><co xml:id="autotailor-scap-content-path"></co> \
+  <replaceable>BASE_PROFILE_ID</replaceable><co xml:id="autotailor-base-profile-id"></co>
+</screen>
+        <calloutlist>
+          <callout arearefs="autotailor-select-rule-id">
+            <para>
+              <code>--select <replaceable>RULE_ID</replaceable></code> adds a
+              rule with <replaceable>RULE_ID</replaceable>. To select multiple
+              rules, you can use this argument multiple times.
+            </para>
+          </callout>
+          <callout arearefs="autotailor-unselect-rule-id">
+            <para>
+              <code>--unselect <replaceable>RULE_ID</replaceable></code>
+              discards a rule with <replaceable>RULE_ID</replaceable>. To
+              discard multiple rules, you can use this argument multiple times.
+            </para>
+          </callout>
+          <callout arearefs="autotailor-var-value">
+            <para>
+              <code>--var-value <replaceable>VAR=VALUE</replaceable></code>
+              specifies modification of the XCCDF value in the form
+              <replaceable>VARIABLE=VALUE</replaceable>.
+            </para>
+          </callout>
+          <callout arearefs="autotailor-tailoring-file-path">
+            <para>
+              <replaceable>TAILORING_FILE</replaceable> specifies the path of
+              the tailoring file, which is the final
+              <emphasis>output</emphasis> of the <command>autotailor</command>
+              tool.
+            </para>
+          </callout>
+          <callout arearefs="autotailor-new-profile-id">
+            <para>
+              Specifies the ID of the new customized profile that you want to
+              create.
+            </para>
+          </callout>
+          <callout arearefs="autotailor-scap-content-path">
+            <para>
+              Specifies the path to the SCAP source data stream that is
+              tailored.
+            </para>
+          </callout>
+          <callout arearefs="autotailor-base-profile-id">
+            <para>
+              Specifies the original or base profile ID that you want to
+              customize.
+            </para>
+          </callout>
+        </calloutlist>
+        <procedure>
+          <step>
+            <para>
+              As an <emphasis role="strong">example</emphasis>, run the
+              following command to generate a tailoring file that is similar to
+              the one created by using SCAP Workbench in the previous section:
+            </para>
+<screen>&prompt.user;<command>autotailor</command> \
+  --select sshd_limit_user_access<co xml:id="autotailor-example-select-rule-id"></co> \
+  --output /tmp/ssg-sle15-ds-tailoring.xml<co xml:id="autotailor-example-tailoring-file-path"></co> \
+  --new-profile-id stig_customized<co xml:id="autotailor-example-new-profile-id"></co> \
+  /usr/share/xml/scap/ssg/content/ssg-sle15-ds.xml<co xml:id="autotailor-example-scap-content-path"></co> \
+  stig<co xml:id="autotailor-example-base-profile-id"></co>
+</screen>
+            <calloutlist>
+              <callout arearefs="autotailor-example-select-rule-id">
+                <para>
+                  The ID of the <guilabel>Limit Users' SSH Access</guilabel>
+                  rule.
+                </para>
+              </callout>
+              <callout arearefs="autotailor-example-tailoring-file-path">
+                <para>
+                  The path to the tailoring file, which is the output.
+                </para>
+              </callout>
+              <callout arearefs="autotailor-example-new-profile-id">
+                <para>
+                  The ID of the new customized profile.
+                </para>
+              </callout>
+              <callout arearefs="autotailor-example-scap-content-path">
+                <para>
+                  The path to the &ssg; content of the original &stiga;
+                  profile.
+                </para>
+              </callout>
+              <callout arearefs="autotailor-example-base-profile-id">
+                <para>
+                  The name of the original &stiga; profile.
+                </para>
+              </callout>
+            </calloutlist>
+          </step>
+        </procedure>
+        <para>
+          For more information about the <command>autotailor</command> tool,
+          read its help information by running <command>autotailor -h</command>
+          or refer to its man page by running <command>man
+          autotailor</command>.
+        </para>
+      </sect3>
+    </sect2>
+
+    <sect2 xml:id="stig-scan-tailoring">
+      <title>Scanning using a tailoring file</title>
+      <para>
+        You can use a tailoring file and the <command>oscap</command>
+        command-line tool to scan and evaluate your target system based on a
+        customized data stream.
+      </para>
+      <para>
+        To evaluate your target system using a tailoring file created earlier,
+        perform the following steps:
+      </para>
+      <procedure>
+        <step>
+          <para>
+            List the profiles in the tailoring file by running the following
+            command:
+          </para>
+<screen>&prompt.user;<command>oscap info /tmp/ssg-sle15-ds-tailoring.xml</command><co
+xml:id="stig-eval-tailor-file-list-profiles"></co>
+Document type: XCCDF Tailoring
+Imported: <replaceable>TIMESTAMP</replaceable>
+Benchmark Hint: /tmp/scap-workbench-VIdbAj/ssg-sle15-ds.xml
+Profiles:
+	Title: DISA STIG for SUSE Linux Enterprise 15 [CUSTOMIZED]
+		Id: xccdf_org.ssgproject.content_profile_stig_customized
+</screen>
+          <calloutlist>
+            <callout arearefs="stig-eval-tailor-file-list-profiles">
+              <para>
+                The path to the tailoring file created earlier, using either
+                SCAP Workbench or <command>autotailor</command>.
+              </para>
+            </callout>
+          </calloutlist>
+        </step>
+        <step>
+          <para>
+            Evaluate the target system based on the tailoring file by running
+            the following command:
+          </para>
+<screen>&prompt.user;<command>oscap xccdf eval \</command>
+ --profile xccdf_org.ssgproject.content_profile_stig_customized<co
+ xml:id="stig-eval-tailor-new-profile"></co> \
+ --tailoring-file /tmp/ssg-sle15-ds-tailoring.xml<co xml:id="stig-eval-tailor-file"></co> \
+ --results /tmp/results.xml<co xml:id="stig-eval-tailor-results-xml"></co> \
+ /usr/share/xml/scap/ssg/content/ssg-sle15-ds.xml<co xml:id="stig-eval-tailor-ssg-content"></co>
+</screen>
+          <calloutlist>
+            <callout arearefs="stig-eval-tailor-new-profile">
+              <para>
+                The ID reference of the new customized profile.
+              </para>
+            </callout>
+            <callout arearefs="stig-eval-tailor-file">
+              <para>
+                The path to the tailoring file created earlier.
+              </para>
+            </callout>
+            <callout arearefs="stig-eval-tailor-results-xml">
+              <para>
+                The path to store the results of the evaluation in a
+                machine-readable XML format.
+              </para>
+            </callout>
+            <callout arearefs="stig-eval-tailor-ssg-content">
+              <para>
+                The path to the &ssg; content for the standard &stiga; profile.
+              </para>
+            </callout>
+          </calloutlist>
+          <note>
+            <title>Redirection of results</title>
+            <para>
+              Apart from storing the results of the scan in an XML file,
+              <command>oscap</command> displays the results of the evaluation
+              in a human-readable format on the screen. If you redirect the
+              stream of human-readable results to a file, the debug logs are
+              displayed on the screen.
+            </para>
+          </note>
+        </step>
+      </procedure>
+    </sect2>
+
+    <sect2 xml:id="stig-apply-tailoring">
+      <title>Applying a tailoring file</title>
+      <para>
+        After you create a tailoring file either using SCAP Workbench or
+        <command>autotailor</command>, you must apply the custom profile to
+        harden your target system. &suse; recommends using the
+        <command>ssg-apply</command> command-line tool.
+      </para>
+      <sect3 xml:id="stig-apply-tailoring-autotailor">
+        <title>Applying tailoring file using <command>ssg-apply</command></title>
+        <para>
+          <command>ssg-apply</command> is a command-line tool maintained by
+          &suse; and is part of the <package>ssg-apply</package> package. You
+          can install it by running the following command:
+        </para>
+<screen>&prompt.sudo;<command>zypper install -y ssg-apply</command></screen>
+        <para>
+          For detailed information on <package>ssg-apply</package>, refer to
+          <filename>/usr/share/doc/packages/ssg-apply/README</filename>.
+        </para>
+        <para>
+          To apply the tailoring file that you have already created using SCAP
+          Workbench or <command>autotailor</command>, perform the following
+          steps:
+        </para>
+        <procedure>
+          <step>
+            <para>
+              As a best practice, create a copy of
+              <filename>/etc/ssg-apply/default.conf</filename> with the name
+              <filename>/etc/ssg-apply/override.conf</filename>. The new file
+              must contain information pointing to the overridden or customized
+              configuration.
+            </para>
+<screen>&prompt.sudo;<command>cp /etc/ssg-apply/default.conf /etc/ssg-apply/override.conf</command></screen>
+          </step>
+          <step>
+            <para>
+              Edit the <filename>/etc/ssg-apply/override.conf</filename> file
+              to make its content similar to the following:
+            </para>
+<screen>
+ #
+ # This is the configuration file for the ssg-apply executable.
+ #
+
+ #
+ # content-file - scap-security-guide content to be used for eval/remediation
+ #
+ content-file=/usr/share/xml/scap/ssg/content/ssg-sle15-ds.xml
+
+ #
+ # profile - profile as specified in content-file
+ #
+ profile=stig
+
+ #
+ # remediation setting - Take care before changing this setting to "yes",
+ # as enabling remediation will likely make changes to the system.
+ #
+ remediate=no
+
+ #
+ # tailoring-file - tailoring file to disable specific rules
+ #
+ tailoring-file=/tmp/ssg-sle15-ds-tailoring.xml<co xml:id="ssg-apply-override-conf-tailoring-file"></co>
+</screen>
+            <calloutlist>
+              <callout arearefs="ssg-apply-override-conf-tailoring-file">
+                <para>
+                  The path to the tailoring file created using SCAP Workbench
+                  or <command>autotailor</command>.
+                </para>
+              </callout>
+            </calloutlist>
+          </step>
+          <step>
+            <para>
+              Apply the tailoring file by running the following command:
+            </para>
+<screen>&prompt.user;<command>ssg-apply</command></screen>
+          </step>
+          <step>
+            <para>
+              <emphasis>Optionally</emphasis>, after running
+              <command>ssg-apply</command>, you can observe the following:
+            </para>
+            <substeps>
+              <step>
+                <para>
+                  The output of &openscap; in the
+                  <filename>/var/log/ssg-apply/ssg-apply-<replaceable>TIMESTAMP</replaceable>.out</filename>
+                  files.
+                </para>
+                <para>
+                  For example, you can find the line number containing the
+                  mention of the <guilabel>Limit Users' SSH Access</guilabel>
+                  rule using the following command:
+                </para>
+<screen>&prompt.user;<command>cat /var/log/ssg-apply/ssg-apply-<replaceable>TIMESTAMP</replaceable>.out | grep -n sshd_limit_user_access</command>
+<emphasis role="strong">1180</emphasis>:xccdf_org.ssgproject.content_rule_sshd_limit_user_access
+</screen>
+                <para>
+                  Then you can locate the lines containing the status of the
+                  <guilabel>Limit Users' SSH Access</guilabel> rule in the
+                  <filename>/var/log/ssg-apply/ssg-apply-<replaceable>TIMESTAMP</replaceable>.out</filename>
+                  file:
+                </para>
+<screen>
+1179	Limit Users' SSH Access
+1180	xccdf_org.ssgproject.content_rule_sshd_limit_user_access
+1181	CCE-91343-4
+1182	faillt
+</screen>
+              </step>
+              <step>
+                <para>
+                  The debug logs in the
+                  <filename>/var/log/ssg-apply/ssg-apply-<replaceable>TIMESTAMP</replaceable>.log</filename>
+                  files.
+                </para>
+              </step>
+            </substeps>
+          </step>
+        </procedure>
+      </sect3>
+    </sect2>
+  </sect1>
   <sect1 xml:id="stig-viewer">
     <title>Working with checklists in &stigviewer;</title>
 
@@ -546,7 +1165,7 @@
 <screen>&prompt.sudo;<command>oscap</command> xccdf eval<co xml:id="co-stigviewer-oscap-eval"/> \
       --profile <replaceable>stig</replaceable><co xml:id="co-stigviewer-oscap-eval-profile"/> \
       --stig-viewer <replaceable>/tmp/results_stig.xml</replaceable><co xml:id="co-stigviewer-oscap-eval-results"/> \
-      /usr/share/xml/scap/ssg/content/ssg-sle15-ds-1.2.xml<co xml:id="co-stigviewer-oscap-eval-ssg"/></screen>
+      /usr/share/xml/scap/ssg/content/ssg-sle15-ds.xml<co xml:id="co-stigviewer-oscap-eval-ssg"/></screen>
           <calloutlist>
             <callout arearefs="co-stigviewer-oscap-eval">
               <para>
