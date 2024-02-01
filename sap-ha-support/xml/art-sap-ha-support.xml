@@ -652,8 +652,8 @@
      <tbody>
       <row>
        <entry>SAPHanaSR.py scale-up</entry>
-       <entry>Mandatory</entry>
-       <entry>Mandatory</entry>
+       <entry><link xlink:href="&dsc;/sbp/sap-15/html/SLES4SAP-hana-sr-guide-costopt-15/index.html#cha.s4s.hana-hook">Mandatory</link></entry>
+       <entry><link xlink:href="&dsc;/sbp/sap-15/html/SLES4SAP-hana-sr-guide-PerfOpt-15/index.html#cha.s4s.hana-hook">Mandatory</link></entry>
        <entry>-</entry>
       </row>
       <row>
@@ -666,23 +666,23 @@
        <entry>SAPHanaSrMultiTarget.py</entry>
        <entry>-</entry>
        <entry>-</entry>
-       <entry>Mandatory</entry>
+       <entry><link xlink:href="&dsc;/sbp/sap-15/html/SLES4SAP-hana-scaleOut-PerfOpt-15/index.html#id-integrating-sap-hana-with-the-cluster">Mandatory</link></entry>
       </row>
       <row>
        <entry>susTkOver.py</entry>
        <entry>Supported but undocumented</entry>
-       <entry>Not mandatory but recommended</entry>
-       <entry>Supported (<link xlink:href="https://documentation.suse.com/sbp/sap-15/html/SLES4SAP-hana-scaleout-multitarget-perfopt-15/index.html#id-implementing-sustkover-py-for-pretakeover">Documentation</link>)</entry>
+       <entry><link xlink:href="&dsc;/sbp/sap-15/html/SLES4SAP-hana-sr-guide-PerfOpt-15/index.html#cha.s4s.hana-hook">Not mandatory but recommended</link></entry>
+       <entry><link xlink:href="&dsc;/sbp/sap-15/html/SLES4SAP-hana-scaleout-multitarget-perfopt-15/index.html#id-implementing-sustkover-py-for-pretakeover">Not mandatory but recommended</link></entry>
       </row>
       <row>
        <entry>susChkSrv.py</entry>
        <entry>-</entry>
-       <entry>Not mandatory but recommended</entry>
+       <entry><link xlink:href="&dsc;/sbp/sap-15/html/SLES4SAP-hana-sr-guide-PerfOpt-15/index.html#cha.s4s.hana-hook">Not mandatory but recommended</link></entry>
        <entry>Not mandatory but recommended</entry>
       </row>
       <row>
        <entry>susCostOpt.py</entry>
-       <entry>Mandatory</entry>
+       <entry><link xlink:href="&dsc;/sbp/sap-15/html/SLES4SAP-hana-sr-guide-costopt-15/index.html#cha.s4s.hana-hook">Mandatory</link></entry>
        <entry>-</entry>
        <entry>-</entry>
       </row>
