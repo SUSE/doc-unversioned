@@ -707,7 +707,7 @@
               example override of rules, the tailoring file contains the
               following information.
             </para>
-<screen><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<screen language="xml"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <xccdf:Tailoring xmlns:xccdf="http://checklists.nist.gov/xccdf/1.2" id="xccdf_scap-workbench_tailoring_default">
   <xccdf:benchmark href="/tmp/scap-workbench-sbgnfq/ssg-sle15-ds.xml"/>
   <xccdf:version time="2024-01-25T07:21:34">1</xccdf:version>
