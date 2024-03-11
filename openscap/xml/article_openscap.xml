@@ -878,6 +878,29 @@
         </para>
       </example>
     </sect2>
+
+    <sect2 xml:id="openscap-external-remote-resources-eval">
+      <title>Using external or remote resources for scanning</title>
+      <para>Content coming soon</para>
+      <sect3 xml:id="openscap-fetching-remote-resource">
+        <title>Fetching remote resources for evaluation</title>
+        <para>Content coming soon</para>
+      </sect3>
+      <sect3 xml:id="openscap-downloading-saving-remote-resource">
+        <title>Downloading and saving remote resource locally for evaluation</title>
+        <para>Content coming soon</para>
+      </sect3>
+    </sect2>
+
+    <sect2 xml:id="openscap-scanning-audits-oval-files">
+      <title>Scanning and auditing systems using OVAL files</title>
+      <para>Content coming soon</para>
+    </sect2>
+
+    <sect2 xml:id="openscap-oval-optimize-resource-usage">
+      <title>Optimizing resource usage while using OVAL files</title>
+      <para>Content coming soon</para>
+    </sect2>
   </sect1>
   <sect1 xml:id="openscap-remediate">
     <title>Vulnerability remediation</title>
