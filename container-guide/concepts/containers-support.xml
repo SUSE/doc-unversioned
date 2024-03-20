@@ -124,11 +124,12 @@
     </para>
     <para>
       In most scenarios, all &slea; containers are expected to be interoperable
-      if the application or its dependencies do not interact directly with
-      kernel version-specific data structures (<literal>ioctl</literal>,
+      if the application and its dependencies do not interact directly with
+      kernel version-specific data structures and their derivatives
+      (<literal>ioctl</literal>,
       <literal>/proc</literal>, <literal>/sys</literal>,
       <literal>routing</literal>, <literal>iptables</literal>,
-      <literal>nftables</literal>, <literal>eBPF</literal>, etc.) or modules
+      <literal>nftables</literal>, <literal>BTF</literal>, <literal>(e)BPF</literal>, etc.) or modules
       (KVM, OVS, SystemTap, etc.). Support for <literal>ioctl</literal> and
       access to <literal>/proc</literal> is limited to the most common
       scenarios needed by unprivileged users.
