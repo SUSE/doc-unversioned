@@ -883,7 +883,7 @@
       <title>Using external or remote resources for scanning</title>
       <para>
         SCAP content may reference external resources. For example, the &ssg;
-        uses an external OVAL file to check whether the system is up to datexml
+        uses an external OVAL file to check whether the system is up to date
         and patched against known security vulnerabilities. However, &openscap;
         can handle remote resources differently, based on the options used
         while invoking the <command>oscap</command> command. In addition, you
@@ -897,7 +897,7 @@
           While evaluating SCAP content with external resources, the &openscap;
           tool displays a <emphasis role="strong">warning</emphasis>. For
           example, &openscap; displays the following warning while performing
-          the default evaluation of a system based on &ssg;:
+          the default evaluation of a system based on the &ssg;:
         </para>
 <screen>&prompt.sudo;oscap xccdf eval \
 --profile xccdf_org.ssgproject.content_profile_stig \
@@ -914,7 +914,7 @@ which is referenced from datastream
 WARNING: Skipping ./pub-projects-security-oval-suse.linux.enterprise.15-patch.xml.bz2 file which is referenced
 from XCCDF content</screen>
         <para>
-          xml The following sections describe certain strategies to force
+          The following sections describe certain strategies to force
           &openscap; to fetch remote resources in real time, or download them
           in advance and use for evaluation and scanning the system.
         </para>
@@ -924,7 +924,7 @@ from XCCDF content</screen>
         <para>
           If you trust your local content and the remote content it references,
           you can use the <option>--fetch-remote-resources</option> option to
-          automatically download it invoking the &openscap; tool.
+          automatically download it when invoking the &openscap; tool.
         </para>
 <screen>&prompt.sudo;oscap xccdf eval \
 --fetch-remote-resources \
@@ -937,23 +937,23 @@ Downloading: https://ftp.suse.com/pub/projects/security/oval/suse.linux.enterpri
 --- Starting Evaluation —
 ...</screen>
         <para>
-          However, if access to internet is unavailable at the time of
+          However, if access to Internet is unavailable at the time of
           evaluation, or is considered a security risk, you can instruct
           &openscap; to use local files instead of remote resources.
         </para>
       </sect3>
       <sect3 xml:id="openscap-downloading-saving-remote-resource">
-        <title>Downloading and saving remote resource locally for evaluation</title>
+        <title>Downloading and saving remote resources locally for evaluation</title>
         <para>
-          On systems without internet access, or in security sensitive
-          deployments where &openscap; cannot connect to the internet, download
+          On systems without Internet access, or in security sensitive
+          deployments where &openscap; cannot connect to the Internet, download
           the remote content using other tools and save it locally. You can
           then pass it to &openscap; as a local file using the
           <option>--local-files</option> option, instead of the
           <option>--fetch-remote-resources</option> option.
         </para>
         <para>
-          For example, to prevent &openscap; from accessing the internet but
+          For example, to prevent &openscap; from accessing the Internet but
           still use the patch file
           <link
          xlink:href="https://ftp.suse.com/pub/projects/security/oval/suse.linux.enterprise.15-patch.xml.bz2"></link>,
@@ -977,7 +977,7 @@ Downloading: https://ftp.suse.com/pub/projects/security/oval/suse.linux.enterpri
           </step>
           <step>
             <para>
-              Downloaded the remote resource and save it as a local file.
+              Download the remote resource and save it as a local file.
             </para>
 <screen>&prompt.user;wget -O ~/scap-files/pub-projects-security-oval-suse.linux.enterprise.15-patch.xml.bz2 \<co
 xml:id="scap-local-file"></co>https://ftp.suse.com/pub/projects/security/oval/suse.linux.enterprise.15-patch.xml.bz2
@@ -987,22 +987,6 @@ xml:id="scap-local-file"></co>https://ftp.suse.com/pub/projects/security/oval/su
                 <para>
                   The path to the locally saved file.
                 </para>
-                <note>
-                  <para>
-                    In this example, the name of the local file is
-                    <emphasis
-             role="strong">not</emphasis>
-                    arbitary. Notice the following information in the SCAP
-                    source data stream file
-                    <filename>/usr/share/xml/scap/ssg/content/ssg-sle15-ds.xml</filename>:
-                  </para>
-<screen>&prompt.user;cat /usr/share/xml/scap/ssg/content/ssg-sle15-ds.xml | \
-grep -n "scap_org.open-scap_cref_pub-projects-security-oval-suse.linux.enterprise.15.xml"
-
-17:          <![CDATA[<cat:uri name="pub-projects-security-oval-suse.linux.enterprise.15.xml" uri="#scap_org.open-scap_cref_pub-projects-security-oval-suse.linux.enterprise.15.xml"/>]]>
-25:      <![CDATA[<ds:component-ref id="scap_org.open-scap_cref_pub-projects-security-oval-suse.linux.enterprise.15.xml" xlink:href="https://ftp.suse.com/pub/projects/security/oval/suse.linux.enterprise.15.xml"/>]]>
-</screen>
-                </note>
               </callout>
               <callout arearefs="scap-remote-resource">
                 <para>
@@ -1010,11 +994,27 @@ grep -n "scap_org.open-scap_cref_pub-projects-security-oval-suse.linux.enterpris
                 </para>
               </callout>
             </calloutlist>
+            <note>
+              <para>
+                In this example, the name of the local file is
+                <emphasis
+         role="strong">not</emphasis> arbitrary.
+                Notice the following information in the SCAP source data stream
+                file
+                <filename>/usr/share/xml/scap/ssg/content/ssg-sle15-ds.xml</filename>:
+              </para>
+<screen>&prompt.user;cat /usr/share/xml/scap/ssg/content/ssg-sle15-ds.xml | \
+grep -n "scap_org.open-scap_cref_pub-projects-security-oval-suse.linux.enterprise.15.xml"
+
+17:          <![CDATA[<cat:uri name="pub-projects-security-oval-suse.linux.enterprise.15.xml" uri="#scap_org.open-scap_cref_pub-projects-security-oval-suse.linux.enterprise.15.xml"/>]]>
+25:      <![CDATA[<ds:component-ref id="scap_org.open-scap_cref_pub-projects-security-oval-suse.linux.enterprise.15.xml" xlink:href="https://ftp.suse.com/pub/projects/security/oval/suse.linux.enterprise.15.xml"/>]]>
+</screen>
+            </note>
           </step>
           <step>
             <para>
               Run the evaluation using the local files downloaded earlier from
-              remote source.
+              the remote source.
             </para>
 <screen>&prompt.sudo;oscap xccdf eval \
  --local-files ~/scap-files \
@@ -1112,16 +1112,16 @@ ssg-sle15-xccdf-stig-report.html</screen>
           <calloutlist>
             <callout arearefs="oval-files-directory">
               <para>
-                Directory to store downloaded remote resources such OVAL patch
-                files. If you have identified a suitable directory, skip this
-                step.
+                Directory to store downloaded remote resources such as OVAL
+                patch files. If you have identified a suitable directory, skip
+                this step.
               </para>
             </callout>
           </calloutlist>
         </step>
         <step>
           <para>
-            Downloaded the remote resource and save it as a local file.
+            Download the remote resource and save it as a local file.
           </para>
 <screen>&prompt.user;wget -O ~/oval-files/suse.linux.enterprise.15-patch.xml.bz2 \<co
 xml:id="oval-local-file"></co>https://ftp.suse.com/pub/projects/security/oval
@@ -1142,7 +1142,7 @@ xml:id="oval-local-file"></co>https://ftp.suse.com/pub/projects/security/oval
         <step>
           <para>
             Run the evaluation using the local files downloaded earlier from
-            remote source.
+            the remote source.
           </para>
 <screen>&prompt.sudo;oscap oval eval \
 --results sle15-oval-results.xml \
