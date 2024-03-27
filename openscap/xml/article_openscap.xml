@@ -979,9 +979,9 @@ Downloading: https://ftp.suse.com/pub/projects/security/oval/suse.linux.enterpri
             <para>
               Download the remote resource and save it as a local file.
             </para>
-<screen>&prompt.user;wget -O ~/scap-files/pub-projects-security-oval-suse.linux.enterprise.15-patch.xml.bz2 \<co
-xml:id="scap-local-file"></co>https://ftp.suse.com/pub/projects/security/oval/suse.linux.enterprise.15-patch.xml.bz2
-<co xml:id="scap-remote-resource"></co></screen>
+<screen>&prompt.user;wget -O ~/scap-files/pub-projects-security-oval-suse.linux.enterprise.15-patch.xml.bz2<co
+xml:id="scap-local-file"></co> \
+https://ftp.suse.com/pub/projects/security/oval/suse.linux.enterprise.15-patch.xml.bz2<co xml:id="scap-remote-resource"></co></screen>
             <calloutlist>
               <callout arearefs="scap-local-file">
                 <para>
@@ -1118,9 +1118,9 @@ ssg-sle15-xccdf-stig-report.html</screen>
           <para>
             Download the remote resource and save it as a local file.
           </para>
-<screen>&prompt.user;wget -O ~/oval-files/suse.linux.enterprise.15-patch.xml.bz2 \<co
-xml:id="oval-local-file"></co>https://ftp.suse.com/pub/projects/security/oval
-/suse.linux.enterprise.15-patch.xml.bz2<co xml:id="oval-remote-resource"></co></screen>
+<screen>&prompt.user;wget -O ~/oval-files/suse.linux.enterprise.15-patch.xml.bz2<co
+xml:id="oval-local-file"></co> \
+https://ftp.suse.com/pub/projects/security/oval/suse.linux.enterprise.15-patch.xml.bz2<co xml:id="oval-remote-resource"></co></screen>
           <calloutlist>
             <callout arearefs="oval-local-file">
               <para>
