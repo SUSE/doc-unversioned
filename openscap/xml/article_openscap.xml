@@ -1029,20 +1029,15 @@ grep -n "scap_org.open-scap_cref_pub-projects-security-oval-suse.linux.enterpris
 </screen>
             <tip>
               <para>
-                Download and use the specific files that are necessary for your
-                use case, and avoid more generic ones. Being specific about the
-                purpose and the files helps reduce the usage of server
-                resources such as the processor, memory, storage and bandwidth.
-                In addition, smaller file sizes also reduce the time required
-                to complete the evaluation. For example, if you are interested
-                only in the information about patches for &sles; 15, use the
-                file available at
+                Download and use the specific files that are relevant for your
+                &sle; product version, and avoid more generic ones. Being
+                specific about the purpose and the files helps reduce the usage
+                of server resources such as the processor, memory, storage and
+                bandwidth. In addition, smaller file sizes also reduce the time
+                required to complete the evaluation. For example, if you are
+                interested only in &sle; 15 SP 5, use the file available at
                 <link
-xlink:href="https://ftp.suse.com/pub/projects/security/oval/suse.linux.enterprise.server.15-patch.xml.bz2"></link>,
-                instead of using a more generic and resource-intensive file
-                available at
-                <link
-xlink:href="https://ftp.suse.com/pub/projects/security/oval/suse.linux.enterprise.server.15.xml.bz2"></link>.
+xlink:href="https://ftp.suse.com/pub/projects/security/oval/suse.linux.enterprise.15-sp5-patch.xml.bz2"></link>.
               </para>
             </tip>
           </step>
@@ -1161,20 +1156,15 @@ Evaluation done.
 </screen>
           <tip>
             <para>
-              Download and use the specific files that are necessary for your
-              use case, and avoid more generic ones. Being specific about the
-              purpose and the files helps reduce the usage of server resources
-              such as the processor, memory, storage and bandwidth. In
-              addition, smaller file sizes also reduce the time required to
-              complete the evaluation. For example, if you are interested only
-              in the information about patches for &sles; 15, use the file
-              available at
+              Download and use the specific files that are relevant for your
+              &sle; product version, and avoid more generic ones. Being
+              specific about the purpose and the files helps reduce the usage
+              of server resources such as the processor, memory, storage and
+              bandwidth. In addition, smaller file sizes also reduce the time
+              required to complete the evaluation. For example, if you are
+              interested only in &sle; 15 SP 5, use the file available at
               <link
-    xlink:href="https://ftp.suse.com/pub/projects/security/oval/suse.linux.enterprise.server.15-patch.xml.bz2"></link>,
-              instead of using a more generic and resource-intensive file
-              available at
-              <link
-    xlink:href="https://ftp.suse.com/pub/projects/security/oval/suse.linux.enterprise.server.15.xml.bz2"></link>.
+    xlink:href="https://ftp.suse.com/pub/projects/security/oval/suse.linux.enterprise.15-sp5-patch.xml.bz2"></link>.
             </para>
           </tip>
         </step>
