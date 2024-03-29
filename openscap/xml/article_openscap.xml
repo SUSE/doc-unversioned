@@ -1000,14 +1000,14 @@ https://ftp.suse.com/pub/projects/security/oval/suse.linux.enterprise.15-patch.x
                 <emphasis
          role="strong">not</emphasis> arbitrary.
                 Notice the following information in the SCAP source data stream
-                file
+                file available at
                 <filename>/usr/share/xml/scap/ssg/content/ssg-sle15-ds.xml</filename>:
               </para>
 <screen>&prompt.user;cat /usr/share/xml/scap/ssg/content/ssg-sle15-ds.xml | \
-grep -n "scap_org.open-scap_cref_pub-projects-security-oval-suse.linux.enterprise.15.xml"
+grep -n "scap_org.open-scap_cref_pub-projects-security-oval-suse.linux.enterprise.15-patch.xml.bz2"
 
-17:          <![CDATA[<cat:uri name="pub-projects-security-oval-suse.linux.enterprise.15.xml" uri="#scap_org.open-scap_cref_pub-projects-security-oval-suse.linux.enterprise.15.xml"/>]]>
-25:      <![CDATA[<ds:component-ref id="scap_org.open-scap_cref_pub-projects-security-oval-suse.linux.enterprise.15.xml" xlink:href="https://ftp.suse.com/pub/projects/security/oval/suse.linux.enterprise.15.xml"/>]]>
+17:          <![CDATA[<cat:uri name="pub-projects-security-oval-suse.linux.enterprise.15.xml" uri="#scap_org.open-scap_cref_pub-projects-security-oval-suse.linux.enterprise.15-patch.xml.bz2"/>]]>
+25:      <![CDATA[<ds:component-ref id="scap_org.open-scap_cref_pub-projects-security-oval-suse.linux.enterprise.15-patch.xml.bz2" xlink:href="https://ftp.suse.com/pub/projects/security/oval/suse.linux.enterprise.15-patch.xml.bz2"/>]]>
 </screen>
             </note>
           </step>
@@ -1035,7 +1035,7 @@ grep -n "scap_org.open-scap_cref_pub-projects-security-oval-suse.linux.enterpris
                 of server resources such as the processor, memory, storage and
                 bandwidth. In addition, smaller file sizes also reduce the time
                 required to complete the evaluation. For example, if you are
-                interested only in &sle; 15 SP 5, use the file available at
+                interested only in &sle; 15 SP5, use the file available at
                 <link
 xlink:href="https://ftp.suse.com/pub/projects/security/oval/suse.linux.enterprise.15-sp5-patch.xml.bz2"></link>.
               </para>
@@ -1162,7 +1162,7 @@ Evaluation done.
               of server resources such as the processor, memory, storage and
               bandwidth. In addition, smaller file sizes also reduce the time
               required to complete the evaluation. For example, if you are
-              interested only in &sle; 15 SP 5, use the file available at
+              interested only in &sle; 15 SP5, use the file available at
               <link
     xlink:href="https://ftp.suse.com/pub/projects/security/oval/suse.linux.enterprise.15-sp5-patch.xml.bz2"></link>.
             </para>
