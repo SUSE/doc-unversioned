@@ -937,7 +937,7 @@ Downloading: https://ftp.suse.com/pub/projects/security/oval/suse.linux.enterpri
 --- Starting Evaluation —
 ...</screen>
         <para>
-          However, if access to Internet is unavailable at the time of
+          However, if access to the Internet is unavailable at the time of
           evaluation, or is considered a security risk, you can instruct
           &openscap; to use local files instead of remote resources.
         </para>
