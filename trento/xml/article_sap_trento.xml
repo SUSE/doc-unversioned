@@ -34,10 +34,33 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
 <article xml:lang="en" xml:id="article-sap-trento" version="5.1" 
     xmlns="http://docbook.org/ns/docbook"
     xmlns:xi="http://www.w3.org/2001/XInclude"
-    xmlns:xlink="http://www.w3.org/1999/xlink">
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:its="http://www.w3.org/2005/11/its">
   <title>Getting started with &trentopremium;</title>
   <subtitle>&sles4sapreg;</subtitle>
   <info>
+     <!-- History -->
+   <revhistory xml:id="rh-article-trento">
+    <revision><date>2021-12-10</date>
+      <revdescription>
+        <para>
+          Initial version published
+        </para>
+      </revdescription>
+     </revision>
+    </revhistory>
+
+    <!-- Series -->
+    <meta name="series" its:translate="no"></meta>
+
+    <!-- Task -->
+    <meta name="task" its:translate="yes">
+      <phrase>Compliance</phrase>
+      <phrase>High Availability</phrase>
+      <phrase>Monitoring</phrase>
+    </meta>
+
+    <!-- Docmanager -->
     <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
       <dm:bugtracker>
         <dm:url>https://bugzilla.suse.com/enter_bug.cgi</dm:url>
@@ -48,6 +71,20 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       <dm:editurl>https://github.com/SUSE/doc-unversioned/edit/main/trento/xml/</dm:editurl>
       <dm:translation>no</dm:translation>
     </dm:docmanager>
+
+    <!-- Productname & Version -->
+    <meta name="productname" its:translate="no">
+     <productname version="trento">&sles4sap;</productname>
+    </meta>
+
+    <!-- Social Media -->
+    <meta name="title" its:translate="yes">Getting started with &trentopremium;</meta>
+    <meta name="social-descr" its:translate="yes">Introduction to &trentopremium; for &sles4sapa;.</meta>
+
+    <!-- Search -->
+    <meta name="description" its:translate="yes">&trentopremium; is an open cloud native web console that lets
+    &sap; Basis consultants and administrators maintain the OS stack of their &sap; environments.</meta>
+    
     <abstract>
       <para>
        &trentopremium; is an open cloud native web console that aims to help

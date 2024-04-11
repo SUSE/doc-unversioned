@@ -12,10 +12,31 @@
          version="5.0"
          xml:lang="en"
          xmlns:xi="http://www.w3.org/2001/XInclude"
-         xmlns:xlink="http://www.w3.org/1999/xlink">
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xmlns:its="http://www.w3.org/2005/11/its">
   <title>Supported &ha; Solutions by &productname;</title>
   <info>
    <date><?dbtimestamp format="B d, Y" ?></date>
+   <!-- History -->
+   <revhistory xml:id="rh-article-sap-ha-support">
+    <revision><date>2023-03-09</date>
+      <revdescription>
+        <para>
+          Initial version published
+        </para>
+      </revdescription>
+     </revision>
+    </revhistory>
+
+   <!-- Series -->
+    <meta name="series" its:translate="no">Products &amp; Solutions</meta>
+
+   <!-- Task -->
+    <meta name="task" its:translate="yes">
+     <phrase>High Availability</phrase>
+    </meta>
+
+   <!-- Docmanager -->
    <xi:include href="common_copyright_gfdl.xml"/>
     <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
       <dm:bugtracker>
@@ -26,6 +47,19 @@
       </dm:bugtracker>
       <dm:editurl>https://github.com/SUSE/doc-unversioned/edit/main/sap-ha-support/xml/</dm:editurl>
     </dm:docmanager>
+
+    <!-- Productname & Version -->
+    <meta name="productname" its:translate="no">
+     <productname version="sap-ha-support">&productname;</productname>
+    </meta>
+
+    <!-- Social Media -->
+    <meta name="title" its:translate="yes">Supported &ha; solutions by &productnameshort;</meta>
+    <meta name="social-descr" its:translate="yes">Supported &ha; solutions by &productnameshort;.</meta>
+
+    <!-- Search -->
+    <meta name="description" its:translate="yes">An overview of &ha; solutions that &suse; supports for &hana;,
+       &s4hana;, and &nwshort; on &sles; 15.</meta>
 
     <authorgroup>
       <author><personname><firstname>Fabian</firstname><surname>Herschel</surname></personname>
