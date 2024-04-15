@@ -19,7 +19,7 @@
   <!ENTITY trentoagent.prompt   "<prompt xmlns='http://docbook.org/ns/docbook'>&trentoagentprompt; </prompt>">
   <!ENTITY t.server             "Trento Server">
   <!ENTITY t.agent              "Trento Agent">
-  <!ENTITY t.web                "Trento web console">
+  <!ENTITY t.web                "Trento Web console">
   <!ENTITY k8s                  "Kubernetes">
   <!ENTITY rancher.k8s.engine   "Rancher &k8s; Engine">
 ]>
@@ -31,7 +31,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
 
 -->
 
-<article xml:lang="en" xml:id="article-sap-trento" version="5.1" 
+<article xml:lang="en" xml:id="article-sap-trento" version="5.1"
     xmlns="http://docbook.org/ns/docbook"
     xmlns:xi="http://www.w3.org/2001/XInclude"
     xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -44,7 +44,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
     <revision><date>2021-12-10</date>
       <revdescription>
         <para>
-          Initial version published
+          Initial version
         </para>
       </revdescription>
      </revision>
@@ -82,12 +82,12 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
     <meta name="social-descr" its:translate="yes">Introduction to &trentopremium; for &sles4sapa;.</meta>
 
     <!-- Search -->
-    <meta name="description" its:translate="yes">&trentopremium; is an open cloud native web console that lets
+    <meta name="description" its:translate="yes">&trentopremium; is an open cloud native Web console that lets
     &sap; Basis consultants and administrators maintain the OS stack of their &sap; environments.</meta>
-    
+
     <abstract>
       <para>
-       &trentopremium; is an open cloud native web console that aims to help
+       &trentopremium; is an open cloud native Web console that aims to help
        &sap; Basis consultants and administrators to check the configuration, monitor and manage the entire OS stack of their
        &sap; environments, including HA features.
       </para>
@@ -144,7 +144,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
     <para> The <emphasis role="strong">&t.server;</emphasis> is an
       independent, cloud native, distributed system, designed to run
       on a &k8s; cluster.
-      The &t.server; interacts with users via a web front-end.
+      The &t.server; interacts with users via a Web front-end.
     </para>
     <para> The <emphasis role="strong">&t.agent;</emphasis> is a single
       background process (<systemitem>trento agent</systemitem>) running
@@ -223,8 +223,8 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
             <listitem>
               <para> If you do not have a &k8s; enterprise solution but you still want
                 to try &trentopremium;, &suse; Rancher's K3s provides you with an easy
-                way to get started. But keep in mind that K3s default installation process 
-                deploys a single node &k8s; cluster, which is not a recommended 
+                way to get started. But keep in mind that K3s default installation process
+                deploys a single node &k8s; cluster, which is not a recommended
                 setup for a stable Trento production instance.
                </para>
             </listitem>
@@ -293,7 +293,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         <listitem>
           <para>
             <remark>toms 2021-12-06: do we have UDP here too?</remark>
-            From any &t.agent; host, the web component of the &t.server; must be reachable via HTTP (port TCP/80) or via HTTPS (port TCP/443) if SSL is enabled.
+            From any &t.agent; host, the Web component of the &t.server; must be reachable via HTTP (port TCP/80) or via HTTPS (port TCP/443) if SSL is enabled.
           </para>
         </listitem>
         <listitem>
@@ -307,7 +307,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
           </para>
         </listitem>
         <listitem>
-          <para>The &sap; Basis administrator needs access to the web component of the &t.server; via HTTP (port TCP/80) or via HTTPS (port TCP/443) if SSL is enabled. </para>
+          <para>The &sap; Basis administrator needs access to the Web component of the &t.server; via HTTP (port TCP/80) or via HTTPS (port TCP/443) if SSL is enabled. </para>
         </listitem>
       </itemizedlist>
     </section>
@@ -351,7 +351,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       <listitem>
         <para>
           <replaceable>ADMIN_PASSWORD</replaceable>: the password that the &sap; administrator
-          will use to access the web console. It should have at least 8 characters. 
+          will use to access the Web console. It should have at least 8 characters.
         </para>
       </listitem>
     </itemizedlist>
@@ -406,7 +406,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
           linkend="sec-trento-server-requirements" /> for minimum requirements)
         and follow steps in <xref linkend="pro-trento-manually-installing" /> to
         get &t.server; up and running. </para>
-     
+
      <important>
       <title>Deploying Trento on K3s</title>
       <para>
@@ -592,14 +592,14 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
 
     <section xml:id="sec-trento-enabling-ssl">
       <title>Enabling SSL</title>
-      <para> Ingress may be used to provide SSL termination for the web
+      <para> Ingress may be used to provide SSL termination for the Web
         component of &t.server;. This would allow to encrypt the communication from
         the agent to the server, which is already secured by the corresponding
-        API key. It would also allow HTTPS access to the web console with trusted certificates.
+        API key. It would also allow HTTPS access to the Web console with trusted certificates.
       </para>
       <para>
         Configuration must be done in the tls section of the <filename>values.yaml</filename>
-        file of the chart of the &t.server; web component.
+        file of the chart of the &t.server; Web component.
       </para>
       <para> For details on the required Ingress setup and configuration,
         refer to: <link
@@ -632,7 +632,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
     <procedure>
       <step>
         <para>
-          Open the URL of the Trento web console (<uri>http://<replaceable>TRENTO_SERVER_HOSTNAME</replaceable></uri>).
+          Open the URL of the Trento Web console (<uri>http://<replaceable>TRENTO_SERVER_HOSTNAME</replaceable></uri>).
           It prompts you for a user name and password:
         </para>
         <!-- add login of Trento Server -->
@@ -807,7 +807,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         </figure>
       </step>
       <step xml:id="st-trento-checks-settings">
-        <para>Click the <guimenu>Settings</guimenu> button to change the cluster settings of the respective cluster. 
+        <para>Click the <guimenu>Settings</guimenu> button to change the cluster settings of the respective cluster.
           For checks to be executed, a checks selection must be made. Select the checks to be executed and click the button <guimenu>Select Checks for Execution</guimenu>.
           See <xref linkend="fig-pacemaker-clustersettings-checks"/>:
         </para>
@@ -875,7 +875,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         <para>
          For each not-met expectation, there will be a detailed view providing information about it: what facts were gathered,
          what values were expected and what was the result of the evaluation. This will help users understand better why a
-         certain configuration check is failing: 
+         certain configuration check is failing:
         </para>
         <figure xml:id="fig-non-met-expectation-detail">
           <title>Non-met expectation detail view</title>
@@ -897,7 +897,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
   <section xml:id="sec-trento-use-webconsole">
     <title>Using &t.web;</title>
     <para>
-      When you access the Trento web console for the first time, it asks
+      When you access the Trento Web console for the first time, it asks
       to accept the license. Click <guimenu>Accept</guimenu> to continue.
     </para>
     <para>
@@ -960,7 +960,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         <formalpara>
           <title><guimenu>About</guimenu></title>
           <para>Shows the Trento flavor, the current server version, a link to
-            the GitHub repository of the Trento web component, and the number of
+            the GitHub repository of the Trento Web component, and the number of
             registered &sles4sap;&nbsp;subscriptions that has been discovered. </para>
         </formalpara>
       </listitem>
@@ -970,7 +970,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       <title>Getting the global health state</title>
       <para>
         The dashboard allows you to determine at a glance the health status of your &sap; environment.
-        It is the home page of the Trento web console, and you can go back to it any time by clicking on <guimenu>Dashboard</guimenu> in the left sidebar.
+        It is the home page of the Trento Web console, and you can go back to it any time by clicking on <guimenu>Dashboard</guimenu> in the left sidebar.
       </para>
       <para>
         The health status of a registered &sap; system is the compound of its health status at
@@ -1062,7 +1062,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         </varlistentry>
       </variablelist>
 <para>
-The health boxes in the dashboard are clickable. By clicking on one particular box, you filter the dashboard by systems with the corresponding health status. In large SAP environments, this feature facilitates the SAP administrator knowing which systems are in a given status. 
+The health boxes in the dashboard are clickable. By clicking on one particular box, you filter the dashboard by systems with the corresponding health status. In large SAP environments, this feature facilitates the SAP administrator knowing which systems are in a given status.
 </para>
       <para>
         The icons representing the health summary of a particular layer contain links to the views in the Trento console that can help determine where an issue is coming from:
@@ -1098,7 +1098,7 @@ The health boxes in the dashboard are clickable. By clicking on one particular b
             <para>Link to the corresponding &sap; System Details view.</para>
           </formalpara>
          </listitem>
-       </itemizedlist> 
+       </itemizedlist>
 
       <remark>tom 2023-01-16: Do we still have a grey state?</remark>
       <para>
@@ -1185,7 +1185,7 @@ The health boxes in the dashboard are clickable. By clicking on one particular b
             <imagedata width="80%" fileref="saptune-details-view.png" />
           </imageobject>
         </mediaobject>
-      </figure>   
+      </figure>
               </listitem>
                <listitem>
                 <para>Checks results summary section: as soon as host specific checks become available in the catalog, this section
@@ -1312,10 +1312,10 @@ The health boxes in the dashboard are clickable. By clicking on one particular b
                  section. When multiple systems share the same cluster, there will be a tab for each system in the cluster and
                  you can scroll left and right to go through the different systems.
                 </para>
-              </listitem>                        
+              </listitem>
               <listitem>
-                <para>A <guimenu>Check Result</guimenu> section, which will become enabled as soon as 
-                 configuration checks for this type of clusters are added to the catalog. 
+                <para>A <guimenu>Check Result</guimenu> section, which will become enabled as soon as
+                 configuration checks for this type of clusters are added to the catalog.
                 </para>
               </listitem>
               <listitem>
@@ -1325,13 +1325,13 @@ The health boxes in the dashboard are clickable. By clicking on one particular b
               </listitem>
               <listitem>
                 <para>A <guimenu>Node details</guimenu> section showing the following for each
-                 node in the cluster: the host name, the role, the virtual IP address and, in case of 
+                 node in the cluster: the host name, the role, the virtual IP address and, in case of
                  resource managed filesystems, the full mounting path. If you click on <guimenu>Details</guimenu>,
                  you can view the attributes and resources associated to that particular role. Close this view with
-                 the <keycap function="escape"/> key.</para> 
+                 the <keycap function="escape"/> key.</para>
                  <para>
                   This section is system specific. It will show the information corresponding to the system selected
-                  in the multi-tab section above. 
+                  in the multi-tab section above.
                 </para>
               </listitem>
               <listitem>
@@ -1483,8 +1483,8 @@ The health boxes in the dashboard are clickable. By clicking on one particular b
 
     <section xml:id="sec-trento-cleanup-hosts">
       <title>Cleaning up hosts and instances</title>
-     <para> 
-    When the heartbeat of an agent fails, an option to clean-up the corresponding host will show up both in the 
+     <para>
+    When the heartbeat of an agent fails, an option to clean-up the corresponding host will show up both in the
     <guimenu>Hosts</guimenu> overview and the corresponding <guimenu>Host details</guimenu> view.
      </para>
            <figure>
@@ -1979,7 +1979,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
           <itemizedlist xml:id="lst-trento-web-pace-cluster-settings">
             <title><guimenu>Cluster settings</guimenu></title>
             <listitem>
-              <para><guimenu>Connection settings</guimenu> tab: 
+              <para><guimenu>Connection settings</guimenu> tab:
                 set the user that the &t.server; will use to connect
                 via SSH to the cluster nodes to perform the HA
                 configuration checks.
@@ -2005,7 +2005,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
                   <imageobject>
                     <imagedata fileref="trento-web-cluster-settings-hana_cluster.png" width="70%"/>
                   </imageobject>
-                  
+
                 </mediaobject>
               </informalfigure>
             </listitem>
@@ -2302,7 +2302,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
       <itemizedlist>
                 <listitem>
           <para>Before updating &t.server; ensure that all the &t.agent;s in the environment are supported by the target version.
-           See section <xref linkend="sec-trento-compatibility-matrix" /> for details. 
+           See section <xref linkend="sec-trento-compatibility-matrix" /> for details.
           </para>
         </listitem>
         <listitem>
@@ -2478,8 +2478,8 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
            </para>
           </listitem>
         </itemizedlist>
-  </section> 
- 
+  </section>
+
   <section xml:id="sec-trento-problemanalysis">
     <title>Problem Analysis</title>
     <para>
@@ -2495,7 +2495,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
       <section>
         <title>Trento Support Plugin</title>
         <para> The Trento support plugin automates the collection of logs and relevant
-          runtime information on the server side. Using the plugin requires a host 
+          runtime information on the server side. Using the plugin requires a host
          with the following setup:</para>
                    <itemizedlist>
           <listitem>
@@ -2605,7 +2605,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
     <section>
       <title>Pods descriptions and logs</title>
       <para> In additon to the output of the Trento Support Plugin and the Dump Scenario script, the descriptions and logs of the
-       pods of the &t.server; can also be useful for analysis and troubleshooting purposes. These descriptions and logs can be 
+       pods of the &t.server; can also be useful for analysis and troubleshooting purposes. These descriptions and logs can be
        easily retrieved with the <command>kubectl</command> command, for which you need a host where command <command>kubectl</command>
        is installed and connected to the K8s cluster where &t.server; is running.</para>
       <procedure>
@@ -2633,7 +2633,7 @@ trento-server-rabbitmq-0</screen>
         </step>
       </procedure>
     </section>
-     
+
     </section>
 
     <section>
@@ -2784,7 +2784,7 @@ trento-server-rabbitmq-0</screen>
         <para>For changes in the Trento Helm Chart, visit <link xlink:href="https://github.com/trento-project/helm-charts/releases"/>.</para>
       </listitem>
       <listitem>
-        <para>For changes in the &t.server; web component, visit <link xlink:href="https://github.com/trento-project/web/releases"/>.</para>
+        <para>For changes in the &t.server; Web component, visit <link xlink:href="https://github.com/trento-project/web/releases"/>.</para>
       </listitem>
           <listitem>
         <para>For changes in the &t.server; old checks engine component (runner), visit <link xlink:href="https://github.com/trento-project/runner/releases"/>.</para>
@@ -2803,11 +2803,11 @@ trento-server-rabbitmq-0</screen>
       <varlistentry xml:id="trento-version-220">
         <term>Version 2.2.0 (released on 2023/12/04)</term>
         <listitem>
-          <para> Consisting of Helm chart 2.2.0, web component 2.2.0, checks engine
+          <para> Consisting of Helm chart 2.2.0, Web component 2.2.0, checks engine
             (wanda) 1.2.0 and agent 2.2.0.</para>
           <itemizedlist>
             <listitem>
-              <para>saptune web integration.</para>
+              <para>saptune Web integration.</para>
             </listitem>
             <listitem>
               <para>Intance clean-up capabilities.</para>
@@ -2821,7 +2821,7 @@ trento-server-rabbitmq-0</screen>
       <varlistentry xml:id="trento-version-210">
         <term>Version 2.1.0 (released on 2023/08/02)</term>
         <listitem>
-          <para> Consisting of Helm chart 2.1.0, web component 2.1.0, checks engine
+          <para> Consisting of Helm chart 2.1.0, Web component 2.1.0, checks engine
             (wanda) 1.1.0 and agent 2.1.0.</para>
           <itemizedlist>
             <listitem>
@@ -2846,7 +2846,7 @@ trento-server-rabbitmq-0</screen>
       <varlistentry xml:id="trento-version-200">
         <term>Version 2.0.0 (released on 2023/04/26)</term>
         <listitem>
-          <para>Consisting of Helm chart 2.0.0, web component 2.0.0, checks engine
+          <para>Consisting of Helm chart 2.0.0, Web component 2.0.0, checks engine
             (wanda) 1.0.0 and agent 2.0.0.</para>
           <itemizedlist>
             <listitem>
@@ -2862,7 +2862,7 @@ trento-server-rabbitmq-0</screen>
               <para>Addition of VMware to the list of known platforms.</para>
             </listitem>
             <listitem>
-              <para>Versioned external APIs for both the web and the checks
+              <para>Versioned external APIs for both the Web and the checks
                 engine (wanda) components. The full list of available APIs can
                 be found at <link
                   xlink:href="https://www.trento-project.io/web/swaggerui/" />
@@ -2876,7 +2876,7 @@ trento-server-rabbitmq-0</screen>
       <varlistentry xml:id="trento-version-120">
         <term>Version 1.2.0 (released on 2022/11/04)</term>
         <listitem>
-          <para> Consisting of Helm chart 1.2.0, web component 1.2.0, checks engine (runner) 1.1.0 and
+          <para> Consisting of Helm chart 1.2.0, Web component 1.2.0, checks engine (runner) 1.1.0 and
             agent 1.1.0.</para>
           <itemizedlist>
             <listitem>
@@ -2895,12 +2895,12 @@ trento-server-rabbitmq-0</screen>
       <varlistentry xml:id="trento-version-110">
         <term>Version 1.1.0 (released on 2022/07/14)</term>
         <listitem>
-          <para> Consisting of Helm chart 1.1.0, web component 1.1.0, checks engine (runner) 1.0.1 and
+          <para> Consisting of Helm chart 1.1.0, Web component 1.1.0, checks engine (runner) 1.0.1 and
             agent 1.1.0.</para>
           <itemizedlist>
             <listitem>
               <para>Fix for major bug in the checks engine that prevented the
-                web component to load properly.</para>
+                Web component to load properly.</para>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -2908,11 +2908,11 @@ trento-server-rabbitmq-0</screen>
       <varlistentry xml:id="trento-version-100">
         <term>Version 1.0.0 (general availability, released on 2022/04/29)</term>
         <listitem>
-          <para> Consisting of Helm chart 1.0.0, web component 1.0.0, checks engine (runner) 1.0.0 and
+          <para> Consisting of Helm chart 1.0.0, Web component 1.0.0, checks engine (runner) 1.0.0 and
             agent 1.0.0. </para>
           <itemizedlist>
             <listitem>
-              <para>Clean, simple web console designed with SAP basis in mind.
+              <para>Clean, simple Web console designed with SAP basis in mind.
                 It reacts in real time to changes happening in the backend
                 environment thanks to the event-driven technology behind
                 it.</para>
