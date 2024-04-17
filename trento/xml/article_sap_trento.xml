@@ -897,7 +897,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
   <section xml:id="sec-trento-use-webconsole">
     <title>Using &t.web;</title>
     <para>
-      When you access the Trento Web console for the first time, it asks
+      When you access the &t.web; for the first time, it asks
       to accept the license. Click <guimenu>Accept</guimenu> to continue.
     </para>
     <para>
@@ -970,7 +970,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       <title>Getting the global health state</title>
       <para>
         The dashboard allows you to determine at a glance the health status of your &sap; environment.
-        It is the home page of the Trento Web console, and you can go back to it any time by clicking on <guimenu>Dashboard</guimenu> in the left sidebar.
+        It is the home page of the &t.web;, and you can go back to it any time by clicking on <guimenu>Dashboard</guimenu> in the left sidebar.
       </para>
       <para>
         The health status of a registered &sap; system is the compound of its health status at
