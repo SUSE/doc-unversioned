@@ -2290,6 +2290,14 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
     </section>
   </section>
 -->
+
+  <section xml:id="sec-trento-rotating-apikeys">
+    <title>Rotating API keys</title>
+    <remark>toms 2024-04-18 (change#7)</remark>
+    <para>TBD</para>
+  </section>
+
+
   <section xml:id="sec-trento-updating-trentoserver">
     <title>Updating &t.server;</title>
     <para> The procedure to update the &t.server; depends on how it was installed.
