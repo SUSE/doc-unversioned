@@ -22,7 +22,7 @@
     <revision><date>2023-03-09</date>
       <revdescription>
         <para>
-          Initial published
+          Initial version
         </para>
       </revdescription>
      </revision>
@@ -49,9 +49,11 @@
     </dm:docmanager>
 
     <!-- Productname & Version -->
+    <!--
     <meta name="productname" its:translate="no">
      <productname version="sap-ha-support">&productname;</productname>
     </meta>
+    -->
 
     <!-- Social Media -->
     <meta name="title" its:translate="yes">Supported &ha; solutions by &productnameshort;</meta>

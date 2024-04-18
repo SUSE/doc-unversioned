@@ -73,9 +73,11 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
     </dm:docmanager>
 
     <!-- Productname & Version -->
+    <!--
     <meta name="productname" its:translate="no">
      <productname version="trento">&sles4sap;</productname>
     </meta>
+    -->
 
     <!-- Social Media -->
     <meta name="title" its:translate="yes">Getting started with &trentopremium;</meta>
