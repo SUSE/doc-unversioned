@@ -16,18 +16,18 @@
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink">
   <info>
-    <title>Language stack &bci;s</title>
+    <title>Development Stack &bci;s</title>
   </info>
   <para>
-    Language stack &bcia;s are built on top of the &bcia;-Base. Each container
+    Development Stack &bcia;s are built on top of the &bcia;-Base. Each container
     image comes with the &zypper; stack and the free
     <literal>SLE_BCI</literal> repository. Additionally, each image includes
     most common tools for building and deploying applications in the specific
     language environment. This includes tools like a compiler or interpreter as
-    well as the language specific package manager.
+    well as the language-specific package manager.
   </para>
   <para>
-    Below is an overview of the language stack &bcia;s available in the
+    Below is an overview of the Development Stack &bcia;s available in the
     <link xlink:href="https://registry.suse.com">&suseregistry;</link>.
   </para>
   <variablelist>

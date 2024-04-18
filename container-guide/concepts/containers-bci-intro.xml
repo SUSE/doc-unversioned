@@ -31,8 +31,8 @@
     </listitem>
     <listitem>
       <para>
-        Language stack &bcia;s provide minimal environments for developing and
-        deploying applications in specific programming languages.
+        Development Stack &bcia;s provide minimal environments for developing
+        and deploying applications in specific programming languages.
       </para>
     </listitem>
   </itemizedlist>
@@ -98,7 +98,7 @@
             &bcia;s are designed to provide drop-in replacements for popular
             container images available on hub.docker.com. You can use the
             general-purpose &bcia;s and the tools they put at your disposal to
-            create custom container images, while the language stack &bcia;s
+            create custom container images, while the Development Stack &bcia;s
             provide a foundation and the required tooling for building
             containerized applications.
           </para>

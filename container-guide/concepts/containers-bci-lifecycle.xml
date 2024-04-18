@@ -38,12 +38,12 @@
     set to <literal>techpreview</literal> in the <literal>bci-micro</literal>
     container image, indicating that the image still has the tech preview
     status. The <literal>bci-base</literal> container image, on the other hand,
-    has full L3 support. Unlike like the general purpose &bcia;s, the language
-    stack &bcia;s may not follow the lifecycle of the &slsa; distribution: they
-    are supported as long as the respective language stack receives support. In
-    other words, new versions of &bcia;s (indicated by the OCI tags) may be
-    released during the lifecycle of a &slsa; Service Pack, while older
-    versions may become unsupported. Refer to
+    has full L3 support. Unlike like the general purpose &bcia;s, the
+    Development Stack &bcia;s may not follow the lifecycle of the &slsa;
+    distribution: they are supported as long as the respective language stack
+    receives support. In other words, new versions of &bcia;s (indicated by the
+    OCI tags) may be released during the lifecycle of a &slsa; Service Pack,
+    while older versions may become unsupported. Refer to
     <link xlink:href="https://suse.com/lifecycle"/> to find out whether the
     container in question is still under support.
   </para>
