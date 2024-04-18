@@ -114,6 +114,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       consisting of two main components, the &t.server; and the &t.agent;.
       Both Trento variants provide the following features:
     </para>
+    <remark>toms 2024-04-18 (change#9): maybe a reference here about improved HANA multitenant support?</remark>
     <!--
       from https://confluence.suse.com/x/uoOyN
     -->
