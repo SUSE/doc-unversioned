@@ -177,6 +177,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
     <!--
       Most ist taken from https://confluence.suse.com/x/uoOyN
     -->
+    <remark>toms 2024-04-18 (change#3): non-K8s based installation of Trento Server</remark>
     <para>Trento Premium is available at no extra cost for SLES for SAP subscribers. Particularly, Trento's two main components have the following product lifecycles:</para>
 
     <variablelist>
@@ -335,7 +336,8 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
 
   <section xml:id="sec-trento-installing-trentoserver">
     <title>Installing &t.server;</title>
-<!--    https://confluence.suse.com/display/SAP/Installing+Trento+Premium-->
+    <remark>toms 2024-04-18 (change#3): non-K8s based installation of Trento Server</remark>
+
     <important>
       <title>Expect changes in the installation procedure</title>
       <para>
@@ -357,6 +359,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         </para>
       </listitem>
     </itemizedlist>
+
 
     <!--  -->
     <section xml:id="sec-trento-install-trentoserver-on-existing-k8s-cluster">
