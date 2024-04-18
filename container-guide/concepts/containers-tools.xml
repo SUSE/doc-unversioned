@@ -36,7 +36,7 @@
       and certified &bci;s. All images in the &suseregistry;
       are regularly rebuilt to include updates and fixes. The &suseregistry;'s
       Web user interface lists a subset of the available images: Base Container
-      Images, Language Container Images, Application Container Images, &sles; Images, and Releases Out of General Support.
+      Images, Development Stack Container Images, Application Container Images, &sles; Images, and Releases Out of General Support.
       The Web UI also provides additional information for each image, including
       release date, support level, size, digest of the images and packages
       inside the image.
