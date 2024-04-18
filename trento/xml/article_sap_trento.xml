@@ -898,6 +898,8 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
 
   <section xml:id="sec-trento-use-webconsole">
     <title>Using &t.web;</title>
+    <remark>toms 2024-04-18 (change#6): Enhanced Checks Catalog view with additional
+      filtering capabilities</remark>
     <para>
       When you access the &t.web; for the first time, it asks
       to accept the license. Click <guimenu>Accept</guimenu> to continue.
