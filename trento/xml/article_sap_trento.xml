@@ -122,7 +122,12 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         <para>A simplified, reactive web UI targeting &sap; admins </para>
       </listitem>
       <listitem>
-        <para>Automated discovery of &sap; Systems, &sap; Instances,
+        <para>
+          <remark>toms 2024-04-18: Needs to be updated?
+            Revamp of HANA cluster discovery to include HANA scale-out clusters,
+            diskless SBD clusters and maintenance status.
+          </remark>
+          Automated discovery of &sap; Systems, &sap; Instances,
           &hana; clusters and ASCS/ERS clusters</para>
       </listitem>
       <listitem>
