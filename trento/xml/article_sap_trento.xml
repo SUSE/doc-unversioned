@@ -313,7 +313,6 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         </listitem>
       </itemizedlist>
     </section>
-
     <section xml:id="sec-trento-installation-prerequisites">
       <title>Installation prerequisites</title>
       <itemizedlist>
@@ -330,6 +329,10 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
           </formalpara>
         </listitem>
       </itemizedlist>
+    </section>
+    <section xml:id="sec-trento-software-updates">
+      <title>Available software updates</title>
+      <para>TBD</para>
     </section>
   </section>
 
