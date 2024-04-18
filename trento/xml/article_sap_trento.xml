@@ -335,6 +335,9 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
 
   <section xml:id="sec-trento-installing-trentoserver">
     <title>Installing &t.server;</title>
+    <remark>toms 2024-04-18 (change#4): rewrite completely this section
+    non-K8s based installation of Trento Server, manual and automated with Ansible playbook
+    </remark>
 <!--    https://confluence.suse.com/display/SAP/Installing+Trento+Premium-->
     <important>
       <title>Expect changes in the installation procedure</title>
