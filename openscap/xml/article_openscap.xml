@@ -878,6 +878,314 @@
         </para>
       </example>
     </sect2>
+
+    <sect2 xml:id="openscap-external-remote-resources-eval">
+      <title>Using external or remote resources for scanning</title>
+      <para>
+        SCAP content may reference external resources. For example, the &ssg;
+        uses an external OVAL file to check whether the system is up to date
+        and patched against known security vulnerabilities. However, &openscap;
+        can handle remote resources differently, based on the options used
+        while invoking the <command>oscap</command> command. In addition, you
+        can use strategies like downloading specific remote resources in
+        advance, and pointing the &openscap; tool towards the downloaded
+        resources while invoking it.
+      </para>
+      <sect3>
+        <title>Default warning for remote resources by &openscap; while performing evaluation</title>
+        <para>
+          While evaluating SCAP content with external resources, the &openscap;
+          tool displays a <emphasis role="strong">warning</emphasis>. For
+          example, &openscap; displays the following warning while performing
+          the default evaluation of a system based on the &ssg;:
+        </para>
+<screen>&prompt.sudo;oscap xccdf eval \
+--profile xccdf_org.ssgproject.content_profile_stig \
+--results ssg-sle15-xccdf-stig-results.xml \
+/usr/share/xml/scap/ssg/content/ssg-sle15-ds.xml
+
+WARNING: Datastream component 'scap_org.open-scap_cref_pub-projects-security-oval-suse.linux.enterprise.15-
+patch.xml.bz2' points out to the remote 'https://ftp.suse.com/pub/projects/security/oval/suse.linux.enterprise.
+15-patch.xml.bz2'. Use '--fetch-remote-resources' option to download it.
+
+WARNING: Skipping 'https://ftp.suse.com/pub/projects/security/oval/suse.linux.enterprise.15-patch.xml.bz2' file
+which is referenced from datastream
+
+WARNING: Skipping ./pub-projects-security-oval-suse.linux.enterprise.15-patch.xml.bz2 file which is referenced
+from XCCDF content</screen>
+        <para>
+          The following sections describe certain strategies to force
+          &openscap; to fetch remote resources in real time, or download them
+          in advance and use for evaluation and scanning the system.
+        </para>
+      </sect3>
+      <sect3 xml:id="openscap-fetching-remote-resource">
+        <title>Fetching remote resources for evaluation</title>
+        <para>
+          If you trust your local content and the remote content it references,
+          you can use the <option>--fetch-remote-resources</option> option to
+          automatically download it when invoking the &openscap; tool.
+        </para>
+<screen>&prompt.sudo;oscap xccdf eval \
+--fetch-remote-resources \
+--profile xccdf_org.ssgproject.content_profile_stig \
+--results ssg-sle15-xccdf-stig-results.xml \
+/usr/share/xml/scap/ssg/content/ssg-sle15-ds.xml
+
+Downloading: https://ftp.suse.com/pub/projects/security/oval/suse.linux.enterprise.15-patch.xml.bz2 ... ok
+
+--- Starting Evaluation —
+...</screen>
+        <para>
+          However, if access to the Internet is unavailable at the time of
+          evaluation, or is considered a security risk, you can instruct
+          &openscap; to use local files instead of remote resources.
+        </para>
+      </sect3>
+      <sect3 xml:id="openscap-downloading-saving-remote-resource">
+        <title>Downloading and saving remote resources locally for evaluation</title>
+        <para>
+          On systems without Internet access, or in security sensitive
+          deployments where &openscap; cannot connect to the Internet, download
+          the remote content using other tools and save it locally. You can
+          then pass it to &openscap; as a local file using the
+          <option>--local-files</option> option, instead of the
+          <option>--fetch-remote-resources</option> option.
+        </para>
+        <para>
+          For example, to prevent &openscap; from accessing the Internet but
+          still use the patch file
+          <link
+         xlink:href="https://ftp.suse.com/pub/projects/security/oval/suse.linux.enterprise.15-patch.xml.bz2"></link>,
+          perform the following procedure.
+        </para>
+        <procedure>
+          <step>
+            <para>
+              <emphasis>(Optional)</emphasis> Create a directory for storing
+              the downloaded remote resources.
+            </para>
+<screen>&prompt.user;mkdir ~/scap-files <co xml:id="scap-files-directory"></co></screen>
+            <calloutlist>
+              <callout arearefs="scap-files-directory">
+                <para>
+                  Directory to store downloaded remote resources. If you have
+                  identified a suitable directory, skip this step.
+                </para>
+              </callout>
+            </calloutlist>
+          </step>
+          <step>
+            <para>
+              Download the remote resource and save it as a local file.
+            </para>
+<screen>&prompt.user;wget -O ~/scap-files/pub-projects-security-oval-suse.linux.enterprise.15-patch.xml.bz2<co
+xml:id="scap-local-file"></co> \
+https://ftp.suse.com/pub/projects/security/oval/suse.linux.enterprise.15-patch.xml.bz2<co xml:id="scap-remote-resource"></co></screen>
+            <calloutlist>
+              <callout arearefs="scap-local-file">
+                <para>
+                  The path to the locally saved file.
+                </para>
+              </callout>
+              <callout arearefs="scap-remote-resource">
+                <para>
+                  The remote resource to be downloaded and saved locally.
+                </para>
+              </callout>
+            </calloutlist>
+            <note>
+              <para>
+                In this example, the name of the local file is
+                <emphasis
+         role="strong">not</emphasis> arbitrary.
+                Notice the following information in the SCAP source data stream
+                file available at
+                <filename>/usr/share/xml/scap/ssg/content/ssg-sle15-ds.xml</filename>:
+              </para>
+<screen>&prompt.user;cat /usr/share/xml/scap/ssg/content/ssg-sle15-ds.xml | \
+grep -n "scap_org.open-scap_cref_pub-projects-security-oval-suse.linux.enterprise.15-patch.xml.bz2"
+
+17:          <![CDATA[<cat:uri name="pub-projects-security-oval-suse.linux.enterprise.15.xml" uri="#scap_org.open-scap_cref_pub-projects-security-oval-suse.linux.enterprise.15-patch.xml.bz2"/>]]>
+25:      <![CDATA[<ds:component-ref id="scap_org.open-scap_cref_pub-projects-security-oval-suse.linux.enterprise.15-patch.xml.bz2" xlink:href="https://ftp.suse.com/pub/projects/security/oval/suse.linux.enterprise.15-patch.xml.bz2"/>]]>
+</screen>
+            </note>
+          </step>
+          <step>
+            <para>
+              Run the evaluation using the local files downloaded earlier from
+              the remote source.
+            </para>
+<screen>&prompt.sudo;oscap xccdf eval \
+ --local-files ~/scap-files \
+ --profile xccdf_org.ssgproject.content_profile_stig \
+ --results ssg-sle15-xccdf-stig-results.xml \
+ /usr/share/xml/scap/ssg/content/ssg-sle15-ds.xml
+
+ WARNING: Using local file '~/scap-files/pub-projects-security-oval-suse.linux.enterprise.15-patch.xml.bz2'
+ instead of 'https://ftp.suse.com/pub/projects/security/oval/suse.linux.enterprise.15-patch.xml.bz2'
+
+ --- Starting Evaluation —
+</screen>
+            <tip>
+              <para>
+                Download and use the specific files that are relevant for your
+                &sle; product version, and avoid more generic ones. Being
+                specific about the purpose and the files helps reduce the usage
+                of server resources such as the processor, memory, storage and
+                bandwidth. In addition, smaller file sizes also reduce the time
+                required to complete the evaluation. For example, if you are
+                interested only in &sle; 15 SP5, use the file available at
+                <link
+xlink:href="https://ftp.suse.com/pub/projects/security/oval/suse.linux.enterprise.15-sp5-patch.xml.bz2"></link>.
+              </para>
+            </tip>
+          </step>
+          <step>
+            <para>
+              <emphasis>Optionally</emphasis>, you can generate an HTML report
+              from the XML results file.
+            </para>
+<screen>&prompt.sudo;oscap xccdf generate report ssg-sle15-xccdf-stig-results.xml &gt;
+ssg-sle15-xccdf-stig-report.html</screen>
+            <tip>
+              <para>
+                You can generate an HTML report directly using the
+                <command>oscap xccdf eval --report</command> option, but
+                separating the scan and the HTML report generation leads to
+                less usage of server resources.
+              </para>
+            </tip>
+          </step>
+        </procedure>
+      </sect3>
+    </sect2>
+
+    <sect2 xml:id="openscap-scanning-audits-oval-files">
+      <title>Scanning and auditing systems using OVAL files</title>
+      <para>
+        Using the OVAL content files for &sle; products, you can assess your
+        &sle; systems and generate reports on the RPM package names and
+        versions that are known to be affected by security issues in published
+        CVEs.
+      </para>
+      <para>
+        The OVAL data provided by &suse; includes the following:
+      </para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            The patch-style OVAL data, which expresses all security updates on
+            a patch level. These can include multiple CVEs per patch.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            The vulnerability OVAL data, which expresses security
+            vulnerabilities on a CVE level.
+          </para>
+        </listitem>
+      </itemizedlist>
+      <para>
+        For detailed information on OVAL support provided by &suse;, refer to
+        <link xlink:href="https://www.suse.com/support/security/oval/"></link>.
+      </para>
+      <para>
+        You can download OVAL files provided by &suse; from
+        <link
+        xlink:href="https://ftp.suse.com/pub/projects/security/oval/"></link>.
+        As a best practice for scanning and auditing systems using OVAL files,
+        perform the following procedure:
+      </para>
+      <procedure>
+        <step>
+          <para>
+            <emphasis>(Optional)</emphasis> Create a directory for downloading
+            and storing remote resources.
+          </para>
+<screen>&prompt.user;mkdir ~/oval-files <co xml:id="oval-files-directory"></co></screen>
+          <calloutlist>
+            <callout arearefs="oval-files-directory">
+              <para>
+                Directory to store downloaded remote resources such as OVAL
+                patch files. If you have identified a suitable directory, skip
+                this step.
+              </para>
+            </callout>
+          </calloutlist>
+        </step>
+        <step>
+          <para>
+            Download the remote resource and save it as a local file.
+          </para>
+<screen>&prompt.user;wget -O ~/oval-files/suse.linux.enterprise.15-patch.xml.bz2<co
+xml:id="oval-local-file"></co> \
+https://ftp.suse.com/pub/projects/security/oval/suse.linux.enterprise.15-patch.xml.bz2<co xml:id="oval-remote-resource"></co></screen>
+          <calloutlist>
+            <callout arearefs="oval-local-file">
+              <para>
+                The path to the locally saved file.
+              </para>
+            </callout>
+            <callout arearefs="oval-remote-resource">
+              <para>
+                The remote resource to be downloaded and saved locally.
+              </para>
+            </callout>
+          </calloutlist>
+        </step>
+        <step>
+          <para>
+            Run the evaluation using the local files downloaded earlier from
+            the remote source.
+          </para>
+<screen>&prompt.sudo;oscap oval eval \
+--results sle15-oval-results.xml \
+~/oval-files/suse.linux.enterprise.15-patch.xml.bz2 \
+
+Definition oval:org.opensuse.security:def:45435: false
+Definition oval:org.opensuse.security:def:45434: false
+Definition oval:org.opensuse.security:def:45433: false
+Definition oval:org.opensuse.security:def:45432: false
+Definition oval:org.opensuse.security:def:45431: false
+Definition oval:org.opensuse.security:def:45430: false
+Definition oval:org.opensuse.security:def:45429: false
+...
+
+Evaluation done.
+</screen>
+          <tip>
+            <para>
+              Download and use the specific files that are relevant for your
+              &sle; product version, and avoid more generic ones. Being
+              specific about the purpose and the files helps reduce the usage
+              of server resources such as the processor, memory, storage and
+              bandwidth. In addition, smaller file sizes also reduce the time
+              required to complete the evaluation. For example, if you are
+              interested only in &sle; 15 SP5, use the file available at
+              <link
+    xlink:href="https://ftp.suse.com/pub/projects/security/oval/suse.linux.enterprise.15-sp5-patch.xml.bz2"></link>.
+            </para>
+          </tip>
+        </step>
+        <step>
+          <para>
+            <emphasis>Optionally</emphasis>, you can generate an HTML report
+            from the XML results file.
+          </para>
+<screen>&prompt.sudo;oscap oval generate report results sle15-oval-results.xml &gt;
+sle15-oval-report.html</screen>
+          <tip>
+            <para>
+              You can generate an HTML report directly using the <command>oscap
+              oval eval --report</command> option, but separating the scan and
+              the HTML report generation leads to less usage of server
+              resources.
+            </para>
+          </tip>
+        </step>
+      </procedure>
+    </sect2>
   </sect1>
   <sect1 xml:id="openscap-remediate">
     <title>Vulnerability remediation</title>

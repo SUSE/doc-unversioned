@@ -177,8 +177,7 @@
         The following example shows how to scan &sle; 15 locally with
         <command>oscap</command> for vulnerability issues according to the
         profile <literal>&disaa; &stiga; for &sle; 15</literal>. You can save
-        the results in XML format and genberate an HTML report can be
-        generated.
+        the results in XML format and generate an HTML report.
       </para>
       <example xml:id="ex-stig-oscap-scan-sle15">
         <title>Scanning &sle; with oscap</title>
