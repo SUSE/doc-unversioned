@@ -122,29 +122,9 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       </listitem>
       <listitem>
         <para>
-          <remark>toms 2024-04-18: Needs to be updated?
-            Revamp of HANA cluster discovery to include HANA scale-out clusters,
-            diskless SBD clusters and maintenance status.
-          </remark>
-          Automated discovery of:
-          </para>
-        <itemizedlist>
-          <listitem>
-            <para>&sap; Systems and application instaces.</para>
-          </listitem>
-          <listitem>
-            <para>Multi-tenant &hana; databases and their instances.</para>
-          </listitem>
-          <listitem>
-            <para>&hana; scale up clusters.</para>
-          </listitem>
-          <listitem>
-            <para>&hana; scale out clusters.</para>
-          </listitem>
-          <listitem>
-            <para>ASCS/ERS clusters.</para>
-          </listitem>
-        </itemizedlist>
+          Monitoring of CPU and Memory usage at host level through basic integration
+          with &prometheus;
+        </para>
       </listitem>
       <listitem>
         <para>
@@ -593,8 +573,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
    --set prometheus.server.nodeSelector.<replaceable>LABEL</replaceable>=<replaceable>VALUE</replaceable> \
    --set postgresql.primary.nodeSelector.<replaceable>LABEL</replaceable>=<replaceable>VALUE</replaceable> \
    --set trento-web.nodeSelector.<replaceable>LABEL</replaceable>=<replaceable>VALUE</replaceable> \
-   --set trento-runner.nodeSelector.<replaceable>LABEL</replaceable>=<replaceable>VALUE</replaceable> \
-   --set grafana.nodeSelector.<replaceable>LABEL</replaceable>=<replaceable>VALUE</replaceable></screen>
+   --set trento-runner.nodeSelector.<replaceable>LABEL</replaceable>=<replaceable>VALUE</replaceable></screen>
     </section>
 
     <section xml:id="sec-trento-enabling-email-alerts">
@@ -2182,7 +2161,6 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
         <step>
           <para>List the pods running in &k8s; cluster and their status. &t.server; currently consists of the following six pods: </para>
           <screen>&prompt.user;<command>kubectl get pods</command>
-trento-server-grafana-*
 trento-server-prometheus-server-*
 trento-server-postgresql-0
 trento-server-web-*
