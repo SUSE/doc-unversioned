@@ -948,8 +948,8 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         <formalpara>
           <title><guimenu>Checks catalog</guimenu></title>
           <para>Overview of the catalog of configuration checks that Trento may
-            perform for the different cluster components (&pace;, &corosync;,
-            SBD, etc.) in any of the supported platforms: Azure, AWS, GCP, or on-premise bare metal (default). </para>
+            perform on the different targets (hosts or clusters), cluster types (HANA scale up, HANA scale out or ASCS/ERS)
+           and supported platforms (Azure, AWS, GCP, Nutanix, on-premises/KVM or VMware). </para>
         </formalpara>
       </listitem>
       <listitem>
