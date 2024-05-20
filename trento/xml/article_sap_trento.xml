@@ -119,7 +119,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
     -->
     <itemizedlist>
       <listitem>
-        <para>A simplified, reactive web UI targeting &sap; admins </para>
+        <para>A clean, simple, reactive console targeting &sap; admins </para>
       </listitem>
       <listitem>
         <para>
@@ -127,43 +127,88 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
             Revamp of HANA cluster discovery to include HANA scale-out clusters,
             diskless SBD clusters and maintenance status.
           </remark>
-          Automated discovery of &sap; Systems, &sap; Instances,
-          &hana; clusters and ASCS/ERS clusters</para>
-      </listitem>
-      <listitem>
-        <para>Configuration validation for &hana; Scale-Up
-          Performance-optimized two-node clusters deployed on Azure, AWS, GCP or on-premise bare metal platforms, including KVM and Nutanix
-        </para>
+          Automated discovery of:
+         - &sap; Systems and application instaces.
+         - multi-tenant &hana; databases and their instances.
+         - &hana; scale up clusters. 
+         - &hana scale out clusters.
+         - ASCS/ERS clusters.
+          </para>
       </listitem>
       <listitem>
         <para>
-          Monitoring of CPU and Memory usage at host level through basic integration
-          with Grafana and Prometheus
-        </para>
+     Discovery of pacemaker clusters using different fencing mechanisms, including diskless SBD.
+                  </para>
+      </listitem>
+          <listitem>
+        <para>
+     Awereness of maintenance situations in a pacemaker cluster at cluster, node or resource level.
+                  </para>
       </listitem>
       <listitem>
+        <para>Configuration validation for &hana; Scale-Up
+          Performance-optimized and ASCS/ERS clusters deployed on Azure, AWS, GCP or on-premise
+         bare metal platforms, including KVM and Nutanix
+        </para>
+      </listitem>
+         <listitem>
+        <para>Insightful information about the execution of configuration checks.
+        </para>
+              <listitem>
         <para>
           Email alerting for critical events in the monitored landscape
         </para>
       </listitem>
+              <listitem>
+        <para>
+          Intregration of saptune into the console and specific configuration checks at host and cluster levels.
+        </para>
+      </listitem>
+           </listitem>
+              <listitem>
+        <para>
+          Summary of available patches and upgradable packages for each registered hosts via integration 
+         with SUSE Manager.
+        </para>
+      </listitem>     
+      </listitem>
+      <listitem>
+        <para>
+          Monitoring of CPU and Memory usage at host level through basic integration with Prometheus
+        </para>
+      </listitem>
+           <listitem>
+        <para>
+          API-based architecture to facilitate integration with other monitoring tools.
+        </para>
+                  </listitem>
+             <para>
+          Rotating API key to better protect the communication from the Agent to the Server.
+        </para>
+      </listitem>
+      </listitem>
+             <para>
+          Housekeeping capabilities.
+        </para>
+      </listitem>
+  
     </itemizedlist>
 
     <para> The <emphasis role="strong">&t.server;</emphasis> is an
-      independent, cloud native, distributed system, designed to run
-      on a &k8s; cluster.
+      independent, distributed system, designed to run
+      on a &k8s; cluster or as a regular systemd stack.
       The &t.server; interacts with users via a Web front-end.
     </para>
     <para> The <emphasis role="strong">&t.agent;</emphasis> is a single
       background process (<systemitem>trento agent</systemitem>) running
       on each host of the SAP infrastructure that is monitored.
     </para>
-    <para>
-      For both &trentopremium; and Trento Community, &suse; collects telemetry data relevant for further
-      product development. </para>
     <para> See <xref linkend="fig-trento-architecture" /> for additional
       details. </para>
     <!-- toms 2021-11-26: Do we have a vector graphic for this?
       https://github.com/trento-project/trento/blob/main/docs/trento-architecture.svg.
+    -->
+       <!-- abravo 2024-05-20: The Trento logo in this screenshot must be updated to the new one.
     -->
     <figure xml:id="fig-trento-architecture">
       <title>Architectural overview</title>
