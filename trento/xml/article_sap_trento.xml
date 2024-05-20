@@ -131,7 +131,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
          - &sap; Systems and application instaces.
          - multi-tenant &hana; databases and their instances.
          - &hana; scale up clusters. 
-         - &hana scale out clusters.
+         - &hana; scale out clusters.
          - ASCS/ERS clusters.
           </para>
       </listitem>
@@ -154,7 +154,8 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
          <listitem>
         <para>Insightful information about the execution of configuration checks.
         </para>
-              <listitem>
+         </listitem>
+     <listitem>
         <para>
           Email alerting for critical events in the monitored landscape
         </para>
@@ -164,14 +165,12 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
           Intregration of saptune into the console and specific configuration checks at host and cluster levels.
         </para>
       </listitem>
-           </listitem>
               <listitem>
         <para>
           Summary of available patches and upgradable packages for each registered hosts via integration 
          with SUSE Manager.
         </para>
-      </listitem>     
-      </listitem>
+      </listitem>  
       <listitem>
         <para>
           Monitoring of CPU and Memory usage at host level through basic integration with Prometheus
@@ -182,11 +181,12 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
           API-based architecture to facilitate integration with other monitoring tools.
         </para>
                   </listitem>
+      <listitem>
              <para>
           Rotating API key to better protect the communication from the Agent to the Server.
         </para>
       </listitem>
-      </listitem>
+      <listitem>
              <para>
           Housekeeping capabilities.
         </para>
