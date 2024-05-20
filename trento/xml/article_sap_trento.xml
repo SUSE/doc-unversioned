@@ -2858,7 +2858,6 @@ trento-server-rabbitmq-0</screen>
           </itemizedlist>
         </listitem>
       </varlistentry>
-    <variablelist>
       <varlistentry xml:id="trento-version-220">
         <term>Version 2.2.0 (released on 2023/12/04)</term>
         <listitem>
