@@ -1709,8 +1709,8 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
         </mediaobject>
       </figure>
    <para>There are three types of available patches: security advisories, bug fixes and feature
-   enhancement. Security advisory are regarded as critical and the existance of just one of them
-   will make the health of the host go critical. The others are regarding as warnings.</para>
+   enhancement. Security advisories are regarded as critical. If one is found,
+   the health of the host will be set to critical too. The others are to be seen as warnings.</para>
     <para>At any given moment, the user can clear the SUSE Manager settings from the Settings view, which
     will result in all the information regarding available software updates gone from the console and the
     health of the hosts adjusted accordingly.</para>
