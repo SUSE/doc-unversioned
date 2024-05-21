@@ -720,8 +720,9 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
      <remark>abravo 2024-04-18 (change#4): here we need to reproduce the content of
        https://github.com/trento-project/ansible/blob/main/README.md
        with the exception of the following sections:
-       - https://github.com/trento-project/ansible/blob/main/README.md#playbook-variables
-       - https://github.com/trento-project/ansible/blob/main/README.md#usage-with-vagran
+       - https://github.com/trento-project/ansible/blob/main/README.md#playbook-variables (a reference 
+      to this particular section is required though)
+       - https://github.com/trento-project/ansible/blob/main/README.md#usage-with-vagrant
      </remark>
    </section>
   </section>
