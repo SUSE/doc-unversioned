@@ -710,7 +710,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
    <para>
   A systemd installation of Trento Server, based on rpm packages, can be done manually step-by-step or
    automated using an ansible playbook.
-   </para>.
+   </para>
    <section xml:id="sec-manual-deployment">
     <title>Manual deployment</title>
     <remark>abravo 2024-04-18 (change#4): here we need to reproduce the content of
