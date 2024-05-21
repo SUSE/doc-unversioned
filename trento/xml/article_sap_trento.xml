@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+r<?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="file:/usr/share/xml/geekodoc/rng/geekodoc5-flat.rnc"
    type="application/relax-ng-compact-syntax"?>
 <!DOCTYPE article
@@ -200,13 +200,14 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         <term>&t.server;</term>
         <listitem>
           <formalpara>
-            <title>Delivery mechanism:</title>
-            <para> A set of container images from the &suse; public
+            <title>Delivery mechanisms:</title>
+            <para> Either as a set of container images from the &suse; public
               registry together with a Helm chart that facilitates their
-              installation. </para>
+              installation or as a set of RPM packages for &sles4sap;&nbsp;15&nbsp;SP3 and
+              newer. </para>
           </formalpara>
           <formalpara>
-            <title>&k8s;:</title>
+            <title>&k8s; deployment:</title>
             <para> The &t.server; runs on any current Cloud Native
               Computing Foundation (CNCF)-certified &k8s;
               distributions based on a x86_64 architecture. Depending on your background and
@@ -232,6 +233,19 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
                </para>
             </listitem>
           </itemizedlist>
+           <formalpara>
+            <title>systemd deployment:</title>
+            <para> The deployment using RPM packages can be done manually step-by-step
+             in a traditional fashion or it can be automated using an ansible playbook. 
+            </para>
+            </formalpara>
+            <formalpara>
+            <title>Containerized deployment:</title>
+            <para> Where the web and the checks engine components are deployed
+             as containers on a docker engine while the thrid party components - PostgresSQL, 
+             RabbitMQ and Prometheus- are deployed as systemd services using the appropiate rpm packages.
+            </para>
+            </formalpara>
         </listitem>
       </varlistentry>
     </variablelist>
@@ -257,15 +271,22 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       Trento is powered by event driven technology. Registered events are stored in a  &postgresql; database with a retention
       period of 10 days. For each host registered with Trento, you need to allocate at least 1.5GB of space in the &postgresql; database.
      </para>
-      <para> While the &t.server; supports various usage scenarios,
-        depending on the existing infrastructure, it is designed to be
-        cloud native and OS agnostic. It can
-        be installed on the following services: </para>
+          <para>
+      Prometheus is used by Trento Server to collect metric data collected by the exporters in the agent hosts.
+           It is an optional component and only required if we want to have graphical charts of the collected metrics 
+           in the console. Otherwise we can disable the charts upon installation. We can perform an ad-hoc installation of
+           Prometheus for Trento or use an existing one. In the case of a systemd deployment on SLES for SAP SP3, only the latter is possible.
+     </para>
+      <para> For a &k8s; deployment, the follwing services can
+        be useds: </para>
       <!--
         toms 2021-12-06: taken from "Draft - Various Tidbits regarding Productization"
         (https://confluence.suse.com/x/tgCnMg)
       -->
       <itemizedlist>
+               <listitem>
+          <para>K3s</para>
+        </listitem>
         <listitem>
           <para>RKE1 (&rancher.k8s.engine; version 1)</para>
         </listitem>
@@ -273,11 +294,11 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
           <para>RKE2</para>
         </listitem>
         <listitem>
-          <para>any other CNCF-certified &k8s; running on x86_64 architecture</para>
+          <para>any other CNCF-certified &k8s; running on x86_64 architecture. This includes AKS in Azure, EKS in AWS and GKE in GCP.</para>
         </listitem>
       </itemizedlist>
-     <para> A proper, production ready installation of &t.server; requires &k8s;
-      knowledge. The Helm chart is meant to be used by customers lacking such knowledge
+     <para> A proper, production ready installation of &t.server; on &k8s; requires technical
+      knowledge of this platform. The Helm chart is meant to be used by customers lacking such knowledge
       or who want to get started quickly. However, Helm chart delivers a basic deployment of the &t.server; with all the components running
       on a single node of the cluster.</para>
     </section>
@@ -321,7 +342,8 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         <listitem>
           <formalpara>
             <title>&t.server;</title>
-            <para>Access to &suse; public registry for the deployment of &t.server; premium containers.</para>
+            <para>Access to &suse; public registry in the case of a &k8s; deployment. A registered SLES for SAP Application 15 (SP3
+            and higher) distribution in the case of a systemd deployment. For a hybrid deployment, you need both.</para>
           </formalpara>
         </listitem>
         <listitem>
