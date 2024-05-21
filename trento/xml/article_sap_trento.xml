@@ -1680,11 +1680,11 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
 
   <section xml:id="sec-integration-with-SUSE-Manager">
       <title>Integration with &suma;</title>
-      <para>Trento integrates with SUSE Manager to provide the SAP admin with
-      a summary of available pacthes and upgradable packages for any registered host
-      that is also managed by given instance of SUSE Manager.</para>
-       <para>The user must enter the connection settings to the SUSE Manager instance
-       in the Settings view:</para>
+      <para>Trento integrates with &suma; to provide the &sap; admin with
+      a summary of available patches and upgradable packages for any registered host
+      that is also managed by given instance of &suma;.</para>
+      <para>The user must enter the connection settings for the &suma; instance
+       in the <guimenu>Settings</guimenu> view:</para>
      <figure>
          <title><guimenu>SUSE Manager settings</guimenu></title>
         <mediaobject>
