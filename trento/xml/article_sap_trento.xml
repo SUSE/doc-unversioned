@@ -1679,7 +1679,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
   </section>
 
   <section xml:id="sec-integration-with-SUSE-Manager">
-      <title>Integration with SUSE Manager</title>
+      <title>Integration with &suma;</title>
       <para>Trento integrates with SUSE Manager to provide the SAP admin with
       a summary of available pacthes and upgradable packages for any registered host
       that is also managed by given instance of SUSE Manager.</para>
