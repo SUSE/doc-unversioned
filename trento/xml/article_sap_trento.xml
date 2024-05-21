@@ -430,7 +430,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         installation procedure.
       </para>
     </important>
-   <section xml:id="sec-trento-k8s-deployment>
+   <section xml:id="sec-trento-k8s-deployment">
     <title>&k8s; deployment</title>
     <para> The subsection uses the following placeholders: </para>
     <itemizedlist>
@@ -705,13 +705,13 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       </para>
     </section>
   </section>
-  <section xml:id="sec-systemd-deployment>
+  <section xml:id="sec-systemd-deployment">
     <title>systemd deployment</title>
    <para>
   A systemd installation of Trento Server, based on rpm packages, can be done manually step-by-step or
    automated using an ansible playbook.
    </para>.
-   <section xml:id="sec-manual-deployment>
+   <section xml:id="sec-manual-deployment">
     <title>Manual deployment</title>
     <remark>abravo 2024-04-18 (change#4): here we need to reproduce the content of
        https://github.com/trento-project/docs/blob/main/guides/manual-installation.md
@@ -719,7 +719,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
        https://github.com/trento-project/docs/blob/main/guides/manual-installation.md#install-trento-using-docker.
     </remark>
    </section>
-   <section xml:id="sec-automated-deployment-with-ansible>
+   <section xml:id="sec-automated-deployment-with-ansible">
     <title>Automated deployment with ansible</title>
      <remark>abravo 2024-04-18 (change#4): here we need to reproduce the content of
        https://github.com/trento-project/ansible/blob/main/README.md
@@ -730,7 +730,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
      </remark>
    </section>
   </section>
-  <section xml:id="sec-containerized-deployment>
+  <section xml:id="sec-containerized-deployment">
     <title>containerized deployment</title>
    A containerized deployment of Trento Server is identical to a systemd deployment, except for the
    web and check engine components which are deployed, instead, as containers running on a docker engine
