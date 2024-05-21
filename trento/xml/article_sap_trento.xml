@@ -128,12 +128,24 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
             diskless SBD clusters and maintenance status.
           </remark>
           Automated discovery of:
-         - &sap; Systems and application instaces.
-         - multi-tenant &hana; databases and their instances.
-         - &hana; scale up clusters. 
-         - &hana; scale out clusters.
-         - ASCS/ERS clusters.
           </para>
+        <itemizedlist>
+          <listitem>
+            <para>&sap; Systems and application instaces.</para>
+          </listitem>
+          <listitem>
+            <para>Multi-tenant &hana; databases and their instances.</para>
+          </listitem>
+          <listitem>
+            <para>&hana; scale up clusters.</para>
+          </listitem>
+          <listitem>
+            <para>&hana; scale out clusters.</para>
+          </listitem>
+          <listitem>
+            <para>ASCS/ERS clusters.</para>
+          </listitem>
+        </itemizedlist>
       </listitem>
       <listitem>
         <para>
