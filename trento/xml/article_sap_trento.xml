@@ -1319,7 +1319,7 @@ The health boxes in the dashboard are clickable. By clicking on one particular b
               respective column to open the corresponding <guimenu>&pace; cluster details</guimenu> view.
               If the list is too big, reduce the list by providing filters.
             </para>
-            <para> The detail views of a HANA scale-up cluster and an ASCS/ERS cluster are different: </para>
+            <para> The detail views of a HANA cluster and an ASCS/ERS cluster are different: </para>
             <itemizedlist>
               <title><guimenu>HANA cluster details</guimenu> view</title>
               <listitem>
@@ -1332,9 +1332,10 @@ The health boxes in the dashboard are clickable. By clicking on one particular b
               </listitem>
               <listitem>
                 <para>
-                  The cloud provider, the cluster type, HANA log, SID (when applicable), SAPHanaSR health state,
-                  HANA secondary sync state, fencing type, when the CIB was last written,
-                  and HANA log operation mode.
+                  Top section: it displayes the cloud provider, the cluster type, the HANA log
+                 replication mode, the DBSID, the cluster maintenance status, the
+                  HANA secondary sync state, the fencing type, when the CIB was last written,
+                  and the HANA log operation mode.
                 </para>
               </listitem>
               <listitem>
@@ -1345,61 +1346,67 @@ The health boxes in the dashboard are clickable. By clicking on one particular b
                 </para>
               </listitem>
               <listitem>
+                <para><guimenu>&pace; Site details</guimenu> section: this ssection is split in three
+                 subsections. One for each HANA site and another ones for cluster nodes without a HANA workload.
+                 For example, a majority maker in the case of a HANA scale out cluster. Each HANA site subsection
+                 will inform about the site role (Primary or Secondary or Failed) and will list the
+                 different nodes in the site. Each node entry will display the node status (Online or Maintenance or
+                 Other), the roles of the nameserver and indexserver services in that node, the local IPs and any assigned
+                 virtual IP address. If you click the <guimenu>Details</guimenu> button, you can view the attributes
+                  of that node, the resources running on it and their statuses. Close this view with the <keycap
+                    function="escape"/> key.
+                </para>
+              </listitem>
+              <listitem>
                 <para><guimenu>Stopped resources</guimenu> section: with a summary
                 of resources which have been stopped on the cluster.
                 </para>
               </listitem>
               <listitem>
-                <para><guimenu>&pace; Site details</guimenu> section: with a summary of
-                  NBG and WDF<remark>tom 2023-01-16: what are these acronyms</remark>.
-                  Both list the host name, their role, the IP and virtual IP address.
-                  If you click the <guimenu>Details</guimenu>, you can view the attributes
-                  of the site and their resources. Close this view with the <keycap
-                    function="escape"/> key.
-                </para>
-              </listitem>
-              <listitem>
-                <para><guimenu>SBD/Fencing</guimenu> section: with a status and the SBD device.</para>
+                <para><guimenu>SBD/Fencing</guimenu> section: with the status of each SBD device when applicable.</para>
               </listitem>
             </itemizedlist>
                        <itemizedlist>
               <title><guimenu>ASCS/ERS cluster details</guimenu> view</title>
               <listitem>
                 <para>
-                  A section showing the cloud provider, the cluster type, fencing type and when the CIB was last written.
+                  A top section on the left showing the cloud provider, the cluster type, fencing type,
+                 when the CIB was last written and the cluster maintenance status.
                 </para>
               </listitem>
               <listitem>
                 <para>
-                  Another section showing the SAP SID, the Enqueue Server version, whether the ASCS and ERS are running
+                  Another top centered section showing the SAP SID, the Enqueue Server version, whether the ASCS and ERS are running
                  on different hosts or not and whether the instance filesystems are resource based or not. This is a multi-tab
                  section. When multiple systems share the same cluster, there will be a tab for each system in the cluster and
                  you can scroll left and right to go through the different systems.
                 </para>
               </listitem>
               <listitem>
-                <para>A <guimenu>Check Result</guimenu> section, which will become enabled as soon as
-                 configuration checks for this type of clusters are added to the catalog.
+                <para>A <guimenu>Check Result</guimenu> section, showing a summary of the results of the last 
+                 check execution, when applicable.                 .
                 </para>
               </listitem>
-              <listitem>
-                <para>A <guimenu>Stopped resources</guimenu> section: with a summary
-                of resources which have been stopped on the cluster.
-                </para>
-              </listitem>
+       
               <listitem>
                 <para>A <guimenu>Node details</guimenu> section showing the following for each
-                 node in the cluster: the host name, the role, the virtual IP address and, in case of
+                 node in the cluster: the node status (Online or Maintenance or Other), the host name, the role of the node
+                 in the cluster, the assigned virtual IP address and, in case of
                  resource managed filesystems, the full mounting path. If you click on <guimenu>Details</guimenu>,
-                 you can view the attributes and resources associated to that particular role. Close this view with
+                 you can view the attributes and resources associated to that particular node. Close this view with
                  the <keycap function="escape"/> key.</para>
                  <para>
                   This section is system specific. It will show the information corresponding to the system selected
                   in the multi-tab section above.
                 </para>
               </listitem>
+             <listitem>
+                <para>A <guimenu>Stopped resources</guimenu> section: with a summary
+                of resources which have been stopped on the cluster.
+                </para>
+              </listitem>
               <listitem>
-                <para><guimenu>SBD/Fencing</guimenu> section: with a status and a list of the SBD decices.</para>
+                <para><guimenu>SBD/Fencing</guimenu> section: with the status of each SBD device when applicable.</para>
               </listitem>
             </itemizedlist>
           </step>
