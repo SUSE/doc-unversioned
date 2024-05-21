@@ -1695,8 +1695,8 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
           </imageobject>
         </mediaobject>
       </figure>  
-   <para>Once the SUSE Manager settings are entered the SAP admin can test the 
-   connection by clicking on the Test Connection button. If the connection is successfull,
+   <para>Once the &suma; settings are entered, the &sap; admin can test the 
+   connection by clicking on the <guimenu>Test Connection</guimenu> button. If the successfull,
    from that moment onward, for any registered host that is also managed by the SUSE Manager
    instance which connection details we have provided, the corresponding Host Details view will
    display a summary of the available patches and the upgradable packages for that particular host:</para>
