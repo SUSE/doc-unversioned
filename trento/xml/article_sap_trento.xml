@@ -1711,9 +1711,9 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
    <para>There are three types of available patches: security advisories, bug fixes and feature
    enhancement. Security advisories are regarded as critical. If one is found,
    the health of the host will be set to critical too. The others are to be seen as warnings.</para>
-    <para>At any given moment, the user can clear the SUSE Manager settings from the Settings view, which
-    will result in all the information regarding available software updates gone from the console and the
-    health of the hosts adjusted accordingly.</para>
+    <para>
+    At any time, the user can clear the &suma; settings from the Settings view. 
+    As a result, all information about available software updates disappears from the console and the status of the hosts is adjusted accordingly.</para>
    <para>This integration with SUSE Manager is a first step in road which we expect will take Trento
    to a point where the SAP admin is able  to orchestrate the patching of the Operating System of their
    SAP environment using Trento and SUSE Manager behind it.</para>
