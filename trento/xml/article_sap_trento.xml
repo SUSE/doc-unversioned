@@ -1686,7 +1686,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
       <para>The user must enter the connection settings for the &suma; instance
        in the <guimenu>Settings</guimenu> view:</para>
      <figure>
-         <title><guimenu>SUSE Manager settings</guimenu></title>
+         <title>&suma; settings</title>
         <mediaobject>
           <imageobject>
             <imagedata
