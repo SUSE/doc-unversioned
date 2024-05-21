@@ -430,7 +430,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         installation procedure.
       </para>
     </important>
-
+   <section>
     <para> The subsection uses the following placeholders: </para>
     <itemizedlist>
       <listitem>
@@ -703,6 +703,36 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         <remark>toms 2022-09-14: which steps?</remark>
       </para>
     </section>
+  </section>
+  <section>
+   <para>
+  A systemd installation of Trento Server, based on rpm packages, can be done manually step-by-step or
+   automated using an ansible playbook.
+   </para>.
+   <section>
+    <remark>abravo 2024-04-18 (change#4): here we need to reproduce the content of
+       https://github.com/trento-project/docs/blob/main/guides/manual-installation.md
+       with the exception of the following section:
+       https://github.com/trento-project/docs/blob/main/guides/manual-installation.md#install-trento-using-docker.
+    </remark>
+   </section>
+   <section>
+     <remark>abravo 2024-04-18 (change#4): here we need to reproduce the content of
+       https://github.com/trento-project/ansible/blob/main/README.md
+       with the exception of the following sections:
+       - https://github.com/trento-project/ansible/blob/main/README.md#playbook-variables
+       - https://github.com/trento-project/ansible/blob/main/README.md#usage-with-vagran
+     </remark>
+   </section>
+  </section>
+  <section>
+   A containereized deployment of Trento Server is identical to a systemd deployment, except for the
+   web and check engine components, that are deployed, instead, as container running on a docker engine
+   as follows:
+     <remark>abravo 2024-04-18 (change#4): here we need to reproduce the content of:
+     https://github.com/trento-project/docs/blob/main/guides/manual-installation.md#install-trento-using-docker   
+     </remark>
+  </section>
   </section>
 
   <section xml:id="sec-trento-installing-trentoagent">
