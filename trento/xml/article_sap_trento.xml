@@ -183,7 +183,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
                   </listitem>
       <listitem>
              <para>
-          Rotating API key to better protect the communication from the Agent to the Server.
+          Rotating API key to better protect the communication from the &t.agent; to the &t.server;.
         </para>
       </listitem>
       <listitem>
