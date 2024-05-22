@@ -243,7 +243,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
             <title>Containerized deployment:</title>
             <para> Where the web and the checks engine components are deployed
              as containers on a docker engine while the thrid party components - PostgresSQL, 
-             RabbitMQ and Prometheus- are deployed as systemd services using the appropiate rpm packages.
+             RabbitMQ and Prometheus- are deployed as systemd services using the appropiate RPM packages.
             </para>
             </formalpara>
         </listitem>
