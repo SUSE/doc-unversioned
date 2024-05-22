@@ -300,7 +300,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
      <para> A proper, production ready installation of &t.server; on &k8s; requires technical
       knowledge of this platform. The Helm chart is meant to be used by customers lacking such knowledge
       or who want to get started quickly. But bear in mind that the Helm chart delivers a basic deployment of the &t.server; with all the components running
-      on a single node of the cluster unless adapted otherwise by the customer.</para>
+      on a single node of the cluster unless adapted otherwise.</para>
     </section>
     <section xml:id="sec-trento-agent-requirements">
       <title>&t.agent; requirements</title>
