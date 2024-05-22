@@ -1188,8 +1188,14 @@ The health boxes in the dashboard are clickable. By clicking on one particular b
       </figure>
               </listitem>
                <listitem>
-                <para>Checks results summary section: as soon as host specific checks become available in the catalog, this section
-                 will show a summary of the execution results. </para>
+                <para>Checks results summary section: this section
+                shows a summary of the checks execution results for this particular host. </para>
+              </listitem>
+               <listitem>
+                <para>Available software updates sections: when settings for SUSE Manager are maintained and the host
+                 is managed by the SUMA instance for which connection data has been provided, this section shows
+                 a summary of the available patches and upgradable packages for this particular host. Refer to section 
+                <xref linkend="sec-integration-with-SUSE-Manager"/> for further details. </para>
               </listitem>
               <listitem>
                 <para>
