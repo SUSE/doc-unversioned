@@ -1384,7 +1384,7 @@ The health boxes in the dashboard are clickable. By clicking on one particular b
               </listitem>
               <listitem>
                 <para>A <guimenu>Check Result</guimenu> section, showing a summary of the results of the last 
-                 check execution, when applicable.                 .
+                 check execution, when applicable.
                 </para>
               </listitem>
        
