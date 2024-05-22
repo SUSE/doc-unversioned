@@ -1346,7 +1346,7 @@ The health boxes in the dashboard are clickable. By clicking on one particular b
                 </para>
               </listitem>
               <listitem>
-                <para><guimenu>&pace; Site details</guimenu> section: this ssection is split in three
+                <para><guimenu>&pace; Site details</guimenu> section: this section is split in three
                  subsections. One for each HANA site and another ones for cluster nodes without a HANA workload.
                  For example, a majority maker in the case of a HANA scale out cluster. Each HANA site subsection
                  will inform about the site role (Primary or Secondary or Failed) and will list the
