@@ -342,7 +342,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         <listitem>
           <formalpara>
             <title>&t.server;</title>
-            <para>Access to &suse; public registry in the case of a &k8s; deployment. A registered SLES for SAP Application 15 (SP3
+            <para>Access to &suse; public registry in the case of a &k8s; deployment. A registered &sles4sap; 15 (SP3
             and higher) distribution in the case of a systemd deployment. For a hybrid deployment, you need both.</para>
           </formalpara>
         </listitem>
