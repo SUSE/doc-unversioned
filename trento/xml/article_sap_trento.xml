@@ -724,8 +724,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
      <remark>abravo 2024-04-18 (change#4): here we need to reproduce the content of
        https://github.com/trento-project/ansible/blob/main/README.md
        with the exception of the following sections:
-       - https://github.com/trento-project/ansible/blob/main/README.md#playbook-variables (a reference 
-      to this particular section is required though)
+       - https://github.com/trento-project/ansible/blob/main/README.md#playbook-variables
        - https://github.com/trento-project/ansible/blob/main/README.md#usage-with-vagrant
      </remark>
    </section>
@@ -2509,6 +2508,13 @@ trento-server-rabbitmq-0</screen>
       </varlistentry>
     </variablelist>
   </section>
+
+    <section xml:id="sec-appendix">
+    <title>Automated deployment with ansible</title>
+     <remark>abravo 2024-04-18 (change#4): here we need to reproduce the content of
+       https://github.com/trento-project/ansible/blob/main/README.md#playbook-variables
+     </remark>
+   </section>
 
   <section xml:id="sec-trento-more-information">
     <title>More information</title>
