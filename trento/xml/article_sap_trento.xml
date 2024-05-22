@@ -731,10 +731,12 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
    </section>
   </section>
   <section xml:id="sec-containerized-deployment">
-    <title>containerized deployment</title>
+    <title>Containerized deployment</title>
+   <para>
    A containerized deployment of Trento Server is identical to a systemd deployment, except for the
    web and check engine components which are deployed, instead, as containers running on a docker engine
    as follows:
+   </para>
      <remark>abravo 2024-04-18 (change#4): here we need to reproduce the content of:
      https://github.com/trento-project/docs/blob/main/guides/manual-installation.md#install-trento-using-docker   
      </remark>
