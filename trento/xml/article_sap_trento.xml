@@ -236,7 +236,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
            <formalpara>
             <title>systemd deployment:</title>
             <para> The deployment using RPM packages can be done manually step-by-step
-             in a traditional fashion or it can be automated using an ansible playbook. 
+             in a traditional fashion or it can be automated using an Ansible playbook. 
             </para>
             </formalpara>
             <formalpara>
