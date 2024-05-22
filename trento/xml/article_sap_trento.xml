@@ -294,7 +294,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
           <para>RKE2</para>
         </listitem>
         <listitem>
-          <para>any other CNCF-certified &k8s; running on x86_64 architecture. This includes AKS in Azure, EKS in AWS and GKE in GCP.</para>
+          <para>any other CNCF-certified &k8s; running on x86_64 architecture. This includes AKS in Azure, EKS in AWS, and GKE in GCP.</para>
         </listitem>
       </itemizedlist>
      <para> A proper, production ready installation of &t.server; on &k8s; requires technical
