@@ -1721,9 +1721,6 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
     <para>
     At any time, the user can clear the &suma; settings from the Settings view. 
     As a result, all information about available software updates disappears from the console and the status of the hosts is adjusted accordingly.</para>
-   <para>This integration with SUSE Manager is a first step in road which we expect will take Trento
-   to a point where the SAP admin is able  to orchestrate the patching of the Operating System of their
-   SAP environment using Trento and SUSE Manager behind it.</para>
     </section>
   <section xml:id="sec-trento-updating-trentoserver">
     <title>Updating &t.server;</title>
