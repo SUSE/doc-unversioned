@@ -271,11 +271,12 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       Trento is powered by event driven technology. Registered events are stored in a  &postgresql; database with a retention
       period of 10 days. For each host registered with Trento, you need to allocate at least 1.5GB of space in the &postgresql; database.
      </para>
-          <para>
+     <para>
       Prometheus is used by &t.server; to collect metric data collected by the exporters in the agent hosts.
-           It is an optional component and only required if we want to have graphical charts of the collected metrics 
-           in the console. Otherwise we can disable the charts upon installation. We can perform an ad-hoc installation of
-           Prometheus for Trento or use an existing one. In the case of a systemd deployment on &sles4sap; SP3, only the latter is possible.
+      This is an optional component that is only required if the collected metrics are to be displayed
+      graphically in the console. Otherwise, we can disable the charts during installation.
+      We can perform an ad-hoc installation of
+     Prometheus for Trento or use an existing one. In the case of a systemd deployment on &sles4sap; SP3, only the latter is possible.
      </para>
       <para> For a &k8s; deployment, the follwing services can
         be useds: </para>
