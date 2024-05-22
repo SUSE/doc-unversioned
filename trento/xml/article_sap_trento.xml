@@ -1700,11 +1700,12 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
           </imageobject>
         </mediaobject>
       </figure>  
-   <para>Once the &suma; settings are entered, the &sap; admin can test the 
-   connection by clicking on the <guimenu>Test Connection</guimenu> button. If the successfull,
-   from that moment onward, for any registered host that is also managed by the SUSE Manager
-   instance which connection details we have provided, the corresponding Host Details view will
-   display a summary of the available patches and the upgradable packages for that particular host:</para>
+   <para>
+   With the &suma; settings configured, the &sap; admin can test the connection
+   by clicking <guimenu>Test Connection</guimenu>.
+   If the connection is successful, the Host Details view displays a summary
+   of the available patches and the upgradable packages for each host
+   managed by &suma;:</para>
         <figure>
          <title><guimenu>Availale software updates in the Host Details view</guimenu></title>
         <mediaobject>
