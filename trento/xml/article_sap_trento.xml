@@ -782,11 +782,13 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
     <title>Performing configuration checks</title>
     <remark>toms 2024-04-18 (change#8): First saptune related configuration checks (host and cluster specific) -> update</remark>
     <para>
-      One of Trento's main features is to provide checks for the HANA scale-up performance optimized two-node clusters in your SAP Landscape.
-      To run these checks, proceed as follows:
+     One of Trento's main features is to provide configuration checks that ensure your infrastructure setup adheres to our Best Practices, 
+     or other vendor's Best Practices, and does not drift away in time. Configuration checks ara available for
+     HANA clusters, ASCS/ERS clusters and hosts. The following procedure is specific to a HANA cluster. The procedure for an ASCS/ERS cluster
+     or a host would be exactly the same, only starting from the corresponding Details view:
     </para>
     <procedure xml:id="pro-trento-checks">
-      <title>Performing configuration checks</title>
+      <title>Performing configuration checks on a HANA Cluster</title>
       <step>
         <para>Log in to Trento</para>
       </step>
