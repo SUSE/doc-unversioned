@@ -15,243 +15,259 @@
          xml:lang="en"
          xmlns:xi="http://www.w3.org/2001/XInclude"
          xmlns:xlink="http://www.w3.org/1999/xlink">
- <title>Enriched system visibility in the &scc;</title>
- <titleabbrev>Enriched system visibility in the &scc;</titleabbrev>
- <info><productname>&productnamex;</productname>
-  <productnumber>&productnumberx;</productnumber><date>
+  <title>Enriched system visibility in the &scc;</title>
+  <titleabbrev>Enriched system visibility in the &scc;</titleabbrev>
+  <info><productname>&productnamex;</productname>
+    <productnumber>&productnumberx;</productnumber><date>
 <?dbtimestamp format="B d, Y" ?></date>
-  <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
-   <dm:bugtracker>
-    <dm:url>https://bugzilla.suse.com/enter_bug.cgi</dm:url>
-    <dm:product>Documentation</dm:product>
-    <dm:component>SLE Family</dm:component>
-    <dm:assignee>tbazant@suse.com</dm:assignee>
-   </dm:bugtracker>
-   <dm:editurl>https://github.com/SUSE/doc-unversioned/edit/main/suseconnect-visibility/xml/</dm:editurl>
-   <dm:translation>yes</dm:translation>
-  </dm:docmanager>
-  <abstract>
-   <para>
-    This document describes what &suseconnect; is and how the &scc; (SCC) and Repository
-    Mirroring Tool (RMT) use it to gather updated information about active systems and
-    their hardware environment.
-   </para>
-  </abstract>
- </info>
- <sect1 xml:id="suseconnect-whatis">
-  <title>What is &suseconnect;?</title>
+    <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
+      <dm:bugtracker>
+        <dm:url>https://bugzilla.suse.com/enter_bug.cgi</dm:url>
+        <dm:product>Documentation</dm:product>
+        <dm:component>SLE Family</dm:component>
+        <dm:assignee>tbazant@suse.com</dm:assignee>
+      </dm:bugtracker>
+      <dm:editurl>https://github.com/SUSE/doc-unversioned/edit/main/suseconnect-visibility/xml/</dm:editurl>
+      <dm:translation>yes</dm:translation>
+    </dm:docmanager>
+    <abstract>
+      <para>
+        This document describes what &suseconnect; is and how the &scc; (SCC)
+        and Repository Mirroring Tool (RMT) use it to gather updated information
+        about active systems and their hardware environment.
+      </para>
+    </abstract>
+  </info>
+  <sect1 xml:id="suseconnect-whatis">
+    <title>What is &suseconnect;?</title>
 
-  <para>
-   &suseconnect; is a tool to register SLE-based operating systems with SCC or RMT. Registered
-   systems receive updates to installed packages, for example, to increase security of the operating
-   system. With &suseconnect;, you can additionally register extensions and modules that extend the
-   base system functionality.
-  </para>
-
-  <tip>
-   <para>
-    This document does not cover general usage of &suseconnect;. To find more basic information
-    about how to register your system, modules and extensions with &suseconnect;, refer to
-    <link xlink:href="https://documentation.suse.com/sles/html/SLES-all/cha-register-sle.html"/>.
-   </para>
-  </tip>
-
-  <para>
-   &suse; is committed to helping provide better insights into the consumption of SUSE subscriptions,
-   regardless of where they are running or how they are managed; physical or virtual, on-prem or in
-   the cloud, connected to SCC or RMT, or managed by SUSE Manager.
-
-   To help you identify or filter out systems in SCC that are decommissioned or no longer running,
-   &suseconnect; now features a daily 'ping,' which will update system information automatically.
-   Each registered host contacts SCC or RMT and sends the unique identification of the host and
-   the description of its hardware environment.
-  </para>
- </sect1>
- <sect1 xml:id="suseconnect-visibility-requirements">
-  <title>Requirements</title>
-
-  <para>
-   To use the extended &suseconnect; functionality, you need to:
-  </para>
-
-  <itemizedlist>
-   <listitem>
     <para>
-     Run a supported and registered SLE-based host with all update patches applied.
+      &suseconnect; is a tool to register SLE-based operating systems with SCC
+      or RMT. Registered systems receive updates to installed packages, for
+      example, to increase security of the operating system. With &suseconnect;,
+      you can additionally register extensions and modules that extend the base
+      system functionality.
     </para>
-   </listitem>
-   <listitem>
+
+    <tip>
+      <para>
+        This document does not cover general usage of &suseconnect;. To find
+        more basic information about how to register your system, modules and
+        extensions with &suseconnect;, refer to
+        <link xlink:href="https://documentation.suse.com/sles/html/SLES-all/cha-register-sle.html"/>.
+      </para>
+    </tip>
+
     <para>
-     Verify that the host system includes the <command>&suseconnect;</command> command version
-     0.3.33 or higher.
+      &suse; is committed to helping provide better insights into the
+      consumption of SUSE subscriptions, regardless of where they are running or
+      how they are managed; physical or virtual, on-prem or in the cloud,
+      connected to SCC or RMT, or managed by SUSE Manager. To help you identify
+      or filter out systems in SCC that are decommissioned or no longer running,
+      &suseconnect; now features a daily 'ping,' which will update system
+      information automatically. Each registered host contacts SCC or RMT and
+      sends the unique identification of the host and the description of its
+      hardware environment.
     </para>
-   </listitem>
-  </itemizedlist>
- </sect1>
- <sect1 xml:id="suseconnect-visibility-how-it-works">
-  <title>How enhanced system visibility works</title>
+  </sect1>
+  <sect1 xml:id="suseconnect-visibility-requirements">
+    <title>Requirements</title>
 
-  <para>
-   We extended &suseconnect; with the new option <option>--keepalive</option>. The command
-   <command>&suseconnect; --keepalive</command> updates the last time that a host contacted SCC or
-   RMT and updates the host's hardware information.
-  </para>
+    <para>
+      To use the extended &suseconnect; functionality, you need to:
+    </para>
 
-  <para>
-   The &suseconnect; package ships with two &systemd; units:
-  </para>
+    <itemizedlist>
+      <listitem>
+        <para>
+          Run a supported and registered SLE-based host with all update patches
+          applied.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Verify that the host system includes the
+          <command>&suseconnect;</command> command version 0.3.33 or higher.
+        </para>
+      </listitem>
+    </itemizedlist>
+  </sect1>
+  <sect1 xml:id="suseconnect-visibility-how-it-works">
+    <title>How enhanced system visibility works</title>
 
-  <variablelist>
-   <varlistentry>
-    <term><filename>suseconnect-keepalive.service</filename></term>
-    <listitem>
-     <para>
-      A service which runs the command <command>&suseconnect; --keepalive</command> on demand.
-     </para>
-    </listitem>
-   </varlistentry>
-   <varlistentry>
-    <term><filename>suseconnect-keepalive.timer</filename></term>
-    <listitem>
-     <para>
-      A timer which runs the service <filename>suseconnect-keepalive.service</filename> once a day
-      at random time to prevent SCC congestion.
-     </para>
-    </listitem>
-   </varlistentry>
-  </variablelist>
+    <para>
+      We extended &suseconnect; with the new option
+      <option>--keepalive</option>. The command <command>&suseconnect;
+      --keepalive</command> updates the last time that a host contacted SCC or
+      RMT and updates the host's hardware information.
+    </para>
 
-  <para>
-   These units are responsible for keeping the system information up to date with
-   the SCC or RMT, and for providing accurate data about subscription usage.
-  </para>
+    <para>
+      The &suseconnect; package ships with two &systemd; units:
+    </para>
 
-  <note>
-   <title>The timer is enabled automatically</title>
-   <para>
-    When the &suseconnect; package is installed or updated, and its version is equal to or greater
-    than the one described above, the keep-alive timer will be enabled automatically.
-   </para>
-  </note>
+    <variablelist>
+      <varlistentry>
+        <term><filename>suseconnect-keepalive.service</filename></term>
+        <listitem>
+          <para>
+            A service which runs the command <command>&suseconnect;
+            --keepalive</command> on demand.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><filename>suseconnect-keepalive.timer</filename></term>
+        <listitem>
+          <para>
+            A timer which runs the service
+            <filename>suseconnect-keepalive.service</filename> once a day at
+            random time to prevent SCC congestion.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
 
-  <sect2 xml:id="disabling-suseconnect-timer">
-   <title>Disabling the keep-alive timer</title>
-   <para>
-    If you prefer to not have the &suseconnect; keep-alive timer running on your system, you can
-    disable it with <command>systemctl</command>:
-   </para>
+    <para>
+      These units are responsible for keeping the system information up to date
+      with the SCC or RMT, and for providing accurate data about subscription
+      usage.
+    </para>
+
+    <note>
+      <title>The timer is enabled automatically</title>
+      <para>
+        When the &suseconnect; package is installed or updated, and its version
+        is equal to or greater than the one described above, the keep-alive
+        timer will be enabled automatically.
+      </para>
+    </note>
+
+    <sect2 xml:id="disabling-suseconnect-timer">
+      <title>Disabling the keep-alive timer</title>
+      <para>
+        If you prefer to not have the &suseconnect; keep-alive timer running on
+        your system, you can disable it with <command>systemctl</command>:
+      </para>
 <screen>&prompt.sudo;systemctl disable --now suse-connect-keepalive.timer</screen>
-   <para>
-    Once the timer is disabled, subsequent updates to the &suseconnect; package will not re-enable
-    it.
-   </para>
-   <tip>
-    <title>Re-enabling the keep-alive timer</title>
-    <para>
-     If you decide to re-enable the disabled keep-alive timer, run the following command:
-    </para>
+      <para>
+        Once the timer is disabled, subsequent updates to the &suseconnect;
+        package will not re-enable it.
+      </para>
+      <tip>
+        <title>Re-enabling the keep-alive timer</title>
+        <para>
+          If you decide to re-enable the disabled keep-alive timer, run the
+          following command:
+        </para>
 <screen>&prompt.sudo;systemctl enable --now suse-connect-keepalive.timer</screen>
-   </tip>
-  </sect2>
- </sect1>
- <sect1 xml:id="identifying-inactive-systems-with-registration-servers">
-  <title>Identifying inactive systems</title>
+      </tip>
+    </sect2>
+  </sect1>
+  <sect1 xml:id="identifying-inactive-systems-with-registration-servers">
+    <title>Identifying inactive systems</title>
 
-  <para>
-   When &suseconnect; reports details about active hosts daily, SCC or RMT collect this information
-   and let you filter out registered inactive hosts. If your hosts are registered against RMT or
-   &suma;, these registration servers forward the received information to SCC.
-  </para>
+    <para>
+      When &suseconnect; reports details about active hosts daily, SCC or RMT
+      collect this information and let you filter out registered inactive hosts.
+      If your hosts are registered against RMT or &suma;, these registration
+      servers forward the received information to SCC.
+    </para>
 
-  <sect2 xml:id="identifying-inactive-systems-with-scc">
-   <title>Identifying inactive systems with SCC</title>
-   <para>
-    In the SCC Web user interface, you can limit the list of systems to see only inactive
-    hosts.
-   </para>
-   <procedure>
-    <step>
-     <para>
-      Log in to SCC at <link xlink:href="https://scc.suse.com"/> and select your organization in the
-      left pane.
-     </para>
-    </step>
-    <step>
-     <para>
-      Select <guimenu>Systems</guimenu> from the top menu to list all registered hosts by default.
-     </para>
-    </step>
-    <step>
-     <para>
-      Select <guimenu>Inactive</guimenu> from the upper-left drop-down list.
-     </para>
-     <figure>
-      <title>Drop-down list with a filter for inactive hosts</title>
-      <mediaobject>
-       <imageobject role="fo">
-        <imagedata fileref="scc-inactive-filter.png" width="45%"/>
-       </imageobject>
-       <imageobject role="html">
-        <imagedata fileref="scc-inactive-filter.png" width="45%"/>
-       </imageobject>
-      </mediaobject>
-     </figure>
-    </step>
-    <step>
-     <para>
-      If you have sufficient privileges and your inactive host is registered directly with SCC, you
-      can deregister it by clicking the three dots on its right and selecting
-      <guimenu>De-register</guimenu>.
-     </para>
-    </step>
-   </procedure>
-  </sect2>
+    <sect2 xml:id="identifying-inactive-systems-with-scc">
+      <title>Identifying inactive systems with SCC</title>
+      <para>
+        In the SCC Web user interface, you can limit the list of systems to see
+        only inactive hosts.
+      </para>
+      <procedure>
+        <step>
+          <para>
+            Log in to SCC at <link xlink:href="https://scc.suse.com"/> and
+            select your organization in the left pane.
+          </para>
+        </step>
+        <step>
+          <para>
+            Select <guimenu>Systems</guimenu> from the top menu to list all
+            registered hosts by default.
+          </para>
+        </step>
+        <step>
+          <para>
+            Select <guimenu>Inactive</guimenu> from the upper-left drop-down
+            list.
+          </para>
+          <figure>
+            <title>Drop-down list with a filter for inactive hosts</title>
+            <mediaobject>
+              <imageobject role="fo">
+                <imagedata fileref="scc-inactive-filter.png" width="45%"/>
+              </imageobject>
+              <imageobject role="html">
+                <imagedata fileref="scc-inactive-filter.png" width="45%"/>
+              </imageobject>
+            </mediaobject>
+          </figure>
+        </step>
+        <step>
+          <para>
+            If you have sufficient privileges and your inactive host is
+            registered directly with SCC, you can deregister it by clicking the
+            three dots on its right and selecting
+            <guimenu>De-register</guimenu>.
+          </para>
+        </step>
+      </procedure>
+    </sect2>
 
-  <sect2 xml:id="identifying-inactive-systems-with-rmt">
-   <title>Identifying inactive systems with RMT</title>
-   <para>
-    By using the <command>rmt-cli systems purge</command> command, you can view and remove hosts
-    that have not contacted the RMT server since a given date in the past. For more details, refer
-    to <link xlink:href="https://documentation.suse.com/sles/html/SLES-all/cha-rmt-tools.html#sec-rmt-tools-rmt-cli-systems"/>
-   </para>
-  </sect2>
- </sect1>
- <sect1 xml:id="system-data-gathered-by-scc">
-  <title>System data gathered by SCC</title>
+    <sect2 xml:id="identifying-inactive-systems-with-rmt">
+      <title>Identifying inactive systems with RMT</title>
+      <para>
+        By using the <command>rmt-cli systems purge</command> command, you can
+        view and remove hosts that have not contacted the RMT server since a
+        given date in the past. For more details, refer to
+        <link xlink:href="https://documentation.suse.com/sles/html/SLES-all/cha-rmt-tools.html#sec-rmt-tools-rmt-cli-systems"/>
+      </para>
+    </sect2>
+  </sect1>
+  <sect1 xml:id="system-data-gathered-by-scc">
+    <title>System data gathered by SCC</title>
 
-  <para>
-   When a system is registered directly via SCC, or its registration information is forwarded by RMT
-   or &suma;, SCC collects the following information:
-  </para>
+    <para>
+      When a system is registered directly via SCC, or its registration
+      information is forwarded by RMT or &suma;, SCC collects the following
+      information:
+    </para>
 
-  <table>
-   <title>System attributes collected by SCC</title>
-   <tgroup cols='3' align='left'>
-    <colspec colnum="1" colname="1" colwidth=""/>
-    <colspec colnum="2" colname="2" colwidth=""/>
-    <colspec colnum="3" colname="3" colwidth="3*"/>
-    <thead>
-     <row>
-      <entry>
+    <table>
+      <title>System attributes collected by SCC</title>
+      <tgroup cols='3' align='left'>
+        <colspec colnum="1" colname="1" colwidth=""/>
+        <colspec colnum="2" colname="2" colwidth=""/>
+        <colspec colnum="3" colname="3" colwidth="3*"/>
+        <thead>
+          <row>
+            <entry>
        System Attribute
       </entry>
-      <entry>
+            <entry>
        Type
       </entry>
-      <entry>
+            <entry>
        Example value
       </entry>
-     </row>
-    </thead>
-    <tbody>
-     <row>
-      <entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>
         Host Name
       </entry>
-      <entry>
+            <entry>
         string
       </entry>
-      <entry>
+            <entry>
        virtual.domain.net
       </entry>
      </row>
@@ -259,157 +275,160 @@
       <entry>
         vCPUs
       </entry>
-      <entry>
+            <entry>
        int
       </entry>
-      <entry>
+            <entry>
        1
       </entry>
-     </row>
-     <row>
-      <entry>
+          </row>
+          <row>
+            <entry>
        Sockets
       </entry>
-      <entry>
+            <entry>
        int
       </entry>
-      <entry>
+            <entry>
        2
       </entry>
-     </row>
-     <row>
-      <entry>
+          </row>
+          <row>
+            <entry>
        Architecture
       </entry>
-      <entry>
+            <entry>
        string
       </entry>
-      <entry>
+            <entry>
        x86_64
       </entry>
-     </row>
-     <row>
-      <entry>
+          </row>
+          <row>
+            <entry>
        UUID
       </entry>
-      <entry>
+            <entry>
        uuid
       </entry>
-      <entry>
+            <entry>
        6A5072A0-311B-430E-8EDE-A8770788B92D
       </entry>
-     </row>
-     <row>
-      <entry>
+          </row>
+          <row>
+            <entry>
        Hypervisor
       </entry>
-      <entry>
+            <entry>
        string
       </entry>
-      <entry>
+            <entry>
        KVM or VMware etc.
       </entry>
-     </row>
-     <row>
-      <entry>
+          </row>
+          <row>
+            <entry>
        Cloud Provider
       </entry>
-      <entry>
+            <entry>
        string
       </entry>
-      <entry>
+            <entry>
        Amazon, Google, or Azure
       </entry>
-     </row>
-     <row>
-      <entry>
+          </row>
+          <row>
+            <entry>
        Last Seen Date
       </entry>
-      <entry>
+            <entry>
        date
       </entry>
-      <entry>
+            <entry>
        2021-05-05 (the last time that the system contacted SCC or RMT)
       </entry>
-     </row>
-     <row>
-      <entry>
+          </row>
+          <row>
+            <entry>
        Total Memory
       </entry>
-      <entry>
+            <entry>
        int
       </entry>
-      <entry>
+            <entry>
        4096 (in MiB)
       </entry>
-     </row>
-    </tbody>
-   </tgroup>
-  </table>
- </sect1>
- <sect1 xml:id="suseconnect-benefits">
-  <title>Benefits</title>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+  </sect1>
+  <sect1 xml:id="suseconnect-benefits">
+    <title>Benefits</title>
 
-  <para>
-   The new functionality of &suseconnect; brings the following benefits to the 
-   customer:
-  </para>
+    <para>
+      The new functionality of &suseconnect; brings the following benefits to
+      the customer:
+    </para>
 
-  <itemizedlist>
-   <listitem>
-    <para>
-     Ability to identify all types of deployments of systems, no matter if they are derived from a
-     custom image or are clones of an already registered virtual machine.
-    </para>
-   </listitem>
-   <listitem>
-    <para>
-     By contacting SCC or RMT regularly, you can obtain the number of actually running registered
-     systems. This provides a better insight into the consumption of &suse; 
-     subscriptions.
-    </para>
-   </listitem>
-   <listitem>
-    <para>
-     Updates to registration tools provide a clearer picture of your workloads. 
-     You can filter out the systems that are no longer running or decommissioned.
-    </para>
-   </listitem>
-   <listitem>
-    <para>
-     By collecting regular registration and hardware information, we will continue to improve our
-     products to reflect your needs and let you manage system subscriptions more easily.
-    </para>
-   </listitem>
-  </itemizedlist>
- </sect1>
- <sect1 xml:id="suseconnect-visibility-related-topics">
-  <title>Related topics</title>
+    <itemizedlist>
+      <listitem>
+        <para>
+          Ability to identify all types of deployments of systems, no matter if
+          they are derived from a custom image or are clones of an already
+          registered virtual machine.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          By contacting SCC or RMT regularly, you can obtain the number of
+          actually running registered systems. This provides a better insight
+          into the consumption of &suse; subscriptions.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Updates to registration tools provide a clearer picture of your
+          workloads. You can filter out the systems that are no longer running
+          or decommissioned.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          By collecting regular registration and hardware information, we will
+          continue to improve our products to reflect your needs and let you
+          manage system subscriptions more easily.
+        </para>
+      </listitem>
+    </itemizedlist>
+  </sect1>
+  <sect1 xml:id="suseconnect-visibility-related-topics">
+    <title>Related topics</title>
 
-  <itemizedlist>
-   <listitem>
-    <para>
-     For general &suseconnect; functionality, refer to
-     <link xlink:href="https://documentation.suse.com/sles/html/SLES-all/cha-register-sle.html"/>.
-    </para>
-   </listitem>
-   <listitem>
-    <para>
-     You can find SCC at <link xlink:href="https://scc.suse.com/"/>.
-    </para>
-   </listitem>
-   <listitem>
-    <para>
-     Find further information about RMT at
-     <link xlink:href="https://documentation.suse.com/sles/html/SLES-all/book-rmt.html"/>
-    </para>
-   </listitem>
-   <listitem>
-    <para>
-     Find further information about &suma; at
-     <link xlink:href="https://documentation.suse.com/suma/"/>
-    </para>
-   </listitem>
-  </itemizedlist>
- </sect1>
+    <itemizedlist>
+      <listitem>
+        <para>
+          For general &suseconnect; functionality, refer to
+          <link xlink:href="https://documentation.suse.com/sles/html/SLES-all/cha-register-sle.html"/>.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          You can find SCC at <link xlink:href="https://scc.suse.com/"/>.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Find further information about RMT at
+          <link xlink:href="https://documentation.suse.com/sles/html/SLES-all/book-rmt.html"/>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Find further information about &suma; at
+          <link xlink:href="https://documentation.suse.com/suma/"/>
+        </para>
+      </listitem>
+    </itemizedlist>
+  </sect1>
 </article>
