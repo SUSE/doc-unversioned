@@ -302,17 +302,12 @@
     <section xml:id="sec-podman-registries">
       <title>Configuring container registries</title>
       <para>
-        Unlike &deng;, &podman; can be configured to search multiple container
-        registries. To make &podman; search the &suseregistry; first and use
-        &dhub; as a fallback, add the following configuration to the
-        <filename>/etc/containers/registries.conf</filename> file:
+        By default, &podman; is configured to use &suseregistry; only. To make
+        &podman; search the &suseregistry; first and use &dhub; as a fallback,
+        make sure that the
+        <filename>/etc/containers/registries.conf</filename> file contains the following configuration:
       </para>
 <screen>unqualified-search-registries = ["registry.suse.com", "docker.io"]</screen>
-      <para>
-        Note that this step can be skipped on &productname;. On both
-        distributions, &suseregistry; and
-        <literal>registry.opensuse.org</literal> have priority over &dhub;.
-      </para>
     </section>
     <section xml:id="sec-podman-search">
       <title>Searching images in registries</title>
