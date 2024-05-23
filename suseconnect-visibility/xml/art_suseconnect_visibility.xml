@@ -61,12 +61,12 @@
     <para>
       &suse; is committed to helping provide better insights into the
       consumption of SUSE subscriptions, regardless of where they are running or
-      how they are managed; physical or virtual, on-prem or in the cloud,
+      how they are managed; physical or virtual, on-premises or in the cloud,
       connected to SCC or RMT, or managed by SUSE Manager. To help you identify
       or filter out systems in SCC that are decommissioned or no longer running,
-      &suseconnect; now features a daily 'ping,' which will update system
-      information automatically. Each registered host contacts SCC or RMT and
-      sends the unique identification of the host and the description of its
+      &suseconnect; now features a daily <quote>ping,</quote> which updates
+      system information automatically. Each registered host contacts SCC or RMT
+      and sends the unique identification of the host and the description of its
       hardware environment.
     </para>
   </sect1>
@@ -139,7 +139,7 @@
       <para>
         When the &suseconnect; package is installed or updated, and its version
         is equal to or greater than the one described above, the keep-alive
-        timer will be enabled automatically.
+        timer is enabled automatically.
       </para>
     </note>
 
@@ -152,7 +152,7 @@
 <screen>&prompt.sudo;systemctl disable --now suse-connect-keepalive.timer</screen>
       <para>
         Once the timer is disabled, subsequent updates to the &suseconnect;
-        package will not re-enable it.
+        package do not re-enable it.
       </para>
       <tip>
         <title>Re-enabling the keep-alive timer</title>
@@ -270,9 +270,9 @@
             <entry>
        virtual.domain.net
       </entry>
-     </row>
-     <row>
-      <entry>
+          </row>
+          <row>
+            <entry>
         vCPUs
       </entry>
             <entry>
@@ -395,7 +395,7 @@
       </listitem>
       <listitem>
         <para>
-          By collecting regular registration and hardware information, we will
+          By collecting regular registration and hardware information, we can
           continue to improve our products to reflect your needs and let you
           manage system subscriptions more easily.
         </para>
