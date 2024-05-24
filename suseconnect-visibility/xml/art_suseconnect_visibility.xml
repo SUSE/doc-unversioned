@@ -260,7 +260,7 @@
             <entry>virtual.domain.net</entry>
           </row>
           <row>
-            <entry>vCPUs</entry>
+            <entry>CPUs</entry>
             <entry>int</entry>
             <entry>1</entry>
           </row>
@@ -268,6 +268,11 @@
             <entry>Sockets</entry>
             <entry>int</entry>
             <entry>2</entry>
+          </row>
+          <row>
+            <entry>Total Memory</entry>
+            <entry>int</entry>
+            <entry>4096 (in MiB)</entry>
           </row>
           <row>
             <entry>Architecture</entry>
@@ -295,13 +300,39 @@
             <entry>2021-05-05 (the last time that the system contacted SCC or RMT)</entry>
           </row>
           <row>
-            <entry>Total Memory</entry>
-            <entry>int</entry>
-            <entry>4096 (in MiB)</entry>
+            <entry>Products</entry>
+            <entry>list</entry>
+            <entry>
+              <para>
+                Base product and activated extensions and modules, for example:
+              </para>
+<screen>
+{
+  "id": 2511,
+  "identifier": "sle-module-live-patching",
+  "version": "15.2",
+  "arch": "x86_64"
+}
+</screen>
+            </entry>
+          </row>
+          <row>
+            <entry>Subscriptions</entry>
+            <entry>list</entry>
+            <entry>The subscription registration code used to activate each product</entry>
           </row>
         </tbody>
       </tgroup>
     </table>
+
+    <tip>
+      <para>
+        &susemgr; sends additional data about the used hypervisor and
+        virtualized systems. Find more details in
+        <link
+        xlink:href="https://documentation.suse.com/subscription/hypervisor-collector/html/SLE-scc-hypervisor-collector/index.html#scc-hypervisor-collector-data"/>.
+      </para>
+    </tip>
   </sect1>
   <sect1 xml:id="suseconnect-benefits">
     <title>Benefits</title>
