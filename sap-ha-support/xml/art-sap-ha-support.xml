@@ -57,11 +57,11 @@
 
     <!-- Social Media -->
     <meta name="title" its:translate="yes">Supported &ha; solutions by &productnameshort;</meta>
-    <meta name="social-descr" its:translate="yes">Supported &ha; solutions by &productnameshort;.</meta>
+    <meta name="social-descr" its:translate="yes">Use supported &ha; solutions for &productnameshort;</meta>
 
     <!-- Search -->
-    <meta name="description" its:translate="yes">An overview of &ha; solutions that &suse; supports for &hana;,
-       &s4hana;, and &nwshort; on &sles; 15.</meta>
+    <meta name="description" its:translate="yes">How to use &ha; solutions that &suse; supports for &hana;,
+       &s4hana;, and &nwshort; on &slsa;</meta>
 
     <authorgroup>
       <author><personname><firstname>Fabian</firstname><surname>Herschel</surname></personname>
