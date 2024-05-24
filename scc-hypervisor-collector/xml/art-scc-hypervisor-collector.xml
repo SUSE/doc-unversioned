@@ -49,8 +49,8 @@
     <title>Benefits</title>
 
     <para>
-      Collecting details about hypervisors and providing our customers with
-      them has the following benefits:
+      Collecting details about hypervisors and providing our customers with them
+      has the following benefits:
     </para>
 
     <itemizedlist>
@@ -101,13 +101,13 @@
     </para>
 
     <para>
-      The collected data, when uploaded to SCC, is correlated with existing
-      SCC registrations and subscription entitlements.
+      The collected data, when uploaded to SCC, is correlated with existing SCC
+      registrations and subscription entitlements.
     </para>
 
     <para>
-      You can either run &scchvc; manually or enable a &systemd; timer to run
-      it regularly.
+      You can either run &scchvc; manually or enable a &systemd; timer to run it
+      regularly.
     </para>
   </sect1>
   <sect1 xml:id="scc-hypervisor-collector-data">
@@ -155,8 +155,8 @@
     <para>
       You need to configure &scchvc; and specify the hypervisors that it needs
       to query, and the credentials required to upload the collected details to
-      SCC. &scchvc; checks configuration files with the
-      <literal>.yaml</literal> or <literal>.yml</literal> suffix in the
+      SCC. &scchvc; checks configuration files with the <literal>.yaml</literal>
+      or <literal>.yml</literal> suffix in the
       <filename>/var/lib/scchvc/.config/scc-hypervisor-collector/</filename>
       directory.
     </para>
@@ -193,8 +193,8 @@
             <para>
               The provided credentials only need the privileges to retrieve the
               specified details from the hypervisor solution. It is highly
-              recommended that they do not have capabilities to modify the
-              state of the hypervisor.
+              recommended that they do not have capabilities to modify the state
+              of the hypervisor.
             </para>
           </tip>
         </listitem>
@@ -241,9 +241,8 @@ backends:
 
     <tip>
       <para>
-        For more details about configuration options, refer to the
-        corresponding man page <command>man 5
-        scc-hypervisor-collector</command>.
+        For more details about configuration options, refer to the corresponding
+        man page <command>man 5 scc-hypervisor-collector</command>.
       </para>
     </tip>
 
@@ -265,8 +264,8 @@ backends:
           <para>
             The <option>--input</option> option lets you specify the path to the
             file that contains the previously collected results of querying the
-            hypervisors in the YAML format. These results are uploaded
-            to SCC instead of querying the current state of hypervisors.
+            hypervisors in the YAML format. These results are uploaded to SCC
+            instead of querying the current state of hypervisors.
           </para>
         </listitem>
       </itemizedlist>
@@ -276,12 +275,12 @@ backends:
       <itemizedlist>
         <listitem>
           <para>
-            Customer systems that have the necessary access to collect the
-            data from the configured hypervisor systems may not have
-            access to the Internet to upload the collected data to SCC.
-            Conversely, systems that have Internet access to upload
-            data to SCC may not have sufficient access to collect
-            the data from the customer hypervisor solutions.
+            Customer systems that have the necessary access to collect the data
+            from the configured hypervisor systems may not have access to the
+            Internet to upload the collected data to SCC. Conversely, systems
+            that have Internet access to upload data to SCC may not have
+            sufficient access to collect the data from the customer hypervisor
+            solutions.
           </para>
         </listitem>
         <listitem>
@@ -298,8 +297,7 @@ backends:
     <title>&scchvc; &systemd; services</title>
 
     <para>
-      The
-      <systemitem class="daemon">scc-hypervisor-collector.timer</systemitem>
+      The <systemitem class="daemon">scc-hypervisor-collector.timer</systemitem>
       timer triggers the
       <systemitem
       class="daemon">scc-hypervisor-collector.service</systemitem>
@@ -332,9 +330,8 @@ backends:
       <title>Customizing &systemd; unit files</title>
       <para>
         To modify the default behavior of the collector's &systemd; unit files,
-        create &systemd; unit <emphasis>drop-in</emphasis> files to override
-        the default behavior, using the <command>systemctl edit</command>
-        mechanism.
+        create &systemd; unit <emphasis>drop-in</emphasis> files to override the
+        default behavior, using the <command>systemctl edit</command> mechanism.
       </para>
       <para>
         To change the user under which the
