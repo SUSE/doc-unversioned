@@ -159,9 +159,9 @@
     "virtualization_hosts": [
         {
             "identifier": "SCC_06bc59754...",
-            "group_name": "suma-02.mgr.example.com",
+            "group_name": "group.example.com",
             "properties": {
-                "name": "suma-02-a.mgrexample.com",
+                "name": "host.example.com",
                 "arch": "x86_64",
                 "cores": 64,
                 "sockets": 1,
@@ -174,14 +174,14 @@
                     "uuid": "47fc43cc-c704-4e08-82ee-0e1694XXXYYZ",
                     "properties": {
                         "vm_state": "running",
-                        "vm_name": "sumadocker5"
+                        "vm_name": "vm1"
                     }
                 },
                 {
                     "uuid": "a914d996-fb27-4d74-8ba7-fde99eXXYYZZ",
                     "properties": {
                         "vm_state": "running",
-                        "vm_name": "sle-micro-55"
+                        "vm_name": "vm2"
                     }
                 },
             ]
