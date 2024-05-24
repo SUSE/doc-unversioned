@@ -81,11 +81,10 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
 
     <!-- Social Media -->
     <meta name="title" its:translate="yes">Getting started with &trentopremium;</meta>
-    <meta name="social-descr" its:translate="yes">Introduction to &trentopremium; for &sles4sapa;.</meta>
+    <meta name="social-descr" its:translate="yes">Use &trentopremium; for &sles4sapa;</meta>
 
     <!-- Search -->
-    <meta name="description" its:translate="yes">&trentopremium; is an open cloud native Web console that lets
-    &sap; Basis consultants and administrators maintain the OS stack of their &sap; environments.</meta>
+    <meta name="description" its:translate="yes">How to use &trentopremium; for &sles4sap;</meta>
 
     <abstract>
       <para>
