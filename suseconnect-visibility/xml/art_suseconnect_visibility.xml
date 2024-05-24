@@ -302,7 +302,19 @@
           <row>
             <entry>Products</entry>
             <entry>list</entry>
-            <entry>Base product, extensions and modules activated on the system, for example, <literal>SUSE Linux Enterprise 15 SP3 x86_64</literal></entry>
+            <entry>
+              <para>
+                Base product and activated extensions and modules, for example:
+              </para>
+<screen>
+{
+  "id": 2511,
+  "identifier": "sle-module-live-patching",
+  "version": "15.2",
+  "arch": "x86_64"
+}
+</screen>
+            </entry>
           </row>
           <row>
             <entry>Subscriptions</entry>
@@ -312,6 +324,15 @@
         </tbody>
       </tgroup>
     </table>
+
+    <tip>
+      <para>
+        &susemgr; sends additional data about the used hypervisor and
+        virtualized systems. Find more details in
+        <link
+        xlink:href="https://documentation.suse.com/subscription/hypervisor-collector/html/SLE-scc-hypervisor-collector/index.html#scc-hypervisor-collector-data"/>.
+      </para>
+    </tip>
   </sect1>
   <sect1 xml:id="suseconnect-benefits">
     <title>Benefits</title>
