@@ -372,7 +372,7 @@ backends:
       <para>
         To modify the default behavior of the collector's &systemd; unit files,
         create &systemd; unit <emphasis>drop-in</emphasis> files to override the
-        default behavior using the <command>systemctl edit</command> mechanism.
+        default behavior, using the <command>systemctl edit</command> mechanism.
       </para>
       <para>
         To change the user under which the
