@@ -148,6 +148,47 @@
         </para>
       </listitem>
     </itemizedlist>
+
+    <para>
+      The following example shows a JSON representation of hypervisor data that
+      is being collected.
+    </para>
+
+<screen>
+{
+    "virtualization_hosts": [
+        {
+            "identifier": "SCC_06bc59754...",
+            "group_name": "group.example.com",
+            "properties": {
+                "name": "host.example.com",
+                "arch": "x86_64",
+                "cores": 64,
+                "sockets": 1,
+                "threads": 128,
+                "ram_mb": 515233,
+                "type": "KVM"
+            },
+            "systems": [
+                {
+                    "uuid": "47fc43cc-c704-4e08-82ee-0e1694XXXYYZ",
+                    "properties": {
+                        "vm_state": "running",
+                        "vm_name": "vm1"
+                    }
+                },
+                {
+                    "uuid": "a914d996-fb27-4d74-8ba7-fde99eXXYYZZ",
+                    "properties": {
+                        "vm_state": "running",
+                        "vm_name": "vm2"
+                    }
+                },
+            ]
+        }
+    ]
+}
+</screen>
   </sect1>
   <sect1 xml:id="scc-hypervisor-collector-configuration">
     <title>Configuration</title>
