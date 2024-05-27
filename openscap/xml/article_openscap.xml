@@ -469,11 +469,6 @@
         </listitem>
         <listitem>
           <para>
-            PCI-DSS v3.2.1 Control Baseline for &sle; 15
-          </para>
-        </listitem>
-        <listitem>
-          <para>
             PCI-DSS v4 Control Baseline for &sle; 15
           </para>
         </listitem>
@@ -552,11 +547,6 @@
         <listitem>
           <para>
             DISA STIG for &sle; 12
-          </para>
-        </listitem>
-        <listitem>
-          <para>
-            PCI-DSS v3.2.1 Control Baseline for &sle; 12
           </para>
         </listitem>
         <listitem>
