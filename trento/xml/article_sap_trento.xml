@@ -2300,7 +2300,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
   <section xml:id="sec-trento-rotating-apikeys">
     <title>Rotating API keys</title>
     <remark>toms 2024-04-18 (change#7)</remark>
-    <para>The communication from the Trento agent to the Trento server is secured by a API key,
+    <para>The communication from the &t.agent; to the &t.server; is secured by a API key
      which must be provided in the agent configuration file.</para>
    <para>By default, the API key does not have an expiration date. But, in order to increase the
     overall security of the setup and/or meet internal security requirements,
