@@ -2305,8 +2305,8 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
    <para>By default, the API key does not have an expiration date. To increase the
     overall security of the setup, meet internal security requirements, or both,
     the user can set up a custom expiration date.</para>
-   <para>In order to do that, the user should go to the Settings view and click on
-    the Generate Key button in the API Key section:</para>
+   <para>To do that, go to the Settings view and click 
+    the <guimenu>Generate Key</guimenu> button in the API Key section:</para>
           <figure>
         <title><guimenu>Checks catalog</guimenu></title>
         <mediaobject>
