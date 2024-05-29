@@ -1838,6 +1838,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
     As a result, all information about available software updates disappears from the console and the status of the hosts is adjusted accordingly.</para>
     </section>
 
+<!--
     <section xml:id="sec-trento-web-hosts">
       <title>Hosts view</title>
       <para> To display the lists of registered hosts, click the
@@ -1877,7 +1878,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
 
       <para> Clicking on a host name opens the corresponding <guimenu>Host
         details</guimenu> view, where you can see the following: </para>
-      <itemizedlist xml:id="lst-trento-web-hosts-details">
+      <itemizedlist><!-\- xml:id="lst-trento-web-hosts-details" -\->
         <title>Host details view</title>
         <listitem>
           <para><guimenu>Hosts details</guimenu> section:
@@ -2026,7 +2027,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
                 checks. Whenever you make a new selection of checks you need to
                 click <guimenu>Select Checks for Execution</guimenu> to save the change.
               </para>
-              <!-- still change 2 -->
+              <!-\- still change 2 -\->
             </listitem>
           </itemizedlist>
           <para>
@@ -2295,7 +2296,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
           linkend="lst-trento-web-pace-cluster-settings" /> for
         details. </para> 
     </section>
-
+-->
 
   <section xml:id="sec-trento-rotating-apikeys">
     <title>Rotating API keys</title>
@@ -2316,7 +2317,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
           </imageobject>
         </mediaobject>
       </figure>
-   <para>Beware that whenever a new key is generated, the configuration of all the reporting agents must be updated accordingly.</para>
+   <para>Whenever a new key is generated, the configuration of all the reporting agents must be updated accordingly.</para>
   </section>
 
   <section xml:id="sec-trento-updating-trentoserver">
