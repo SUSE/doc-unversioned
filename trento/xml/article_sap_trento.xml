@@ -1058,8 +1058,8 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         <formalpara>
           <title><guimenu>Settings</guimenu></title>
           <para>
-           Lets you retrieve and operate the API key for this particular installation, which is required for the &t.agent; configuration, as well as
-           managing the connection data to a SUSE Manager instance when one is available.
+           Lets you retrieve and operate the API key for this particular installation. This is required for the &t.agent; configuration, as well as
+           managing the connection data for a &suma; instance when one is available.
           </para>
         </formalpara>
       </listitem>
