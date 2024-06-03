@@ -37,7 +37,11 @@
   <sect1 xml:id="uptime-intro">
     <title>Introduction</title>
     <para>
-      The system uptime tracking
+      The system uptime tracking feature monitors when a client system is up. It
+      works on an hourly basis&mdash;the system is considered up if it was
+      running at any part of the given hour. The information is stored in &scc;
+      (SCC) and Repository Mirroring Tool (RMT), and serves as a source for
+      analytic purposes. The uptime tracking is disabled by default.
     </para>
   </sect1>
 </article>
