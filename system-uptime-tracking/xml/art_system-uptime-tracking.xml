@@ -31,17 +31,233 @@
       <dm:translation>yes</dm:translation>
     </dm:docmanager>
     <abstract>
-      <para></para>
+      <para>
+        The system uptime tracking feature monitors when a client system is up.
+        It works on an hourly basis&mdash;the system is considered up if it was
+        running at any part of the given hour. The information is stored in
+        &scc; (SCC) and Repository Mirroring Tool (RMT), and serves as a source
+        for analytic purposes.
+      </para>
     </abstract>
   </info>
-  <sect1 xml:id="uptime-intro">
-    <title>Introduction</title>
+  <sect1 xml:id="uptime-requirements">
+    <title>Requirements</title>
+
+    <itemizedlist>
+      <listitem>
+        <para>
+          The version of the <package>suseconnect-ng</package> package has to be
+          1.10 or newer. Verify it by running <command>suseconnect
+          --version</command>.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          If the client system is behind RMT, the version of the
+          <package>rmt-server</package> package has to be 2.17 or newer. Verify
+          it by running <command>rpm -q rmt-server</command>.
+        </para>
+      </listitem>
+    </itemizedlist>
+  </sect1>
+  <sect1 xml:id="uptime-enable">
+    <title>Enabling the uptime tracking</title>
+
     <para>
-      The system uptime tracking feature monitors when a client system is up. It
-      works on an hourly basis&mdash;the system is considered up if it was
-      running at any part of the given hour. The information is stored in &scc;
-      (SCC) and Repository Mirroring Tool (RMT), and serves as a source for
-      analytic purposes. The uptime tracking is disabled by default.
+      The uptime tracking is disabled by default. To enable it on the client
+      system, start its &systemd; timer and adjust the &suseconnect;
+      configuration.
+    </para>
+
+    <procedure>
+      <title>Enabling the &systemd; timer</title>
+      <step>
+        <para>
+          Install the <package>suse-uptime-tracker</package> package.
+        </para>
+<screen>&prompt.sudo;zypper install suse-uptime-tracker</screen>
+      </step>
+      <step>
+        <para>
+          Enable and start the
+          <systemitem class="daemon">suse-uptime-tracker</systemitem> service.
+        </para>
+<screen>&prompt.sudo;systemctl enable --now suse-uptime-tracker</screen>
+      </step>
+      <step>
+        <para>
+          Check if the service is running.
+        </para>
+<screen>&prompt.user;systemctl status suse-uptime-tracker</screen>
+      </step>
+    </procedure>
+
+    <procedure>
+      <title>Adjusting the &suseconnect; configuration</title>
+      <step performance="optional">
+        <para>
+          If you do not have a copy of the <filename>/etc/SUSEConnect</filename>
+          file, crate it by copying the example file.
+        </para>
+<screen>&prompt.sudo;cp /etc/SUSEConnect.example /etc/SUSEConnect</screen>
+      </step>
+      <step>
+        <para>
+          Edit <filename>/etc/SUSEConnect</filename> and enable the uptime
+          tracking.
+        </para>
+<screen>enable_system_uptime_tracking: true</screen>
+      </step>
+      <step>
+        <para>
+          After enabling the uptime tracking, the timer checks if the system is
+          running every 15 minutes and stores the findings in log files
+          <filename>/etc/zypp/suse-uptime.log</filename>. These log files are
+          uploaded to SCC/RMT by the
+          <systemitem class="daemon">suseconnect-keepalive</systemitem> service
+          which is triggered by the
+          <systemitem class="daemon">suseconnect-keepalive</systemitem> timer
+          every 24 hours. Verify that the timer is running.
+        </para>
+<screen>&prompt.user;systemctl status suseconnect-keepalive.timer</screen>
+      </step>
+    </procedure>
+  </sect1>
+  <sect1 xml:id="uptime-data-retrieve">
+    <title>Retrieve the uptime tracker data</title>
+
+    <para>
+      You can retrieve the data that the uptime tracker collects from SCC and
+      export them to the CSV format via its REST API.
+    </para>
+
+    <procedure>
+      <step>
+        <para>
+          Get the list of all systems for your organization and identify the one
+          for which you want to retrieve uptime data.
+        </para>
+<screen>
+&prompt.user;curl -X 'GET' \
+-u'<replaceable>USERNAME</replaceable>:<replaceable>PASSWORD</replaceable>' \
+'https://scc.suse.com/connect/organizations/systems' \
+-H 'accept: application/json'
+</screen>
+      </step>
+      <step>
+        <para>
+          Retrieve the uptime data. The following examples retrieve uptime data
+          for the system with ID <literal>16300735</literal> from Apr 24th, 2024
+          to May 1st, 2024. You can use either the <command>curl</command> or
+          <command>wget</command> commands for the retrieval.
+        </para>
+        <substeps>
+          <step>
+            <para>
+              To retrieve the data using the <command>curl</command> command,
+              run the following:
+            </para>
+<screen>
+&prompt.user;curl -X 'GET' \
+-u'<replaceable>USERNAME</replaceable>:<replaceable>PASSWORD</replaceable>' \
+'https://scc.suse.com/connect/organizations/system_uptimes?SystemId=16300735&amp;OnlineFrom=2024-04-24&amp;OnlineTo=2024-05-01' \
+-H 'accept: text/csv'
+</screen>
+          </step>
+          <step>
+            <para>
+              To retrieve the data using the <command>wget</command> command,
+              run the following:
+            </para>
+<screen>
+&prompt.user;wget --no-check-certificate \
+--user=<replaceable>USERNAME</replaceable> --password=<replaceable>PASSWORD</replaceable> \
+--header='accept: text/csv' \
+'https://scc.suse.com/connect/organizations/system_uptimes'
+</screen>
+          </step>
+        </substeps>
+      </step>
+    </procedure>
+  </sect1>
+  <sect1 xml:id="uptime-data-understanding">
+    <title>Understanding the uptime data</title>
+
+    <para>
+      The uptime data retrieved from SCC has the following structure where
+      columns are separated by semicolons, for example:
+    </para>
+
+<screen>
+System;Uuid;Online At Day;Online At Hours;Online For Hours
+15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-08;111111100000000011111111;15
+15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-09;111000000000000000000000;3
+15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-11;000000000000000111111111;9
+15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-12;111110000000000111111111;14
+15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-13;111111000000000111111111;15
+15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-14;111000000000000000000000;3
+15892210;9e818a04-9e82-4584-8f41-b0f39a045526;2024-02-27;000011111111111111111111;20
+15892210;9e818a04-9e82-4584-8f41-b0f39a045526;2024-02-28;000011111111111111111111;20
+15892210;9e818a04-9e82-4584-8f41-b0f39a045526;2024-02-29;000011111111111111111111;20
+15892210;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-01;011111000000000011111111;13
+</screen>
+
+    <para>
+      The columns have the following meaning:
+    </para>
+
+    <variablelist>
+      <varlistentry>
+        <term>System</term>
+        <listitem>
+          <para>
+            All the systems managed by SCC/RMT are uniquely identified by a
+            system ID generated during system registration in SCC/RMT.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Uuid</term>
+        <listitem>
+          <para>
+            A unique hardware identifier.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Online At Day</term>
+        <listitem>
+          <para>
+            The days on which the system was up at least for one hour. See the
+            <quote>Online At Hours</quote> term explanation for deeper
+            understanding.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Online At Hours</term>
+        <listitem>
+          <para>
+            Each bit represents the hour of the day. The very left bit
+            corresponds the zeroth hour of the day. <quote>1</quote> indicates
+            that the system was up at any time during an hour, while
+            <quote>0</quote> indicates that the system was offline.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Online For Hours</term>
+        <listitem>
+          <para>
+            Number of hours when the system was up during a given day.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </sect1>
+  <sect1 xml:id="uptime-data-practical">
+    <title>Practical tasks</title>
+    <para>
     </para>
   </sect1>
 </article>
