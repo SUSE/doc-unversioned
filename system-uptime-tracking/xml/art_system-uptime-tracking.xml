@@ -275,7 +275,7 @@ System;Uuid;Online At Day;Online At Hours;Online For Hours
       <qandaentry>
         <question>
           <para>
-            Was a system up between 9-10am on 2024-02-27?
+            Was the host up between 9-10am on 2024-02-27?
           </para>
         </question>
         <answer>
@@ -289,6 +289,84 @@ System;Uuid;Online At Day;Online At Hours;Online For Hours
             the 10th digit (the bit starts with 0am) from left. The
             corresponding bit is <literal>1</literal>, therefore the system was
             up between 9-10am.
+          </para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>
+            What is the total uptime and downtime of the host on 2024-02-27?
+          </para>
+        </question>
+        <answer>
+          <para>
+            The log line related to that date shows the bit pattern
+            <literal>000011111111111111111111</literal>. There are twenty 1's
+            and four 0's in the pattern meaning that the host was up for twenty
+            hours and down for four hours.
+          </para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>
+            How many days was the host up in February 2024?
+          </para>
+        </question>
+        <answer>
+          <para>
+            To find out statistics about the host in a specific month, adjust
+            the <option>OnlineFrom</option> and <option>OnlineTo</option>
+            parameters in the URL query mentioned in
+            <xref
+            linkend="uptime-data-retrieve"/>, for example:
+          </para>
+<screen>
+&prompt.user;curl -X 'GET' \
+-u'<replaceable>USERNAME</replaceable>:<replaceable>PASSWORD</replaceable>' \
+'https://scc.suse.com/connect/organizations/system_uptimes?SystemId=16300735&amp;OnlineFrom=2024-02-01&amp;OnlineTo=2024-02-29' \
+-H 'accept: text/csv'
+System;Uuid;Online At Day;Online At Hours;Online For Hours
+16300735;78740b8c-7d23-42f8-b5fe-4776c47b9cb9;2024-04-24;000000000000000000000001;1
+16300735;78740b8c-7d23-42f8-b5fe-4776c47b9cb9;2024-04-25;110000000000000000000000;2
+</screen>
+          <para>
+            The sum of the very right column is 3, there fore the host was up
+            for 3 days in February 2024.
+          </para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>
+            How do I retrieve the uptime data for all hosts in my organization?
+          </para>
+        </question>
+        <answer>
+          <para>
+            For that purpose, omit the <option>SystemId</option>,
+            <option>OnlineFrom</option> and <option>OnlineTo</option> parameters
+            from the URL query, for example:
+          </para>
+<screen>
+&prompt.user;curl -X 'GET' \
+-u'<replaceable>USERNAME</replaceable>:<replaceable>PASSWORD</replaceable>' \
+'https://scc.suse.com/connect/organizations/system_uptimes \
+-H 'accept: text/csv'
+System;Uuid;Online At Day;Online At Hours;Online For Hours
+15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-08;111111100000000011111111;15
+15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-09;111000000000000000000000;3
+15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-11;000000000000000111111111;9
+15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-12;111110000000000111111111;14
+15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-13;111111000000000111111111;15
+15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-14;111000000000000000000000;3
+15892210;9e818a04-9e82-4584-8f41-b0f39a045526;2024-02-27;000011111111111111111111;20
+15892210;9e818a04-9e82-4584-8f41-b0f39a045526;2024-02-28;000011111111111111111111;20
+15892210;9e818a04-9e82-4584-8f41-b0f39a045526;2024-02-29;000011111111111111111111;20
+15892210;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-01;011111000000000011111111;13
+</screen>
+          <para>
+            As you can see, the list inclides system IDs from different hosts.
           </para>
         </answer>
       </qandaentry>
