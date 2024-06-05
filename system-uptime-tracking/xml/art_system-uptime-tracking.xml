@@ -134,8 +134,15 @@
     <procedure>
       <step>
         <para>
-          Get the list of all systems for your organization and identify the one
-          for which you want to retrieve uptime data.
+          Obtain your organization mirroring credentials from the
+          <guimenu>Proxies</guimenu> tab in the SCC Web at
+          <link
+          xlink:href="https://scc.suse.com"/>.
+        </para>
+      </step>
+      <step>
+        <para>
+          Get the list of all systems for your organization.
         </para>
 <screen>
 &prompt.user;curl -X 'GET' \
@@ -143,6 +150,12 @@
 'https://scc.suse.com/connect/organizations/systems' \
 -H 'accept: application/json'
 </screen>
+        <para>
+          In the list of systems, identify the client for which you want to
+          retrieve the uptime data by matching its credentials found in the
+          client's <filename>/etc/zypp/credentials.d/SCCcredentials</filename>
+          file.
+        </para>
       </step>
       <step>
         <para>
@@ -257,7 +270,28 @@ System;Uuid;Online At Day;Online At Hours;Online For Hours
   </sect1>
   <sect1 xml:id="uptime-data-practical">
     <title>Practical tasks</title>
-    <para>
-    </para>
+
+    <qandaset>
+      <qandaentry>
+        <question>
+          <para>
+            Was a system up between 9-10am on 2024-02-27?
+          </para>
+        </question>
+        <answer>
+          <para>
+            Retrieve the uptime data as described in
+            <xref
+            linkend="uptime-data-retrieve"/>. Open the data
+            file and search for the line that starts with
+            <literal>2024-02-27</literal>. Inspect that day's bit pattern, for
+            example, <literal>000011111111111111111111</literal> and count up to
+            the 10th digit (the bit starts with 0am) from left. The
+            corresponding bit is <literal>1</literal>, therefore the system was
+            up between 9-10am.
+          </para>
+        </answer>
+      </qandaentry>
+    </qandaset>
   </sect1>
 </article>
