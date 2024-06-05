@@ -36,7 +36,7 @@
         It works on an hourly basis&mdash;the system is considered up if it was
         running at any part of the given hour. The information is stored in
         &scc; (SCC) and Repository Mirroring Tool (RMT), and serves as a source
-        for analytic purposes.
+        for analytics purposes.
       </para>
     </abstract>
   </info>
@@ -135,7 +135,7 @@
       <step>
         <para>
           Obtain your organization mirroring credentials from the
-          <guimenu>Proxies</guimenu> tab in the SCC Web at
+          <guimenu>Proxies</guimenu> tab in the SCC website at
           <link
           xlink:href="https://scc.suse.com"/>.
         </para>
