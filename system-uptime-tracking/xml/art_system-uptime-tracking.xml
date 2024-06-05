@@ -15,7 +15,7 @@
          xml:lang="en"
          xmlns:xi="http://www.w3.org/2001/XInclude"
          xmlns:xlink="http://www.w3.org/1999/xlink">
-  <title>System uptime tracking</title>
+  <title>System Uptime Tracking</title>
   <titleabbrev>System uptime tracking in &scc; and &rmt;</titleabbrev>
   <info><productname>&productnamex;</productname>
     <productnumber>&productnumberx;</productnumber><date>
@@ -97,7 +97,7 @@
       <step performance="optional">
         <para>
           If you do not have a copy of the <filename>/etc/SUSEConnect</filename>
-          file, crate it by copying the example file.
+          file, create it by copying the example file.
         </para>
 <screen>&prompt.sudo;cp /etc/SUSEConnect.example /etc/SUSEConnect</screen>
       </step>
@@ -111,10 +111,10 @@
       <step>
         <para>
           After enabling the uptime tracking, the timer checks if the system is
-          running every 15 minutes and stores the findings in log files
+          running every 15 minutes and stores the findings in the log files
           <filename>/etc/zypp/suse-uptime.log</filename>. These log files are
           uploaded to SCC/RMT by the
-          <systemitem class="daemon">suseconnect-keepalive</systemitem> service
+          <systemitem class="daemon">suseconnect-keepalive</systemitem> service,
           which is triggered by the
           <systemitem class="daemon">suseconnect-keepalive</systemitem> timer
           every 24 hours. Verify that the timer is running.
@@ -124,7 +124,7 @@
     </procedure>
   </sect1>
   <sect1 xml:id="uptime-data-retrieve">
-    <title>Retrieve the uptime tracker data</title>
+    <title>Retrieving the uptime tracker data</title>
 
     <para>
       You can retrieve the data that the uptime tracker collects from SCC and
@@ -197,7 +197,7 @@
     <title>Understanding the uptime data</title>
 
     <para>
-      The uptime data retrieved from SCC has the following structure where
+      The uptime data retrieved from SCC has the following structure, where
       columns are separated by semicolons, for example:
     </para>
 
@@ -251,8 +251,8 @@ System;Uuid;Online At Day;Online At Hours;Online For Hours
         <term>Online At Hours</term>
         <listitem>
           <para>
-            Each bit represents the hour of the day. The very left bit
-            corresponds the zeroth hour of the day. <quote>1</quote> indicates
+            Each bit represents the hour of the day. The leftmost position 
+            represents the zeroth hour of the day. <quote>1</quote> indicates
             that the system was up at any time during an hour, while
             <quote>0</quote> indicates that the system was offline.
           </para>
@@ -275,7 +275,7 @@ System;Uuid;Online At Day;Online At Hours;Online For Hours
       <qandaentry>
         <question>
           <para>
-            Was the host up between 9-10am on 2024-02-27?
+            Was the host up between 9–10 a.m. on 2024-02-27?
           </para>
         </question>
         <answer>
@@ -286,9 +286,9 @@ System;Uuid;Online At Day;Online At Hours;Online For Hours
             file and search for the line that starts with
             <literal>2024-02-27</literal>. Inspect that day's bit pattern, for
             example, <literal>000011111111111111111111</literal> and count up to
-            the 10th digit (the bit starts with 0am) from left. The
+            the 10th digit (the bit starts with 0 a.m.) from left. The
             corresponding bit is <literal>1</literal>, therefore the system was
-            up between 9-10am.
+            up between 9 and 10 a.m.
           </para>
         </answer>
       </qandaentry>
@@ -315,7 +315,7 @@ System;Uuid;Online At Day;Online At Hours;Online For Hours
         </question>
         <answer>
           <para>
-            To find out statistics about the host in a specific month, adjust
+            To retrieve statistics about the host in a specific month, adjust
             the <option>OnlineFrom</option> and <option>OnlineTo</option>
             parameters in the URL query mentioned in
             <xref
@@ -331,8 +331,8 @@ System;Uuid;Online At Day;Online At Hours;Online For Hours
 16300735;78740b8c-7d23-42f8-b5fe-4776c47b9cb9;2024-04-25;110000000000000000000000;2
 </screen>
           <para>
-            The sum of the very right column is 3, there fore the host was up
-            for 3 days in February 2024.
+            The sum in the rightmost column is 3, indicating the host was up
+            for 3 days in February 2024. 
           </para>
         </answer>
       </qandaentry>
@@ -366,7 +366,7 @@ System;Uuid;Online At Day;Online At Hours;Online For Hours
 15892210;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-01;011111000000000011111111;13
 </screen>
           <para>
-            As you can see, the list inclides system IDs from different hosts.
+            As you can see, the list includes system IDs from different hosts.
           </para>
         </answer>
       </qandaentry>
