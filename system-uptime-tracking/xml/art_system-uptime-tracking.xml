@@ -76,13 +76,14 @@
           Install the <package>suse-uptime-tracker</package> package.
         </para>
 <screen>&prompt.sudo;zypper install suse-uptime-tracker</screen>
-<tip>
-  <para>
-    If the package is not available from the &sls; repositories yet, download it
-    from <link
+        <tip>
+          <para>
+            If the package is not available from the &sls; repositories yet,
+            download it from
+            <link
     xlink:href="https://build.opensuse.org/package/show/systemsmanagement:SCC/uptime-tracker"/>.
-  </para>
-</tip>
+          </para>
+        </tip>
       </step>
       <step>
         <para>
@@ -120,13 +121,15 @@
           After enabling the uptime tracking, the timer checks if the system is
           running every 15 minutes and stores the findings in a log file
           <filename>/etc/zypp/suse-uptime.log</filename>. The log file is
-          uploaded to SCC/RMT by the <systemitem
-          class="daemon">suseconnect-keepalive</systemitem> service, which is
-          triggered by the <systemitem
-          class="daemon">suseconnect-keepalive</systemitem> timer every 24
-          hours. Verify that the timer is running.  </para>
-        <screen>&prompt.user;systemctl status
-        suseconnect-keepalive.timer</screen>
+          uploaded to SCC/RMT by the
+          <systemitem
+          class="daemon">suseconnect-keepalive</systemitem>
+          service, which is triggered by the
+          <systemitem
+          class="daemon">suseconnect-keepalive</systemitem>
+          timer every 24 hours. Verify that the timer is running.
+        </para>
+<screen>&prompt.user;systemctl status suseconnect-keepalive.timer</screen>
       </step>
     </procedure>
   </sect1>
@@ -258,7 +261,7 @@ System;Uuid;Online At Day;Online At Hours;Online For Hours
         <term>Online At Hours</term>
         <listitem>
           <para>
-            Each bit represents the hour of the day. The leftmost position 
+            Each bit represents the hour of the day. The leftmost position
             represents the zeroth hour of the day. <quote>1</quote> indicates
             that the system was up at any time during an hour, while
             <quote>0</quote> indicates that the system was offline.
@@ -338,8 +341,8 @@ System;Uuid;Online At Day;Online At Hours;Online For Hours
 16300735;78740b8c-7d23-42f8-b5fe-4776c47b9cb9;2024-04-25;110000000000000000000000;2
 </screen>
           <para>
-            The sum in the rightmost column is 3, indicating the host was up
-            for 3 days in February 2024. 
+            The sum in the rightmost column is 3, indicating the host was up for
+            3 days in February 2024.
           </para>
         </answer>
       </qandaentry>
