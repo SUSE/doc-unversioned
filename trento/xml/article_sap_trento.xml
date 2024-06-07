@@ -51,7 +51,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
     </revhistory>
 
     <!-- Series -->
-    <meta name="series" its:translate="no"></meta>
+    <meta name="series" its:translate="no">Products &amp; Solutions</meta>
 
     <!-- Task -->
     <meta name="task" its:translate="yes">
