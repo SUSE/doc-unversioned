@@ -54,8 +54,8 @@
       <listitem>
         <para>
           If the client system is behind RMT, the version of the
-          <package>rmt-server</package> package has to be 2.17 or newer. Verify
-          it by running <command>rpm -q rmt-server</command>.
+          <package>rmt-server</package> package on the RMT server has to be 2.17
+          or newer. Verify it by running <command>rpm -q rmt-server</command>.
         </para>
       </listitem>
     </itemizedlist>
@@ -76,6 +76,13 @@
           Install the <package>suse-uptime-tracker</package> package.
         </para>
 <screen>&prompt.sudo;zypper install suse-uptime-tracker</screen>
+<tip>
+  <para>
+    If the package is not available from the &sls; repositories yet, download it
+    from <link
+    xlink:href="https://build.opensuse.org/package/show/systemsmanagement:SCC/uptime-tracker"/>.
+  </para>
+</tip>
       </step>
       <step>
         <para>
@@ -111,15 +118,15 @@
       <step>
         <para>
           After enabling the uptime tracking, the timer checks if the system is
-          running every 15 minutes and stores the findings in the log files
-          <filename>/etc/zypp/suse-uptime.log</filename>. These log files are
-          uploaded to SCC/RMT by the
-          <systemitem class="daemon">suseconnect-keepalive</systemitem> service,
-          which is triggered by the
-          <systemitem class="daemon">suseconnect-keepalive</systemitem> timer
-          every 24 hours. Verify that the timer is running.
-        </para>
-<screen>&prompt.user;systemctl status suseconnect-keepalive.timer</screen>
+          running every 15 minutes and stores the findings in a log file
+          <filename>/etc/zypp/suse-uptime.log</filename>. The log file is
+          uploaded to SCC/RMT by the <systemitem
+          class="daemon">suseconnect-keepalive</systemitem> service, which is
+          triggered by the <systemitem
+          class="daemon">suseconnect-keepalive</systemitem> timer every 24
+          hours. Verify that the timer is running.  </para>
+        <screen>&prompt.user;systemctl status
+        suseconnect-keepalive.timer</screen>
       </step>
     </procedure>
   </sect1>
