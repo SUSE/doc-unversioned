@@ -195,8 +195,8 @@
 <screen>
 &prompt.user;wget --no-check-certificate \
 --user=<replaceable>USERNAME</replaceable> --password=<replaceable>PASSWORD</replaceable> \
---header='accept: text/csv' \
-'https://scc.suse.com/connect/organizations/system_uptimes'
+'https://scc.suse.com/connect/organizations/system_uptimes?SystemId=16300735&amp;OnlineFrom=2024-04-24&amp;OnlineTo=2024-05-01' \
+--header='accept: text/csv'
 </screen>
           </step>
         </substeps>
