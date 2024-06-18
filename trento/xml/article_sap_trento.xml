@@ -2823,7 +2823,7 @@ trento-server-rabbitmq-0</screen>
     -->
        <variablelist>
       <varlistentry xml:id="trento-version-230">
-        <term>Version 2.3.0 (released on 2024/MM/DD)</term>
+        <term>Version 2.3.1 (released on 2024/06/18)</term>
         <listitem>
           <para> Consisting of Helm chart 2.3.0, Web component 2.3.0, checks engine
             (wanda) 1.3.0 and agent 2.3.0.</para>
