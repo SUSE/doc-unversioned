@@ -869,6 +869,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
   -->
   <section xml:id="sec-trento-checks">
     <title>Performing configuration checks</title>
+    <remark>toms 2024-04-18 (change#8): First saptune related configuration checks (host and cluster specific) -> update</remark>
     <para>
       One of Trento's main features is to provide checks for the HANA scale-up performance optimized two-node clusters in your SAP Landscape.
       To run these checks, proceed as follows:
