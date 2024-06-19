@@ -765,7 +765,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         <para>Click the <guimenu>Get your key now!</guimenu> button.</para>
       </step>
       <step>
-        <para>Write down the API key.</para>
+        <para>Click the <guimenu>Copy</guimenu> button to copy the key to your clipboard.</para>
       </step>
     </procedure>
     <para>
@@ -1051,9 +1051,10 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       <listitem>
         <formalpara>
           <title><guimenu>Settings</guimenu></title>
-          <para>
-           Lets you retrieve the API key for this particular installation, which is required for the &t.agent; configuration.
-          </para>
+            <para> Lets you retrieve and operate the API key for this particular
+              installation. This is required for the &t.agent; configuration, as
+              well as managing the connection data for a &suma; instance when
+              one is available. </para>
         </formalpara>
       </listitem>
       <listitem>
@@ -2298,12 +2299,28 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
         details. </para>
     </section>
 
-<!--  <section xml:id="sec-trento-rotating-apikeys">
+  <section xml:id="sec-trento-rotating-apikeys">
     <title>Rotating API keys</title>
     <remark>toms 2024-04-18 (change#7)</remark>
-    <para>TBD</para>
+    <para>The communication from the &t.agent; to the &t.server; is secured by a API key
+     which must be provided in the agent configuration file.</para>
+   <para>By default, the API key does not have an expiration date. To increase the
+    overall security of the setup, meet internal security requirements, or both,
+    the user can set up a custom expiration date.</para>
+   <para>To do that, go to the Settings view and click 
+    the <guimenu>Generate Key</guimenu> button in the API Key section:</para>
+          <figure>
+        <title><guimenu>Checks catalog</guimenu></title>
+        <mediaobject>
+          <imageobject>
+            <imagedata width="80%"
+              fileref="trento-api-key-settings.png" />
+          </imageobject>
+        </mediaobject>
+      </figure>
+   <para>Whenever a new key is generated, the configuration of all the reporting agents must be updated accordingly.</para>
   </section>
--->
+
   <section xml:id="sec-trento-updating-trentoserver">
     <title>Updating &t.server;</title>
     <para> The procedure to update the &t.server; depends on how it was installed.
