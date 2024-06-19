@@ -1830,7 +1830,8 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
       <title>Hosts view</title>
       <para> To display the lists of registered hosts, click the
         <guimenu>Hosts</guimenu> entry in the left sidebar. </para>
-      <figure>
+      <!-- TODO:
+        <figure>
         <title>Hosts entry</title>
         <mediaobject>
           <imageobject>
@@ -1838,6 +1839,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
           </imageobject>
         </mediaobject>
       </figure>
+      -->
       <para> This view provides the following information: </para>
       <itemizedlist>
         <listitem>
@@ -1865,7 +1867,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
 
       <para> Clicking on a host name opens the corresponding <guimenu>Host
         details</guimenu> view, where you can see the following: </para>
-      <itemizedlist xml:id="lst-trento-web-hosts-details">
+      <itemizedlist ><!-- xml:id="lst-trento-web-hosts-details" -->
         <title>Host details view</title>
         <listitem>
           <para><guimenu>Hosts details</guimenu> section:
@@ -1919,7 +1921,8 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
         <para> Keep in mind that only &hana; scale-up clusters on Azure,
           AWS, or GCP are currently under consideration. </para>
       </important>
-      <figure>
+      <!-- TODO:
+        <figure>
         <title>&pace; clusters</title>
         <mediaobject>
           <imageobject>
@@ -1927,7 +1930,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
               fileref="trento-web-pacemaker.png" />
           </imageobject>
         </mediaobject>
-      </figure>
+      </figure>-->
       <para> This view provides the following: </para>
       <itemizedlist>
         <listitem>
@@ -2048,7 +2051,8 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
             cluster attributes including &hana; system replication mode, &hana;
             system replication operation mode, SAPHanaSR health state and &hana;
             secondary sync state.</para>
-          <informalfigure>
+          <!-- TODO:
+            <informalfigure>
             <mediaobject>
               <imageobject>
                 <imagedata width="70%"
@@ -2056,7 +2060,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
                 />
               </imageobject>
             </mediaobject>
-          </informalfigure>
+          </informalfigure>-->
         </listitem>
         <listitem>
           <para>
@@ -2097,7 +2101,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
       <title>&sap; Systems view</title>
       <para> Click the <guimenu>&sap; Systems</guimenu> entry in the left
         sidebar to get an overview of the registered &sap; Systems: </para>
-      <figure>
+      <!--<figure>
         <title>&sap; Systems</title>
         <mediaobject>
           <imageobject>
@@ -2105,7 +2109,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
               fileref="trento-web-sapsystems.png" />
           </imageobject>
         </mediaobject>
-      </figure>
+      </figure>-->
       <para> This view provides the following: </para>
       <itemizedlist>
         <listitem>
@@ -2166,21 +2170,23 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
           </para>
         </listitem>
       </itemizedlist>
-      <figure>
+      <!-- TODO:
+        <figure>
         <title>&sap; System Details</title>
         <mediaobject>
           <imageobject>
             <imagedata fileref="trento-web-sap-systems-view.png" width="80%" />
           </imageobject>
         </mediaobject>
-      </figure>
+      </figure>-->
     </section>
 
     <section xml:id="sec-trento-hana-db-view">
       <title>&hana; databases view</title>
       <para> To get an overview of registered &hana; databases, click the
         <guimenu>HANA databases</guimenu> entry in the left sidebar. </para>
-      <figure>
+      <!-- TODO:
+        <figure>
         <title>HANA databases</title>
         <mediaobject>
           <imageobject>
@@ -2189,6 +2195,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
           </imageobject>
         </mediaobject>
       </figure>
+      -->
       <para>This view provides the following:</para>
       <itemizedlist>
         <listitem>
@@ -2238,7 +2245,8 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
           </para>
         </listitem>
       </itemizedlist>
-      <figure>
+      <!-- TODO:
+        <figure>
         <title>HANA Database details</title>
         <mediaobject>
           <imageobject>
@@ -2246,6 +2254,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
           </imageobject>
         </mediaobject>
       </figure>
+      -->
     </section>
 
     <section xml:id="sec-trento-configuration-checks">
@@ -2283,15 +2292,13 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
           linkend="lst-trento-web-pace-cluster-settings" /> for
         details. </para>
     </section>
-  </section>
 
-
-  <section xml:id="sec-trento-rotating-apikeys">
+<!--  <section xml:id="sec-trento-rotating-apikeys">
     <title>Rotating API keys</title>
     <remark>toms 2024-04-18 (change#7)</remark>
     <para>TBD</para>
   </section>
-
+-->
   <section xml:id="sec-trento-updating-trentoserver">
     <title>Updating &t.server;</title>
     <para> The procedure to update the &t.server; depends on how it was installed.
