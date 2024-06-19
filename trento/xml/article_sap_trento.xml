@@ -579,7 +579,8 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
 
     <section xml:id="sec-trento-deploying-trento-on-selected-nodes">
       <title>Deploying &t.server; on selected nodes</title>
-      <remark>toms 2022-09-09: </remark>
+      <remark>toms 2024-04-18 (change#5): revamp metric visualization and
+        architecture simplification by replacing Grafana with ad-hoc library</remark>
       <para>
         If you use a multi node &k8s; cluster, it is possible to deploy
         &t.server; images on selected nodes by specifying the field
