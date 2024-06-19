@@ -238,6 +238,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
     <!--
       Most ist taken from https://confluence.suse.com/x/uoOyN
     -->
+    <remark>toms 2024-04-18 (change#3): non-K8s based installation of Trento Server</remark>
     <para>Trento Premium is available at no extra cost for SLES for SAP subscribers. Particularly, Trento's two main components have the following product lifecycles:</para>
 
     <variablelist>
@@ -260,13 +261,14 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         <term>&t.server;</term>
         <listitem>
           <formalpara>
-            <title>Delivery mechanism:</title>
-            <para> A set of container images from the &suse; public
+            <title>Delivery mechanisms:</title>
+            <para> Either as a set of container images from the &suse; public
               registry together with a Helm chart that facilitates their
-              installation. </para>
+              installation or as a set of RPM packages for &sles4sap;&nbsp;15&nbsp;SP3 and
+              newer. </para>
           </formalpara>
           <formalpara>
-            <title>&k8s;:</title>
+            <title>&k8s; deployment:</title>
             <para> The &t.server; runs on any current Cloud Native
               Computing Foundation (CNCF)-certified &k8s;
               distributions based on a x86_64 architecture. Depending on your background and
@@ -292,6 +294,19 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
                </para>
             </listitem>
           </itemizedlist>
+           <formalpara>
+            <title>systemd deployment:</title>
+            <para> The deployment using RPM packages can be done manually step-by-step
+             in a traditional fashion or it can be automated using an Ansible playbook. 
+            </para>
+            </formalpara>
+            <formalpara>
+            <title>Containerized deployment:</title>
+            <para> Where the web and the checks engine components are deployed
+             as containers on a docker engine while the third party components&mdash;&postgresql;, 
+             RabbitMQ and Prometheus- are deployed as systemd services using the appropiate RPM packages.
+            </para>
+            </formalpara>
         </listitem>
       </varlistentry>
     </variablelist>
@@ -317,15 +332,23 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       Trento is powered by event driven technology. Registered events are stored in a  &postgresql; database with a retention
       period of 10 days. For each host registered with Trento, you need to allocate at least 1.5GB of space in the &postgresql; database.
      </para>
-      <para> While the &t.server; supports various usage scenarios,
-        depending on the existing infrastructure, it is designed to be
-        cloud native and OS agnostic. It can
-        be installed on the following services: </para>
+     <para>
+      Prometheus is used by &t.server; to collect metric data collected by the exporters in the agent hosts.
+      This is an optional component that is only required if the collected metrics are to be displayed
+      graphically in the console. Otherwise, we can disable the charts during installation.
+      We can perform an ad-hoc installation of
+     Prometheus for Trento or use an existing one. In the case of a systemd deployment on &sles4sap; SP3, only the latter is possible.
+     </para>
+      <para> For a &k8s; deployment, the follwing services can
+        be useds: </para>
       <!--
         toms 2021-12-06: taken from "Draft - Various Tidbits regarding Productization"
         (https://confluence.suse.com/x/tgCnMg)
       -->
       <itemizedlist>
+               <listitem>
+          <para>K3s</para>
+        </listitem>
         <listitem>
           <para>RKE1 (&rancher.k8s.engine; version 1)</para>
         </listitem>
@@ -333,13 +356,13 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
           <para>RKE2</para>
         </listitem>
         <listitem>
-          <para>any other CNCF-certified &k8s; running on x86_64 architecture</para>
+          <para>any other CNCF-certified &k8s; running on x86_64 architecture. This includes AKS in Azure, EKS in AWS, and GKE in GCP.</para>
         </listitem>
       </itemizedlist>
-     <para> A proper, production ready installation of &t.server; requires &k8s;
-      knowledge. The Helm chart is meant to be used by customers lacking such knowledge
-      or who want to get started quickly. However, Helm chart delivers a basic deployment of the &t.server; with all the components running
-      on a single node of the cluster.</para>
+     <para> A proper, production ready installation of &t.server; on &k8s; requires technical
+      knowledge of this platform. The Helm chart is meant to be used by customers lacking such knowledge
+      or who want to get started quickly. But bear in mind that the Helm chart delivers a basic deployment of the &t.server; with all the components running
+      on a single node of the cluster unless adapted otherwise.</para>
     </section>
     <section xml:id="sec-trento-agent-requirements">
       <title>&t.agent; requirements</title>
@@ -380,7 +403,8 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         <listitem>
           <formalpara>
             <title>&t.server;</title>
-            <para>Access to &suse; public registry for the deployment of &t.server; premium containers.</para>
+            <para>Access to &suse; public registry in the case of a &k8s; deployment. A registered &sles4sap; 15 (SP3
+            and higher) distribution in the case of a systemd deployment. For a hybrid deployment, you need both.</para>
           </formalpara>
         </listitem>
         <listitem>
@@ -394,7 +418,8 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
 
   <section xml:id="sec-trento-installing-trentoserver">
     <title>Installing &t.server;</title>
-<!--    https://confluence.suse.com/display/SAP/Installing+Trento+Premium-->
+    <remark>toms 2024-04-18 (change#3): non-K8s based installation of Trento Server</remark>
+
     <important>
       <title>Expect changes in the installation procedure</title>
       <para>
@@ -416,6 +441,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         </para>
       </listitem>
     </itemizedlist>
+
 
     <!--  -->
     <section xml:id="sec-trento-install-trentoserver-on-existing-k8s-cluster">
