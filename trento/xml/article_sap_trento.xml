@@ -347,7 +347,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
     <itemizedlist>
       <listitem>
         <para><replaceable>TRENTO_SERVER_HOSTNAME</replaceable>: the
-          host name of the &t.server; host.</para>
+          host name that will be used by the end user to access the console.</para>
       </listitem>
       <listitem>
         <para>
@@ -382,6 +382,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         </para>
         <screen>helm upgrade \
    --install trento-server oci://registry.suse.com/trento/trento-server \
+   --set trento-web.trentoWebOrigin=<replaceable>TRENTO_SERVER_HOSTNAME</replaceable> \
    --set trento-web.adminUser.password=<replaceable>ADMIN_PASSWORD</replaceable></screen>
        <para>
           When using a Helm version lower than 3.8.0, a experimental flag must be set before the helm command:
@@ -450,12 +451,14 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         </para>
         <screen>helm upgrade \
    --install trento-server oci://registry.suse.com/trento/trento-server \
+   --set trento-web.trentoWebOrigin=<replaceable>TRENTO_SERVER_HOSTNAME</replaceable> \
    --set trento-web.adminUser.password=<replaceable>ADMIN_PASSWORD</replaceable></screen>
        <para>
           When using a Helm version lower than 3.8.0, a experimental flag must be set before the helm command:
         </para>
          <screen>HELM_EXPERIMENTAL_OCI=1 helm upgrade \
    --install trento-server oci://registry.suse.com/trento/trento-server \
+   --set trento-web.trentoWebOrigin=<replaceable>TRENTO_SERVER_HOSTNAME</replaceable> \
    --set trento-web.adminUser.password=<replaceable>ADMIN_PASSWORD</replaceable></screen>
       </step>
        <step>
@@ -498,6 +501,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         with the following syntax:</para>
       <screen>HELM_EXPERIMENTAL_OCI=1 helm upgrade \
    --install trento-server oci://registry.suse.com/trento/trento-server \
+   --set trento-web.trentoWebOrigin=<replaceable>TRENTO_SERVER_HOSTNAME</replaceable> \
    --set trento-web.adminUser.password=<replaceable>ADMIN_PASSWORD</replaceable> \
    --set prometheus.server.nodeSelector.<replaceable>LABEL</replaceable>=<replaceable>VALUE</replaceable> \
    --set postgresql.primary.nodeSelector.<replaceable>LABEL</replaceable>=<replaceable>VALUE</replaceable> \
@@ -581,6 +585,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       </para>
       <screen>HELM_EXPERIMENTAL_OCI=1 helm upgrade \
    --install trento-server oci://registry.suse.com/trento/trento-server \
+   --set trento-web.trentoWebOrigin=<replaceable>TRENTO_SERVER_HOSTNAME</replaceable> \
    --set trento-web.adminUser.password=<replaceable>ADMIN_PASSWORD</replaceable> \
    --set trento-web.alerting.enabled=true \
    --set trento-web.alerting.smtpServer=<replaceable>SMTP_SERVER</replaceable> \
