@@ -88,7 +88,7 @@
           <dm:url>https://bugzilla.suse.com/enter_bug.cgi</dm:url>
           <dm:component>Smart Docs</dm:component>
           <dm:product>Documentation</dm:product>
-          <dm:assignee>dmitri.popov@suse.de</dm:assignee>
+          <dm:assignee>dmitri.popov@suse.com</dm:assignee>
         </dm:bugtracker>
         <dm:editurl>https://bugzilla.suse.com/enter_bug.cgi</dm:editurl>
         <dm:translation>no</dm:translation>
