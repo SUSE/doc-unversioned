@@ -78,7 +78,7 @@
     The following section provides examples and recommendations on creating
     container images for applications. Before proceeding, make sure that you
     have activated your &sls; base image as described in
-    <xref linkend="sec-download-prebuild-images"/> .
+    <xref linkend="sec-download-prebuild-images"/>.
   </para>
   <section xml:id="sec-application-with-specific-dependencies">
     <title>Running an application with specific package versions</title>
@@ -218,7 +218,7 @@
         After you specify a mount point by using the <literal>VOLUME</literal>
         instruction, all changes made to the directory with the
         <command>RUN</command> instruction are discarded. After the mount point
-        is specified, the volume becomes a part of a temporary container which
+        is specified, the volume becomes a part of a temporary container, which
         is removed after a successful build. This means that for certain
         actions to take effect, they must be performed
         <emphasis role="strong">before</emphasis> specifying a mount point. For
@@ -413,9 +413,9 @@
       </listitem>
       <listitem>
         <para>
-          Point a browser to
-          <link xlink:href="http://localhost:80/test.html">http://localhost:80/test.html</link>
-          . You should see the message <emphasis>The Web server is
+          Point a browser at
+          <link xlink:href="http://localhost:80/test.html">http://localhost:80/test.html</link>.
+          You should see the message <emphasis>The Web server is
           running</emphasis>.
         </para>
       </listitem>
@@ -478,14 +478,12 @@
     </orderedlist>
     <para>
       To view the published data, point a browser at
-      <link xlink:href="http://localhost:80/test.html">http://localhost:80/test.html</link>
-      .
+      <link xlink:href="http://localhost:80/test.html">http://localhost:80/test.html</link>.
     </para>
     <para>
       To avoid copying Web site data into the container, share a directory of
       the host with the container. For more information, see
-      <link xlink:href="https://docs.docker.com/storage/volumes/"/>
-      .
+      <link xlink:href="https://docs.docker.com/storage/volumes/"/>.
     </para>
   </section>
 </article>

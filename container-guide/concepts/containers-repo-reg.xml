@@ -16,11 +16,11 @@
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink">
   <info>
-    <title>Registration and Online Repositories</title>
+    <title>Registration and online repositories</title>
   </info>
   <para>
     As a pre-requisite to work with containers on a &sls;, you have to enable
-    the &slea; Containers Module. It consists of container-related packages,
+    the &slea; Containers Module. This consists of container-related packages,
     including container engine and core container tools like on-premise
     registry. For more information about &slea; Modules, refer to
     <link xlink:href="https://documentation.suse.com/sles/html/&slea;S-all/article-modules.html"/>.

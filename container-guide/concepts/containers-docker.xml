@@ -198,7 +198,7 @@
       before applying a &deng; update.
     </para>
     <para>
-      To prevent data loss, avoid workloads that rely on containers which
+      To prevent data loss, avoid workloads that rely on containers that
       automatically start after &deng; update. Although it is technically
       possible to keep containers running during an update via the
       <option>--live-restore</option> option, such updates can introduce
