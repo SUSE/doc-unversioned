@@ -23,15 +23,6 @@
   </para>
   <variablelist>
     <varlistentry>
-      <term>com.suse.image-type</term>
-      <listitem>
-        <para>
-          Shows whether this is a pure &bcia; or an application container based
-          on another &bcia;.
-        </para>
-      </listitem>
-    </varlistentry>
-    <varlistentry>
       <term>com.suse.eula</term>
       <listitem>
         <para>
