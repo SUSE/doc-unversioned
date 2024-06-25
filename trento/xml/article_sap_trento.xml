@@ -432,6 +432,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         </para>
          <screen>HELM_EXPERIMENTAL_OCI=1 helm upgrade \
    --install trento-server oci://registry.suse.com/trento/trento-server \
+   --set trento-web.trentoWebOrigin=<replaceable>TRENTO_SERVER_HOSTNAME</replaceable> \
    --set trento-web.adminUser.password=<replaceable>ADMIN_PASSWORD</replaceable></screen>
       </step>
         <step>
@@ -2309,6 +2310,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
      Helm chart, it can be updated using the same Helm command as for the installation:</para>
    <screen>helm upgrade \
    --install trento-server oci://registry.suse.com/trento/trento-server \
+   --set trento-web.trentoWebOrigin=<replaceable>TRENTO_SERVER_HOSTNAME</replaceable> \
    --set trento-web.adminUser.password=<replaceable>ADMIN_PASSWORD</replaceable>
         </screen>
    <para>A few things to consider:</para>
@@ -2327,6 +2329,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
     must be set in the Helm command:</para>
    <screen>helm upgrade \
    --install trento-server oci://registry.suse.com/trento/trento-server \
+   --set trento-web.trentoWebOrigin=<replaceable>TRENTO_SERVER_HOSTNAME</replaceable> \
    --set trento-web.adminUser.password=<replaceable>ADMIN_PASSWORD</replaceable> \
    --set rabbitmq.auth.erlangCookie=$(openssl rand -hex 16)
         </screen>
