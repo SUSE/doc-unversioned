@@ -94,7 +94,7 @@
             <para>
               A container encapsulates binaries for a specific architecture
               (&x86-64; or &aarch64; for instance). So a container made for
-              &x86-64; only runs on a &x86-64; system host without the use of
+              &x86-64; only runs on an &x86-64; system host without the use of
               emulation.
             </para>
           </listitem>

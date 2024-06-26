@@ -118,7 +118,7 @@
       </para>
     </important>
     <para>
-      &bcia;s support the following architectures: &x86-64;, &aarch64;, &power;,
+      &bcia;s support the following architectures: &x86-64;, &aarch64;, &power;
       and &zsystems;. Container architecture must match the architecture of the
       host. Mismatching container and host scenarios are not supported.
     </para>
@@ -342,7 +342,7 @@
           products.
         </para>
         <para>
-          For example, &slsa;S 15 SP4 container images follow the &slsa; 15 SP4
+          For example, &slsa; 15 SP4 container images follow the &slsa; 15 SP4
           lifecycle.
         </para>
       </listitem>
@@ -406,7 +406,7 @@
       from &suse; repositories are also supported. Additional components and
       applications in the containers are not covered by &suse; support. No
       subscription is required for building derived containers based on the
-      content of the &slea; &bcia;s or the SLE_BCI Repository. To build
+      content of the &bcia;s or the SLE_BCI Repository. To build
       containers that include packages from the full &slea; universe, you need
       a subscription that grants you access to the repositories containing
       these packages.

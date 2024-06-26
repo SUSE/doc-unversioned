@@ -106,7 +106,7 @@
       Enterprise repositories. This includes additional modules and previous
       package versions that are not part of the free SLE_BCI repository. Refer
       to <xref linkend="sec-container-suseconnect"/> for more information on
-      how to use the repository for &slsa;, &opensuse;, and non-&slsa; hosts.
+      how to use the repository for &slsa;, &opensuse; and non-&slsa; hosts.
     </para>
   </section>
   <section xml:id="sec-bci-tasks">

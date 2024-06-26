@@ -136,7 +136,7 @@
       When using rootless containers with &podman;, it is recommended to use
       cgroups v2. cgroups v1 are limited in terms of functionality compared to
       v2. For example, cgroups v1 do not allow proper hierarchical delegation to
-      user's subtrees. Additionally, &podman; is unable to read container logs
+      the user's subtrees. Additionally, &podman; is unable to read container logs
       properly with cgroups v1 and the systemd log driver. To enable cgroups v2,
       add the following to the kernel cmdline:
       <option>systemd.unified_cgroup_hierarchy=1</option>
@@ -286,7 +286,7 @@
       </para>
       <para>
         &podman; also features a &deng; compatible socket that can be launched
-        use the following command:
+        using the following command:
       </para>
 <screen>&prompt.user;sudo systemctl start podman.socket</screen>
       <para>
@@ -345,8 +345,8 @@
   <section xml:id="sec-podman-tag">
     <title>Renaming images and images tag</title>
     <para>
-      Tags are used to assign container images descriptive names, thus making
-      it easier to identify individual images.
+      Tags are used to assign descriptive names to container images, 
+      thus making it easier to identify individual images.
     </para>
     <para>
       Pull the &bcia;-Base image from &suseregistry;:

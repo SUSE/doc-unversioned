@@ -19,7 +19,7 @@
     <title>Tools for building images and managing containers</title>
   </info>
   <para>
-    All described tools described below are part of the
+    All the tools described below are part of the
     <emphasis role="strong">&sles; Containers
     Module</emphasis>, except the
     <link xlink:href="https://openbuildservice.org">Open Build Service</link>.
@@ -152,8 +152,7 @@
     </para>
     <para>
       For more information about &bcia;s, refer to
-      <xref linkend="container-bci-general"/>
-      .
+      <xref linkend="container-bci-general"/>.
     </para>
   </section>
   <section xml:id="sec-tools-kiwi">

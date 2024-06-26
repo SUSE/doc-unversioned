@@ -44,7 +44,7 @@
   <section xml:id="sec-customize-images">
     <title>Customizing container images</title>
     <section xml:id="sec-customize-repo-registration">
-      <title>Repositories and Registration</title>
+      <title>Repositories and registration</title>
       <para>
         The pre-built images do not have any repositories configured and do not
         include any modules or extensions. They contain a
@@ -116,9 +116,9 @@
       <para>
         This automatically adds all the repositories to the container. For each
         repository added to the system, a new file is created under
-        <filename>/etc/zypp/repos.d</filename> . The URLs of these repositories
+        <filename>/etc/zypp/repos.d</filename>. The URLs of these repositories
         include an access token that automatically expires after 12 hours. To
-        renew the token, run the command <command>zypper ref -s</command> .
+        renew the token, run the command <command>zypper ref -s</command>.
         Including these files in a container image does not pose any security
         risk.
       </para>
@@ -146,7 +146,7 @@
         For more information about <literal>podman build</literal> options, see
         the
         <link xlink:href="https://docs.podman.io/en/latest/markdown/podman-build.1.html">official
-        &podman; documentation</link> .
+        &podman; documentation</link>.
       </para>
     </section>
     <section xml:id="sec-docker-sle-images-customizing-the-images-sles12sp3">
@@ -177,7 +177,7 @@
       <title>Building container images in on-demand &slea; instances in the public cloud</title>
       <para>
         Building container images on &slea; instances that were launched as
-        on-demand or pay-as-you-go instances on a public cloud (AWS, GCE, or
+        on-demand or pay-as-you-go instances on a public cloud (AWS, GCE or
         Azure) requires additional steps. To install packages and updates, the
         on-demand public cloud instances are connected to the update
         infrastructure. This infrastructure is based on &rmt; servers operated
