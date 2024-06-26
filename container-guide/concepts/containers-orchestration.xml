@@ -30,7 +30,7 @@
       <informalfigure>
       <mediaobject>
       <imageobject>
-      <imagedata fileref="pods_architecture.svg" width="80.0%"/>
+      <imagedata fileref="pods_architecture.png" width="80.0%"/>
       </imageobject>
       <textobject><phrase>Image</phrase></textobject>
       </mediaobject>
