@@ -1,0 +1,860 @@
+<section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="systemd-deployment">
+  <title>systemd deployment</title>
+  <para>
+    A systemd installation of Trento Server, based on rpm packages, can
+    be done manually step-by-step. The latest available version of SUSE
+    Linux Enterprise Server for SAP Applications is used as the base
+    operating system, which is
+    <link xlink:href="https://www.suse.com/download/sles/">SLE 15
+    SP5</link> at the time of writing. For installations on Service
+    Packs other than SP5, ensure to update the repository address as
+    indicated in the respective notes provided throughout this guide.
+  </para>
+  <para>
+    <emphasis role="strong">Supported Service Packs</emphasis>:
+  </para>
+  <itemizedlist spacing="compact">
+    <listitem>
+      <para>
+        SP3
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+        SP4
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+        SP5
+      </para>
+    </listitem>
+  </itemizedlist>
+  <section xml:id="list-of-dependencies">
+    <title>List of dependencies</title>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          <link xlink:href="https://www.postgresql.org/">PostgreSQL</link>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <link xlink:href="https://rabbitmq.com/">RabbitMQ</link>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <link xlink:href="https://nginx.org/en/">NGINX</link>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <link xlink:href="https://prometheus.io/">Prometheus</link>
+          (optional)
+        </para>
+      </listitem>
+    </itemizedlist>
+  </section>
+  <section xml:id="install-trento-dependencies">
+    <title>Install Trento dependencies</title>
+    <section xml:id="install-prometheus-optional">
+      <title>Install Prometheus (Optional)</title>
+      <para>
+        <link xlink:href="https://prometheus.io/">Prometheus</link> is
+        not required to run Trento, but it is recommended as it allows
+        Trento to display a series of charts for each host with useful
+        information about the CPU load, memory, and other important
+        metrics.
+      </para>
+      <blockquote>
+        <para>
+          <emphasis role="strong">Note:</emphasis> If you choose not to
+          install Prometheus or to provide an existing installation,
+          ensure that <literal>CHARTS_ENABLED</literal> is set to false
+          in the Trento web RPM configuration file, which is stored at
+          <literal>/etc/trento/trento-web</literal>, or when it is
+          provided to the Trento web container. Refer to
+          <link linkend="install-trento-server-components">Install
+          Trento server components</link>.
+        </para>
+      </blockquote>
+      <section xml:id="option-1-use-existing-installation">
+        <title><a id="prometheus_install_option_1"></a>Option 1: Use
+        existing installation</title>
+        <para>
+          Minimal required Prometheus version is
+          <emphasis role="strong">2.28.0</emphasis>.
+        </para>
+        <para>
+          If you have an
+          <link xlink:href="https://prometheus.io/docs/prometheus/latest/installation/">existing
+          Prometheus server</link>, ensure to set the PROMETHEUS_URL
+          environment variable with your Prometheus server's URL as part
+          of the Docker command when creating the
+          <literal>trento-web</literal> container or configuring the RPM
+          packages. Use
+          <link linkend="prometheus_trento_configuration">Trento's
+          Prometheus configuration</link> as a reference to adjust the
+          Prometheus configuration.
+        </para>
+      </section>
+      <section xml:id="option-2-install-prometheus-using-the-unsupported-packagehub-repository">
+        <title>Option 2: Install Prometheus using the
+        <emphasis role="strong">unsupported</emphasis> PackageHub
+        repository</title>
+        <para>
+          <link xlink:href="https://packagehub.suse.com/">PackageHub</link>
+          packages are tested by SUSE, but they do not come with the
+          same level of support as the core SLES packages. Users should
+          assess the suitability of these packages based on their own
+          risk tolerance and support needs.
+        </para>
+        <orderedlist>
+          <listitem>
+            <para>
+              Enable PackageHub repository:
+            </para>
+            <programlisting language="bash">
+SUSEConnect --product PackageHub/15.5/x86_64
+</programlisting>
+            <blockquote>
+              <para>
+                <emphasis role="strong">Note:</emphasis> SLE15 SP3
+                requires a provided Prometheus server. The version
+                available through
+                <literal>SUSEConnect --product PackageHub/15.3/x86_64</literal>
+                is outdated and is not compatible with Trento's
+                Prometheus configuration. Refer to
+                <link linkend="prometheus_install_option_1">Option 1:
+                Use existing installation option</link> for SLE 15 SP3.
+              </para>
+            </blockquote>
+            <blockquote>
+              <para>
+                <emphasis role="strong">Note:</emphasis> For SLE15 SP4
+                change the repository to
+                <literal>SUSEConnect --product PackageHub/15.4/x86_64</literal>
+              </para>
+            </blockquote>
+          </listitem>
+          <listitem>
+            <para>
+              Add the Prometheus user/group:
+            </para>
+            <programlisting language="bash">
+groupadd --system prometheus
+useradd -s /sbin/nologin --system -g prometheus prometheus
+</programlisting>
+          </listitem>
+          <listitem>
+            <para>
+              Install Prometheus using zypper:
+            </para>
+            <programlisting language="bash">
+zypper in golang-github-prometheus-prometheus
+</programlisting>
+            <blockquote>
+              <para>
+                <emphasis role="strong">Note:</emphasis> In case the
+                missing dependency can't be satisfied we have already
+                added the Prometheus user/group. With this, it is safe
+                to proceed with the installation by choosing Solution 2:
+                break golang-github-prometheus-prometheus
+              </para>
+            </blockquote>
+          </listitem>
+          <listitem>
+            <para>
+              <a id="prometheus_trento_configuration"></a>Change
+              Prometheus configuration by replacing the configuration at
+              <literal>/etc/prometheus/prometheus.yml</literal> with:
+            </para>
+            <programlisting language="yaml">
+global:
+  scrape_interval: 30s
+  evaluation_interval: 10s
+
+scrape_configs:
+  - job_name: &quot;http_sd_hosts&quot;
+    honor_timestamps: true
+    scrape_interval: 30s
+    scrape_timeout: 30s
+    scheme: http
+    follow_redirects: true
+    http_sd_configs:
+      - follow_redirects: true
+        refresh_interval: 1m
+        url: http://localhost:4000/api/prometheus/targets
+</programlisting>
+            <blockquote>
+              <para>
+                <emphasis role="strong">Note:</emphasis>
+                <emphasis role="strong">localhost:4000</emphasis> in
+                <emphasis role="strong">url:
+                <link xlink:href="http://localhost:4000/api/prometheus/targets" role="uri">http://localhost:4000/api/prometheus/targets</link></emphasis>
+                refers to the location where Trento web service is
+                running.
+              </para>
+            </blockquote>
+          </listitem>
+          <listitem>
+            <para>
+              Enable and start the Prometheus service:
+            </para>
+            <programlisting language="bash">
+systemctl enable --now prometheus
+</programlisting>
+          </listitem>
+          <listitem>
+            <para>
+              If firewalld is running, allow Prometheus to be accessible
+              and add an exception on firewalld:
+            </para>
+            <programlisting language="bash">
+firewall-cmd --zone=public --add-port=9090/tcp --permanent
+firewall-cmd --reload
+</programlisting>
+          </listitem>
+        </orderedlist>
+      </section>
+    </section>
+    <section xml:id="install-postgresql">
+      <title>Install PostgreSQL</title>
+      <para>
+        This guide was tested with the following PostgreSQL version:
+      </para>
+      <itemizedlist spacing="compact">
+        <listitem>
+          <para>
+            <emphasis role="strong">13.9 for SP3</emphasis>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="strong">14.10 for SP4</emphasis>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="strong">15.5 for SP5</emphasis>
+          </para>
+        </listitem>
+      </itemizedlist>
+      <para>
+        Using a different version of PostgreSQL may require different
+        steps or configurations, especially when changing the major
+        number. For more details, refer to the official
+        <link xlink:href="https://www.postgresql.org/docs/">PostgreSQL
+        documentation</link>.
+      </para>
+      <orderedlist>
+        <listitem>
+          <para>
+            Install PostgreSQL server:
+          </para>
+          <programlisting language="bash">
+zypper in postgresql-server
+</programlisting>
+        </listitem>
+        <listitem>
+          <para>
+            Enable and start PostgreSQL server:
+          </para>
+          <programlisting language="bash">
+systemctl enable --now postgresql
+</programlisting>
+        </listitem>
+      </orderedlist>
+      <section xml:id="configure-postgresql">
+        <title>Configure PostgreSQL</title>
+        <orderedlist>
+          <listitem>
+            <para>
+              Start <literal>psql</literal> with the
+              <literal>postgres</literal> user to open a connection to
+              the database:
+            </para>
+            <programlisting language="bash">
+su - postgres
+psql
+</programlisting>
+          </listitem>
+          <listitem>
+            <para>
+              Initialize the databases in <literal>psql</literal>
+              console:
+            </para>
+            <programlisting language="sql">
+CREATE DATABASE wanda;
+CREATE DATABASE trento;
+CREATE DATABASE trento_event_store;
+</programlisting>
+          </listitem>
+          <listitem>
+            <para>
+              Create the users:
+            </para>
+            <programlisting language="sql">
+CREATE USER wanda_user WITH PASSWORD 'wanda_password';
+CREATE USER trento_user WITH PASSWORD 'web_password';
+</programlisting>
+          </listitem>
+          <listitem>
+            <para>
+              Grant required privileges to the users and close the
+              connection:
+            </para>
+            <programlisting language="sql">
+\c wanda
+GRANT ALL ON SCHEMA public TO wanda_user;
+\c trento
+GRANT ALL ON SCHEMA public TO trento_user;
+\c trento_event_store;
+GRANT ALL ON SCHEMA public TO trento_user;
+\q
+</programlisting>
+            <para>
+              You can exit from the <literal>psql</literal> console and
+              <literal>postgres</literal> user.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Allow the PostgreSQL database to receive connections for
+              the respective databases and users adding the following in
+              <literal>/var/lib/pgsql/data/pg_hba.conf</literal>:
+            </para>
+            <programlisting language="bash">
+host   wanda                      wanda_user    0.0.0.0/0   md5
+host   trento,trento_event_store  trento_user   0.0.0.0/0   md5
+</programlisting>
+            <blockquote>
+              <para>
+                <emphasis role="strong">Note:</emphasis> The
+                <literal>pg_hba.conf</literal> file works in a
+                sequential fashion. This means, that the rules
+                positioned on the top have preference over the ones
+                coming next. This examples shows a pretty permissive
+                address range, so in order to work, they entries must be
+                written in the top of the <literal>host</literal>
+                entries. Find additional information in the
+                <link xlink:href="https://www.postgresql.org/docs/current/auth-pg-hba-conf.html">pg_hba.conf</link>
+                documentation.
+              </para>
+            </blockquote>
+          </listitem>
+          <listitem>
+            <para>
+              Allow PostgreSQL to bind on all network interfaces in
+              <literal>/var/lib/pgsql/data/postgresql.conf</literal> by
+              changing the following line:
+            </para>
+            <programlisting language="bash">
+listen_addresses = '*'
+</programlisting>
+          </listitem>
+          <listitem>
+            <para>
+              Restart PostgreSQL to apply the changes:
+            </para>
+            <programlisting language="bash">
+systemctl restart postgresql
+</programlisting>
+          </listitem>
+        </orderedlist>
+      </section>
+    </section>
+    <section xml:id="install-rabbitmq">
+      <title>Install RabbitMQ</title>
+      <orderedlist>
+        <listitem>
+          <para>
+            Install RabbitMQ server:
+          </para>
+          <programlisting language="bash">
+zypper install rabbitmq-server
+</programlisting>
+        </listitem>
+        <listitem>
+          <para>
+            Allow connections from external hosts by modifying
+            <literal>/etc/rabbitmq/rabbitmq.conf</literal>, so the
+            Trento-agent can reach RabbitMQ:
+          </para>
+          <programlisting language="ini files">
+listeners.tcp.default = 5672
+</programlisting>
+        </listitem>
+        <listitem>
+          <para>
+            If firewalld is running, add an exception on firewalld:
+          </para>
+          <programlisting language="bash">
+firewall-cmd --zone=public --add-port=5672/tcp --permanent;
+firewall-cmd --reload
+</programlisting>
+        </listitem>
+        <listitem>
+          <para>
+            Enable RabbitMQ service:
+          </para>
+          <programlisting language="bash">
+systemctl enable --now rabbitmq-server
+</programlisting>
+        </listitem>
+      </orderedlist>
+      <section xml:id="configure-rabbitmq">
+        <title>Configure RabbitMQ</title>
+        <para>
+          To configure RabbitMQ for a production system, follow the
+          official suggestions
+          <link xlink:href="https://www.rabbitmq.com/production-checklist.html">RabbitMQ
+          guide</link>.
+        </para>
+        <orderedlist>
+          <listitem>
+            <para>
+              Create a new RabbitMQ user:
+            </para>
+            <programlisting language="bash">
+rabbitmqctl add_user trento_user trento_user_password
+</programlisting>
+          </listitem>
+          <listitem>
+            <para>
+              Create a virtual host:
+            </para>
+            <programlisting language="bash">
+rabbitmqctl add_vhost vhost
+</programlisting>
+          </listitem>
+          <listitem>
+            <para>
+              Set permissions for the user on the virtual host:
+              <literal>bash     rabbitmqctl set_permissions -p vhost trento_user &quot;.*&quot; &quot;.*&quot; &quot;.*&quot;</literal>
+            </para>
+          </listitem>
+        </orderedlist>
+      </section>
+    </section>
+  </section>
+  <section xml:id="install-trento-using-rpm-packages">
+    <title>Install Trento using RPM packages</title>
+    <para>
+      The <literal>trento-web</literal> and
+      <literal>trento-wanda</literal> packages come in the supported
+      SLES4SAP distributions by default.
+    </para>
+    <para>
+      Install Trento web and wanda:
+    </para>
+    <programlisting language="bash">
+zypper install trento-web trento-wanda
+</programlisting>
+    <section xml:id="create-the-configuration-files">
+      <title>Create the configuration files</title>
+      <para>
+        Both services depend on respective configuration files that tune
+        the usage of them. They must be placed in
+        <literal>/etc/trento/trento-web</literal> and
+        <literal>/etc/trento/trento-wanda</literal> respectively, and
+        examples of how to fill them are available at
+        <literal>/etc/trento/trento-web.example</literal> and
+        <literal>/etc/trento/trento-wanda.example</literal>.
+      </para>
+      <para>
+        <emphasis role="strong">Important: The content of
+        <literal>SECRET_KEY_BASE</literal> and
+        <literal>ACCESS_TOKEN_ENC_SECRET</literal> in both
+        <literal>trento-web</literal> and
+        <literal>trento-wanda</literal> must be the same.</emphasis>
+      </para>
+      <blockquote>
+        <para>
+          <emphasis role="strong">Note:</emphasis> You can create the
+          content of the secret variables like
+          <literal>SECRET_KEY_BASE</literal>,
+          <literal>ACCESS_TOKEN_ENC_SECRET</literal> and
+          <literal>REFRESH_TOKEN_ENC_SECRET</literal> with
+          <literal>openssl</literal> running
+          <literal>openssl rand -out /dev/stdout 48 | base64</literal>
+        </para>
+      </blockquote>
+      <blockquote>
+        <para>
+          Note: Depending on how you intend to connect to the console, a
+          working hostname, FQDN, or an IP is required in
+          <literal>TRENTO_WEB_ORIGIN</literal> for HTTPS; otherwise,
+          websockets will fail to connect, causing no real-time updates
+          on the UI.
+        </para>
+      </blockquote>
+    </section>
+    <section xml:id="trento-web-configuration">
+      <title>trento-web configuration</title>
+      <programlisting>
+# /etc/trento/trento-web
+AMQP_URL=amqp://trento_user:trento_user_password@localhost:5672/vhost
+DATABASE_URL=ecto://trento_user:web_password@localhost/trento
+EVENTSTORE_URL=ecto://trento_user:web_password@localhost/trento_event_store
+ENABLE_ALERTING=false
+CHARTS_ENABLED=true
+PROMETHEUS_URL=http://localhost:9090
+ADMIN_USER=admin
+ADMIN_PASSWORD=test1234
+ENABLE_API_KEY=true
+PORT=4000
+TRENTO_WEB_ORIGIN=trento.example.com
+SECRET_KEY_BASE=some-secret
+ACCESS_TOKEN_ENC_SECRET=some-secret
+REFRESH_TOKEN_ENC_SECRET=some-secret
+</programlisting>
+      <blockquote>
+        <para>
+          <emphasis role="strong">Note:</emphasis> Add
+          <literal>CHARTS_ENABLED=false</literal> in Trento web
+          configuration file if Prometheus is not installed or you don't
+          want to use the charts feature of Trento.
+        </para>
+      </blockquote>
+      <para>
+        Optionally, the
+        <link xlink:href="https://github.com/trento-project/web/blob/main/guides/alerting/alerting.md">alerting
+        system to receive email notifications</link> can be enabled by
+        setting <literal>ENABLE_ALERTING</literal> to
+        <literal>true</literal> and adding these additional entries:
+      </para>
+      <programlisting>
+# /etc/trento/trento-web
+ENABLE_ALERTING=true
+ALERT_SENDER=&lt;&lt;SENDER_EMAIL_ADDRESS&gt;&gt;
+ALERT_RECIPIENT=&lt;&lt;RECIPIENT_EMAIL_ADDRESS&gt;&gt;
+SMTP_SERVER=&lt;&lt;SMTP_SERVER_ADDRESS&gt;&gt;
+SMTP_PORT=&lt;&lt;SMTP_PORT&gt;&gt;
+SMTP_USER=&lt;&lt;SMTP_USER&gt;&gt;
+SMTP_PASSWORD=&lt;&lt;SMTP_PASSWORD&gt;&gt;
+</programlisting>
+    </section>
+    <section xml:id="trento-wanda-configuration">
+      <title>trento-wanda configuration</title>
+      <programlisting>
+# /etc/trento/trento-wanda
+CORS_ORIGIN=http://localhost
+AMQP_URL=amqp://trento_user:trento_user_password@localhost:5672/vhost
+DATABASE_URL=ecto://wanda_user:wanda_password@localhost/wanda
+PORT=4001
+SECRET_KEY_BASE=some-secret
+ACCESS_TOKEN_ENC_SECRET=some-secret
+</programlisting>
+    </section>
+    <section xml:id="start-the-services">
+      <title>Start the services</title>
+      <para>
+        Enable and start the services:
+      </para>
+      <programlisting language="bash">
+systemctl enable --now trento-web trento-wanda
+</programlisting>
+    </section>
+    <section xml:id="monitor-the-services">
+      <title>Monitor the services</title>
+      <para>
+        Check if the services are up and running properly by using
+        <literal>journalctl</literal>.
+      </para>
+      <para>
+        For example:
+      </para>
+      <programlisting language="bash">
+journalctl -fu trento-web
+</programlisting>
+    </section>
+  </section>
+  <section xml:id="validate-the-health-status-of-trento-web-and-wanda">
+    <title>Validate the health status of trento web and wanda</title>
+    <para>
+      Trento web and wanda services correct functioning could be
+      validated accessing the <literal>healthz</literal> and
+      <literal>readyz</literal> api.
+    </para>
+    <orderedlist>
+      <listitem>
+        <para>
+          Test Trento web health status with <literal>curl</literal>:
+        </para>
+        <programlisting language="bash">
+curl http://localhost:4000/api/readyz
+</programlisting>
+        <programlisting language="bash">
+curl http://localhost:4000/api/healthz
+</programlisting>
+      </listitem>
+      <listitem>
+        <para>
+          Test Trento wanda health status with <literal>curl</literal>:
+        </para>
+        <programlisting language="bash">
+curl http://localhost:4001/api/readyz
+</programlisting>
+        <programlisting language="bash">
+curl http://localhost:4001/api/healthz
+</programlisting>
+      </listitem>
+    </orderedlist>
+    <para>
+      Expected output if Trento web/wanda is ready and the database
+      connection is setup correctly:
+    </para>
+    <programlisting>
+{&quot;ready&quot;:true}{&quot;database&quot;:&quot;pass&quot;}
+</programlisting>
+  </section>
+  <section xml:id="prepare-ssl-certificate-for-nginx">
+    <title>Prepare SSL certificate for NGINX</title>
+    <para>
+      Create or provide a certificate for
+      <link xlink:href="https://nginx.org/en/">NGINX</link> to enable
+      SSL for Trento. This is a basic guide for creating a self-signed
+      certificate for use with Trento. You may use your own certificate.
+      For detailed instructions, consult the
+      <link xlink:href="https://www.openssl.org/docs/man1.0.2/man5/x509v3_config.html">OpenSSL
+      documentation</link>.
+    </para>
+    <section xml:id="option-1-creating-a-self-signed-certificate">
+      <title>Option 1: Creating a Self-Signed Certificate</title>
+      <orderedlist>
+        <listitem>
+          <para>
+            Generate a self signed certificate:
+          </para>
+          <blockquote>
+            <para>
+              Note: Remember to adjust
+              <literal>subjectAltName = DNS:trento.example.com</literal>
+              by replacing <literal>trento.example.com</literal> with
+              your own domain and change the value <literal>5</literal>
+              to the number of days for which you need the certificate
+              to be valid. For example, <literal>-days 365</literal> for
+              one year.
+            </para>
+          </blockquote>
+          <programlisting language="bash">
+openssl req -newkey rsa:2048 --nodes -keyout trento.key -x509 -days 5 -out trento.crt -addext &quot;subjectAltName = DNS:trento.example.com&quot;
+</programlisting>
+        </listitem>
+        <listitem>
+          <para>
+            Move the generated trento.key in a location accessible by
+            nginx:
+            <literal>bash     mv trento.key /etc/ssl/private/trento.key</literal>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Move the generated trento.crt in a location accessible by
+            nginx:
+            <literal>bash     mv trento.crt /etc/ssl/certs/trento.crt</literal>
+          </para>
+        </listitem>
+      </orderedlist>
+    </section>
+    <section xml:id="option-2-using-lets-encrypt-for-a-signed-certificate-using-packagehub-repository">
+      <title>Option 2: Using Let's Encrypt for a Signed Certificate
+      using PackageHub repository</title>
+      <blockquote>
+        <para>
+          <emphasis role="strong">Note:</emphasis> Using a different
+          Service Pack than SP5 requires to change repository: [SLE15
+          SP3:
+          <literal>SUSEConnect --product PackageHub/15.3/x86_64</literal>,SLE15
+          SP4:
+          <literal>SUSEConnect --product PackageHub/15.4/x86_64</literal>].
+          Users should assess the suitability of these packages based on
+          their own risk tolerance and support needs.
+        </para>
+      </blockquote>
+      <orderedlist>
+        <listitem>
+          <para>
+            Add PackageHub if not already added:
+          </para>
+          <programlisting language="bash">
+SUSEConnect --product PackageHub/15.5/x86_64
+zypper refresh
+</programlisting>
+        </listitem>
+        <listitem>
+          <para>
+            Install Certbot and its Nginx plugin:
+          </para>
+          <programlisting language="bash">
+zypper install certbot python3-certbot-nginx
+</programlisting>
+        </listitem>
+        <listitem>
+          <para>
+            Obtain a certificate and configure Nginx with Certbot:
+          </para>
+          <blockquote>
+            <para>
+              <emphasis role="strong">Note:</emphasis> Replace
+              <literal>example.com</literal> with your domain. For more
+              information, visit
+              <link xlink:href="https://certbot.eff.org/instructions?ws=nginx&amp;os=leap">Certbot
+              instructions for Nginx</link>
+            </para>
+          </blockquote>
+          <programlisting language="bash">
+certbot --nginx -d example.com -d www.example.com
+</programlisting>
+          <blockquote>
+            <para>
+              <emphasis role="strong">Note:</emphasis> Certbot
+              certificates last for 90 days. Refer to the above link for
+              details on how to renew periodically.
+            </para>
+          </blockquote>
+        </listitem>
+      </orderedlist>
+    </section>
+  </section>
+  <section xml:id="install-and-configure-nginx">
+    <title>Install and configure NGINX</title>
+    <orderedlist>
+      <listitem>
+        <para>
+          Install NGINX package:
+        </para>
+        <programlisting language="bash">
+zypper install nginx
+</programlisting>
+      </listitem>
+      <listitem>
+        <para>
+          If firewalld is running, add firewalld exceptions for HTTP and
+          HTTPS:
+        </para>
+        <programlisting language="bash">
+firewall-cmd --zone=public --add-service=https --permanent
+firewall-cmd --zone=public --add-service=http --permanent
+firewall-cmd --reload
+</programlisting>
+      </listitem>
+      <listitem>
+        <para>
+          Start and enable nginx:
+        </para>
+        <programlisting language="bash">
+systemctl enable --now nginx
+</programlisting>
+      </listitem>
+      <listitem>
+        <para>
+          Create a configuration file for Trento:
+        </para>
+        <programlisting language="bash">
+vim /etc/nginx/conf.d/trento.conf
+</programlisting>
+      </listitem>
+      <listitem>
+        <para>
+          Add the following configuration to
+          <literal>/etc/nginx/conf.d/trento.conf</literal>:
+        </para>
+        <programlisting>
+server {
+    # Redirect HTTP to HTTPS
+    listen 80;
+    server_name trento.example.com;
+    return 301 https://$host$request_uri;
+}
+
+server {
+    # SSL configuration
+    listen 443 ssl;
+    server_name trento.example.com;
+
+    ssl_certificate /etc/ssl/certs/trento.crt;
+    ssl_certificate_key /etc/ssl/private/trento.key;
+
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_ciphers 'ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384';
+    ssl_prefer_server_ciphers on;
+    ssl_session_cache shared:SSL:10m;
+
+    # Wanda rule
+    location ~ ^/(api/checks|api/v1/checks|api/v2/checks|api/v3/checks)/  {
+        allow all;
+
+        # Proxy Headers
+        proxy_http_version 1.1;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-Cluster-Client-Ip $remote_addr;
+
+        # Important Websocket Bits!
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection &quot;upgrade&quot;;
+
+        proxy_pass http://localhost:4001;
+    }
+
+    # Web rule
+    location / {
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+
+        # The Important Websocket Bits!
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection &quot;upgrade&quot;;
+
+        proxy_pass http://localhost:4000;
+    }
+}
+</programlisting>
+      </listitem>
+      <listitem>
+        <para>
+          Check NGINX configuration:
+        </para>
+        <programlisting language="bash">
+nginx -t
+</programlisting>
+        <para>
+          If the configuration is correct, the output should be like
+          this:
+        </para>
+        <programlisting language="bash">
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+</programlisting>
+        <para>
+          If there are issues with the configuration, the output will
+          indicate what needs to be adjusted.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Reload Nginx to apply changes:
+        </para>
+        <programlisting language="bash">
+systemctl reload nginx
+</programlisting>
+      </listitem>
+    </orderedlist>
+  </section>
+  <section xml:id="accessing-the-trento-web-ui">
+    <title>Accessing the trento-web UI</title>
+    <para>
+      Open a browser and navigate to
+      <literal>https://trento.example.com</literal>. You should be able
+      to login using the credentials you provided in the
+      <literal>ADMIN_USERNAME</literal> and
+      <literal>ADMIN_PASSWORD</literal> environment variables.
+    </para>
+  </section>
+</section>

@@ -1,0 +1,237 @@
+<section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="containerized-deployment">
+  <title>Containerized deployment</title>
+  <para>
+    A containerized deployment of Trento Server is identical to a
+    systemd deployment, except for the web and check engine components,
+    which are deployed as containers running on a Docker engine instead
+    of RPM's.
+  </para>
+  <para>
+    Follow the steps in
+    <link xlink:href="https://documentation.suse.com/sles-sap/trento/html/SLES-SAP-trento/index.html#sec-systemd-deployment">4.2
+    systemd deployment</link>, but replace the step
+    <emphasis role="strong">Install Trento using RPM packages</emphasis>
+    with <emphasis role="strong">Install Trento using Docker</emphasis>
+    section.
+  </para>
+  <section xml:id="install-trento-using-docker">
+    <title>Install Trento using Docker</title>
+    <section xml:id="install-docker-container-runtime">
+      <title>Install Docker container runtime</title>
+      <orderedlist>
+        <listitem>
+          <para>
+            Enable the container`s module:
+          </para>
+          <programlisting language="bash">
+SUSEConnect --product sle-module-containers/15.5/x86_64
+</programlisting>
+          <blockquote>
+            <para>
+              <emphasis role="strong">Note:</emphasis> Using a different
+              Service Pack than SP5 requires to change repository:
+              [SLE15 SP3:
+              <literal>SUSEConnect --product sle-module-containers/15.3/x86_64</literal>,SLE15
+              SP4:
+              <literal>SUSEConnect --product sle-module-containers/15.4/x86_64</literal>]
+            </para>
+          </blockquote>
+        </listitem>
+        <listitem>
+          <para>
+            Install Docker:
+          </para>
+          <programlisting language="bash">
+zypper install docker
+</programlisting>
+        </listitem>
+        <listitem>
+          <para>
+            Enable and start Docker:
+          </para>
+          <programlisting language="bash">
+systemctl enable --now docker
+</programlisting>
+        </listitem>
+      </orderedlist>
+    </section>
+    <section xml:id="create-a-dedicated-docker-network-for-trento">
+      <title>Create a dedicated Docker network for Trento</title>
+      <orderedlist>
+        <listitem>
+          <para>
+            Create the Trento Docker network:
+          </para>
+          <programlisting language="bash">
+docker network create trento-net
+</programlisting>
+          <blockquote>
+            <para>
+              <emphasis role="strong">Note:</emphasis> When creating the
+              trento-net network, Docker typically assigns a default
+              subnet: <literal>172.17.0.0/16</literal>. Ensure that this
+              subnet matches the one specified in your PostgreSQL
+              configuration file (refer
+              to<literal>/var/lib/pgsql/data/pg_hba.conf</literal>). If
+              the subnet of <literal>trento-net</literal> differs from
+              <literal>172.17.0.0/16</literal> then adjust
+              <literal>pg_hba.conf</literal> and restart PostgreSQL.
+            </para>
+          </blockquote>
+        </listitem>
+        <listitem>
+          <para>
+            Verify the subnet of trento-net:
+          </para>
+          <programlisting language="bash">
+docker network inspect trento-net  --format '{{range .IPAM.Config}}{{.Subnet}}{{end}}'
+</programlisting>
+          <para>
+            Expected output:
+          </para>
+          <programlisting language="bash">
+172.17.0.0/16
+</programlisting>
+        </listitem>
+      </orderedlist>
+    </section>
+    <section xml:id="install-trento-on-docker">
+      <title>Install Trento on Docker</title>
+      <orderedlist>
+        <listitem>
+          <para>
+            Create the secret environment variables:
+          </para>
+          <blockquote>
+            <para>
+              Note: Consider using an environment variable file, learn
+              more about from
+              <link xlink:href="https://docs.docker.com/engine/reference/commandline/run/#env">official
+              Docker documentation</link>. Adjust upcoming commands for
+              env file usage.
+            </para>
+          </blockquote>
+          <programlisting language="bash">
+WANDA_SECRET_KEY_BASE=$(openssl rand -out /dev/stdout 48 | base64)
+TRENTO_SECRET_KEY_BASE=$(openssl rand -out /dev/stdout 48 | base64)
+ACCESS_TOKEN_ENC_SECRET=$(openssl rand -out /dev/stdout 48 | base64)
+REFRESH_TOKEN_ENC_SECRET=$(openssl rand -out /dev/stdout 48 | base64)
+</programlisting>
+        </listitem>
+        <listitem>
+          <para>
+            Install trento-wanda on Docker:
+          </para>
+          <programlisting language="bash">
+docker run -d --name wanda \
+    -p 4001:4000 \
+    --network trento-net \
+    --add-host &quot;host.docker.internal:host-gateway&quot; \
+    -e CORS_ORIGIN=localhost \
+    -e SECRET_KEY_BASE=$WANDA_SECRET_KEY_BASE \
+    -e ACCESS_TOKEN_ENC_SECRET=$ACCESS_TOKEN_ENC_SECRET \
+    -e AMQP_URL=amqp://trento_user:trento_user_password@host.docker.internal/vhost \
+    -e DATABASE_URL=ecto://wanda_user:wanda_password@host.docker.internal/wanda \
+    --restart always \
+    --entrypoint /bin/sh \
+    registry.suse.com/trento/trento-wanda:1.2.0 \
+    -c &quot;/app/bin/wanda eval 'Wanda.Release.init()' &amp;&amp; /app/bin/wanda start&quot;
+</programlisting>
+        </listitem>
+        <listitem>
+          <para>
+            Install trento-web on Docker
+          </para>
+          <para>
+            Be sure to change the <literal>ADMIN_USERNAME</literal> and
+            <literal>ADMIN_PASSWORD</literal>, these are the credentials
+            that will be required to login to the trento-web UI.
+            Depending on how you intend to connect to the console, a
+            working hostname, FQDN, or an IP is required in
+            <literal>TRENTO_WEB_ORIGIN</literal> for HTTPS otherwise,
+            websockets will fail to connect, causing no real-time
+            updates on the UI.
+          </para>
+          <blockquote>
+            <para>
+              <emphasis role="strong">Note:</emphasis> Add
+              <literal>CHARTS_ENABLED=false</literal> if Prometheus is
+              not installed or you don't want to use the charts feature
+              of Trento.
+            </para>
+          </blockquote>
+          <programlisting language="bash">
+docker run -d \
+-p 4000:4000 \
+--name trento-web \
+--network trento-net \
+--add-host &quot;host.docker.internal:host-gateway&quot; \
+-e AMQP_URL=amqp://trento_user:trento_user_password@host.docker.internal/vhost \
+-e ENABLE_ALERTING=false \
+-e DATABASE_URL=ecto://trento_user:web_password@host.docker.internal/trento \
+-e EVENTSTORE_URL=ecto://trento_user:web_password@host.docker.internal/trento_event_store \
+-e PROMETHEUS_URL='http://host.docker.internal:9090' \
+-e SECRET_KEY_BASE=$TRENTO_SECRET_KEY_BASE \
+-e ACCESS_TOKEN_ENC_SECRET=$ACCESS_TOKEN_ENC_SECRET \
+-e REFRESH_TOKEN_ENC_SECRET=$REFRESH_TOKEN_ENC_SECRET \
+-e ADMIN_USERNAME='admin' \
+-e ADMIN_PASSWORD='test1234' \
+-e ENABLE_API_KEY='true' \
+-e TRENTO_WEB_ORIGIN='trento.example.com' \
+--restart always \
+--entrypoint /bin/sh \
+registry.suse.com/trento/trento-web:2.2.0 \
+-c &quot;/app/bin/trento eval 'Trento.Release.init()' &amp;&amp; /app/bin/trento start&quot;
+</programlisting>
+          <para>
+            Mail alerting is disabled by default, as described in
+            <link xlink:href="https://github.com/trento-project/web/blob/main/guides/alerting/alerting.md#enabling-alerting">enabling
+            alerting</link> guide. Enable alerting by setting
+            <literal>ENABLE_ALERTING</literal> env to
+            <literal>true</literal>. Additional required variables are:
+            <literal>[ALERT_SENDER,ALERT_RECIPIENT,SMTP_SERVER,SMTP_PORT,SMTP_USER,SMTP_PASSWORD]</literal>
+            All other settings should remain as they are.
+          </para>
+          <para>
+            Example:
+          </para>
+          <programlisting language="bash">
+docker run -d \
+
+...[other settings]...
+
+-e ENABLE_ALERTING=true \
+-e ALERT_SENDER=&lt;&lt;SENDER_EMAIL_ADDRESS&gt;&gt; \
+-e ALERT_RECIPIENT=&lt;&lt;RECIPIENT_EMAIL_ADDRESS&gt;&gt; \
+-e SMTP_SERVER=&lt;&lt;SMTP_SERVER_ADDRESS&gt;&gt; \
+-e SMTP_PORT=&lt;&lt;SMTP_PORT&gt;&gt; \
+-e SMTP_USER=&lt;&lt;SMTP_USER&gt;&gt; \
+-e SMTP_PASSWORD=&lt;&lt;SMTP_PASSWORD&gt;&gt; \
+
+...[other settings]...
+</programlisting>
+        </listitem>
+        <listitem>
+          <para>
+            Check that everything is running as expected:
+          </para>
+          <programlisting language="bash">
+docker ps
+</programlisting>
+          <para>
+            Expected output:
+          </para>
+          <programlisting language="bash">
+CONTAINER ID   IMAGE                                         COMMAND                  CREATED          STATUS          PORTS                                       NAMES
+8b44333aec39   registry.suse.com/trento/trento-web:2.2.0    &quot;/bin/sh -c '/app/bi…&quot;   6 seconds ago    Up 5 seconds    0.0.0.0:4000-&gt;4000/tcp, :::4000-&gt;4000/tcp   trento-web
+e859c07888ca   registry.suse.com/trento/trento-wanda:1.2.0   &quot;/bin/sh -c '/app/bi…&quot;   18 seconds ago   Up 16 seconds   0.0.0.0:4001-&gt;4000/tcp, :::4001-&gt;4000/tcp   wanda
+</programlisting>
+          <para>
+            Both containers should be running and listening on the
+            specified ports.
+          </para>
+        </listitem>
+      </orderedlist>
+    </section>
+  </section>
+</section>
