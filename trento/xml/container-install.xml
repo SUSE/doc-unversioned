@@ -26,16 +26,16 @@
           <programlisting language="bash">
 SUSEConnect --product sle-module-containers/15.5/x86_64
 </programlisting>
-          <blockquote>
+          <note>
             <para>
-              <emphasis role="strong">Note:</emphasis> Using a different
+              Using a different
               Service Pack than SP5 requires to change repository:
               [SLE15 SP3:
               <literal>SUSEConnect --product sle-module-containers/15.3/x86_64</literal>,SLE15
               SP4:
               <literal>SUSEConnect --product sle-module-containers/15.4/x86_64</literal>]
             </para>
-          </blockquote>
+          </note>
         </listitem>
         <listitem>
           <para>
@@ -65,9 +65,9 @@ systemctl enable --now docker
           <programlisting language="bash">
 docker network create trento-net
 </programlisting>
-          <blockquote>
+          <note>
             <para>
-              <emphasis role="strong">Note:</emphasis> When creating the
+              When creating the
               trento-net network, Docker typically assigns a default
               subnet: <literal>172.17.0.0/16</literal>. Ensure that this
               subnet matches the one specified in your PostgreSQL
@@ -77,7 +77,7 @@ docker network create trento-net
               <literal>172.17.0.0/16</literal> then adjust
               <literal>pg_hba.conf</literal> and restart PostgreSQL.
             </para>
-          </blockquote>
+          </note>
         </listitem>
         <listitem>
           <para>
@@ -102,15 +102,15 @@ docker network inspect trento-net  --format '{{range .IPAM.Config}}{{.Subnet}}{{
           <para>
             Create the secret environment variables:
           </para>
-          <blockquote>
+          <note>
             <para>
-              Note: Consider using an environment variable file, learn
+              Consider using an environment variable file, learn
               more about from
               <link xlink:href="https://docs.docker.com/engine/reference/commandline/run/#env">official
               Docker documentation</link>. Adjust upcoming commands for
               env file usage.
             </para>
-          </blockquote>
+          </note>
           <programlisting language="bash">
 WANDA_SECRET_KEY_BASE=$(openssl rand -out /dev/stdout 48 | base64)
 TRENTO_SECRET_KEY_BASE=$(openssl rand -out /dev/stdout 48 | base64)
@@ -152,14 +152,14 @@ docker run -d --name wanda \
             websockets will fail to connect, causing no real-time
             updates on the UI.
           </para>
-          <blockquote>
+          <note>
             <para>
-              <emphasis role="strong">Note:</emphasis> Add
+              Add
               <literal>CHARTS_ENABLED=false</literal> if Prometheus is
               not installed or you don't want to use the charts feature
               of Trento.
             </para>
-          </blockquote>
+          </note>
           <programlisting language="bash">
 docker run -d \
 -p 4000:4000 \

@@ -67,20 +67,20 @@
         information about the CPU load, memory, and other important
         metrics.
       </para>
-      <blockquote>
+      <note>
         <para>
           <emphasis role="strong">Note:</emphasis> If you choose not to
           install Prometheus or to provide an existing installation,
           ensure that <literal>CHARTS_ENABLED</literal> is set to false
           in the Trento web RPM configuration file, which is stored at
           <literal>/etc/trento/trento-web</literal>, or when it is
-          provided to the Trento web container. Refer to
+          provided to the Trento web container. <!-- NOREF Refer to
           <link linkend="install-trento-server-components">Install
-          Trento server components</link>.
+          Trento server components</link>. -->
         </para>
-      </blockquote>
+      </note>
       <section xml:id="option-1-use-existing-installation">
-        <title><a id="prometheus_install_option_1"></a>Option 1: Use
+        <title>Option 1: Use
         existing installation</title>
         <para>
           Minimal required Prometheus version is
@@ -94,9 +94,8 @@
           of the Docker command when creating the
           <literal>trento-web</literal> container or configuring the RPM
           packages. Use
-          <link linkend="prometheus_trento_configuration">Trento's
-          Prometheus configuration</link> as a reference to adjust the
-          Prometheus configuration.
+          <xref linkend="prometheus_trento_configuration"/> as a reference to
+          adjust the Prometheus configuration.
         </para>
       </section>
       <section xml:id="option-2-install-prometheus-using-the-unsupported-packagehub-repository">
@@ -110,7 +109,7 @@
           assess the suitability of these packages based on their own
           risk tolerance and support needs.
         </para>
-        <orderedlist>
+        <orderedlist xml:id="prometheus_trento_configuration">
           <listitem>
             <para>
               Enable PackageHub repository:
@@ -118,7 +117,7 @@
             <programlisting language="bash">
 SUSEConnect --product PackageHub/15.5/x86_64
 </programlisting>
-            <blockquote>
+            <note>
               <para>
                 <emphasis role="strong">Note:</emphasis> SLE15 SP3
                 requires a provided Prometheus server. The version
@@ -126,17 +125,16 @@ SUSEConnect --product PackageHub/15.5/x86_64
                 <literal>SUSEConnect --product PackageHub/15.3/x86_64</literal>
                 is outdated and is not compatible with Trento's
                 Prometheus configuration. Refer to
-                <link linkend="prometheus_install_option_1">Option 1:
-                Use existing installation option</link> for SLE 15 SP3.
+                <xref linkend="option-1-use-existing-installation"/> for SLE 15 SP3.
               </para>
-            </blockquote>
-            <blockquote>
+            </note>
+            <note>
               <para>
                 <emphasis role="strong">Note:</emphasis> For SLE15 SP4
                 change the repository to
                 <literal>SUSEConnect --product PackageHub/15.4/x86_64</literal>
               </para>
-            </blockquote>
+            </note>
           </listitem>
           <listitem>
             <para>
@@ -154,7 +152,7 @@ useradd -s /sbin/nologin --system -g prometheus prometheus
             <programlisting language="bash">
 zypper in golang-github-prometheus-prometheus
 </programlisting>
-            <blockquote>
+            <note>
               <para>
                 <emphasis role="strong">Note:</emphasis> In case the
                 missing dependency can't be satisfied we have already
@@ -162,12 +160,11 @@ zypper in golang-github-prometheus-prometheus
                 to proceed with the installation by choosing Solution 2:
                 break golang-github-prometheus-prometheus
               </para>
-            </blockquote>
+            </note>
           </listitem>
           <listitem>
             <para>
-              <a id="prometheus_trento_configuration"></a>Change
-              Prometheus configuration by replacing the configuration at
+              Change Prometheus configuration by replacing the configuration at
               <literal>/etc/prometheus/prometheus.yml</literal> with:
             </para>
             <programlisting language="yaml">
@@ -187,7 +184,7 @@ scrape_configs:
         refresh_interval: 1m
         url: http://localhost:4000/api/prometheus/targets
 </programlisting>
-            <blockquote>
+            <note>
               <para>
                 <emphasis role="strong">Note:</emphasis>
                 <emphasis role="strong">localhost:4000</emphasis> in
@@ -196,7 +193,7 @@ scrape_configs:
                 refers to the location where Trento web service is
                 running.
               </para>
-            </blockquote>
+            </note>
           </listitem>
           <listitem>
             <para>
@@ -329,7 +326,7 @@ GRANT ALL ON SCHEMA public TO trento_user;
 host   wanda                      wanda_user    0.0.0.0/0   md5
 host   trento,trento_event_store  trento_user   0.0.0.0/0   md5
 </programlisting>
-            <blockquote>
+            <note>
               <para>
                 <emphasis role="strong">Note:</emphasis> The
                 <literal>pg_hba.conf</literal> file works in a
@@ -342,7 +339,7 @@ host   trento,trento_event_store  trento_user   0.0.0.0/0   md5
                 <link xlink:href="https://www.postgresql.org/docs/current/auth-pg-hba-conf.html">pg_hba.conf</link>
                 documentation.
               </para>
-            </blockquote>
+            </note>
           </listitem>
           <listitem>
             <para>
@@ -470,7 +467,7 @@ zypper install trento-web trento-wanda
         <literal>trento-web</literal> and
         <literal>trento-wanda</literal> must be the same.</emphasis>
       </para>
-      <blockquote>
+      <note>
         <para>
           <emphasis role="strong">Note:</emphasis> You can create the
           content of the secret variables like
@@ -480,8 +477,8 @@ zypper install trento-web trento-wanda
           <literal>openssl</literal> running
           <literal>openssl rand -out /dev/stdout 48 | base64</literal>
         </para>
-      </blockquote>
-      <blockquote>
+      </note>
+      <note>
         <para>
           Note: Depending on how you intend to connect to the console, a
           working hostname, FQDN, or an IP is required in
@@ -489,7 +486,7 @@ zypper install trento-web trento-wanda
           websockets will fail to connect, causing no real-time updates
           on the UI.
         </para>
-      </blockquote>
+      </note>
     </section>
     <section xml:id="trento-web-configuration">
       <title>trento-web configuration</title>
@@ -510,14 +507,14 @@ SECRET_KEY_BASE=some-secret
 ACCESS_TOKEN_ENC_SECRET=some-secret
 REFRESH_TOKEN_ENC_SECRET=some-secret
 </programlisting>
-      <blockquote>
+      <note>
         <para>
           <emphasis role="strong">Note:</emphasis> Add
           <literal>CHARTS_ENABLED=false</literal> in Trento web
           configuration file if Prometheus is not installed or you don't
           want to use the charts feature of Trento.
         </para>
-      </blockquote>
+      </note>
       <para>
         Optionally, the
         <link xlink:href="https://github.com/trento-project/web/blob/main/guides/alerting/alerting.md">alerting
@@ -628,7 +625,7 @@ curl http://localhost:4001/api/healthz
           <para>
             Generate a self signed certificate:
           </para>
-          <blockquote>
+          <note>
             <para>
               Note: Remember to adjust
               <literal>subjectAltName = DNS:trento.example.com</literal>
@@ -638,7 +635,7 @@ curl http://localhost:4001/api/healthz
               to be valid. For example, <literal>-days 365</literal> for
               one year.
             </para>
-          </blockquote>
+          </note>
           <programlisting language="bash">
 openssl req -newkey rsa:2048 --nodes -keyout trento.key -x509 -days 5 -out trento.crt -addext &quot;subjectAltName = DNS:trento.example.com&quot;
 </programlisting>
@@ -662,7 +659,7 @@ openssl req -newkey rsa:2048 --nodes -keyout trento.key -x509 -days 5 -out trent
     <section xml:id="option-2-using-lets-encrypt-for-a-signed-certificate-using-packagehub-repository">
       <title>Option 2: Using Let's Encrypt for a Signed Certificate
       using PackageHub repository</title>
-      <blockquote>
+      <note>
         <para>
           <emphasis role="strong">Note:</emphasis> Using a different
           Service Pack than SP5 requires to change repository: [SLE15
@@ -673,7 +670,7 @@ openssl req -newkey rsa:2048 --nodes -keyout trento.key -x509 -days 5 -out trent
           Users should assess the suitability of these packages based on
           their own risk tolerance and support needs.
         </para>
-      </blockquote>
+      </note>
       <orderedlist>
         <listitem>
           <para>
@@ -696,7 +693,7 @@ zypper install certbot python3-certbot-nginx
           <para>
             Obtain a certificate and configure Nginx with Certbot:
           </para>
-          <blockquote>
+          <note>
             <para>
               <emphasis role="strong">Note:</emphasis> Replace
               <literal>example.com</literal> with your domain. For more
@@ -704,17 +701,17 @@ zypper install certbot python3-certbot-nginx
               <link xlink:href="https://certbot.eff.org/instructions?ws=nginx&amp;os=leap">Certbot
               instructions for Nginx</link>
             </para>
-          </blockquote>
+          </note>
           <programlisting language="bash">
 certbot --nginx -d example.com -d www.example.com
 </programlisting>
-          <blockquote>
+          <note>
             <para>
               <emphasis role="strong">Note:</emphasis> Certbot
               certificates last for 90 days. Refer to the above link for
               details on how to renew periodically.
             </para>
-          </blockquote>
+          </note>
         </listitem>
       </orderedlist>
     </section>
