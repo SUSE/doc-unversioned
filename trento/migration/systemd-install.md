@@ -22,7 +22,7 @@ For installations on Service Packs other than SP5, ensure to update the reposito
 
 [Prometheus](https://prometheus.io/) is not required to run Trento, but it is recommended as it allows Trento to display a series of charts for each host with useful information about the CPU load, memory, and other important metrics.
 
-> **Note:** If you choose not to install Prometheus or to provide an existing installation, ensure that `CHARTS_ENABLED` is set to false in the Trento web RPM configuration file, which is stored at `/etc/trento/trento-web`, or when it is provided to the Trento web container. Refer to [Install Trento server components](#install-trento-server-components).
+> **Note:** If you choose not to install Prometheus or to provide an existing installation, ensure that `CHARTS_ENABLED` is set to false in the Trento web RPM configuration file, which is stored at `/etc/trento/trento-web`, or when it is provided to the Trento web container.
 
 #### <a id="prometheus_install_option_1"></a>Option 1: Use existing installation
 
@@ -156,7 +156,7 @@ Using a different version of PostgreSQL may require different steps or configura
    host   trento,trento_event_store  trento_user   0.0.0.0/0   md5
    ```
 
-   > **Note:** The `pg_hba.conf` file works in a sequential fashion. This means, that the rules positioned on the top have preference over the ones coming next. This examples shows a pretty permissive address range, so in order to work, they entries must be written in the top of the `host` entries. Find additional information in the [pg_hba.conf](https://www.postgresql.org/docs/current/auth-pg-hba-conf.html) documentation.
+   > **Note:** The `pg_hba.conf` file works in a sequential fashion. This means, that the rules positioned on the top have preference over the ones coming next. This examples shows a pretty permissive address range, so in order to work, the entries must be written in the top of the `host` entries. Find additional information in the [pg_hba.conf](https://www.postgresql.org/docs/current/auth-pg-hba-conf.html) documentation.
 
 1. Allow PostgreSQL to bind on all network
    interfaces in `/var/lib/pgsql/data/postgresql.conf` by changing the following line:
