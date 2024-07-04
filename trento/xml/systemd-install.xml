@@ -69,14 +69,12 @@
       </para>
       <note>
         <para>
-          <emphasis role="strong">Note:</emphasis> If you choose not to
+          If you choose not to
           install Prometheus or to provide an existing installation,
           ensure that <literal>CHARTS_ENABLED</literal> is set to false
           in the Trento web RPM configuration file, which is stored at
           <literal>/etc/trento/trento-web</literal>, or when it is
-          provided to the Trento web container. <!-- NOREF Refer to
-          <link linkend="install-trento-server-components">Install
-          Trento server components</link>. -->
+          provided to the Trento web container.
         </para>
       </note>
       <section xml:id="option-1-use-existing-installation">
@@ -94,7 +92,7 @@
           of the Docker command when creating the
           <literal>trento-web</literal> container or configuring the RPM
           packages. Use
-          <xref linkend="prometheus_trento_configuration"/> as a reference to
+          <xref linkend="option-2-install-prometheus-using-the-unsupported-packagehub-repository"/> as a reference to
           adjust the Prometheus configuration.
         </para>
       </section>
@@ -109,8 +107,8 @@
           assess the suitability of these packages based on their own
           risk tolerance and support needs.
         </para>
-        <orderedlist xml:id="prometheus_trento_configuration">
-          <listitem>
+        <procedure>
+          <step>
             <para>
               Enable PackageHub repository:
             </para>
@@ -119,7 +117,7 @@ SUSEConnect --product PackageHub/15.5/x86_64
 </programlisting>
             <note>
               <para>
-                <emphasis role="strong">Note:</emphasis> SLE15 SP3
+                SLE15 SP3
                 requires a provided Prometheus server. The version
                 available through
                 <literal>SUSEConnect --product PackageHub/15.3/x86_64</literal>
@@ -130,13 +128,13 @@ SUSEConnect --product PackageHub/15.5/x86_64
             </note>
             <note>
               <para>
-                <emphasis role="strong">Note:</emphasis> For SLE15 SP4
+                For SLE15 SP4
                 change the repository to
                 <literal>SUSEConnect --product PackageHub/15.4/x86_64</literal>
               </para>
             </note>
-          </listitem>
-          <listitem>
+          </step>
+          <step>
             <para>
               Add the Prometheus user/group:
             </para>
@@ -144,8 +142,8 @@ SUSEConnect --product PackageHub/15.5/x86_64
 groupadd --system prometheus
 useradd -s /sbin/nologin --system -g prometheus prometheus
 </programlisting>
-          </listitem>
-          <listitem>
+          </step>
+          <step>
             <para>
               Install Prometheus using zypper:
             </para>
@@ -154,15 +152,15 @@ zypper in golang-github-prometheus-prometheus
 </programlisting>
             <note>
               <para>
-                <emphasis role="strong">Note:</emphasis> In case the
+                In case the
                 missing dependency can't be satisfied we have already
                 added the Prometheus user/group. With this, it is safe
                 to proceed with the installation by choosing Solution 2:
                 break golang-github-prometheus-prometheus
               </para>
             </note>
-          </listitem>
-          <listitem>
+          </step>
+          <step>
             <para>
               Change Prometheus configuration by replacing the configuration at
               <literal>/etc/prometheus/prometheus.yml</literal> with:
@@ -194,16 +192,16 @@ scrape_configs:
                 running.
               </para>
             </note>
-          </listitem>
-          <listitem>
+          </step>
+          <step>
             <para>
               Enable and start the Prometheus service:
             </para>
             <programlisting language="bash">
 systemctl enable --now prometheus
 </programlisting>
-          </listitem>
-          <listitem>
+</step>
+          <step>
             <para>
               If firewalld is running, allow Prometheus to be accessible
               and add an exception on firewalld:
@@ -212,8 +210,8 @@ systemctl enable --now prometheus
 firewall-cmd --zone=public --add-port=9090/tcp --permanent
 firewall-cmd --reload
 </programlisting>
-          </listitem>
-        </orderedlist>
+</step>
+</procedure>
       </section>
     </section>
     <section xml:id="install-postgresql">
@@ -245,28 +243,28 @@ firewall-cmd --reload
         <link xlink:href="https://www.postgresql.org/docs/">PostgreSQL
         documentation</link>.
       </para>
-      <orderedlist>
-        <listitem>
+      <procedure>
+        <step>
           <para>
             Install PostgreSQL server:
           </para>
           <programlisting language="bash">
 zypper in postgresql-server
 </programlisting>
-        </listitem>
-        <listitem>
+        </step>
+        <step>
           <para>
             Enable and start PostgreSQL server:
           </para>
           <programlisting language="bash">
 systemctl enable --now postgresql
 </programlisting>
-        </listitem>
-      </orderedlist>
+</step>
+      </procedure>
       <section xml:id="configure-postgresql">
         <title>Configure PostgreSQL</title>
-        <orderedlist>
-          <listitem>
+        <procedure>
+          <step>
             <para>
               Start <literal>psql</literal> with the
               <literal>postgres</literal> user to open a connection to
@@ -276,8 +274,8 @@ systemctl enable --now postgresql
 su - postgres
 psql
 </programlisting>
-          </listitem>
-          <listitem>
+          </step>
+          <step>
             <para>
               Initialize the databases in <literal>psql</literal>
               console:
@@ -287,8 +285,8 @@ CREATE DATABASE wanda;
 CREATE DATABASE trento;
 CREATE DATABASE trento_event_store;
 </programlisting>
-          </listitem>
-          <listitem>
+          </step>
+          <step>
             <para>
               Create the users:
             </para>
@@ -296,8 +294,8 @@ CREATE DATABASE trento_event_store;
 CREATE USER wanda_user WITH PASSWORD 'wanda_password';
 CREATE USER trento_user WITH PASSWORD 'web_password';
 </programlisting>
-          </listitem>
-          <listitem>
+</step>
+          <step>
             <para>
               Grant required privileges to the users and close the
               connection:
@@ -315,8 +313,8 @@ GRANT ALL ON SCHEMA public TO trento_user;
               You can exit from the <literal>psql</literal> console and
               <literal>postgres</literal> user.
             </para>
-          </listitem>
-          <listitem>
+          </step>
+          <step>
             <para>
               Allow the PostgreSQL database to receive connections for
               the respective databases and users adding the following in
@@ -340,8 +338,8 @@ host   trento,trento_event_store  trento_user   0.0.0.0/0   md5
                 documentation.
               </para>
             </note>
-          </listitem>
-          <listitem>
+          </step>
+          <step>
             <para>
               Allow PostgreSQL to bind on all network interfaces in
               <literal>/var/lib/pgsql/data/postgresql.conf</literal> by
@@ -350,30 +348,30 @@ host   trento,trento_event_store  trento_user   0.0.0.0/0   md5
             <programlisting language="bash">
 listen_addresses = '*'
 </programlisting>
-          </listitem>
-          <listitem>
+          </step>
+          <step>
             <para>
               Restart PostgreSQL to apply the changes:
             </para>
             <programlisting language="bash">
 systemctl restart postgresql
 </programlisting>
-          </listitem>
-        </orderedlist>
+          </step>
+        </procedure>
       </section>
     </section>
     <section xml:id="install-rabbitmq">
       <title>Install RabbitMQ</title>
-      <orderedlist>
-        <listitem>
+      <procedure>
+        <step>
           <para>
             Install RabbitMQ server:
           </para>
           <programlisting language="bash">
 zypper install rabbitmq-server
 </programlisting>
-        </listitem>
-        <listitem>
+</step>
+        <step>
           <para>
             Allow connections from external hosts by modifying
             <literal>/etc/rabbitmq/rabbitmq.conf</literal>, so the
@@ -382,8 +380,8 @@ zypper install rabbitmq-server
           <programlisting language="ini files">
 listeners.tcp.default = 5672
 </programlisting>
-        </listitem>
-        <listitem>
+        </step>
+        <step>
           <para>
             If firewalld is running, add an exception on firewalld:
           </para>
@@ -391,16 +389,16 @@ listeners.tcp.default = 5672
 firewall-cmd --zone=public --add-port=5672/tcp --permanent;
 firewall-cmd --reload
 </programlisting>
-        </listitem>
-        <listitem>
+</step>
+        <step>
           <para>
             Enable RabbitMQ service:
           </para>
           <programlisting language="bash">
 systemctl enable --now rabbitmq-server
 </programlisting>
-        </listitem>
-      </orderedlist>
+        </step>
+      </procedure>
       <section xml:id="configure-rabbitmq">
         <title>Configure RabbitMQ</title>
         <para>
@@ -409,30 +407,30 @@ systemctl enable --now rabbitmq-server
           <link xlink:href="https://www.rabbitmq.com/production-checklist.html">RabbitMQ
           guide</link>.
         </para>
-        <orderedlist>
-          <listitem>
+        <procedure>
+        <step>
             <para>
               Create a new RabbitMQ user:
             </para>
             <programlisting language="bash">
 rabbitmqctl add_user trento_user trento_user_password
 </programlisting>
-          </listitem>
-          <listitem>
+</step>
+          <step>
             <para>
               Create a virtual host:
             </para>
             <programlisting language="bash">
 rabbitmqctl add_vhost vhost
 </programlisting>
-          </listitem>
-          <listitem>
+          </step>
+          <step>
             <para>
               Set permissions for the user on the virtual host:
-              <literal>bash     rabbitmqctl set_permissions -p vhost trento_user &quot;.*&quot; &quot;.*&quot; &quot;.*&quot;</literal>
             </para>
-          </listitem>
-        </orderedlist>
+            <programlisting language="bash">bash     rabbitmqctl set_permissions -p vhost trento_user &quot;.*&quot; &quot;.*&quot; &quot;.*&quot;</programlisting>
+        </step>
+      </procedure>
       </section>
     </section>
   </section>
@@ -575,8 +573,8 @@ journalctl -fu trento-web
       validated accessing the <literal>healthz</literal> and
       <literal>readyz</literal> api.
     </para>
-    <orderedlist>
-      <listitem>
+    <procedure>
+      <step>
         <para>
           Test Trento web health status with <literal>curl</literal>:
         </para>
@@ -586,8 +584,8 @@ curl http://localhost:4000/api/readyz
         <programlisting language="bash">
 curl http://localhost:4000/api/healthz
 </programlisting>
-      </listitem>
-      <listitem>
+</step>
+      <step>
         <para>
           Test Trento wanda health status with <literal>curl</literal>:
         </para>
@@ -597,8 +595,8 @@ curl http://localhost:4001/api/readyz
         <programlisting language="bash">
 curl http://localhost:4001/api/healthz
 </programlisting>
-      </listitem>
-    </orderedlist>
+      </step>
+    </procedure>
     <para>
       Expected output if Trento web/wanda is ready and the database
       connection is setup correctly:
@@ -620,8 +618,8 @@ curl http://localhost:4001/api/healthz
     </para>
     <section xml:id="option-1-creating-a-self-signed-certificate">
       <title>Option 1: Creating a Self-Signed Certificate</title>
-      <orderedlist>
-        <listitem>
+      <procedure>
+        <step>
           <para>
             Generate a self signed certificate:
           </para>
@@ -639,22 +637,22 @@ curl http://localhost:4001/api/healthz
           <programlisting language="bash">
 openssl req -newkey rsa:2048 --nodes -keyout trento.key -x509 -days 5 -out trento.crt -addext &quot;subjectAltName = DNS:trento.example.com&quot;
 </programlisting>
-        </listitem>
-        <listitem>
+        </step>
+        <step>
           <para>
             Move the generated trento.key in a location accessible by
             nginx:
             <literal>bash     mv trento.key /etc/ssl/private/trento.key</literal>
           </para>
-        </listitem>
-        <listitem>
+        </step>
+        <step>
           <para>
             Move the generated trento.crt in a location accessible by
             nginx:
             <literal>bash     mv trento.crt /etc/ssl/certs/trento.crt</literal>
           </para>
-        </listitem>
-      </orderedlist>
+        </step>
+      </procedure>
     </section>
     <section xml:id="option-2-using-lets-encrypt-for-a-signed-certificate-using-packagehub-repository">
       <title>Option 2: Using Let's Encrypt for a Signed Certificate
@@ -671,8 +669,8 @@ openssl req -newkey rsa:2048 --nodes -keyout trento.key -x509 -days 5 -out trent
           their own risk tolerance and support needs.
         </para>
       </note>
-      <orderedlist>
-        <listitem>
+      <procedure>
+        <step>
           <para>
             Add PackageHub if not already added:
           </para>
@@ -680,16 +678,16 @@ openssl req -newkey rsa:2048 --nodes -keyout trento.key -x509 -days 5 -out trent
 SUSEConnect --product PackageHub/15.5/x86_64
 zypper refresh
 </programlisting>
-        </listitem>
-        <listitem>
+</step>
+        <step>
           <para>
             Install Certbot and its Nginx plugin:
           </para>
           <programlisting language="bash">
 zypper install certbot python3-certbot-nginx
 </programlisting>
-        </listitem>
-        <listitem>
+        </step>
+        <step>
           <para>
             Obtain a certificate and configure Nginx with Certbot:
           </para>
@@ -712,22 +710,22 @@ certbot --nginx -d example.com -d www.example.com
               details on how to renew periodically.
             </para>
           </note>
-        </listitem>
-      </orderedlist>
+        </step>
+      </procedure>
     </section>
   </section>
   <section xml:id="install-and-configure-nginx">
     <title>Install and configure NGINX</title>
-    <orderedlist>
-      <listitem>
+    <procedure>
+      <step>
         <para>
           Install NGINX package:
         </para>
         <programlisting language="bash">
 zypper install nginx
 </programlisting>
-      </listitem>
-      <listitem>
+      </step>
+      <step>
         <para>
           If firewalld is running, add firewalld exceptions for HTTP and
           HTTPS:
@@ -737,24 +735,24 @@ firewall-cmd --zone=public --add-service=https --permanent
 firewall-cmd --zone=public --add-service=http --permanent
 firewall-cmd --reload
 </programlisting>
-      </listitem>
-      <listitem>
+</step>
+      <step>
         <para>
           Start and enable nginx:
         </para>
         <programlisting language="bash">
 systemctl enable --now nginx
 </programlisting>
-      </listitem>
-      <listitem>
+      </step>
+      <step>
         <para>
           Create a configuration file for Trento:
         </para>
         <programlisting language="bash">
 vim /etc/nginx/conf.d/trento.conf
 </programlisting>
-      </listitem>
-      <listitem>
+      </step>
+      <step>
         <para>
           Add the following configuration to
           <literal>/etc/nginx/conf.d/trento.conf</literal>:
@@ -813,8 +811,8 @@ server {
     }
 }
 </programlisting>
-      </listitem>
-      <listitem>
+</step>
+      <step>
         <para>
           Check NGINX configuration:
         </para>
@@ -833,16 +831,16 @@ nginx: configuration file /etc/nginx/nginx.conf test is successful
           If there are issues with the configuration, the output will
           indicate what needs to be adjusted.
         </para>
-      </listitem>
-      <listitem>
+      </step>
+      <step>
         <para>
           Reload Nginx to apply changes:
         </para>
         <programlisting language="bash">
 systemctl reload nginx
 </programlisting>
-      </listitem>
-    </orderedlist>
+</step>
+    </procedure>
   </section>
   <section xml:id="accessing-the-trento-web-ui">
     <title>Accessing the trento-web UI</title>

@@ -8,20 +8,17 @@
   </para>
   <para>
     Follow the steps in
-    <link xlink:href="https://documentation.suse.com/sles-sap/trento/html/SLES-SAP-trento/index.html#sec-systemd-deployment">4.2
-    systemd deployment</link>, but replace the step
-    <emphasis role="strong">Install Trento using RPM packages</emphasis>
-    with <emphasis role="strong">Install Trento using Docker</emphasis>
-    section.
+    <xref linkend="systemd-deployment"/>, but skip the
+    <emphasis role="strong">Install Trento using RPM packages</emphasis> step and follow the procedures in <xref linkend="install-trento-using-docker"/>.
   </para>
   <section xml:id="install-trento-using-docker">
     <title>Install Trento using Docker</title>
     <section xml:id="install-docker-container-runtime">
       <title>Install Docker container runtime</title>
-      <orderedlist>
-        <listitem>
+      <procedure>
+        <step>
           <para>
-            Enable the container`s module:
+            Enable the container's module:
           </para>
           <programlisting language="bash">
 SUSEConnect --product sle-module-containers/15.5/x86_64
@@ -36,29 +33,29 @@ SUSEConnect --product sle-module-containers/15.5/x86_64
               <literal>SUSEConnect --product sle-module-containers/15.4/x86_64</literal>]
             </para>
           </note>
-        </listitem>
-        <listitem>
+        </step>
+        <step>
           <para>
             Install Docker:
           </para>
           <programlisting language="bash">
 zypper install docker
 </programlisting>
-        </listitem>
-        <listitem>
+</step>
+        <step>
           <para>
             Enable and start Docker:
           </para>
           <programlisting language="bash">
 systemctl enable --now docker
 </programlisting>
-        </listitem>
-      </orderedlist>
+        </step>
+      </procedure>
     </section>
     <section xml:id="create-a-dedicated-docker-network-for-trento">
       <title>Create a dedicated Docker network for Trento</title>
-      <orderedlist>
-        <listitem>
+      <procedure>
+        <step>
           <para>
             Create the Trento Docker network:
           </para>
@@ -78,8 +75,8 @@ docker network create trento-net
               <literal>pg_hba.conf</literal> and restart PostgreSQL.
             </para>
           </note>
-        </listitem>
-        <listitem>
+        </step>
+        <step>
           <para>
             Verify the subnet of trento-net:
           </para>
@@ -92,13 +89,13 @@ docker network inspect trento-net  --format '{{range .IPAM.Config}}{{.Subnet}}{{
           <programlisting language="bash">
 172.17.0.0/16
 </programlisting>
-        </listitem>
-      </orderedlist>
+</step>
+      </procedure>
     </section>
     <section xml:id="install-trento-on-docker">
       <title>Install Trento on Docker</title>
-      <orderedlist>
-        <listitem>
+      <procedure>
+        <step>
           <para>
             Create the secret environment variables:
           </para>
@@ -117,8 +114,8 @@ TRENTO_SECRET_KEY_BASE=$(openssl rand -out /dev/stdout 48 | base64)
 ACCESS_TOKEN_ENC_SECRET=$(openssl rand -out /dev/stdout 48 | base64)
 REFRESH_TOKEN_ENC_SECRET=$(openssl rand -out /dev/stdout 48 | base64)
 </programlisting>
-        </listitem>
-        <listitem>
+        </step>
+        <step>
           <para>
             Install trento-wanda on Docker:
           </para>
@@ -137,8 +134,8 @@ docker run -d --name wanda \
     registry.suse.com/trento/trento-wanda:1.2.0 \
     -c &quot;/app/bin/wanda eval 'Wanda.Release.init()' &amp;&amp; /app/bin/wanda start&quot;
 </programlisting>
-        </listitem>
-        <listitem>
+</step>
+        <step>
           <para>
             Install trento-web on Docker
           </para>
@@ -210,8 +207,8 @@ docker run -d \
 
 ...[other settings]...
 </programlisting>
-        </listitem>
-        <listitem>
+        </step>
+        <step>
           <para>
             Check that everything is running as expected:
           </para>
@@ -230,8 +227,8 @@ e859c07888ca   registry.suse.com/trento/trento-wanda:1.2.0   &quot;/bin/sh -c '/
             Both containers should be running and listening on the
             specified ports.
           </para>
-        </listitem>
-      </orderedlist>
+        </step>
+      </procedure>
     </section>
   </section>
 </section>
