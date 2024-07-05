@@ -2,9 +2,7 @@
   <title>Containerized deployment</title>
   <para>
     A containerized deployment of Trento Server is identical to a
-    systemd deployment, except for the web and check engine components,
-    which are deployed as containers running on a Docker engine instead
-    of RPM's.
+    systemd deployment. However, the web and check engine components are deployed as Docker containers.
   </para>
   <para>
     Follow the steps in
@@ -18,19 +16,17 @@
       <procedure>
         <step>
           <para>
-            Enable the container's module:
+            Enable the Container module:
           </para>
           <programlisting language="bash">
 SUSEConnect --product sle-module-containers/15.5/x86_64
 </programlisting>
           <note>
             <para>
-              Using a different
-              Service Pack than SP5 requires to change repository:
-              [SLE15 SP3:
-              <literal>SUSEConnect --product sle-module-containers/15.3/x86_64</literal>,SLE15
-              SP4:
-              <literal>SUSEConnect --product sle-module-containers/15.4/x86_64</literal>]
+              To use a different Service Pack than SP5, you have to choose the appropriate repository. For example,
+              <command>SUSEConnect --product sle-module-containers/15.3/x86_64</command> for SLE15 SP3,
+              <command>SUSEConnect --product
+              sle-module-containers/15.4/x86_64</command> for SLE15 SP4.
             </para>
           </note>
         </step>
@@ -65,11 +61,11 @@ docker network create trento-net
           <note>
             <para>
               When creating the
-              trento-net network, Docker typically assigns a default
+              trento-net network, Docker assigns a default
               subnet: <literal>172.17.0.0/16</literal>. Ensure that this
               subnet matches the one specified in your PostgreSQL
               configuration file (refer
-              to<literal>/var/lib/pgsql/data/pg_hba.conf</literal>). If
+              to<filename>/var/lib/pgsql/data/pg_hba.conf</filename>). If
               the subnet of <literal>trento-net</literal> differs from
               <literal>172.17.0.0/16</literal> then adjust
               <literal>pg_hba.conf</literal> and restart PostgreSQL.
@@ -84,7 +80,7 @@ docker network create trento-net
 docker network inspect trento-net  --format '{{range .IPAM.Config}}{{.Subnet}}{{end}}'
 </programlisting>
           <para>
-            Expected output:
+            Expected output is as follows:
           </para>
           <programlisting language="bash">
 172.17.0.0/16
@@ -97,14 +93,13 @@ docker network inspect trento-net  --format '{{range .IPAM.Config}}{{.Subnet}}{{
       <procedure>
         <step>
           <para>
-            Create the secret environment variables:
+            Create secret environment variables:
           </para>
           <note>
             <para>
-              Consider using an environment variable file, learn
-              more about from
+              Consider using an environment variable file (see 
               <link xlink:href="https://docs.docker.com/engine/reference/commandline/run/#env">official
-              Docker documentation</link>. Adjust upcoming commands for
+              Docker documentation</link>). Adjust upcoming commands for
               env file usage.
             </para>
           </note>
@@ -117,7 +112,7 @@ REFRESH_TOKEN_ENC_SECRET=$(openssl rand -out /dev/stdout 48 | base64)
         </step>
         <step>
           <para>
-            Install trento-wanda on Docker:
+            Deploy trento-wanda:
           </para>
           <programlisting language="bash">
 docker run -d --name wanda \
@@ -137,24 +132,23 @@ docker run -d --name wanda \
 </step>
         <step>
           <para>
-            Install trento-web on Docker
+            Deploy trento-web.
           </para>
           <para>
-            Be sure to change the <literal>ADMIN_USERNAME</literal> and
+            Make sure to change the <literal>ADMIN_USERNAME</literal> and
             <literal>ADMIN_PASSWORD</literal>, these are the credentials
-            that will be required to login to the trento-web UI.
+            that are required to login to the trento-web UI.
             Depending on how you intend to connect to the console, a
             working hostname, FQDN, or an IP is required in
-            <literal>TRENTO_WEB_ORIGIN</literal> for HTTPS otherwise,
-            websockets will fail to connect, causing no real-time
+            <literal>TRENTO_WEB_ORIGIN</literal> for HTTPS. Otherwise
+            websockets fail to connect, causing no real-time
             updates on the UI.
           </para>
           <note>
             <para>
               Add
               <literal>CHARTS_ENABLED=false</literal> if Prometheus is
-              not installed or you don't want to use the charts feature
-              of Trento.
+              not installed, or you do not want to use Trento's charts functionality.
             </para>
           </note>
           <programlisting language="bash">
@@ -181,13 +175,13 @@ registry.suse.com/trento/trento-web:2.2.0 \
 -c &quot;/app/bin/trento eval 'Trento.Release.init()' &amp;&amp; /app/bin/trento start&quot;
 </programlisting>
           <para>
-            Mail alerting is disabled by default, as described in
+            Email alerting are disabled by default, as described in
             <link xlink:href="https://github.com/trento-project/web/blob/main/guides/alerting/alerting.md#enabling-alerting">enabling
             alerting</link> guide. Enable alerting by setting
             <literal>ENABLE_ALERTING</literal> env to
             <literal>true</literal>. Additional required variables are:
             <literal>[ALERT_SENDER,ALERT_RECIPIENT,SMTP_SERVER,SMTP_PORT,SMTP_USER,SMTP_PASSWORD]</literal>
-            All other settings should remain as they are.
+            All other settings should remain at their default.
           </para>
           <para>
             Example:
