@@ -147,7 +147,7 @@
       (&bcia;s) are the only official container images. They are not available at
       <link xlink:href="https://build.opensuse.org"/>,
       and the RPMs exported there are not identical to the internal ones. This
-      means that it is not possible to build officially supported images at
+      means that it is not possible to build supported images at
       <link xlink:href="https://build.opensuse.org"/>.
     </para>
     <para>

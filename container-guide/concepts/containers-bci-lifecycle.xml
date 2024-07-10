@@ -20,7 +20,7 @@
   </info>
   <para>
     All container images, except for base, are currently classified as tech
-    preview, and &suse; does not provide official support for them. This
+    preview, and &suse; does not provide support for them. This
     information is visible on the web on
     <link xlink:href="https://registry.suse.com">registry.suse.com</link>. It
     is also indicated via the <literal>com.suse.supportlevel</literal> label
@@ -30,7 +30,7 @@
   </para>
 <screen>&prompt.user;skopeo inspect docker://registry.suse.com/bci/bci-micro:15.4 | jq '.Labels["com.suse.supportlevel"]'
     "techpreview"
-    
+
     &prompt.user;skopeo inspect docker://registry.suse.com/bci/bci-base:15.4 | jq '.Labels["com.suse.supportlevel"]'
     "l3"</screen>
   <para>
