@@ -128,10 +128,13 @@
     </para>
     <informalfigure>
       <mediaobject>
-        <imageobject>
+        <imageobject role="html">
           <imagedata fileref="container-workflow.png" width="80.0%"/>
         </imageobject>
-        <textobject><phrase>image</phrase>
+        <imageobject role="fo">
+          <imagedata fileref="container-workflow.svg" width="80.0%"/>
+        </imageobject>
+        <textobject><phrase>Container workflow</phrase>
         </textobject>
       </mediaobject>
     </informalfigure>
@@ -194,10 +197,13 @@
     </para>
     <informalfigure>
       <mediaobject>
-        <imageobject>
+        <imageobject role="html">
           <imagedata fileref="container-image-layers.png" width="80.0%"/>
         </imageobject>
-        <textobject><phrase>image</phrase>
+        <imageobject role="fo">
+          <imagedata fileref="container-image-layers.png" width="80.0%"/>
+        </imageobject>
+        <textobject><phrase>Container image layers</phrase>
         </textobject>
       </mediaobject>
     </informalfigure>
