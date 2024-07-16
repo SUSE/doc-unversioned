@@ -252,7 +252,7 @@
   <section xml:id="id-sle-bci-base-and-sle-bci-init-when-you-need-flexibility">
     <title>&bcia;-Base and &bcia;-Init: When you need flexibility</title>
     <para>
-      This &bcia; comes with the &zypper; package manager and the free SLE_BCI
+      &bcia;-Base comes with the &zypper; package manager and the free SLE_BCI
       repository. This allows you to install software available in the
       repository and customize the image during the build. The downside is the
       size of the image. It is the largest of the general-purpose &bcia;s, so
