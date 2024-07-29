@@ -2306,7 +2306,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
         </listitem>
        <listitem>
         <para>When updating from an older Trento version to version 2.3.1 or higher, a new API key is generated
-        and the configuration of all registered agents must be updated accordingly.</para>
+        and the configuration of all registered &t.agent;s must be updated accordingly.</para>
         </listitem>
         <listitem>
           <para> If email alerting has been enabled, then the corresponding <parameter>trento-web.alerting</parameter> flags
