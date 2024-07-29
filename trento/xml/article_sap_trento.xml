@@ -2272,8 +2272,10 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
 
   <section xml:id="sec-trento-updating-trentoserver">
     <title>Updating &t.server;</title>
-    <para> The procedure to update the &t.server; depends on how it was installed.
-     If it was installed manually, then it must be updated manually using the latest versions
+    <para> The procedure to update the &t.server; depends on the deployment type: &k8s;, systemd or containerized.
+    The current content of this section is specific for &kube; deployments.</para>
+   <para>
+     If &t.server; was installed manually, then it must be updated manually using the latest versions
      of the container images available in the SUSE public registry. If it was installed using
      Helm chart, it can be updated using the same Helm command as for the installation:</para>
    <screen>helm upgrade \
@@ -2301,6 +2303,10 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
    --set trento-web.adminUser.password=<replaceable>ADMIN_PASSWORD</replaceable> \
    --set rabbitmq.auth.erlangCookie=$(openssl rand -hex 16)
         </screen>
+        </listitem>
+       <listitem>
+        <para>When updating from an older Trento version to version 2.3.1 or higher, a new API key is generated
+        and the configuration of all registered &t.agent;s must be updated accordingly.</para>
         </listitem>
         <listitem>
           <para> If email alerting has been enabled, then the corresponding <parameter>trento-web.alerting</parameter> flags
