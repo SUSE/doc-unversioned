@@ -2272,8 +2272,8 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
 
   <section xml:id="sec-trento-updating-trentoserver">
     <title>Updating &t.server;</title>
-    <para> The procedure to update the &t.server; depends on the deployment type: kubernetes, systemd or containerized.
-    The current content of this section is specific for kubernetes deployments.</para>
+    <para> The procedure to update the &t.server; depends on the deployment type: &libe:, systemd or containerized.
+    The current content of this section is specific for &kube; deployments.</para>
    <para>
      If &t.server; was installed manually, then it must be updated manually using the latest versions
      of the container images available in the SUSE public registry. If it was installed using
