@@ -2661,7 +2661,7 @@ trento-server-rabbitmq-0</screen>
     <para></para>
     <table>
       <title>Compatibility matrix between &t.server; and &t.agent;s</title>
-      <tgroup cols="9">
+      <tgroup cols="10">
         <colspec colname="agent-start" colnum="1"/>
         <colspec colname="agent-end" colnum="2"/>
         <colspec colname="server-start" colnum="3" align="center"/>
@@ -2670,7 +2670,8 @@ trento-server-rabbitmq-0</screen>
         <colspec colnum="6" align="center"/>
         <colspec colnum="7" align="center"/>
         <colspec colnum="8" align="center"/>
-        <colspec colnum="9" colname="server-end" align="center"/>
+        <colspec colnum="9" align="center"/>
+        <colspec colnum="10" colname="server-end" align="center"/>
         <spanspec spanname="tserver" namest="server-start" nameend="server-end"/>
         <spanspec spanname="tagent" namest="agent-start" nameend="agent-end"/>
         <thead>
@@ -2690,17 +2691,19 @@ trento-server-rabbitmq-0</screen>
             <entry>2.1.0</entry>
             <entry>2.2.0</entry>
             <entry>2.3.1</entry>
+            <entry>2.3.2</entry>
           </row>
         </thead>
         <tbody>
           <row>
             <!-- HINT: If you add more rows, raise add +1 to the morerows attribute value -->
-            <entry morerows="6" align="center" valign="middle">
+            <entry morerows="7" align="center" valign="middle">
               <para>&t.agent;</para>
               <para>versions</para>
             </entry>
             <entry>1.0.0</entry>
             <entry><phrase role="color:suse-jungle-green">✓</phrase></entry>
+            <entry></entry>
             <entry></entry>
             <entry></entry>
             <entry></entry>
@@ -2718,6 +2721,7 @@ trento-server-rabbitmq-0</screen>
             <entry></entry>
             <entry></entry>
             <entry></entry>
+            <entry></entry>
           </row>
           <row>
             <!-- <entry/> -->
@@ -2725,6 +2729,7 @@ trento-server-rabbitmq-0</screen>
             <entry><phrase role="color:suse-jungle-green">✓</phrase></entry>
             <entry><phrase role="color:suse-jungle-green">✓</phrase></entry>
             <entry><phrase role="color:suse-jungle-green">✓</phrase></entry>
+            <entry></entry>
             <entry></entry>
             <entry></entry>
             <entry></entry>
@@ -2740,6 +2745,7 @@ trento-server-rabbitmq-0</screen>
             <entry></entry>
             <entry></entry>
             <entry></entry>
+            <entry></entry>
           </row>
           <row>
             <!-- <entry/> -->
@@ -2749,6 +2755,7 @@ trento-server-rabbitmq-0</screen>
             <entry></entry>
             <entry><phrase role="color:suse-jungle-green">✓</phrase></entry>
             <entry><phrase role="color:suse-jungle-green">✓</phrase></entry>
+            <entry></entry>
             <entry></entry>
             <entry></entry>
           </row>
@@ -2762,6 +2769,7 @@ trento-server-rabbitmq-0</screen>
             <entry><phrase role="color:suse-jungle-green">✓</phrase></entry>
             <entry><phrase role="color:suse-jungle-green">✓</phrase></entry>
             <entry></entry>
+            <entry></entry>
           </row>
                     <row>
             <!-- <entry/> -->
@@ -2769,6 +2777,19 @@ trento-server-rabbitmq-0</screen>
             <entry></entry>
             <entry></entry>
             <entry></entry>
+            <entry><phrase role="color:suse-jungle-green">✓</phrase></entry>
+            <entry><phrase role="color:suse-jungle-green">✓</phrase></entry>
+            <entry><phrase role="color:suse-jungle-green">✓</phrase></entry>
+            <entry><phrase role="color:suse-jungle-green">✓</phrase></entry>
+            <entry></entry>
+          </row>
+                   <row>
+            <!-- <entry/> -->
+            <entry>2.3.2</entry>
+            <entry></entry>
+            <entry></entry>
+            <entry></entry>
+            <entry><phrase role="color:suse-jungle-green">✓</phrase></entry>
             <entry><phrase role="color:suse-jungle-green">✓</phrase></entry>
             <entry><phrase role="color:suse-jungle-green">✓</phrase></entry>
             <entry><phrase role="color:suse-jungle-green">✓</phrase></entry>
@@ -2808,7 +2829,19 @@ trento-server-rabbitmq-0</screen>
                first item.
     -->
        <variablelist>
-      <varlistentry xml:id="trento-version-230">
+              <varlistentry xml:id="trento-version-232">
+        <term>Version 2.3.2 (released on 2024/09/01)</term>
+        <listitem>
+          <para> Consisting of Helm chart 2.3.2, Web component 2.3.2, checks engine (wanda) 1.3.0 and
+            agent 2.3.0.</para>
+          <itemizedlist>
+            <listitem>
+              <para>Fix for bug in the web component causing it to crash upon certain events after update from an earlier version.</para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+      <varlistentry xml:id="trento-version-231">
         <term>Version 2.3.1 (released on 2024/06/18)</term>
         <listitem>
           <para> Consisting of Helm chart 2.3.1, Web component 2.3.1, checks engine
@@ -2844,7 +2877,7 @@ trento-server-rabbitmq-0</screen>
             </listitem>
           </itemizedlist>
         </listitem>
-      </varlistentry>
+       </varlistentry>
       <varlistentry xml:id="trento-version-220">
         <term>Version 2.2.0 (released on 2023/12/04)</term>
         <listitem>
