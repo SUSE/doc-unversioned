@@ -2697,7 +2697,7 @@ trento-server-rabbitmq-0</screen>
         <tbody>
           <row>
             <!-- HINT: If you add more rows, raise add +1 to the morerows attribute value -->
-            <entry morerows="6" align="center" valign="middle">
+            <entry morerows="7" align="center" valign="middle">
               <para>&t.agent;</para>
               <para>versions</para>
             </entry>
