@@ -2661,7 +2661,7 @@ trento-server-rabbitmq-0</screen>
     <para></para>
     <table>
       <title>Compatibility matrix between &t.server; and &t.agent;s</title>
-      <tgroup cols="9">
+      <tgroup cols="10">
         <colspec colname="agent-start" colnum="1"/>
         <colspec colname="agent-end" colnum="2"/>
         <colspec colname="server-start" colnum="3" align="center"/>
