@@ -62,9 +62,23 @@
       <revision>
         <date>2024-01-31</date>
         <revdescription>
-          <para>
-            Added how to use a tailored &stiga; profile.
-          </para>
+          <itemizedlist>
+            <listitem>
+              <para>
+                Added a section on installation of the core packages.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Updated the section about profiles.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Extended the section on tools for scanning.
+              </para>
+            </listitem>
+          </itemizedlist>
         </revdescription>
       </revision>
       <revision>
