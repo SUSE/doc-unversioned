@@ -9,6 +9,7 @@
 ]>
 <article xml:id="article-stig"
  xmlns="http://docbook.org/ns/docbook"
+ xmlns:its="http://www.w3.org/2005/11/its"
  version="5.0"
  xml:lang="en"
  xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -35,6 +36,32 @@
         .
       </para>
     </abstract>
+    <meta name="title" its:translate="yes">Hardening &productname; with &stiga;</meta>
+    <meta name="series" its:translate="no">Products &amp; Solutions</meta>
+    <meta name="description" its:translate="yes">How to audit and harden &productname; with &stig; by the &disa;</meta>
+    <meta name="social-descr" its:translate="yes">Harden &productnameshort; with &stiga;;</meta>
+    <meta name="task" its:translate="yes">
+      <phrase>Auditing</phrase>
+      <phrase>Compliance</phrase>
+    </meta>
+    <revhistory xml:id="rh-article-stig">
+      <revision>
+        <date>2024-01-31</date>
+        <revdescription>
+          <para>
+            Added how to use a tailored &stiga; profile.
+          </para>
+        </revdescription>
+      </revision>
+      <revision>
+        <date>2023-03-06</date>
+        <revdescription>
+          <para>
+            Initial release of this document.
+          </para>
+        </revdescription>
+      </revision>
+    </revhistory>
   </info>
   <important xml:id="stig-disclaimer">
     <title>Disclaimer</title>
