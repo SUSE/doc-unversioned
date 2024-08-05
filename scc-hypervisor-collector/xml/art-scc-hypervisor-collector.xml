@@ -11,6 +11,7 @@
 ]>
 <article xml:id="article-scc-hypervisor-collector"
          xmlns="http://docbook.org/ns/docbook"
+         xmlns:its="http://www.w3.org/2005/11/its"
          version="5.0"
          xml:lang="en"
          xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -36,6 +37,23 @@
         customers' &scc; (SCC) account.
       </para>
     </abstract>
+    <meta name="title" its:translate="yes">Hypervisor details in &scc;</meta>
+    <meta name="series" its:translate="no">Products &amp; Solutions</meta>
+    <meta name="description" its:translate="yes">How to monitor &scc; subscriptions for hypervisors</meta>
+    <meta name="social-descr" its:translate="yes">Monitoring SCC subscriptions for hypervisors</meta>
+    <meta name="task" its:translate="no">
+      <phrase>Subscription Management</phrase>
+    </meta>
+    <revhistory xml:id="rh-article-scc-hypervisor-collector">
+      <revision>
+        <date>2023-03-06</date>
+        <revdescription>
+          <para>
+            Initial release of this document.
+          </para>
+        </revdescription>
+      </revision>
+    </revhistory>
   </info>
   <sect1 xml:id="scc-hypervisor-collector-whatis">
     <title>What is &scchvc;?</title>
