@@ -9,6 +9,7 @@
 ]>
 <article xml:id="article-openscap"
  xmlns="http://docbook.org/ns/docbook"
+ xmlns:its="http://www.w3.org/2005/11/its"
  version="5.0"
  xml:lang="en"
  xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -33,6 +34,62 @@
         &openscap; and the <literal>&ssg;</literal>.
       </para>
     </abstract>
+    <meta name="title" its:translate="yes">Hardening &productname; with &openscap;</meta>
+    <meta name="series" its:translate="no">Products &amp; Solutions</meta>
+    <meta name="description" its:translate="yes">How to audit and harden &productname; with &openscap; and the &ssg;</meta>
+    <meta name="social-descr" its:translate="yes">Harden &productnameshort; with &openscap;</meta>
+    <meta name="task" its:translate="no">
+      <phrase>Auditing</phrase>
+      <phrase>Compliance</phrase>
+    </meta>
+    <revhistory xml:id="rh-openscap">
+      <revision>
+        <date>2024-05-27</date>
+        <revdescription>
+          <para>
+            Removed outdated &pcidssa; profile.
+          </para>
+        </revdescription>
+      </revision>
+      <revision>
+        <date>2024-05-17</date>
+        <revdescription>
+          <para>
+            Added how to use external or remote resources for scanning.
+          </para>
+        </revdescription>
+      </revision>
+      <revision>
+        <date>2024-01-31</date>
+        <revdescription>
+          <itemizedlist>
+            <listitem>
+              <para>
+                Added a section on installation of the core packages.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Updated the section about profiles.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Extended the section on tools for scanning.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </revdescription>
+      </revision>
+      <revision>
+        <date>2023-03-06</date>
+        <revdescription>
+          <para>
+            Initial release of this document.
+          </para>
+        </revdescription>
+      </revision>
+    </revhistory>
   </info>
   <important xml:id="openscap-disclaimer">
     <title>Disclaimer</title>
