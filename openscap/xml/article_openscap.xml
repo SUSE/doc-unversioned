@@ -38,7 +38,7 @@
     <meta name="series" its:translate="no">Products &amp; Solutions</meta>
     <meta name="description" its:translate="yes">How to audit and harden &productname; with &openscap; and the &ssg;</meta>
     <meta name="social-descr" its:translate="yes">Harden &productnameshort; with &openscap;</meta>
-    <meta name="task" its:translate="yes">
+    <meta name="task" its:translate="no">
       <phrase>Auditing</phrase>
       <phrase>Compliance</phrase>
     </meta>
