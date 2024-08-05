@@ -40,7 +40,7 @@
     <meta name="series" its:translate="no">Products &amp; Solutions</meta>
     <meta name="description" its:translate="yes">How to audit and harden &productname; with &stig; by the &disa;</meta>
     <meta name="social-descr" its:translate="yes">Harden &productnameshort; with &stiga;;</meta>
-    <meta name="task" its:translate="yes">
+    <meta name="task" its:translate="no">
       <phrase>Auditing</phrase>
       <phrase>Compliance</phrase>
     </meta>
