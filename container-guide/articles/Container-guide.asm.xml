@@ -79,7 +79,7 @@
      <meta name="description" its:translate="yes">How to navigate the &sles; container ecosystem</meta>
      <meta name="social-descr" its:translate="yes">Manage containers on &slsa;</meta>
      <meta name="category" content="Containerization"/>
-     <meta name="task" its:translate="yes">
+     <meta name="task" its:translate="no">
       <phrase>Containerization</phrase>
       <phrase>Container Management</phrase>
      </meta>
