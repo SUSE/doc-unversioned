@@ -309,7 +309,7 @@
             <entry>list</entry>
             <entry>
              <para>
-              For each SAP installation: system_id (string) and instance_types (list of strings)
+              <literal>system_id</literal> (string) and <literal>instance_types</literal> (list of strings) for each SAP installation.
              </para>
 <screen>
 "sap": [
