@@ -11,6 +11,7 @@
 ]>
 <article xml:id="article-system-uptime-tracking"
          xmlns="http://docbook.org/ns/docbook"
+         xmlns:its="http://www.w3.org/2005/11/its"
          version="5.0"
          xml:lang="en"
          xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -39,6 +40,23 @@
         for analytics purposes.
       </para>
     </abstract>
+    <meta name="title" its:translate="yes">System Uptime Tracking</meta>
+    <meta name="series" its:translate="no">Products &amp; Solutions</meta>
+    <meta name="description" its:translate="yes">How to monitor the uptime of a client system</meta>
+    <meta name="social-descr" its:translate="yes">Monitoring the uptime of a client system</meta>
+    <meta name="task" its:translate="no">
+      <phrase>Subscription Management</phrase>
+    </meta>
+    <revhistory xml:id="rh-article-system-uptime-tracking">
+      <revision>
+        <date>2024-07-06</date>
+        <revdescription>
+          <para>
+            Initial release of this document.
+          </para>
+        </revdescription>
+      </revision>
+    </revhistory>
   </info>
   <sect1 xml:id="uptime-requirements">
     <title>Requirements</title>

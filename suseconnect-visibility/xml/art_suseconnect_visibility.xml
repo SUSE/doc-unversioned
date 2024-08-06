@@ -11,6 +11,7 @@
 ]>
 <article xml:id="article-suseconnect-visibility"
          xmlns="http://docbook.org/ns/docbook"
+         xmlns:its="http://www.w3.org/2005/11/its"
          version="5.0"
          xml:lang="en"
          xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -37,6 +38,23 @@
         about active systems and their hardware environment.
       </para>
     </abstract>
+    <meta name="title" its:translate="yes">Enriched system visibility in the &scc;</meta>
+    <meta name="series" its:translate="no">Products &amp; Solutions</meta>
+    <meta name="description" its:translate="yes">How to use SUSEConnect to monitor active systems</meta>
+    <meta name="social-descr" its:translate="yes">Monitor active systems with SUSEConnect</meta>
+    <meta name="task" its:translate="no">
+      <phrase>Subscription Management</phrase>
+    </meta>
+    <revhistory xml:id="rh-article-suseconnect-visibility">
+      <revision>
+        <date>2022-09-22</date>
+        <revdescription>
+          <para>
+            Initial release of this document.
+          </para>
+        </revdescription>
+      </revision>
+    </revhistory>
   </info>
   <sect1 xml:id="suseconnect-whatis">
     <title>What is &suseconnect;?</title>
