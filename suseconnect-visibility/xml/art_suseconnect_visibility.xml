@@ -290,6 +290,41 @@
             <entry>KVM or VMware etc.</entry>
           </row>
           <row>
+            <entry>Container runtime</entry>
+            <entry>string</entry>
+            <entry>Docker</entry>
+          </row>
+          <row>
+            <entry>uname</entry>
+            <entry>string</entry>
+            <entry>Linux lair 6.9.7-1-default #1 SMP PREEMPT_DYNAMIC Fri Jun 28 05:50:47 UTC 2024 (a5efffa) x86_64 x86_64 x86_64 GNU/Linux</entry>
+          </row>
+          <row>
+            <entry>Architecture specifics</entry>
+            <entry>map</entry>
+            <entry>Depends on the architecture. It includes parameters such as device-tree information or virtualization type on PowerPC or System Z.</entry>
+          </row>
+          <row>
+            <entry>SAP</entry>
+            <entry>list</entry>
+            <entry>
+             <para>
+              <literal>system_id</literal> (string) and <literal>instance_types</literal> (list of strings) for each SAP installation.
+             </para>
+<screen>
+"sap": [
+    {
+      "system_id": "DEV",
+      "instance_types": [
+        "ASCS",
+        "D"
+      ]
+    }
+]
+</screen>
+            </entry>
+          </row>
+          <row>
             <entry>Cloud Provider</entry>
             <entry>string</entry>
             <entry>Amazon, Google, or Azure</entry>
