@@ -302,7 +302,7 @@
           <row>
             <entry>Architecture specifics</entry>
             <entry>map</entry>
-            <entry>Depends on the architecture. It includes parameters such as devicetree information, virtualization type on PowerPC or System Z, among others</entry>
+            <entry>Depends on the architecture. It includes parameters such as device-tree information or virtualization type on PowerPC or System Z.</entry>
           </row>
           <row>
             <entry>SAP</entry>
