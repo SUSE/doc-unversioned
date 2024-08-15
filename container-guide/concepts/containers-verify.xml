@@ -109,6 +109,13 @@
     main.go:62: error during command execution: no matching signatures:
     crypto/rsa: verification error</screen>
   </section>
+  <section xml:id="sec-verify-helm-chart">
+    <title>Verifying Helm charts with Cosign</title>
+    <para>
+      Cosign can also be used to verify Helm charts. This can be done using the following command:
+    </para>
+<screen>&prompt.user;cosign verify --key https://ftp.suse.com/pub/projects/security/keys/container-key.pem registry.suse.com/path/to/chart</screen>
+  </section>
   <section xml:id="sec-verify-podman">
     <title>Verifying &bci;s with &podman;</title>
     <para>
