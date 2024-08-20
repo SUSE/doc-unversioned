@@ -150,10 +150,6 @@
       means that it is not possible to build supported images at
       <link xlink:href="https://build.opensuse.org"/>.
     </para>
-    <para>
-      For more information about &bcia;s, refer to
-      <xref linkend="container-bci-general"/>.
-    </para>
   </section>
   <section xml:id="sec-tools-kiwi">
     <title>&kiwi;</title>
