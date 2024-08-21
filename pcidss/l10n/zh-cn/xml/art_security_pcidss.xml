@@ -4,8 +4,8 @@
  title="Profiling step"?>
 <article xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:base="art_security_pcidss.xml" xml:id="article-security-pcidss" version="5.0" xml:lang="zh-cn">
 
- <title><citetitle>支付卡行业数据安全标准 (PCI DSS) 指南</citetitle></title>
- <titleabbrev><citetitle>支付卡行业数据安全标准 (PCI DSS) 指南</citetitle></titleabbrev>
+ <title>支付卡行业数据安全标准 (PCI DSS) 指南</title>
+ <titleabbrev>支付卡行业数据安全标准 (PCI DSS) 指南</titleabbrev>
  <info>
   <productname><phrase os="article">SUSE Linux Enterprise Server</phrase></productname>
   <productnumber><phrase os="article">code stream 15</phrase></productnumber>
@@ -19,6 +19,7 @@
     <dm:product>Documentation</dm:product>
     <dm:assignee>taroth@suse.com</dm:assignee>
    </dm:bugtracker>
+   <dm:editurl>https://github.com/SUSE/doc-unversioned/tree/main/pcidss/xml/</dm:editurl>
    <dm:translation>yes</dm:translation>
   </dm:docmanager>
 
@@ -64,7 +65,7 @@
  <sect1 xml:id="sec-pcidss-what">
   <title>什么是 PCI DSS？</title>
   <para>
-   支付卡行业数据安全标准 (PCI DSS) 是指导商家保护持卡人数据的一套要求。该标准涵盖当前涉及 12 个要求主题的六个主要类别，规定如何实施、保护、维护和监视在信用卡持卡人数据处理中所涉及的系统。
+   支付卡行业数据安全标准 (PCI DSS) 是指导商家保护持卡人数据的一套要求。该标准涵盖当前涉及 12 个要求主题的六个主要类别，规定如何实施、保护、维护和监控在信用卡持卡人数据处理中所涉及的系统。
   </para>
   <para>
    PCI DSS 由 PCI 安全标准理事会 (SSC) 制定和维护，该理事会由 Visa、MasterCard、American Express、Discover 和 JCB 五大信用卡机构创立。2004 年 12 月发布了 PCI DSS 1.0，目的是解决日益猖獗的在线信用卡欺诈威胁。最新版本 PCI DSS 4.0 发布于 2022 年 3 月。
@@ -128,7 +129,7 @@
    </listitem>
   </orderedlist>
   <orderedlist continuation="continues">
-   <title>定期监视和测试网络</title>
+   <title>定期监控和测试网络</title>
    <listitem>
     <para>
      <xref linkend="sec-pcidss-requirement-10"/>
@@ -152,7 +153,7 @@
    PCI DSS 的大多数要求都是针对组织的指导原则，可帮助确保涉及持卡人数据的方方面面的安全性。对于技术方面，通常不会使用具体的措辞。
   </para>
   <para>
-   这意味着，需要由审计人员确定哪些安全性设置符合要求，哪些不符合要求。因此，本文档中的建议只能为实施 PCI DSS 提供一个入手点，需要进一步探讨。
+   这意味着，需要由审计人员确定哪些安全性设置符合要求，哪些不符合要求。因此，本文档中的建议只能为实施 PCI DSS 提供着手点，需要进一步探讨。
   </para>
  </sect1>
  <sect1 xml:id="sec-pcidss-os-relevant">
@@ -213,16 +214,16 @@
 
     <variablelist>
      <varlistentry xml:id="vle-pcidss-insecure-service">
-      <term>1.1.6.b 识别所允许的不安全服务、协议和端口；校验是否书面记录了每项服务的安全功能</term>
+      <term>1.1.6.b 识别允许的不安全服务、协议和端口；校验是否书面记录了每项服务的安全功能</term>
       <listitem>
        <para>
-        此任务嵌入在有关识别、记录系统上运行的所有服务和协议并证明其合理性的要求中。需要特殊关注可能导致安全风险的服务和协议。如果使用不安全的服务或协议，必须对其进行评估，以了解它的潜在安全影响。应该禁用或去除业务运营中不必要的服务或协议。
+        此任务蕴含在有关识别、记录系统上运行的所有服务和协议并证明其合理性的要求中。需要特殊关注可能导致安全风险的服务和协议。如果使用不安全的服务或协议，必须对其进行评估，以了解它的潜在安全影响。应该禁用或去除业务运营中不必要的服务或协议。
        </para>
       </listitem>
      </varlistentry>
      <varlistentry xml:id="vle-pcidss-firewall">
       <term>
-       1.2.1.b 校验入站和出站流量是否限制为持卡人数据环境中所必需的流量.
+       1.2.1.b 校验入站和出站流量是否限制为持卡人数据环境中所必需的流量。
       </term>
       <listitem>
        <para>
@@ -244,11 +245,11 @@
      </varlistentry>
      <varlistentry xml:id="vle-pcidss-deny-all">
       <term>
-       1.2.1.c 校验是否明确拒绝所有其他入站和出站流量.
+       1.2.1.c 校验是否明确拒绝所有其他入站和出站流量。
       </term>
       <listitem>
        <para>
-        拒绝未根据上一节中所述定义其例外情况的所有出站和入站流量。转发通常已由某个内核参数完全禁用，且不应对端点服务器启用。
+        拒绝未根据上一节中所述定义其例外情况的所有出站和入站流量。转发通常已通过某个内核参数完全禁用，且不应对端点服务器启用。
        </para>
        <para>
         <phrase role="productname"/> 中的 <systemitem class="daemon">firewalld</systemitem> 默认会阻止所有入站流量。
@@ -265,13 +266,13 @@
         此外，还可以通过 TCP 封装程序配置文件 <filename>/etc/hosts.deny</filename> 为特定的服务配置入站流量。
        </para>
        <para>
-        下面的大多数任务涉及到检查并校验定义的入站和出站规则是否真正将所有网段（例如 DMZ 和互联网）之间及其内部的流量限制为整个系统能够正常运行所需的最小必要程度。
+        下面的大多数任务涉及到如下事项：检查并校验定义的入站和出站规则是否真正将所有网段（例如 DMZ 和互联网）之间及其内部的流量限制为整个系统能够正常运行所需的最小必要程度。
         </para>
       </listitem>
      </varlistentry>
      <varlistentry>
       <term>
-       1.3.3 实施防假冒措施来检测并阻止伪造的源 IP 地址进入网络.
+       1.3.3 实施防假冒措施来检测并阻止伪造的源 IP 地址进入网络。
       </term>
       <listitem>
        <para>
@@ -282,7 +283,7 @@
          <formalpara>
           <title>使用 <systemitem>iptables</systemitem> 规则。这些规则仅允许来自指定接口上特定地址的输入</title>
           <para>
-           可以在系统设置中明确定义用于通讯的地址空间。使用违反这些定义的地址的任何行为可以记录到日志中并触发警报。
+           可以在系统设置中明确定义用于通讯的地址空间。任何使用违反这些定义的地址的行为都可能会记录到日志中并触发警报。
           </para>
          </formalpara>
         </listitem>
@@ -319,7 +320,7 @@
      </varlistentry>
      <varlistentry>
       <term>
-       1.3.7 不要向未获授权方透露私用 IP 地址和路由信息.
+       1.3.7 不要向未获授权方透露私用 IP 地址和路由信息。
       </term>
       <listitem>
        <para>
@@ -357,7 +358,7 @@
         </listitem>
         <listitem>
          <para>
-          默认情况下，<systemitem class="daemon">sshd</systemitem> 守护程序的某些不安全上游设置已在 <systemitem class="daemon">sshd</systemitem> 配置文件 <filename>/etc/ssh/sshd_config</filename> 中列出并注释掉。例如，已禁用不安全的协议版本 1 和空口令 (<literal>PermitEmptyPasswords no</literal>)。
+          默认情况下，配置文件 <filename>/etc/ssh/sshd_config</filename> 内的 <systemitem class="daemon">sshd</systemitem> 中已列出并注释掉 <systemitem class="daemon">sshd</systemitem> 守护程序的某些不安全上游设置。例如，已禁用不安全的协议版本 1 和空口令 (<literal>PermitEmptyPasswords no</literal>)。
          </para>
          <para>
           要进一步提高 SSH 安全性，请通过将 <literal>PermitRootLogin</literal> 设置为 <literal>no</literal> 来拒绝直接的 <systemitem class="username">root</systemitem> 访问（如果适用）。
@@ -365,7 +366,7 @@
         </listitem>
        </itemizedlist>
        <para>
-        可以通过使用 AutoYaST 配置文件自动执行系统安装来自定义默认设置。这样便可以发布新的 <phrase os="article">SUSE Linux Enterprise Server</phrase> 实例并自动启用已经过评估的配置。可以使用 SUSE Manager 实现此设置过程的自动化。有关详细信息，请参见 <link xlink:href="https://documentation.suse.com/suma/"/> 上的 SUSE Manager 文档。
+        可以通过使用 AutoYaST 配置文件自动执行系统安装来自定义默认设置。这样便可以发布新的 <phrase os="article">SUSE Linux Enterprise Server</phrase> 实例，并自动启用已经过评估的配置。可以使用 SUSE Manager 实现此设置过程的自动化。有关详细信息，请参见 <link xlink:href="https://documentation.suse.com/suma/"/> 上的 SUSE Manager 文档。
        </para>
        <para>
         默认情况下，<phrase os="article">SUSE Linux Enterprise Server</phrase> 不会创建除 <systemitem class="username">root</systemitem> 管理用户以外的其他帐户。<filename>/etc/passwd</filename> 中定义了一些系统帐户，但这些帐户未激活，因此不能直接使用。可以通过检查 <filename>/etc/shadow</filename> 文件中的内容来验证这一点。
@@ -389,7 +390,7 @@
      </varlistentry>
      <varlistentry>
       <term>
-       2.2 为所有系统组件制定配置标准。确保这些标准能够解决所有已知安全漏洞，并与行业接受的系统强化标准相一致。
+       2.2 为所有系统组件制定配置标准。确保这些标准能够解决所有已知安全漏洞，并与行业认可的系统强化标准相一致。
       </term>
       <listitem>
        <para>
@@ -431,7 +432,8 @@
        <itemizedlist>
         <listitem>
          <para>
-          有关虚拟化的信息，请参见<phrase os="article"><citetitle>《<phrase os="article">SUSE Linux Enterprise Server</phrase> 虚拟化指南》</citetitle></phrase>。
+          有关虚拟化的信息，请参见<phrase os="article"><citetitle><phrase os="article">SUSE Linux Enterprise Server</phrase> Virtualization
+          Guide</citetitle></phrase>。
          </para>
         </listitem>
         <listitem>
@@ -449,7 +451,7 @@
       </term>
       <listitem>
        <para>
-        此条款与要求 1 中的某个条款直接相关：仅允许真正需要且在使用安全协议和设置的服务（<xref linkend="vle-pcidss-insecure-service"/>）。所有相关方必须清楚使用不安全通讯存在的风险。研究、明确书面记录并传达使用不安全协议和服务所带来的风险。
+        此规定与要求 1 中的某条规定直接相关：仅允许真正需要且在使用安全协议和设置的服务（<xref linkend="vle-pcidss-insecure-service"/>）。所有相关方必须清楚使用不安全通讯存在的风险。研究、明确书面记录并传达使用不安全协议和服务所带来的风险。
        </para>
        <para>
         使用以下 <command>systemctl</command> 命令启用和禁用系统服务：
@@ -485,12 +487,14 @@
        <itemizedlist>
         <listitem>
          <para>
-          有关 SELinux 的信息，请参见 <phrase os="article"><citetitle><phrase os="article">SUSE Linux Enterprise Server</phrase> 的“Configuring SELinux”一章</citetitle>。</phrase>
+          有关 SELinux 的信息，请参见 <phrase os="article"><citetitle><phrase os="article">SUSE Linux Enterprise Server</phrase> Security Guide,
+          Chapter Configuring SELinux</citetitle>。</phrase>
          </para>
         </listitem>
         <listitem>
          <para>
-          有关 <phrase>AppArmor</phrase> 的信息，请参见 <phrase os="article"><citetitle><phrase os="article">SUSE Linux Enterprise Server</phrase> Security Guide 的“Confining Privileges with <phrase>AppArmor</phrase>”部分</citetitle>。</phrase>
+          有关 <phrase>AppArmor</phrase> 的信息，请参见 <phrase os="article"><citetitle><phrase os="article">SUSE Linux Enterprise Server</phrase> Security Guide,
+          Part Confining Privileges with <phrase>AppArmor</phrase></citetitle>。</phrase>
          </para>
         </listitem>
        </itemizedlist>
@@ -502,17 +506,17 @@
       </term>
       <listitem>
        <para>
-        Linux 内核是主要系统组件。它包括一个核心映像，根据硬件和系统设计装载的内核模块会对该映像进行扩展。例如：会根据系统的网卡自动装载网卡驱动程序。可以启用文件系统模块来扩展 Linux 内核的文件系统支持。
+        Linux 内核是主要系统组件。它包括一个核心映像，根据硬件和系统设计加载的内核模块会对该映像进行扩展。例如：会根据系统的网卡自动加载网卡驱动程序。可以启用文件系统模块来扩展 Linux 内核的文件系统支持。
        </para>
        <para>
-        装载的内核模块的列表通常很长，其中包含了偶尔才使用的模块。内核模块框架允许将模块加入黑名单，以及限制要装载的功能。
+        加载的内核模块的列表通常很长，其中包含偶尔才使用的模块。内核模块框架允许将模块加入黑名单，以及限制要加载的功能。
        </para>
        <para>
-        要阻止装载模块，请通过 <filename>/etc/modprobe.d</filename> 目录配置这些模块。例如，只有配备软盘驱动器的系统才需要内核模块 <literal>floppy</literal>。在没有软盘驱动器的系统上，可以阻止装载该模块：创建包含以下内容的配置文件 <filename>/etc/modprobe.d/00-disable-modules.conf</filename>：
+        要阻止加载模块，请通过 <filename>/etc/modprobe.d</filename> 目录配置这些模块。例如，只有配备软盘驱动器的系统才需要内核模块 <literal>floppy</literal>。在没有软盘驱动器的系统上，可以阻止加载该模块：创建包含以下内容的配置文件 <filename>/etc/modprobe.d/00-disable-modules.conf</filename>：
        </para>
        <screen>install floppy /bin/true</screen>
        <para>
-        <literal>floppy</literal> 模块通常是在初始 RAM 磁盘执行期间装载的。因此，请使用 <command>dracut</command> 将此项配置更改传播到 <filename>initrd</filename> 文件（请将 <replaceable>NAME</replaceable> 替换为当前 initrd 的名称，将 <replaceable>KERNELVERSION</replaceable> 替换为当前运行的内核）。
+        <literal>floppy</literal> 模块通常是在初始 RAM 磁盘执行期间加载的。因此，请使用 <command>dracut</command> 将此项配置更改传播到 <filename>initrd</filename> 文件（将 <replaceable>NAME</replaceable> 替换为当前 initrd 的名称，将 <replaceable>KERNELVERSION</replaceable> 替换为当前运行的内核）。
        </para>
        <screen><prompt>&gt; </prompt><command>sudo</command> <command>/usr/bin/dracut --logfile /var/log/YaST2/mkinitrd.log --force /boot/$initrd-<replaceable>NAME</replaceable> $<replaceable>KERNELVERSION</replaceable></command></screen>
        <para>
@@ -522,7 +526,7 @@
      </varlistentry>
      <varlistentry>
       <term>
-       2.3 使用强加密来加密所有非控制台管理访问。使用 SSH、VPN 或 TLS 等技术进行基于 Web 的管理和其他非控制台管理访问。
+       2.3 使用强加密来加密所有非控制台管理访问。使用 SSH、VPN 或 TLS 等技术进行具有管理权限的 Web 访问及其他非控制台访问。
       </term>
       <listitem>
        <para>
@@ -582,7 +586,7 @@
       </term>
       <listitem>
        <para>
-        PCI DSS 文档的指导说明对此项要求的规定如下：<quote>全盘加密有助于在磁盘实物丢失时保护数据，因此可能适合对存储持卡人数据的便携式设备使用。</quote>
+        PCI DSS 文档中的准则说明对此项要求的规定如下：<quote>全盘加密有助于在磁盘实物丢失时保护数据，因此可能适合用于存储持卡人数据的便携式设备。</quote>
        </para>
        <para>
         从管理员的角度而言，使用 Linux 统一密钥设置 (LUKS)/dm-crypt 实现的块设备加密可提供一个抽象层，通过该抽象层可以像使用未加密磁盘那样使用加密磁盘。
@@ -669,7 +673,9 @@
        <command>zypper</command> 是所有 <phrase os="article">SUSE Linux Enterprise Server</phrase> 安装的组成部分，当系统注册之后便可直接访问更新储存库。
       </para>
       <para>
-       有关 Zypper 的信息，请参见 <phrase os="article"><citetitle>《<phrase os="article">SUSE Linux Enterprise Server</phrase> 管理指南》的“使用命令行工具管理软件”一章中的“使用 Zypper”一节</citetitle>。</phrase>
+       有关 Zypper 的信息，请参见 <phrase os="article"><citetitle><phrase os="article">SUSE Linux Enterprise Server</phrase> Administration Guide,
+       Chapter Managing Software with Command Line Tools, Section Using
+       Zypper</citetitle>。</phrase>
       </para>
      </listitem>
      <listitem>
@@ -678,7 +684,7 @@
       </para>
       <para>
        有关 SUSE Manager 的信息，请参见 <link xlink:href="https://documentation.suse.com/suma/">SUSE Manager
-       文档页面</link>。
+       documentation page</link>。
       </para>
      </listitem>
     </itemizedlist>
@@ -728,7 +734,9 @@
         要自动执行更新，可以使用所有 Zypper 子命令都支持的 <option>--non-interactive</option> 参数。
        </para>
       <para>
-       有关 Zypper 的详细信息，请参见 <phrase os="article"><citetitle>《<phrase os="article">SUSE Linux Enterprise Server</phrase> 管理指南》的“使用命令行工具管理软件”一章中的“使用 Zypper”一节</citetitle>。</phrase>
+       有关 Zypper 的详细信息，请参见 <phrase os="article"><citetitle><phrase os="article">SUSE Linux Enterprise Server</phrase> Administration Guide,
+       Chapter Managing Software with Command Line Tools, Section Using
+       Zypper</citetitle>。</phrase>
       </para>
       </listitem>
      </varlistentry>
@@ -745,22 +753,25 @@
        可以使用传统的 Unix 权限设置通过特定的用户和用户组来控制访问。
       </para>
       <para>
-       有关管理权限的信息，请参见 <phrase os="article"><citetitle><phrase os="article">SUSE Linux Enterprise Server</phrase> Security Guide 的“Access Control Lists in Linux”一章</citetitle>。</phrase>
+       有关管理权限的信息，请参见 <phrase os="article"><citetitle><phrase os="article">SUSE Linux Enterprise Server</phrase> Security Guide,
+       Chapter Access Control Lists in Linux</citetitle>。</phrase>
       </para>
      </listitem>
      <listitem>
       <para>
-       一种适用于文件系统的更灵活的机制是访问控制列表 (ACL)，它可提供更精细的控制方式。SELinux 能够实现最高的系统隔离性，并可防止进程获得超出允许范围的资源和访问权限。SELinux 和 <phrase>AppArmor</phrase> 不在本文档的范畴内，但应该采用它们来保护可能会被攻击者针对的关键系统。
+       一种适用于文件系统的更灵活的机制是访问控制列表 (ACL)，它可提供更精细的控制方式。SELinux 能够实现最高的系统隔离性，并可防止进程获得超出允许范围的资源和访问权限。SELinux 和 <phrase>AppArmor</phrase> 不在本文档的范畴内，但应该利用它们来保护可能会被攻击者针对的关键系统。
       </para>
       <itemizedlist>
        <listitem>
         <para>
-         有关 SELinux 的信息，请参见 <phrase os="article"><citetitle><phrase os="article">SUSE Linux Enterprise Server</phrase> 的“Configuring SELinux”一章</citetitle>。</phrase>
+         有关 SELinux 的信息，请参见 <phrase os="article"><citetitle><phrase os="article">SUSE Linux Enterprise Server</phrase> Security Guide,
+         Chapter Configuring SELinux</citetitle>。</phrase>
         </para>
        </listitem>
        <listitem>
         <para>
-         有关 <phrase>AppArmor</phrase> 的信息，请参见 <phrase os="article"><citetitle><phrase os="article">SUSE Linux Enterprise Server</phrase> Security Guide 的“Confining Privileges with <phrase>AppArmor</phrase>”部分</citetitle>。</phrase>
+         有关 <phrase>AppArmor</phrase> 的信息，请参见 <phrase os="article"><citetitle><phrase os="article">SUSE Linux Enterprise Server</phrase> Security Guide,
+         Part Confining Privileges with <phrase>AppArmor</phrase></citetitle>。</phrase>
         </para>
        </listitem>
       </itemizedlist>
@@ -776,7 +787,7 @@
         标准 Unix 权限允许为用户和组 ID 设置 Read、Write 和 Execution 标志。名为 <systemitem class="groupname">others</systemitem> 或 <systemitem class="groupname">world</systemitem> 的常规组定义了不适合加入前两个组的用户的访问权限。这提供了一种简单直接的方法来授予或拒绝对文件系统资源的访问权限。
        </para>
        <para>
-        ACL 提供了额外的限制级别。使用它可为一个用户 ID 设置读写访问权限，并仅为另一个用户 ID 设置读取访问权限。对于组 ID 也可以采用这样的设置。
+        ACL 提供了额外的限制级别。使用它可为一个用户 ID 设置读写访问权限，并为另一个用户 ID 仅设置读取访问权限。对于组 ID 也可以采用这样的设置。
        </para>
        <para>
         使用 <command>getfacl</command> 和 <command>setfacl</command> 命令（随附在 <phrase os="article">SUSE Linux Enterprise Server</phrase> 的 <package>acl</package> 软件包中）可以直接修改文件系统资源。例如，要针对用户 <systemitem class="username">wilber</systemitem> 检查和设置 <filename>/tmp/test.txt</filename> 文件的 ACL 限制，请执行以下命令：
@@ -819,7 +830,8 @@ other::r--
         可以使用可插入身份验证模块 (PAM) 来管理系统的登录访问控制。<phrase os="article">SUSE Linux Enterprise Server</phrase> 中提供了多个模块，允许记录登录时间、多个身份验证机制以及中心数据库（例如 NIS、LDAP 或 Active Directory）等设置。
        </para>
       <para>
-       有关管理权限的详细信息，请参见 <phrase os="article"><citetitle><phrase os="article">SUSE Linux Enterprise Server</phrase> Security Guide 的“Access Control Lists in Linux”一章</citetitle>。</phrase>
+       有关管理权限的详细信息，请参见 <phrase os="article"><citetitle><phrase os="article">SUSE Linux Enterprise Server</phrase> Security Guide,
+       Chapter Access Control Lists in Linux</citetitle>。</phrase>
       </para>
       </listitem>
      </varlistentry>
@@ -828,7 +840,7 @@ other::r--
    <sect2 xml:id="sec-pcidss-requirement-8">
     <title>要求 8：识别并验证对系统组件的访问</title>
     <para>
-     理想情况下，应使用包含用户信息的中心数据库以及唯一标识符 (UID) 来授予或拒绝对特定系统组件的访问。这样就可以轻松为管理员授予对一组服务器的特殊访问权限，或者为数据库工程师授予对特定 DBMS 系统的权限。
+     理想情况下，应使用包含用户信息的中心数据库以及唯一标识符 (UID) 来授予或拒绝对特定系统组件的访问权限。这样就可以轻松为管理员授予对一组服务器的特殊访问权限，或者为数据库工程师授予对特定 DBMS 系统的权限。
     </para>
     <para>
      在独立服务器上，唯一标识符通过标准 Linux 用户和组 ID 来管理。这些 ID 列在 <filename>/etc/passwd</filename> 和 <filename>/etc/group</filename> 中。
@@ -868,7 +880,7 @@ other::r--
       </term>
       <listitem>
        <para>
-        如<xref linkend="vle-pcidss-disable-user"/>中所述，集中式帐户基础架构可提供此功能。在 <phrase os="article">SUSE Linux Enterprise Server</phrase> 系统上，可以使用 <systemitem>pam_tally2</systemitem> PAM 模块检查和限制访问尝试。该模块将在登录时执行，会检查自上次成功登录以来所记录的失败尝试。要检查和重设置帐户状态，请使用 <command>pam_tally2</command> 工具。
+        如<xref linkend="vle-pcidss-disable-user"/>中所述，集中式帐户基础架构可提供此功能。在 <phrase os="article">SUSE Linux Enterprise Server</phrase> 系统上，可以使用 <systemitem>pam_tally2</systemitem> PAM 模块检查和限制访问尝试。该模块将在登录时执行，会检查自上次成功登录以来所记录的失败尝试。要检查和重置帐户状态，请使用 <command>pam_tally2</command> 工具。
        </para>
       </listitem>
      </varlistentry>
@@ -899,7 +911,8 @@ other::r--
           第三方一次性口令 (OTP) 产品通常也有一个 Linux PAM 模块。
          </para>
          <para>
-          有关 PAM 的信息，请参见 <phrase os="article"><citetitle><phrase os="article">SUSE Linux Enterprise Server</phrase> Security Guide 的“Authentication with PAM”一章</citetitle>。</phrase>
+          有关 PAM 的信息，请参见 <phrase os="article"><citetitle><phrase os="article">SUSE Linux Enterprise Server</phrase> Security Guide,
+          Chapter Authentication with PAM</citetitle>。</phrase>
          </para>
         </listitem>
         <listitem>
@@ -928,7 +941,7 @@ other::r--
    <sect2 xml:id="sec-pcidss-requirement-9">
     <title>要求 9：限制对持卡人数据的物理访问</title>
     <para>
-     对用于处理持卡人数据的系统的物理访问不属于一般操作系统安全性的范围。如要允许现场人员和访客直接访问系统，必须实施适当的设施进入管控措施。
+     对用于处理持卡人数据的系统的物理访问不属于一般操作系统安全性的范围。如要允许现场人员和访客直接访问系统，必须实施适当的机构出入管控措施。
     </para>
    </sect2>
    <sect2 xml:id="sec-pcidss-requirement-10">
@@ -940,7 +953,8 @@ other::r--
      使用同步时间参考可以更轻松地关联所记录的日志文件中的事件。此参考可以包括中心系统日志服务器收集的一般系统日志项，或 <systemitem class="daemon">audit</systemitem> 守护程序生成的内核审计消息。
     </para>
     <para>
-     有关审计的信息，请参见 <phrase os="article"><citetitle><phrase os="article">SUSE Linux Enterprise Server</phrase> Security Guide 的“<citetitle>The Linux Audit Framework</citetitle>”部分</citetitle>。</phrase>
+     有关审计的信息，请参见 <phrase os="article"><citetitle><phrase os="article">SUSE Linux Enterprise Server</phrase>, Security Guide,
+     Part The Linux Audit Framework</citetitle>。</phrase>
     </para>
     <para>
      可以通过定义集中存储的审计规则来满足本节中所述的所有审计要求。
@@ -955,7 +969,8 @@ other::r--
      <phrase os="article">SUSE Linux Enterprise Server</phrase> 随附了高级入侵检测环境 (AIDE)，用于跟踪系统完整性。AIDE 会创建所有相关操作系统文件的哈希值数据库。初始化后，可以使用它来校验以前保存的所有文件的完整性。要采用 AIDE，最好定期创建数据库快照并将其保存到一个中心系统，以便在此系统上评估可能发生的修改。
     </para>
     <para>
-     有关 AIDE 的详细信息，请参见 <phrase os="article"><citetitle><phrase os="article">SUSE Linux Enterprise Server</phrase> Security Guide 的“Intrusion Detection with AIDE”一章</citetitle>。</phrase>
+     有关 AIDE 的详细信息，请参见 <phrase os="article"><citetitle><phrase os="article">SUSE Linux Enterprise Server</phrase> Security Guide,
+     Chapter Intrusion Detection with AIDE</citetitle>。</phrase>
     </para>
    </sect2>
    <sect2 xml:id="sec-pcidss-requirement-12">
