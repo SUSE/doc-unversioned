@@ -16,7 +16,6 @@
     <resource xml:id="_containers-tools" href="../concepts/containers-tools.xml"/>
     <resource xml:id="_containers-bci-intro" href="../concepts/containers-bci-intro.xml"/>
     <resource xml:id="_containers-bci-ltss" href="../concepts/containers-ltss-images.xml"/>
-    <resource xml:id="_containers-bci-app" href="../concepts/containers-bci-app.xml"/>
     <resource xml:id="_containers-bci-lifecycle" href="../concepts/containers-bci-lifecycle.xml"/>
     <resource xml:id="_containers-bci-labels" href="../concepts/containers-bci-labels.xml"/>
     <resource xml:id="_containers-bci-tags" href="../concepts/containers-bci-tags.xml"/>
@@ -98,7 +97,6 @@
     <module resourceref="_containers-tools" renderas="section"/>
     <module resourceref="_containers-bci-intro" renderas="section"/>
     <module resourceref="_containers-bci-ltss" renderas="section"/>
-    <module resourceref="_containers-bci-app" renderas="section"/>
     <module resourceref="_containers-bci-lifecycle" renderas="section"/>
     <module resourceref="_containers-bci-labels" renderas="section"/>
     <module resourceref="_containers-bci-tags" renderas="section"/>
