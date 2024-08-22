@@ -3,6 +3,7 @@
 
 MAIN="Container-guide.asm.xml"
 SRC_DIR="articles"
+IMG_SRC_DIR="images"
 # ROOTID="container-guide"
 
 PROFOS="sle"
