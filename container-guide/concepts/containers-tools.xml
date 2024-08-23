@@ -19,7 +19,7 @@
     <title>Tools for building images and managing containers</title>
   </info>
   <para>
-    All the tools described below are part of the
+    Tools described below are part of the
     <emphasis role="strong">&sles; Containers
     Module</emphasis>, except the
     <link xlink:href="https://openbuildservice.org">Open Build Service</link>.
@@ -28,20 +28,6 @@
     <link xlink:href="https://scc.suse.com/packages">SUSE Customer
     Center</link>.
   </para>
-  <section xml:id="sec-tools-suse-registry">
-    <title>&suseregistry;</title>
-    <para>
-      <link xlink:href="https://registry.suse.com"/> is the
-      official source of &bci;s. It contains tested, updated
-      and certified &bci;s. All images in the &suseregistry;
-      are regularly rebuilt to include updates and fixes. The &suseregistry;'s
-      Web user interface lists a subset of the available images: Base Container
-      Images, Development Stack Container Images, Application Container Images, &sles; Images, and Releases Out of General Support.
-      The Web UI also provides additional information for each image, including
-      release date, support level, size, digest of the images and packages
-      inside the image.
-    </para>
-  </section>
   <section xml:id="sec-tools-docker">
     <title>&docker;</title>
     <para>
@@ -155,16 +141,18 @@
     <title>&kiwi;</title>
     <para>
       <link xlink:href="https://github.com/OSInside/kiwi">KIWI</link> Next
-      Generation (&kiwi;) is a multi-purpose tool for building images. In addition to
-      container images, regular installation ISO images, and images for virtual
-      machines, &kiwi; can build images that boot via PXE or Vagrant boxes. The
-      main building block in &kiwi; is an image XML description, a directory that
-      includes the <filename>config.xml</filename> or <filename>.kiwi</filename>
+      Generation (&kiwi;) is a multi-purpose tool for building images. In
+      addition to container images, regular installation ISO images, and images
+      for virtual machines, &kiwi; can build images that boot via PXE or Vagrant
+      boxes. The main building block in &kiwi; is an image XML description, a
+      directory that includes the <filename>config.xml</filename> or
+      <filename>.kiwi</filename>
       file along with scripts or configuration data. The process of creating
       images with &kiwi; is fully automated and does not require any user
       interaction. Any information required for the image creation process is
-      provided by the primary configuration file <filename>config.xml</filename>.
-      The image can be customized using the <filename>config.sh</filename> and
+      provided by the primary configuration file
+      <filename>config.xml</filename>. The image can be customized using the
+      <filename>config.sh</filename> and
       <filename>images.sh</filename> scripts. &kiwi; is the core engine of
       <link xlink:href="https://openbuildservice.org">Open Build Service
       (OBS)</link>.
