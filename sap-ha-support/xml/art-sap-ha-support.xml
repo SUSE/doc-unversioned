@@ -696,7 +696,7 @@
        <entry>SAPHanaSR.py scale-out</entry>
        <entry>-</entry>
        <entry>-</entry>
-       <entry>Legacy (mandatory for &hana;&nbsp;1.0)</entry>
+       <entry>Legacy (mandatory for all versions before &hana;&nbsp;2.0 SPS03)</entry>
       </row>
       <row>
        <entry>SAPHanaSrMultiTarget.py</entry>
