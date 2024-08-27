@@ -673,46 +673,118 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
   <xi:include href="ansible-install.xml"/>
   </section>
 
- <section xml:id="sec-trento-user-management">
-  <para>
-   Trento provides a local permission-based user management feature with optional multi-factor authentication. This feature allows for segregation of duties in the Trento console and ensures that only authorized users can access it, with the right permissions.
-
-User management actions are performed in the Users view, which is available in the left-hand side panel of the console.
-
-Any newly created user is granted, by default, display access rights across the console except for the Users view. Whenever available, a user with default access can set up filters and pagination settings matching their preferences.
-
-Additional permissions must be added to a user profile so that the user can perform the corresponding protected activities. The following permissions are currently available:
-- all:users: it grants full access to user management actions under the Users view
-- all:check_selection: it grants check selection capabilities for any target in the registered environment for which checks are available
-- all:check_execution: it grants check execution capabilities for any target in the registered environment for which checks are available and have been previously selected
-- all:tags: it allows the creation and deletion of tags wherever they are available
-- cleanup:all: it allows triggering housekeeping actions on hosts which agents heartbeat is lost and SAP or HANA instances which are no longer found
-- all:settings: it grants changing capabilities on any system settings under the Settings view
-- all:all: it’s a compound of all the permissions above
-
-As a suggestion, the following types of users could be created using the permissions above:
-User managers: users with all:users permission
-- SAP administrator with Trento display-only access: users with default permissions
-- SAP administrator with Trento configuration access: users with all:checks_selection, all:tags and all:settings permissions
-- SAP administrator with Trento operation access: users with all:check_execution and cleanup:all permissions.
-
-The default admin user created during the installation process is granted all:all permissions and cannot be modified or deleted. It should only be used to create a first user manager. That is, a user with all:users permissions who in turn will create all the other required users. Once a user with all:users permissions is created, the default admin user should be regarded as a fall back, emergency user to be used only in case all other access to the console is lost. Should the password of the default admin user itself be lost, it can be reset by updating the helm chart or the web component configuration, depending on which deployment method was used to install Trento Server. 
-
-User passwords, including the default admin user password, must comply with the following rules:
-- They have at  least 8 characters
-- They do not have three consecutive numbers or letters (for example: 111 or aaa)
-- They do not have four consecutive numbers or letters (for example: 1234, abcd or ABCD)
-
-The Create User and Edit User views provide a built-in generation password action button that allows user managers to easily generate secure, compliant passwords. The user manager should provide the user with their password using a secure, authorized channel.
-
-Users can reset their passwords in their profile views, where they can also update their Full Names and their email addresses as well as activate Multi Factor Authentication using an Authenticator app of their choice. Multi-factor authentication increases the security of a user account by requesting a temporary second password or code when logging in the console. User managers can disable Multi-Factor authentication for any given user that has it enabled, but cannot enable it on their behalf. The default admin user cannot enable Multi-Factor Authentication for itself.
-
-Security Tip: Since Multi-Factor Authentication cannot be enabled for the default admin user, keeping its password safe is essential. If the default admin user password is compromised, please reset it immediately by updating the helm chart or the web component configuration, depending on which deployment method was used to install Trento Server. 
-
-User managers can enable and disable users. When a user that is logged in the console is disabled by a user admin, their session is terminated immediately.
-
-  </para>
- </section>
+  <section xml:id="sec-trento-user-management">
+    <title>Managing Trento user management</title>
+    <para> Trento provides a local permission-based user management feature with
+      optional multi-factor authentication. This feature allows for segregation
+      of duties in the Trento console and ensures that only authorized users can
+      access it, with the right permissions. </para>
+    <para> User management actions are performed in the <guimenu>Users</guimenu>
+      view, which is available in the left-hand side panel of the console. </para>
+    <para> Any newly created user is granted, by default, display access rights
+      across the console except for the Users view. Whenever available, a user
+      with default access can set up filters and pagination settings matching
+      their preferences. </para>
+    <para> Additional permissions must be added to a user profile so that the
+      user can perform the corresponding protected activities. The following
+      permissions are currently available: </para>
+    <itemizedlist>
+      <listitem>
+        <para>all:users: it grants full access to user management actions under
+          the <guimenu>Users</guimenu> view</para>
+      </listitem>
+      <listitem>
+        <para>all:check_selection: it grants check selection capabilities for
+          any target in the registered environment for which checks are
+          available</para>
+      </listitem>
+      <listitem>
+        <para>all:check_execution: it grants check execution capabilities for
+          any target in the registered environment for which checks are
+          available and have been previously selected</para>
+      </listitem>
+      <listitem>
+        <para>all:tags: it allows the creation and deletion of tags wherever
+          they are available</para>
+      </listitem>
+      <listitem>
+        <para>cleanup:all: it allows triggering housekeeping actions on hosts
+          which agents heartbeat is lost and SAP or HANA instances which are no
+          longer found</para>
+      </listitem>
+      <listitem>
+        <para>all:settings: it grants changing capabilities on any system
+          settings under the <guimenu>Settings</guimenu> view</para>
+      </listitem>
+      <listitem>
+        <para>all:all: it’s a compound of all the permissions above</para>
+      </listitem>
+    </itemizedlist>
+    <para>As a suggestion, the following types of users could be created using
+      the permissions above:</para>
+    <itemizedlist>
+      <listitem>
+        <para>User managers: users with all:users permission</para>
+      </listitem>
+      <listitem>
+        <para>SAP administrator with Trento display-only access: users with
+          default permissions</para>
+      </listitem>
+      <listitem>
+        <para>SAP administrator with Trento configuration access: users with
+          all:checks_selection, all:tags and all:settings permissions</para>
+      </listitem>
+      <listitem>
+        <para>SAP administrator with Trento operation access: users with
+          all:check_execution and cleanup:all permissions.</para>
+      </listitem>
+    </itemizedlist>
+    <para>The default admin user created during the installation process is
+      granted all:all permissions and cannot be modified or deleted. It should
+      only be used to create a first user manager. That is, a user with
+      all:users permissions who in turn will create all the other required
+      users. Once a user with all:users permissions is created, the default
+      admin user should be regarded as a fall back, emergency user to be used
+      only in case all other access to the console is lost. Should the password
+      of the default admin user itself be lost, it can be reset by updating the
+      helm chart or the web component configuration, depending on which
+      deployment method was used to install Trento Server. </para>
+    <para>User passwords, including the default admin user password, must comply
+      with the following rules:</para>
+    <itemizedlist>
+      <listitem>
+        <para>They have at least 8 characters</para>
+      </listitem>
+      <listitem>
+        <para>They do not have three consecutive numbers or letters (for
+          example: 111 or aaa)</para>
+      </listitem>
+      <listitem>
+        <para>They do not have four consecutive numbers or letters (for example:
+          1234, abcd or ABCD)</para>
+      </listitem>
+    </itemizedlist>
+    <para>The Create User and Edit User views provide a built-in generation
+      password action button that allows user managers to easily generate
+      secure, compliant passwords. The user manager should provide the user with
+      their password using a secure, authorized channel. </para>
+    <para>Users can reset their passwords in their profile views, where they can
+      also update their Full Names and their email addresses as well as activate
+      Multi Factor Authentication using an Authenticator app of their choice.
+      Multi-factor authentication increases the security of a user account by
+      requesting a temporary second password or code when logging in the
+      console. User managers can disable Multi-Factor authentication for any
+      given user that has it enabled, but cannot enable it on their behalf. The
+      default admin user cannot enable Multi-Factor Authentication for
+      itself.</para>
+    <para>Security Tip: Since Multi-Factor Authentication cannot be enabled for
+      the default admin user, keeping its password safe is essential. If the
+      default admin user password is compromised, reset it immediately by
+      updating the helm chart or the web component configuration, depending on
+      which deployment method was used to install &t.server;. User managers
+      can enable and disable users. When a user that is logged in the console is
+      disabled by a user admin, their session is terminated immediately.</para>
+  </section>
 
   <section xml:id="sec-trento-installing-trentoagent">
     <title>Installing &t.agent;s</title>
