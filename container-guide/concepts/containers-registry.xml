@@ -19,14 +19,52 @@
     <title>&suseregistry;</title>
   </info>
   <para>
-      <link xlink:href="https://registry.suse.com">&suseregistry;</link> is the
-      official repository of &bci;s. It contains tested, updated
-      and certified &&bcia;s. All images in the &suseregistry;
-      are regularly rebuilt to include updates and fixes. The &suseregistry;'s
-      Web user interface lists a subset of the available images: Base Container
-      Images, Development Stack Container Images, Application Container Images, &sles; Images, and Releases Out of General Support.
-      The Web UI also provides additional information for each image, including
-      release date, support level, size, digest of the images and packages
-      inside the image.
+    <link xlink:href="https://registry.suse.com">&suseregistry;</link> is the official catalog of
+    &bci;s. It contains tested, updated and certified &&bcia;s. All images in the &suseregistry;
+    are rebuilt regularly to include updates and fixes. All container images available on the
+    &suseregistry;'s website are grouped into the following categories:
+  </para>
+  <variablelist>
+    <varlistentry>
+      <term>SUSE Linux Enterprise Server Container Images</term>
+      <listitem>
+        <para>
+          Container images based on &sles; suitable for situations when you already have a &scc;
+          subscription, and you need access to the &sles; software repositories. These images
+          cannot be redistributed.
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>Redistributable &bci;s</term>
+      <listitem>
+        <para>
+          Choose these images if you do not have a &scc; subscription, you do not need access to
+          the &sles; repositories, or you plan on building images you want to redistribute.
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>Redistributable Development Container Images</term>
+      <listitem>
+        <para>
+          These images are similar to redistributable &bci;s, but they include
+          specific programming language environments. These images can be
+          distributed.
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>Application Container Images</term>
+      <listitem>
+        <para>
+          Container images that include specific applications, such as MariaDB, PostgreSQL, and NGINX. These images cannot be redistributed.
+        </para>
+      </listitem>
+    </varlistentry>
+  </variablelist>
+  <para>
+    The Web UI also provides additional information for each image, including release date, support
+    level, size, digest of the images and packages inside the image.
   </para>
 </article>
