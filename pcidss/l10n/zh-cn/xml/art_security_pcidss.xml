@@ -817,7 +817,7 @@ other::r--
         标准 Unix 权限包括所谓的粘滞位。这允许使用比正在执行特定程序的用户更高的特权来执行这些程序。此功能最典型的示例是 <command>passwd</command> 工具，它需要修改 <filename>/etc/shadow</filename> 才能更改用户口令。
        </para>
        <para>
-        要以更循序渐进的方式显式允许对二进制文件的特定操作或行为，请使用扩展功能。一个默认使用扩展功能的示例命令是 <command>ping</command>（包含在软件包 <package>iputils</package> 中）。
+        要以更循序渐进的方式明确允许对二进制文件的特定操作或行为，请使用扩展功能。一个默认使用扩展功能的示例命令是 <command>ping</command>（包含在软件包 <package>iputils</package> 中）。
        </para>
        <para>
         <command>ping</command> 通过网卡发送 ICMP IP 包。为此，它需要将 <literal>CAP_NET_RAW</literal> 功能设置为“有效且允许”(<literal>+ep</literal>)：
