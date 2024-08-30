@@ -239,7 +239,7 @@
     <command>-d 10.0.0.1/32 -o eth0 -p udp -m udp --dport 53 -j ACCEPT</command>
 <prompt>&gt; </prompt><command>sudo</command> <command>firewall-cmd --reload</command></screen>
        <para>
-        要阻止所有其他出站流量，请参见<xref linkend="vle-pcidss-deny-all"/>。
+        要阻止所有其他出站流量，请参见<xref linkend="vle-pcidss-deny-all"/>
        </para>
       </listitem>
      </varlistentry>
@@ -932,7 +932,7 @@ other::r--
       </term>
       <listitem>
        <para>
-        有关详细信息，请参见<xref linkend="vle-pcidss-multi-factor-local"/>。
+        有关详细信息，请参见<xref linkend="vle-pcidss-multi-factor-local"/>
        </para>
       </listitem>
      </varlistentry>

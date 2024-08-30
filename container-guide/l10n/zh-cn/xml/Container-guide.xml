@@ -2735,7 +2735,7 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
     <para>Pod 中的每个容器具有自身的监控程序实例。该监控程序会监控容器的进程，如果该容器消亡，监控程序会保存其退出代码。该程序还保持打开特定容器的 tty 接口。当 Podman 退出时，您可以使用该监控程序以分离模式运行容器，因为此程序会持续运行，并允许您稍后附加 tty。</para>
     <section xml:id="sec-orchestration-podman">
       <title>使用 Podman 的单容器主机</title>
-      <para><command>podman pod</command> 是用于创建、去除、查询和检查 Pod 的命令行工具。您可以在<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://docs.podman.io/en/latest/markdown/podman-pod.1.html">official upstream documentation</link> 中查看 <command>podman pod</command> 的所有子命令。</para>
+      <para><command>podman pod</command> 是用于创建、去除、查询和检查 Pod 的命令行工具。您可以在<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://docs.podman.io/en/latest/markdown/podman-pod.1.html">官方上游文档</link> 中查看 <command>podman pod</command> 的所有子命令。</para>
       <para><command>podman pod create</command> 会创建一个随机命名的 Pod。可以使用 <option>--name</option> 参数为 Pod 分配所需名称。</para>
       <screen><prompt>&gt; </prompt>podman pod create
     344940492c00b6a19ececbc5b109351bf0a3b8b19b3c279a097da7a653c592d0</screen>
@@ -2822,7 +2822,7 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
 
     [Install]
     WantedBy=default.target</screen>
-      <para>Podman 将一个单元文件输出到控制台，可将此文件放入用户单元 systemd 目录（<filename>~/.config/systemd/user/</filename> 或 <filename>/etc/systemd/user/</filename>）或系统单元 systemd 目录 (<filename>/etc/systemd/system</filename>) 中，它可以通过 systemd 控制容器。<option>--new</option> 标志指示 Podman 在重启动时重新创建容器。这可以确保 systemd 单元是自给性的，不依赖于任何外部状态。<option>--name</option> 标志可用于为容器分配一个用户友好的名称：如果不指定此标志，Podman 将使用容器 ID 而不是其名称。</para>
+      <para>Podman 将一个单元文件输出到控制台，可将此文件放入用户单元 systemd 目录（<filename>~/.config/systemd/user/</filename> 或 <filename>/etc/systemd/user/</filename>）或系统单元 systemd 目录 (<filename>/etc/systemd/system</filename>) 中，它可以通过 systemd 控制容器。<option>--new</option> 标志指示 Podman 在重启动时重新创建容器。这可以确保 systemd 单元是自给性的，不依赖于任何外部状态。<option>&#x2011;&#x2011;name</option> 标志可用于为容器分配一个用户友好的名称：如果不指定此标志，Podman 将使用容器 ID 而不是其名称。</para>
       <para>要将容器作为用户单元进行控制，请执行以下命令：</para>
       <screen><prompt>&gt; </prompt>podman generate systemd --name --new --files web
     /home/user/container-web.service
@@ -2930,7 +2930,7 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
       <title>使用 Kubernetes 的多容器主机</title>
       <para><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://kubernetes.io">Kubernetes</link> 是一个开源容器编排引擎，用于自动执行容器化应用程序的部署、缩放和管理工作。该开源项目由云原生计算基金会 (<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.cncf.io/about">CNCF</link>) 主办。</para>
       <para>使用 Kubernetes 可使多台计算机（或者服务器或节点）能够协同工作并形成一个群集，然后您可以通过 API 来与此群集交互。我们建议使用 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://ranchermanager.docs.rancher.com">Rancher</link> 来部署 Kubernetes 群集并管理在群集中运行的应用程序。单个 Rancher 设置可以管理在任何位置运行的多个 Kubernetes 群集：从裸机到本地或云服务提供商。</para>
-      <para>有关 Rancher 的详细信息，请参见<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://ranchermanager.docs.rancher.com">official Rancher documentation</link>。</para>
+      <para>有关 Rancher 的详细信息，请参见<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://ranchermanager.docs.rancher.com">官方 Rancher 文档</link>。</para>
     </section>
     <section xml:id="sec-k3s">
       <title>轻量级 Kubernetes (k3s)</title>
@@ -3211,8 +3211,7 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
       ❋❋ 在完全兼容和全面支持测试完成前，处于临时支持状态。
     </para>
       <para>
-      有关对 Rancher 相关产品的支持的详细信息，请参见 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.suse.com/suse-rancher/support-matrix/all-supported-versions/">Rancher
-      Support Matrix</link>。
+      有关对 Rancher 相关产品的支持的详细信息，请参见 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.suse.com/suse-rancher/support-matrix/all-supported-versions/">Rancher 支持矩阵</link>。
     </para>
     </section>
     <section xml:id="sec-sle-container-support-plans">
