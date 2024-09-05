@@ -777,13 +777,18 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       given user that has it enabled, but cannot enable it on their behalf. The
       default admin user cannot enable Multi-Factor Authentication for
       itself.</para>
-    <para>Security Tip: Since Multi-Factor Authentication cannot be enabled for
+    <note>
+      <title>Security Tip for Multi-Factor Authentication</title>
+      <para>Since Multi-Factor Authentication cannot be enabled for
       the default admin user, keeping its password safe is essential. If the
       default admin user password is compromised, reset it immediately by
       updating the helm chart or the web component configuration, depending on
-      which deployment method was used to install &t.server;. User managers
-      can enable and disable users. When a user that is logged in the console is
-      disabled by a user admin, their session is terminated immediately.</para>
+      which deployment method was used to install &t.server;. </para>
+    </note>
+    <para>
+      User managers can enable and disable users. When a user that is
+      logged in the console is disabled by a user admin, their session is
+      terminated immediately. </para>
   </section>
 
   <section xml:id="sec-trento-installing-trentoagent">
