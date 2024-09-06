@@ -30,8 +30,7 @@
       <listitem>
         <para>
           Container images based on &sles; suitable for situations when you already have a &scc;
-          subscription, and you need access to the &sles; software repositories. These images
-          cannot be redistributed.
+          subscription, and you need access to the &sles; software repositories. These images are released under the standard &suse; EULA require an explicit redistribution agreement signed with &suse;.
         </para>
       </listitem>
     </varlistentry>
@@ -50,7 +49,7 @@
         <para>
           These images are similar to redistributable &bci;s, but they include
           specific programming language environments. These images can be
-          distributed.
+          distributed freely.
         </para>
       </listitem>
     </varlistentry>
@@ -58,7 +57,7 @@
       <term>Application Container Images</term>
       <listitem>
         <para>
-          Container images that include specific applications, such as MariaDB, PostgreSQL, and NGINX. These images cannot be redistributed.
+          Container images that include specific applications, such as MariaDB, PostgreSQL, and NGINX. These images are released under the standard &suse; EULA require an explicit redistribution agreement signed with &suse;.
         </para>
       </listitem>
     </varlistentry>
