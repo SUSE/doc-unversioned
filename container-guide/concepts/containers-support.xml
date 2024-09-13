@@ -98,6 +98,23 @@
               </para>
             </entry>
           </row>
+          <row>
+            <entry align="center" valign="top">
+              <para>
+                <emphasis role="strong">&suse; Liberty Linux</emphasis>
+              </para>
+            </entry>
+            <entry align="center" valign="top">
+              <para>
+                &#10003;
+              </para>
+            </entry>
+            <entry align="center" valign="top">
+              <para>
+                &#10003;
+              </para>
+            </entry>
+          </row>
         </tbody>
       </tgroup>
     </table>
@@ -304,7 +321,7 @@
             </entry>
             <entry align="center" valign="top">
               <para>
-                &#10059;&#10059;
+                &#10003;
               </para>
             </entry>
           </row>
@@ -320,9 +337,10 @@
       interactions (direct with kernel-version-specific data structures,
       kernel-version-specific modules, etc.)
     </para>
-    <para>
+    <!-- Commented in case it's needed again
+     <para>
       &#10059;&#10059; Provisional support status until testing is completed for full compatibility and full support.
-    </para>
+    </para> -->
     <para>
       Refer to the
       <link xlink:href="https://www.suse.com/suse-rancher/support-matrix/all-supported-versions/">Rancher
