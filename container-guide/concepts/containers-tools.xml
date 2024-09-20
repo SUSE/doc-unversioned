@@ -99,9 +99,7 @@
     <para>
       <link xlink:href="https://helm.sh">Helm</link> is the Kubernetes package
       manager, and it is the de-facto standard for deploying containerized
-      applications on Kubernetes clusters using charts. Helm can be used to
-      install, update and remove applications in a single or multiple
-      containers. It can also handle the associated resources, such as
+      applications on Kubernetes clusters using charts. Helm can be used to install, update and remove containerized applications in Kubernetes environments. It can also handle the associated resources, such as
       configuration, storage volumes, etc. For instance, it is used for
       instance to deploy the &rmt; server (see
       <link xlink:href="https://documentation.suse.com/sles/15-SP4/single-html/SLES-rmt/index.html#sec-rmt-deploy-kubernetes">&rmt;
