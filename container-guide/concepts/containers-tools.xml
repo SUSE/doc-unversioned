@@ -48,7 +48,7 @@
       &docker; is a system for creating and managing containers. Its core is the
       <link xlink:href="https://github.com/moby/moby">&docker; Open Source
       Engine—</link>a lightweight virtualization solution to run containers
-      simultaneously on a single host. &docker; containers are be built using
+      simultaneously on a single host. &docker; containers can be built using
       Dockerfiles.
     </para>
   </section>
