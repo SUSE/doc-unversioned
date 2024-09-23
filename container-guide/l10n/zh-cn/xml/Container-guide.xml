@@ -1,37 +1,36 @@
 <?xml version="1.0"?>
-<article xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="container-guide" xml:lang="zh-cn">
+<article xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="container-guide" xml:lang="zh-cn" xmlns:its="http://www.w3.org/2005/11/its">
   <info>
     <title xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:trans="http://docbook.org/ns/transclusion">容器指南</title>
-    <revhistory xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:trans="http://docbook.org/ns/transclusion">
-      <revision>
-        <revnumber>1</revnumber>
-        <date>2023-08-10</date>
-        <revdescription>
-          <para>
-              Initial version
-            </para>
-        </revdescription>
+    <revhistory>
+      <revision><date>2023-11-17</date>
+       <revdescription>
+        <para>
+         Add the Using Long Term Service Pack Support container images from the SUSE registry chapter.
+        </para>
+       </revdescription>
       </revision>
-      <revision>
-        <revnumber>2</revnumber>
-        <date>2023-11-17</date>
-        <revdescription>
-          <para>
-              Add the Using Long Term Service Pack Support container images from the SUSE Registry chapter.
-            </para>
-        </revdescription>
-      </revision>
-    </revhistory>
+       <revision><date>2023-08-10</date>
+         <revdescription>
+           <para>
+             Initial version.
+           </para>
+         </revdescription>
+       </revision>
+      </revhistory>
     <meta xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:trans="http://docbook.org/ns/transclusion" name="updated" content="2023-07-04"/>
     <meta xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:trans="http://docbook.org/ns/transclusion" name="architecture" content="x86_64;zseries;power;aarch64"/>
     <meta xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:trans="http://docbook.org/ns/transclusion" name="title">容器指南</meta>
     <meta xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:trans="http://docbook.org/ns/transclusion" name="description">
-       SUSE 容器相关产品和技术的官方指南。
+      如何在 SUSE Linux Enterprise Server 容器生态系统中导航。
      </meta>
     <meta xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:trans="http://docbook.org/ns/transclusion" name="social-descr">
-        SUSE 容器相关产品和技术的官方指南。
+      在 SLES 上管理容器。
      </meta>
-    <meta xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:trans="http://docbook.org/ns/transclusion" name="category" content="Containerization"/>
+     <meta name="task" its:translate="no">
+      <phrase>Containerization</phrase>
+      <phrase>Container Management</phrase>
+     </meta>
     <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:trans="http://docbook.org/ns/transclusion">
       <dm:bugtracker>
         <dm:url>https://bugzilla.suse.com/enter_bug.cgi</dm:url>
