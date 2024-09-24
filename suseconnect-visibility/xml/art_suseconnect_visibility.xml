@@ -6,8 +6,6 @@
 [
   <!ENTITY % entities SYSTEM "generic-entities.ent">
     %entities;
-  <!ENTITY productnamex "<phrase xmlns='http://docbook.org/ns/docbook' os='sles;sled;osuse'>&productname;</phrase><phrase xmlns='http://docbook.org/ns/docbook' os='article'>&sls;</phrase>">
-   <!ENTITY productnumberx "<phrase xmlns='http://docbook.org/ns/docbook' os='sles;sled;osuse'>&productnumber;</phrase>">
 ]>
 <article xml:id="article-suseconnect-visibility"
          xmlns="http://docbook.org/ns/docbook"
@@ -18,9 +16,10 @@
          xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>Enriched system visibility in the &scc;</title>
   <titleabbrev>Enriched system visibility in the &scc;</titleabbrev>
-  <info><productname>&productnamex;</productname>
-    <productnumber>&productnumberx;</productnumber><date>
-<?dbtimestamp format="B d, Y" ?></date>
+  <info>
+    <productname>&sls;</productname>
+    <!-- <productnumber>&productnumber;</productnumber> -->
+    <date><?dbtimestamp format="B d, Y" ?></date>
     <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
       <dm:bugtracker>
         <dm:url>https://bugzilla.suse.com/enter_bug.cgi</dm:url>
