@@ -8,7 +8,6 @@ MAIN="art_suseconnect_visibility.xml"
 ROOTID=article-suseconnect-visibility
 
 ## Profiling
-PROFOS="article"
 PROFARCH="x86_64;zseries;power;aarch64"
 
 ## stylesheet location
