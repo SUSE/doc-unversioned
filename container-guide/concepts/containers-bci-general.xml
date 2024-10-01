@@ -20,7 +20,7 @@
   </info>
   <para>
     There are four general-purpose &bcia;s, and each container image comes with
-    a minimum set of packages to keep its size low. You can use a
+    a minimum set of packages to keep its size small. You can use a
     general-purpose &bcia; either as a starting point for building custom
     container images, or as a platform for deploying specific software.
   </para>
