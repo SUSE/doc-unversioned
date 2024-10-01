@@ -495,4 +495,45 @@
       appropriate command in other container runtimes.
     </para>
   </section>
+  <section xml:id="sec-test-platforms">
+    <title>Test platform and environments</title>
+    <para>
+      &bci;s are tested with the following platforms and environments:
+    </para>
+    <itemizedlist>
+    <listitem>
+    <para>
+    Supported &osuse; Leap (&x86-64; only)
+    </para>
+    </listitem>
+    <listitem>
+    <para>
+      All supported &sles; versions and hardware architectures
+    </para>
+    </listitem>
+    <listitem>
+    <para>
+      &suse; Liberty versions 8 and 9 (&x86-64; only)
+    </para>
+    </listitem>
+    <listitem>
+    <para>
+      Current Ubuntu LTS (&x86-64; only)
+    </para>
+    </listitem>
+    <listitem>
+    <para>
+      CentOS stream (&x86_64; only)
+    </para>
+    </listitem>
+    <listitem>
+    <para>
+      All major public cloud Kubernetes platforms, including Microsoft Azure Kubernetes Service, Google Kubernetes Engine, and Amazon Web Services
+    </para>
+    </listitem>
+    </itemizedlist>
+    <para>
+      &bci;s are tested using &podman; and &docker;. &bci;s that use FIPS-certified crypto libraries are tested on FIPS-certified platforms.
+    </para>
+    </section>
 </article>
