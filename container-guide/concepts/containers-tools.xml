@@ -161,7 +161,7 @@
       container images, regular installation ISO images, and images for virtual
       machines, &kiwi; can build images that boot via PXE or Vagrant boxes. The
       main building block in &kiwi; is an image XML description, a directory that
-      includes the <filename>config.xml</filename> or <filename>.kiwi</filename>
+      includes the <filename>config.xml</filename> or <filename>config.kiwi</filename>
       file along with scripts or configuration data. The process of creating
       images with &kiwi; is fully automated and does not require any user
       interaction. Any information required for the image creation process is
