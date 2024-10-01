@@ -498,7 +498,7 @@
   <section xml:id="sec-test-platforms">
     <title>Test platform and environments</title>
     <para>
-      &bci;s are tested with the following platforms and environments.
+      &bci;s are tested with the following platforms and environments:
     </para>
     <itemizedlist>
     <listitem>
@@ -523,7 +523,7 @@
     </listitem>
     <listitem>
     <para>
-      CentOS stream (x86_64 only)
+      CentOS stream (&x86_64; only)
     </para>
     </listitem>
     <listitem>
