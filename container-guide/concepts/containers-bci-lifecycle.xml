@@ -16,7 +16,7 @@
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink">
   <info>
-    <title>Important note on status and lifecycle &bci;s</title>
+    <title>Important note on status and lifecycle of &bci;s</title>
   </info>
   <para>
     All container images, except for base, are currently classified as tech
