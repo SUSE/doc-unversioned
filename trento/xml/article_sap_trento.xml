@@ -2439,8 +2439,12 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
         </screen>
         </listitem>
        <listitem>
-        <para>When updating from an older Trento version to version 2.3.1 or higher, a new API key is generated
+        <para>When updating from an older Trento version to version 2.3.2 or higher, a new API key is generated
         and the configuration of all registered &t.agent;s must be updated accordingly.</para>
+        </listitem>
+        <listitem>
+        <para>When updating from an older Trento version to version 2.4 or higher, the admin password might have to
+         be adjusted to meet the rules describet at the User Managmeent section .</para>
         </listitem>
         <listitem>
           <para> If email alerting has been enabled, then the corresponding <parameter>trento-web.alerting</parameter> flags
