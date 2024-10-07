@@ -227,12 +227,12 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         <listitem>
           <formalpara>
             <title>Delivery mechanism:</title>
-            <para>RPM package for &sles4sap;&nbsp;15&nbsp;SP1 and
+            <para> RPM package for &sles4sap;&nbsp;15&nbsp;SP1 and
               newer.</para>
           </formalpara>
           <formalpara>
             <title>Supported runtime:</title>
-            <para> Supports &sles4sap;&nbsp;15&nbsp;SP1 and newer.
+            <para> Supported in &sles4sap;&nbsp;15&nbsp;SP1 and newer.
             </para>
           </formalpara>
         </listitem>
@@ -241,13 +241,14 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         <term>&t.server;</term>
         <listitem>
           <formalpara>
-            <title>Delivery mechanism:</title>
+            <title>Delivery mechanisms:</title>
             <para> A set of container images from the &suse; public
               registry together with a Helm chart that facilitates their
-              installation. </para>
+              installation or a set of RPM packages for &sles4sap;&nbsp;15&nbsp;SP3 and
+              newer.</para>
           </formalpara>
           <formalpara>
-            <title>&k8s;:</title>
+            <title>&k8s; deployment:</title>
             <para> The &t.server; runs on any current Cloud Native
               Computing Foundation (CNCF)-certified &k8s;
               distributions based on a x86_64 architecture. Depending on your background and
@@ -273,6 +274,11 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
                </para>
             </listitem>
           </itemizedlist>
+          <formalpara>
+            <title>systemd and containerized deployments:</title>
+            <para> Supported in &sles4sap;&nbsp;15&nbsp;SP3 and newer.
+            </para>
+          </formalpara>
         </listitem>
       </varlistentry>
     </variablelist>
@@ -298,14 +304,8 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       Trento is powered by event driven technology. Registered events are stored in a  &postgresql; database with a retention
       period of 10 days. For each host registered with Trento, you need to allocate at least 1.5GB of space in the &postgresql; database.
      </para>
-      <para> While the &t.server; supports various usage scenarios,
-        depending on the existing infrastructure, it is designed to be
-        cloud native and OS agnostic. It can
-        be installed on the following services: </para>
-      <!--
-        toms 2021-12-06: taken from "Draft - Various Tidbits regarding Productization"
-        (https://confluence.suse.com/x/tgCnMg)
-      -->
+      <para> &t.server; supports different deployment scenarios: &k8s;, systemd and containerized. A &k8s; based deployment of &t.server; is meant to be
+        cloud native and OS agnostic. It can be done on the following services: </para>
       <itemizedlist>
         <listitem>
           <para>RKE1 (&rancher.k8s.engine; version 1)</para>
@@ -313,11 +313,14 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         <listitem>
           <para>RKE2</para>
         </listitem>
+               <listitem>
+          <para>a &k8s; service in a cloud provider</para>
+        </listitem>
         <listitem>
           <para>any other CNCF-certified &k8s; running on x86_64 architecture</para>
         </listitem>
       </itemizedlist>
-     <para> A proper, production ready installation of &t.server; requires &k8s;
+     <para> A proper, production ready &k8s; based deployment of &t.server; requires &k8s;
       knowledge. The Helm chart is meant to be used by customers lacking such knowledge
       or who want to get started quickly. However, Helm chart delivers a basic deployment of the &t.server; with all the components running
       on a single node of the cluster.</para>
@@ -361,7 +364,8 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         <listitem>
           <formalpara>
             <title>&t.server;</title>
-            <para>Access to &suse; public registry for the deployment of &t.server; premium containers.</para>
+            <para>Access to &suse; public registry for the deployment of &t.server; premium containers, if we choose a &k8s; based deployment.
+             A registered &sles4sap; 15 (SP3 or higher) distribution, if we choose a systemd deployment. Both in the case of a containerized deployment.</para>
           </formalpara>
         </listitem>
         <listitem>
