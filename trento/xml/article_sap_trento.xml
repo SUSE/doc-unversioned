@@ -227,12 +227,12 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         <listitem>
           <formalpara>
             <title>Delivery mechanism:</title>
-            <para>RPM package for &sles4sap;&nbsp;15&nbsp;SP1 and
+            <para> RPM package for &sles4sap;&nbsp;15&nbsp;SP1 and
               newer.</para>
           </formalpara>
           <formalpara>
             <title>Supported runtime:</title>
-            <para> Supports &sles4sap;&nbsp;15&nbsp;SP1 and newer.
+            <para> Supported in &sles4sap;&nbsp;15&nbsp;SP1 and newer.
             </para>
           </formalpara>
         </listitem>
@@ -241,13 +241,14 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         <term>&t.server;</term>
         <listitem>
           <formalpara>
-            <title>Delivery mechanism:</title>
+            <title>Delivery mechanisms:</title>
             <para> A set of container images from the &suse; public
               registry together with a Helm chart that facilitates their
-              installation. </para>
+              installation or a set of RPM packages for &sles4sap;&nbsp;15&nbsp;SP3 and
+              newer.</para>
           </formalpara>
           <formalpara>
-            <title>&k8s;:</title>
+            <title>&k8s; deployment:</title>
             <para> The &t.server; runs on any current Cloud Native
               Computing Foundation (CNCF)-certified &k8s;
               distributions based on a x86_64 architecture. Depending on your background and
@@ -273,6 +274,11 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
                </para>
             </listitem>
           </itemizedlist>
+          <formalpara>
+            <title>systemd and containerized deployments:</title>
+            <para> Supported in &sles4sap;&nbsp;15&nbsp;SP3 and newer.
+            </para>
+          </formalpara>
         </listitem>
       </varlistentry>
     </variablelist>
