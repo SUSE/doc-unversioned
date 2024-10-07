@@ -2,13 +2,18 @@
 
 Trento can be integrated with an identity provider (IDP) that uses different Single sign-on (SSO) protocols like OpenID Connect (OIDC) and Open Authorization 2.0 (OAuth 2).
 
-> [!NOTE]  
-> Trento cannot start with multiple SSO options together, so only one can be chosen.
+```{=docbook}
+<note>
+  <para>Trento cannot start with multiple SSO options together, so only one can be chosen.</para>
+</note>
+```
 
 ## Available protocols
 
 - OpenID Connect (OIDC)
+
 - Open Authorization 2.0 (OAuth 2)
+
 - Security Assertion Markup Language (SAML)
 
 ## User Roles and Authentication
@@ -28,7 +33,7 @@ OIDC authentication is **disabled by default**.
 
 #### Enabling OIDC when using RPM packages
 
-Provide the following environment variables to trento-web configuration, which is stored at `/etc/trento/trento-web` and restart the application to enable OIDC integration.
+Provide the following environment variables to trento-web configuration, which is stored at <filename>/etc/trento/trento-web</filename> and restart the application to enable OIDC integration.
 
 ```
 # Required:
@@ -81,7 +86,7 @@ OIDC_BASE_URL
 
 OIDC_CALLBACK_URL
 
-: OIDC callback url where the IDP is redirecting once the authentication is completed (default value: `https://#{TRENTO_WEB_ORIGIN}/auth/oidc_callback`)
+: OIDC callback url where the IDP is redirecting once the authentication is completed (default value: <uri>https://#{TRENTO_WEB_ORIGIN}/auth/oidc_callback</uri>)
 
 ## OAuth 2.0
 
@@ -93,7 +98,7 @@ OAuth 2.0 authentication is **disabled by default**.
 
 #### Enabling OAuth 2.0 when using RPM packages
 
-Provide the following environment variables to trento-web configuration, which is stored at `/etc/trento/trento-web` and restart the application to enable OAuth 2.0 integration.
+Provide the following environment variables to trento-web configuration, which is stored at <filename>/etc/trento/trento-web</filename> and restart the application to enable OAuth 2.0 integration.
 
 ```
 # Required:
@@ -109,8 +114,6 @@ OAUTH2_USER_URL=<<OAUTH2_USER_URL>>
 OAUTH2_SCOPES=<<OAUTH2_SCOPES>>
 OAUTH2_CALLBACK_URL=<<OAUTH2_CALLBACK_URL>>
 ```
-
-> **Note:** OAUTH2_SCOPES is an optional variable with the default value `openid profile email`. OAUTH2_SCOPES must be adjusted depending on IDP provider requirements.
 
 #### Enabling OAuth 2.0 when using Docker images
 
@@ -168,7 +171,7 @@ OAUTH2_USER_URL
 
 OAUTH2_SCOPES
 
-: OAUTH2 scopes, used to define the user values sent to the SP (default value: `openid profile email`)
+: OAUTH2 scopes, used to define the user values sent to the SP. It must be adjusted depending on IDP provider requirements (default value: `openid profile email`)
 
 OAUTH2_CALLBACK_URL
 
@@ -198,7 +201,7 @@ So for example, if the IDP user profile username is defined as `attr:username`, 
 Commonly, SAML protocol messages are signed with SSL. This is optional using Trento, and the signing is not required (even though it is recommended).
 If the IDP signs the messages, and expect signed messages back, certificates used by the SP (Trento in this case) must be provided to the IDP, the Certificate file in this case.
 
-For this reason, Trento already provides a certificates set created during the installation. When Trento is installed the first time (does not matter the installation mode) the certificates are created, and the public certificate file content is available in the `http://localhost:4000/api/public_keys` route. 
+For this reason, Trento already provides a certificates set created during the installation. When Trento is installed the first time (does not matter the installation mode) the certificates are created, and the public certificate file content is available in the <uri>http://localhost:4000/api/public_keys</uri> route. 
 
 ```bash
 curl http://localhost:4000/api/public_keys
@@ -206,11 +209,11 @@ curl http://localhost:4000/api/public_keys
     
 Copy the content of the certificate from there, and provide it to the IDP. This way, the IDP will sign and verify the messages sent by both ends.
 
-When this certificate is used, and provided to the IDP, the IDP recreates its own `metadata.xml` file. This file defines which certificate is used to sign the messages by both sides. At this point, Trento Web must be restarted to use the new `metadata.xml` content.
+When this certificate is used, and provided to the IDP, the IDP recreates its own <filename>metadata.xml</filename> file. This file defines which certificate is used to sign the messages by both sides. At this point, Trento Web must be restarted to use the new <filename>metadata.xml</filename> content.
 
-If the `SAML_METDATA_CONTENT` option is being used, the content of this variable must be updated with the new metadata. In the other hand, if `SAML_METADATA_URL` is used, the new metadata is automatically fetched. If neither of these steps are completed, communication will fail because the message signatures will not be recognized
+If the <option>SAML_METDATA_CONTENT</option> option is being used, the content of this variable must be updated with the new metadata. In the other hand, if <option>SAML_METADATA_URL</option> is used, the new metadata is automatically fetched. If neither of these steps are completed, communication will fail because the message signatures will not be recognized
 
-**This restart must be done manually, by the admin. If the installation is done by a `RPM`, restarting the `systemd` daemon. If the installation is done using `Docker`, the container must be restarted.**
+**This restart must be done manually, by the admin.** If the installation is done by a `RPM`, restarting the `systemd` daemon. If the installation is done using `Docker`, the container must be restarted.
 
 ```
 # RPM
@@ -324,11 +327,11 @@ SAML_METADATA_CONTENT
 
 SAML_IDP_NAMEID_FORMAT
 
-: SAML IDP name id format, used to interpret the attribute name. Whole urn string must be used (default value: `SAML IDP name id format, used to interpret the attribute name. Whole urn string must be used`)
+: SAML IDP name id format, used to interpret the attribute name. Whole urn string must be used (default value: `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`)
 
 SAML_SP_DIR
 
-: SAML SP directory, where SP specific required files (such as certificates and metadata file) are placed (default value: `/etc/trento/trento-web/saml`)
+: SAML SP directory, where SP specific required files (such as certificates and metadata file) are placed (default value: <filename>/etc/trento/trento-web/saml</filename>)
 
 SAML_SP_ENTITY_ID
 

@@ -5,13 +5,12 @@
     different Single sign-on (SSO) protocols like OpenID Connect (OIDC)
     and Open Authorization 2.0 (OAuth 2).
   </para>
-  <blockquote>
-<literallayout>[!NOTE]
-Trento cannot start with multiple SSO options together, so only one can be chosen.</literallayout>
-  </blockquote>
+  <note>
+    <para>Trento cannot start with multiple SSO options together, so only one can be chosen.</para>
+  </note>
   <section xml:id="available-protocols">
     <title>Available protocols</title>
-    <itemizedlist spacing="compact">
+    <itemizedlist>
       <listitem>
         <para>
           OpenID Connect (OIDC)
@@ -66,7 +65,7 @@ Trento cannot start with multiple SSO options together, so only one can be chose
         <para>
           Provide the following environment variables to trento-web
           configuration, which is stored at
-          <literal>/etc/trento/trento-web</literal> and restart the
+          <filename>/etc/trento/trento-web</filename> and restart the
           application to enable OIDC integration.
         </para>
         <programlisting>
@@ -150,7 +149,7 @@ docker run -d \
             <para>
               OIDC callback url where the IDP is redirecting once the
               authentication is completed (default value:
-              <literal>https://#{TRENTO_WEB_ORIGIN}/auth/oidc_callback</literal>)
+              <uri>https://#{TRENTO_WEB_ORIGIN}/auth/oidc_callback</uri>)
             </para>
           </listitem>
         </varlistentry>
@@ -174,7 +173,7 @@ docker run -d \
         <para>
           Provide the following environment variables to trento-web
           configuration, which is stored at
-          <literal>/etc/trento/trento-web</literal> and restart the
+          <filename>/etc/trento/trento-web</filename> and restart the
           application to enable OAuth 2.0 integration.
         </para>
         <programlisting>
@@ -191,14 +190,6 @@ OAUTH2_USER_URL=&lt;&lt;OAUTH2_USER_URL&gt;&gt;
 OAUTH2_SCOPES=&lt;&lt;OAUTH2_SCOPES&gt;&gt;
 OAUTH2_CALLBACK_URL=&lt;&lt;OAUTH2_CALLBACK_URL&gt;&gt;
 </programlisting>
-        <blockquote>
-          <para>
-            <emphasis role="strong">Note:</emphasis> OAUTH2_SCOPES is an
-            optional variable with the default value
-            <literal>openid profile email</literal>. OAUTH2_SCOPES must
-            be adjusted depending on IDP provider requirements.
-          </para>
-        </blockquote>
       </section>
       <section xml:id="enabling-oauth-20-when-using-docker-images">
         <title>Enabling OAuth 2.0 when using Docker images</title>
@@ -302,7 +293,8 @@ docker run -d \
           <listitem>
             <para>
               OAUTH2 scopes, used to define the user values sent to the
-              SP (default value:
+              SP. It must be adjusted depending on IDP provider
+              requirements (default value:
               <literal>openid profile email</literal>)
             </para>
           </listitem>
@@ -381,8 +373,7 @@ docker run -d \
           first time (does not matter the installation mode) the
           certificates are created, and the public certificate file
           content is available in the
-          <literal>http://localhost:4000/api/public_keys</literal>
-          route.
+          <uri>http://localhost:4000/api/public_keys</uri> route.
         </para>
         <programlisting language="bash">
 curl http://localhost:4000/api/public_keys
@@ -394,28 +385,28 @@ curl http://localhost:4000/api/public_keys
         </para>
         <para>
           When this certificate is used, and provided to the IDP, the
-          IDP recreates its own <literal>metadata.xml</literal> file.
+          IDP recreates its own <filename>metadata.xml</filename> file.
           This file defines which certificate is used to sign the
           messages by both sides. At this point, Trento Web must be
-          restarted to use the new <literal>metadata.xml</literal>
+          restarted to use the new <filename>metadata.xml</filename>
           content.
         </para>
         <para>
-          If the <literal>SAML_METDATA_CONTENT</literal> option is being
+          If the <option>SAML_METDATA_CONTENT</option> option is being
           used, the content of this variable must be updated with the
           new metadata. In the other hand, if
-          <literal>SAML_METADATA_URL</literal> is used, the new metadata
+          <option>SAML_METADATA_URL</option> is used, the new metadata
           is automatically fetched. If neither of these steps are
           completed, communication will fail because the message
           signatures will not be recognized
         </para>
         <para>
           <emphasis role="strong">This restart must be done manually, by
-          the admin. If the installation is done by a
+          the admin.</emphasis> If the installation is done by a
           <literal>RPM</literal>, restarting the
           <literal>systemd</literal> daemon. If the installation is done
           using <literal>Docker</literal>, the container must be
-          restarted.</emphasis>
+          restarted.
         </para>
         <programlisting>
 # RPM
@@ -580,7 +571,7 @@ docker run -d \
             <para>
               SAML IDP name id format, used to interpret the attribute
               name. Whole urn string must be used (default value:
-              <literal>SAML IDP name id format, used to interpret the attribute name. Whole urn string must be used</literal>)
+              <literal>urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified</literal>)
             </para>
           </listitem>
         </varlistentry>
@@ -592,7 +583,7 @@ docker run -d \
             <para>
               SAML SP directory, where SP specific required files (such
               as certificates and metadata file) are placed (default
-              value: <literal>/etc/trento/trento-web/saml</literal>)
+              value: <filename>/etc/trento/trento-web/saml</filename>)
             </para>
           </listitem>
         </varlistentry>
