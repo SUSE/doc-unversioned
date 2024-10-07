@@ -2503,7 +2503,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
         <procedure>
           <step>
             <para>Download the Trento support plugin script:</para>
-            <screen>&prompt.root;<command>wget</command> https://raw.githubusercontent.com/trento-project/helm-charts/main/scripts/trento-support.sh</screen>
+            <screen>&prompt.root;<command>wget</command> https://raw.githubusercontent.com/trento-project/support/refs/heads/main/trento-support.sh</screen>
 
             <note>
               <title>Package available in &sles4sap; 15 SP3 and higher</title>
