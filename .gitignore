@@ -8,3 +8,7 @@
 build/
 .vscode/
 .idea/
+worktree
+.worktree
+worktrees
+.worktrees
