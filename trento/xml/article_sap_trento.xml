@@ -741,7 +741,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       </step>
       <step>
         <para>
-          Open the configuration file <filename>/etc/trento/agent.yml</filename>
+          Open the configuration file <filename>/etc/trento/agent.yaml</filename>
           and uncomment (use <literal>#</literal>) the entries for
           <parameter>facts-service-url</parameter>, <parameter>server-url</parameter> and
           <parameter>api-key</parameter>. Update the values appropriately:
