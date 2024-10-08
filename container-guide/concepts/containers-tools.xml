@@ -144,7 +144,7 @@
       &suse; Container Images, called &bci;s
       (&bcia;s) are the only official container images. They are not available at
       <link xlink:href="https://build.opensuse.org"/>,
-      and the RPMs exported there are not identical to the internal ones. This
+      and the RPMs available on the OBS are not identical to the RPMs distributed as part of &&sle;. This
       means that it is not possible to build supported images at
       <link xlink:href="https://build.opensuse.org"/>.
     </para>
