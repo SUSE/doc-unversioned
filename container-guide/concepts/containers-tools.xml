@@ -167,9 +167,7 @@
       interaction. Any information required for the image creation process is
       provided by the primary configuration file <filename>config.xml</filename>.
       The image can be customized using the <filename>config.sh</filename> and
-      <filename>images.sh</filename> scripts. &kiwi; is the core engine of
-      <link xlink:href="https://openbuildservice.org">Open Build Service
-      (OBS)</link>.
+      <filename>images.sh</filename> scripts.
     </para>
     <note>
       <para>
