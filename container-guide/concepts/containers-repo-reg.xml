@@ -81,9 +81,7 @@
         <link xlink:href="https://github.com/SUSE/container-suseconnect"><literal>container-suseconnect</literal></link>
         is a plugin available in all &bci;s that ship with &zypper;. When the
         plugin detects the host's &sls; registration credentials, it uses them
-        to give the container access the &sle; repositories. This includes
-        additional modules and previous package versions that are not part of
-        the free SLE_BCI repository.
+        to give the container access the &sle; repositories. This includes additional modules providing access to all packages included in &slsa;.
       </para>
 
     <section xml:id="sec-container-suseconnect-sle">
