@@ -38,7 +38,7 @@
     set to <literal>techpreview</literal> in the <literal>bci-micro</literal>
     container image, indicating that the image still has the tech preview
     status. The <literal>bci-base</literal> container image, on the other hand,
-    has full L3 support. Unlike like the general purpose &bcia;s, the
+    has full L3 support. Unlike the general purpose &bcia;s, the
     Development Stack &bcia;s may not follow the lifecycle of the &slsa;
     distribution: they are supported as long as the respective language stack
     receives support. In other words, new versions of &bcia;s (indicated by the
