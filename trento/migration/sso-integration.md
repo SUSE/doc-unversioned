@@ -1,4 +1,4 @@
-# Single Sign-On integration
+# Integrating Single Sign-On
 
 Trento can be integrated with an identity provider (IDP) that uses different Single sign-on (SSO) protocols like OpenID Connect (OIDC) and Open Authorization 2.0 (OAuth 2).
 
@@ -8,7 +8,7 @@ Trento can be integrated with an identity provider (IDP) that uses different Sin
 </note>
 ```
 
-## Available protocols
+Available protocols are:
 
 - OpenID Connect (OIDC)
 
@@ -20,57 +20,75 @@ Trento can be integrated with an identity provider (IDP) that uses different Sin
 
 User authentication is entirely managed by the IDP, which is responsible for maintaining user accounts.
 A user, who does not exist on the IDP, is unable to access the Trento web console.
-During the installation process, a default admin user is defined using the `ADMIN_USER` variable, which defaults to `admin`. If the authenticated user’s IDP username matches this admin user's username, that user is automatically granted `all:all` permissions within Trento.
-User permissions are entirely managed by Trento, they are not imported from the IDP. The abilities must be granted by some user with `all:all` or `all:users` abilities (**admin user initially**). This means that only basic user information is retrieved from the external IDP.
 
-## OIDC
+During the installation process, a default admin user is defined using the `ADMIN_USER` variable, which defaults to `admin`. If the authenticated user’s IDP username matches this admin user's username, that user is automatically granted `all:all` permissions within Trento.
+User permissions are entirely managed by Trento, they are not imported from the IDP. The abilities must be granted by some user with `all:all` or `all:users` abilities (admin user initially). This means that only basic user information is retrieved from the external IDP.
+
+
+## Using OpenID Connect
 
 Trento integrates with an IDP that uses the OIDC protocol to authenticate users accessing the Trento web console.
 
-### Enabling OIDC
+By default, OIDC is disabled. You can enable OIDC when using RPM packages or using Docker images.
 
-OIDC authentication is **disabled by default**.
 
-#### Enabling OIDC when using RPM packages
+### Enabling OpenID Connect when using RPM packages
 
-Provide the following environment variables to trento-web configuration, which is stored at <filename>/etc/trento/trento-web</filename> and restart the application to enable OIDC integration.
+To enable OIDC when using RPM packages, proceed as follows:
 
-```
-# Required:
-ENABLE_OIDC=true
-OIDC_CLIENT_ID=<<OIDC_CLIENT_ID>>
-OIDC_CLIENT_SECRET=<<OIDC_CLIENT_SECRET>>
-OIDC_BASE_URL=<<OIDC_BASE_URL>>
+1. Open the file <filename>/etc/trento/trento-web</filename>.
+1. Add the following environment variables to this file.
+   Required variables are:
 
-# Optional:
-OIDC_CALLBACK_URL=<<OIDC_CALLBACK_URL>>
-```
-#### Enabling OIDC when using Docker images
+   ```
+   ENABLE_OIDC=true
+   OIDC_CLIENT_ID=<OIDC_CLIENT_ID>
+   OIDC_CLIENT_SECRET=<OIDC_CLIENT_SECRET>
+   OIDC_BASE_URL=<OIDC_BASE_URL>
+   ```
 
-Provide the following environment variables to the docker container and restart the application to enable OIDC integration.
+1. Optionally, add the OIDC callback URL to the configuration:
+   // reason why you would need that?
 
-```bash
-docker run -d \
--p 4000:4000 \
---name trento-web \
---network trento-net \
---add-host "host.docker.internal:host-gateway" \
+    ```
+    OIDC_CALLBACK_URL=<OIDC_CALLBACK_URL>
+    ```
 
-...[other settings]...
+1. Restart the application.
 
-# Required:
--e ENABLE_OIDC=true  \
--e OIDC_CLIENT_ID=<<OIDC_CLIENT_ID>> \
--e OIDC_CLIENT_SECRET=<<OIDC_CLIENT_SECRET>> \
--e OIDC_BASE_URL=<<OIDC_BASE_URL>> \
 
-# Optional:
--e OIDC_CALLBACK_URL=<<OIDC_CALLBACK_URL>> \
+### Enabling OpenID Connect when using Docker images
 
-...[other settings]...
-```
+To enable OIDC when using Docker images, proceed as follows:
 
-### Available variables
+1. Provide the following environment variables to the Docker container via
+   the `-e` option:
+
+   ```bash
+   docker run -d \
+   -p 4000:4000 \
+   --name trento-web \
+   --network trento-net \
+   --add-host "host.docker.internal:host-gateway" \
+
+   ...[other settings]...
+
+   # Required:
+   -e ENABLE_OIDC=true \
+   -e OIDC_CLIENT_ID=<OIDC_CLIENT_ID> \
+   -e OIDC_CLIENT_SECRET=<OIDC_CLIENT_SECRET> \
+   -e OIDC_BASE_URL=<OIDC_BASE_URL> \
+
+   # Optional:
+   -e OIDC_CALLBACK_URL=<OIDC_CALLBACK_URL> \
+
+   ...[other settings]...
+   ```
+
+1. Restart the application.
+
+
+### Available variables for OpenID Connect
 
 OIDC_CLIENT_ID
 
@@ -88,62 +106,72 @@ OIDC_CALLBACK_URL
 
 : OIDC callback url where the IDP is redirecting once the authentication is completed (default value: <uri>https://#{TRENTO_WEB_ORIGIN}/auth/oidc_callback</uri>)
 
-## OAuth 2.0
+## Using OAuth 2.0
 
 Trento integrates with an IDP that uses the OAuth 2 protocol to authenticate users accessing the Trento web console.
 
-### Enabling OAuth 2.0
+By default, OAuth 2.0 is disabled. You can enable OIDC when using RPM packages or using Docker images.
 
-OAuth 2.0 authentication is **disabled by default**.
 
-#### Enabling OAuth 2.0 when using RPM packages
+### Enabling OAuth 2.0 when using RPM packages
 
-Provide the following environment variables to trento-web configuration, which is stored at <filename>/etc/trento/trento-web</filename> and restart the application to enable OAuth 2.0 integration.
+To enable OAuth 2.0 when using RPM packages, proceed as follows:
 
-```
-# Required:
-ENABLE_OAUTH2=true
-OAUTH2_CLIENT_ID=<<OAUTH2_CLIENT_ID>>
-OAUTH2_CLIENT_SECRET=<<OAUTH2_CLIENT_SECRET>>
-OAUTH2_BASE_URL=<<OAUTH2_BASE_URL>>
-OAUTH2_AUTHORIZE_URL=<<OAUTH2_AUTHORIZE_URL>>
-OAUTH2_TOKEN_URL=<<OAUTH2_TOKEN_URL>>
-OAUTH2_USER_URL=<<OAUTH2_USER_URL>>
+1. Open the file <filename>/etc/trento/trento-web</filename>.
+1. Add the following environment variables to this file.
+   Required variables are:
 
-# Optional:
-OAUTH2_SCOPES=<<OAUTH2_SCOPES>>
-OAUTH2_CALLBACK_URL=<<OAUTH2_CALLBACK_URL>>
-```
+   ```
+   # Required:
+   ENABLE_OAUTH2=true
+   OAUTH2_CLIENT_ID=<OAUTH2_CLIENT_ID>
+   OAUTH2_CLIENT_SECRET=<OAUTH2_CLIENT_SECRET>
+   OAUTH2_BASE_URL=<OAUTH2_BASE_URL>
+   OAUTH2_AUTHORIZE_URL=<OAUTH2_AUTHORIZE_URL>
+   OAUTH2_TOKEN_URL=<OAUTH2_TOKEN_URL>
+   OAUTH2_USER_URL=<OAUTH2_USER_URL>
 
-#### Enabling OAuth 2.0 when using Docker images
+   # Optional:
+   OAUTH2_SCOPES=<OAUTH2_SCOPES>
+   OAUTH2_CALLBACK_URL=<OAUTH2_CALLBACK_URL>
+   ```
 
-Provide the following environment variables to the docker container and restart the application to enable OAuth 2.0 integration.
+1. Restart the application.
 
-```bash
-docker run -d \
--p 4000:4000 \
---name trento-web \
---network trento-net \
---add-host "host.docker.internal:host-gateway" \
 
-...[other settings]...
 
--e ENABLE_OAUTH2=true  \
--e OAUTH2_CLIENT_ID=<<OAUTH2_CLIENT_ID>> \
--e OAUTH2_CLIENT_SECRET=<<OAUTH2_CLIENT_SECRET>> \
--e OAUTH2_BASE_URL=<<OAUTH2_BASE_URL>> \
--e OAUTH2_AUTHORIZE_URL=<<OAUTH2_AUTHORIZE_URL>> \
--e OAUTH2_TOKEN_URL=<<OAUTH2_TOKEN_URL>> \
--e OAUTH2_USER_URL=<<OAUTH2_USER_URL>> \
+### Enabling OAuth 2.0 when using Docker images
 
-# Optional:
--e OAUTH2_SCOPES=<<OAUTH2_SCOPES>>  \
--e OAUTH2_CALLBACK_URL=<<OAUTH2_CALLBACK_URL>> \
+To enable OAuth 2.0 when using Docker images, proceed as follows:
 
-...[other settings]...
-```
+1. Use the following environment variables to the Docker container via
+   the `-e` option:
 
-### Available variables
+   ```bash
+   docker run -d \
+   -p 4000:4000 \
+   --name trento-web \
+   --network trento-net \
+   --add-host "host.docker.internal:host-gateway" \
+
+   ...[other settings]...
+
+   -e ENABLE_OAUTH2=true \
+   -e OAUTH2_CLIENT_ID=<OAUTH2_CLIENT_ID> \
+   -e OAUTH2_CLIENT_SECRET=<OAUTH2_CLIENT_SECRET> \
+   -e OAUTH2_BASE_URL=<OAUTH2_BASE_URL> \
+   -e OAUTH2_AUTHORIZE_URL=<OAUTH2_AUTHORIZE_URL> \
+   -e OAUTH2_TOKEN_URL=<OAUTH2_TOKEN_URL> \
+   -e OAUTH2_USER_URL=<OAUTH2_USER_URL> \
+
+   # Optional:
+   -e OAUTH2_SCOPES=<OAUTH2_SCOPES> \
+   -e OAUTH2_CALLBACK_URL=<OAUTH2_CALLBACK_URL> \
+
+   ...[other settings]...
+   ```
+
+### Available variables for OAuth
 
 OAUTH2_CLIENT_ID
 
@@ -177,17 +205,21 @@ OAUTH2_CALLBACK_URL
 
 : OAUTH2 callback url where the IDP is redirecting once the authentication is completed (default value: `https://#{TRENTO_WEB_ORIGIN}/auth/oauth2_callback`)
 
-## SAML
+
+## Using SAML
 
 Trento integrates with an IDP that uses the SAML protocol to authenticate users accessing the Trento web console.
 
 In order to use an existing SAML IDP, some requirements must be met, configuring the IDP and starting Trento in a specific way. Follow the next instructions to properly setup both.
 
-### SAML IDP setup
+### Requirements for SAML IDP setup
 
 Configure the existing IDP with the next minimum options to be able to connect with Trento's Service Provider (SP).
 
 #### SAML user profile
+
+// Is this background information or does the admin need to check this
+// somehow (=task)?
 
 Users provided by the SAML installation must have some few mandatory attributes in order to login in Trento. All of them are mandatory, even though their name is configurable.
 The user profile must include attributes for: username, email, first name and last name.
@@ -197,6 +229,9 @@ By default, Trento expects the `username`, `email`, `firstName` and `lastName` a
 So for example, if the IDP user profile username is defined as `attr:username`, `SAML_USERNAME_ATTR_NAME=attr:username` should be used.
 
 #### Signing keys
+
+// Is this background information or does the admin need to check this
+// somehow (=task)?
 
 Commonly, SAML protocol messages are signed with SSL. This is optional using Trento, and the signing is not required (even though it is recommended).
 If the IDP signs the messages, and expect signed messages back, certificates used by the SP (Trento in this case) must be provided to the IDP, the Certificate file in this case.
