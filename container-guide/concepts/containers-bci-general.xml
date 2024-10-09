@@ -299,7 +299,7 @@
       produced externally or during multi-stage builds. As there is no
       straightforward way to install additional dependencies inside the
       container image, we recommend deploying a project using the
-      &bcia;-Minimal image only when the final build artifact bundles all
+      &bcia;-Micro image only when the final build artifact bundles all
       dependencies and has no external runtime requirements (like Python or
       Ruby).
     </para>
