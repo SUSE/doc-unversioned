@@ -1,5 +1,5 @@
-<section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="single-sign-on-integration">
-  <title>Single Sign-On integration</title>
+<section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="integrating-single-sign-on">
+  <title>Integrating Single Sign-On</title>
   <para>
     Trento can be integrated with an identity provider (IDP) that uses
     different Single sign-on (SSO) protocols like OpenID Connect (OIDC)
@@ -8,85 +8,113 @@
   <note>
     <para>Trento cannot start with multiple SSO options together, so only one can be chosen.</para>
   </note>
-  <section xml:id="available-protocols">
-    <title>Available protocols</title>
-    <itemizedlist>
-      <listitem>
-        <para>
-          OpenID Connect (OIDC)
-        </para>
-      </listitem>
-      <listitem>
-        <para>
-          Open Authorization 2.0 (OAuth 2)
-        </para>
-      </listitem>
-      <listitem>
-        <para>
-          Security Assertion Markup Language (SAML)
-        </para>
-      </listitem>
-    </itemizedlist>
-  </section>
+  <para>
+    Available protocols are:
+  </para>
+  <itemizedlist>
+    <listitem>
+      <para>
+        OpenID Connect (OIDC)
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+        Open Authorization 2.0 (OAuth 2)
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+        Security Assertion Markup Language (SAML)
+      </para>
+    </listitem>
+  </itemizedlist>
   <section xml:id="user-roles-and-authentication">
     <title>User Roles and Authentication</title>
     <para>
       User authentication is entirely managed by the IDP, which is
       responsible for maintaining user accounts. A user, who does not
       exist on the IDP, is unable to access the Trento web console.
+    </para>
+    <para>
       During the installation process, a default admin user is defined
       using the <literal>ADMIN_USER</literal> variable, which defaults
       to <literal>admin</literal>. If the authenticated user’s IDP
       username matches this admin user's username, that user is
       automatically granted <literal>all:all</literal> permissions
-      within Trento. User permissions are entirely managed by Trento,
-      they are not imported from the IDP. The abilities must be granted
-      by some user with <literal>all:all</literal> or
-      <literal>all:users</literal> abilities
-      (<emphasis role="strong">admin user initially</emphasis>). This
-      means that only basic user information is retrieved from the
-      external IDP.
+      within Trento.
+    </para>
+    <para>
+      User permissions are entirely managed by Trento, they are not
+      imported from the IDP. The abilities must be granted by some user
+      with <literal>all:all</literal> or <literal>all:users</literal>
+      abilities (admin user initially). This means that only basic user
+      information is retrieved from the external IDP.
     </para>
   </section>
-  <section xml:id="oidc">
-    <title>OIDC</title>
+  <section xml:id="using-openid-connect">
+    <title>Using OpenID Connect</title>
     <para>
       Trento integrates with an IDP that uses the OIDC protocol to
       authenticate users accessing the Trento web console.
     </para>
-    <section xml:id="enabling-oidc">
-      <title>Enabling OIDC</title>
+    <para>
+      By default, OIDC is disabled. You can enable OIDC when using RPM
+      packages or using Docker images.
+    </para>
+    <section xml:id="enabling-openid-connect-when-using-rpm-packages">
+      <title>Enabling OpenID Connect when using RPM packages</title>
       <para>
-        OIDC authentication is <emphasis role="strong">disabled by
-        default</emphasis>.
+        To enable OIDC when using RPM packages, proceed as follows:
       </para>
-      <section xml:id="enabling-oidc-when-using-rpm-packages">
-        <title>Enabling OIDC when using RPM packages</title>
-        <para>
-          Provide the following environment variables to trento-web
-          configuration, which is stored at
-          <filename>/etc/trento/trento-web</filename> and restart the
-          application to enable OIDC integration.
-        </para>
-        <programlisting>
-# Required:
+      <orderedlist numeration="arabic">
+        <listitem>
+          <para>
+            Open the file <filename>/etc/trento/trento-web</filename>.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Add the following environment variables to this file.
+            Required variables are:
+          </para>
+          <programlisting>
 ENABLE_OIDC=true
-OIDC_CLIENT_ID=&lt;&lt;OIDC_CLIENT_ID&gt;&gt;
-OIDC_CLIENT_SECRET=&lt;&lt;OIDC_CLIENT_SECRET&gt;&gt;
-OIDC_BASE_URL=&lt;&lt;OIDC_BASE_URL&gt;&gt;
-
-# Optional:
-OIDC_CALLBACK_URL=&lt;&lt;OIDC_CALLBACK_URL&gt;&gt;
+OIDC_CLIENT_ID=&lt;OIDC_CLIENT_ID&gt;
+OIDC_CLIENT_SECRET=&lt;OIDC_CLIENT_SECRET&gt;
+OIDC_BASE_URL=&lt;OIDC_BASE_URL&gt;
 </programlisting>
-      </section>
-      <section xml:id="enabling-oidc-when-using-docker-images">
-        <title>Enabling OIDC when using Docker images</title>
-        <para>
-          Provide the following environment variables to the docker
-          container and restart the application to enable OIDC
-          integration.
-        </para>
-        <programlisting language="bash">
+        </listitem>
+        <listitem>
+          <para>
+            Optionally, add the OIDC callback URL to the configuration.
+            This can be useful if for some reason the default callback
+            URL cannot be used, for example, if <literal>http</literal>
+            is used instead of <literal>https</literal>. Use the next
+            variable for that:
+          </para>
+          <programlisting>
+OIDC_CALLBACK_URL=&lt;OIDC_CALLBACK_URL&gt;
+</programlisting>
+        </listitem>
+        <listitem>
+          <para>
+            Restart the application.
+          </para>
+        </listitem>
+      </orderedlist>
+    </section>
+    <section xml:id="enabling-openid-connect-when-using-docker-images">
+      <title>Enabling OpenID Connect when using Docker images</title>
+      <para>
+        To enable OIDC when using Docker images, proceed as follows:
+      </para>
+      <orderedlist numeration="arabic">
+        <listitem>
+          <para>
+            Provide the following environment variables to the Docker
+            container via the <literal>-e</literal> option:
+          </para>
+          <programlisting language="bash">
 docker run -d \
 -p 4000:4000 \
 --name trento-web \
@@ -96,20 +124,26 @@ docker run -d \
 ...[other settings]...
 
 # Required:
--e ENABLE_OIDC=true  \
--e OIDC_CLIENT_ID=&lt;&lt;OIDC_CLIENT_ID&gt;&gt; \
--e OIDC_CLIENT_SECRET=&lt;&lt;OIDC_CLIENT_SECRET&gt;&gt; \
--e OIDC_BASE_URL=&lt;&lt;OIDC_BASE_URL&gt;&gt; \
+-e ENABLE_OIDC=true \
+-e OIDC_CLIENT_ID=&lt;OIDC_CLIENT_ID&gt; \
+-e OIDC_CLIENT_SECRET=&lt;OIDC_CLIENT_SECRET&gt; \
+-e OIDC_BASE_URL=&lt;OIDC_BASE_URL&gt; \
 
 # Optional:
--e OIDC_CALLBACK_URL=&lt;&lt;OIDC_CALLBACK_URL&gt;&gt; \
+-e OIDC_CALLBACK_URL=&lt;OIDC_CALLBACK_URL&gt; \
 
 ...[other settings]...
 </programlisting>
-      </section>
+        </listitem>
+        <listitem>
+          <para>
+            Restart the application.
+          </para>
+        </listitem>
+      </orderedlist>
     </section>
-    <section xml:id="available-variables">
-      <title>Available variables</title>
+    <section xml:id="available-variables-for-openid-connect">
+      <title>Available variables for OpenID Connect</title>
       <variablelist>
         <varlistentry>
           <term>
@@ -156,49 +190,67 @@ docker run -d \
       </variablelist>
     </section>
   </section>
-  <section xml:id="oauth-20">
-    <title>OAuth 2.0</title>
+  <section xml:id="using-oauth-20">
+    <title>Using OAuth 2.0</title>
     <para>
       Trento integrates with an IDP that uses the OAuth 2 protocol to
       authenticate users accessing the Trento web console.
     </para>
-    <section xml:id="enabling-oauth-20">
-      <title>Enabling OAuth 2.0</title>
+    <para>
+      By default, OAuth 2.0 is disabled. You can enable OIDC when using
+      RPM packages or using Docker images.
+    </para>
+    <section xml:id="enabling-oauth-20-when-using-rpm-packages">
+      <title>Enabling OAuth 2.0 when using RPM packages</title>
       <para>
-        OAuth 2.0 authentication is <emphasis role="strong">disabled by
-        default</emphasis>.
+        To enable OAuth 2.0 when using RPM packages, proceed as follows:
       </para>
-      <section xml:id="enabling-oauth-20-when-using-rpm-packages">
-        <title>Enabling OAuth 2.0 when using RPM packages</title>
-        <para>
-          Provide the following environment variables to trento-web
-          configuration, which is stored at
-          <filename>/etc/trento/trento-web</filename> and restart the
-          application to enable OAuth 2.0 integration.
-        </para>
-        <programlisting>
+      <orderedlist numeration="arabic">
+        <listitem>
+          <para>
+            Open the file <filename>/etc/trento/trento-web</filename>.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Add the following environment variables to this file.
+            Required variables are:
+          </para>
+          <programlisting>
 # Required:
 ENABLE_OAUTH2=true
-OAUTH2_CLIENT_ID=&lt;&lt;OAUTH2_CLIENT_ID&gt;&gt;
-OAUTH2_CLIENT_SECRET=&lt;&lt;OAUTH2_CLIENT_SECRET&gt;&gt;
-OAUTH2_BASE_URL=&lt;&lt;OAUTH2_BASE_URL&gt;&gt;
-OAUTH2_AUTHORIZE_URL=&lt;&lt;OAUTH2_AUTHORIZE_URL&gt;&gt;
-OAUTH2_TOKEN_URL=&lt;&lt;OAUTH2_TOKEN_URL&gt;&gt;
-OAUTH2_USER_URL=&lt;&lt;OAUTH2_USER_URL&gt;&gt;
+OAUTH2_CLIENT_ID=&lt;OAUTH2_CLIENT_ID&gt;
+OAUTH2_CLIENT_SECRET=&lt;OAUTH2_CLIENT_SECRET&gt;
+OAUTH2_BASE_URL=&lt;OAUTH2_BASE_URL&gt;
+OAUTH2_AUTHORIZE_URL=&lt;OAUTH2_AUTHORIZE_URL&gt;
+OAUTH2_TOKEN_URL=&lt;OAUTH2_TOKEN_URL&gt;
+OAUTH2_USER_URL=&lt;OAUTH2_USER_URL&gt;
 
 # Optional:
-OAUTH2_SCOPES=&lt;&lt;OAUTH2_SCOPES&gt;&gt;
-OAUTH2_CALLBACK_URL=&lt;&lt;OAUTH2_CALLBACK_URL&gt;&gt;
+OAUTH2_SCOPES=&lt;OAUTH2_SCOPES&gt;
+OAUTH2_CALLBACK_URL=&lt;OAUTH2_CALLBACK_URL&gt;
 </programlisting>
-      </section>
-      <section xml:id="enabling-oauth-20-when-using-docker-images">
-        <title>Enabling OAuth 2.0 when using Docker images</title>
-        <para>
-          Provide the following environment variables to the docker
-          container and restart the application to enable OAuth 2.0
-          integration.
-        </para>
-        <programlisting language="bash">
+        </listitem>
+        <listitem>
+          <para>
+            Restart the application.
+          </para>
+        </listitem>
+      </orderedlist>
+    </section>
+    <section xml:id="enabling-oauth-20-when-using-docker-images">
+      <title>Enabling OAuth 2.0 when using Docker images</title>
+      <para>
+        To enable OAuth 2.0 when using Docker images, proceed as
+        follows:
+      </para>
+      <orderedlist numeration="arabic">
+        <listitem>
+          <para>
+            Use the following environment variables to the Docker
+            container via the <literal>-e</literal> option:
+          </para>
+          <programlisting language="bash">
 docker run -d \
 -p 4000:4000 \
 --name trento-web \
@@ -207,24 +259,25 @@ docker run -d \
 
 ...[other settings]...
 
--e ENABLE_OAUTH2=true  \
--e OAUTH2_CLIENT_ID=&lt;&lt;OAUTH2_CLIENT_ID&gt;&gt; \
--e OAUTH2_CLIENT_SECRET=&lt;&lt;OAUTH2_CLIENT_SECRET&gt;&gt; \
--e OAUTH2_BASE_URL=&lt;&lt;OAUTH2_BASE_URL&gt;&gt; \
--e OAUTH2_AUTHORIZE_URL=&lt;&lt;OAUTH2_AUTHORIZE_URL&gt;&gt; \
--e OAUTH2_TOKEN_URL=&lt;&lt;OAUTH2_TOKEN_URL&gt;&gt; \
--e OAUTH2_USER_URL=&lt;&lt;OAUTH2_USER_URL&gt;&gt; \
+-e ENABLE_OAUTH2=true \
+-e OAUTH2_CLIENT_ID=&lt;OAUTH2_CLIENT_ID&gt; \
+-e OAUTH2_CLIENT_SECRET=&lt;OAUTH2_CLIENT_SECRET&gt; \
+-e OAUTH2_BASE_URL=&lt;OAUTH2_BASE_URL&gt; \
+-e OAUTH2_AUTHORIZE_URL=&lt;OAUTH2_AUTHORIZE_URL&gt; \
+-e OAUTH2_TOKEN_URL=&lt;OAUTH2_TOKEN_URL&gt; \
+-e OAUTH2_USER_URL=&lt;OAUTH2_USER_URL&gt; \
 
 # Optional:
--e OAUTH2_SCOPES=&lt;&lt;OAUTH2_SCOPES&gt;&gt;  \
--e OAUTH2_CALLBACK_URL=&lt;&lt;OAUTH2_CALLBACK_URL&gt;&gt; \
+-e OAUTH2_SCOPES=&lt;OAUTH2_SCOPES&gt; \
+-e OAUTH2_CALLBACK_URL=&lt;OAUTH2_CALLBACK_URL&gt; \
 
 ...[other settings]...
 </programlisting>
-      </section>
+        </listitem>
+      </orderedlist>
     </section>
-    <section xml:id="available-variables-1">
-      <title>Available variables</title>
+    <section xml:id="available-variables-for-oauth-20">
+      <title>Available variables for OAuth 2.0</title>
       <variablelist>
         <varlistentry>
           <term>
@@ -314,19 +367,49 @@ docker run -d \
       </variablelist>
     </section>
   </section>
-  <section xml:id="saml">
-    <title>SAML</title>
+  <section xml:id="using-saml">
+    <title>Using SAML</title>
     <para>
       Trento integrates with an IDP that uses the SAML protocol to
-      authenticate users accessing the Trento web console.
+      authenticate users accessing the Trento web console. Trento will
+      behave as a Service Provider (SP) in this case.
     </para>
     <para>
-      In order to use an existing SAML IDP, some requirements must be
-      met, configuring the IDP and starting Trento in a specific way.
-      Follow the next instructions to properly setup both.
+      Commonly, SAML protocol messages are signed with SSL. This is
+      optional using Trento, and the signing is not required (even
+      though it is recommended). If the IDP signs the messages, and
+      expect signed messages back, certificates used by the SP (Trento
+      in this case) must be provided to the IDP, the public certificate
+      file in this case.
     </para>
-    <section xml:id="saml-idp-setup">
-      <title>SAML IDP setup</title>
+    <para>
+      To use an existing SAML IDP, follow the next instrunctions to met
+      the specific requirements. You need:
+    </para>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Configure SAML IDP and user profiles
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Start Trento to generate the certificates and download them
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Provide the generated certificate to the IDP
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Restart Trento
+        </para>
+      </listitem>
+    </itemizedlist>
+    <section xml:id="configuring-saml-idp-setup">
+      <title>Configuring SAML IDP setup</title>
       <para>
         Configure the existing IDP with the next minimum options to be
         able to connect with Trento's Service Provider (SP).
@@ -335,11 +418,11 @@ docker run -d \
         <title>SAML user profile</title>
         <para>
           Users provided by the SAML installation must have some few
-          mandatory attributes in order to login in Trento. All of them
-          are mandatory, even though their name is configurable. The
-          user profile must include attributes for: username, email,
-          first name and last name. This attributes must be mapped for
-          all users wanting to connect to Trento.
+          mandatory attributes to login in Trento. All of them are
+          mandatory, even though their name is configurable. The user
+          profile must include attributes for: username, email, first
+          name and last name. This attributes must be mapped for all
+          users wanting to connect to Trento.
         </para>
         <para>
           By default, Trento expects the <literal>username</literal>,
@@ -357,68 +440,6 @@ docker run -d \
           should be used.
         </para>
       </section>
-      <section xml:id="signing-keys">
-        <title>Signing keys</title>
-        <para>
-          Commonly, SAML protocol messages are signed with SSL. This is
-          optional using Trento, and the signing is not required (even
-          though it is recommended). If the IDP signs the messages, and
-          expect signed messages back, certificates used by the SP
-          (Trento in this case) must be provided to the IDP, the
-          Certificate file in this case.
-        </para>
-        <para>
-          For this reason, Trento already provides a certificates set
-          created during the installation. When Trento is installed the
-          first time (does not matter the installation mode) the
-          certificates are created, and the public certificate file
-          content is available in the
-          <uri>http://localhost:4000/api/public_keys</uri> route.
-        </para>
-        <programlisting language="bash">
-curl http://localhost:4000/api/public_keys
-</programlisting>
-        <para>
-          Copy the content of the certificate from there, and provide it
-          to the IDP. This way, the IDP will sign and verify the
-          messages sent by both ends.
-        </para>
-        <para>
-          When this certificate is used, and provided to the IDP, the
-          IDP recreates its own <filename>metadata.xml</filename> file.
-          This file defines which certificate is used to sign the
-          messages by both sides. At this point, Trento Web must be
-          restarted to use the new <filename>metadata.xml</filename>
-          content.
-        </para>
-        <para>
-          If the <option>SAML_METDATA_CONTENT</option> option is being
-          used, the content of this variable must be updated with the
-          new metadata. In the other hand, if
-          <option>SAML_METADATA_URL</option> is used, the new metadata
-          is automatically fetched. If neither of these steps are
-          completed, communication will fail because the message
-          signatures will not be recognized
-        </para>
-        <para>
-          <emphasis role="strong">This restart must be done manually, by
-          the admin.</emphasis> If the installation is done by a
-          <literal>RPM</literal>, restarting the
-          <literal>systemd</literal> daemon. If the installation is done
-          using <literal>Docker</literal>, the container must be
-          restarted.
-        </para>
-        <programlisting>
-# RPM
-systemctl restart trento-web
-
-# Docker
-# Get container ID
-docker container ps
-# Restart
-docker restart container-id
-</programlisting>
-      </section>
       <section xml:id="saml-redirect-uri">
         <title>SAML redirect URI</title>
         <para>
@@ -429,56 +450,144 @@ docker restart container-id
         </para>
       </section>
     </section>
-    <section xml:id="enabling-saml">
-      <title>Enabling SAML</title>
+    <section xml:id="get-certificates-from-trento">
+      <title>Get certificates from Trento</title>
       <para>
-        SAML authentication is <emphasis role="strong">disabled by
-        default</emphasis>.
+        Trento provides a certificates set created during the
+        installation. When Trento is installed the first time (does not
+        matter the installation mode) the certificates are created, and
+        the public certificate file content is available in the
+        <uri>http://localhost:4000/api/public_keys</uri> route.
       </para>
-      <section xml:id="enabling-saml-when-using-rpm-packages">
-        <title>Enabling SAML when using RPM packages</title>
-        <para>
-          Provide the following environment variables to trento-web
-          configuration, which is stored at
-          <literal>/etc/trento/trento-web</literal> and restart the
-          application to enable SAML integration.
-        </para>
-        <programlisting>
+      <para>
+        Use the following command to download the certificate:
+      </para>
+      <programlisting language="bash">
+curl http://localhost:4000/api/public_keys
+</programlisting>
+      <para>
+        Copy the content of the certificate from there, and provide it
+        to the IDP. This way, the IDP will sign and verify the messages
+        sent by both ends.
+      </para>
+    </section>
+    <section xml:id="restart-trento">
+      <title>Restart Trento</title>
+      <para>
+        Once the certificate is provided to the IDP, the IDP recreates
+        its own <filename>metadata.xml</filename> file. This file
+        defines which certificate is used to sign the messages by both
+        sides. At this point, Trento Web must be restarted to use the
+        new <filename>metadata.xml</filename> content.
+      </para>
+      <para>
+        If the <option>SAML_METDATA_CONTENT</option> option is being
+        used, the content of this variable must be updated with the new
+        metadata. In the other hand, if
+        <option>SAML_METADATA_URL</option> is used, the new metadata is
+        automatically fetched. If neither of these steps are completed,
+        communication will fail because the message signatures will not
+        be recognized
+      </para>
+      <note>
+        <para>This restart must be done manually, by the admin.</para>
+      </note>
+      <para>
+        Follow the next instrucionts to restart with the configured
+        options:
+      </para>
+      <orderedlist numeration="arabic">
+        <listitem>
+          <para>
+            Open the file <filename>/etc/trento/trento-web</filename>.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Add the following environment variables to this file.
+            Required variables are:
+          </para>
+          <programlisting>
+# Other SAML options
+SAML_METADATA_URL=&lt;SAML_METADATA_URL&gt;
+# Or
+SAML_METDATA_CONTENT=&lt;SAML_METADATA_CONTENT&gt;
+</programlisting>
+        </listitem>
+        <listitem>
+          <para>
+            Restart the application.
+          </para>
+        </listitem>
+      </orderedlist>
+    </section>
+    <section xml:id="enabling-saml-when-using-rpm-packages">
+      <title>Enabling SAML when using RPM packages</title>
+      <para>
+        To enable SAML when using RPM packages, proceed as follows:
+      </para>
+      <orderedlist numeration="arabic" spacing="compact">
+        <listitem>
+          <para>
+            Open the file <filename>/etc/trento/trento-web</filename>.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Add the following environment variables to this file.
+            Required variables are:
+          </para>
+        </listitem>
+      </orderedlist>
+      <programlisting>
 # Required:
 ENABLE_SAML=true
-SAML_IDP_ID=&lt;&lt;SAML_IDP_ID&gt;&gt;
-SAML_SP_ID=&lt;&lt;SAML_SP_ID&gt;&gt;
+SAML_IDP_ID=&lt;SAML_IDP_ID&gt;
+SAML_SP_ID=&lt;SAML_SP_ID&gt;
 # Only SAML_METADATA_URL or SAML_METADATA_CONTENT must by provided
-SAML_METADATA_URL=&lt;&lt;SAML_METADATA_URL&gt;&gt;
-SAML_METADATA_CONTENT=&lt;&lt;SAML_METADATA_CONTENT&gt;&gt;
+SAML_METADATA_URL=&lt;SAML_METADATA_URL&gt;
+SAML_METADATA_CONTENT=&lt;SAML_METADATA_CONTENT&gt;
 
 # Optional:
-SAML_IDP_NAMEID_FORMAT=&lt;&lt;SAML_IDP_NAMEID_FORMAT&gt;&gt;
-SAML_SP_DIR=&lt;&lt;SAML_SP_DIR&gt;&gt;
-SAML_SP_ENTITY_ID=&lt;&lt;SAML_SP_ENTITY_ID&gt;&gt;
-SAML_SP_CONTACT_NAME=&lt;&lt;SAML_SP_CONTACT_NAME&gt;&gt;
-SAML_SP_CONTACT_EMAIL=&lt;&lt;SAML_SP_CONTACT_EMAIL&gt;&gt;
-SAML_SP_ORG_NAME=&lt;&lt;SAML_SP_ORG_NAME&gt;&gt;
-SAML_SP_ORG_DISPLAYNAME=&lt;&lt;SAML_SP_ORG_DISPLAYNAME&gt;&gt;
-SAML_SP_ORG_URL=&lt;&lt;SAML_SP_ORG_URL&gt;&gt;
-SAML_USERNAME_ATTR_NAME=&lt;&lt;SAML_USERNAME_ATTR_NAME&gt;&gt;
-SAML_EMAIL_ATTR_NAME=&lt;&lt;SAML_EMAIL_ATTR_NAME&gt;&gt;
-SAML_FIRSTNAME_ATTR_NAME=&lt;&lt;SAML_FIRSTNAME_ATTR_NAME&gt;&gt;
-SAML_LASTNAME_ATTR_NAME=&lt;&lt;SAML_LASTNAME_ATTR_NAME&gt;&gt;
-SAML_SIGN_REQUESTS=&lt;&lt;SAML_SIGN_REQUESTS&gt;&gt;
-SAML_SIGN_METADATA=&lt;&lt;SAML_SIGN_METADATA&gt;&gt;
-SAML_SIGNED_ASSERTION=&lt;&lt;SAML_SIGNED_ASSERTION&gt;&gt;
-SAML_SIGNED_ENVELOPES=&lt;&lt;SAML_SIGNED_ENVELOPES&gt;&gt;
+SAML_IDP_NAMEID_FORMAT=&lt;SAML_IDP_NAMEID_FORMAT&gt;
+SAML_SP_DIR=&lt;SAML_SP_DIR&gt;
+SAML_SP_ENTITY_ID=&lt;SAML_SP_ENTITY_ID&gt;
+SAML_SP_CONTACT_NAME=&lt;SAML_SP_CONTACT_NAME&gt;
+SAML_SP_CONTACT_EMAIL=&lt;SAML_SP_CONTACT_EMAIL&gt;
+SAML_SP_ORG_NAME=&lt;SAML_SP_ORG_NAME&gt;
+SAML_SP_ORG_DISPLAYNAME=&lt;SAML_SP_ORG_DISPLAYNAME&gt;
+SAML_SP_ORG_URL=&lt;SAML_SP_ORG_URL&gt;
+SAML_USERNAME_ATTR_NAME=&lt;SAML_USERNAME_ATTR_NAME&gt;
+SAML_EMAIL_ATTR_NAME=&lt;SAML_EMAIL_ATTR_NAME&gt;
+SAML_FIRSTNAME_ATTR_NAME=&lt;SAML_FIRSTNAME_ATTR_NAME&gt;
+SAML_LASTNAME_ATTR_NAME=&lt;SAML_LASTNAME_ATTR_NAME&gt;
+SAML_SIGN_REQUESTS=&lt;SAML_SIGN_REQUESTS&gt;
+SAML_SIGN_METADATA=&lt;SAML_SIGN_METADATA&gt;
+SAML_SIGNED_ASSERTION=&lt;SAML_SIGNED_ASSERTION&gt;
+SAML_SIGNED_ENVELOPES=&lt;SAML_SIGNED_ENVELOPES&gt;
 </programlisting>
-      </section>
-      <section xml:id="enabling-saml-when-using-docker-images">
-        <title>Enabling SAML when using Docker images</title>
-        <para>
-          Provide the following environment variables to the docker
-          container and restart the application to enable SAML
-          integration.
-        </para>
-        <programlisting language="bash">
+      <orderedlist numeration="arabic" spacing="compact">
+        <listitem>
+          <para>
+            Restart the application.
+          </para>
+        </listitem>
+      </orderedlist>
+    </section>
+    <section xml:id="enabling-saml-when-using-docker-images">
+      <title>Enabling SAML when using Docker images</title>
+      <para>
+        To enable SAML when using Docker images, proceed as follows:
+      </para>
+      <orderedlist numeration="arabic" spacing="compact">
+        <listitem>
+          <para>
+            Use the following environment variables to the Docker
+            container via the <literal>-e</literal> option:
+          </para>
+        </listitem>
+      </orderedlist>
+      <programlisting language="bash">
 docker run -d \
 -p 4000:4000 \
 --name trento-web \
@@ -488,36 +597,35 @@ docker run -d \
 ...[other settings]...
 
 -e ENABLE_SAML=true
--e SAML_IDP_ID=&lt;&lt;SAML_IDP_ID&gt;&gt; \
--e SAML_SP_ID=&lt;&lt;SAML_SP_ID&gt;&gt; \
+-e SAML_IDP_ID=&lt;SAML_IDP_ID&gt; \
+-e SAML_SP_ID=&lt;SAML_SP_ID&gt; \
 # Only SAML_METADATA_URL or SAML_METADATA_CONTENT must by provided
--e SAML_METADATA_URL=&lt;&lt;SAML_METADATA_URL&gt;&gt; \
--e SAML_METADATA_CONTENT=&lt;&lt;SAML_METADATA_CONTENT&gt;&gt; \
+-e SAML_METADATA_URL=&lt;SAML_METADATA_URL&gt; \
+-e SAML_METADATA_CONTENT=&lt;SAML_METADATA_CONTENT&gt; \
 
 # Optional:
--e SAML_IDP_NAMEID_FORMAT=&lt;&lt;SAML_IDP_NAMEID_FORMAT&gt;&gt; \
--e SAML_SP_DIR=&lt;&lt;SAML_SP_DIR&gt;&gt; \
--e SAML_SP_ENTITY_ID=&lt;&lt;SAML_SP_ENTITY_ID&gt;&gt; \
--e SAML_SP_CONTACT_NAME=&lt;&lt;SAML_SP_CONTACT_NAME&gt;&gt; \
--e SAML_SP_CONTACT_EMAIL=&lt;&lt;SAML_SP_CONTACT_EMAIL&gt;&gt; \
--e SAML_SP_ORG_NAME=&lt;&lt;SAML_SP_ORG_NAME&gt;&gt; \
--e SAML_SP_ORG_DISPLAYNAME=&lt;&lt;SAML_SP_ORG_DISPLAYNAME&gt;&gt; \
--e SAML_SP_ORG_URL=&lt;&lt;SAML_SP_ORG_URL&gt;&gt; \
--e SAML_USERNAME_ATTR_NAME=&lt;&lt;SAML_USERNAME_ATTR_NAME&gt;&gt; \
--e SAML_EMAIL_ATTR_NAME=&lt;&lt;SAML_EMAIL_ATTR_NAME&gt;&gt; \
--e SAML_FIRSTNAME_ATTR_NAME=&lt;&lt;SAML_FIRSTNAME_ATTR_NAME&gt;&gt; \
--e SAML_LASTNAME_ATTR_NAME=&lt;&lt;SAML_LASTNAME_ATTR_NAME&gt;&gt; \
--e SAML_SIGN_REQUESTS=&lt;&lt;SAML_SIGN_REQUESTS&gt;&gt; \
--e SAML_SIGN_METADATA=&lt;&lt;SAML_SIGN_METADATA&gt;&gt; \
--e SAML_SIGNED_ASSERTION=&lt;&lt;SAML_SIGNED_ASSERTION&gt;&gt; \
--e SAML_SIGNED_ENVELOPES=&lt;&lt;SAML_SIGNED_ENVELOPES&gt;&gt; \
+-e SAML_IDP_NAMEID_FORMAT=&lt;SAML_IDP_NAMEID_FORMAT&gt; \
+-e SAML_SP_DIR=&lt;SAML_SP_DIR&gt; \
+-e SAML_SP_ENTITY_ID=&lt;SAML_SP_ENTITY_ID&gt; \
+-e SAML_SP_CONTACT_NAME=&lt;SAML_SP_CONTACT_NAME&gt; \
+-e SAML_SP_CONTACT_EMAIL=&lt;SAML_SP_CONTACT_EMAIL&gt; \
+-e SAML_SP_ORG_NAME=&lt;SAML_SP_ORG_NAME&gt; \
+-e SAML_SP_ORG_DISPLAYNAME=&lt;SAML_SP_ORG_DISPLAYNAME&gt; \
+-e SAML_SP_ORG_URL=&lt;SAML_SP_ORG_URL&gt; \
+-e SAML_USERNAME_ATTR_NAME=&lt;SAML_USERNAME_ATTR_NAME&gt; \
+-e SAML_EMAIL_ATTR_NAME=&lt;SAML_EMAIL_ATTR_NAME&gt; \
+-e SAML_FIRSTNAME_ATTR_NAME=&lt;SAML_FIRSTNAME_ATTR_NAME&gt; \
+-e SAML_LASTNAME_ATTR_NAME=&lt;SAML_LASTNAME_ATTR_NAME&gt; \
+-e SAML_SIGN_REQUESTS=&lt;SAML_SIGN_REQUESTS&gt; \
+-e SAML_SIGN_METADATA=&lt;SAML_SIGN_METADATA&gt; \
+-e SAML_SIGNED_ASSERTION=&lt;SAML_SIGNED_ASSERTION&gt; \
+-e SAML_SIGNED_ENVELOPES=&lt;SAML_SIGNED_ENVELOPES&gt; \
 
 ...[other settings]...
 </programlisting>
-      </section>
     </section>
-    <section xml:id="available-variables-2">
-      <title>Available variables</title>
+    <section xml:id="available-variables-for-saml">
+      <title>Available variables for SAML</title>
       <variablelist>
         <varlistentry>
           <term>
