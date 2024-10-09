@@ -119,7 +119,7 @@
         <para>
           Points to the
           <link xlink:href="https://www.suse.com/lifecycle/">https://www.suse.com/lifecycle/</link>
-          page that offers information about the lifecycle of the image.
+          page that offers information about the lifecycle of the product an image is based on.
         </para>
       </listitem>
     </varlistentry>
