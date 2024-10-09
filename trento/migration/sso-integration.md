@@ -22,6 +22,7 @@ User authentication is entirely managed by the IDP, which is responsible for mai
 A user, who does not exist on the IDP, is unable to access the Trento web console.
 
 During the installation process, a default admin user is defined using the `ADMIN_USER` variable, which defaults to `admin`. If the authenticated user’s IDP username matches this admin user's username, that user is automatically granted `all:all` permissions within Trento.
+
 User permissions are entirely managed by Trento, they are not imported from the IDP. The abilities must be granted by some user with `all:all` or `all:users` abilities (admin user initially). This means that only basic user information is retrieved from the external IDP.
 
 
@@ -47,8 +48,7 @@ To enable OIDC when using RPM packages, proceed as follows:
    OIDC_BASE_URL=<OIDC_BASE_URL>
    ```
 
-1. Optionally, add the OIDC callback URL to the configuration:
-   // reason why you would need that?
+1. Optionally, add the OIDC callback URL to the configuration. This can be useful if for some reason the default callback URL cannot be used, for example, if `http` is used instead of `https`. Use the next variable for that:
 
     ```
     OIDC_CALLBACK_URL=<OIDC_CALLBACK_URL>
@@ -171,7 +171,7 @@ To enable OAuth 2.0 when using Docker images, proceed as follows:
    ...[other settings]...
    ```
 
-### Available variables for OAuth
+### Available variables for OAuth 2.0
 
 OAUTH2_CLIENT_ID
 
@@ -208,35 +208,40 @@ OAUTH2_CALLBACK_URL
 
 ## Using SAML
 
-Trento integrates with an IDP that uses the SAML protocol to authenticate users accessing the Trento web console.
+Trento integrates with an IDP that uses the SAML protocol to authenticate users accessing the Trento web console. Trento will behave as a Service Provider (SP) in this case.
 
-In order to use an existing SAML IDP, some requirements must be met, configuring the IDP and starting Trento in a specific way. Follow the next instructions to properly setup both.
+Commonly, SAML protocol messages are signed with SSL. This is optional using Trento, and the signing is not required (even though it is recommended).
+If the IDP signs the messages, and expect signed messages back, certificates used by the SP (Trento in this case) must be provided to the IDP, the public certificate file in this case.
 
-### Requirements for SAML IDP setup
+To use an existing SAML IDP, follow the next instrunctions to met the specific requirements. You need:
+
+* Configure SAML IDP and user profiles
+* Start Trento to generate the certificates and download them
+* Provide the generated certificate to the IDP
+* Restart Trento
+
+### Configuring SAML IDP setup
 
 Configure the existing IDP with the next minimum options to be able to connect with Trento's Service Provider (SP).
 
 #### SAML user profile
 
-// Is this background information or does the admin need to check this
-// somehow (=task)?
-
-Users provided by the SAML installation must have some few mandatory attributes in order to login in Trento. All of them are mandatory, even though their name is configurable.
+Users provided by the SAML installation must have some few mandatory attributes to login in Trento. All of them are mandatory, even though their name is configurable.
 The user profile must include attributes for: username, email, first name and last name.
 This attributes must be mapped for all users wanting to connect to Trento.
 
 By default, Trento expects the `username`, `email`, `firstName` and `lastName` attribute names. All these 4 attribute names are configurable using the next environment variables, following the same order: `SAML_USERNAME_ATTR_NAME`, `SAML_EMAIL_ATTR_NAME`, `SAML_FIRSTNAME_ATTR_NAME` and `SAML_LASTNAME_ATTR_NAME`.
 So for example, if the IDP user profile username is defined as `attr:username`, `SAML_USERNAME_ATTR_NAME=attr:username` should be used.
 
-#### Signing keys
+#### SAML redirect URI
 
-// Is this background information or does the admin need to check this
-// somehow (=task)?
+Once the login is done succesfully, the IDP redirects the session back to Trento. This redirection is done to `https://trento.example.com/sso/sp/consume/saml`, so this URI must be set as valid in the IDP.
 
-Commonly, SAML protocol messages are signed with SSL. This is optional using Trento, and the signing is not required (even though it is recommended).
-If the IDP signs the messages, and expect signed messages back, certificates used by the SP (Trento in this case) must be provided to the IDP, the Certificate file in this case.
+### Get certificates from Trento
 
-For this reason, Trento already provides a certificates set created during the installation. When Trento is installed the first time (does not matter the installation mode) the certificates are created, and the public certificate file content is available in the <uri>http://localhost:4000/api/public_keys</uri> route. 
+Trento provides a certificates set created during the installation. When Trento is installed the first time (does not matter the installation mode) the certificates are created, and the public certificate file content is available in the <uri>http://localhost:4000/api/public_keys</uri> route. 
+
+Use the following command to download the certificate:
 
 ```bash
 curl http://localhost:4000/api/public_keys
@@ -244,66 +249,77 @@ curl http://localhost:4000/api/public_keys
     
 Copy the content of the certificate from there, and provide it to the IDP. This way, the IDP will sign and verify the messages sent by both ends.
 
-When this certificate is used, and provided to the IDP, the IDP recreates its own <filename>metadata.xml</filename> file. This file defines which certificate is used to sign the messages by both sides. At this point, Trento Web must be restarted to use the new <filename>metadata.xml</filename> content.
+### Restart Trento
+
+Once the certificate is provided to the IDP, the IDP recreates its own <filename>metadata.xml</filename> file. This file defines which certificate is used to sign the messages by both sides. At this point, Trento Web must be restarted to use the new <filename>metadata.xml</filename> content.
 
 If the <option>SAML_METDATA_CONTENT</option> option is being used, the content of this variable must be updated with the new metadata. In the other hand, if <option>SAML_METADATA_URL</option> is used, the new metadata is automatically fetched. If neither of these steps are completed, communication will fail because the message signatures will not be recognized
 
-**This restart must be done manually, by the admin.** If the installation is done by a `RPM`, restarting the `systemd` daemon. If the installation is done using `Docker`, the container must be restarted.
-
-```
-# RPM
-systemctl restart trento-web
-
-# Docker
-# Get container ID
-docker container ps
-# Restart
-docker restart container-id
+```{=docbook}
+<note>
+  <para>This restart must be done manually, by the admin.</para>
+</note>
 ```
 
-#### SAML redirect URI
+Follow the next instrucionts to restart with the configured options:
 
-Once the login is done succesfully, the IDP redirects the session back to Trento. This redirection is done to `https://trento.example.com/sso/sp/consume/saml`, so this URI must be set as valid in the IDP.
+1. Open the file <filename>/etc/trento/trento-web</filename>.
+1. Add the following environment variables to this file.
+   Required variables are:
 
-### Enabling SAML
+   ```
+   # Other SAML options
+   SAML_METADATA_URL=<SAML_METADATA_URL>
+   # Or
+   SAML_METDATA_CONTENT=<SAML_METADATA_CONTENT>
+   ```
 
-SAML authentication is **disabled by default**.
+1. Restart the application.
 
-#### Enabling SAML when using RPM packages
 
-Provide the following environment variables to trento-web configuration, which is stored at `/etc/trento/trento-web` and restart the application to enable SAML integration.
+### Enabling SAML when using RPM packages
+
+To enable SAML when using RPM packages, proceed as follows:
+
+1. Open the file <filename>/etc/trento/trento-web</filename>.
+1. Add the following environment variables to this file.
+   Required variables are:
 
 ```
 # Required:
 ENABLE_SAML=true
-SAML_IDP_ID=<<SAML_IDP_ID>>
-SAML_SP_ID=<<SAML_SP_ID>>
+SAML_IDP_ID=<SAML_IDP_ID>
+SAML_SP_ID=<SAML_SP_ID>
 # Only SAML_METADATA_URL or SAML_METADATA_CONTENT must by provided
-SAML_METADATA_URL=<<SAML_METADATA_URL>>
-SAML_METADATA_CONTENT=<<SAML_METADATA_CONTENT>>
+SAML_METADATA_URL=<SAML_METADATA_URL>
+SAML_METADATA_CONTENT=<SAML_METADATA_CONTENT>
 
 # Optional:
-SAML_IDP_NAMEID_FORMAT=<<SAML_IDP_NAMEID_FORMAT>>
-SAML_SP_DIR=<<SAML_SP_DIR>>
-SAML_SP_ENTITY_ID=<<SAML_SP_ENTITY_ID>>
-SAML_SP_CONTACT_NAME=<<SAML_SP_CONTACT_NAME>>
-SAML_SP_CONTACT_EMAIL=<<SAML_SP_CONTACT_EMAIL>>
-SAML_SP_ORG_NAME=<<SAML_SP_ORG_NAME>>
-SAML_SP_ORG_DISPLAYNAME=<<SAML_SP_ORG_DISPLAYNAME>>
-SAML_SP_ORG_URL=<<SAML_SP_ORG_URL>>
-SAML_USERNAME_ATTR_NAME=<<SAML_USERNAME_ATTR_NAME>>
-SAML_EMAIL_ATTR_NAME=<<SAML_EMAIL_ATTR_NAME>>
-SAML_FIRSTNAME_ATTR_NAME=<<SAML_FIRSTNAME_ATTR_NAME>>
-SAML_LASTNAME_ATTR_NAME=<<SAML_LASTNAME_ATTR_NAME>>
-SAML_SIGN_REQUESTS=<<SAML_SIGN_REQUESTS>>
-SAML_SIGN_METADATA=<<SAML_SIGN_METADATA>>
-SAML_SIGNED_ASSERTION=<<SAML_SIGNED_ASSERTION>>
-SAML_SIGNED_ENVELOPES=<<SAML_SIGNED_ENVELOPES>>
+SAML_IDP_NAMEID_FORMAT=<SAML_IDP_NAMEID_FORMAT>
+SAML_SP_DIR=<SAML_SP_DIR>
+SAML_SP_ENTITY_ID=<SAML_SP_ENTITY_ID>
+SAML_SP_CONTACT_NAME=<SAML_SP_CONTACT_NAME>
+SAML_SP_CONTACT_EMAIL=<SAML_SP_CONTACT_EMAIL>
+SAML_SP_ORG_NAME=<SAML_SP_ORG_NAME>
+SAML_SP_ORG_DISPLAYNAME=<SAML_SP_ORG_DISPLAYNAME>
+SAML_SP_ORG_URL=<SAML_SP_ORG_URL>
+SAML_USERNAME_ATTR_NAME=<SAML_USERNAME_ATTR_NAME>
+SAML_EMAIL_ATTR_NAME=<SAML_EMAIL_ATTR_NAME>
+SAML_FIRSTNAME_ATTR_NAME=<SAML_FIRSTNAME_ATTR_NAME>
+SAML_LASTNAME_ATTR_NAME=<SAML_LASTNAME_ATTR_NAME>
+SAML_SIGN_REQUESTS=<SAML_SIGN_REQUESTS>
+SAML_SIGN_METADATA=<SAML_SIGN_METADATA>
+SAML_SIGNED_ASSERTION=<SAML_SIGNED_ASSERTION>
+SAML_SIGNED_ENVELOPES=<SAML_SIGNED_ENVELOPES>
 ```
 
-#### Enabling SAML when using Docker images
+1. Restart the application.
 
-Provide the following environment variables to the docker container and restart the application to enable SAML integration.
+### Enabling SAML when using Docker images
+
+To enable SAML when using Docker images, proceed as follows:
+
+1. Use the following environment variables to the Docker container via the `-e` option:
 
 ```bash
 docker run -d \
@@ -315,34 +331,34 @@ docker run -d \
 ...[other settings]...
 
 -e ENABLE_SAML=true
--e SAML_IDP_ID=<<SAML_IDP_ID>> \
--e SAML_SP_ID=<<SAML_SP_ID>> \
+-e SAML_IDP_ID=<SAML_IDP_ID> \
+-e SAML_SP_ID=<SAML_SP_ID> \
 # Only SAML_METADATA_URL or SAML_METADATA_CONTENT must by provided
--e SAML_METADATA_URL=<<SAML_METADATA_URL>> \
--e SAML_METADATA_CONTENT=<<SAML_METADATA_CONTENT>> \
+-e SAML_METADATA_URL=<SAML_METADATA_URL> \
+-e SAML_METADATA_CONTENT=<SAML_METADATA_CONTENT> \
 
 # Optional:
--e SAML_IDP_NAMEID_FORMAT=<<SAML_IDP_NAMEID_FORMAT>> \
--e SAML_SP_DIR=<<SAML_SP_DIR>> \
--e SAML_SP_ENTITY_ID=<<SAML_SP_ENTITY_ID>> \
--e SAML_SP_CONTACT_NAME=<<SAML_SP_CONTACT_NAME>> \
--e SAML_SP_CONTACT_EMAIL=<<SAML_SP_CONTACT_EMAIL>> \
--e SAML_SP_ORG_NAME=<<SAML_SP_ORG_NAME>> \
--e SAML_SP_ORG_DISPLAYNAME=<<SAML_SP_ORG_DISPLAYNAME>> \
--e SAML_SP_ORG_URL=<<SAML_SP_ORG_URL>> \
--e SAML_USERNAME_ATTR_NAME=<<SAML_USERNAME_ATTR_NAME>> \
--e SAML_EMAIL_ATTR_NAME=<<SAML_EMAIL_ATTR_NAME>> \
--e SAML_FIRSTNAME_ATTR_NAME=<<SAML_FIRSTNAME_ATTR_NAME>> \
--e SAML_LASTNAME_ATTR_NAME=<<SAML_LASTNAME_ATTR_NAME>> \
--e SAML_SIGN_REQUESTS=<<SAML_SIGN_REQUESTS>> \
--e SAML_SIGN_METADATA=<<SAML_SIGN_METADATA>> \
--e SAML_SIGNED_ASSERTION=<<SAML_SIGNED_ASSERTION>> \
--e SAML_SIGNED_ENVELOPES=<<SAML_SIGNED_ENVELOPES>> \
+-e SAML_IDP_NAMEID_FORMAT=<SAML_IDP_NAMEID_FORMAT> \
+-e SAML_SP_DIR=<SAML_SP_DIR> \
+-e SAML_SP_ENTITY_ID=<SAML_SP_ENTITY_ID> \
+-e SAML_SP_CONTACT_NAME=<SAML_SP_CONTACT_NAME> \
+-e SAML_SP_CONTACT_EMAIL=<SAML_SP_CONTACT_EMAIL> \
+-e SAML_SP_ORG_NAME=<SAML_SP_ORG_NAME> \
+-e SAML_SP_ORG_DISPLAYNAME=<SAML_SP_ORG_DISPLAYNAME> \
+-e SAML_SP_ORG_URL=<SAML_SP_ORG_URL> \
+-e SAML_USERNAME_ATTR_NAME=<SAML_USERNAME_ATTR_NAME> \
+-e SAML_EMAIL_ATTR_NAME=<SAML_EMAIL_ATTR_NAME> \
+-e SAML_FIRSTNAME_ATTR_NAME=<SAML_FIRSTNAME_ATTR_NAME> \
+-e SAML_LASTNAME_ATTR_NAME=<SAML_LASTNAME_ATTR_NAME> \
+-e SAML_SIGN_REQUESTS=<SAML_SIGN_REQUESTS> \
+-e SAML_SIGN_METADATA=<SAML_SIGN_METADATA> \
+-e SAML_SIGNED_ASSERTION=<SAML_SIGNED_ASSERTION> \
+-e SAML_SIGNED_ENVELOPES=<SAML_SIGNED_ENVELOPES> \
 
 ...[other settings]...
 ```
 
-### Available variables
+### Available variables for SAML
 
 SAML_IDP_ID
 
