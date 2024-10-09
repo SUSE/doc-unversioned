@@ -343,7 +343,7 @@
     </section>
   </section>
   <section xml:id="sec-podman-tag">
-    <title>Renaming images and images tag</title>
+    <title>Renaming images and image tag</title>
     <para>
       Tags are used to assign descriptive names to container images, 
       thus making it easier to identify individual images.
