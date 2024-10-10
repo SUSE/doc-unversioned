@@ -243,27 +243,27 @@ As commented previously, a set of certificates is needed to enable signed commun
 
 #### Configuring SAML user profile
 
-Users provided by the SAML installation must have some few mandatory attributes to login in Trento. The required attributes are: username, email, first name and last name. All of them are mandatory, even though their field name is configurable.
+Users provided by the SAML installation must have some few mandatory attributes to login in Trento. The required attributes are: username, email, first name and last name. All of them are mandatory, even though their field names are configurable.
 
 By default, Trento expects the `username`, `email`, `firstName` and `lastName` attribute names. All these 4 attribute names are configurable using the next environment variables, following the same order: `SAML_USERNAME_ATTR_NAME`, `SAML_EMAIL_ATTR_NAME`, `SAML_FIRSTNAME_ATTR_NAME` and `SAML_LASTNAME_ATTR_NAME`.
 
-So both the IDP and Trento must know how these 4 fields are mapped. For that, follow the next instruction:
+Both IDP and Trento must know how these 4 fields are mapped. To do this, follow the next instructions:
 
-1. Add the attributes if they don't exist in the IDP user profile. If they already exist, they name doesn't need to be changed, so the current values can continue being used.
+1. Add the attributes if they don't exist in the IDP user profile. If they already exist, don't change the attributes and keep their original values.
 
-1. Configure Trento to use the IDP attribute field names. For that, set the `SAML_USERNAME_ATTR_NAME`, `SAML_EMAIL_ATTR_NAME`, `SAML_FIRSTNAME_ATTR_NAME` and `SAML_LASTNAME_ATTR_NAME` environment values with the values configured in the IDP. For example, if the IDP user profile username is defined as `attr:username`, `SAML_USERNAME_ATTR_NAME=attr:username` should be used.
+1. Configure Trento to use the IDP attribute field names. To do this, set the `SAML_USERNAME_ATTR_NAME`, `SAML_EMAIL_ATTR_NAME`, `SAML_FIRSTNAME_ATTR_NAME` and `SAML_LASTNAME_ATTR_NAME` environment values with the values configured in the IDP. For example, if the IDP user profile username is defined as `attr:username` use `SAML_USERNAME_ATTR_NAME=attr:username`.
 
 #### Checking SAML redirect URI
 
-Once the login is done succesfully, the IDP redirects the session back to Trento. This redirection is done to `https://trento.example.com/sso/sp/consume/saml`, so this URI must be set as valid in the IDP.
+After a successful login, the IDP redirects the user's session back to Trento and redirected at <uri>https://trento.example.com/sso/sp/consume/saml</uri>. To ensure seamless SSO, this URI must be configured as valid within the IDP.
 
 ### Restarting Trento
 
 Once the certificate is provided to the IDP, the IDP recreates its own <filename>metadata.xml</filename> file. This file defines which certificate is used to sign the messages by both sides. At this point, Trento Web must be restarted to use the new <filename>metadata.xml</filename> content.
 
-If the <option>SAML_METDATA_CONTENT</option> option is being used, the content of this variable must be updated with the new metadata, as single line string. In the other hand, if <option>SAML_METADATA_URL</option> is used, the new metadata is automatically fetched. If neither of these steps are completed, communication will fail because the message signatures will not be recognized.
+If the <option>SAML_METDATA_CONTENT</option> option is being used, the content of this variable must be updated with the new metadata as single line string. On the other hand, if <option>SAML_METADATA_URL</option> is used, the new metadata is automatically fetched. If neither of these steps are completed, communication will fail because the message signatures will not be recognized.
 
-If the used IDP has the endpoint to provide the <filename>metadata.xml</filename> file content, the usage of <option>SAML_METADATA_URL</option> is preferred, as further changes in the IDP will be fetched automatically by Trento when it is restarted.
+If the used IDP has the endpoint to provide the <filename>metadata.xml</filename> file content, prefer the variable <option>SAML_METADATA_URL</option> . Trento will automatically fetch metadata when restarted.
 
 ```{=docbook}
 <note>
@@ -271,7 +271,7 @@ If the used IDP has the endpoint to provide the <filename>metadata.xml</filename
 </note>
 ```
 
-Follow the next instrucionts to restart with the configured options:
+Follow the next instructions to restart with the configured options:
 
 1. Open the file <filename>/etc/trento/trento-web</filename>.
 1. Add the following environment variables to this file.
