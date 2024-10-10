@@ -455,7 +455,7 @@ curl http://localhost:4000/api/public_keys
           Users provided by the SAML installation must have some few
           mandatory attributes to login in Trento. The required
           attributes are: username, email, first name and last name. All
-          of them are mandatory, even though their field name is
+          of them are mandatory, even though their field names are
           configurable.
         </para>
         <para>
@@ -470,29 +470,29 @@ curl http://localhost:4000/api/public_keys
           <literal>SAML_LASTNAME_ATTR_NAME</literal>.
         </para>
         <para>
-          So both the IDP and Trento must know how these 4 fields are
-          mapped. For that, follow the next instruction:
+          Both IDP and Trento must know how these 4 fields are mapped.
+          To do this, follow the next instructions:
         </para>
         <orderedlist numeration="arabic">
           <listitem>
             <para>
               Add the attributes if they don't exist in the IDP user
-              profile. If they already exist, they name doesn't need to
-              be changed, so the current values can continue being used.
+              profile. If they already exist, don't change the
+              attributes and keep their original values.
             </para>
           </listitem>
           <listitem>
             <para>
-              Configure Trento to use the IDP attribute field names. For
-              that, set the <literal>SAML_USERNAME_ATTR_NAME</literal>,
+              Configure Trento to use the IDP attribute field names. To
+              do this, set the
+              <literal>SAML_USERNAME_ATTR_NAME</literal>,
               <literal>SAML_EMAIL_ATTR_NAME</literal>,
               <literal>SAML_FIRSTNAME_ATTR_NAME</literal> and
               <literal>SAML_LASTNAME_ATTR_NAME</literal> environment
               values with the values configured in the IDP. For example,
               if the IDP user profile username is defined as
-              <literal>attr:username</literal>,
-              <literal>SAML_USERNAME_ATTR_NAME=attr:username</literal>
-              should be used.
+              <literal>attr:username</literal> use
+              <literal>SAML_USERNAME_ATTR_NAME=attr:username</literal>.
             </para>
           </listitem>
         </orderedlist>
@@ -500,10 +500,11 @@ curl http://localhost:4000/api/public_keys
       <section xml:id="checking-saml-redirect-uri">
         <title>Checking SAML redirect URI</title>
         <para>
-          Once the login is done succesfully, the IDP redirects the
-          session back to Trento. This redirection is done to
-          <literal>https://trento.example.com/sso/sp/consume/saml</literal>,
-          so this URI must be set as valid in the IDP.
+          After a successful login, the IDP redirects the user's session
+          back to Trento and redirected at
+          <uri><link xlink:href="https://trento.example.com/sso/sp/consume/saml">https://trento.example.com/sso/sp/consume/saml</link></uri>.
+          To ensure seamless SSO, this URI must be configured as valid
+          within the IDP.
         </para>
       </section>
     </section>
@@ -519,7 +520,7 @@ curl http://localhost:4000/api/public_keys
       <para>
         If the <option>SAML_METDATA_CONTENT</option> option is being
         used, the content of this variable must be updated with the new
-        metadata, as single line string. In the other hand, if
+        metadata as single line string. On the other hand, if
         <option>SAML_METADATA_URL</option> is used, the new metadata is
         automatically fetched. If neither of these steps are completed,
         communication will fail because the message signatures will not
@@ -527,16 +528,15 @@ curl http://localhost:4000/api/public_keys
       </para>
       <para>
         If the used IDP has the endpoint to provide the
-        <filename>metadata.xml</filename> file content, the usage of
-        <option>SAML_METADATA_URL</option> is preferred, as further
-        changes in the IDP will be fetched automatically by Trento when
-        it is restarted.
+        <filename>metadata.xml</filename> file content, prefer the
+        variable <option>SAML_METADATA_URL</option> . Trento will
+        automatically fetch metadata when restarted.
       </para>
       <note>
         <para>This restart must be done manually, by the admin.</para>
       </note>
       <para>
-        Follow the next instrucionts to restart with the configured
+        Follow the next instructions to restart with the configured
         options:
       </para>
       <orderedlist numeration="arabic">
