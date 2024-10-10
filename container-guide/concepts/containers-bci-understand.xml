@@ -102,7 +102,7 @@
       <link xlink:href="https://github.com/&suse;/container-suseconnect"><literal>container-suseconnect</literal></link>
       is a plugin available in all &bcia;s that ship with &zypper;. When the
       plugin detects the host's &suse; Linux Enterprise Server registration
-      credentials, it uses them to give the container access the &suse; Linux
+      credentials, it uses them to give the container access to the &suse; Linux
       Enterprise repositories. This includes additional modules and previous
       package versions that are not part of the free SLE_BCI repository. Refer
       to <xref linkend="sec-container-suseconnect"/> for more information on
