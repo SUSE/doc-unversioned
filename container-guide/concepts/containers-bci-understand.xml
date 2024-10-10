@@ -214,9 +214,12 @@
   <section xml:id="sec-bci-gpg-keys">
     <title>Adding GPG signing keys</title>
     <para>
-      Adding external repositories to a container or container image normally
-      requires importing the GPG key used for signing the packages. This can be
-      done with the <command>rpm --import
+      The &suse; keys are already in the RPM database of the &bci;. This means that you do not have to import them.
+    </para>
+    <para>
+      However, adding external repositories to a container or container image
+      normally requires importing the GPG key used for signing the packages.
+      This can be done with the <command>rpm --import
       <replaceable>KEY_URL</replaceable></command> command. This adds the key
       to the RPM database, and all packages from the repository can be
       installed afterwards.
