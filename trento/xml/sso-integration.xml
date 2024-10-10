@@ -389,17 +389,17 @@ docker run -d \
     <orderedlist numeration="arabic" spacing="compact">
       <listitem>
         <para>
-          Configure SAML IDP and user profiles
-        </para>
-      </listitem>
-      <listitem>
-        <para>
-          Start Trento to generate the certificates and download them
+          Start Trento to generate the certificates and get them
         </para>
       </listitem>
       <listitem>
         <para>
           Provide the generated certificate to the IDP
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Configure SAML IDP and user profiles
         </para>
       </listitem>
       <listitem>
@@ -411,12 +411,44 @@ docker run -d \
     <para>
       See the following subsections for details.
     </para>
+    <section xml:id="getting-certificates-from-trento">
+      <title>Getting certificates from Trento</title>
+      <para>
+        Trento provides a certificates set created during the
+        installation. Regardless of the installation mode, when Trento
+        is installed the first time the certificates are created and the
+        public certificate file content is available in the
+        <uri>http://localhost:4000/api/public_keys</uri> route.
+      </para>
+      <para>
+        Use the following command to get the certificate content:
+      </para>
+      <programlisting language="bash">
+curl http://localhost:4000/api/public_keys
+</programlisting>
+      <para>
+        Copy the content of the certificate from there and provide it to
+        the IDP. This way, the IDP will sign its messages and verify the
+        messages received from Trento.
+      </para>
+    </section>
     <section xml:id="configuring-saml-idp-setup">
       <title>Configuring SAML IDP setup</title>
       <para>
         Configure the existing IDP with the next minimum options to be
         able to connect with Trento as a Service Provider (SP).
       </para>
+      <section xml:id="providing-certificates">
+        <title>Providing certificates</title>
+        <para>
+          As commented previously, a set of certificates is needed to
+          enable signed communication. Provide the certificate generated
+          by Trento to the IDP (each IDP has a different way to do
+          this). Make sure that the provided certificate is available in
+          the SAML <filename>metadata.xml</filename> file and has
+          preference over other uploaded certificates.
+        </para>
+      </section>
       <section xml:id="configuring-saml-user-profile">
         <title>Configuring SAML user profile</title>
         <para>
@@ -474,27 +506,6 @@ docker run -d \
           so this URI must be set as valid in the IDP.
         </para>
       </section>
-    </section>
-    <section xml:id="getting-certificates-from-trento">
-      <title>Getting certificates from Trento</title>
-      <para>
-        Trento provides a certificates set created during the
-        installation. Regardless of the installation mode, when Trento
-        is installed the first time the certificates are created and the
-        public certificate file content is available in the
-        <uri>http://localhost:4000/api/public_keys</uri> route.
-      </para>
-      <para>
-        Use the following command to get the certificate content:
-      </para>
-      <programlisting language="bash">
-curl http://localhost:4000/api/public_keys
-</programlisting>
-      <para>
-        Copy the content of the certificate from there and provide it to
-        the IDP. This way, the IDP will sign its messages and verify the
-        messages received from Trento.
-      </para>
     </section>
     <section xml:id="restarting-trento">
       <title>Restarting Trento</title>
