@@ -32,6 +32,16 @@ Trento integrates with an IDP that uses the OIDC protocol to authenticate users 
 
 By default, OIDC is disabled. You can enable OIDC when using RPM packages or using Docker images.
 
+### Enabling OpenID Connect when using kubernetes deployment
+
+To enable OIDC when using kubernetes deployment with helm, proceed as follows:
+
+1. Add the following variables to the previously documented helm installation command:
+
+   ```
+   HELM_EXPERIMENTAL_OCI=1 helm ... --set trento-web.oidc.enabled=true --set trento-web.oidc.cliendId=<OIDC_CLIENT_ID> --set trento-web.oidc.clientSecret=<OIDC_CLIENT_SECRET> --set trento-web.oidc.baseUrl=<OIDC_BASE_URL>
+   ```
+
 
 ### Enabling OpenID Connect when using RPM packages
 
@@ -111,6 +121,19 @@ OIDC_CALLBACK_URL
 Trento integrates with an IDP that uses the OAuth 2 protocol to authenticate users accessing the Trento web console.
 
 By default, OAuth 2.0 is disabled. You can enable OIDC when using RPM packages or using Docker images.
+
+
+### Enabling OAuth 2.0 when using kubernetes deployment
+
+To enable OAuth 2.0 when using kubernetes deployment with helm, proceed as follows:
+
+1. Add the following variables to the previously documented helm installation command:
+
+   ```
+   HELM_EXPERIMENTAL_OCI=1 helm ... --set trento-web.oauth2.enabled=true --set trento-web.oauth2.cliendId=<OAUTH2_CLIENT_ID> --set trento-web.ouath2.clientSecret=<OAUTH2_CLIENT_SECRET> --set trento-web.oauth2.baseUrl=<OAUTH2_BASE_URL> --set trento-web.oauth2.authorizeUrl=<OAUTH2_AUTHORIZE_URL> --set trento-web.oauth2.tokenUrl=<OAUTH2_TOKEN_URL> --set trento-web.oauth2.userUrl=<OAUTH2_USER_URL> --set trento-web.oauth2.scopes=<OAUTH2_SCOPES>
+   ```
+
+   <option>trento-web.oauth2.scopes</option> variable is optional with `profile email` as default value.
 
 
 ### Enabling OAuth 2.0 when using RPM packages
@@ -263,7 +286,7 @@ Once the certificate is provided to the IDP, the IDP recreates its own <filename
 
 If the <option>SAML_METDATA_CONTENT</option> option is being used, the content of this variable must be updated with the new metadata as single line string. On the other hand, if <option>SAML_METADATA_URL</option> is used, the new metadata is automatically fetched. If neither of these steps are completed, communication will fail because the message signatures will not be recognized.
 
-If the used IDP has the endpoint to provide the <filename>metadata.xml</filename> file content, prefer the variable <option>SAML_METADATA_URL</option> . Trento will automatically fetch metadata when restarted.
+If the used IDP has the endpoint to provide the <filename>metadata.xml</filename> file content, prefer the variable <option>SAML_METADATA_URL</option>. Trento will automatically fetch metadata when restarted.
 
 ```{=docbook}
 <note>
@@ -285,6 +308,29 @@ Follow the next instructions to restart with the configured options:
    ```
 
 1. Restart the application.
+
+
+### Enabling SAML when using kubernetes deployment
+
+To enable SAML when using kubernetes deployment with helm, proceed as follows:
+
+1. Add the following variables to the previously documented helm installation command:
+
+   ```
+   HELM_EXPERIMENTAL_OCI=1 helm ... --set trento-web.saml.enabled=true --set trento-web.saml.idpId=<SAML_IDP_ID> --set trento-web.saml.spId=<SAML_SP_ID> --set trento-web.saml.metadataUrl=<SAML_METADATA_URL>
+   ```
+
+   To use the <option>SAML_METDATA_CONTENT</option> option rather than <option>SAML_METADATA_URL</option> use:
+
+   ```
+   HELM_EXPERIMENTAL_OCI=1 helm ... --set trento-web.saml.enabled=true --set trento-web.saml.idpId=<SAML_IDP_ID> --set trento-web.saml.spId=<SAML_SP_ID> --set trento-web.saml.metadataContent=<SAML_METADATA_CONTENT>
+   ```
+
+   Additionally, the following optional values are available:
+
+   ```
+   HELM_EXPERIMENTAL_OCI=1 helm ... --set trento-web.saml.enabled=true --set trento-web.saml.idpId=<SAML_IDP_ID> --set trento-web.saml.spId=<SAML_SP_ID> --set trento-web.saml.metadataUrl=<SAML_METADATA_URL> --set trento-web.saml.idpNameIdFormat=<SAML_IDP_NAMEID_FORMAT> --set trento-web.saml.spDir=<SAML_SP_DIR> --set trento-web.saml.spEntityId=<SAML_SP_ENTITY_ID> --set trento-web.saml.spContactName=<SAML_SP_CONTACT_NAME> --set trento-web.saml.spContactEmail=<SAML_SP_CONTACT_EMAIL> --set trento-web.saml.spOrgName=<SAML_SP_ORG_NAME> --set trento-web.saml.spOrgDisplayName=<SAML_SP_ORG_DISPLAYNAME> --set trento-web.saml.spOrgUrl=<SAML_SP_ORG_URL> --set trento-web.saml.usernameAttrName=<SAML_USERNAME_ATTR_NAME> --set trento-web.saml.emailAttrName=<SAML_EMAIL_ATTR_NAME> --set trento-web.saml.firstNameAttrName=<SAML_FIRSTNAME_ATTR_NAME> --set trento-web.saml.lastNameAttrName=<SAML_LASTNAME_ATTR_NAME> --set trento-web.saml.signRequests=<SAML_SIGN_REQUESTS> --set trento-web.saml.signMetadata=<SAML_SIGN_METADATA> --set trento-web.saml.signedAssertion=<SAML_SIGNED_ASSERTION> --set trento-web.saml.signedEnvelopes=<SAML_SIGNED_ENVELOPES>
+   ```
 
 
 ### Enabling SAML when using RPM packages
