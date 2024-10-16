@@ -966,12 +966,12 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
     <title>Activity Log</title>
     <para> Trento collects system events and user actions in the Activity Log, which can be accessed from the left hand side panel of the Trento console.</para>
     <para> Each entry in the Activity Log consists of:
-     - A timestamp: what day and time the system event or the user action happened
+     - A timestamp: what day and time (server time, not browser time) the system event or the user action happened                            
      - A message: what type of event or user action happened.
      - The user that triggered the event or performed the action. User system is used for events triggered by the system itself.</para>
     <para>A right chevron icon in the activity log entry, opens a modal with the activity metadata.</para>
      <para>The Activity Log allows to filter by the type of event or user action, commonly refered to as resource type, and by the user that triggered the event or performed the action. Only active users are available for filtering.
-      It also allows to filter out entries that are newer and/or older than an specific date and time. When setting time based entries, please bear in mind the time difference with the database (server) time.   - 
+      It also allows to filter out entries that are newer and/or older than an specific date and time. When setting time based entries, please bear in mind the time difference with the server time.   - 
      </para>
      <para>Once a filter has been set, the user must click Apply to filter out the undesired entries and Reset to remove all the filters.</para>
      <para>Entries related to user management can only be displayed by users that have all:all or all:users permissions. Particularly:
@@ -984,7 +984,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
      <para>The pagination features at the bottom of the Activity Log allow the user to determine how many entries they want to see in a page, scroll back and forth through the different pages of the view or jump straight to the last 
       page and back to first one.</para>
      <para>The default retention time for entries in the Activity Log is one month. But it can be changed in the Activity Log section under Settings. Changing the retention time requires all:settings permissions. Expired entries,
-      based on the stablished retention time, are deleted on a daily basis at midnight (database time).</para>
+      based on the stablished retention time, are deleted on a daily basis at midnight (server time).</para>
    </section>
   <section xml:id="sec-trento-checks">
     <title>Performing configuration checks</title>
