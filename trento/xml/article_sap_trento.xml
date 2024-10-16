@@ -968,12 +968,12 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
     <para> Each entry in the Activity Log consists of:
      - A timestamp: what day and time the system event or the user action happened
      - A message: what type of event or user action happened.
-     - The user that triggered the event or performed the action.</para>
+     - The user that triggered the event or performed the action. User system is used for events triggered by the system itself.</para>
     <para>A right chevron icon in the activity log entry, opens a modal with the activity metadata.</para>
-     <para>The Activity Log allows to filter by the type of event or user action, commonly refered to as resource type, and by the user that triggered the event or performed the action.
+     <para>The Activity Log allows to filter by the type of event or user action, commonly refered to as resource type, and by the user that triggered the event or performed the action. Only active users are available for filtering.
       It also allows to filter out entries that are newer and/or older than an specific date and time. When setting time based entries, please bear in mind the time difference with the database (server) time.   - 
      </para>
-     <para>Once a filter has been set, the user must click Apply to effectively apply the filter in the view and Reset to undo it it.</para>
+     <para>Once a filter has been set, the user must click Apply to filter out the undesired entries and Reset to remove all the filters.</para>
      <para>Entries related to user management can only be displayed by users that have all:all or all:users permissions. Particularly:
      - Login attempts
      - User creations
