@@ -962,6 +962,30 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
      - what to do when database status is not green
      - what to do wen SAP instances status is not green
   -->
+   <section xml:id="sec-activity-log">
+    <title>Activity Log</title>
+    <para> Trento collects system events and user actions in the activity log, which can be access from the left hand side panel in the Trento console.</para>
+    <para> Each entry in the Activity Log consists of:
+     - A timestamp: what day and time the system event or the user action happened
+     - A message: what type of event or user action happened.
+     - The user that triggered the event or performed the action.</para>
+    <para>A right chevron icon in the activity log entry, opens a modal with the activity metadata.</para>
+     <para>The Activity Log allows to filter by the type of event or user action, commonly refered to as resource type, and by the user that triggered the event or performed the action.
+      It also allows to filter out entries that are newer and/or older than an specific date and time. When setting time based entries, please bear in mind the time difference with the database (server) time.   - 
+     </para>
+     <para>Once a filter has been set, the user must click Apply to effectively apply the filter in the view and Reset to undo it it.</para>
+     <para>Entries related to user management can only be displayed by users that have all:all or all:users permissions. Particularly:
+     - Login attempts
+     - User creations
+     - User modifications
+     - User deletions
+     - Profile updates.</para>
+     <para>Entries in the Activity Log are sorted out from newer to older. By clicking Refresh the user can update the Activity Log view with entries generated since he accssed the view or clicked Refresh last.</para>
+     <para>The pagination features at the bottom of the Activity Log allow the user to determine how many entries they want to see in a page, scroll back and forth through the different pages of the view or jump straight to the last 
+      page and back to first one.</para>
+     <para>The default retention time for entries in teh Activity Log is one month. But it can be changed in the Activity Log secction under Settings. Change the retention period requires all:settings permissions. Expired entries,
+      based on the stablished retention period, are deleted on a daily basis at midnight (database time).</para>
+   </section>
   <section xml:id="sec-trento-checks">
     <title>Performing configuration checks</title>
     <remark>toms 2024-04-18 (change#8): First saptune related configuration checks (host and cluster specific) -> update</remark>
