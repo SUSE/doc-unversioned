@@ -133,8 +133,114 @@
       </step>
     </procedure>
   </sect1>
-  <sect1 xml:id="uptime-data-retrieve">
-    <title>Retrieving the uptime tracker data</title>
+  <sect1 xml:id="uptime-data-retrieve-scc">
+    <title>Viewing and downloading the data from SCC</title>
+
+    <para>
+      The &scc; provides visualization of the uptime data for the last 14 days.
+      The data is presented for individual systems in as a histogram. You can
+      monitor uptime trends and download CSV files with the uptime data for all
+      owned servers as well as for individual systems.
+    </para>
+
+    <note>
+      <title>Only systems with uptime tracking enabled</title>
+      <para>
+        Uptime data graphs and download capabilities are available only for
+        systems that have reported uptime data. For systems that have not
+        reported any uptime data, there are no uptime tracking widgets in the
+        <guimenu>Usage</guimenu> section of SCC.
+      </para>
+    </note>
+
+    <procedure>
+      <title>Viewing and downloading the uptime data</title>
+      <step>
+        <para>
+          Log in to SCC at <link xlink:href="https://scc.suse.com"/> with your
+          credentials.
+        </para>
+      </step>
+      <step>
+        <para>
+          In the left panel, select <guimenu>Organization</guimenu> and click
+          the <guimenu>Systems</guimenu> tab to view the systems in your
+          organization that have uptime data available in the last 14 days.
+        </para>
+      </step>
+      <step>
+        <para>
+          To download a CSV file that contains uptime data for all the systems
+          in your organization, click the <guimenu>Download system uptimes as
+          CVS</guimenu> button in the right.
+        </para>
+        <figure>
+          <title>Download uptime data for all systems in an organization</title>
+          <mediaobject>
+            <imageobject role="fo">
+              <imagedata fileref="uptime-tracker-dld-systems-button.png" width="100%"/>
+            </imageobject>
+            <imageobject role="html">
+              <imagedata fileref="uptime-tracker-dld-systems-button.png" width="100%"/>
+            </imageobject>
+            <textobject role="description"><phrase>Download uptime data for all systems in an organization</phrase>
+            </textobject>
+          </mediaobject>
+        </figure>
+        <note>
+          <title>Empty CSV file</title>
+          <para>
+            If no systems have reported uptime data, the <guimenu>Download
+            system uptimes as CVS</guimenu> button is still available but the
+            downloaded CSV file is empty.
+          </para>
+        </note>
+      </step>
+      <step>
+        <para>
+          To view the uptime data histogram for a specific host, click its name
+          from the list. In the host's <guimenu>Usage</guimenu> section, the
+          14-day histogram provides a detailed visual representation of the
+          system uptime.
+        </para>
+        <figure>
+          <title>Uptime data histogram</title>
+          <mediaobject>
+            <imageobject role="fo">
+              <imagedata fileref="uptime-tracker-histogram.png" width="100%"/>
+            </imageobject>
+            <imageobject role="html">
+              <imagedata fileref="uptime-tracker-histogram.png" width="100%"/>
+            </imageobject>
+            <textobject role="description"><phrase>Uptime data histogram</phrase>
+            </textobject>
+          </mediaobject>
+        </figure>
+      </step>
+      <step>
+        <para>
+          To download a CSV file containing the uptime data for the selected
+          system, click the <guimenu>Download usage CSV</guimenu> button located
+          above the histogram.
+        </para>
+        <figure>
+          <title>Download update data for a host</title>
+          <mediaobject>
+            <imageobject role="fo">
+              <imagedata fileref="uptime-tracker-dld-system-button.png" width="100%"/>
+            </imageobject>
+            <imageobject role="html">
+              <imagedata fileref="uptime-tracker-dld-system-button.png" width="100%"/>
+            </imageobject>
+            <textobject role="description"><phrase>Download update data for a host</phrase>
+            </textobject>
+          </mediaobject>
+        </figure>
+      </step>
+    </procedure>
+  </sect1>
+  <sect1 xml:id="uptime-data-retrieve-cmdline">
+    <title>Retrieving the data from the command line</title>
 
     <para>
       You can retrieve the data that the uptime tracker collects from SCC and
@@ -311,7 +417,7 @@ System;Uuid;Online At Day;Online For Hours
           <para>
             Retrieve the uptime data as described in
             <xref
-            linkend="uptime-data-retrieve"/>. Open the data
+            linkend="uptime-data-retrieve-cmdline"/>. Open the data
             file and search for the line that starts with
             <literal>2024-02-27</literal>. Inspect that day's bit pattern, for
             example, <literal>000011111111111111111111</literal> and count up to
@@ -347,8 +453,7 @@ System;Uuid;Online At Day;Online For Hours
             To retrieve statistics about the host in a specific month, adjust
             the <option>OnlineFrom</option> and <option>OnlineTo</option>
             parameters in the URL query mentioned in
-            <xref
-            linkend="uptime-data-retrieve"/>, for example:
+            <xref linkend="uptime-data-retrieve-cmdline"/>, for example:
           </para>
 <screen>
 &prompt.user;curl -X 'GET' \
