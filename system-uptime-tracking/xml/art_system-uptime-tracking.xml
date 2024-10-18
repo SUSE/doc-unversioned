@@ -44,12 +44,10 @@
     <meta name="series" its:translate="no">Products &amp; Solutions</meta>
     <meta name="description" its:translate="yes">How to monitor the uptime of a client system</meta>
     <meta name="social-descr" its:translate="yes">Monitoring the uptime of a client system</meta>
-    <meta name="task" its:translate="no">
-      <phrase>Subscription Management</phrase>
+    <meta name="task" its:translate="no"><phrase>Subscription Management</phrase>
     </meta>
     <revhistory xml:id="rh-article-system-uptime-tracking">
-      <revision>
-        <date>2024-07-06</date>
+      <revision><date>2024-07-06</date>
         <revdescription>
           <para>
             Initial release of this document.
@@ -65,7 +63,7 @@
       <listitem>
         <para>
           The version of the <package>suseconnect-ng</package> package has to be
-          1.10 or newer. Verify it by running <command>suseconnect
+          1.13 or newer. Verify it by running <command>suseconnect
           --version</command>.
         </para>
       </listitem>
@@ -91,30 +89,16 @@
       <title>Enabling the &systemd; timer</title>
       <step>
         <para>
-          Install the <package>suse-uptime-tracker</package> package.
-        </para>
-<screen>&prompt.sudo;zypper install suse-uptime-tracker</screen>
-        <tip>
-          <para>
-            If the package is not available from the &sls; repositories yet,
-            download it from
-            <link
-    xlink:href="https://build.opensuse.org/package/show/systemsmanagement:SCC/uptime-tracker"/>.
-          </para>
-        </tip>
-      </step>
-      <step>
-        <para>
           Enable and start the
-          <systemitem class="daemon">suse-uptime-tracker</systemitem> service.
+          <systemitem class="daemon">suse-uptime-tracker</systemitem> timer.
         </para>
-<screen>&prompt.sudo;systemctl enable --now suse-uptime-tracker</screen>
+<screen>&prompt.sudo;systemctl enable --now suse-uptime-tracker.timer</screen>
       </step>
       <step>
         <para>
           Check if the service is running.
         </para>
-<screen>&prompt.user;systemctl status suse-uptime-tracker</screen>
+<screen>&prompt.user;systemctl status suse-uptime-tracker.timer</screen>
       </step>
     </procedure>
 
@@ -140,12 +124,10 @@
           running every 15 minutes and stores the findings in a log file
           <filename>/etc/zypp/suse-uptime.log</filename>. The log file is
           uploaded to SCC/RMT by the
-          <systemitem
-          class="daemon">suseconnect-keepalive</systemitem>
-          service, which is triggered by the
-          <systemitem
-          class="daemon">suseconnect-keepalive</systemitem>
-          timer every 24 hours. Verify that the timer is running.
+          <systemitem class="daemon">suseconnect-keepalive</systemitem> service,
+          which is triggered by the
+          <systemitem class="daemon">suseconnect-keepalive</systemitem> timer
+          every 24 hours. Verify that the timer is running.
         </para>
 <screen>&prompt.user;systemctl status suseconnect-keepalive.timer</screen>
       </step>
@@ -164,8 +146,7 @@
         <para>
           Obtain your organization mirroring credentials from the
           <guimenu>Proxies</guimenu> tab in the SCC website at
-          <link
-          xlink:href="https://scc.suse.com"/>.
+          <link xlink:href="https://scc.suse.com"/>.
         </para>
       </step>
       <step>
@@ -230,18 +211,38 @@
     </para>
 
 <screen>
-System;Uuid;Online At Day;Online At Hours;Online For Hours
-15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-08;111111100000000011111111;15
-15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-09;111000000000000000000000;3
-15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-11;000000000000000111111111;9
-15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-12;111110000000000111111111;14
-15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-13;111111000000000111111111;15
-15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-14;111000000000000000000000;3
-15892210;9e818a04-9e82-4584-8f41-b0f39a045526;2024-02-27;000011111111111111111111;20
-15892210;9e818a04-9e82-4584-8f41-b0f39a045526;2024-02-28;000011111111111111111111;20
-15892210;9e818a04-9e82-4584-8f41-b0f39a045526;2024-02-29;000011111111111111111111;20
-15892210;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-01;011111000000000011111111;13
+System;Uuid;Online At Day;Online For Hours
+15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-08;15
+15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-09;3
+15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-11;9
+15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-12;14
+15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-13;15
+15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-14;3
+15892210;9e818a04-9e82-4584-8f41-b0f39a045526;2024-02-27;20
+15892210;9e818a04-9e82-4584-8f41-b0f39a045526;2024-02-28;20
+15892210;9e818a04-9e82-4584-8f41-b0f39a045526;2024-02-29;20
+15892210;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-01;13
 </screen>
+
+    <para>
+      If the above <command>wget</command> and <command>curl</command> commands
+      include the <option>include_hourly=true</option> option, you receive more
+      details about at what hours the host was up, for example:
+    </para>
+
+<screen>
+  System;Uuid;Online At Day;Online At Hours;Online For Hours
+  15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-08;111111100000000011111111;15
+  15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-09;111000000000000000000000;3
+  15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-11;000000000000000111111111;9
+  15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-12;111110000000000111111111;14
+  15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-13;111111000000000111111111;15
+  15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-14;111000000000000000000000;3
+  15892210;9e818a04-9e82-4584-8f41-b0f39a045526;2024-02-27;000011111111111111111111;20
+  15892210;9e818a04-9e82-4584-8f41-b0f39a045526;2024-02-28;000011111111111111111111;20
+  15892210;9e818a04-9e82-4584-8f41-b0f39a045526;2024-02-29;000011111111111111111111;20
+  15892210;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-01;011111000000000011111111;13
+  </screen>
 
     <para>
       The columns have the following meaning:
@@ -352,7 +353,7 @@ System;Uuid;Online At Day;Online At Hours;Online For Hours
 <screen>
 &prompt.user;curl -X 'GET' \
 -u'<replaceable>USERNAME</replaceable>:<replaceable>PASSWORD</replaceable>' \
-'https://scc.suse.com/connect/organizations/system_uptimes?SystemId=16300735&amp;OnlineFrom=2024-02-01&amp;OnlineTo=2024-02-29' \
+'https://scc.suse.com/connect/organizations/system_uptimes?include_hourly=true&amp;SystemId=16300735&amp;OnlineFrom=2024-02-01&amp;OnlineTo=2024-02-29' \
 -H 'accept: text/csv'
 System;Uuid;Online At Day;Online At Hours;Online For Hours
 16300735;78740b8c-7d23-42f8-b5fe-4776c47b9cb9;2024-04-24;000000000000000000000001;1
@@ -379,7 +380,7 @@ System;Uuid;Online At Day;Online At Hours;Online For Hours
 <screen>
 &prompt.user;curl -X 'GET' \
 -u'<replaceable>USERNAME</replaceable>:<replaceable>PASSWORD</replaceable>' \
-'https://scc.suse.com/connect/organizations/system_uptimes \
+'https://scc.suse.com/connect/organizations/system_uptimes?include_hourly=true \
 -H 'accept: text/csv'
 System;Uuid;Online At Day;Online At Hours;Online For Hours
 15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-08;111111100000000011111111;15
