@@ -41,7 +41,7 @@ To enable OIDC when using kubernetes deployment with helm, proceed as follows:
    ```
    HELM_EXPERIMENTAL_OCI=1 helm ... \
       --set trento-web.oidc.enabled=true \
-      --set trento-web.oidc.cliendId=<OIDC_CLIENT_ID> \
+      --set trento-web.oidc.clientId=<OIDC_CLIENT_ID> \
       --set trento-web.oidc.clientSecret=<OIDC_CLIENT_SECRET> \
       --set trento-web.oidc.baseUrl=<OIDC_BASE_URL>
    ```
