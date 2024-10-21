@@ -44,16 +44,35 @@
     <meta name="series" its:translate="no">Products &amp; Solutions</meta>
     <meta name="description" its:translate="yes">How to monitor the uptime of a client system</meta>
     <meta name="social-descr" its:translate="yes">Monitoring the uptime of a client system</meta>
-    <meta name="task" its:translate="no">
-      <phrase>Subscription Management</phrase>
+    <meta name="task" its:translate="no"><phrase>Subscription Management</phrase>
     </meta>
     <revhistory xml:id="rh-article-system-uptime-tracking">
-      <revision>
-        <date>2024-07-06</date>
+      <revision><date>2024-07-06</date>
         <revdescription>
           <para>
-            Initial release of this document.
+            Initial release of the document
           </para>
+        </revdescription>
+      </revision>
+      <revision><date>2024-10-21</date>
+        <revdescription>
+          <para>
+            Update reflecting the following changes:
+          </para>
+          <itemizedlist>
+            <listitem>
+              <para>
+                All functionality is included in the
+                <package>suseconnect-ng</package> package.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                SCC has a visual representation for the uptime data and allows
+                you to download the log files.
+              </para>
+            </listitem>
+          </itemizedlist>
         </revdescription>
       </revision>
     </revhistory>
@@ -65,7 +84,7 @@
       <listitem>
         <para>
           The version of the <package>suseconnect-ng</package> package has to be
-          1.10 or newer. Verify it by running <command>suseconnect
+          1.13 or newer. Verify it by running <command>suseconnect
           --version</command>.
         </para>
       </listitem>
@@ -91,30 +110,16 @@
       <title>Enabling the &systemd; timer</title>
       <step>
         <para>
-          Install the <package>suse-uptime-tracker</package> package.
-        </para>
-<screen>&prompt.sudo;zypper install suse-uptime-tracker</screen>
-        <tip>
-          <para>
-            If the package is not available from the &sls; repositories yet,
-            download it from
-            <link
-    xlink:href="https://build.opensuse.org/package/show/systemsmanagement:SCC/uptime-tracker"/>.
-          </para>
-        </tip>
-      </step>
-      <step>
-        <para>
           Enable and start the
-          <systemitem class="daemon">suse-uptime-tracker</systemitem> service.
+          <systemitem class="daemon">suse-uptime-tracker</systemitem> timer.
         </para>
-<screen>&prompt.sudo;systemctl enable --now suse-uptime-tracker</screen>
+<screen>&prompt.sudo;systemctl enable --now suse-uptime-tracker.timer</screen>
       </step>
       <step>
         <para>
           Check if the service is running.
         </para>
-<screen>&prompt.user;systemctl status suse-uptime-tracker</screen>
+<screen>&prompt.user;systemctl status suse-uptime-tracker.timer</screen>
       </step>
     </procedure>
 
@@ -140,19 +145,110 @@
           running every 15 minutes and stores the findings in a log file
           <filename>/etc/zypp/suse-uptime.log</filename>. The log file is
           uploaded to SCC/RMT by the
-          <systemitem
-          class="daemon">suseconnect-keepalive</systemitem>
-          service, which is triggered by the
-          <systemitem
-          class="daemon">suseconnect-keepalive</systemitem>
-          timer every 24 hours. Verify that the timer is running.
+          <systemitem class="daemon">suseconnect-keepalive</systemitem> service,
+          which is triggered by the
+          <systemitem class="daemon">suseconnect-keepalive</systemitem> timer
+          every 24 hours. Verify that the timer is running.
         </para>
 <screen>&prompt.user;systemctl status suseconnect-keepalive.timer</screen>
       </step>
     </procedure>
   </sect1>
-  <sect1 xml:id="uptime-data-retrieve">
-    <title>Retrieving the uptime tracker data</title>
+  <sect1 xml:id="uptime-data-retrieve-scc">
+    <title>Viewing and downloading the data from SCC</title>
+
+    <para>
+      The &scc; provides visualization of the uptime data for the last 14 days.
+      The data is presented for individual systems in a histogram. You can
+      monitor uptime trends and download CSV files with the uptime data for all
+      owned servers and individual systems.
+    </para>
+
+    <note>
+      <title>Only systems with uptime tracking enabled</title>
+      <para>
+        Uptime data graphs and download capabilities are available only for
+        systems that have reported uptime data. For systems that have not
+        reported any uptime data, there are no uptime tracking widgets in the
+        <guimenu>Usage</guimenu> section of SCC.
+      </para>
+    </note>
+
+    <procedure>
+      <title>Viewing and downloading the uptime data</title>
+      <step>
+        <para>
+          Log in to SCC at <link xlink:href="https://scc.suse.com"/> with your
+          credentials.
+        </para>
+      </step>
+      <step>
+        <para>
+          In the left panel, select <guimenu>Organization</guimenu> and click
+          the <guimenu>Systems</guimenu> tab to view the systems in your
+          organization that have uptime data available in the last 14 days.
+        </para>
+      </step>
+      <step>
+        <para>
+          To download a CSV file that contains uptime data for all the systems
+          in your organization, click the <guimenu>Download system uptimes as
+          CSV</guimenu> button on the right.
+        </para>
+        <figure>
+          <title>Download uptime data for all systems in an organization</title>
+          <mediaobject>
+            <imageobject role="fo">
+              <imagedata fileref="uptime-tracker-dld-systems-button.png" width="100%"/>
+            </imageobject>
+            <imageobject role="html">
+              <imagedata fileref="uptime-tracker-dld-systems-button.png" width="100%"/>
+            </imageobject>
+            <textobject role="description"><phrase>Download uptime data for all systems in an organization</phrase>
+            </textobject>
+          </mediaobject>
+        </figure>
+        <note>
+          <title>Empty CSV file</title>
+          <para>
+            If no systems have reported uptime data, the <guimenu>Download
+            system uptimes as CSV</guimenu> button is still available but the
+            downloaded CSV file is empty.
+          </para>
+        </note>
+      </step>
+      <step>
+        <para>
+          To view the uptime data histogram for a specific host, click its name
+          from the list. In the host's <guimenu>Usage</guimenu> section, the
+          14-day histogram provides a detailed visual representation of the
+          system uptime.
+        </para>
+        <figure>
+          <title>Uptime data histogram</title>
+          <mediaobject>
+            <imageobject role="fo">
+              <imagedata fileref="uptime-tracker-histogram.png" width="100%"/>
+            </imageobject>
+            <imageobject role="html">
+              <imagedata fileref="uptime-tracker-histogram.png" width="100%"/>
+            </imageobject>
+            <textobject role="description"><phrase>Uptime data histogram</phrase>
+            </textobject>
+          </mediaobject>
+        </figure>
+      </step>
+      <step>
+        <para>
+          To download a CSV file containing the uptime data for the selected
+          system, click the <guimenu>Download usage CSV</guimenu> button located
+          above the histogram.
+        </para>
+      </step>
+    </procedure>
+  </sect1>
+  <sect1 xml:id="uptime-data-retrieve-cmdline">
+    <title>Retrieving the data from the command line</title>
 
     <para>
       You can retrieve the data that the uptime tracker collects from SCC and
@@ -162,10 +258,9 @@
     <procedure>
       <step>
         <para>
-          Obtain your organization mirroring credentials from the
-          <guimenu>Proxies</guimenu> tab in the SCC website at
-          <link
-          xlink:href="https://scc.suse.com"/>.
+          Obtain your organization's mirroring credentials from the
+          <guimenu>Proxies</guimenu> tab on the SCC Web site at
+          <link xlink:href="https://scc.suse.com"/>.
         </para>
       </step>
       <step>
@@ -201,7 +296,7 @@
 <screen>
 &prompt.user;curl -X 'GET' \
 -u'<replaceable>USERNAME</replaceable>:<replaceable>PASSWORD</replaceable>' \
-'https://scc.suse.com/connect/organizations/system_uptimes?SystemId=16300735&amp;OnlineFrom=2024-04-24&amp;OnlineTo=2024-05-01' \
+'https://scc.suse.com/connect/organizations/system_uptimes?system_id=16300735&amp;online_from=2024-04-24&amp;online_to=2024-05-01' \
 -H 'accept: text/csv'
 </screen>
           </step>
@@ -213,7 +308,7 @@
 <screen>
 &prompt.user;wget --no-check-certificate \
 --user=<replaceable>USERNAME</replaceable> --password=<replaceable>PASSWORD</replaceable> \
-'https://scc.suse.com/connect/organizations/system_uptimes?SystemId=16300735&amp;OnlineFrom=2024-04-24&amp;OnlineTo=2024-05-01' \
+'https://scc.suse.com/connect/organizations/system_uptimes?system_id=16300735&amp;online_from=2024-04-24&amp;online_to=2024-05-01' \
 --header='accept: text/csv'
 </screen>
           </step>
@@ -230,18 +325,38 @@
     </para>
 
 <screen>
-System;Uuid;Online At Day;Online At Hours;Online For Hours
-15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-08;111111100000000011111111;15
-15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-09;111000000000000000000000;3
-15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-11;000000000000000111111111;9
-15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-12;111110000000000111111111;14
-15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-13;111111000000000111111111;15
-15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-14;111000000000000000000000;3
-15892210;9e818a04-9e82-4584-8f41-b0f39a045526;2024-02-27;000011111111111111111111;20
-15892210;9e818a04-9e82-4584-8f41-b0f39a045526;2024-02-28;000011111111111111111111;20
-15892210;9e818a04-9e82-4584-8f41-b0f39a045526;2024-02-29;000011111111111111111111;20
-15892210;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-01;011111000000000011111111;13
+System;Uuid;Online At Day;Online For Hours
+15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-08;15
+15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-09;3
+15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-11;9
+15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-12;14
+15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-13;15
+15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-14;3
+15892210;9e818a04-9e82-4584-8f41-b0f39a045526;2024-02-27;20
+15892210;9e818a04-9e82-4584-8f41-b0f39a045526;2024-02-28;20
+15892210;9e818a04-9e82-4584-8f41-b0f39a045526;2024-02-29;20
+15892210;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-01;13
 </screen>
+
+    <para>
+      If the above <command>wget</command> and <command>curl</command> commands
+      include the <option>include_hourly=true</option> option, you receive more
+      details about at what hours the host was up, for example:
+    </para>
+
+<screen>
+  System;Uuid;Online At Day;Online At Hours;Online For Hours
+  15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-08;111111100000000011111111;15
+  15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-09;111000000000000000000000;3
+  15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-11;000000000000000111111111;9
+  15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-12;111110000000000111111111;14
+  15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-13;111111000000000111111111;15
+  15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-14;111000000000000000000000;3
+  15892210;9e818a04-9e82-4584-8f41-b0f39a045526;2024-02-27;000011111111111111111111;20
+  15892210;9e818a04-9e82-4584-8f41-b0f39a045526;2024-02-28;000011111111111111111111;20
+  15892210;9e818a04-9e82-4584-8f41-b0f39a045526;2024-02-29;000011111111111111111111;20
+  15892210;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-01;011111000000000011111111;13
+  </screen>
 
     <para>
       The columns have the following meaning:
@@ -303,6 +418,22 @@ System;Uuid;Online At Day;Online At Hours;Online For Hours
       <qandaentry>
         <question>
           <para>
+            Why is the uptime data not available?
+          </para>
+        </question>
+        <answer>
+          <para>
+            On the client host, verify that the
+            <systemitem role="daemon">suseconnect-keepalive</systemitem> timer
+            is running. It controls triggering the
+            <systemitem role="daemon">suseconnect-keepalive.service</systemitem>
+            service automatically every 24 hours.
+          </para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>
             Was the host up between 9–10 a.m. on 2024-02-27?
           </para>
         </question>
@@ -310,8 +441,8 @@ System;Uuid;Online At Day;Online At Hours;Online For Hours
           <para>
             Retrieve the uptime data as described in
             <xref
-            linkend="uptime-data-retrieve"/>. Open the data
-            file and search for the line that starts with
+            linkend="uptime-data-retrieve-cmdline"/>. Open the
+            data file and search for the line that starts with
             <literal>2024-02-27</literal>. Inspect that day's bit pattern, for
             example, <literal>000011111111111111111111</literal> and count up to
             the 10th digit (the bit starts with 0 a.m.) from left. The
@@ -344,15 +475,14 @@ System;Uuid;Online At Day;Online At Hours;Online For Hours
         <answer>
           <para>
             To retrieve statistics about the host in a specific month, adjust
-            the <option>OnlineFrom</option> and <option>OnlineTo</option>
+            the <option>online_from</option> and <option>online_to</option>
             parameters in the URL query mentioned in
-            <xref
-            linkend="uptime-data-retrieve"/>, for example:
+            <xref linkend="uptime-data-retrieve-cmdline"/>, for example:
           </para>
 <screen>
 &prompt.user;curl -X 'GET' \
 -u'<replaceable>USERNAME</replaceable>:<replaceable>PASSWORD</replaceable>' \
-'https://scc.suse.com/connect/organizations/system_uptimes?SystemId=16300735&amp;OnlineFrom=2024-02-01&amp;OnlineTo=2024-02-29' \
+'https://scc.suse.com/connect/organizations/system_uptimes?include_hourly=true&amp;system_id=16300735&amp;online_from=2024-02-01&amp;online_to=2024-02-29' \
 -H 'accept: text/csv'
 System;Uuid;Online At Day;Online At Hours;Online For Hours
 16300735;78740b8c-7d23-42f8-b5fe-4776c47b9cb9;2024-04-24;000000000000000000000001;1
@@ -372,14 +502,14 @@ System;Uuid;Online At Day;Online At Hours;Online For Hours
         </question>
         <answer>
           <para>
-            For that purpose, omit the <option>SystemId</option>,
-            <option>OnlineFrom</option> and <option>OnlineTo</option> parameters
-            from the URL query, for example:
+            For that purpose, omit the <option>system_id</option>,
+            <option>online_from</option> and <option>online_to</option>
+            parameters from the URL query, for example:
           </para>
 <screen>
 &prompt.user;curl -X 'GET' \
 -u'<replaceable>USERNAME</replaceable>:<replaceable>PASSWORD</replaceable>' \
-'https://scc.suse.com/connect/organizations/system_uptimes \
+'https://scc.suse.com/connect/organizations/system_uptimes?include_hourly=true \
 -H 'accept: text/csv'
 System;Uuid;Online At Day;Online At Hours;Online For Hours
 15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-08;111111100000000011111111;15
