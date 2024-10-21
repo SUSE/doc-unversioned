@@ -50,7 +50,7 @@
       <revision><date>2024-07-06</date>
         <revdescription>
           <para>
-            Initial release of this document.
+            Initial release of the document
           </para>
         </revdescription>
       </revision>
@@ -138,9 +138,9 @@
 
     <para>
       The &scc; provides visualization of the uptime data for the last 14 days.
-      The data is presented for individual systems in as a histogram. You can
+      The data is presented for individual systems in a histogram. You can
       monitor uptime trends and download CSV files with the uptime data for all
-      owned servers as well as for individual systems.
+      owned servers and individual systems.
     </para>
 
     <note>
@@ -172,7 +172,7 @@
         <para>
           To download a CSV file that contains uptime data for all the systems
           in your organization, click the <guimenu>Download system uptimes as
-          CVS</guimenu> button in the right.
+          CSV</guimenu> button on the right.
         </para>
         <figure>
           <title>Download uptime data for all systems in an organization</title>
@@ -191,7 +191,7 @@
           <title>Empty CSV file</title>
           <para>
             If no systems have reported uptime data, the <guimenu>Download
-            system uptimes as CVS</guimenu> button is still available but the
+            system uptimes as CSV</guimenu> button is still available but the
             downloaded CSV file is empty.
           </para>
         </note>
@@ -237,8 +237,8 @@
     <procedure>
       <step>
         <para>
-          Obtain your organization mirroring credentials from the
-          <guimenu>Proxies</guimenu> tab in the SCC website at
+          Obtain your organization's mirroring credentials from the
+          <guimenu>Proxies</guimenu> tab on the SCC Web site at
           <link xlink:href="https://scc.suse.com"/>.
         </para>
       </step>
