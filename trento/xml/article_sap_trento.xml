@@ -750,7 +750,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
           <listitem>
             <para><parameter>facts-service-url</parameter>: the address of the AMQP RabbitMQ service used
             for communication with the checks engine (wanda). The right value of this parameter depends on
-            how Trento Server was deployed
+            how Trento Server was deployed.</para>
             <para> In a Kubernetes deployment, it should be amqp://trento:trento@TRENTO_SERVER_HOSTNAME:5672/
              unless we have used helm to update the default RabbitMQ username and password (trento),
              in which case we should use the custom value. </para>
