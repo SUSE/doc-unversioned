@@ -16,7 +16,7 @@
       <procedure>
         <step>
           <para>
-            Enable the Container module:
+            Enable the containers module:
           </para>
 <programlisting language="bash">
 SUSEConnect --product sle-module-containers/15.5/x86_64

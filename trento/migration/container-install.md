@@ -8,7 +8,7 @@ Follow the steps in [4.2 systemd deployment](https://documentation.suse.com/sles
 
 ### Install Docker container runtime
 
-1. Enable the container`s module:
+1. Enable the containers module:
 
    ```bash
    SUSEConnect --product sle-module-containers/15.5/x86_64
