@@ -113,7 +113,7 @@ REFRESH_TOKEN_ENC_SECRET=$(openssl rand -out /dev/stdout 48 | base64)
           </para>
 <programlisting language="bash">
 docker volume create trento-checks \
-  && docker run \
+  &amp;&amp; docker run \
   -v trento-checks:/usr/share/trento/checks \
   registry.suse.com/trento/trento-checks:1.0.0
 </programlisting>
