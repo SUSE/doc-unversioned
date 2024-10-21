@@ -438,6 +438,11 @@ docker run -d \
     <orderedlist numeration="arabic" spacing="compact">
       <listitem>
         <para>
+          Obtaining metadata content from the IDP
+        </para>
+      </listitem>
+      <listitem>
+        <para>
           Start Trento to generate the certificates and get them
         </para>
       </listitem>
@@ -451,15 +456,36 @@ docker run -d \
           Configure SAML IDP and user profiles
         </para>
       </listitem>
-      <listitem>
-        <para>
-          Restart Trento
-        </para>
-      </listitem>
     </orderedlist>
     <para>
       See the following subsections for details.
     </para>
+    <section xml:id="obtaining-metadata-content-from-the-idp">
+      <title>Obtaining metadata content from the IDP</title>
+      <para>
+        The <filename>metadata.xml</filename> file defines the agreement
+        between SP and IDP during SAML communications. It is used to
+        identify the SAML client as well. The content of this file must
+        be provided to Trento. Options
+        <option>SAML_METADATA_URL</option> and
+        <option>SAML_METDATA_CONTENT</option> are available for that.
+      </para>
+      <para>
+        If the <option>SAML_METDATA_CONTENT</option> option is being
+        used, the content of this variable must be updated with the IDP
+        metadata as single line string. On the other hand, if
+        <option>SAML_METADATA_URL</option> is used, the new metadata is
+        automatically fetched when Trento starts. If neither of these
+        steps are completed, communication will fail because the message
+        signatures will not be recognized.
+      </para>
+      <para>
+        If the used IDP has the endpoint to provide the
+        <filename>metadata.xml</filename> file content, prefer the
+        variable <option>SAML_METADATA_URL</option>. Trento will
+        automatically fetch metadata when started.
+      </para>
+    </section>
     <section xml:id="getting-certificates-from-trento">
       <title>Getting certificates from Trento</title>
       <para>
@@ -467,13 +493,13 @@ docker run -d \
         installation. Regardless of the installation mode, when Trento
         is installed the first time the certificates are created and the
         public certificate file content is available in the
-        <uri>http://localhost:4000/api/public_keys</uri> route.
+        <uri>https://#{TRENTO_WEB_ORIGIN}/api/public_keys</uri> route.
       </para>
       <para>
         Use the following command to get the certificate content:
       </para>
       <programlisting language="bash">
-curl http://localhost:4000/api/public_keys
+curl https://#{TRENTO_WEB_ORIGIN}/api/public_keys
 </programlisting>
       <para>
         Copy the content of the certificate from there and provide it to
@@ -493,9 +519,8 @@ curl http://localhost:4000/api/public_keys
           As commented previously, a set of certificates is needed to
           enable signed communication. Provide the certificate generated
           by Trento to the IDP (each IDP has a different way to do
-          this). Make sure that the provided certificate is available in
-          the SAML <filename>metadata.xml</filename> file and has
-          preference over other uploaded certificates.
+          this). Make sure that the configured certificate is used for
+          signing and encrptying messages.
         </para>
       </section>
       <section xml:id="configuring-saml-user-profile">
@@ -556,62 +581,6 @@ curl http://localhost:4000/api/public_keys
           within the IDP.
         </para>
       </section>
-    </section>
-    <section xml:id="restarting-trento">
-      <title>Restarting Trento</title>
-      <para>
-        Once the certificate is provided to the IDP, the IDP recreates
-        its own <filename>metadata.xml</filename> file. This file
-        defines which certificate is used to sign the messages by both
-        sides. At this point, Trento Web must be restarted to use the
-        new <filename>metadata.xml</filename> content.
-      </para>
-      <para>
-        If the <option>SAML_METDATA_CONTENT</option> option is being
-        used, the content of this variable must be updated with the new
-        metadata as single line string. On the other hand, if
-        <option>SAML_METADATA_URL</option> is used, the new metadata is
-        automatically fetched. If neither of these steps are completed,
-        communication will fail because the message signatures will not
-        be recognized.
-      </para>
-      <para>
-        If the used IDP has the endpoint to provide the
-        <filename>metadata.xml</filename> file content, prefer the
-        variable <option>SAML_METADATA_URL</option>. Trento will
-        automatically fetch metadata when restarted.
-      </para>
-      <note>
-        <para>This restart must be done manually, by the admin.</para>
-      </note>
-      <para>
-        Follow the next instructions to restart with the configured
-        options:
-      </para>
-      <orderedlist numeration="arabic">
-        <listitem>
-          <para>
-            Open the file <filename>/etc/trento/trento-web</filename>.
-          </para>
-        </listitem>
-        <listitem>
-          <para>
-            Add the following environment variables to this file.
-            Required variables are:
-          </para>
-          <programlisting>
-# Other SAML options
-SAML_METADATA_URL=&lt;SAML_METADATA_URL&gt;
-# Or
-SAML_METDATA_CONTENT=&lt;SAML_METADATA_CONTENT&gt;
-</programlisting>
-        </listitem>
-        <listitem>
-          <para>
-            Restart the application.
-          </para>
-        </listitem>
-      </orderedlist>
     </section>
     <section xml:id="enabling-saml-when-using-kubernetes-deployment">
       <title>Enabling SAML when using kubernetes deployment</title>
