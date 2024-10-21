@@ -77,7 +77,7 @@
           <programlisting>
 HELM_EXPERIMENTAL_OCI=1 helm ... \
    --set trento-web.oidc.enabled=true \
-   --set trento-web.oidc.cliendId=&lt;OIDC_CLIENT_ID&gt; \
+   --set trento-web.oidc.clientId=&lt;OIDC_CLIENT_ID&gt; \
    --set trento-web.oidc.clientSecret=&lt;OIDC_CLIENT_SECRET&gt; \
    --set trento-web.oidc.baseUrl=&lt;OIDC_BASE_URL&gt;
 </programlisting>
