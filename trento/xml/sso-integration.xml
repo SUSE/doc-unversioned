@@ -238,7 +238,7 @@ docker run -d \
           <programlisting>
 HELM_EXPERIMENTAL_OCI=1 helm ... \
    --set trento-web.oauth2.enabled=true \
-   --set trento-web.oauth2.cliendId=&lt;OAUTH2_CLIENT_ID&gt; \
+   --set trento-web.oauth2.clientId=&lt;OAUTH2_CLIENT_ID&gt; \
    --set trento-web.ouath2.clientSecret=&lt;OAUTH2_CLIENT_SECRET&gt; \
    --set trento-web.oauth2.baseUrl=&lt;OAUTH2_BASE_URL&gt; \
    --set trento-web.oauth2.authorizeUrl=&lt;OAUTH2_AUTHORIZE_URL&gt; \
