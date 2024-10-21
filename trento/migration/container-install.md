@@ -63,6 +63,15 @@ Follow the steps in [4.2 systemd deployment](https://documentation.suse.com/sles
    REFRESH_TOKEN_ENC_SECRET=$(openssl rand -out /dev/stdout 48 | base64)
    ```
 
+1. Install the checks on the system in a shared volume
+
+   ```bash
+   docker volume create trento-checks \
+     && docker run \
+     -v trento-checks:/usr/share/trento/checks \
+     registry.suse.com/trento/trento-checks:1.0.0
+   ```
+
 1. Install trento-wanda on Docker:
 
    ```bash
@@ -70,6 +79,7 @@ Follow the steps in [4.2 systemd deployment](https://documentation.suse.com/sles
        -p 4001:4000 \
        --network trento-net \
        --add-host "host.docker.internal:host-gateway" \
+       -v trento-checks:/usr/share/trento/checks:ro \
        -e CORS_ORIGIN=localhost \
        -e SECRET_KEY_BASE=$WANDA_SECRET_KEY_BASE \
        -e ACCESS_TOKEN_ENC_SECRET=$ACCESS_TOKEN_ENC_SECRET \
