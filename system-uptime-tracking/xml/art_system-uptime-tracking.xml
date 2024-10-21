@@ -223,19 +223,6 @@
           system, click the <guimenu>Download usage CSV</guimenu> button located
           above the histogram.
         </para>
-        <figure>
-          <title>Download update data for a host</title>
-          <mediaobject>
-            <imageobject role="fo">
-              <imagedata fileref="uptime-tracker-dld-system-button.png" width="100%"/>
-            </imageobject>
-            <imageobject role="html">
-              <imagedata fileref="uptime-tracker-dld-system-button.png" width="100%"/>
-            </imageobject>
-            <textobject role="description"><phrase>Download update data for a host</phrase>
-            </textobject>
-          </mediaobject>
-        </figure>
       </step>
     </procedure>
   </sect1>
@@ -288,7 +275,7 @@
 <screen>
 &prompt.user;curl -X 'GET' \
 -u'<replaceable>USERNAME</replaceable>:<replaceable>PASSWORD</replaceable>' \
-'https://scc.suse.com/connect/organizations/system_uptimes?SystemId=16300735&amp;OnlineFrom=2024-04-24&amp;OnlineTo=2024-05-01' \
+'https://scc.suse.com/connect/organizations/system_uptimes?system_id=16300735&amp;online_from=2024-04-24&amp;online_to=2024-05-01' \
 -H 'accept: text/csv'
 </screen>
           </step>
@@ -300,7 +287,7 @@
 <screen>
 &prompt.user;wget --no-check-certificate \
 --user=<replaceable>USERNAME</replaceable> --password=<replaceable>PASSWORD</replaceable> \
-'https://scc.suse.com/connect/organizations/system_uptimes?SystemId=16300735&amp;OnlineFrom=2024-04-24&amp;OnlineTo=2024-05-01' \
+'https://scc.suse.com/connect/organizations/system_uptimes?system_id=16300735&amp;online_from=2024-04-24&amp;online_to=2024-05-01' \
 --header='accept: text/csv'
 </screen>
           </step>
@@ -410,6 +397,22 @@ System;Uuid;Online At Day;Online For Hours
       <qandaentry>
         <question>
           <para>
+            Why is the uptime data not available?
+          </para>
+        </question>
+        <answer>
+          <para>
+            On the client host, verify that the
+            <systemitem role="daemon">suseconnect-keepalive</systemitem> timer
+            is running. It controls triggering the
+            <systemitem role="daemon">suseconnect-keepalive.service</systemitem>
+            service automatically every 24 hours.
+          </para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>
             Was the host up between 9–10 a.m. on 2024-02-27?
           </para>
         </question>
@@ -417,8 +420,8 @@ System;Uuid;Online At Day;Online For Hours
           <para>
             Retrieve the uptime data as described in
             <xref
-            linkend="uptime-data-retrieve-cmdline"/>. Open the data
-            file and search for the line that starts with
+            linkend="uptime-data-retrieve-cmdline"/>. Open the
+            data file and search for the line that starts with
             <literal>2024-02-27</literal>. Inspect that day's bit pattern, for
             example, <literal>000011111111111111111111</literal> and count up to
             the 10th digit (the bit starts with 0 a.m.) from left. The
@@ -451,14 +454,14 @@ System;Uuid;Online At Day;Online For Hours
         <answer>
           <para>
             To retrieve statistics about the host in a specific month, adjust
-            the <option>OnlineFrom</option> and <option>OnlineTo</option>
+            the <option>online_from</option> and <option>online_to</option>
             parameters in the URL query mentioned in
             <xref linkend="uptime-data-retrieve-cmdline"/>, for example:
           </para>
 <screen>
 &prompt.user;curl -X 'GET' \
 -u'<replaceable>USERNAME</replaceable>:<replaceable>PASSWORD</replaceable>' \
-'https://scc.suse.com/connect/organizations/system_uptimes?include_hourly=true&amp;SystemId=16300735&amp;OnlineFrom=2024-02-01&amp;OnlineTo=2024-02-29' \
+'https://scc.suse.com/connect/organizations/system_uptimes?include_hourly=true&amp;system_id=16300735&amp;online_from=2024-02-01&amp;online_to=2024-02-29' \
 -H 'accept: text/csv'
 System;Uuid;Online At Day;Online At Hours;Online For Hours
 16300735;78740b8c-7d23-42f8-b5fe-4776c47b9cb9;2024-04-24;000000000000000000000001;1
@@ -478,9 +481,9 @@ System;Uuid;Online At Day;Online At Hours;Online For Hours
         </question>
         <answer>
           <para>
-            For that purpose, omit the <option>SystemId</option>,
-            <option>OnlineFrom</option> and <option>OnlineTo</option> parameters
-            from the URL query, for example:
+            For that purpose, omit the <option>system_id</option>,
+            <option>online_from</option> and <option>online_to</option>
+            parameters from the URL query, for example:
           </para>
 <screen>
 &prompt.user;curl -X 'GET' \
