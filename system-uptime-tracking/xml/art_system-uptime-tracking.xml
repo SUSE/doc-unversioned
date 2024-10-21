@@ -54,6 +54,27 @@
           </para>
         </revdescription>
       </revision>
+      <revision><date>2024-10-21</date>
+        <revdescription>
+          <para>
+            Update reflecting the following changes:
+          </para>
+          <itemizedlist>
+            <listitem>
+              <para>
+                All functionality is included in the
+                <package>suseconnect-ng</package> package.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                SCC has a visual representation for the uptime data and allows
+                you to download the log files.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </revdescription>
+      </revision>
     </revhistory>
   </info>
   <sect1 xml:id="uptime-requirements">
