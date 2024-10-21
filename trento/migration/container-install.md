@@ -41,7 +41,7 @@ Follow the steps in [4.2 systemd deployment](https://documentation.suse.com/sles
 1. Verify the subnet of trento-net:
 
    ```bash
-   docker network inspect trento-net  --format '{{range .IPAM.Config}}{{.Subnet}}{{end}}'
+   docker network inspect trento-net --format '{{range .IPAM.Config}}{{.Subnet}}{{end}}'
    ```
 
    Expected output:

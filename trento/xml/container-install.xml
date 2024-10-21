@@ -74,7 +74,7 @@ docker network create trento-net
             Verify the subnet of trento-net:
           </para>
 <programlisting language="bash">
-docker network inspect trento-net  --format '{{range .IPAM.Config}}{{.Subnet}}{{end}}'
+docker network inspect trento-net --format '{{range .IPAM.Config}}{{.Subnet}}{{end}}'
 </programlisting>
           <para>
             Expected output is as follows:
