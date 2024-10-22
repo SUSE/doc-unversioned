@@ -14,7 +14,7 @@ Follow the steps in [4.2 systemd deployment](https://documentation.suse.com/sles
    SUSEConnect --product sle-module-containers/15.5/x86_64
    ```
 
-   > **Note:** Using a different Service Pack than SP5 requires to change repository: [SLE15 SP3: `SUSEConnect --product sle-module-containers/15.3/x86_64`,SLE15 SP4: ` SUSEConnect --product sle-module-containers/15.4/x86_64`]
+   > **Note:** Using a different Service Pack than SP5 requires to change repository: [SLE15 SP3: `SUSEConnect --product sle-module-containers/15.3/x86_64`,SLE15 SP4: `SUSEConnect --product sle-module-containers/15.4/x86_64`]
 
 1. Install Docker:
 
@@ -36,9 +36,9 @@ Follow the steps in [4.2 systemd deployment](https://documentation.suse.com/sles
    docker network create trento-net
    ```
 
-   > **Note:** When creating the trento-net network, Docker typically assigns a default subnet: `172.17.0.0/16`. Ensure that this subnet matches the one specified in your PostgreSQL configuration file (refer to`/var/lib/pgsql/data/pg_hba.conf`). If the subnet of `trento-net` differs from `172.17.0.0/16` then adjust `pg_hba.conf` and restart PostgreSQL.
+   > **Note:** When creating the `trento-net` network, Docker typically assigns a default subnet: `172.17.0.0/16`. Ensure that this subnet is allowed by the rules specified in your PostgreSQL configuration file. For more information, please refer to upstream's [`pg_hba.conf`](https://www.postgresql.org/docs/current/auth-pg-hba-conf.html) documentation.
 
-1. Verify the subnet of trento-net:
+1. Verify the subnet of `trento-net`:
 
    ```bash
    docker network inspect trento-net --format '{{range .IPAM.Config}}{{.Subnet}}{{end}}'
