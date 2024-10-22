@@ -60,18 +60,16 @@ docker network create trento-net
 </programlisting>
           <note>
             <para>
-              When creating the trento-net network, Docker assigns a default subnet:
-              <literal>172.17.0.0/16</literal>. Ensure that this subnet matches the one specified
-              in your PostgreSQL configuration file (refer
-              to<filename>/var/lib/pgsql/data/pg_hba.conf</filename>). If the subnet of
-              <literal>trento-net</literal> differs from <literal>172.17.0.0/16</literal> then
-              adjust <literal>pg_hba.conf</literal> and restart PostgreSQL.
+             When creating the <literal>trento-net</literal> network, Docker assigns a default subnet:
+              <literal>172.17.0.0/16</literal>. Ensure that this subnet is allowed by the rules specified
+              in your PostgreSQL configuration. For more information, please refer to upstream's
+              <link xlink:href="https://www.postgresql.org/docs/current/auth-pg-hba-conf.html"><literal>pg_hba.conf</literal></link> documentation.
             </para>
           </note>
         </step>
         <step>
           <para>
-            Verify the subnet of trento-net:
+            Verify the subnet of <literal>trento-net</literal>:
           </para>
 <programlisting language="bash">
 docker network inspect trento-net --format '{{range .IPAM.Config}}{{.Subnet}}{{end}}'
