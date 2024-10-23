@@ -520,7 +520,7 @@ curl https://#{TRENTO_WEB_ORIGIN}/api/public_keys
           enable signed communication. Provide the certificate generated
           by Trento to the IDP (each IDP has a different way to do
           this). Make sure that the configured certificate is used for
-          signing and encrptying messages.
+          signing and encrypting messages.
         </para>
       </section>
       <section xml:id="configuring-saml-user-profile">
