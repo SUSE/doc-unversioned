@@ -136,7 +136,7 @@ To enable OAuth 2.0 when using kubernetes deployment with helm, proceed as follo
    HELM_EXPERIMENTAL_OCI=1 helm ... \
       --set trento-web.oauth2.enabled=true \
       --set trento-web.oauth2.clientId=<OAUTH2_CLIENT_ID> \
-      --set trento-web.ouath2.clientSecret=<OAUTH2_CLIENT_SECRET> \
+      --set trento-web.oauth2.clientSecret=<OAUTH2_CLIENT_SECRET> \
       --set trento-web.oauth2.baseUrl=<OAUTH2_BASE_URL> \
       --set trento-web.oauth2.authorizeUrl=<OAUTH2_AUTHORIZE_URL> \
       --set trento-web.oauth2.tokenUrl=<OAUTH2_TOKEN_URL> \
