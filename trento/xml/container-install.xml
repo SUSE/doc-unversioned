@@ -131,7 +131,7 @@ docker run -d --name wanda \
             Deploy trento-web.
           </para>
           <para>
-            Make sure to change the <literal>ADMIN_USERNAME</literal> and
+            Make sure to change the <literal>ADMIN_USER</literal> and
             <literal>ADMIN_PASSWORD</literal>, these are the credentials that are required to login
             to the trento-web UI. Depending on how you intend to connect to the console, a working
             hostname, FQDN, or an IP is required in <literal>TRENTO_WEB_ORIGIN</literal> for HTTPS.
@@ -157,7 +157,7 @@ docker run -d \
 -e SECRET_KEY_BASE=$TRENTO_SECRET_KEY_BASE \
 -e ACCESS_TOKEN_ENC_SECRET=$ACCESS_TOKEN_ENC_SECRET \
 -e REFRESH_TOKEN_ENC_SECRET=$REFRESH_TOKEN_ENC_SECRET \
--e ADMIN_USERNAME='admin' \
+-e ADMIN_USER='admin' \
 -e ADMIN_PASSWORD='test1234' \
 -e ENABLE_API_KEY='true' \
 -e TRENTO_WEB_ORIGIN='trento.example.com' \
