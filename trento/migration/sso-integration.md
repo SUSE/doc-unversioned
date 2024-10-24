@@ -74,6 +74,13 @@ To enable OIDC when using RPM packages, proceed as follows:
 
 To enable OIDC when using Docker images, proceed as follows:
 
+1. If `trento-web` container is already running stop and delete the container before continuing. For that run:
+
+   ```bash
+   docker stop trento-web
+   docker rm trento-web
+   ```
+
 1. Provide the following environment variables to the Docker container via
    the `-e` option:
 
@@ -97,8 +104,6 @@ To enable OIDC when using Docker images, proceed as follows:
 
    ...[other settings]...
    ```
-
-1. Restart the application.
 
 
 ### Available variables for OpenID Connect
@@ -176,6 +181,13 @@ To enable OAuth 2.0 when using RPM packages, proceed as follows:
 ### Enabling OAuth 2.0 when using Docker images
 
 To enable OAuth 2.0 when using Docker images, proceed as follows:
+
+1. If `trento-web` container is already running stop and delete the container before continuing. For that run:
+
+   ```bash
+   docker stop trento-web
+   docker rm trento-web
+   ```
 
 1. Use the following environment variables to the Docker container via
    the `-e` option:
@@ -397,6 +409,13 @@ To enable SAML when using RPM packages, proceed as follows:
 ### Enabling SAML when using Docker images
 
 To enable SAML when using Docker images, proceed as follows:
+
+1. If `trento-web` container is already running stop and delete the container before continuing. For that run:
+
+   ```bash
+   docker stop trento-web
+   docker rm trento-web
+   ```
 
 1. Use the following environment variables to the Docker container via the `-e` option:
 
