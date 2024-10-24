@@ -8,13 +8,13 @@ Follow the steps in [4.2 systemd deployment](https://documentation.suse.com/sles
 
 ### Install Docker container runtime
 
-1. Enable the container`s module:
+1. Enable the containers module:
 
    ```bash
    SUSEConnect --product sle-module-containers/15.5/x86_64
    ```
 
-   > **Note:** Using a different Service Pack than SP5 requires to change repository: [SLE15 SP3: `SUSEConnect --product sle-module-containers/15.3/x86_64`,SLE15 SP4: ` SUSEConnect --product sle-module-containers/15.4/x86_64`]
+   > **Note:** Using a different Service Pack than SP5 requires to change repository: [SLE15 SP3: `SUSEConnect --product sle-module-containers/15.3/x86_64`,SLE15 SP4: `SUSEConnect --product sle-module-containers/15.4/x86_64`]
 
 1. Install Docker:
 
@@ -36,12 +36,12 @@ Follow the steps in [4.2 systemd deployment](https://documentation.suse.com/sles
    docker network create trento-net
    ```
 
-   > **Note:** When creating the trento-net network, Docker typically assigns a default subnet: `172.17.0.0/16`. Ensure that this subnet matches the one specified in your PostgreSQL configuration file (refer to`/var/lib/pgsql/data/pg_hba.conf`). If the subnet of `trento-net` differs from `172.17.0.0/16` then adjust `pg_hba.conf` and restart PostgreSQL.
+   > **Note:** When creating the `trento-net` network, Docker typically assigns a default subnet: `172.17.0.0/16`. Ensure that this subnet is allowed by the rules specified in your PostgreSQL configuration file. For more information, please refer to upstream's [`pg_hba.conf`](https://www.postgresql.org/docs/current/auth-pg-hba-conf.html) documentation.
 
-1. Verify the subnet of trento-net:
+1. Verify the subnet of `trento-net`:
 
    ```bash
-   docker network inspect trento-net  --format '{{range .IPAM.Config}}{{.Subnet}}{{end}}'
+   docker network inspect trento-net --format '{{range .IPAM.Config}}{{.Subnet}}{{end}}'
    ```
 
    Expected output:
@@ -63,6 +63,15 @@ Follow the steps in [4.2 systemd deployment](https://documentation.suse.com/sles
    REFRESH_TOKEN_ENC_SECRET=$(openssl rand -out /dev/stdout 48 | base64)
    ```
 
+1. Install the checks on the system in a shared volume
+
+   ```bash
+   docker volume create trento-checks \
+     && docker run \
+     -v trento-checks:/usr/share/trento/checks \
+     registry.suse.com/trento/trento-checks:1.0.0
+   ```
+
 1. Install trento-wanda on Docker:
 
    ```bash
@@ -70,6 +79,7 @@ Follow the steps in [4.2 systemd deployment](https://documentation.suse.com/sles
        -p 4001:4000 \
        --network trento-net \
        --add-host "host.docker.internal:host-gateway" \
+       -v trento-checks:/usr/share/trento/checks:ro \
        -e CORS_ORIGIN=localhost \
        -e SECRET_KEY_BASE=$WANDA_SECRET_KEY_BASE \
        -e ACCESS_TOKEN_ENC_SECRET=$ACCESS_TOKEN_ENC_SECRET \
@@ -103,7 +113,7 @@ Follow the steps in [4.2 systemd deployment](https://documentation.suse.com/sles
    -e ACCESS_TOKEN_ENC_SECRET=$ACCESS_TOKEN_ENC_SECRET \
    -e REFRESH_TOKEN_ENC_SECRET=$REFRESH_TOKEN_ENC_SECRET \
    -e ADMIN_USERNAME='admin' \
-   -e ADMIN_PASSWORD='test1234' \
+   -e ADMIN_PASSWORD='test1357' \
    -e ENABLE_API_KEY='true' \
    -e TRENTO_WEB_ORIGIN='trento.example.com' \
    --restart always \
