@@ -113,7 +113,7 @@ Follow the steps in [4.2 systemd deployment](https://documentation.suse.com/sles
    -e ACCESS_TOKEN_ENC_SECRET=$ACCESS_TOKEN_ENC_SECRET \
    -e REFRESH_TOKEN_ENC_SECRET=$REFRESH_TOKEN_ENC_SECRET \
    -e ADMIN_USERNAME='admin' \
-   -e ADMIN_PASSWORD='test1234' \
+   -e ADMIN_PASSWORD='test1357' \
    -e ENABLE_API_KEY='true' \
    -e TRENTO_WEB_ORIGIN='trento.example.com' \
    --restart always \
