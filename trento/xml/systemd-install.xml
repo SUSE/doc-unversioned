@@ -781,7 +781,7 @@ systemctl reload nginx
     <title>Accessing the trento-web UI</title>
     <para>
       Pin the browser to <literal>https://trento.example.com</literal>. You should be able to login
-      using the credentials specified in the <literal>ADMIN_USERNAME</literal> and
+      using the credentials specified in the <literal>ADMIN_USER</literal> and
       <literal>ADMIN_PASSWORD</literal> environment variables.
     </para>
   </section>
