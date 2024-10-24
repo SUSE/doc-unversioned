@@ -480,7 +480,7 @@ SAML_IDP_NAMEID_FORMAT
 
 SAML_SP_DIR
 
-: SAML SP directory, where SP specific required files (such as certificates and metadata file) are placed (default value: <filename>/etc/trento/trento-web/saml</filename>)
+: SAML SP directory, where SP specific required files (such as certificates and metadata file) are placed (default value: <filename>/etc/trento/saml</filename>)
 
 SAML_SP_ENTITY_ID
 
