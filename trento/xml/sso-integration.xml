@@ -842,7 +842,7 @@ docker run -d \
             <para>
               SAML SP directory, where SP specific required files (such
               as certificates and metadata file) are placed (default
-              value: <filename>/etc/trento/trento-web/saml</filename>)
+              value: <filename>/etc/trento/saml</filename>)
             </para>
           </listitem>
         </varlistentry>
