@@ -438,12 +438,13 @@ docker run -d \
     <orderedlist numeration="arabic" spacing="compact">
       <listitem>
         <para>
-          Obtaining metadata content from the IDP
+          Obtain metadata content from the IDP
         </para>
       </listitem>
       <listitem>
         <para>
-          Start Trento to generate the certificates and get them
+          Start Trento to generate the certificates and get them (SAML
+          must be enabled for this)
         </para>
       </listitem>
       <listitem>
@@ -491,9 +492,10 @@ docker run -d \
       <para>
         Trento provides a certificates set created during the
         installation. Regardless of the installation mode, when Trento
-        is installed the first time the certificates are created and the
-        public certificate file content is available in the
-        <uri>https://#{TRENTO_WEB_ORIGIN}/api/public_keys</uri> route.
+        is installed the first time and SAML is enabled the certificates
+        are created and the public certificate file content is available
+        in the <uri>https://#{TRENTO_WEB_ORIGIN}/api/public_keys</uri>
+        route.
       </para>
       <para>
         Use the following command to get the certificate content:
@@ -506,6 +508,9 @@ curl https://#{TRENTO_WEB_ORIGIN}/api/public_keys
         the IDP. This way, the IDP will sign its messages and verify the
         messages received from Trento.
       </para>
+      <note>
+        <para>To get the certificate using this route Trento must be configured to start with SAML enabled.</para>
+      </note>
     </section>
     <section xml:id="configuring-saml-idp-setup">
       <title>Configuring SAML IDP setup</title>

@@ -248,8 +248,8 @@ If the IDP signs the messages, and expect signed messages back, certificates use
 
 To use an existing SAML IDP, follow the next instrunctions to met the specific requirements. You need:
 
-1. Obtaining metadata content from the IDP
-1. Start Trento to generate the certificates and get them
+1. Obtain metadata content from the IDP
+1. Start Trento to generate the certificates and get them (SAML must be enabled for this)
 1. Provide the generated certificate to the IDP
 1. Configure SAML IDP and user profiles
 
@@ -265,7 +265,7 @@ If the used IDP has the endpoint to provide the <filename>metadata.xml</filename
 
 ### Getting certificates from Trento
 
-Trento provides a certificates set created during the installation. Regardless of the installation mode, when Trento is installed the first time the certificates are created and the public certificate file content is available in the <uri>https://#{TRENTO_WEB_ORIGIN}/api/public_keys</uri> route. 
+Trento provides a certificates set created during the installation. Regardless of the installation mode, when Trento is installed the first time and SAML is enabled the certificates are created and the public certificate file content is available in the <uri>https://#{TRENTO_WEB_ORIGIN}/api/public_keys</uri> route. 
 
 Use the following command to get the certificate content:
 
@@ -274,6 +274,12 @@ curl https://#{TRENTO_WEB_ORIGIN}/api/public_keys
 ```
     
 Copy the content of the certificate from there and provide it to the IDP. This way, the IDP will sign its messages and verify the messages received from Trento.
+
+```{=docbook}
+<note>
+  <para>To get the certificate using this route Trento must be configured to start with SAML enabled.</para>
+</note>
+```
 
 ### Configuring SAML IDP setup
 
