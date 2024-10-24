@@ -134,6 +134,17 @@ OIDC_CALLBACK_URL=&lt;OIDC_CALLBACK_URL&gt;
       <orderedlist numeration="arabic">
         <listitem>
           <para>
+            If <literal>trento-web</literal> container is already
+            running stop and delete the container before continuing. For
+            that run:
+          </para>
+          <programlisting language="bash">
+docker stop trento-web
+docker rm trento-web
+</programlisting>
+        </listitem>
+        <listitem>
+          <para>
             Provide the following environment variables to the Docker
             container via the <literal>-e</literal> option:
           </para>
@@ -157,11 +168,6 @@ docker run -d \
 
 ...[other settings]...
 </programlisting>
-        </listitem>
-        <listitem>
-          <para>
-            Restart the application.
-          </para>
         </listitem>
       </orderedlist>
     </section>
@@ -294,6 +300,17 @@ OAUTH2_CALLBACK_URL=&lt;OAUTH2_CALLBACK_URL&gt;
         follows:
       </para>
       <orderedlist numeration="arabic">
+        <listitem>
+          <para>
+            If <literal>trento-web</literal> container is already
+            running stop and delete the container before continuing. For
+            that run:
+          </para>
+          <programlisting language="bash">
+docker stop trento-web
+docker rm trento-web
+</programlisting>
+        </listitem>
         <listitem>
           <para>
             Use the following environment variables to the Docker
@@ -703,6 +720,17 @@ SAML_SIGNED_ENVELOPES=&lt;SAML_SIGNED_ENVELOPES&gt;
         To enable SAML when using Docker images, proceed as follows:
       </para>
       <orderedlist numeration="arabic">
+        <listitem>
+          <para>
+            If <literal>trento-web</literal> container is already
+            running stop and delete the container before continuing. For
+            that run:
+          </para>
+          <programlisting language="bash">
+docker stop trento-web
+docker rm trento-web
+</programlisting>
+        </listitem>
         <listitem>
           <para>
             Use the following environment variables to the Docker
