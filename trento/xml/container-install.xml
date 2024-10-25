@@ -96,7 +96,9 @@ docker network inspect trento-net  --format '{{range .IPAM.Config}}{{.Subnet}}{{
             <para>
               Consider using an environment variable file (see
               <link xlink:href="https://docs.docker.com/engine/reference/commandline/run/#env">official
-              Docker documentation</link>). Adjust upcoming commands for env file usage.
+              Docker documentation</link>). Adjust upcoming commands for env file usage. Regardless,
+             make sure you keep a copy of the generated keys in a safe location, in case you need to
+             reutilize them in the future. 
             </para>
           </note>
 <programlisting language="bash">
