@@ -586,15 +586,9 @@ openssl req -newkey rsa:2048 --nodes -keyout trento.key -x509 -days 5 -out trent
         </step>
         <step>
           <para>
-            Move the generated <literal>trento.key</literal> to a location accessible by NGINX:
+            Copy the generated <literal>trento.key</literal> to a location accessible by NGINX:
           </para>
-<programlisting language="bash">mv trento.key /etc/ssl/private/trento.key</programlisting>
-        </step>
-        <step>
-          <para>
-            Move the generated <literal>trento.crt</literal> to a location accessible by NGINX:
-          </para>
-<programlisting language="bash">mv trento.crt /etc/ssl/certs/trento.crt</programlisting>
+<programlisting language="bash">cp trento.key /etc/ssl/private/trento.key</programlisting>
         </step>
       </procedure>
     </section>
@@ -681,6 +675,12 @@ firewall-cmd --reload
 systemctl enable --now nginx
 </programlisting>
       </step>
+             <step>
+          <para>
+            Copy the generated <literal>trento.crt</literal> to a location accessible by NGINX:
+          </para>
+<programlisting language="bash">cp trento.crt /etc/nginx/ssl/certs</programlisting>
+        </step>
       <step>
         <para>
           Create a configuration file for Trento:
@@ -706,7 +706,7 @@ server {
     listen 443 ssl;
     server_name trento.example.com;
 
-    ssl_certificate /etc/ssl/certs/trento.crt;
+    ssl_certificate /etc/nginx/ssl/certs;
     ssl_certificate_key /etc/ssl/private/trento.key;
 
     ssl_protocols TLSv1.2 TLSv1.3;
