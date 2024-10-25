@@ -1895,13 +1895,12 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
       </section>
     </section>
 
-
   <section xml:id="sec-integration-with-SUSE-Manager">
       <title>Integration with &suma;</title>
-      <para>Trento integrates with &suma; to provide the &sap; admin with
-      a summary of available patches and upgradable packages for any registered host
-      that is also managed by given instance of &suma;.</para>
-      <para>The user must enter the connection settings for the &suma; instance
+      <para>Trento integrates with &suma; to provide the &sap; administrator with
+      information about available patches and upgradable packages for any host
+       that is registered with both applications.</para>
+      <para>The user must enter the connection settings for &suma;
        in the <guimenu>Settings</guimenu> view:</para>
      <figure>
          <title>&suma; settings</title>
@@ -1913,11 +1912,11 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
         </mediaobject>
       </figure>
    <para>
-   With the &suma; settings configured, the &sap; admin can test the connection
-   by clicking <guimenu>Test Connection</guimenu>.
-   If the connection is successful, the Host Details view displays a summary
-   of the available patches and the upgradable packages for each host
-   managed by &suma;:</para>
+   Onc the &suma; settings are configured, the &sap; administrator can test the connection
+   by clicking the corresponding button.
+   If the connection is successful, the Host Details view of each host
+   managed by &suma; will display a summary
+   of available patches and upgradable packages:</para>
         <figure>
          <title><guimenu>Availale software updates in the Host Details view</guimenu></title>
         <mediaobject>
@@ -1927,9 +1926,37 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
           </imageobject>
         </mediaobject>
       </figure>
-   <para>There are three types of available patches: security advisories, bug fixes and feature
-   enhancement. Security advisories are regarded as critical. If one is found,
-   the health of the host will be set to critical too. The others are to be seen as warnings.</para>
+   <para>Clicking on the Relevant Patches box takes us to the Relevant Patches overview,
+    where the user can see the list of patches available for that particular host:</para>
+           <figure>
+         <title><guimenu>Availale software updates in the Host Details view</guimenu></title>
+        <mediaobject>
+          <imageobject>
+            <imagedata
+              fileref="trento-available-patches-overview.png" />
+          </imageobject>
+        </mediaobject>
+      </figure>
+      <para>Clicking on the Upgradable Packages box takes us to the Upgradable Package overview,
+    where the user can see the list of packages that can be upgraded in that particular host:</para>
+           <figure>
+         <title><guimenu>Availale software updates in the Host Details view</guimenu></title>
+        <mediaobject>
+          <imageobject>
+            <imagedata
+              fileref="trento-upgradable-packages-overview.png" />
+          </imageobject>
+        </mediaobject>
+      </figure>
+   <para>By clicking on an advisory or patch link, the user will access the corresponding details view,
+    with relevant information about it such us whether it requires a reboot or not, associated 
+    vulnerabilities, or a list of affected hosts.</para>
+   <para>There are three types of patches or advisories: security advisories, bug fixes and feature
+   enhancements. Security advisories are regarded as critical. If one is avaiable,
+   the health of the host will be set to critical. IF there are availale patches but none of them
+    is a security one, the health of the host will switch to warning. When a host cannot be found in
+    &suma; or there is a problem retrieving the data for it, its health is set as unknnown. 
+   </para>
     <para>
     At any time, the user can clear the &suma; settings from the Settings view.
     As a result, all information about available software updates disappears from the console and the status of the hosts is adjusted accordingly.</para>
