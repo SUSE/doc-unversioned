@@ -350,13 +350,9 @@ This is a basic guide for creating a self-signed certificate for use with Trento
     openssl req -newkey rsa:2048 --nodes -keyout trento.key -x509 -days 5 -out trento.crt -addext "subjectAltName = DNS:trento.example.com"
     ```
 
-1.  Move the generated trento.key in a location accessible by nginx:
+1.  Copy the generated trento.key in a location accessible by nginx:
     ```bash
-    mv trento.key /etc/ssl/private/trento.key
-    ```
-1.  Move the generated trento.crt in a location accessible by nginx:
-    ```bash
-    mv trento.crt /etc/ssl/certs/trento.crt
+    cp trento.key /etc/ssl/private/trento.key
     ```
 
 ### Option 2: Using Let's Encrypt for a Signed Certificate using PackageHub repository
@@ -408,6 +404,12 @@ This is a basic guide for creating a self-signed certificate for use with Trento
    ```bash
    systemctl enable --now nginx
    ```
+   
+1.  Copy the generated trento.crt in a location accessible by nginx:
+   
+    ```bash
+    cp trento.crt /etc/nginx/ssl/certs
+    ```
 
 1. Create a configuration file for Trento:
 
@@ -430,7 +432,7 @@ This is a basic guide for creating a self-signed certificate for use with Trento
        listen 443 ssl;
        server_name trento.example.com;
 
-       ssl_certificate /etc/ssl/certs/trento.crt;
+       ssl_certificate /etc/nginx/ssl/certs;
        ssl_certificate_key /etc/ssl/private/trento.key;
 
        ssl_protocols TLSv1.2 TLSv1.3;
