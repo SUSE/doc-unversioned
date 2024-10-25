@@ -54,7 +54,7 @@ Follow the steps in [4.2 systemd deployment](https://documentation.suse.com/sles
 
 1. Create the secret environment variables:
 
-   > Note: Consider using an environment variable file, learn more about from [official Docker documentation](https://docs.docker.com/engine/reference/commandline/run/#env). Adjust upcoming commands for env file usage.
+   > Note: Consider using an environment variable file, learn more about from [official Docker documentation](https://docs.docker.com/engine/reference/commandline/run/#env). Adjust upcoming commands for env file usage. Regardless, make sure you keep a copy of the generated keys in a safe location, in case you need to reutilize them in the future. 
 
    ```bash
    WANDA_SECRET_KEY_BASE=$(openssl rand -out /dev/stdout 48 | base64)
