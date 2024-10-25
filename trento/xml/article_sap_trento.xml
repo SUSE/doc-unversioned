@@ -1929,7 +1929,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
    <para>Clicking on the Relevant Patches box takes us to the Relevant Patches overview,
     where the user can see the list of patches available for that particular host:</para>
            <figure>
-         <title><guimenu>Availale software updates in the Host Details view</guimenu></title>
+         <title><guimenu>Available Patches overview</guimenu></title>
         <mediaobject>
           <imageobject>
             <imagedata
@@ -1940,7 +1940,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
       <para>Clicking on the Upgradable Packages box takes us to the Upgradable Package overview,
     where the user can see the list of packages that can be upgraded in that particular host:</para>
            <figure>
-         <title><guimenu>Availale software updates in the Host Details view</guimenu></title>
+         <title><guimenu>Upgradable Packages overview</guimenu></title>
         <mediaobject>
           <imageobject>
             <imagedata
@@ -1950,7 +1950,16 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
       </figure>
    <para>By clicking on an advisory or patch link, the user will access the corresponding details view,
     with relevant information about it such us whether it requires a reboot or not, associated 
-    vulnerabilities, or a list of affected hosts.</para>
+    vulnerabilities, or a list of affected hosts:</para>
+            <figure>
+         <title><guimenu>Advisory Details view</guimenu></title>
+        <mediaobject>
+          <imageobject>
+            <imagedata
+              fileref="trento-advisory-details-view.png" />
+          </imageobject>
+        </mediaobject>
+      </figure>  
    <para>There are three types of patches or advisories: security advisories, bug fixes and feature
    enhancements. Security advisories are regarded as critical. If one is avaiable,
    the health of the host will be set to critical. IF there are availale patches but none of them
