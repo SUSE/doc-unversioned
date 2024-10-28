@@ -335,54 +335,6 @@ Expected output if Trento web/wanda is ready and the database connection is setu
 {"ready":true}{"database":"pass"}
 ```
 
-## Prepare SSL certificate for NGINX
-
-Create or provide a certificate for [NGINX](https://nginx.org/en/) to enable SSL for Trento.
-This is a basic guide for creating a self-signed certificate for use with Trento. You may use your own certificate. For detailed instructions, consult the [OpenSSL documentation](https://www.openssl.org/docs/man1.0.2/man5/x509v3_config.html).
-
-### Option 1: Creating a Self-Signed Certificate
-
-1.  Generate a self signed certificate:
-
-    > Note: Remember to adjust `subjectAltName = DNS:trento.example.com` by replacing `trento.example.com` with your own domain and change the value `5` to the number of days for which you need the certificate to be valid. For example, `-days 365` for one year.
-
-    ```bash
-    openssl req -newkey rsa:2048 --nodes -keyout trento.key -x509 -days 5 -out trento.crt -addext "subjectAltName = DNS:trento.example.com"
-    ```
-
-1.  Copy the generated trento.key in a location accessible by nginx:
-    ```bash
-    cp trento.key /etc/ssl/private/trento.key
-    ```
-
-### Option 2: Using Let's Encrypt for a Signed Certificate using PackageHub repository
-
-> **Note:** Using a different Service Pack than SP5 requires to change repository: [SLE15 SP3: `SUSEConnect --product PackageHub/15.3/x86_64`,SLE15 SP4: `SUSEConnect --product PackageHub/15.4/x86_64`].
-> Users should assess the suitability of these packages based on their own risk tolerance and support needs.
-
-1.  Add PackageHub if not already added:
-
-    ```bash
-    SUSEConnect --product PackageHub/15.5/x86_64
-    zypper refresh
-    ```
-
-1.  Install Certbot and its Nginx plugin:
-
-    ```bash
-    zypper install certbot python3-certbot-nginx
-    ```
-
-1.  Obtain a certificate and configure Nginx with Certbot:
-
-    > **Note:** Replace `example.com` with your domain. For more information, visit [Certbot instructions for Nginx](https://certbot.eff.org/instructions?ws=nginx&os=leap)
-
-    ```bash
-    certbot --nginx -d example.com -d www.example.com
-    ```
-
-    > **Note:** Certbot certificates last for 90 days. Refer to the above link for details on how to renew periodically.
-
 ## Install and configure NGINX
 
 1. Install NGINX package:
@@ -404,12 +356,6 @@ This is a basic guide for creating a self-signed certificate for use with Trento
    ```bash
    systemctl enable --now nginx
    ```
-   
-1.  Copy the generated trento.crt in a location accessible by nginx:
-   
-    ```bash
-    cp trento.crt /etc/nginx/ssl/certs/trento.crt
-    ```
 
 1. Create a configuration file for Trento:
 
@@ -489,11 +435,77 @@ This is a basic guide for creating a self-signed certificate for use with Trento
 
    If there are issues with the configuration, the output will indicate what needs to be adjusted.
 
-1. Reload Nginx to apply changes:
+1. If SSL certificates were modified or added, reload NGINX to apply changes.
 
    ```bash
    systemctl reload nginx
    ```
+
+## Prepare SSL certificate for NGINX
+
+Create or provide a certificate for [NGINX](https://nginx.org/en/) to enable SSL for Trento.
+This is a basic guide for creating a self-signed certificate for use with Trento. You may use your own certificate. For detailed instructions, consult the [OpenSSL documentation](https://www.openssl.org/docs/man1.0.2/man5/x509v3_config.html).
+
+### Option 1: Creating a Self-Signed Certificate
+
+1.  Generate a self signed certificate:
+
+    > Note: Remember to adjust `subjectAltName = DNS:trento.example.com` by replacing `trento.example.com` with your own domain and change the value `5` to the number of days for which you need the certificate to be valid. For example, `-days 365` for one year.
+
+    ```bash
+    openssl req -newkey rsa:2048 --nodes -keyout trento.key -x509 -days 5 -out trento.crt -addext "subjectAltName = DNS:trento.example.com"
+    ```
+
+1.  Copy the generated trento.key to a location accessible by NGINX:
+    ```bash
+    cp trento.key /etc/ssl/private/trento.key
+    ```
+
+1.  Create a directory for the generated trento.crt which is accessible by NGINX:
+   
+    ```bash
+    mkdir -p /etc/nginx/ssl/certs/
+    ```
+
+1.  Copy the generated trento.crt to a location accessible by NGINX:
+   
+    ```bash
+    cp trento.crt /etc/nginx/ssl/certs/trento.crt
+    ```
+
+1. Reload NGINX to apply changes:
+
+   ```bash
+   systemctl reload nginx
+   ```
+
+### Option 2: Create a signed certificate with Let's Encrypt using PackageHub repository
+
+> **Note:** Change repository if you use a Service Pack other than SP5. For example: [SLE15 SP3: `SUSEConnect --product PackageHub/15.3/x86_64`,SLE15 SP4: `SUSEConnect --product PackageHub/15.4/x86_64`].
+> Users should assess the suitability of these packages based on their own risk tolerance and support needs.
+
+1.  Add PackageHub if not already added:
+
+    ```bash
+    SUSEConnect --product PackageHub/15.5/x86_64
+    zypper refresh
+    ```
+
+1.  Install Certbot and its NGINX plugin:
+
+    ```bash
+    zypper install certbot python3-certbot-nginx
+    ```
+
+1.  Obtain a certificate and configure Nginx with Certbot:
+
+    > **Note:** Replace `example.com` with your domain. For more information, visit [Certbot instructions for Nginx](https://certbot.eff.org/instructions?ws=nginx&os=leap)
+
+    ```bash
+    certbot --nginx -d example.com -d www.example.com
+    ```
+
+    > **Note:** Certbot certificates last for 90 days. Refer to the above link for details on how to renew periodically.
 
 ## Accessing the trento-web UI
 
