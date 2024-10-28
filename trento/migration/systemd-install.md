@@ -467,7 +467,7 @@ This is a basic guide for creating a self-signed certificate for use with Trento
     mkdir -p /etc/nginx/ssl/certs/
     ```
 
-1.  Copy the generated trento.crt to a location accessible by NGINX:
+1.  Copy the generated trento.crt to the previously created folder:
    
     ```bash
     cp trento.crt /etc/nginx/ssl/certs/trento.crt
