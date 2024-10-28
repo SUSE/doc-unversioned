@@ -113,7 +113,7 @@ REFRESH_TOKEN_ENC_SECRET=$(openssl rand -out /dev/stdout 48 | base64)
 docker volume create trento-checks \
   &amp;&amp; docker run \
   -v trento-checks:/usr/share/trento/checks \
-  registry.suse.com/trento/trento-checks:1.0.0
+  registry.suse.com/trento/trento-checks:latest
 </programlisting>
         </step>
         <step>
@@ -133,7 +133,7 @@ docker run -d --name wanda \
     -e DATABASE_URL=ecto://wanda_user:wanda_password@host.docker.internal/wanda \
     --restart always \
     --entrypoint /bin/sh \
-    registry.suse.com/trento/trento-wanda:1.2.0 \
+    registry.suse.com/trento/trento-wanda:latest \
     -c &quot;/app/bin/wanda eval 'Wanda.Release.init()' &amp;&amp; /app/bin/wanda start&quot;
 </programlisting>
         </step>
@@ -174,7 +174,7 @@ docker run -d \
 -e TRENTO_WEB_ORIGIN='trento.example.com' \
 --restart always \
 --entrypoint /bin/sh \
-registry.suse.com/trento/trento-web:2.2.0 \
+registry.suse.com/trento/trento-web:latest \
 -c &quot;/app/bin/trento eval 'Trento.Release.init()' &amp;&amp; /app/bin/trento start&quot;
 </programlisting>
           <para>
