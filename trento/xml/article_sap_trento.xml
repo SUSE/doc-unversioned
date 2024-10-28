@@ -2406,29 +2406,33 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
 
   <section xml:id="sec-trento-updating-trentoserver">
     <title>Updating &t.server;</title>
-    <para> The procedure to update the &t.server; depends on the deployment type: &k8s;, systemd or containerized.
-    The current content of this section is specific for &kube; deployments.</para>
-   <para>
-     If &t.server; was installed manually, then it must be updated manually using the latest versions
-     of the container images available in the SUSE public registry. If it was installed using
-     Helm chart, it can be updated using the same Helm command as for the installation:</para>
-   <screen>helm upgrade \
-   --install trento-server oci://registry.suse.com/trento/trento-server \
-   --set trento-web.trentoWebOrigin=<replaceable>TRENTO_SERVER_HOSTNAME</replaceable> \
-   --set trento-web.adminUser.password=<replaceable>ADMIN_PASSWORD</replaceable>
-        </screen>
-   <para>A few things to consider:</para>
+    <para> The procedure to update &t.server; depends on the chosen deployment option: &k8s;, systemd or containerized.</para>
+      <para>A few general considerations when performing an update:</para>
       <itemizedlist>
-                <listitem>
+         <listitem>
           <para>Before updating &t.server; ensure that all the &t.agent;s in the environment are supported by the target version.
            See section <xref linkend="sec-trento-compatibility-matrix" /> for details.
           </para>
         </listitem>
-        <listitem>
+       <listitem>
+        <para>When updating from an older Trento version to version 2.4 or higher, the admin password might have to
+         be adjusted to meet the rules described at the User Managmeent section .</para>
+        </listitem>
+      </itemizedlist>
+   <para>In a &K8s; deployment, you can use Helm to update &t.server;:</para>
+      <screen>helm upgrade \
+   --install trento-server oci://registry.suse.com/trento/trento-server \
+   --set trento-web.trentoWebOrigin=<replaceable>TRENTO_SERVER_HOSTNAME</replaceable> \
+   --set trento-web.adminUser.password=<replaceable>ADMIN_PASSWORD</replaceable>
+        </screen>
+   <para>If you have configured any options, for example email alerting, the Helm command should be adjusted accordingly.
+  Additional considerations in this scenario:</para>
+<itemizedlist>
+         <listitem>
           <para>Remember to set the helm experimental flag if you are using a version of Helm lower than 3.8.0.
           </para>
         </listitem>
-        <listitem>
+         <listitem>
         <para>When updating from a Trento version lower than 2.0.0 to version 2.0.0 or higher, an additional flag
     must be set in the Helm command:</para>
    <screen>helm upgrade \
@@ -2438,20 +2442,23 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
    --set rabbitmq.auth.erlangCookie=$(openssl rand -hex 16)
         </screen>
         </listitem>
-       <listitem>
+        <listitem>
         <para>When updating from an older Trento version to version 2.3 or higher, a new API key is generated
         and the configuration of all registered &t.agent;s must be updated accordingly.</para>
         </listitem>
-        <listitem>
-        <para>When updating from an older Trento version to version 2.4 or higher, the admin password might have to
-         be adjusted to meet the rules described at the User Managmeent section .</para>
-        </listitem>
-        <listitem>
-          <para> If email alerting has been enabled, then the corresponding <parameter>trento-web.alerting</parameter> flags
-           should be set in the Helm command as well.
-          </para>
-        </listitem>
-      </itemizedlist>
+</itemizedlist>
+    <para>In a system deployment, you can use zypper to update &t.server;:</para>
+<screen>
+ zypper refresh
+ zypper update trento-web
+ zypper update trento-wanda
+ systemctl restart trento-web
+ systemctl restart trento-wanda
+        </screen>
+   <para>In a containerized deployment, you can use the same docker commands as for the installation. But bear in mind
+    that the volume for the Trento checks already exists and therefore doesn't have to be created again and that the
+    web and wanda containers must be stopped and removed before they can be redeployed with the latest version. Also, do 
+    not forget to include in the docker commands any other options that you might have enabled since the original installation.</para>
   </section>
 
   <section xml:id="sec-trento-updating-trentoagent">
