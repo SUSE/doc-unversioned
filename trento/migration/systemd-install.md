@@ -408,7 +408,7 @@ This is a basic guide for creating a self-signed certificate for use with Trento
 1.  Copy the generated trento.crt in a location accessible by nginx:
    
     ```bash
-    cp trento.crt /etc/nginx/ssl/certs
+    cp trento.crt /etc/nginx/ssl/certs/trento.crt
     ```
 
 1. Create a configuration file for Trento:
@@ -432,7 +432,7 @@ This is a basic guide for creating a self-signed certificate for use with Trento
        listen 443 ssl;
        server_name trento.example.com;
 
-       ssl_certificate /etc/nginx/ssl/certs;
+       ssl_certificate /etc/nginx/ssl/certs/trento.crt;
        ssl_certificate_key /etc/ssl/private/trento.key;
 
        ssl_protocols TLSv1.2 TLSv1.3;

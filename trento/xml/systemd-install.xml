@@ -679,7 +679,7 @@ systemctl enable --now nginx
           <para>
             Copy the generated <literal>trento.crt</literal> to a location accessible by NGINX:
           </para>
-<programlisting language="bash">cp trento.crt /etc/nginx/ssl/certs</programlisting>
+<programlisting language="bash">cp trento.crt /etc/nginx/ssl/certs/trento.crt</programlisting>
         </step>
       <step>
         <para>
@@ -706,7 +706,7 @@ server {
     listen 443 ssl;
     server_name trento.example.com;
 
-    ssl_certificate /etc/nginx/ssl/certs;
+    ssl_certificate /etc/nginx/ssl/certs/trento.crt;
     ssl_certificate_key /etc/ssl/private/trento.key;
 
     ssl_protocols TLSv1.2 TLSv1.3;
