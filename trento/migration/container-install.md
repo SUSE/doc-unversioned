@@ -69,7 +69,7 @@ Follow the steps in [4.2 systemd deployment](https://documentation.suse.com/sles
    docker volume create trento-checks \
      && docker run \
      -v trento-checks:/usr/share/trento/checks \
-     registry.suse.com/trento/trento-checks:1.0.0
+     registry.suse.com/trento/trento-checks:latest
    ```
 
 1. Install trento-wanda on Docker:
@@ -87,7 +87,7 @@ Follow the steps in [4.2 systemd deployment](https://documentation.suse.com/sles
        -e DATABASE_URL=ecto://wanda_user:wanda_password@host.docker.internal/wanda \
        --restart always \
        --entrypoint /bin/sh \
-       registry.suse.com/trento/trento-wanda:1.2.0 \
+       registry.suse.com/trento/trento-wanda:latest \
        -c "/app/bin/wanda eval 'Wanda.Release.init()' && /app/bin/wanda start"
    ```
 
@@ -118,7 +118,7 @@ Follow the steps in [4.2 systemd deployment](https://documentation.suse.com/sles
    -e TRENTO_WEB_ORIGIN='trento.example.com' \
    --restart always \
    --entrypoint /bin/sh \
-   registry.suse.com/trento/trento-web:2.2.0 \
+   registry.suse.com/trento/trento-web:latest \
    -c "/app/bin/trento eval 'Trento.Release.init()' && /app/bin/trento start"
    ```
 
