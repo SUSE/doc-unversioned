@@ -2472,14 +2472,14 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
   </section>
 
   <section xml:id="sec-trento-problemanalysis">
-    <title>Problem Analysis in a K8s; scenario</title>
+    <title>Problem Analysis</title>
     <para>
-      This section covers some common problems and how to analyze them in a K8s; scenario.
+      This section covers some common problems and how to analyze them.
     </para>
 
     <section>
       <title>&t.server;</title>
-      <para>To analyze issues within the application, we have two tools at our
+      <para>To analyze issues &t.server; in a &K8s; scenario, we have two tools at our
         disposal. They both help us collect information/data that might be
         useful when troubleshooting/analyzing the issue.</para>
 
