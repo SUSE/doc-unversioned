@@ -495,4 +495,4 @@ This is a basic guide for creating a self-signed certificate for use with Trento
 
 ## Accessing the trento-web UI
 
-Open a browser and navigate to `https://trento.example.com`. You should be able to login using the credentials you provided in the `ADMIN_USER` and `ADMIN_PASSWORD` environment variables.
+Use a browser to navigate to `https://trento.example.com`, and log in using the credentials you specified in the `ADMIN_USER` and `ADMIN_PASSWORD` environment variables.
