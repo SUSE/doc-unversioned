@@ -2445,12 +2445,12 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
     </para>
       <para>
       When opening a support case for Trento, provide the chosen deployment option for &t.server;: &K8s;, systemd or containerized.</para>
-   <para>In the case of a &K8s; deployment, provide also the output of the Trento support plugin and the scenario dump, as explained in section <xref linkend="sec-trento-problemanalysis" />.
+   <para>In case of a &K8s; deployment, provide the output of the Trento support plugin and the scenario dump, as explained in section <xref linkend="sec-trento-problemanalysis" />.
     </para>
-   <para>In the case of a systemd deployment, provide the status and the journal of the trento-web and trento-wanda services.
+   <para>In case of a systemd deployment, provide the status and the journal of the trento-web and trento-wanda services.
     </para>
-   <para>Finally, in the case of a containerized deployment, provide the logs of the trento-web and trento-wanda containers. Use docker ps to retrieve
-    the IDs of both containers, then docker logs <container_id> to retrieve the corresponding logs.
+   <para>In case of a containerized deployment, provide the logs of the trento-web and trento-wanda containers. Use <command>docker ps</command> to retrieve
+    the IDs of both containers, then <command>docker logs <replaceable>CONTAINER_ID</replaceable> to retrieve the corresponding logs.
     </para>
    <para>
       For issues with a particular &t.agent;, or a component discovered by a particular &t.agent;, also provide the following:
