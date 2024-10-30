@@ -450,7 +450,7 @@ Instead of creating a self-signed certificate, you use your own certificate. For
 
 1.  Generate a self-signed certificate:
 
-    > Note: Remember to adjust `subjectAltName = DNS:trento.example.com` by replacing `trento.example.com` with your own domain and change the value `5` to the number of days for which you need the certificate to be valid. For example, `-days 365` for one year.
+    > Note: Remember to adjust `subjectAltName = DNS:trento.example.com` by replacing `trento.example.com` with the actual domain name, and change the value `5` to the number of days for the certificate validity. For example, `-days 365` for one year.
 
     ```bash
     openssl req -newkey rsa:2048 --nodes -keyout trento.key -x509 -days 5 -out trento.crt -addext "subjectAltName = DNS:trento.example.com"
