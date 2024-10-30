@@ -2479,8 +2479,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
 
     <section>
       <title>&t.server;</title>
-      <para>To analyze issues with &t.server; in a &K8s; scenario, we have two tools at our
-        disposal. They both help us collect information/data that might be
+      <para>There are two tools you can use to analyze issues with &t.server; in a &K8s; scenario. They both help us collect information/data that might be
         useful when troubleshooting/analyzing the issue.</para>
 
       <section>
