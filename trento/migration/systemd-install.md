@@ -435,7 +435,7 @@ Expected output if Trento web/wanda is ready and the database connection is setu
 
    If there are issues with the configuration, the output will indicate what needs to be adjusted.
 
-1. If SSL certificates were modified or added, reload NGINX to apply changes.
+1. If SSL certificates were modified or added, reload NGINX to apply the changes.
 
    ```bash
    systemctl reload nginx
