@@ -505,8 +505,7 @@ This is a basic guide for creating a self-signed certificate for use with Trento
     certbot --nginx -d example.com -d www.example.com
     ```
 
-    > **Note:** Certbot certificates last for 90 days. Refer to the above link for details on how to renew periodically.
-
+    > **Note:** Certbot certificates are valid for 90 days. Refer to the above link for details on how to renew periodically.
 ## Accessing the trento-web UI
 
 Open a browser and navigate to `https://trento.example.com`. You should be able to login using the credentials you provided in the `ADMIN_USERNAME` and `ADMIN_PASSWORD` environment variables.
