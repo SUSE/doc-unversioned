@@ -461,7 +461,7 @@ This is a basic guide for creating a self-signed certificate for use with Trento
     cp trento.key /etc/ssl/private/trento.key
     ```
 
-1.  Create a directory for the generated trento.crt which is accessible by NGINX:
+1.  Create a directory for the generated trento.crt. The directory must be accessible by NGINX:
    
     ```bash
     mkdir -p /etc/nginx/ssl/certs/
