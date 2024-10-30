@@ -448,7 +448,7 @@ This is a basic guide for creating a self-signed certificate for use with Trento
 
 ### Option 1: Creating a Self-Signed Certificate
 
-1.  Generate a self signed certificate:
+1.  Generate a self-signed certificate:
 
     > Note: Remember to adjust `subjectAltName = DNS:trento.example.com` by replacing `trento.example.com` with your own domain and change the value `5` to the number of days for which you need the certificate to be valid. For example, `-days 365` for one year.
 
