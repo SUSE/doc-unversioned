@@ -444,7 +444,7 @@ Expected output if Trento web/wanda is ready and the database connection is setu
 ## Prepare SSL certificate for NGINX
 
 Create or provide a certificate for [NGINX](https://nginx.org/en/) to enable SSL for Trento.
-This is a basic guide for creating a self-signed certificate for use with Trento. You may use your own certificate. For detailed instructions, consult the [OpenSSL documentation](https://www.openssl.org/docs/man1.0.2/man5/x509v3_config.html).
+Instead of creating a self-signed certificate, you use your own certificate. For further information, refer to [OpenSSL documentation](https://www.openssl.org/docs/man1.0.2/man5/x509v3_config.html).
 
 ### Option 1: Creating a Self-Signed Certificate
 
