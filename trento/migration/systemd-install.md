@@ -484,7 +484,7 @@ This is a basic guide for creating a self-signed certificate for use with Trento
 > **Note:** Change repository if you use a Service Pack other than SP5. For example: [SLE15 SP3: `SUSEConnect --product PackageHub/15.3/x86_64`,SLE15 SP4: `SUSEConnect --product PackageHub/15.4/x86_64`].
 > Users should assess the suitability of these packages based on their own risk tolerance and support needs.
 
-1.  Add PackageHub if not already added:
+1.  Add PackageHub, if it is not already added:
 
     ```bash
     SUSEConnect --product PackageHub/15.5/x86_64
