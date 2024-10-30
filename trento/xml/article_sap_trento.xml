@@ -2444,7 +2444,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
      or through the corresponding vendor, depending on their licensing model. Problems must be reported under &sles4sap;&nbsp;15 and component trento.
     </para>
       <para>
-      When opening a support case for Trento, provide the chosen deployment option for &t.server;: &K8s;, systemd or containeraized.</para>
+      When opening a support case for Trento, provide the chosen deployment option for &t.server;: &K8s;, systemd or containerized.</para>
    <para>In the case of a &K8s; deployment, provide also the output of the Trento support plugin and the scenario dump, as explained in section <xref linkend="sec-trento-problemanalysis" />.
     </para>
    <para>In the case of a systemd deployment, provide the status and the journal of the trento-web and trento-wanda services.
