@@ -739,17 +739,16 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       </listitem>
     </itemizedlist>
     <para>The default admin user created during the installation process is
-      granted all:all permissions and cannot be modified or deleted. It should
-      only be used to create a first user manager. That is, a user with
-      all:users permissions who in turn will create all the other required
+      granted all:all permissions and cannot be modified or deleted. Use it
+      only to create a first user manager. That is, a user with
+      all:users permissions who creates all the other required
       users. Once a user with all:users permissions is created, the default
-      admin user should be regarded as a fall back, emergency user to be used
-      only in case all other access to the console is lost. Should the password
-      of the default admin user itself be lost, it can be reset by updating the
+      admin user must be regarded as a fall-back user to be used
+      only in case all other access to the console is lost. If the password
+      of the default admin user is lost, it can be reset by updating the
       helm chart or the web component configuration, depending on which
       deployment method was used to install Trento Server. </para>
-    <para>User passwords, including the default admin user password, must comply
-      with the following rules:</para>
+    <para>User passwords, including the default admin user password, must follow the rules below:</para>
     <itemizedlist>
       <listitem>
         <para>They have at least 8 characters</para>
