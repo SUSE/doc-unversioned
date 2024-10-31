@@ -750,7 +750,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
     <para>User passwords, including the default admin user password, must follow the rules below:</para>
     <itemizedlist>
       <listitem>
-        <para>They have at least 8 characters</para>
+        <para>Password must contain at least 8 characters</para>
       </listitem>
       <listitem>
         <para>The same number or letter must not be repeated three or more times in a row (for
