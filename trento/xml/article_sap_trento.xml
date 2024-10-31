@@ -2600,8 +2600,8 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
       use zypper to update your checks catalog to the latest version:</para>
         <screen>&prompt.user;sudo zypper ref
 &prompt.user;sudo zypper update trento-checks</screen>
-    <para>In a containerized deployment, checks are also delivered as a container image and
-     you can user docker to pull the latest version available into the trento-checks volume that was
+    <para>In a containerized deployment, checks are delivered as a container image, and
+     you can user Docker to pull the latest version into the trento-checks volume that was
      created during the installation process:</para>
  <screen>&prompt.user;docker run \
   -v trento-checks:/usr/share/trento/checks \
