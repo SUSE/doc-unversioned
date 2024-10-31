@@ -2415,8 +2415,8 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
           </para>
         </listitem>
        <listitem>
-        <para>When updating from an older Trento version to version 2.4 or higher, the admin password might have to
-         be adjusted to meet the rules described at the User Managmeent section .</para>
+        <para>When updating Trento to version 2.4 or higher, the admin password may need to be adjusted to
+         follow the rules described in the User Managmeent section .</para>
         </listitem>
       </itemizedlist>
    <para>In a &K8s; deployment, you can use Helm to update &t.server;:</para>
