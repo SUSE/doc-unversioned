@@ -764,8 +764,8 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
     </itemizedlist>
     <para>The Create User and Edit User views provide a built-in generation
       password action button that allows user managers to easily generate
-      secure, compliant passwords. The user manager should provide the user with
-      their password using a secure, authorized channel. </para>
+      secure and compliant passwords. The user manager must provide the user with
+      their password through an authorized secure channel. </para>
     <para>Users can reset their passwords in their profile views, where they can
       also update their Full Names and their email addresses as well as activate
       Multi Factor Authentication using an Authenticator app of their choice.
