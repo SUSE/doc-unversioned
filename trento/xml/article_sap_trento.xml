@@ -2443,7 +2443,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
         </screen>
         </listitem>
         <listitem>
-        <para>When updating from an older Trento version to version 2.3 or higher, a new API key is generated
+        <para>When updating Trento to version 2.3 or higher, a new API key is generated
         and the configuration of all registered &t.agent;s must be updated accordingly.</para>
         </listitem>
 </itemizedlist>
