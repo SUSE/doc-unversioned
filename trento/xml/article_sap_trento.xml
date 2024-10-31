@@ -2586,8 +2586,8 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
     <para>Configuration checks are an integral part of the &t.server;. The checks are delivered as a separate component of the &t.server;. This allows customers
     to update the checks catalog in their setup whenever updates to existing checks and new checks are released, without
     waiting for a new version release cycle.</para>
-         <para> The procedure to update the configuration checks depends on the &t.server; deployment type: &k8s;, systemd or containerized.</para>
-     <para>In a K8s; deployment, checks are delivered as a container image and you can
+         <para> The procedure of updating the configuration checks depends on the &t.server; deployment type: &k8s;, systemd or containerized.</para>
+     <para>In a k8s; deployment, checks are delivered as a container image and you can
       use Helm with the following options to pull the latest one available into your setup:</para>
 <programlisting>
     helm ... \
