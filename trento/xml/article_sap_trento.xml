@@ -2425,7 +2425,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
    --set trento-web.trentoWebOrigin=<replaceable>TRENTO_SERVER_HOSTNAME</replaceable> \
    --set trento-web.adminUser.password=<replaceable>ADMIN_PASSWORD</replaceable>
         </screen>
-   <para>If you have configured any options, for example email alerting, the Helm command should be adjusted accordingly.
+   <para>If you have configured options, such as email alerting, the Helm command must be adjusted accordingly.
   Additional considerations in this scenario:</para>
 <itemizedlist>
          <listitem>
