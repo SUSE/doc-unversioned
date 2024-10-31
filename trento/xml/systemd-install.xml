@@ -717,13 +717,13 @@ openssl req -newkey rsa:2048 --nodes -keyout trento.key -x509 -days 5 -out trent
         </step>
          <step>
           <para>
-            Create a directory for the generated <literal>trento.crt</literal> which is accessible by NGINX:
+            Create a directory for the generated <literal>trento.crt</literal> file. The directory must be accessible by NGINX:
           </para>
 <programlisting language="bash">mkdir -p /etc/nginx/ssl/certs/</programlisting>
         </step>
         <step>
           <para>
-            Copy the generated <literal>trento.crt</literal> to the previously created folder:
+            Copy the generated <literal>trento.crt</literal> file to the created directory:
           </para>
 <programlisting language="bash">cp trento.crt /etc/nginx/ssl/certs/trento.crt</programlisting>
         </step>
