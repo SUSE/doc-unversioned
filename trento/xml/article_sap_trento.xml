@@ -966,7 +966,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
     <title>Activity Log</title>
     <para> Trento collects system events and user actions in the Activity Log. It can be accessed from the left-hand side panel of the Trento console.</para>
     <para> Each entry in the Activity Log includes the following:
-     - A timestamp: what day and time (server time, not browser time) the system event or the user action happened                            
+     - A timestamp: the day and time (server time, not browser time) the system event or the user action occurred                            
      - A message: what type of event or user action happened.
      - The user that triggered the event or performed the action. User system is used for events triggered by the system itself.</para>
     <para>A right chevron icon in the activity log entry, opens a modal with the activity metadata.</para>
