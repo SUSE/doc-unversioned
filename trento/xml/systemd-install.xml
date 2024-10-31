@@ -741,9 +741,7 @@ openssl req -newkey rsa:2048 --nodes -keyout trento.key -x509 -days 5 -out trent
         <para>
           Change repository if you use a Service Pack other than SP5. For example:
           <literal>SUSEConnect --product PackageHub/15.3/x86_64</literal> for SLE15 SP3,
-          <literal>SUSEConnect --product PackageHub/15.4/x86_64</literal> for SLE15 SP4. Users
-          should assess the suitability of these packages based on their own risk tolerance and
-          support needs.
+          <literal>SUSEConnect --product PackageHub/15.4/x86_64</literal> for SLE15 SP4. Use packages in PackageHub at your own risk.
         </para>
       </note>
       <procedure>
