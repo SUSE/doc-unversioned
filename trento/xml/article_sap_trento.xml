@@ -758,7 +758,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
           example: 111 or aaa)</para>
       </listitem>
       <listitem>
-        <para>They do not have four consecutive numbers or letters (for example:
+        <para>Password must not contain four consecutive numbers or letters (for example:
           1234, abcd or ABCD)</para>
       </listitem>
     </itemizedlist>
