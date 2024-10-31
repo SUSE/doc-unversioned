@@ -2455,10 +2455,9 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
  systemctl restart trento-web
  systemctl restart trento-wanda
         </screen>
-   <para>In a containerized deployment, you can use the same docker commands as for the installation. But bear in mind
-    that the volume for the Trento checks already exists and therefore doesn't have to be created again and that the
-    web and wanda containers must be stopped and removed before they can be redeployed with the latest version. Also, do 
-    not forget to include in the docker commands any other options that you might have enabled since the original installation.</para>
+   <para>In a containerized deployment, you can use the same docker commands as for the installation. Keep in mind
+    that the volume for the Trento checks already exists, so there is no need to create it again. Also,  the
+    web and wanda containers must be stopped and removed before they can be redeployed with the latest version. In addition, make sure to include in the docker commands any other options that you have enabled after the original installation.</para>
   </section>
 
   <section xml:id="sec-trento-updating-trentoagent">
