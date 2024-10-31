@@ -36,7 +36,7 @@ Follow the steps in [4.2 systemd deployment](https://documentation.suse.com/sles
    docker network create trento-net
    ```
 
-   > **Note:** When creating the `trento-net` network, Docker typically assigns a default subnet: `172.17.0.0/16`. Ensure that this subnet is allowed by the rules specified in your PostgreSQL configuration file. For more information, please refer to upstream's [`pg_hba.conf`](https://www.postgresql.org/docs/current/auth-pg-hba-conf.html) documentation.
+   > **Note:** When creating the `trento-net` network, Docker normally assigns a default subnet: `172.17.0.0/16`. Ensure that this subnet is allowed by the rules specified in your PostgreSQL configuration file. For more information, please refer to upstream's [`pg_hba.conf`](https://www.postgresql.org/docs/current/auth-pg-hba-conf.html) documentation.
 
 1. Verify the subnet of `trento-net`:
 
