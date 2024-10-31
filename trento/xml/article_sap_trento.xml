@@ -677,8 +677,8 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
     <title>Managing Trento user management</title>
     <para> Trento provides a local permission-based user management feature with
       optional multi-factor authentication. This feature allows for segregation
-      of duties in the Trento console and ensures that only authorized users can
-      access it, with the right permissions. </para>
+      of duties in the Trento console and ensures that only authorized users with the right permissions can
+      access it. </para>
     <para> User management actions are performed in the <guimenu>Users</guimenu>
       view, which is available in the left-hand side panel of the console. </para>
     <para> Any newly created user is granted, by default, display access rights
