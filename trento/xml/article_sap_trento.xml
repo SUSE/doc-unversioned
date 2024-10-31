@@ -783,7 +783,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       which deployment method was used to install &t.server;. </para>
     </note>
     <para>
-      User managers can enable and disable users. When a user that is
+      User managers can enable and disable users. When a user 
       logged in the console is disabled by a user admin, their session is
       terminated immediately. </para>
   </section>
