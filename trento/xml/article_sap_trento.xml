@@ -754,7 +754,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         <para>They have at least 8 characters</para>
       </listitem>
       <listitem>
-        <para>They do not have three consecutive numbers or letters (for
+        <para>The same number or letter must not be repeated three or more times in a row (for
           example: 111 or aaa)</para>
       </listitem>
       <listitem>
