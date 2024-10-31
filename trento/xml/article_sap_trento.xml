@@ -776,9 +776,9 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       itself.</para>
     <note>
       <title>Security Tip for Multi-Factor Authentication</title>
-      <para>Since Multi-Factor Authentication cannot be enabled for
-      the default admin user, keeping its password safe is essential. If the
-      default admin user password is compromised, reset it immediately by
+      <para>Since multi-factor authentication cannot be enabled for
+      the default admin user, keeping its password safe is imperative. If the
+      default admin user's password is compromised, reset it immediately by
       updating the helm chart or the web component configuration, depending on
       which deployment method was used to install &t.server;. </para>
     </note>
