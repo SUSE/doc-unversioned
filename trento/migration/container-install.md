@@ -63,7 +63,7 @@ Follow the steps in [4.2 systemd deployment](https://documentation.suse.com/sles
    REFRESH_TOKEN_ENC_SECRET=$(openssl rand -out /dev/stdout 48 | base64)
    ```
 
-1. Install the checks on the system in a shared volume
+1. Install the checks on the system in a shared volume:
 
    ```bash
    docker volume create trento-checks \
