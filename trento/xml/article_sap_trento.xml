@@ -719,8 +719,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         <para>all:all: grants all the permissions above</para>
       </listitem>
     </itemizedlist>
-    <para>As a suggestion, the following types of users could be created using
-      the permissions above:</para>
+    <para>Using the described permissions, it is possible to create the following types of users:</para>
     <itemizedlist>
       <listitem>
         <para>User managers: users with all:users permission</para>
