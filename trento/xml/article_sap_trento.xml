@@ -681,8 +681,8 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       access it. </para>
     <para> User management actions are performed in the <guimenu>Users</guimenu>
       view in the left-hand side panel of the console. </para>
-    <para> Any newly created user is granted, by default, display access rights
-      across the console except for the Users view. Whenever available, a user
+    <para> By default, a newly created user is granted display access rights
+      across the console, except for the Users view. Whenever available, a user
       with default access can set up filters and pagination settings matching
       their preferences. </para>
     <para> Additional permissions must be added to a user profile so that the
