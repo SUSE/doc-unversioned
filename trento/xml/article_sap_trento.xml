@@ -974,7 +974,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       The Activity Log also allows to filter out entries that are newer and/or older than an specific date and time. When setting time based entries, keep in mind the time difference with the server time.   - 
      </para>
      <para>Once a filter has been set, the user must click Apply to filter out the undesired entries and Reset to remove all the filters.</para>
-     <para>Entries related to user management can only be displayed by users that have all:all or all:users permissions. Particularly:
+     <para>Entries related to user management can only be displayed by users that have the all:all or all:users permissions. This includes:
      - Login attempts
      - User creations
      - User modifications
