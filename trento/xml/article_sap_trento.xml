@@ -980,7 +980,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
      - User modifications
      - User deletions
      - Profile updates.</para>
-     <para>Entries in the Activity Log are sorted out from newer to older. By clicking Refresh the user can update the Activity Log view with entries generated since they accessed the view or clicked Refresh last.</para>
+     <para>Entries in the Activity Log are sorted from newer to older. By clicking Refresh, the user can update the Activity Log view with entries generated since they accessed the view, or after the last refresh.</para>
      <para>The pagination features at the bottom of the Activity Log allow the user to determine how many entries they want to see in a page, scroll back and forth through the different pages of the view or jump straight to the last 
       page and back to first one.</para>
      <para>The default retention time for entries in the Activity Log is one month. But it can be changed in the Activity Log section under Settings. Changing the retention time requires all:settings permissions. Expired entries,
