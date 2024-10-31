@@ -60,7 +60,7 @@ docker network create trento-net
 </programlisting>
           <note>
             <para>
-             When creating the <literal>trento-net</literal> network, Docker assigns a default subnet:
+             When creating the <literal>trento-net</literal> network, Docker assigns a default subnet to it:
               <literal>172.17.0.0/16</literal>. Ensure that this subnet is allowed by the rules specified
               in your PostgreSQL configuration. For more information, please refer to upstream's
               <link xlink:href="https://www.postgresql.org/docs/current/auth-pg-hba-conf.html"><literal>pg_hba.conf</literal></link> documentation.
