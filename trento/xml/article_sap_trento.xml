@@ -1936,7 +1936,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
           </imageobject>
         </mediaobject>
       </figure>
-      <para>Clicking on the Upgradable Packages box takes us to the Upgradable Package overview,
+      <para>Clicking on the <guimenu>Upgradable Packages</guimenu> box takes us to the <guimenu>Upgradable Package</guimenu> overview,
     where the user can see the list of packages that can be upgraded in that particular host:</para>
            <figure>
          <title><guimenu>Upgradable Packages overview</guimenu></title>
