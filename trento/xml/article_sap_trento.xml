@@ -1961,7 +1961,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
       </figure>
    <para>There are three types of patches or advisories: security advisories, bug fixes and feature
    enhancements. Security advisories are regarded as critical. If one is avaiable,
-   the health of the host will be set to critical. IF there are availale patches but none of them
+   the health of the host will be set to critical. If there are available patches but none of them
     is a security one, the health of the host will switch to warning. When a host cannot be found in
     &suma; or there is a problem retrieving the data for it, its health is set as unknnown.
    </para>
