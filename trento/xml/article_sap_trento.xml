@@ -1911,7 +1911,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
         </mediaobject>
       </figure>
    <para>
-   Onc the &suma; settings are configured, the &sap; administrator can test the connection
+   Once the &suma; settings are configured, the &sap; administrator can test the connection
    by clicking the corresponding button.
    If the connection is successful, the Host Details view of each host
    managed by &suma; will display a summary
