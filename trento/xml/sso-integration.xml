@@ -249,7 +249,13 @@ HELM_EXPERIMENTAL_OCI=1 helm ... \
    --set trento-web.oauth2.baseUrl=&lt;OAUTH2_BASE_URL&gt; \
    --set trento-web.oauth2.authorizeUrl=&lt;OAUTH2_AUTHORIZE_URL&gt; \
    --set trento-web.oauth2.tokenUrl=&lt;OAUTH2_TOKEN_URL&gt; \
-   --set trento-web.oauth2.userUrl=&lt;OAUTH2_USER_URL&gt; \
+   --set trento-web.oauth2.userUrl=&lt;OAUTH2_USER_URL&gt;
+</programlisting>
+          <para>
+            Additionally, the following optional values are available:
+          </para>
+          <programlisting>
+HELM_EXPERIMENTAL_OCI=1 helm ... \
    --set trento-web.oauth2.scopes=&lt;OAUTH2_SCOPES&gt;
 </programlisting>
         </listitem>
@@ -414,7 +420,7 @@ docker run -d \
               OAUTH2 scopes, used to define the user values sent to the
               SP. It must be adjusted depending on IDP provider
               requirements (default value:
-              <literal>openid profile email</literal>)
+              <literal>profile email</literal>)
             </para>
           </listitem>
         </varlistentry>
@@ -486,10 +492,10 @@ docker run -d \
         identify the SAML client as well. The content of this file must
         be provided to Trento. Options
         <option>SAML_METADATA_URL</option> and
-        <option>SAML_METDATA_CONTENT</option> are available for that.
+        <option>SAML_METADATA_CONTENT</option> are available for that.
       </para>
       <para>
-        If the <option>SAML_METDATA_CONTENT</option> option is being
+        If the <option>SAML_METADATA_CONTENT</option> option is being
         used, the content of this variable must be updated with the IDP
         metadata as single line string. On the other hand, if
         <option>SAML_METADATA_URL</option> is used, the new metadata is
@@ -624,7 +630,7 @@ HELM_EXPERIMENTAL_OCI=1 helm ... \
    --set trento-web.saml.metadataUrl=&lt;SAML_METADATA_URL&gt;
 </programlisting>
           <para>
-            To use the <option>SAML_METDATA_CONTENT</option> option
+            To use the <option>SAML_METADATA_CONTENT</option> option
             rather than <option>SAML_METADATA_URL</option> use:
           </para>
           <programlisting>
@@ -639,10 +645,6 @@ HELM_EXPERIMENTAL_OCI=1 helm ... \
           </para>
           <programlisting>
 HELM_EXPERIMENTAL_OCI=1 helm ... \
-   --set trento-web.saml.enabled=true \
-   --set trento-web.saml.idpId=&lt;SAML_IDP_ID&gt; \
-   --set trento-web.saml.spId=&lt;SAML_SP_ID&gt; \
-   --set trento-web.saml.metadataUrl=&lt;SAML_METADATA_URL&gt; \
    --set trento-web.saml.idpNameIdFormat=&lt;SAML_IDP_NAMEID_FORMAT&gt; \
    --set trento-web.saml.spDir=&lt;SAML_SP_DIR&gt; \
    --set trento-web.saml.spEntityId=&lt;SAML_SP_ENTITY_ID&gt; \

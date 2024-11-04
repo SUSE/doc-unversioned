@@ -145,12 +145,15 @@ To enable OAuth 2.0 when using kubernetes deployment with helm, proceed as follo
       --set trento-web.oauth2.baseUrl=<OAUTH2_BASE_URL> \
       --set trento-web.oauth2.authorizeUrl=<OAUTH2_AUTHORIZE_URL> \
       --set trento-web.oauth2.tokenUrl=<OAUTH2_TOKEN_URL> \
-      --set trento-web.oauth2.userUrl=<OAUTH2_USER_URL> \
-      --set trento-web.oauth2.scopes=<OAUTH2_SCOPES>
+      --set trento-web.oauth2.userUrl=<OAUTH2_USER_URL>
    ```
 
-   <option>trento-web.oauth2.scopes</option> variable is optional with `profile email` as default value.
+   Additionally, the following optional values are available:
 
+   ```
+   HELM_EXPERIMENTAL_OCI=1 helm ... \
+      --set trento-web.oauth2.scopes=<OAUTH2_SCOPES>
+   ```
 
 ### Enabling OAuth 2.0 when using RPM packages
 
@@ -244,7 +247,7 @@ OAUTH2_USER_URL
 
 OAUTH2_SCOPES
 
-: OAUTH2 scopes, used to define the user values sent to the SP. It must be adjusted depending on IDP provider requirements (default value: `openid profile email`)
+: OAUTH2 scopes, used to define the user values sent to the SP. It must be adjusted depending on IDP provider requirements (default value: `profile email`)
 
 OAUTH2_CALLBACK_URL
 
@@ -269,9 +272,9 @@ See the following subsections for details.
 
 ### Obtaining metadata content from the IDP
 
-The <filename>metadata.xml</filename> file defines the agreement between SP and IDP during SAML communications. It is used to identify the SAML client as well. The content of this file must be provided to Trento. Options <option>SAML_METADATA_URL</option> and <option>SAML_METDATA_CONTENT</option> are available for that.
+The <filename>metadata.xml</filename> file defines the agreement between SP and IDP during SAML communications. It is used to identify the SAML client as well. The content of this file must be provided to Trento. Options <option>SAML_METADATA_URL</option> and <option>SAML_METADATA_CONTENT</option> are available for that.
 
-If the <option>SAML_METDATA_CONTENT</option> option is being used, the content of this variable must be updated with the IDP metadata as single line string. On the other hand, if <option>SAML_METADATA_URL</option> is used, the new metadata is automatically fetched when Trento starts. If neither of these steps are completed, communication will fail because the message signatures will not be recognized.
+If the <option>SAML_METADATA_CONTENT</option> option is being used, the content of this variable must be updated with the IDP metadata as single line string. On the other hand, if <option>SAML_METADATA_URL</option> is used, the new metadata is automatically fetched when Trento starts. If neither of these steps are completed, communication will fail because the message signatures will not be recognized.
 
 If the used IDP has the endpoint to provide the <filename>metadata.xml</filename> file content, prefer the variable <option>SAML_METADATA_URL</option>. Trento will automatically fetch metadata when started.
 
@@ -331,7 +334,7 @@ To enable SAML when using kubernetes deployment with helm, proceed as follows:
       --set trento-web.saml.metadataUrl=<SAML_METADATA_URL>
    ```
 
-   To use the <option>SAML_METDATA_CONTENT</option> option rather than <option>SAML_METADATA_URL</option> use:
+   To use the <option>SAML_METADATA_CONTENT</option> option rather than <option>SAML_METADATA_URL</option> use:
 
    ```
    HELM_EXPERIMENTAL_OCI=1 helm ... \
@@ -345,10 +348,6 @@ To enable SAML when using kubernetes deployment with helm, proceed as follows:
 
    ```
    HELM_EXPERIMENTAL_OCI=1 helm ... \
-      --set trento-web.saml.enabled=true \
-      --set trento-web.saml.idpId=<SAML_IDP_ID> \
-      --set trento-web.saml.spId=<SAML_SP_ID> \
-      --set trento-web.saml.metadataUrl=<SAML_METADATA_URL> \
       --set trento-web.saml.idpNameIdFormat=<SAML_IDP_NAMEID_FORMAT> \
       --set trento-web.saml.spDir=<SAML_SP_DIR> \
       --set trento-web.saml.spEntityId=<SAML_SP_ENTITY_ID> \
