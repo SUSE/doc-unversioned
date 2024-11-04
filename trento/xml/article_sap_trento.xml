@@ -753,7 +753,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
             how &t.server; was deployed.</para>
             <para> In a Kubernetes deployment, it is <uri>amqp://trento:trento@TRENTO_SERVER_HOSTNAME:5672/</uri>. If the default RabbitMQ username and password (trento) were updated using helm, 
             the parameter must use the custom value. </para>
-            <para> In a systemd or containerized deployment, the correct value is amqp://trento_user:trento_user_password@TRENTO_SERVER_HOSTNAME:5672/vhost. If trento_use and trento_user_password were replaced with custom values, you can use them.
+            <para> In a systemd or containerized deployment, the correct value is <uri>amqp://TRENTO_USER:TRENTO_USER_PASSWORD@TRENTO_SERVER_HOSTNAME:5672/vhost</uri>. If <replaceable>TRENTO_USER</replaceable> and <replaceable>TRENTO_USER_PASSWORD</replaceable> were replaced with custom values, you can use them.
             </para>
           </listitem>
           <listitem>
