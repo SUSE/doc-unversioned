@@ -1912,7 +1912,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
       </figure>
    <para>
    Once the &suma; settings are configured, the &sap; administrator can test the connection
-   by clicking the corresponding button.
+   by clicking the <guimenu>Test</guimenu> button.
    If the connection is successful, the Host Details view of each host
    managed by &suma; will display a summary
    of available patches and upgradable packages:</para>
