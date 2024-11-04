@@ -159,10 +159,10 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       </listitem>
               <listitem>
         <para>
-          Summary of available patches and upgradable packages for each registered hosts via integration 
+          Summary of available patches and upgradable packages for each registered hosts via integration
          with &suma;.
         </para>
-      </listitem>  
+      </listitem>
       <listitem>
         <para>
           Monitoring of CPU and Memory usage at host level through basic integration with &prometheus;
@@ -183,7 +183,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
           Housekeeping capabilities.
         </para>
       </listitem>
-  
+
     </itemizedlist>
 
     <para> The <emphasis role="strong">&t.server;</emphasis> is an
@@ -965,7 +965,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
     <title>Performing configuration checks</title>
     <remark>toms 2024-04-18 (change#8): First saptune related configuration checks (host and cluster specific) -> update</remark>
     <para>
-     One of Trento's main features is to provide configuration checks that ensure your infrastructure setup adheres to our Best Practices, 
+     One of Trento's main features is to provide configuration checks that ensure your infrastructure setup adheres to our Best Practices,
      or other vendor's Best Practices, and does not drift away in time. Configuration checks ara available for
      HANA clusters, ASCS/ERS clusters and hosts. The following procedure is specific to a HANA cluster. The procedure for an ASCS/ERS cluster
      or a host would be exactly the same, only starting from the corresponding Details view:
@@ -1386,7 +1386,7 @@ The health boxes in the dashboard are clickable. By clicking on one particular b
                <listitem>
                 <para>Available software updates sections: when settings for SUSE Manager are maintained and the host
                  is managed by the SUMA instance for which connection data has been provided, this section shows
-                 a summary of the available patches and upgradable packages for this particular host. Refer to section 
+                 a summary of the available patches and upgradable packages for this particular host. Refer to section
                 <xref linkend="sec-integration-with-SUSE-Manager"/> for further details. </para>
               </listitem>
               <listitem>
@@ -1517,11 +1517,11 @@ The health boxes in the dashboard are clickable. By clicking on one particular b
                 </para>
               </listitem>
               <listitem>
-                <para>A <guimenu>Check Result</guimenu> section, showing a summary of the results of the last 
+                <para>A <guimenu>Check Result</guimenu> section, showing a summary of the results of the last
                  check execution, when applicable.
                 </para>
               </listitem>
-       
+
               <listitem>
                 <para>A <guimenu>Node details</guimenu> section showing the following for each
                  node in the cluster: the node status (Online or Maintenance or Other), the host name, the role of the node
@@ -1898,7 +1898,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
               fileref="trento-suse-manager-settings.png" />
           </imageobject>
         </mediaobject>
-      </figure>  
+      </figure>
    <para>
    With the &suma; settings configured, the &sap; admin can test the connection
    by clicking <guimenu>Test Connection</guimenu>.
@@ -1918,7 +1918,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
    enhancement. Security advisories are regarded as critical. If one is found,
    the health of the host will be set to critical too. The others are to be seen as warnings.</para>
     <para>
-    At any time, the user can clear the &suma; settings from the Settings view. 
+    At any time, the user can clear the &suma; settings from the Settings view.
     As a result, all information about available software updates disappears from the console and the status of the hosts is adjusted accordingly.</para>
     </section>
 
@@ -2378,7 +2378,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
         determined using the <guimenu>Settings</guimenu> button in the
         corresponding cluster detail view. See <xref
           linkend="lst-trento-web-pace-cluster-settings" /> for
-        details. </para> 
+        details. </para>
     </section>
 -->
 
@@ -2390,7 +2390,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
    <para>By default, the API key does not have an expiration date. To increase the
     overall security of the setup, meet internal security requirements, or both,
     the user can set up a custom expiration date.</para>
-   <para>To do that, go to the Settings view and click 
+   <para>To do that, go to the Settings view and click
     the <guimenu>Generate Key</guimenu> button in the API Key section:</para>
           <figure>
         <title><guimenu>Checks catalog</guimenu></title>
@@ -2419,7 +2419,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
          follow the rules described in the User Managmeent section .</para>
         </listitem>
       </itemizedlist>
-   <para>In a &K8s; deployment, you can use Helm to update &t.server;:</para>
+   <para>In a &k8s; deployment, you can use Helm to update &t.server;:</para>
       <screen>helm upgrade \
    --install trento-server oci://registry.suse.com/trento/trento-server \
    --set trento-web.trentoWebOrigin=<replaceable>TRENTO_SERVER_HOSTNAME</replaceable> \
@@ -2983,7 +2983,7 @@ trento-server-rabbitmq-0</screen>
             <listitem>
               <para>Enhanced discovery capabilities, including improved
                support HANA multi-tenant architecture, HANA scale out cluster
-               discovery, discovery of clsluters using diskless SBD and 
+               discovery, discovery of clsluters using diskless SBD and
                maintenance awareness.</para>
             </listitem>
             <listitem>
