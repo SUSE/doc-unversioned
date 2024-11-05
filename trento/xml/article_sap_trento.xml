@@ -2447,20 +2447,17 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
     <para>
       Any &suse; customer, with a registered &sles4sap;&nbsp;15 (SP1 or higher) distribution,
      experiencing an issue with &trentopremium;, can report the problem either directly in the &scc;
-     or through the corresponding vendor, depending on their licensing model. Please report the problem under &sles4sap;&nbsp;15 and component trento.
+     or through the corresponding vendor, depending on their licensing model. Problems must be reported under &sles4sap;&nbsp;15 and component trento.
     </para>
       <para>
-      When opening a support case for Trento, provide the following information, which can be retrieved
-     as explained in section <xref linkend="sec-trento-problemanalysis" />:
+      When opening a support case for Trento, provide the chosen deployment option for &t.server;: &k8s;, systemd or containerized.</para>
+   <para>In case of a &k8s; deployment, provide the output of the Trento support plugin and the scenario dump, as explained in section <xref linkend="sec-trento-problemanalysis" />.
     </para>
-         <itemizedlist>
-          <listitem>
-            <para>The output of the Trento support plugin.</para>
-          </listitem>
-           <listitem>
-            <para>Your scenario dump.</para>
-          </listitem>
-        </itemizedlist>
+   <para>In case of a systemd deployment, provide the status and the journal of the trento-web and trento-wanda services.
+    </para>
+   <para>In case of a containerized deployment, provide the logs of the trento-web and trento-wanda containers. Use <command>docker ps</command> to retrieve
+    the IDs of both containers, then <command>docker logs <replaceable>CONTAINER_ID</replaceable></command> to retrieve the corresponding logs.
+    </para>
    <para>
       For issues with a particular &t.agent;, or a component discovered by a particular &t.agent;, also provide the following:
     </para>
@@ -2488,8 +2485,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
 
     <section>
       <title>&t.server;</title>
-      <para>To analyze issues within the application, we have two tools at our
-        disposal. They both help us collect information/data that might be
+      <para>There are two tools you can use to analyze issues with &t.server; in a &k8s; scenario. They both help us collect information/data that might be
         useful when troubleshooting/analyzing the issue.</para>
 
       <section>
