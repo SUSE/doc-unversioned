@@ -72,7 +72,7 @@ Follow the steps in [4.2 systemd deployment](https://documentation.suse.com/sles
      registry.suse.com/trento/trento-checks:latest
    ```
 
-1. Install trento-wanda on Docker:
+1. Deploy trento-wanda:
 
    ```bash
    docker run -d --name wanda \
@@ -91,7 +91,7 @@ Follow the steps in [4.2 systemd deployment](https://documentation.suse.com/sles
        -c "/app/bin/wanda eval 'Wanda.Release.init()' && /app/bin/wanda start"
    ```
 
-1. Install trento-web on Docker
+1. Deploy trento-web.
 
    Make sure to change the `ADMIN_USER` and `ADMIN_PASSWORD`. These credentials are required to login to the trento-web UI.
    Depending on how you intend to connect to the console, a working hostname, FQDN, or an IP is required in `TRENTO_WEB_ORIGIN` for HTTPS otherwise, websockets will fail to connect, causing no real-time updates on the UI.
