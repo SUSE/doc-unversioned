@@ -220,7 +220,7 @@ CONTAINER ID   IMAGE                                         COMMAND            
 e859c07888ca   registry.suse.com/trento/trento-wanda:1.2.0   &quot;/bin/sh -c '/app/bi…&quot;   18 seconds ago   Up 16 seconds   0.0.0.0:4001-&gt;4000/tcp, :::4001-&gt;4000/tcp   wanda
 </programlisting>
           <para>
-            Both containers should be running and listening on the specified ports.
+            Both containers must run and listen on the specified ports.
           </para>
         </step>
       </procedure>
