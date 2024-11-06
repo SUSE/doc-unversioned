@@ -157,4 +157,4 @@ Follow the steps in [4.2 systemd deployment](https://documentation.suse.com/sles
    e859c07888ca   registry.suse.com/trento/trento-wanda:1.2.0   "/bin/sh -c '/app/bi…"   18 seconds ago   Up 16 seconds   0.0.0.0:4001->4000/tcp, :::4001->4000/tcp   wanda
    ```
 
-   Both containers should be running and listening on the specified ports.
+   Both containers must run and listen on the specified ports.
