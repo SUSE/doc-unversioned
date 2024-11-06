@@ -765,15 +765,14 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       password action button that allows user managers to easily generate
       secure and compliant passwords. The user manager must provide the user with
       their password through an authorized secure channel. </para>
-    <para>Users can reset their passwords in their profile views, where they can
-      also update their Full Names and their email addresses as well as activate
-      Multi Factor Authentication using an Authenticator app of their choice.
+    <para>A user can reset their password in the profile view. Here, they can
+      also update their name and email address as well as activate
+      multi-factor authentication using an authenticator app.
       Multi-factor authentication increases the security of a user account by
       requesting a temporary second password or code when logging in the
       console. User managers can disable Multi-Factor authentication for any
-      given user that has it enabled, but cannot enable it on their behalf. The
-      default admin user cannot enable Multi-Factor Authentication for
-      itself.</para>
+      given user that has it enabled. However, user managers cannot enable multi-factor authentication
+      on their behalf. The  default admin user cannot enable its own multi-factor authentication.</para>
     <note>
       <title>Security Tip for Multi-Factor Authentication</title>
       <para>Since multi-factor authentication cannot be enabled for
