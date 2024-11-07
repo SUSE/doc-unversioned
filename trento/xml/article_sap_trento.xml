@@ -776,7 +776,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       password action button that allows user managers to easily generate
       secure and compliant passwords. The user manager must provide the user with
       their password through an authorized secure channel. </para>
-    <para>A user can reset their password in the profile view. Here, they can
+    <para>A user can reset their password in the <guimenu>Profile</guimenu> view. Here, they can
       also update their name and email address as well as activate
       multi-factor authentication using an authenticator app.
       Multi-factor authentication increases the security of a user account by
