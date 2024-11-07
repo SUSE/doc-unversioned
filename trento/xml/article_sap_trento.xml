@@ -757,7 +757,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       only in case all other access to the console is lost. If the password
       of the default admin user is lost, it can be reset by updating the
       helm chart or the web component configuration, depending on which
-      deployment method was used to install Trento Server. </para>
+      deployment method was used to install &t.server;. </para>
     <para>User passwords, including the default admin user password, must follow the rules below:</para>
     <itemizedlist>
       <listitem>
