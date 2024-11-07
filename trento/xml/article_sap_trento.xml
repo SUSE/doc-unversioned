@@ -690,33 +690,33 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       permissions are currently available: </para>
     <itemizedlist>
       <listitem>
-        <para>all:users: grants full access to user management actions under
+<constant>all:users</constant>: grants full access to user management actions under
           the <guimenu>Users</guimenu> view</para>
       </listitem>
       <listitem>
-        <para>all:check_selection: grants check selection capabilities for
+        <para><constant>all:checks_selection</constant>: grants check selection capabilities for
           any target in the registered environment for which checks are
           available</para>
       </listitem>
       <listitem>
-        <para>all:check_execution: grants check execution capabilities for
+        <para><constant>all:checks_execution</constant>: grants check execution capabilities for
           any target in the registered environment for which checks are
           available and have been previously selected</para>
       </listitem>
       <listitem>
-        <para>all:tags: allows creation and deletion of the available tags</para>
+        <para><constant>all:tags</constant>: allows creation and deletion of the available tags</para>
       </listitem>
       <listitem>
-        <para>cleanup:all: allows triggering housekeeping actions on hosts
+        <para><constant>cleanup:all</constant>: allows triggering housekeeping actions on hosts
           where agents heartbeat is lost and SAP or HANA instances that are no
           longer found</para>
       </listitem>
       <listitem>
-        <para>all:settings: grants changing capabilities on any system
+        <para><constant>all:settings</constant>: grants changing capabilities on any system
           settings under the <guimenu>Settings</guimenu> view</para>
       </listitem>
       <listitem>
-        <para>all:all: grants all the permissions above</para>
+        <para><constant>all:all</constant>: grants all the permissions above</para>
       </listitem>
     </itemizedlist>
     <para>Using the described permissions, it is possible to create the following types of users:</para>
