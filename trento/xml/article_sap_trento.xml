@@ -772,7 +772,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
           1234, abcd or ABCD)</para>
       </listitem>
     </itemizedlist>
-    <para>The Create User and Edit User views provide a built-in generation
+    <para>The <guimenu>Create User</guimenu> and <guimenu>Edit User</guimenu> views provide a built-in generation
       password action button that allows user managers to easily generate
       secure and compliant passwords. The user manager must provide the user with
       their password through an authorized secure channel. </para>
