@@ -680,7 +680,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       of duties in the Trento console and ensures that only authorized users with the right permissions can
       access it. </para>
     <para> User management actions are performed in the <guimenu>Users</guimenu>
-      view in the left-hand side panel of the console. </para>
+      view in the left-hand side panel of the &t.web;. </para>
     <para> By default, a newly created user is granted display access rights
       across the console, except for the Users view. Whenever available, a user
       with default access can set up filters and pagination settings matching
