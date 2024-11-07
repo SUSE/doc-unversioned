@@ -722,19 +722,30 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
     <para>Using the described permissions, it is possible to create the following types of users:</para>
     <itemizedlist>
       <listitem>
-        <para>User managers: users with all:users permission</para>
+        <formalpara>
+          <title>User managers:</title>
+          <para>users with <constant>all:users</constant> permission</para>
+        </formalpara>
       </listitem>
       <listitem>
-        <para>SAP administrator with Trento display-only access: users with
-          default permissions</para>
+        <formalpara>
+          <title>SAP administrator with Trento display-only access:</title>
+          <para>users with default permissions</para>
+        </formalpara>
       </listitem>
       <listitem>
-        <para>SAP administrator with Trento configuration access: users with
-          all:checks_selection, all:tags and all:settings permissions</para>
+        <formalpara>
+          <title>SAP administrator with Trento configuration access:</title>
+          <para>users with <constant>all:checks_selection</constant>,
+          <constant>all:tags</constant> and <constant>all:settings</constant> permissions</para>
+          </formalpara>
       </listitem>
       <listitem>
-        <para>SAP administrator with Trento operation access: users with
-          all:check_execution and cleanup:all permissions.</para>
+        <formalpara>
+          <title>SAP administrator with Trento operation access:</title>
+          <para>users with <constant>all:check_execution</constant> and
+          <constant>cleanup:all</constant> permissions.</para>
+        </formalpara>
       </listitem>
     </itemizedlist>
     <para>The default admin user created during the installation process is
