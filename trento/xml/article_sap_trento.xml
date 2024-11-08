@@ -690,7 +690,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       permissions are currently available: </para>
     <itemizedlist>
       <listitem>
-<constant>all:users</constant>: grants full access to user management actions under
+        <para><constant>all:users</constant>: grants full access to user management actions under
           the <guimenu>Users</guimenu> view</para>
       </listitem>
       <listitem>
