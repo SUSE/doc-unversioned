@@ -672,14 +672,6 @@ nginx: configuration file /etc/nginx/nginx.conf test is successful
           adjusted.
         </para>
       </step>
-      <step>
-        <para>
-          If SSL certificates were modified or added, reload NGINX to apply changes:
-        </para>
-<programlisting language="bash">
-systemctl reload nginx
-</programlisting>
-      </step>
     </procedure>
   </section>
   <section xml:id="prepare-ssl-certificate-for-nginx">
