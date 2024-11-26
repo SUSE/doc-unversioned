@@ -1935,7 +1935,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
           </imageobject>
         </mediaobject>
       </figure>
-      <para>Click <guimenu>Upgradable Packages</guimenu> to open the <guimenu>Upgradable Packages</guimenu> overview containing a list of packages that can be upgraded on that particular host:</para>>
+      <para>Click <guimenu>Upgradable Packages</guimenu> to open the <guimenu>Upgradable Packages</guimenu> overview containing a list of packages that can be upgraded on that particular host:</para>
            <figure>
          <title><guimenu>Upgradable Packages overview</guimenu></title>
         <mediaobject>
