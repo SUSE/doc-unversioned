@@ -36,7 +36,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
     xmlns:xi="http://www.w3.org/2001/XInclude"
     xmlns:xlink="http://www.w3.org/1999/xlink"
     xmlns:its="http://www.w3.org/2005/11/its">
-  <title>Getting started with &trentopremium;</title>
+  <title>Getting Started with &trentopremium;</title>
   <subtitle>&sles4sapreg;</subtitle>
   <info>
      <!-- History -->
@@ -80,7 +80,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
     -->
 
     <!-- Social Media -->
-    <meta name="title" its:translate="yes">Getting started with &trentopremium;</meta>
+    <meta name="title" its:translate="yes">Getting Started with &trentopremium;</meta>
     <meta name="social-descr" its:translate="yes">Use &trentopremium; for &sles4sapa;</meta>
 
     <!-- Search -->
