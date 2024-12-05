@@ -2516,6 +2516,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
               <para>Customers of &sles4sap; 15 SP3 and higher can install the
                   <package>trento-supportconfig-plugin</package> package
                 directly from the official &sles4sapa; 15 repos using &zypper;.
+               The Containers Module is required for installation.
               </para>
             </note>
           </step>
