@@ -16,7 +16,7 @@
       <procedure>
         <step>
           <para>
-            Enable the Container module:
+            Enable the containers module:
           </para>
 <programlisting language="bash">
 SUSEConnect --product sle-module-containers/15.5/x86_64
@@ -60,21 +60,19 @@ docker network create trento-net
 </programlisting>
           <note>
             <para>
-              When creating the trento-net network, Docker assigns a default subnet:
-              <literal>172.17.0.0/16</literal>. Ensure that this subnet matches the one specified
-              in your PostgreSQL configuration file (refer
-              to<filename>/var/lib/pgsql/data/pg_hba.conf</filename>). If the subnet of
-              <literal>trento-net</literal> differs from <literal>172.17.0.0/16</literal> then
-              adjust <literal>pg_hba.conf</literal> and restart PostgreSQL.
+             When creating the <literal>trento-net</literal> network, Docker assigns a default subnet to it:
+              <literal>172.17.0.0/16</literal>. Ensure that this subnet is allowed by the rules specified
+              in your PostgreSQL configuration. For more information, refer to the upstream
+              <link xlink:href="https://www.postgresql.org/docs/current/auth-pg-hba-conf.html"><literal>pg_hba.conf</literal></link> documentation.
             </para>
           </note>
         </step>
         <step>
           <para>
-            Verify the subnet of trento-net:
+            Verify the subnet of <literal>trento-net</literal>:
           </para>
 <programlisting language="bash">
-docker network inspect trento-net  --format '{{range .IPAM.Config}}{{.Subnet}}{{end}}'
+docker network inspect trento-net --format '{{range .IPAM.Config}}{{.Subnet}}{{end}}'
 </programlisting>
           <para>
             Expected output is as follows:
@@ -97,7 +95,7 @@ docker network inspect trento-net  --format '{{range .IPAM.Config}}{{.Subnet}}{{
               Consider using an environment variable file (see
               <link xlink:href="https://docs.docker.com/engine/reference/commandline/run/#env">official
               Docker documentation</link>). Adjust the docker command below for use with the env file. In any case, make sure you keep a copy of the generated keys in a safe location, in case you need to
-             reuse them in the future. 
+             reuse them in the future.
             </para>
           </note>
 <programlisting language="bash">
@@ -109,6 +107,17 @@ REFRESH_TOKEN_ENC_SECRET=$(openssl rand -out /dev/stdout 48 | base64)
         </step>
         <step>
           <para>
+            Install the checks on the system in a shared volume:
+          </para>
+<programlisting language="bash">
+docker volume create trento-checks \
+  &amp;&amp; docker run \
+  -v trento-checks:/usr/share/trento/checks \
+  registry.suse.com/trento/trento-checks:latest
+</programlisting>
+        </step>
+        <step>
+          <para>
             Deploy trento-wanda:
           </para>
 <programlisting language="bash">
@@ -116,6 +125,7 @@ docker run -d --name wanda \
     -p 4001:4000 \
     --network trento-net \
     --add-host &quot;host.docker.internal:host-gateway&quot; \
+    -v trento-checks:/usr/share/trento/checks:ro \
     -e CORS_ORIGIN=localhost \
     -e SECRET_KEY_BASE=$WANDA_SECRET_KEY_BASE \
     -e ACCESS_TOKEN_ENC_SECRET=$ACCESS_TOKEN_ENC_SECRET \
@@ -123,7 +133,7 @@ docker run -d --name wanda \
     -e DATABASE_URL=ecto://wanda_user:wanda_password@host.docker.internal/wanda \
     --restart always \
     --entrypoint /bin/sh \
-    registry.suse.com/trento/trento-wanda:1.2.0 \
+    registry.suse.com/trento/trento-wanda:latest \
     -c &quot;/app/bin/wanda eval 'Wanda.Release.init()' &amp;&amp; /app/bin/wanda start&quot;
 </programlisting>
         </step>
@@ -164,7 +174,7 @@ docker run -d \
 -e TRENTO_WEB_ORIGIN='trento.example.com' \
 --restart always \
 --entrypoint /bin/sh \
-registry.suse.com/trento/trento-web:2.2.0 \
+registry.suse.com/trento/trento-web:latest \
 -c &quot;/app/bin/trento eval 'Trento.Release.init()' &amp;&amp; /app/bin/trento start&quot;
 </programlisting>
           <para>
@@ -210,7 +220,7 @@ CONTAINER ID   IMAGE                                         COMMAND            
 e859c07888ca   registry.suse.com/trento/trento-wanda:1.2.0   &quot;/bin/sh -c '/app/bi…&quot;   18 seconds ago   Up 16 seconds   0.0.0.0:4001-&gt;4000/tcp, :::4001-&gt;4000/tcp   wanda
 </programlisting>
           <para>
-            Both containers should be running and listening on the specified ports.
+            Both containers must run and listen on the specified ports.
           </para>
         </step>
       </procedure>

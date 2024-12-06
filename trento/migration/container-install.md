@@ -8,13 +8,13 @@ Follow the steps in [4.2 systemd deployment](https://documentation.suse.com/sles
 
 ### Install Docker container runtime
 
-1. Enable the container`s module:
+1. Enable the containers module:
 
    ```bash
    SUSEConnect --product sle-module-containers/15.5/x86_64
    ```
 
-   > **Note:** Using a different Service Pack than SP5 requires to change repository: [SLE15 SP3: `SUSEConnect --product sle-module-containers/15.3/x86_64`,SLE15 SP4: ` SUSEConnect --product sle-module-containers/15.4/x86_64`]
+   > **Note:** Using a different Service Pack than SP5 requires to change repository: [SLE15 SP3: `SUSEConnect --product sle-module-containers/15.3/x86_64`,SLE15 SP4: `SUSEConnect --product sle-module-containers/15.4/x86_64`]
 
 1. Install Docker:
 
@@ -36,12 +36,12 @@ Follow the steps in [4.2 systemd deployment](https://documentation.suse.com/sles
    docker network create trento-net
    ```
 
-   > **Note:** When creating the trento-net network, Docker typically assigns a default subnet: `172.17.0.0/16`. Ensure that this subnet matches the one specified in your PostgreSQL configuration file (refer to`/var/lib/pgsql/data/pg_hba.conf`). If the subnet of `trento-net` differs from `172.17.0.0/16` then adjust `pg_hba.conf` and restart PostgreSQL.
+   > **Note:** When creating the `trento-net` network, Docker normally assigns a default subnet: `172.17.0.0/16`. Ensure that this subnet is allowed by the rules specified in your PostgreSQL configuration file. For more information, please refer to upstream's [`pg_hba.conf`](https://www.postgresql.org/docs/current/auth-pg-hba-conf.html) documentation.
 
-1. Verify the subnet of trento-net:
+1. Verify the subnet of `trento-net`:
 
    ```bash
-   docker network inspect trento-net  --format '{{range .IPAM.Config}}{{.Subnet}}{{end}}'
+   docker network inspect trento-net --format '{{range .IPAM.Config}}{{.Subnet}}{{end}}'
    ```
 
    Expected output:
@@ -63,13 +63,23 @@ Follow the steps in [4.2 systemd deployment](https://documentation.suse.com/sles
    REFRESH_TOKEN_ENC_SECRET=$(openssl rand -out /dev/stdout 48 | base64)
    ```
 
-1. Install trento-wanda on Docker:
+1. Install the checks on the system in a shared volume:
+
+   ```bash
+   docker volume create trento-checks \
+     && docker run \
+     -v trento-checks:/usr/share/trento/checks \
+     registry.suse.com/trento/trento-checks:latest
+   ```
+
+1. Deploy trento-wanda:
 
    ```bash
    docker run -d --name wanda \
        -p 4001:4000 \
        --network trento-net \
        --add-host "host.docker.internal:host-gateway" \
+       -v trento-checks:/usr/share/trento/checks:ro \
        -e CORS_ORIGIN=localhost \
        -e SECRET_KEY_BASE=$WANDA_SECRET_KEY_BASE \
        -e ACCESS_TOKEN_ENC_SECRET=$ACCESS_TOKEN_ENC_SECRET \
@@ -77,11 +87,11 @@ Follow the steps in [4.2 systemd deployment](https://documentation.suse.com/sles
        -e DATABASE_URL=ecto://wanda_user:wanda_password@host.docker.internal/wanda \
        --restart always \
        --entrypoint /bin/sh \
-       registry.suse.com/trento/trento-wanda:1.2.0 \
+       registry.suse.com/trento/trento-wanda:latest \
        -c "/app/bin/wanda eval 'Wanda.Release.init()' && /app/bin/wanda start"
    ```
 
-1. Install trento-web on Docker
+1. Deploy trento-web.
 
    Make sure to change the `ADMIN_USER` and `ADMIN_PASSWORD`. These credentials are required to login to the trento-web UI.
    Depending on how you intend to connect to the console, a working hostname, FQDN, or an IP is required in `TRENTO_WEB_ORIGIN` for HTTPS otherwise, websockets will fail to connect, causing no real-time updates on the UI.
@@ -108,7 +118,7 @@ Follow the steps in [4.2 systemd deployment](https://documentation.suse.com/sles
    -e TRENTO_WEB_ORIGIN='trento.example.com' \
    --restart always \
    --entrypoint /bin/sh \
-   registry.suse.com/trento/trento-web:2.2.0 \
+   registry.suse.com/trento/trento-web:latest \
    -c "/app/bin/trento eval 'Trento.Release.init()' && /app/bin/trento start"
    ```
 
@@ -147,4 +157,4 @@ Follow the steps in [4.2 systemd deployment](https://documentation.suse.com/sles
    e859c07888ca   registry.suse.com/trento/trento-wanda:1.2.0   "/bin/sh -c '/app/bi…"   18 seconds ago   Up 16 seconds   0.0.0.0:4001->4000/tcp, :::4001->4000/tcp   wanda
    ```
 
-   Both containers should be running and listening on the specified ports.
+   Both containers must run and listen on the specified ports.
