@@ -123,14 +123,14 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       </listitem>
       <listitem>
         <para>
-          Monitoring of CPU and Memory usage at host level through basic integration
-          with &prometheus;
+          Automated discovery of &pace; clusters using SAPHanaSR classic or angi, and different
+          fencing mechanisms, including diskless SBD.
         </para>
       </listitem>
       <listitem>
         <para>
-     Discovery of &pace; clusters using different fencing mechanisms, including diskless SBD.
-                  </para>
+     Automated discovery of SAP systems running on ABAP or JAVA stacks and HANA databases.
+        </para>
       </listitem>
           <listitem>
         <para>
@@ -140,13 +140,17 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       <listitem>
         <para>Configuration validation for &hana; Scale-Up
           Performance-optimized and ASCS/ERS clusters deployed on Azure, AWS, GCP or on-premise
-         bare metal platforms, including KVM and Nutanix
+         bare metal platforms, including KVM and Nutanix.
         </para>
       </listitem>
          <listitem>
         <para>Insightful information about the execution of configuration checks.
         </para>
-         </listitem>
+     </listitem>
+     <listitem>
+        <para>Decoupled delivery of configuration checks from core functionality.
+        </para>
+     </listitem>
      <listitem>
         <para>
           Email alerting for critical events in the monitored landscape
@@ -3061,8 +3065,9 @@ trento-server-rabbitmq-0</screen>
                maintenance awareness.</para>
             </listitem>
             <listitem>
-              <para>Summary of available software updates for each registered hosts
-               via integration with SUSE manager.</para>
+              <para>
+               Information about available patches and upgradable packages for each registered hosts via integration
+               with SUSE manager.</para>
             </listitem>
                        <listitem>
               <para>Rotating API key.</para>
