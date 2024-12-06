@@ -7,7 +7,7 @@
     %entities;
 
   <!-- Trento specific entities -->
-  <!ENTITY trento        "Trento Premium">
+  <!ENTITY trento               "Trento">
   <!ENTITY trentoadmin          "trentoservice">
   <!ENTITY trentoserverip       "192.168.1.2">
   <!ENTITY trentoservername     "<replaceable
