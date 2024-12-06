@@ -527,17 +527,6 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
 
     </section>
 
-    <section xml:id="sec-trento-install-trentoserver-on-sles-for-sap15">
-      <title>Installing &t.server; on K3s running on &sles4sap;&nbsp;15</title>
-      <para>
-        If you choose to deploy K3s on a VM with a registered &sles4sap;&nbsp;15 distro,
-        you can install the package <filename>trento-server-installer</filename> and
-        then execute script <filename>install-trento-server</filename>:
-        it will run <xref linkend="st-install-k3s"/> to
-        <xref linkend="st-deploy-k3s"/> in
-        <xref linkend="pro-trento-manually-installing"/> for you automatically.
-      </para>
-    </section>
 
     <section xml:id="sec-trento-deploying-trento-on-selected-nodes">
       <title>Deploying &t.server; on selected nodes</title>
