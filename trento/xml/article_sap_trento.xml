@@ -2581,6 +2581,34 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
 
   </section>
 
+    <section xml:id="sec-trento-updating-trento-checks">
+    <title>Updating Trento Checks</title>
+    <para>Configuration checks are an integral part of the &t.server;. The checks are delivered as a separate component of the &t.server;. This allows customers
+    to update the checks catalog in their setup whenever updates to existing checks and new checks are released, without
+    waiting for a new version release cycle.</para>
+         <para> The procedure of updating the configuration checks depends on the &t.server; deployment type: &k8s;, systemd or containerized.</para>
+     <para>In a k8s; deployment, checks are delivered as a container image and you can
+      use Helm with the following options to pull the latest one available into your setup:</para>
+<programlisting>
+    helm ... \
+   --set trento-wanda.checks.image.tag=latest \
+   --set trento-wanda.checks.image.repository=registry.suse.com/trento/trento-checks  \
+   --set trento-wanda.checks.image.pullPolicy=Always \
+   ...
+</programlisting>
+     <para>In a systemd deployment, checks are delivered as an RPM package, and you can 
+      use zypper to update your checks catalog to the latest version:</para>
+        <screen>&prompt.user;sudo zypper ref
+&prompt.user;sudo zypper update trento-checks</screen>
+    <para>In a containerized deployment, checks are delivered as a container image, and
+     you can user Docker to pull the latest version into the trento-checks volume that was
+     created during the installation process:</para>
+ <screen>&prompt.user;docker run \
+  -v trento-checks:/usr/share/trento/checks \
+  registry.suse.com/trento/trento-checks:latest
+ </screen>
+  </section>
+
    <section xml:id="sec-trento-uninstall-trentoserver">
     <title>Uninstalling &t.server;</title>
     <para>The procedure to uninstall the Trento Server depends on the deployment type: Kubernetes, systemd or containerized. The section covers Kubernetes deployments.</para>
