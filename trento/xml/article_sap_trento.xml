@@ -671,6 +671,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
   <xi:include href="systemd-install.xml"/>
   <xi:include href="container-install.xml"/>
   <xi:include href="ansible-install.xml"/>
+  <xi:include href="sso-integration.xml"/>
   </section>
 
   <section xml:id="sec-trento-user-management">
