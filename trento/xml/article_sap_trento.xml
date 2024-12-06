@@ -7,7 +7,7 @@
     %entities;
 
   <!-- Trento specific entities -->
-  <!ENTITY trentopremium        "Trento Premium">
+  <!ENTITY trento        "Trento Premium">
   <!ENTITY trentoadmin          "trentoservice">
   <!ENTITY trentoserverip       "192.168.1.2">
   <!ENTITY trentoservername     "<replaceable
@@ -36,7 +36,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
     xmlns:xi="http://www.w3.org/2001/XInclude"
     xmlns:xlink="http://www.w3.org/1999/xlink"
     xmlns:its="http://www.w3.org/2005/11/its">
-  <title>Getting Started with &trentopremium;</title>
+  <title>Getting Started with &trento;</title>
   <subtitle>&sles4sapreg;</subtitle>
   <info>
      <!-- History -->
@@ -80,15 +80,15 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
     -->
 
     <!-- Social Media -->
-    <meta name="title" its:translate="yes">Getting Started with &trentopremium;</meta>
-    <meta name="social-descr" its:translate="yes">Use &trentopremium; for &sles4sapa;</meta>
+    <meta name="title" its:translate="yes">Getting Started with &trento;</meta>
+    <meta name="social-descr" its:translate="yes">Use &trento; for &sles4sapa;</meta>
 
     <!-- Search -->
-    <meta name="description" its:translate="yes">How to use &trentopremium; for &sles4sap;</meta>
+    <meta name="description" its:translate="yes">How to use &trento; for &sles4sap;</meta>
 
     <abstract>
       <para>
-       &trentopremium; is an open cloud native Web console that aims to help
+       &trento; is an open cloud native Web console that aims to help
        &sap; Basis consultants and administrators to check the configuration, monitor and manage the entire OS stack of their
        &sap; environments, including HA features.
       </para>
@@ -106,9 +106,9 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
   </important>
 
   <section xml:id="sec-trento-what">
-    <title>What is &trentopremium;?</title>
+    <title>What is &trento;?</title>
     <para>
-      &trentopremium; is the extended version of the Trento community project containing
+      &trento; is the extended version of the Trento community project containing
       additional checks. Apart from their naming, both are comprehensive monitoring solutions
       consisting of two main components, the &t.server; and the &t.agent;.
       Both Trento variants provide the following features:
@@ -266,7 +266,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
             </listitem>
             <listitem>
               <para> If you do not have a &k8s; enterprise solution but you still want
-                to try &trentopremium;, &suse; Rancher's K3s provides you with an easy
+                to try &trento;, &suse; Rancher's K3s provides you with an easy
                 way to get started. But keep in mind that K3s default installation process
                 deploys a single node &k8s; cluster, which is not a recommended
                 setup for a stable Trento production instance.
@@ -2655,7 +2655,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
     <title>Reporting a Problem</title>
     <para>
       Any &suse; customer, with a registered &sles4sap;&nbsp;15 (SP1 or higher) distribution,
-     experiencing an issue with &trentopremium;, can report the problem either directly in the &scc;
+     experiencing an issue with &trento;, can report the problem either directly in the &scc;
      or through the corresponding vendor, depending on their licensing model. Problems must be reported under &sles4sap;&nbsp;15 and component trento.
     </para>
       <para>
