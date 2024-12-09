@@ -318,7 +318,7 @@ Both IDP and Trento must know how these 4 fields are mapped. To do this, follow 
 
 #### Checking SAML redirect URI
 
-After a successful login, the IDP redirects the user's session back to Trento and redirected at <uri>https://trento.example.com/sso/sp/consume/saml</uri>. To ensure seamless SSO, this URI must be configured as valid within the IDP.
+After a successful login, the IDP redirects the user's session back to Trento and redirected at <uri>\https://trento.example.com/sso/sp/consume/saml</uri>. To ensure seamless SSO, this URI must be configured as valid within the IDP.
 
 ### Enabling SAML when using kubernetes deployment
 

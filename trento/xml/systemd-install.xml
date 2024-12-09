@@ -164,8 +164,8 @@ scrape_configs:
 </programlisting>
             <note>
               <para>
-                <emphasis role="strong">localhost:4000</emphasis> in <emphasis role="strong">url:
-                <link xlink:href="http://localhost:4000/api/prometheus/targets" role="uri">http://localhost:4000/api/prometheus/targets</link></emphasis>
+                <emphasis role="strong">localhost:4000</emphasis> in <emphasis
+role="strong">url:<uri>http://localhost:4000/api/prometheus/targets</uri></emphasis>
                 refers to the location where Trento web service is running.
               </para>
             </note>
@@ -678,9 +678,7 @@ nginx: configuration file /etc/nginx/nginx.conf test is successful
     <title>Prepare SSL certificate for NGINX</title>
     <para>
       Create or provide a certificate for <link xlink:href="https://nginx.org/en/">NGINX</link> to
-      enable SSL for Trento. For detailed instructions, refer to the
-      <link xlink:href="https://www.openssl.org/docs/man1.0.2/man5/x509v3_config.html">OpenSSL
-      documentation</link>.
+      enable SSL for Trento.
     </para>
     <section xml:id="option-1-creating-a-self-signed-certificate">
       <title>Create a self-signed certificate</title>

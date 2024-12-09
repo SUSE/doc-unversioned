@@ -604,7 +604,7 @@ curl https://#{TRENTO_WEB_ORIGIN}/api/public_keys
         <para>
           After a successful login, the IDP redirects the user's session
           back to Trento and redirected at
-          <uri><link xlink:href="https://trento.example.com/sso/sp/consume/saml">https://trento.example.com/sso/sp/consume/saml</link></uri>.
+          <uri>https://trento.example.com/sso/sp/consume/saml</uri>.
           To ensure seamless SSO, this URI must be configured as valid
           within the IDP.
         </para>

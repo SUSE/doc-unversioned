@@ -80,7 +80,7 @@ If you have an [existing Prometheus server](https://prometheus.io/docs/prometheu
             url: http://localhost:4000/api/prometheus/targets
     ```
 
-    > **Note:** **localhost:4000** in **url: http://localhost:4000/api/prometheus/targets** refers to the location where Trento web service is running.
+    > **Note:** **localhost:4000** in **url: `http://localhost:4000/api/prometheus/targets`** refers to the location where Trento web service is running.
 
 1.  Enable and start the Prometheus service:
 
@@ -439,7 +439,7 @@ Expected output if Trento web/wanda is ready and the database connection is setu
 ## Prepare SSL certificate for NGINX
 
 Create or provide a certificate for [NGINX](https://nginx.org/en/) to enable SSL for Trento.
-Instead of creating a self-signed certificate, you use your own certificate. For further information, refer to [OpenSSL documentation](https://www.openssl.org/docs/man1.0.2/man5/x509v3_config.html).
+Instead of creating a self-signed certificate, you use your own certificate.
 
 ### Option 1: Creating a Self-Signed Certificate
 
