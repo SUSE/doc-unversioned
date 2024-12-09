@@ -949,12 +949,9 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       logged in the console is disabled by a user admin, their session is
       terminated immediately. </para>
   </section>
+  
+  <xi:include href="sso-integration.xml"/>
 
-  <section xml:id="sec-sso-integration">    
-    <title>Single Sign-On Integration</title>
-     <xi:include href="sso-integration.xml"/>
-  </section>
- 
   <section xml:id="sec-activity-log">    
     <title>Activity Log</title>
     <para> Trento collects system events and user actions in the Activity Log. It can be accessed from the left-hand side panel of the Trento console.</para>
