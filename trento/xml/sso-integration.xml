@@ -1,15 +1,13 @@
 <section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="integrating-single-sign-on">
-  <title>Integrating Single Sign-On</title>
+  <title>Single Sign-On integration</title>
   <para>
-    Trento can be integrated with an identity provider (IDP) that uses
-    different Single sign-on (SSO) protocols like OpenID Connect (OIDC)
-    and Open Authorization 2.0 (OAuth 2).
+    Trento can be integrated for Single Sign-On with a third-party identity provider (IDP).
   </para>
   <note>
     <para>Trento cannot start with multiple SSO options together, so only one can be chosen.</para>
   </note>
   <para>
-    Available protocols are:
+    The following protocols are supported:
   </para>
   <itemizedlist>
     <listitem>
