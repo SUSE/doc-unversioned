@@ -60,8 +60,8 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       <phrase>Monitoring</phrase>
     </meta>
 
-    <!-- Docmanager -->
-    <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
+    <!-- Doc -->
+    <dm:doc xmlns:dm="urn:x-suse:ns:doc">
       <dm:bugtracker>
         <dm:url>https://bugzilla.suse.com/enter_bug.cgi</dm:url>
         <dm:component>Trento</dm:component>
@@ -70,7 +70,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       </dm:bugtracker>
       <dm:editurl>https://github.com/SUSE/doc-unversioned/edit/main/trento/xml/</dm:editurl>
       <dm:translation>no</dm:translation>
-    </dm:docmanager>
+    </dm:doc>
 
     <!-- Productname & Version -->
     <!--
@@ -873,7 +873,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
     <itemizedlist>
       <listitem>
         <formalpara>
-          <title>User managers:</title>
+          <title>User s:</title>
           <para> users with <constant>all:users</constant> permission</para>
         </formalpara>
       </listitem>
@@ -900,7 +900,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
     </itemizedlist>
     <para>The default admin user created during the installation process is
       granted <constant>all:all</constant> permissions and cannot be modified or deleted. Use it
-      only to create a first user manager. That is, a user with
+      only to create a first user . That is, a user with
       <constant>all:users</constant> permissions who creates all the other required
       users. Once a user with all:users permissions is created, the default
       admin user must be regarded as a fall-back user to be used
@@ -923,16 +923,16 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       </listitem>
     </itemizedlist>
     <para>The <guimenu>Create User</guimenu> and <guimenu>Edit User</guimenu> views provide a built-in generation
-      password action button that allows user managers to easily generate
-      secure and compliant passwords. The user manager must provide the user with
+      password action button that allows user s to easily generate
+      secure and compliant passwords. The user  must provide the user with
       their password through an authorized secure channel. </para>
     <para>A user can reset their password in the <guimenu>Profile</guimenu> view. Here, they can
       also update their name and email address as well as activate
       multi-factor authentication using an authenticator app.
       Multi-factor authentication increases the security of a user account by
       requesting a temporary second password or code when logging in the
-      console. User managers can disable multi-factor authentication for any
-      given user that has it enabled. However, user managers cannot enable multi-factor authentication
+      console. User s can disable multi-factor authentication for any
+      given user that has it enabled. However, user s cannot enable multi-factor authentication
       on their behalf. The  default admin user cannot enable its own multi-factor authentication.</para>
     <note>
       <title>Security Tip for Multi-Factor Authentication</title>
@@ -943,7 +943,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       which deployment method was used to install &t.server;. </para>
     </note>
     <para>
-      User managers can enable and disable users. When a user
+      User s can enable and disable users. When a user
       logged in the console is disabled by a user admin, their session is
       terminated immediately. </para>
   </section>
@@ -1413,7 +1413,7 @@ The health boxes in the dashboard are clickable. By clicking on one particular b
                 shows a summary of the checks execution results for this particular host. </para>
               </listitem>
                <listitem>
-                <para>Available software updates sections: when settings for SUSE Manager are maintained and the host
+                <para>Available software updates sections: when settings for SUSE Multi-Linux Manager are maintained and the host
                  is managed by the SUMA instance for which connection data has been provided, this section shows
                  a summary of the available patches and upgradable packages for this particular host. Refer to section
                 <xref linkend="sec-integration-with-SUSE-Manager"/> for further details. </para>
@@ -3062,7 +3062,7 @@ trento-server-rabbitmq-0</screen>
               <para>SSO and third-party IDP integration via OIDC, OAUTH2 and SAML protocols.</para>
             </listitem>
                                   <listitem>
-              <para>Contextual, detailed overview of available patches and upgradable packages in the SUSE Manager integration.</para>
+              <para>Contextual, detailed overview of available patches and upgradable packages in the SUSE Multi-Linux Manager integration.</para>
             </listitem>
                                   <listitem>
               <para>Inception of the Activity Log, allowing users to browse a single centralized event log for their entire SAP landscape.</para>
@@ -3112,7 +3112,7 @@ trento-server-rabbitmq-0</screen>
             <listitem>
               <para>
                Information about available patches and upgradable packages for each registered hosts via integration
-               with SUSE manager.</para>
+               with SUSE Multi-Linux Manager.</para>
             </listitem>
                        <listitem>
               <para>Rotating API key.</para>
