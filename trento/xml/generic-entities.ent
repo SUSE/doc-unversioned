@@ -93,10 +93,10 @@
 <!ENTITY sleha                  "&sle; &ha;">
 <!ENTITY hageo                  "Geo Clustering for &sleha;">
 
-<!-- SUSE Manager -->
-<!ENTITY susemgr                "&suse; Manager">
+<!-- SUSE Multi-Linux Manager -->
+<!ENTITY susemgr                "&suse; Multi-Linux Manager">
 <!ENTITY suma                   "&susemgr;">
-<!ENTITY susemgrdb              "&suse; Manager with Database">
+<!ENTITY susemgrdb              "&suse; Multi-Linux Manager with Database">
 <!ENTITY susemgrproxy           "&susemgr; Proxy">
 <!ENTITY smr                    "&susemgr; for Retail">
 
