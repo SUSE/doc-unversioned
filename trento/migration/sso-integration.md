@@ -1,6 +1,7 @@
-# Integrating Single Sign-On
+# Single Sign-On integration
 
-Trento can be integrated with an identity provider (IDP) that uses different Single sign-on (SSO) protocols like OpenID Connect (OIDC) and Open Authorization 2.0 (OAuth 2).
+Trento can be integrated for Single Sign-On with a third-party identity provider (IDP).
+
 
 ```{=docbook}
 <note>
@@ -8,7 +9,7 @@ Trento can be integrated with an identity provider (IDP) that uses different Sin
 </note>
 ```
 
-Available protocols are:
+The following protocols are supported:
 
 - OpenID Connect (OIDC)
 

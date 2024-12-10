@@ -100,7 +100,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
     <title>Trento is an evolving product</title>
     <para>
       The product continues to be under active development and is available at no extra cost for any &suse;
-      customer with a registered &sles4sap;&nbsp;15 (SP1 or higher).
+      customer with a registered &sles4sap;&nbsp;15 (SP3 or higher).
       Contact <link xlink:href="https://www.suse.com/support"/> for further assistance.
     </para>
   </important>
@@ -108,10 +108,9 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
   <section xml:id="sec-trento-what">
     <title>What is &trento;?</title>
     <para>
-      &trento; is the extended version of the Trento community project containing
-      additional checks. Apart from their naming, both are comprehensive monitoring solutions
+      &trento; is the official version of the Trento community project. It is a comprehensive monitoring solution
       consisting of two main components, the &t.server; and the &t.agent;.
-      Both Trento variants provide the following features:
+      It provides the following features:
     </para>
     <remark>toms 2024-04-18 (change#9): maybe a reference here about improved HANA multitenant support?</remark>
     <!--
@@ -119,7 +118,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
     -->
     <itemizedlist>
       <listitem>
-        <para>A clean, simple, reactive console targeting &sap; admins </para>
+        <para>A clean, simple, reactive console targeting &sap; Basis administrators.</para>
       </listitem>
       <listitem>
         <para>
@@ -139,7 +138,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       </listitem>
       <listitem>
         <para>Configuration validation for &hana; Scale-Up
-          Performance-optimized and ASCS/ERS clusters deployed on Azure, AWS, GCP or on-premise
+          Performance-optimized, &hana; Scale-out and ASCS/ERS clusters deployed on Azure, AWS, GCP or on-premises
          bare metal platforms, including KVM and Nutanix.
         </para>
       </listitem>
@@ -153,7 +152,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
      </listitem>
      <listitem>
         <para>
-          Email alerting for critical events in the monitored landscape
+          Email alerting for critical events in the monitored landscape.
         </para>
       </listitem>
               <listitem>
@@ -163,12 +162,12 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       </listitem>
               <listitem>
         <para>
-          Information about available patches and upgradable packages for each registered hosts via integration with &suma;.
+          Information about relevant patches/advisories and upgradable packages for registered hosts via integration with &suma;.
         </para>
       </listitem>
       <listitem>
         <para>
-          Monitoring of CPU and Memory usage at host level through basic integration with &prometheus;
+          Monitoring of CPU and Memory usage at host level through basic integration with &prometheus;.
         </para>
       </listitem>
            <listitem>
@@ -192,26 +191,38 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
     <para> The <emphasis role="strong">&t.server;</emphasis> is an
       independent, distributed system, designed to run
       on a &k8s; cluster or as a regular systemd stack.
-      The &t.server; interacts with users via a Web front-end.
+      The &t.server; interacts with users via a Web front-end. It consists of the following components:
     </para>
+    <itemizedlist>
+      <listitem>
+        <para>The web component, that acts as control plane for internal and external communications and renders the UI to the users.</para>
+      </listitem>
+        <listitem>
+         <para>The checks engine, called wanda, that orchestrates the execution of configuration checks.</para>
+        </listitem>
+        <listitem>
+          <para>A postgresql database, for data persistence.</para>
+        </listitem>
+        <listitem>
+         <para>A message broker, RabbitMQ, for communication between the checks engine and the agents.
+</para>
+        </listitem>
+        <listitem>
+          <para>A &prometheus; instance that retrieves the metrics collected by the &prometheus; node exporter in the registered hosts.</para>
+        </listitem>
+    </itemizedlist>
     <para> The <emphasis role="strong">&t.agent;</emphasis> is a single
       background process (<systemitem>trento agent</systemitem>) running
       on each host of the SAP infrastructure that is monitored.
     </para>
     <para> See <xref linkend="fig-trento-architecture" /> for additional
       details. </para>
-    <!-- toms 2021-11-26: Do we have a vector graphic for this?
-      https://github.com/trento-project/trento/blob/main/docs/trento-architecture.svg.
-    -->
-       <!-- abravo 2024-05-20: The Trento logo in this screenshot must be updated to the new one.
-    -->
     <figure xml:id="fig-trento-architecture">
       <title>Architectural overview</title>
       <mediaobject>
         <imageobject>
           <imagedata width="80%"
-            fileref="trento-architecture-outline.png" />
-          <!-- Source: https://confluence.suse.com/display/SAP/Architecture -->
+            fileref="trento-high-level-architecture.png" />
         </imageobject>
       </mediaobject>
     </figure>
@@ -222,7 +233,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
     <!--
       Most ist taken from https://confluence.suse.com/x/uoOyN
     -->
-    <para>Trento Premium is available at no extra cost for SLES for SAP subscribers. Particularly, Trento's two main components have the following product lifecycles:</para>
+    <para>Trento is available at no extra cost for SLES for SAP 15 subscribers. Particularly, Trento's two main components have the following product lifecycles:</para>
 
     <variablelist>
       <varlistentry>
@@ -230,12 +241,12 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         <listitem>
           <formalpara>
             <title>Delivery mechanism:</title>
-            <para> RPM package for &sles4sap;&nbsp;15&nbsp;SP1 and
+            <para> RPM package for &sles4sap;&nbsp;15&nbsp;SP3 and
               newer.</para>
           </formalpara>
           <formalpara>
             <title>Supported runtime:</title>
-            <para> Supported in &sles4sap;&nbsp;15&nbsp;SP1 and newer.
+            <para> Supported in &sles4sap;&nbsp;15&nbsp;SP3 and newer, on x86_64 and ppc64le architectures.
             </para>
           </formalpara>
         </listitem>
@@ -304,7 +315,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         When using K3s, such storage should be provided under <filename>/var/lib/rancher/k3s</filename>.
       </para>
      <para>
-      Trento is powered by event driven technology. Registered events are stored in a  &postgresql; database with a retention
+      Trento is powered by event driven technology. Registered events are stored in a  &postgresql; database with a default retention
       period of 10 days. For each host registered with Trento, you need to allocate at least 1.5GB of space in the &postgresql; database.
      </para>
       <para> &t.server; supports different deployment scenarios: &k8s;, systemd and containerized. A &k8s; based deployment of &t.server; is meant to be
@@ -336,6 +347,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         low-level system components that are part of the &sles4sap; distribution. </para>
            <para> Trento requires unique machine identifiers (ids) on the hosts to be registered. Therefore, if any host in your environment is built as a clone of another one,
            ensure that you change the machine identifier as part of the cloning process before starting the &t.agent; on it. </para>
+                <para> Similarly, Trento requires unique authkeys on the clusters to be registered.</para>
     </section>
     <section xml:id="sec-trento-network-requirements">
       <title>Network requirements</title>
@@ -367,14 +379,14 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         <listitem>
           <formalpara>
             <title>&t.server;</title>
-            <para>Access to &suse; public registry for the deployment of &t.server; premium containers, if we choose a &k8s; based deployment.
+            <para>Access to &suse; public registry for the deployment of &t.server; containers, if we choose a &k8s; based deployment.
              A registered &sles4sap; 15 (SP3 or higher) distribution, if we choose a systemd deployment. Both in the case of a containerized deployment.</para>
           </formalpara>
         </listitem>
         <listitem>
           <formalpara>
             <title>&t.agent;s</title>
-            <para>A registered &sles4sap; 15 (SP1 or higher) distribution.</para>
+            <para>A registered &sles4sap; 15 (SP3 or higher) distribution.</para>
           </formalpara>
         </listitem>
       </itemizedlist>
@@ -553,7 +565,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
     <section xml:id="sec-trento-enabling-email-alerts">
       <title>Enabling email alerts</title>
       <para>
-        Email alerting feature notifies the &sap; administrator about important changes
+        Email alerting feature notifies the &sap; Basis administrator about important changes
         in the &sap; Landscape being monitored/observed by Trento.
       </para>
       <para>
@@ -663,134 +675,8 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
   <xi:include href="systemd-install.xml"/>
   <xi:include href="container-install.xml"/>
   <xi:include href="ansible-install.xml"/>
-  <xi:include href="sso-integration.xml"/>
   </section>
-
-  <section xml:id="sec-trento-user-management">
-    <title>Managing Trento user management</title>
-    <para> Trento provides a local permission-based user management feature with
-      optional multi-factor authentication. This feature allows for segregation
-      of duties in the Trento console and ensures that only authorized users with the right permissions can
-      access it. </para>
-    <para> User management actions are performed in the <guimenu>Users</guimenu>
-      view in the left-hand side panel of the &t.web;. </para>
-    <para> By default, a newly created user is granted display access rights
-      except for the <guimenu>Users</guimenu> view. Whenever available, a user
-      with default access can set up filters and pagination settings matching
-      their preferences. </para>
-    <para> Additional permissions must be added to a user profile, so that the
-      user can perform the corresponding protected activities. The following
-      permissions are currently available: </para>
-    <itemizedlist>
-      <listitem>
-        <para><constant>all:users</constant>: grants full access to user management actions under
-          the <guimenu>Users</guimenu> view</para>
-      </listitem>
-      <listitem>
-        <para><constant>all:checks_selection</constant>: grants check selection capabilities for
-          any target in the registered environment for which checks are
-          available</para>
-      </listitem>
-      <listitem>
-        <para><constant>all:checks_execution</constant>: grants check execution capabilities for
-          any target in the registered environment for which checks are
-          available and have been previously selected</para>
-      </listitem>
-      <listitem>
-        <para><constant>all:tags</constant>: allows creation and deletion of the available tags</para>
-      </listitem>
-      <listitem>
-        <para><constant>cleanup:all</constant>: allows triggering housekeeping actions on hosts
-          where agents heartbeat is lost and SAP or HANA instances that are no
-          longer found</para>
-      </listitem>
-      <listitem>
-        <para><constant>all:settings</constant>: grants changing capabilities on any system
-          settings under the <guimenu>Settings</guimenu> view</para>
-      </listitem>
-      <listitem>
-        <para><constant>all:all</constant>: grants all the permissions above</para>
-      </listitem>
-    </itemizedlist>
-    <para>Using the described permissions, it is possible to create the following types of users:</para>
-    <itemizedlist>
-      <listitem>
-        <formalpara>
-          <title>User managers:</title>
-          <para>users with <constant>all:users</constant> permission</para>
-        </formalpara>
-      </listitem>
-      <listitem>
-        <formalpara>
-          <title>SAP administrator with Trento display-only access:</title>
-          <para>users with default permissions</para>
-        </formalpara>
-      </listitem>
-      <listitem>
-        <formalpara>
-          <title>SAP administrator with Trento configuration access:</title>
-          <para>users with <constant>all:checks_selection</constant>,
-          <constant>all:tags</constant> and <constant>all:settings</constant> permissions</para>
-          </formalpara>
-      </listitem>
-      <listitem>
-        <formalpara>
-          <title>SAP administrator with Trento operation access:</title>
-          <para>users with <constant>all:check_execution</constant> and
-          <constant>cleanup:all</constant> permissions.</para>
-        </formalpara>
-      </listitem>
-    </itemizedlist>
-    <para>The default admin user created during the installation process is
-      granted <constant>all:all</constant> permissions and cannot be modified or deleted. Use it
-      only to create a first user manager. That is, a user with
-      <constant>all:users</constant> permissions who creates all the other required
-      users. Once a user with all:users permissions is created, the default
-      admin user must be regarded as a fall-back user to be used
-      only in case all other access to the console is lost. If the password
-      of the default admin user is lost, it can be reset by updating the
-      helm chart or the web component configuration, depending on which
-      deployment method was used to install &t.server;. </para>
-    <para>User passwords, including the default admin user password, must follow the rules below:</para>
-    <itemizedlist>
-      <listitem>
-        <para>Password must contain at least 8 characters</para>
-      </listitem>
-      <listitem>
-        <para>The same number or letter must not be repeated three or more times in a row (for
-          example: 111 or aaa)</para>
-      </listitem>
-      <listitem>
-        <para>Password must not contain four consecutive numbers or letters (for example:
-          1234, abcd or ABCD)</para>
-      </listitem>
-    </itemizedlist>
-    <para>The <guimenu>Create User</guimenu> and <guimenu>Edit User</guimenu> views provide a built-in generation
-      password action button that allows user managers to easily generate
-      secure and compliant passwords. The user manager must provide the user with
-      their password through an authorized secure channel. </para>
-    <para>A user can reset their password in the <guimenu>Profile</guimenu> view. Here, they can
-      also update their name and email address as well as activate
-      multi-factor authentication using an authenticator app.
-      Multi-factor authentication increases the security of a user account by
-      requesting a temporary second password or code when logging in the
-      console. User managers can disable multi-factor authentication for any
-      given user that has it enabled. However, user managers cannot enable multi-factor authentication
-      on their behalf. The  default admin user cannot enable its own multi-factor authentication.</para>
-    <note>
-      <title>Security Tip for Multi-Factor Authentication</title>
-      <para>Since multi-factor authentication cannot be enabled for
-      the default admin user, keeping its password safe is imperative. If the
-      default admin user's password is compromised, reset it immediately by
-      updating the helm chart or the web component configuration, depending on
-      which deployment method was used to install &t.server;. </para>
-    </note>
-    <para>
-      User managers can enable and disable users. When a user
-      logged in the console is disabled by a user admin, their session is
-      terminated immediately. </para>
-  </section>
-
+ 
   <section xml:id="sec-trento-installing-trentoagent">
     <title>Installing &t.agent;s</title>
     <important>
@@ -871,7 +757,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
             how &t.server; was deployed.</para>
             <para> In a Kubernetes deployment, it is <uri>amqp://trento:trento@TRENTO_SERVER_HOSTNAME:5672/</uri>. If the default RabbitMQ username and password (trento) were updated using helm,
             the parameter must use the custom value. </para>
-            <para> In a systemd or containerized deployment, the correct value is <uri>amqp://TRENTO_USER:TRENTO_USER_PASSWORD@TRENTO_SERVER_HOSTNAME:5672/vhost</uri>. If <replaceable>TRENTO_USER</replaceable> and <replaceable>TRENTO_USER_PASSWORD</replaceable> were replaced with custom values, you can use them.
+            <para> In a systemd or containerized deployment, the correct value is <uri>amqp://TRENTO_USER:TRENTO_USER_PASSWORD@TRENTO_SERVER_HOSTNAME:5672/vhost</uri>. If <replaceable>TRENTO_USER</replaceable> and <replaceable>TRENTO_USER_PASSWORD</replaceable> were replaced with custom values, you must use them.
             </para>
           </listitem>
           <listitem>
@@ -887,8 +773,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       </step>
       <step>
         <para>
-          If SSL termination has been enabled on the server side (refer to
-          <xref linkend="sec-trento-enabling-ssl"/>), you can encrypt the
+          If SSL termination has been enabled on the server side, you can encrypt the
           communication from the agent to the server as follows:</para>
         <itemizedlist>
           <listitem>
@@ -938,45 +823,178 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
     </procedure>
   </section>
 
+        <section xml:id="sec-trento-user-management">
+    <title>User management</title>
+    <para> Trento provides a local permission-based user management feature with
+      optional multi-factor authentication. This feature allows for segregation
+      of duties in the Trento console and ensures that only authorized users with the right permissions can
+      access it. </para>
+    <para> User management actions are performed in the <guimenu>Users</guimenu>
+      view in the left-hand side panel of the &t.web;. </para>
+    <para> By default, a newly created user is granted display access rights
+      except for the <guimenu>Users</guimenu> view. Whenever available, a user
+      with default access can set up filters and pagination settings matching
+      their preferences. </para>
+    <para> Additional permissions must be added to a user profile, so that the
+      user can perform the corresponding protected activities. The following
+      permissions are currently available: </para>
+    <itemizedlist>
+      <listitem>
+        <para><constant>all:users</constant>: grants full access to user management actions under
+          the <guimenu>Users</guimenu> view</para>
+      </listitem>
+      <listitem>
+        <para><constant>all:checks_selection</constant>: grants check selection capabilities for
+          any target in the registered environment for which checks are
+          available</para>
+      </listitem>
+      <listitem>
+        <para><constant>all:checks_execution</constant>: grants check execution capabilities for
+          any target in the registered environment for which checks are
+          available and have been previously selected</para>
+      </listitem>
+      <listitem>
+        <para><constant>all:tags</constant>: allows creation and deletion of the available tags</para>
+      </listitem>
+      <listitem>
+        <para><constant>cleanup:all</constant>: allows triggering housekeeping actions on hosts
+          where agents heartbeat is lost and SAP or HANA instances that are no
+          longer found</para>
+      </listitem>
+      <listitem>
+        <para><constant>all:settings</constant>: grants changing capabilities on any system
+          settings under the <guimenu>Settings</guimenu> view</para>
+      </listitem>
+      <listitem>
+        <para><constant>all:all</constant>: grants all the permissions above</para>
+      </listitem>
+    </itemizedlist>
+    <para>Using the described permissions, it is possible to create the following types of users:</para>
+    <itemizedlist>
+      <listitem>
+        <formalpara>
+          <title>User managers:</title>
+          <para> users with <constant>all:users</constant> permission</para>
+        </formalpara>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title>SAP Basis administrator with Trento display-only access:</title>
+          <para> users with default permissions</para>
+        </formalpara>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title>SAP Basis administrator with Trento configuration access:</title>
+          <para> users with <constant>all:checks_selection</constant>,
+          <constant>all:tags</constant> and <constant>all:settings</constant> permissions</para>
+          </formalpara>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title>SAP Basis administrator with Trento operation access:</title>
+          <para> users with <constant>all:check_execution</constant> and
+          <constant>cleanup:all</constant> permissions.</para>
+        </formalpara>
+      </listitem>
+    </itemizedlist>
+    <para>The default admin user created during the installation process is
+      granted <constant>all:all</constant> permissions and cannot be modified or deleted. Use it
+      only to create a first user manager. That is, a user with
+      <constant>all:users</constant> permissions who creates all the other required
+      users. Once a user with all:users permissions is created, the default
+      admin user must be regarded as a fall-back user to be used
+      only in case all other access to the console is lost. If the password
+      of the default admin user is lost, it can be reset by updating the
+      helm chart or the web component configuration, depending on which
+      deployment method was used to install &t.server;. </para>
+    <para>User passwords, including the default admin user password, must follow the rules below:</para>
+    <itemizedlist>
+      <listitem>
+        <para>Password must contain at least 8 characters</para>
+      </listitem>
+      <listitem>
+        <para>The same number or letter must not be repeated three or more times in a row (for
+          example: 111 or aaa)</para>
+      </listitem>
+      <listitem>
+        <para>Password must not contain four consecutive numbers or letters (for example:
+          1234, abcd or ABCD)</para>
+      </listitem>
+    </itemizedlist>
+    <para>The <guimenu>Create User</guimenu> and <guimenu>Edit User</guimenu> views provide a built-in generation
+      password action button that allows user managers to easily generate
+      secure and compliant passwords. The user manager must provide the user with
+      their password through an authorized secure channel. </para>
+    <para>A user can reset their password in the <guimenu>Profile</guimenu> view. Here, they can
+      also update their name and email address as well as activate
+      multi-factor authentication using an authenticator app.
+      Multi-factor authentication increases the security of a user account by
+      requesting a temporary second password or code when logging in the
+      console. User managers can disable multi-factor authentication for any
+      given user that has it enabled. However, user managers cannot enable multi-factor authentication
+      on their behalf. The  default admin user cannot enable its own multi-factor authentication.</para>
+    <note>
+      <title>Security Tip for Multi-Factor Authentication</title>
+      <para>Since multi-factor authentication cannot be enabled for
+      the default admin user, keeping its password safe is imperative. If the
+      default admin user's password is compromised, reset it immediately by
+      updating the helm chart or the web component configuration, depending on
+      which deployment method was used to install &t.server;. </para>
+    </note>
+    <para>
+      User managers can enable and disable users. When a user
+      logged in the console is disabled by a user admin, their session is
+      terminated immediately. </para>
+  </section>
 
-  <!--
-  Split section sec-trento-webconsole in two sections:
+  <xi:include href="sso-integration.xml"/>
 
-  1. Configuration:
-     Where we describe the different configuration options currently available in the console.
-     Particularly:
-     - cluster settings (we can reutilize the existing content)
-     - tags on overviews (hosts, clusters, sap systems, HANA databases)
-  2. Use cases:
-     dashboard description (we can reutilize the exiting content)
-     - what to do when host status is not green
-     - what to do when pacemaker cluster status is not green
-     - what to do when database status is not green
-     - what to do wen SAP instances status is not green
-  -->
-   <section xml:id="sec-activity-log">
+  <section xml:id="sec-activity-log">
     <title>Activity Log</title>
     <para> Trento collects system events and user actions in the Activity Log. It can be accessed from the left-hand side panel of the Trento console.</para>
-    <para> Each entry in the Activity Log includes the following:
-     - A timestamp: the day and time (server time, not browser time) the system event or the user action occurred
-     - A message: type of the occurred event or user action.
-     - The user that triggered the event or performed the action. User system is used for events triggered by the system itself.</para>
+    <para> Each entry in the Activity Log includes the following:</para>
+     <itemizedlist>
+      <listitem>
+     <para>A timestamp: the day and time (server time, not browser time) the system event or the user action occurred</para>
+      </listitem>
+      <listitem>
+     <para>A message: type of the occurred event or user action</para>
+      </listitem>
+      <listitem>
+     <para>The user that triggered the event or performed the action. User system is used for events triggered by the system itself.</para>
+      </listitem>
+     </itemizedlist>
+
     <para>The right chevron icon in the activity log entry opens a modal with the activity metadata.</para>
      <para>The Activity Log allows to filter by the type of event or user action, commonly refered to as resource type, and by the user that triggered the event or performed the action. Only active users are available for filtering.
-      The Activity Log also allows to filter out entries that are newer and/or older than an specific date and time. When setting time based entries, keep in mind the time difference with the server time.   -
+      The Activity Log also allows to filter out entries that are newer and/or older than an specific date and time (server time).
      </para>
      <para>Once a filter has been set, the user must click Apply to filter out the undesired entries and Reset to remove all the filters.</para>
-     <para>Entries related to user management can only be displayed by users that have the all:all or all:users permissions. This includes:
-     - Login attempts
-     - User creations
-     - User modifications
-     - User deletions
-     - Profile updates.</para>
+     <para>Entries related to user management can only be displayed by users that have the all:all or all:users permissions. This includes:</para>
+      <itemizedlist>
+       <listitem>
+     <para>Login attempts</para>
+       </listitem>
+       <listitem>
+     <para>User creations</para>
+       </listitem>
+       <listitem>
+      <para>User modifications</para>
+       </listitem>
+       <listitem>
+     <para>User deletions</para>
+       </listitem>
+       <listitem>
+       <para>Profile updates.</para>
+      </listitem>
+     </itemizedlist>
      <para>Entries in the Activity Log are sorted from newer to older. By clicking Refresh, the user can update the Activity Log view with entries generated since they accessed the view, or after the last refresh.</para>
      <para>The pagination features at the bottom of the Activity Log allow the user to specify the number of entries to display in a page, scroll back and forth through the different pages of the view, and jump directly to the last
       page and back to first one.</para>
      <para>The default retention time for entries in the Activity Log is one month. This can be changed in the Activity Log section under Settings. Changing the retention time requires the all:settings permissions. Entries expired after the specified retention time are deleted every day at midnight (server time).</para>
    </section>
+
   <section xml:id="sec-trento-checks">
     <title>Performing configuration checks</title>
     <remark>toms 2024-04-18 (change#8): First saptune related configuration checks (host and cluster specific) -> update</remark>
@@ -1103,11 +1121,6 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
     <remark>toms 2024-04-18 (change#6): Enhanced Checks Catalog view with additional
       filtering capabilities</remark>
     <para>
-      When you access the &t.web; for the first time, it asks
-      to accept the license. Click <guimenu>Accept</guimenu> to continue.
-    </para>
-    <para>
-      After you have accepted the license, Trento can be used.
       The left sidebar in the &t.web; contains the following entries: </para>
     <itemizedlist>
       <listitem>
@@ -1158,8 +1171,8 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         <formalpara>
           <title><guimenu>Settings</guimenu></title>
           <para>
-           Lets you retrieve and operate the API key for this particular installation. This is required for the &t.agent; configuration, as well as
-           managing the connection data for a &suma; instance when one is available.
+           Lets you retrieve and operate the API key for this particular installation, which is required for the &t.agent; configuration, as well as
+           manage the connection data for a &suma; instance and the retention time for the entries in the activity log.
           </para>
         </formalpara>
       </listitem>
@@ -1188,26 +1201,26 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         <listitem>
           <formalpara>
             <title><guimenu>Hosts</guimenu>:</title>
-            <para>it reflects the heartbeat of the &t.agent; and, when applicable, the compliance status.</para>
+            <para> it reflects the heartbeat of the &t.agent; and, when applicable, the compliance status.</para>
           </formalpara>
         </listitem>
         <listitem>
           <formalpara>
             <title><guimenu>&pace; Clusters</guimenu>:</title>
-            <para>the status here is based on the running status of the cluster and the results
+            <para> the status here is based on the running status of the cluster and the results
               of the configuration checks.</para>
           </formalpara>
         </listitem>
         <listitem>
           <formalpara>
             <title><guimenu>Database</guimenu>:</title>
-            <para>it collects the status of the HANA instances as returned by <command>sapcontrol</command>.</para>
+            <para> it collects the status of the HANA instances as returned by <command>sapcontrol</command>.</para>
           </formalpara>
         </listitem>
         <listitem>
           <formalpara>
             <title><guimenu>Application instances</guimenu>:</title>
-            <para>it summarizes the status of the application instances as returned by <command>sapcontrol</command>.</para>
+            <para> it summarizes the status of the application instances as returned by <command>sapcontrol</command>.</para>
           </formalpara>
         </listitem>
       </itemizedlist>
@@ -1218,14 +1231,14 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         <listitem>
           <formalpara>
             <title>Database cluster:</title>
-            <para>the status here is based on the running status of the database cluster and the results
+            <para> the status here is based on the running status of the database cluster and the results
               of the selected configuration checks.</para>
           </formalpara>
         </listitem>
          <listitem>
           <formalpara>
             <title>Application cluster:</title>
-            <para>the status here is based on the running status of the ASCS/ERS cluster and, eventually, the results
+            <para> the status here is based on the running status of the ASCS/ERS cluster and, eventually, the results
               of the selected configuration checks.</para>
           </formalpara>
         </listitem>
@@ -1858,7 +1871,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
       </section>
 
       <section xml:id="sec-trento-filter-tags">
-        <title>Filter tags</title>
+        <title>Filter by tags</title>
         <para>
           With tags, you can show only those objects you are interested in. For example, if
           you have created a <literal>drbd</literal> tag for some hosts, you can show only
@@ -1901,7 +1914,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
   <section xml:id="sec-integration-with-SUSE-Manager">
       <title>Integration with &suma;</title>
       <para>Trento integrates with &suma; to provide the &sap; administrator with
-      information about available patches and upgradable packages for any host
+      information about relevant patches and upgradable packages for any host
        that is registered with both applications.</para>
       <para>The user must enter the connection settings for &suma;
        in the <guimenu>Settings</guimenu> view:</para>
@@ -1915,7 +1928,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
         </mediaobject>
       </figure>
    <para>
-   Once the &suma; settings are configured, the &sap; administrator can test the connection
+   Once the &suma; settings are configured, the &sap; Basis administrator can test the connection
    by clicking the <guimenu>Test</guimenu> button.
    If the connection is successful, the <guimenu>Host Details</guimenu> view of each host
    managed by &suma; displays a summary
@@ -2483,7 +2496,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
           </para>
         </listitem>
          <listitem>
-        <para>When updating from a Trento version lower than 2.0.0 to version 2.0.0 or higher, an additional flag
+        <para>When updating Trento to version 2.0.0 or higher, an additional flag
     must be set in the Helm command:</para>
    <screen>helm upgrade \
    --install trento-server oci://registry.suse.com/trento/trento-server \
@@ -2535,24 +2548,8 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
           Copy file <filename>/etc/trento/agent.yaml.rpmsave</filename> onto <filename>/etc/trento/agent.yaml</filename>
           and ensure that entries <parameter>facts-service-url</parameter>,
           <parameter>server-url</parameter>, and <parameter>api-key</parameter>
-          are maintained properly in the latter:
+          are maintained properly in the latter.
         </para>
-        <itemizedlist>
-          <listitem>
-            <para><parameter>facts-service-url</parameter>: the address of the AMQP service shared with the checks engine where fact gathering requests are received.
-           The right syntax is <uri>amqp://trento:trento@<replaceable>TRENTO_SERVER_HOSTNAME</replaceable>:5672</uri>. </para>
-          </listitem>
-          <listitem>
-            <para><parameter>server-url</parameter>: HTTP URL for the &t.server;
-              (<uri>http://<replaceable>TRENTO_SERVER_HOSTNAME</replaceable></uri>)
-            </para>
-          </listitem>
-          <listitem>
-            <para>
-              <parameter>api-key</parameter>: the API key retrieved from the Web console
-            </para>
-          </listitem>
-        </itemizedlist>
       </step>
       <step>
         <para>
@@ -2587,7 +2584,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
 
     <section xml:id="sec-trento-updating-trento-checks">
     <title>Updating Trento Checks</title>
-    <para>Configuration checks are an integral part of the &t.server;. The checks are delivered as a separate component of the &t.server;. This allows customers
+    <para>Configuration checks are an integral part of the checks engine, but they are delivered separately from it. This allows customers
     to update the checks catalog in their setup whenever updates to existing checks and new checks are released, without
     waiting for a new version release cycle.</para>
          <para> The procedure of updating the configuration checks depends on the &t.server; deployment type: &k8s;, systemd or containerized.</para>
@@ -2658,7 +2655,7 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
   <section xml:id="sec-trento-report-problem">
     <title>Reporting a Problem</title>
     <para>
-      Any &suse; customer, with a registered &sles4sap;&nbsp;15 (SP1 or higher) distribution,
+      Any &suse; customer, with a registered &sles4sap;&nbsp;15 (SP3 or higher) distribution,
      experiencing an issue with &trento;, can report the problem either directly in the &scc;
      or through the corresponding vendor, depending on their licensing model. Problems must be reported under &sles4sap;&nbsp;15 and component trento.
     </para>
@@ -2904,24 +2901,24 @@ trento-server-rabbitmq-0</screen>
           </row>
           <row>
 <!--            <entry></entry>-->
-            <entry>1.0.0</entry>
-            <entry>1.1.0</entry>
-            <entry>1.2.0</entry>
-            <entry>2.0.0</entry>
-            <entry>2.1.0</entry>
-            <entry>2.2.0</entry>
-            <entry>2.3.1</entry>
-            <entry>2.3.2</entry>
+            <entry>1.0</entry>
+            <entry>1.1</entry>
+            <entry>1.2</entry>
+            <entry>2.0</entry>
+            <entry>2.1</entry>
+            <entry>2.2</entry>
+            <entry>2.3</entry>
+            <entry>2.4</entry>
           </row>
         </thead>
         <tbody>
           <row>
             <!-- HINT: If you add more rows, raise add +1 to the morerows attribute value -->
-            <entry morerows="6" align="center" valign="middle">
+            <entry morerows="7" align="center" valign="middle">
               <para>&t.agent;</para>
               <para>versions</para>
             </entry>
-            <entry>1.0.0</entry>
+            <entry>1.0</entry>
             <entry><phrase role="color:suse-jungle-green">✓</phrase></entry>
             <entry></entry>
             <entry></entry>
@@ -2933,7 +2930,7 @@ trento-server-rabbitmq-0</screen>
           </row>
           <row>
             <!-- <entry/> -->
-            <entry>1.1.0</entry>
+            <entry>1.1</entry>
             <entry><phrase role="color:suse-jungle-green">✓</phrase></entry>
             <entry><phrase role="color:suse-jungle-green">✓</phrase></entry>
             <entry></entry>
@@ -2945,7 +2942,7 @@ trento-server-rabbitmq-0</screen>
           </row>
           <row>
             <!-- <entry/> -->
-            <entry>1.2.0</entry>
+           <entry>1.2</entry>
             <entry><phrase role="color:suse-jungle-green">✓</phrase></entry>
             <entry><phrase role="color:suse-jungle-green">✓</phrase></entry>
             <entry><phrase role="color:suse-jungle-green">✓</phrase></entry>
@@ -2957,7 +2954,7 @@ trento-server-rabbitmq-0</screen>
           </row>
           <row>
             <!-- <entry/> -->
-            <entry>2.0.0</entry>
+            <entry>2.0</entry>
             <entry></entry>
             <entry></entry>
             <entry></entry>
@@ -2969,7 +2966,7 @@ trento-server-rabbitmq-0</screen>
           </row>
           <row>
             <!-- <entry/> -->
-            <entry>2.1.0</entry>
+            <entry>2.1</entry>
             <entry></entry>
             <entry></entry>
             <entry></entry>
@@ -2981,7 +2978,7 @@ trento-server-rabbitmq-0</screen>
           </row>
            <row>
             <!-- <entry/> -->
-            <entry>2.2.0</entry>
+            <entry>2.2</entry>
             <entry></entry>
             <entry></entry>
             <entry></entry>
@@ -2991,9 +2988,21 @@ trento-server-rabbitmq-0</screen>
             <entry></entry>
             <entry></entry>
           </row>
-                    <row>
+          <row>
             <!-- <entry/> -->
-            <entry>2.3.0</entry>
+            <entry>2.3</entry>
+            <entry></entry>
+            <entry></entry>
+            <entry></entry>
+            <entry><phrase role="color:suse-jungle-green">✓</phrase></entry>
+            <entry><phrase role="color:suse-jungle-green">✓</phrase></entry>
+            <entry><phrase role="color:suse-jungle-green">✓</phrase></entry>
+            <entry><phrase role="color:suse-jungle-green">✓</phrase></entry>
+            <entry></entry>
+          </row>
+          <row>
+            <!-- <entry/> -->
+            <entry>2.4</entry>
             <entry></entry>
             <entry></entry>
             <entry></entry>
@@ -3029,6 +3038,9 @@ trento-server-rabbitmq-0</screen>
       <listitem>
         <para>For changes in the &t.server; new checks engine component (wanda), visit <link xlink:href="https://github.com/trento-project/wanda/releases"/>.</para>
       </listitem>
+    <listitem>
+     <para>For changes it the Trento checks, visit <link xlink:href="https://github.com/trento-project/checks/releases"/>.</para>
+    </listitem>
       <listitem>
         <para>For changes in the &t.agent;, visit <link xlink:href="https://github.com/trento-project/agent/releases"/>.</para>
       </listitem>
@@ -3036,7 +3048,40 @@ trento-server-rabbitmq-0</screen>
     <!-- HINT: The list should be sorted by versions, having the most recent version at the
                first item.
     -->
-       <variablelist>
+          <variablelist>
+              <varlistentry xml:id="trento-version-240">
+        <term>Version 2.4.0 (released on 2024/12/06)</term>
+        <listitem>
+          <para> Consisting of Helm chart 2.4.0, Web component 2.4.0, checks engine (wanda) 1.4.0, configuration checks 1.0.0 and
+            agent 2.4.0.</para>
+          <itemizedlist>
+            <listitem>
+              <para>New permission-based user management system with optional MFA.</para>
+            </listitem>
+                       <listitem>
+              <para>SSO and third-party IDP integration via OIDC, OAUTH2 and SAML protocols.</para>
+            </listitem>
+                                  <listitem>
+              <para>Contextual, detailed overview of available patches and upgradable packages in the SUSE Manager integration.</para>
+            </listitem>
+                                  <listitem>
+              <para>Inception of the Activity Log, allowing users to browse a single centralized event log for their entire SAP landscape.</para>
+            </listitem>
+                                  <listitem>
+              <para>Trento Checks delivery is now decoupled from the core platform, and the Checks themselves have been relicensed from Apache 2.0 to GPL 3.0</para>
+            </listitem>
+                                  <listitem>
+              <para>Enhanced discovery capabilities including clusters using angi architecture and SAP systems running on JAVA stacks.</para>
+            </listitem>
+                                             <listitem>
+              <para>New HANA scale-out cluster configuration checks.</para>
+            </listitem>
+                                             <listitem>
+              <para>More ASCS/ERS cluster configuration checks.</para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
               <varlistentry xml:id="trento-version-232">
         <term>Version 2.3.2 (released on 2024/09/01)</term>
         <listitem>
