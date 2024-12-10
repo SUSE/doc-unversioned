@@ -193,26 +193,24 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       on a &k8s; cluster or as a regular systemd stack.
       The &t.server; interacts with users via a Web front-end. It consists of the following components:
     </para>
-       <itemizedlist>
+    <itemizedlist>
       <listitem>
         <para>The web component, that acts as control plane for internal and external communications and renders the UI to the users.</para>
       </listitem>
         <listitem>
          <para>The checks engine, called wanda, that orchestrates the execution of configuration checks.</para>
         </listitem>
-         <para></para>
-                <listitem>
-                  <para>A postgresql database, for data persistence.
+        <listitem>
+          <para>A postgresql database, for data persistence.</para>
+        </listitem>
+        <listitem>
+         <para>A message broker, RabbitMQ, for communication between the checks engine and the agents.
 </para>
         </listitem>
-                <listitem>
-                  <para>A message broker, RabbitMQ, for communication between the checks engine and the agents.
-</para>
+        <listitem>
+          <para>A &prometheus; instance that retrieves the metrics collected by the &prometheus; node exporter in the registered hosts.</para>
         </listitem>
-                <listitem>
-                  <para>A &prometheus; instance that retrieves the metrics collected by the &prometheus; node exporter in the registered hosts.</para>
-        </listitem>
-       </itemizedlist>
+    </itemizedlist>
     <para> The <emphasis role="strong">&t.agent;</emphasis> is a single
       background process (<systemitem>trento agent</systemitem>) running
       on each host of the SAP infrastructure that is monitored.
@@ -949,25 +947,25 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       logged in the console is disabled by a user admin, their session is
       terminated immediately. </para>
   </section>
-  
+
   <xi:include href="sso-integration.xml"/>
 
-  <section xml:id="sec-activity-log">    
+  <section xml:id="sec-activity-log">
     <title>Activity Log</title>
     <para> Trento collects system events and user actions in the Activity Log. It can be accessed from the left-hand side panel of the Trento console.</para>
     <para> Each entry in the Activity Log includes the following:</para>
      <itemizedlist>
-      <item>
+      <listitem>
      <para>A timestamp: the day and time (server time, not browser time) the system event or the user action occurred</para>
-      </item>
-      <item>
+      </listitem>
+      <listitem>
      <para>A message: type of the occurred event or user action</para>
-      </item>
-      <item>
+      </listitem>
+      <listitem>
      <para>The user that triggered the event or performed the action. User system is used for events triggered by the system itself.</para>
-      </item>
+      </listitem>
      </itemizedlist>
-   
+
     <para>The right chevron icon in the activity log entry opens a modal with the activity metadata.</para>
      <para>The Activity Log allows to filter by the type of event or user action, commonly refered to as resource type, and by the user that triggered the event or performed the action. Only active users are available for filtering.
       The Activity Log also allows to filter out entries that are newer and/or older than an specific date and time (server time).
@@ -975,28 +973,28 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
      <para>Once a filter has been set, the user must click Apply to filter out the undesired entries and Reset to remove all the filters.</para>
      <para>Entries related to user management can only be displayed by users that have the all:all or all:users permissions. This includes:</para>
       <itemizedlist>
-       <item>
+       <listitem>
      <para>Login attempts</para>
-       </item>
-       <item>
+       </listitem>
+       <listitem>
      <para>User creations</para>
-       </item>
-       <item>
+       </listitem>
+       <listitem>
       <para>User modifications</para>
-       </item>
-       <item>
+       </listitem>
+       <listitem>
      <para>User deletions</para>
-       </item>
-       <item>
+       </listitem>
+       <listitem>
        <para>Profile updates.</para>
-      </item>
+      </listitem>
      </itemizedlist>
      <para>Entries in the Activity Log are sorted from newer to older. By clicking Refresh, the user can update the Activity Log view with entries generated since they accessed the view, or after the last refresh.</para>
      <para>The pagination features at the bottom of the Activity Log allow the user to specify the number of entries to display in a page, scroll back and forth through the different pages of the view, and jump directly to the last
       page and back to first one.</para>
      <para>The default retention time for entries in the Activity Log is one month. This can be changed in the Activity Log section under Settings. Changing the retention time requires the all:settings permissions. Entries expired after the specified retention time are deleted every day at midnight (server time).</para>
    </section>
-   
+
   <section xml:id="sec-trento-checks">
     <title>Performing configuration checks</title>
     <remark>toms 2024-04-18 (change#8): First saptune related configuration checks (host and cluster specific) -> update</remark>
@@ -2916,7 +2914,7 @@ trento-server-rabbitmq-0</screen>
         <tbody>
           <row>
             <!-- HINT: If you add more rows, raise add +1 to the morerows attribute value -->
-            <entry morerows="6" align="center" valign="middle">
+            <entry morerows="7" align="center" valign="middle">
               <para>&t.agent;</para>
               <para>versions</para>
             </entry>
@@ -2990,7 +2988,7 @@ trento-server-rabbitmq-0</screen>
             <entry></entry>
             <entry></entry>
           </row>
-                    <row>
+          <row>
             <!-- <entry/> -->
             <entry>2.3</entry>
             <entry></entry>
@@ -3002,7 +3000,7 @@ trento-server-rabbitmq-0</screen>
             <entry><phrase role="color:suse-jungle-green">✓</phrase></entry>
             <entry></entry>
           </row>
-                             <row>
+          <row>
             <!-- <entry/> -->
             <entry>2.4</entry>
             <entry></entry>
