@@ -70,7 +70,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       </dm:bugtracker>
       <dm:editurl>https://github.com/SUSE/doc-unversioned/edit/main/trento/xml/</dm:editurl>
       <dm:translation>no</dm:translation>
-    </dm:doc>
+    </dm:docmanager>
 
     <!-- Productname & Version -->
     <!--
