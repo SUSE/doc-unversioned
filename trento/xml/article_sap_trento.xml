@@ -900,7 +900,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
     </itemizedlist>
     <para>The default admin user created during the installation process is
       granted <constant>all:all</constant> permissions and cannot be modified or deleted. Use it
-      only to create a first user . That is, a user with
+      only to create a first user manager. That is, a user with
       <constant>all:users</constant> permissions who creates all the other required
       users. Once a user with all:users permissions is created, the default
       admin user must be regarded as a fall-back user to be used
