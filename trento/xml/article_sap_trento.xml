@@ -931,8 +931,8 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
       multi-factor authentication using an authenticator app.
       Multi-factor authentication increases the security of a user account by
       requesting a temporary second password or code when logging in the
-      console. User s can disable multi-factor authentication for any
-      given user that has it enabled. However, user s cannot enable multi-factor authentication
+      console. User managers can disable multi-factor authentication for any
+      given user that has it enabled. However, user managers cannot enable multi-factor authentication
       on their behalf. The  default admin user cannot enable its own multi-factor authentication.</para>
     <note>
       <title>Security Tip for Multi-Factor Authentication</title>
