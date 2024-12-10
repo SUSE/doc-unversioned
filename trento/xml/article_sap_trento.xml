@@ -873,7 +873,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
     <itemizedlist>
       <listitem>
         <formalpara>
-          <title>User s:</title>
+          <title>User managers:</title>
           <para> users with <constant>all:users</constant> permission</para>
         </formalpara>
       </listitem>
