@@ -1,12 +1,12 @@
 # Containerized deployment
 
-A containerized deployment of Trento Server is identical to a systemd deployment, except for the web and check engine components, which are deployed as containers running on a Docker engine instead of RPM's.
+A containerized deployment of Trento Server is identical to a systemd deployment. However, the web and check engine components are deployed as Docker containers.
 
-Follow the steps in [4.2 systemd deployment](https://documentation.suse.com/sles-sap/trento/html/SLES-SAP-trento/index.html#sec-systemd-deployment), but replace the step **Install Trento using RPM packages** with **Install Trento using Docker** section.
+Follow the steps in [Section 4.2, “systemd deployment”](https://documentation.suse.com/sles-sap/trento/html/SLES-SAP-trento/index.html#systemd-deployment), but skip the **Install Trento using RPM packages** step and follow the procedures in [Section 4.3.1, “Install Trento using Docker"](https://documentation.suse.com/sles-sap/trento/html/SLES-SAP-trento/index.html#install-trento-using-docker).
 
 ## Install Trento using Docker
 
-### Install Docker container runtime
+### Install Docker container runtime 
 
 1. Enable the containers module:
 
@@ -14,7 +14,7 @@ Follow the steps in [4.2 systemd deployment](https://documentation.suse.com/sles
    SUSEConnect --product sle-module-containers/15.5/x86_64
    ```
 
-   > **Note:** Using a different Service Pack than SP5 requires to change repository: [SLE15 SP3: `SUSEConnect --product sle-module-containers/15.3/x86_64`,SLE15 SP4: `SUSEConnect --product sle-module-containers/15.4/x86_64`]
+   > **Note:** To use a different Service Pack than SP5, you have to choose the appropriate repository. For example,For example, `SUSEConnect --product sle-module-containers/15.3/x86_64` for SLE15 SP3, `SUSEConnect --product sle-module-containers/15.4/x86_64` for SLE15 SP4.
 
 1. Install Docker:
 
@@ -36,15 +36,15 @@ Follow the steps in [4.2 systemd deployment](https://documentation.suse.com/sles
    docker network create trento-net
    ```
 
-   > **Note:** When creating the `trento-net` network, Docker normally assigns a default subnet: `172.17.0.0/16`. Ensure that this subnet is allowed by the rules specified in your PostgreSQL configuration file. For more information, please refer to upstream's [`pg_hba.conf`](https://www.postgresql.org/docs/current/auth-pg-hba-conf.html) documentation.
+   > **Note:** When creating the `trento-net` network, Docker assigns a default subnet to it: `172.17.0.0/16`. Ensure that this subnet is allowed by the rules specified in your PostgreSQL configuration. For more information, refer to upstream [`pg_hba.conf`](https://www.postgresql.org/docs/current/auth-pg-hba-conf.html) documentation.
 
-1. Verify the subnet of `trento-net`:
+2. Verify the subnet of `trento-net`:
 
    ```bash
    docker network inspect trento-net --format '{{range .IPAM.Config}}{{.Subnet}}{{end}}'
    ```
 
-   Expected output:
+   Expected output is as follows:
 
    ```bash
    172.17.0.0/16
@@ -52,9 +52,9 @@ Follow the steps in [4.2 systemd deployment](https://documentation.suse.com/sles
 
 ### Install Trento on Docker
 
-1. Create the secret environment variables:
+1. Create secret environment variables:
 
-   > Note: Consider using an environment variable file, learn more about from [official Docker documentation](https://docs.docker.com/engine/reference/commandline/run/#env). Adjust the docker command below for use with the env file. In any case, make sure you keep a copy of the generated keys in a safe location, in case you need to reuse them in the future. 
+   > Note: Consider using an environment variable file (see [official Docker documentation](https://docs.docker.com/engine/reference/commandline/run/#env)). Adjust the docker command below for use with the env file. In any case, make sure you keep a copy of the generated keys in a safe location, in case you need to reuse them in the future.
 
    ```bash
    WANDA_SECRET_KEY_BASE=$(openssl rand -out /dev/stdout 48 | base64)
@@ -63,7 +63,7 @@ Follow the steps in [4.2 systemd deployment](https://documentation.suse.com/sles
    REFRESH_TOKEN_ENC_SECRET=$(openssl rand -out /dev/stdout 48 | base64)
    ```
 
-1. Install the checks on the system in a shared volume:
+2. Install the checks on the system in a shared volume:
 
    ```bash
    docker volume create trento-checks \
@@ -72,31 +72,30 @@ Follow the steps in [4.2 systemd deployment](https://documentation.suse.com/sles
      registry.suse.com/trento/trento-checks:latest
    ```
 
-1. Deploy trento-wanda:
+3. Deploy trento-wanda:
 
    ```bash
    docker run -d --name wanda \
-       -p 4001:4000 \
-       --network trento-net \
-       --add-host "host.docker.internal:host-gateway" \
-       -v trento-checks:/usr/share/trento/checks:ro \
-       -e CORS_ORIGIN=localhost \
-       -e SECRET_KEY_BASE=$WANDA_SECRET_KEY_BASE \
-       -e ACCESS_TOKEN_ENC_SECRET=$ACCESS_TOKEN_ENC_SECRET \
-       -e AMQP_URL=amqp://trento_user:trento_user_password@host.docker.internal/vhost \
-       -e DATABASE_URL=ecto://wanda_user:wanda_password@host.docker.internal/wanda \
-       --restart always \
-       --entrypoint /bin/sh \
-       registry.suse.com/trento/trento-wanda:latest \
-       -c "/app/bin/wanda eval 'Wanda.Release.init()' && /app/bin/wanda start"
+      -p 4001:4000 \
+      --network trento-net \
+      --add-host "host.docker.internal:host-gateway" \
+      -v trento-checks:/usr/share/trento/checks:ro \
+      -e CORS_ORIGIN=localhost \
+      -e SECRET_KEY_BASE=$WANDA_SECRET_KEY_BASE \
+      -e ACCESS_TOKEN_ENC_SECRET=$ACCESS_TOKEN_ENC_SECRET \
+      -e AMQP_URL=amqp://trento_user:trento_user_password@host.docker.internal/vhost \
+      -e DATABASE_URL=ecto://wanda_user:wanda_password@host.docker.internal/wanda \
+      --restart always \
+      --entrypoint /bin/sh \
+      registry.suse.com/trento/trento-wanda:latest \
+      -c "/app/bin/wanda eval 'Wanda.Release.init()' && /app/bin/wanda start"
    ```
 
-1. Deploy trento-web.
+4. Deploy trento-web.
 
-   Make sure to change the `ADMIN_USER` and `ADMIN_PASSWORD`. These credentials are required to login to the trento-web UI.
-   Depending on how you intend to connect to the console, a working hostname, FQDN, or an IP is required in `TRENTO_WEB_ORIGIN` for HTTPS otherwise, websockets will fail to connect, causing no real-time updates on the UI.
+   Make sure to change the `ADMIN_USER` and `ADMIN_PASSWORD`, these are the credentials that are required to login to the trento-web UI. Depending on how you intend to connect to the console, a working hostname, FQDN, or an IP is required in `TRENTO_WEB_ORIGIN` for HTTPS. Otherwise websockets fail to connect, causing no real-time updates on the UI.
 
-   > **Note:** Add `CHARTS_ENABLED=false` if Prometheus is not installed or you don't want to use the charts feature of Trento.
+   > **Note:** Add `CHARTS_ENABLED=false` if Prometheus is not installed, or you do not want to use Trento's charts functionality.
 
    ```bash
    docker run -d \
@@ -122,8 +121,8 @@ Follow the steps in [4.2 systemd deployment](https://documentation.suse.com/sles
    -c "/app/bin/trento eval 'Trento.Release.init()' && /app/bin/trento start"
    ```
 
-   Mail alerting is disabled by default, as described in [enabling alerting](https://github.com/trento-project/web/blob/main/guides/alerting/alerting.md#enabling-alerting) guide. Enable alerting by setting `ENABLE_ALERTING` env to `true`. Additional required variables are: `[ALERT_SENDER,ALERT_RECIPIENT,SMTP_SERVER,SMTP_PORT,SMTP_USER,SMTP_PASSWORD]`
-   All other settings should remain as they are.
+   Email alerting are disabled by default, as described in [enabling alerting](https://github.com/trento-project/web/blob/main/guides/alerting/alerting.md#enabling-alerting) guide. Enable alerting by setting `ENABLE_ALERTING` env to `true`. Additional required variables are: `[ALERT_SENDER,ALERT_RECIPIENT,SMTP_SERVER,SMTP_PORT,SMTP_USER,SMTP_PASSWORD]`
+   All other settings should remain as their default.
 
    Example:
 
@@ -143,7 +142,7 @@ Follow the steps in [4.2 systemd deployment](https://documentation.suse.com/sles
    ...[other settings]...
    ```
 
-1. Check that everything is running as expected:
+5. Check that everything is running as expected:
 
    ```bash
    docker ps
