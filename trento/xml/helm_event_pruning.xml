@@ -1,4 +1,4 @@
-<section xml:id="sec-trento-event-pruning">
+<section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="helm-event-pruning">
   <title>Configuring Event Pruning</title>
   <para>
     The event pruning feature allows administrators to manage how long registered events

@@ -1,4 +1,4 @@
-[[sec-trento-event-pruning]]
+[[helm-event-pruning]]
 == Configuring Event Pruning
 
 The event pruning feature allows administrators to manage how long
