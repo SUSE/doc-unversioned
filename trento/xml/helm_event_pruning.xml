@@ -34,10 +34,9 @@
   <para>
     To modify these default values, execute the following Helm command:
   </para>
-  <programlisting language="bash">helm install trento-server . \
+  <programlisting language="bash">helm ... \
     --set trento-web.pruneEventsOlderThan=&lt;&lt;EXPIRATION_IN_DAYS&gt;&gt; \
-    --set trento-web.pruneEventsCronjobSchedule="&lt;&lt;NEW_SCHEDULE&gt;&gt;" \
-    --set trento-web.adminUser.password=&lt;&lt;ADMIN_PASSWORD&gt;&gt;
+    --set trento-web.pruneEventsCronjobSchedule="&lt;&lt;NEW_SCHEDULE&gt;&gt;"
   </programlisting>
   <para>
     Replace the placeholders with the desired values:
@@ -59,20 +58,12 @@
         </para>
       </listitem>
     </varlistentry>
-    <varlistentry>
-      <term><literal>ADMIN_PASSWORD</literal></term>
-      <listitem>
-        <para>
-          The password for the admin user.
-        </para>
-      </listitem>
-    </varlistentry>
   </variablelist>
   <para>
     <emphasis role="bold">Example</emphasis> command to retain events for 30 days and schedule pruning daily at 3 AM:
   </para>
   <programlisting language="bash">helm install trento-server . \
   --set trento-web.pruneEventsOlderThan=30 \
-  --set trento-web.pruneEventsCronjobSchedule="0 3 * * *" \
-  --set trento-web.adminUser.password=admin123</programlisting>
+  --set trento-web.pruneEventsCronjobSchedule="0 3 * * *"
+  </programlisting>
 </section>
