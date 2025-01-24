@@ -462,7 +462,7 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
         </step>
       </procedure>
     </section>
-    <xi:include href="helm_event_pruning.xml"/>
+
     <section xml:id="sec-trento-install-trentoserver-on-k3s">
       <title>Installing &t.server; on K3s</title>
       <para> If you do not have a &k8s; cluster or have one but do not want to use
@@ -561,6 +561,8 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
    --set trento-web.nodeSelector.<replaceable>LABEL</replaceable>=<replaceable>VALUE</replaceable> \
    --set trento-runner.nodeSelector.<replaceable>LABEL</replaceable>=<replaceable>VALUE</replaceable></screen>
     </section>
+
+    <xi:include href="helm_event_pruning.xml"/>
 
     <section xml:id="sec-trento-enabling-email-alerts">
       <title>Enabling email alerts</title>

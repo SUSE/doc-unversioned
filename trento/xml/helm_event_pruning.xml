@@ -10,10 +10,14 @@
   <variablelist>
     <varlistentry>
       <term><literal>pruneEventsOlderThan</literal></term>
-      <listitem>
+        <listitem>
         <para>
           The number of days registered events are stored in the database. 
           The default value is <emphasis role="bold">10</emphasis>.
+            <emphasis>Beware that <literal>pruneEventsOlderThan</literal> can be set to <emphasis role="bold">0</emphasis>
+             but that would mean that all events are deleted every time
+             the cron job runs, making it impossible to analyze/troubleshoot
+             any issue with the application</emphasis>
         </para>
       </listitem>
     </varlistentry>
@@ -65,7 +69,7 @@
     </varlistentry>
   </variablelist>
   <para>
-    Example command to retain events for 30 days and schedule pruning daily at 3 AM:
+    <emphasis role="bold">Example</emphasis> command to retain events for 30 days and schedule pruning daily at 3 AM:
   </para>
   <programlisting language="bash">helm install trento-server . \
   --set trento-web.pruneEventsOlderThan=30 \
