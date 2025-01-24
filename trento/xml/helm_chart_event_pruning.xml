@@ -1,0 +1,74 @@
+<section xml:id="sec-trento-event-pruning">
+  <title>Configuring Event Pruning</title>
+  <para>
+    The event pruning feature allows administrators to manage how long registered events
+    are stored in the database and the frequency of the pruning process that removes expired events.
+  </para>
+  <para>
+    The following configurations are available:
+  </para>
+  <variablelist>
+    <varlistentry>
+      <term><literal>pruneEventsOlderThan</literal></term>
+      <listitem>
+        <para>
+          The number of days registered events are stored in the database. 
+          The default value is <emphasis role="bold">10</emphasis>.
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term><literal>pruneEventsCronjobSchedule</literal></term>
+      <listitem>
+        <para>
+          The frequency of the cron job that deletes expired events. 
+          The default value is <emphasis role="bold">"0 0 * * *"</emphasis>, which runs daily at midnight.
+        </para>
+      </listitem>
+    </varlistentry>
+  </variablelist>
+  <para>
+    To modify these default values, execute the following Helm command:
+  </para>
+  <programlisting language="bash">helm install trento-server . \
+    --set trento-web.pruneEventsOlderThan=&lt;&lt;EXPIRATION_IN_DAYS&gt;&gt; \
+    --set trento-web.pruneEventsCronjobSchedule="&lt;&lt;NEW_SCHEDULE&gt;&gt;" \
+    --set trento-web.adminUser.password=&lt;&lt;ADMIN_PASSWORD&gt;&gt;
+  </programlisting>
+  <para>
+    Replace the placeholders with the desired values:
+  </para>
+  <variablelist>
+    <varlistentry>
+      <term><literal>EXPIRATION_IN_DAYS</literal></term>
+      <listitem>
+        <para>
+          Number of days to retain events in the database before pruning.
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term><literal>NEW_SCHEDULE</literal></term>
+      <listitem>
+        <para>
+          The cron expression specifying how frequently the pruning job should run.
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term><literal>ADMIN_PASSWORD</literal></term>
+      <listitem>
+        <para>
+          The password for the admin user.
+        </para>
+      </listitem>
+    </varlistentry>
+  </variablelist>
+  <para>
+    Example command to retain events for 30 days and schedule pruning daily at 3 AM:
+  </para>
+  <programlisting language="bash">helm install trento-server . \
+  --set trento-web.pruneEventsOlderThan=30 \
+  --set trento-web.pruneEventsCronjobSchedule="0 3 * * *" \
+  --set trento-web.adminUser.password=admin123</programlisting>
+</section>

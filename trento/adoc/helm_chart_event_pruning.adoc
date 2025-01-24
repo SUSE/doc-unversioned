@@ -1,0 +1,47 @@
+[[sec-trento-event-pruning]]
+== Configuring Event Pruning
+
+The event pruning feature allows administrators to manage how long
+registered events are stored in the database and the frequency of the
+pruning process that removes expired events.
+
+The following configurations are available:
+
+`+pruneEventsOlderThan+`::
+  The number of days registered events are stored in the database. The
+  default value is *10*.
+`+pruneEventsCronjobSchedule+`::
+  The frequency of the cron job that deletes expired events. The default
+  value is *"0 0 * * *"*, which runs daily at midnight.
+
+To modify these default values, execute the following Helm command:
+
+[source,bash]
+----
+helm install trento-server . \
+    --set trento-web.pruneEventsOlderThan=<<EXPIRATION_IN_DAYS>> \
+    --set trento-web.pruneEventsCronjobSchedule="<<NEW_SCHEDULE>>" \
+    --set trento-web.adminUser.password=<<ADMIN_PASSWORD>>
+  
+----
+
+Replace the placeholders with the desired values:
+
+`+EXPIRATION_IN_DAYS+`::
+  Number of days to retain events in the database before pruning.
+`+NEW_SCHEDULE+`::
+  The cron expression specifying how frequently the pruning job should
+  run.
+`+ADMIN_PASSWORD+`::
+  The password for the admin user.
+
+Example command to retain events for 30 days and schedule pruning daily
+at 3 AM:
+
+[source,bash]
+----
+helm install trento-server . \
+  --set trento-web.pruneEventsOlderThan=30 \
+  --set trento-web.pruneEventsCronjobSchedule="0 3 * * *" \
+  --set trento-web.adminUser.password=admin123
+----
