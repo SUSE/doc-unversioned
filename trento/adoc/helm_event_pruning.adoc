@@ -40,7 +40,10 @@ daily at 3 AM:
 
 [source,bash]
 ----
-helm install trento-server . \
+helm upgrade \
+  --install trento-server oci://registry.suse.com/trento/trento-server \
+  --set trento-web.trentoWebOrigin=TRENTO_SERVER_HOSTNAME \
+  --set trento-web.adminUser.password=ADMIN_PASSWORD \
   --set trento-web.pruneEventsOlderThan=30 \
   --set trento-web.pruneEventsCronjobSchedule="0 3 * * *"
   

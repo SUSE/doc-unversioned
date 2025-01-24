@@ -62,7 +62,10 @@
   <para>
     <emphasis role="bold">Example</emphasis> command to retain events for 30 days and schedule pruning daily at 3 AM:
   </para>
-  <programlisting language="bash">helm install trento-server . \
+  <programlisting language="bash">helm upgrade \
+  --install trento-server oci://registry.suse.com/trento/trento-server \
+  --set trento-web.trentoWebOrigin=TRENTO_SERVER_HOSTNAME \
+  --set trento-web.adminUser.password=ADMIN_PASSWORD \
   --set trento-web.pruneEventsOlderThan=30 \
   --set trento-web.pruneEventsCronjobSchedule="0 3 * * *"
   </programlisting>
