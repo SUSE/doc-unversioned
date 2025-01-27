@@ -501,13 +501,13 @@ Create or provide a certificate for [NGINX](https://nginx.org/en/) to enable SSL
     zypper refresh
     ```
 
-2.  Install Certbot and its NGINX plugin:
+1.  Install Certbot and its NGINX plugin:
 
     ```bash
     zypper install certbot python3-certbot-nginx
     ```
 
-3.  Obtain a certificate and configure NGINX with Certbot:
+1.  Obtain a certificate and configure NGINX with Certbot:
 
     > **Note:** Replace `example.com` with your domain. For more information, refer to [Certbot instructions for NGINX](https://certbot.eff.org/instructions?ws=nginx&os=leap)
 
