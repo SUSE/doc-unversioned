@@ -21,3 +21,22 @@
 <!ENTITY copyrightstart         "20XX">
 <!-- COPYRIGHT HOLDER(S) -->
 <!ENTITY copyrightholder        "SUSE LLC">
+
+
+
+  <!-- Trento specific entities -->
+  <!ENTITY trento               "Trento">
+  <!ENTITY trentoadmin          "trentoservice">
+  <!ENTITY trentoserverip       "192.168.1.2">
+  <!ENTITY trentoservername     "<replaceable
+    xmlns='http://docbook.org/ns/docbook'>TRENTO_SERVER_HOSTNAME</replaceable>">
+  <!ENTITY trentoagentname      "<replaceable xmlns='http://docbook.org/ns/docbook'>TRENTO_AGENT</replaceable>">
+  <!ENTITY trentoprompt         "&trentoadmin;@&trentoservername;:~>">
+  <!ENTITY trentoagentprompt    "&trentoadmin;@&trentoagentname;:~>">
+  <!ENTITY trentoserver.prompt  "<prompt xmlns='http://docbook.org/ns/docbook'>&trentoprompt; </prompt>">
+  <!ENTITY trentoagent.prompt   "<prompt xmlns='http://docbook.org/ns/docbook'>&trentoagentprompt; </prompt>">
+  <!ENTITY t.server             "Trento Server">
+  <!ENTITY t.agent              "Trento Agent">
+  <!ENTITY t.web                "Trento Web console">
+  <!ENTITY k8s                  "Kubernetes">
+  <!ENTITY rancher.k8s.engine   "Rancher &k8s; Engine">
