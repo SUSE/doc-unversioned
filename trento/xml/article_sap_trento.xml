@@ -562,6 +562,8 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
    --set trento-runner.nodeSelector.<replaceable>LABEL</replaceable>=<replaceable>VALUE</replaceable></screen>
     </section>
 
+    <xi:include href="helm_event_pruning.xml"/>
+
     <section xml:id="sec-trento-enabling-email-alerts">
       <title>Enabling email alerts</title>
       <para>
