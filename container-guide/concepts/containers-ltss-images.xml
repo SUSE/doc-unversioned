@@ -48,8 +48,8 @@
           the shell history):
         </para>
 <screen>&prompt.user;set +o history
-  &prompt.user;echo <replaceable>PASSWORD</replaceable> | podman login -u <replaceable>USERNAME</replaceable> --password-stdin registry.suse.com
-  &prompt.user;set -o history</screen>
+&prompt.user;echo <replaceable>PASSWORD</replaceable> | podman login -u <replaceable>USERNAME</replaceable> --password-stdin registry.suse.com
+&prompt.user;set -o history</screen>
       </listitem>
     </varlistentry>
     <varlistentry>
@@ -59,9 +59,9 @@
           If the host system is not registered with &scc;, you can use a valid
           &scc; registration code to log in to the registry:
         </para>
-<screen>set +o history
-  echo <replaceable>SCC_REGISTRATION_CODE</replaceable> | podman login -u "regcode" --password-stdin registry.suse.com
-set -o history</screen>
+<screen>&prompt.user;set +o history
+&prompt.user;echo <replaceable>SCC_REGISTRATION_CODE</replaceable> | podman login -u "regcode" --password-stdin registry.suse.com
+&prompt.user;set -o history</screen>
         <para>
           The user parameter in this case is the verbatim string
           <literal>regcode</literal>, and
@@ -77,9 +77,9 @@ set -o history</screen>
           You can also use the organization mirroring credentials to log in to
           the &suseregistry;:
         </para>
-<screen>set +o history
- echo <replaceable>SCC_MIRRORING_PASSWORD</replaceable> | podman login -u "<replaceable>SCC_MIRRORING_USER</replaceable>" --password-stdin registry.suse.com
-set -o history</screen>
+<screen>&prompt.user;set +o history
+&prompt.user;echo <replaceable>SCC_MIRRORING_PASSWORD</replaceable> | podman login -u "<replaceable>SCC_MIRRORING_USER</replaceable>" --password-stdin registry.suse.com
+&prompt.user;set -o history</screen>
         <para>
           These credentials give you access to all subscriptions the
           organization owns, including those related to container images in the
