@@ -20,7 +20,7 @@
     -->
     <itemizedlist>
       <listitem>
-        <para>A user-friendly interface for &sap; Basis administrators.</para>
+        <para>A user-friendly reactive Web interface for &sap; Basis administrators.</para>
       </listitem>
       <listitem>
         <para>
@@ -46,11 +46,11 @@
         </para>
       </listitem>
          <listitem>
-        <para>Useful information about the execution of configuration checks.
+        <para>Useful information that offers insights about the execution of configuration checks.
         </para>
      </listitem>
      <listitem>
-        <para>Configuration checks that are unbundled from the wanda check engine.
+        <para>Delivery of configuration checks decoupled from core functionality.
         </para>
      </listitem>
      <listitem>
@@ -65,7 +65,7 @@
       </listitem>
               <listitem>
         <para>
-          Information about relevant patches, advisories, and upgradable packages for registered hosts via integration with &suma;.
+          Information about relevant patches and upgradable packages for registered hosts via integration with &suma;.
         </para>
       </listitem>
       <listitem>
@@ -80,7 +80,7 @@
                   </listitem>
       <listitem>
              <para>
-          Rotating API key to protect communication between the &t.agent; and the &t.server;.
+          Rotating API key to protect communication from the &t.agent; to the &t.server;.
         </para>
       </listitem>
       <listitem>
@@ -101,7 +101,7 @@
         <para>The web component that acts as a control plane responsible for internal and external communications as well as rendering the UI.</para>
       </listitem>
         <listitem>
-         <para>The wanda checks engine that orchestrates the execution of configuration checks.</para>
+         <para>The checks engine named wanda that orchestrates the execution of configuration checks.</para>
         </listitem>
         <listitem>
           <para>A &postgresql; database for data persistence.</para>
