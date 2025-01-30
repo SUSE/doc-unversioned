@@ -79,88 +79,8 @@ As agreed on https://confluence.suse.com/x/DAEcN on our Trento doc kick off
     <xi:include href="common_copyright_gfdl.xml" />
     </info>
 
-  <important>
-    <title>Trento is an evolving product</title>
-    <para>
-      The product continues to be under active development and is available at no extra cost for any &suse;
-      customer with a registered &sles4sap;&nbsp;15 (SP3 or higher).
-      Contact <link xlink:href="https://www.suse.com/support"/> for further assistance.
-    </para>
-  </important>
-
 <xi:include href="trento-intro.xml"/>
-
-  <section xml:id="sec-trento-product-lifecycle-update-strategy">
-    <title>Product lifecycle and update strategy</title>
-    <!--
-      Most ist taken from https://confluence.suse.com/x/uoOyN
-    -->
-    <para>Trento is available at no extra cost for SLES for SAP 15 subscribers. Particularly, Trento's two main components have the following product lifecycles:</para>
-
-    <variablelist>
-      <varlistentry>
-        <term>&t.agent;</term>
-        <listitem>
-          <formalpara>
-            <title>Delivery mechanism:</title>
-            <para> RPM package for &sles4sap;&nbsp;15&nbsp;SP3 and
-              newer.</para>
-          </formalpara>
-          <formalpara>
-            <title>Supported runtime:</title>
-            <para> Supported in &sles4sap;&nbsp;15&nbsp;SP3 and newer, on x86_64 and ppc64le architectures.
-            </para>
-          </formalpara>
-        </listitem>
-      </varlistentry>
-      <varlistentry>
-        <term>&t.server;</term>
-        <listitem>
-          <formalpara>
-            <title>Delivery mechanisms:</title>
-            <para> A set of container images from the &suse; public
-              registry together with a Helm chart that facilitates their
-              installation or a set of RPM packages for &sles4sap;&nbsp;15&nbsp;SP3 and
-              newer.</para>
-          </formalpara>
-          <formalpara>
-            <title>&k8s; deployment:</title>
-            <para> The &t.server; runs on any current Cloud Native
-              Computing Foundation (CNCF)-certified &k8s;
-              distributions based on a x86_64 architecture. Depending on your background and
-              needs, &suse; supports several usage scenarios:
-            </para>
-          </formalpara>
-          <itemizedlist>
-            <listitem>
-              <para> If you already use a CNCF-certified &k8s; cluster,
-                you can run the &t.server; in it. </para>
-            </listitem>
-            <listitem>
-              <para> If you have no &k8s; cluster and want enterprise
-                support, &suse; recommends &suse; &rancher.k8s.engine; (RKE) version 1 or
-                2. </para>
-            </listitem>
-            <listitem>
-              <para> If you do not have a &k8s; enterprise solution but you still want
-                to try &trento;, &suse; Rancher's K3s provides you with an easy
-                way to get started. But keep in mind that K3s default installation process
-                deploys a single node &k8s; cluster, which is not a recommended
-                setup for a stable Trento production instance.
-               </para>
-            </listitem>
-          </itemizedlist>
-          <formalpara>
-            <title>systemd and containerized deployments:</title>
-            <para> Supported in &sles4sap;&nbsp;15&nbsp;SP3 and newer.
-            </para>
-          </formalpara>
-        </listitem>
-      </varlistentry>
-    </variablelist>
-
-  </section>
-
+<xi:include href="trento-lifecycle.xml"/>
 <!--
  toms 2021-11-19:
  Do we have specific terms which needs to be explained in a terminology section?
