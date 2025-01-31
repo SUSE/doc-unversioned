@@ -16,13 +16,14 @@
     <itemizedlist>
       <listitem>
         <para>
-          <replaceable>TRENTO_SERVER_HOSTNAME</replaceable>: the host name used
-          by the end user to access the console.
+          <replaceable>TRENTO_SERVER_HOSTNAME</replaceable>: the host name used by the end user to
+          access the console.
         </para>
       </listitem>
       <listitem>
         <para>
-          <replaceable>ADMIN_PASSWORD</replaceable>: the password of the default user created during the installation process. It must have at least 8 characters.
+          <replaceable>ADMIN_PASSWORD</replaceable>: the password of the default user created
+          during the installation process. It must have at least 8 characters.
         </para>
       </listitem>
     </itemizedlist>
@@ -30,9 +31,12 @@
     <section xml:id="sec-trento-install-trentoserver-on-existing-k8s-cluster">
       <title>Installing &t.server; on an existing &k8s; cluster</title>
       <para>
-        &t.server; consists of a several components delivered as container images and intended for deployment on a &k8s; cluster. A manual production-ready deployment of these components requires &k8s; knowledge. Customers without in-house &k8s; expertise and who want to try &trento; with a minimum of effort, can use the &trento; Helm chart. This approach automates the
-        deployment of all the required components on a single &k8s; cluster node. You can use the
-        &trento; Helm chart to install &t.server; on a existing &k8s; cluster as follows:
+        &t.server; consists of a several components delivered as container images and intended for
+        deployment on a &k8s; cluster. A manual production-ready deployment of these components
+        requires &k8s; knowledge. Customers without in-house &k8s; expertise and who want to try
+        &trento; with a minimum of effort, can use the &trento; Helm chart. This approach automates
+        the deployment of all the required components on a single &k8s; cluster node. You can use
+        the &trento; Helm chart to install &t.server; on a existing &k8s; cluster as follows:
       </para>
       <procedure>
         <step>
@@ -55,7 +59,8 @@
    --set trento-web.trentoWebOrigin=<replaceable>TRENTO_SERVER_HOSTNAME</replaceable> \
    --set trento-web.adminUser.password=<replaceable>ADMIN_PASSWORD</replaceable></screen>
           <para>
-            When using a Helm version lower than 3.8.0, an experimental flag must be set as follows:
+            When using a Helm version lower than 3.8.0, an experimental flag must be set as
+            follows:
           </para>
 <screen>HELM_EXPERIMENTAL_OCI=1 helm upgrade \
    --install trento-server oci://registry.suse.com/trento/trento-server \
@@ -74,17 +79,18 @@
     <section xml:id="sec-trento-install-trentoserver-on-k3s">
       <title>Installing &t.server; on K3s</title>
       <para>
-        If you do not have a &k8s; cluster, or have one but do not want to use it for &trento;, &suse;
-        Rancher's K3s provides an alternative. To deploy &t.server; with K3s, you need is a small server
-        or VM (see <xref
-          linkend="sec-trento-server-requirements" /> for minimum
-        requirements) and follow steps in <xref linkend="pro-trento-manually-installing" />.
+        If you do not have a &k8s; cluster, or have one but do not want to use it for &trento;,
+        &suse; Rancher's K3s provides an alternative. To deploy &t.server; on K3s, you need is a
+        small server or VM (see <xref
+          linkend="sec-trento-server-requirements" /> for
+        minimum requirements) and follow steps in
+        <xref linkend="pro-trento-manually-installing" />.
       </para>
       <important>
         <title>Deploying Trento on K3s</title>
         <para>
-          The following procedure deploys &t.server; on a single-node K3s cluster. Note that this setup is
-          not recommended for production use.
+          The following procedure deploys &t.server; on a single-node K3s cluster. Note that this
+          setup is not recommended for production use.
         </para>
       </important>
       <procedure xml:id="pro-trento-manually-installing">
@@ -128,15 +134,15 @@
         </step>
         <step xml:id="st-deploy-k3s">
           <para>
-            With the same user that installed K3s, install &t.server; using the Helm
-            chart:
+            With the same user that installed K3s, install &t.server; using the Helm chart:
           </para>
 <screen>helm upgrade \
    --install trento-server oci://registry.suse.com/trento/trento-server \
    --set trento-web.trentoWebOrigin=<replaceable>TRENTO_SERVER_HOSTNAME</replaceable> \
    --set trento-web.adminUser.password=<replaceable>ADMIN_PASSWORD</replaceable></screen>
           <para>
-            When using a Helm version lower than 3.8.0, an experimental flag must be set as follows:
+            When using a Helm version lower than 3.8.0, an experimental flag must be set as
+            follows:
           </para>
 <screen>HELM_EXPERIMENTAL_OCI=1 helm upgrade \
    --install trento-server oci://registry.suse.com/trento/trento-server \
@@ -145,8 +151,8 @@
         </step>
         <step>
           <para>
-            Monitor the creation and start-up of the &t.server; pods, and wait until they are
-            ready and running:
+            Monitor the creation and start-up of the &t.server; pods, and wait until they are ready
+            and running:
           </para>
 <screen>watch kubectl get pods</screen>
           <para>
