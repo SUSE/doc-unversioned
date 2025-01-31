@@ -22,7 +22,7 @@
       </listitem>
       <listitem>
         <para>
-          <replaceable>ADMIN_PASSWORD</replaceable>: the password that the &sap; administrator uses to access the Web console. It must have at least 8 characters.
+          <replaceable>ADMIN_PASSWORD</replaceable>: the password of the default user created during the installation process. It must have at least 8 characters.
         </para>
       </listitem>
     </itemizedlist>
@@ -75,7 +75,7 @@
       <title>Installing &t.server; on K3s</title>
       <para>
         If you do not have a &k8s; cluster, or have one but do not want to use it for &trento;, &suse;
-        Rancher's K3s provides an alternative. To deploy &t.server; on with K3s, you need is a small server
+        Rancher's K3s provides an alternative. To deploy &t.server; with K3s, you need is a small server
         or VM (see <xref
           linkend="sec-trento-server-requirements" /> for minimum
         requirements) and follow steps in <xref linkend="pro-trento-manually-installing" />.
