@@ -19,7 +19,7 @@
       <filename>/var/lib/rancher/k3s</filename>.
       </para>
      <para>
-      &trento; is based on the event-driven architecture. Registered events are stored in a  &postgresql; database with a default retention
+      &trento; is based on an event-driven technology. Registered events are stored in a  &postgresql; database with a default retention
       period of 10 days. For each host registered with &trento;, you need to allocate at least 1.5GB of space in the &postgresql; database.
      </para>
       <para> &t.server; supports different deployment scenarios: &k8s;, systemd, and containers. A &k8s;-based deployment of &t.server; is cloud-native and OS-agnostic. It can be performed on the following services: </para>
