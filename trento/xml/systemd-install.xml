@@ -164,7 +164,8 @@ scrape_configs:
 </programlisting>
             <note>
               <para>
-                <emphasis role="strong">localhost:4000</emphasis> in <emphasis
+                <emphasis role="strong">localhost:4000</emphasis> in
+                <emphasis
 role="strong">url:<uri>http://localhost:4000/api/prometheus/targets</uri></emphasis>
                 refers to the location where Trento web service is running.
               </para>
@@ -557,7 +558,7 @@ curl http://localhost:4001/api/healthz
 {&quot;ready&quot;:true}{&quot;database&quot;:&quot;pass&quot;}
 </programlisting>
   </section>
-    <section xml:id="install-and-configure-nginx">
+  <section xml:id="install-and-configure-nginx">
     <title>Install and configure NGINX</title>
     <procedure>
       <step>
@@ -705,9 +706,10 @@ openssl req -newkey rsa:2048 --nodes -keyout trento.key -x509 -days 5 -out trent
           </para>
 <programlisting language="bash">cp trento.key /etc/ssl/private/trento.key</programlisting>
         </step>
-         <step>
+        <step>
           <para>
-            Create a directory for the generated <literal>trento.crt</literal> file. The directory must be accessible by NGINX:
+            Create a directory for the generated <literal>trento.crt</literal> file. The directory
+            must be accessible by NGINX:
           </para>
 <programlisting language="bash">mkdir -p /etc/nginx/ssl/certs/</programlisting>
         </step>
@@ -719,7 +721,7 @@ openssl req -newkey rsa:2048 --nodes -keyout trento.key -x509 -days 5 -out trent
         </step>
         <step>
           <para>
-           Reload NGINX to apply changes:
+            Reload NGINX to apply changes:
           </para>
 <programlisting language="bash">systemctl reload nginx</programlisting>
         </step>
@@ -731,7 +733,8 @@ openssl req -newkey rsa:2048 --nodes -keyout trento.key -x509 -days 5 -out trent
         <para>
           Change repository if you use a Service Pack other than SP5. For example:
           <literal>SUSEConnect --product PackageHub/15.3/x86_64</literal> for SLE15 SP3,
-          <literal>SUSEConnect --product PackageHub/15.4/x86_64</literal> for SLE15 SP4. Use packages in PackageHub at your own risk.
+          <literal>SUSEConnect --product PackageHub/15.4/x86_64</literal> for SLE15 SP4. Use
+          packages in PackageHub at your own risk.
         </para>
       </note>
       <procedure>
