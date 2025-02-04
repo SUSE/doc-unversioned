@@ -26,7 +26,7 @@
   </para>
   <para>
   To perform protected actions, the user must have additional permissions added
-  to their user profile. Blow is the list of currently available permissions:
+  to their user profile. Below is the list of currently available permissions:
   </para>
   <itemizedlist>
     <listitem>
@@ -114,7 +114,7 @@
   <para>
     The default admin user created during the installation process is granted
     <constant>all:all</constant> permissions and cannot be modified or deleted.
-    Use it only to create the first user manager (the user with
+    Use it only to create the first user manager (a user with
     <constant>all:users</constant> permissions who creates all the other
     required users). Once a user with <constant>all:users</constant> permissions
     is created, the default admin user must be treated as a fallback user in
