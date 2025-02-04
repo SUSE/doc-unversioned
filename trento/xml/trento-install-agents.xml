@@ -37,9 +37,7 @@
     </step>
     <step>
       <para>
-        Click <guimenu>Login</guimenu>. As this is the first time you access the
-        console, you are prompted to accept the license agreement. Click
-        <guimenu>Accept</guimenu> to continue. You cannot use Trento without accepting the license agreement.
+        Click <guimenu>Login</guimenu>.
       </para>
     </step>
     <step>
