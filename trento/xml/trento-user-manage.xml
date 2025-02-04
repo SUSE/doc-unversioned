@@ -9,10 +9,10 @@
 <section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="sec-trento-user-management">
   <title>User management</title>
   <para>
-    Trento provides a local permission-based user management feature with
-    optional multi-factor authentication. This feature allows for segregation of
-    duties in the Trento console and ensures that only authorized users with the
-    right permissions can access it.
+    &trento; provides a local permission-based user management feature with
+    optional multi-factor authentication. This feature enables segregation of
+    duties in the &trento; interface and ensures that only authorized users with
+    the right permissions can access it.
   </para>
   <para>
     User management actions are performed in the <guimenu>Users</guimenu> view
@@ -20,14 +20,13 @@
   </para>
   <para>
     By default, a newly created user is granted display access rights except for
-    the
-    <guimenu>Users</guimenu> view. Whenever available, a user with default access can set up
-    filters and pagination settings matching their preferences.
+    the <guimenu>Users</guimenu> view. Where available, a user with default
+    access can configure filters and pagination settings matching their
+    preferences.
   </para>
   <para>
-    Additional permissions must be added to a user profile, so that the user can
-    perform the corresponding protected activities. The following permissions
-    are currently available:
+  To perform protected actions, the user must have additional permissions added
+  to their user profile. Blow is the list of currently available permissions:
   </para>
   <itemizedlist>
     <listitem>
@@ -82,13 +81,13 @@
       <formalpara>
         <title>User managers:</title>
         <para>
-          users with <constant>all:users</constant> permission
+          users with <constant>all:users</constant> permissions
         </para>
       </formalpara>
     </listitem>
     <listitem>
       <formalpara>
-        <title>SAP Basis administrator with Trento display-only access:</title>
+        <title>SAP Basis administrator with &trento; display-only access:</title>
         <para>
           users with default permissions
         </para>
@@ -96,7 +95,7 @@
     </listitem>
     <listitem>
       <formalpara>
-        <title>SAP Basis administrator with Trento configuration access:</title>
+        <title>SAP Basis administrator with &trento; configuration access:</title>
         <para>
           users with <constant>all:checks_selection</constant>, <constant>all:tags</constant> and
           <constant>all:settings</constant> permissions
@@ -105,10 +104,9 @@
     </listitem>
     <listitem>
       <formalpara>
-        <title>SAP Basis administrator with Trento operation access:</title>
+        <title>SAP Basis administrator with &trento; operation access:</title>
         <para>
-          users with <constant>all:check_execution</constant> and <constant>cleanup:all</constant>
-          permissions.
+          users with <constant>all:check_execution</constant> and <constant>cleanup:all</constant> permissions.
         </para>
       </formalpara>
     </listitem>
@@ -116,12 +114,12 @@
   <para>
     The default admin user created during the installation process is granted
     <constant>all:all</constant> permissions and cannot be modified or deleted.
-    Use it only to create a first user manager. That is, a user with
+    Use it only to create the first user manager (the user with
     <constant>all:users</constant> permissions who creates all the other
-    required users. Once a user with all:users permissions is created, the
-    default admin user must be regarded as a fall-back user to be used only in
+    required users). Once a user with <constant>all:users</constant> permissions
+    is created, the default admin user must be treated as a fallback user in
     case all other access to the console is lost. If the password of the default
-    admin user is lost, it can be reset by updating the helm chart or the web
+    admin user is lost, it can be reset by updating the Helm chart or the web
     component configuration, depending on which deployment method was used to
     install &t.server;.
   </para>
@@ -136,8 +134,8 @@
     </listitem>
     <listitem>
       <para>
-        The same number or letter must not be repeated three or more times in a row (for example:
-        111 or aaa)
+        The same number or letter must not be repeated three or more times in a
+        row (for example: 111 or aaa)
       </para>
     </listitem>
     <listitem>
@@ -149,28 +147,28 @@
   </itemizedlist>
   <para>
     The <guimenu>Create User</guimenu> and <guimenu>Edit User</guimenu> views
-    provide a built-in generation password action button that allows user
+    provide a built-in password generation button that allows user
     managers to easily generate secure and compliant passwords. The user manager
     must provide the user with their password through an authorized secure
     channel.
   </para>
   <para>
-    A user can reset their password in the <guimenu>Profile</guimenu> view.
-    Here, they can also update their name and email address as well as activate
-    multi-factor authentication using an authenticator app. Multi-factor
-    authentication increases the security of a user account by requesting a
-    temporary second password or code when logging in the console. User managers
-    can disable multi-factor authentication for any given user that has it
-    enabled. However, user managers cannot enable multi-factor authentication on
-    their behalf. The default admin user cannot enable its own multi-factor
-    authentication.
+    A user can reset their password in the <guimenu>Profile</guimenu> view. In
+    this view, they can also update their name and email address as well as
+    activate multi-factor authentication using an authenticator app.
+    Multi-factor authentication increases the security of a user account by
+    requesting a temporary second password or code when logging in the console.
+    User managers can disable multi-factor authentication for any given user
+    that has it enabled. However, user managers cannot enable multi-factor
+    authentication on their behalf. The default admin user cannot enable its own
+    multi-factor authentication.
   </para>
   <note>
     <title>Security Tip for Multi-Factor Authentication</title>
     <para>
       Since multi-factor authentication cannot be enabled for the default admin
       user, keeping its password safe is imperative. If the default admin user's
-      password is compromised, reset it immediately by updating the helm chart
+      password is compromised, reset it immediately by updating the Helm chart
       or the web component configuration, depending on which deployment method
       was used to install &t.server;.
     </para>
