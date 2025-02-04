@@ -8,21 +8,14 @@
 ]>
 <section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="sec-trento-installing-trentoagent">
   <title>Installing &t.agent;s</title>
-  <important>
-    <title>Expect changes in the installation procedure</title>
-    <para>
-      The product is under active development. Expect changes in the described
-      installation procedure.
-    </para>
-  </important>
   <para>
-    Before you can install a &t.agent;, retrieve the API key of your &t.server;.
+    Before you can install a &t.agent;, you must obtain the API key of your &t.server;.
     Proceed as follows:
   </para>
   <procedure>
     <step>
       <para>
-        Open the URL of the Trento Web console
+        Open the URL of the Trento Web interface
         (<uri>http://<replaceable>TRENTO_SERVER_HOSTNAME</replaceable></uri>).
         It prompts you for a user name and password:
       </para>
@@ -38,20 +31,20 @@
     <step>
       <para>
         Enter the credentials for the <systemitem
-        class="username">admin</systemitem> user (established when installing
+        class="username">admin</systemitem> user (specified during installation of
         &t.server;).
       </para>
     </step>
     <step>
       <para>
         Click <guimenu>Login</guimenu>. As this is the first time you access the
-        console, you will be prompted to accept the license agreement. Click
-        <guimenu>Accept</guimenu> to continue. Otherwise, you cannot use Trento.
+        console, you are prompted to accept the license agreement. Click
+        <guimenu>Accept</guimenu> to continue. You cannot use Trento without accepting the license agreement.
       </para>
     </step>
     <step>
       <para>
-        Once inside the console, go to Settings:
+        When you are logged in, go to Settings:
       </para>
       <!-- Add API key screen -->
       <informalfigure>
@@ -64,7 +57,7 @@
     </step>
     <step>
       <para>
-        Click the <guimenu>Copy</guimenu> button to copy the key to your clipboard.
+        Click the <guimenu>Copy</guimenu> button to copy the key to the clipboard.
       </para>
     </step>
   </procedure>
@@ -84,10 +77,10 @@
     <step>
       <para>
         Open the configuration file <filename>/etc/trento/agent.yaml</filename>
-        and uncomment (use
-        <literal>#</literal>) the entries for <parameter>facts-service-url</parameter>,
+        and uncomment (remove the
+        <literal>#</literal> character) the entries for <parameter>facts-service-url</parameter>,
         <parameter>server-url</parameter> and <parameter>api-key</parameter>.
-        Update the values appropriately:
+        Update the values as necessary:
       </para>
       <itemizedlist>
         <listitem>
@@ -98,17 +91,18 @@
             &t.server; was deployed.
           </para>
           <para>
-            In a Kubernetes deployment, it is
+            In a &k8s; deployment, it is
             <uri>amqp://trento:trento@TRENTO_SERVER_HOSTNAME:5672/</uri>. If the
-            default RabbitMQ username and password (trento) were updated using
-            helm, the parameter must use the custom value.
+            default RabbitMQ username and password
+            (<literal>trento:trento</literal>) were updated using Helm, the
+            parameter must use a user-defined value.
           </para>
           <para>
             In a systemd or containerized deployment, the correct value is
             <uri>amqp://TRENTO_USER:TRENTO_USER_PASSWORD@TRENTO_SERVER_HOSTNAME:5672/vhost</uri>.
             If <replaceable>TRENTO_USER</replaceable> and
-            <replaceable>TRENTO_USER_PASSWORD</replaceable> were replaced with
-            custom values, you must use them.
+            <replaceable>TRENTO_USER_PASSWORD</replaceable> have been replaced
+            with custom values, you must use them.
           </para>
         </listitem>
         <listitem>
@@ -137,16 +131,17 @@
         </listitem>
         <listitem>
           <para>
-            Import the certificate from the CA that has issued your &t.server;
-            SSL certificate into the &t.agent; host as follows:
+            Import the certificate from the Certificate Authority that has
+            issued your &t.server; SSL certificate into the &t.agent; host as
+            follows:
           </para>
           <procedure>
             <step>
               <para>
-                Copy the CA certificate in PEM format to
-                <filename>/etc/pki/trust/anchors/</filename>. If your CA
-                certificate is in CRT format, convert it to PEM using the
-                <command>openssl</command> command as follows:
+                Copy the CA certificate in the PEM format to
+                <filename>/etc/pki/trust/anchors/</filename>. If the CA
+                certificate is in the CRT format, convert it to PEM using the
+                following <command>openssl</command> command:
               </para>
 <screen><command>openssl</command> x509 -in mycert.crt -out mycert.pem -outform PEM</screen>
             </step>
@@ -183,7 +178,7 @@
     </step>
     <step>
       <para>
-        Repeat this procedure in all SAP hosts that you want to monitor.
+        Repeat this procedure on all SAP hosts that you want to monitor.
       </para>
     </step>
   </procedure>
