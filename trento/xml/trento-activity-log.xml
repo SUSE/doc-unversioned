@@ -35,22 +35,22 @@
     </listitem>
   </itemizedlist>
   <para>
-    The right chevron icon in the activity log entry opens a modal with the activity metadata.
+    Clicking on the chevron icon in the activity log entry opens a modal window containing the activity metadata.
   </para>
   <para>
-    The Activity Log allows to filter by the type of event or user action,
-    commonly refered to as resource type, and by the user that triggered the
+    The Activity Log allows to filter by the type of event or user action
+    (commonly referred to as resource type) and by the user that triggered the
     event or performed the action. Only active users are available for
-    filtering. The Activity Log also allows to filter out entries that are newer
-    and/or older than an specific date and time (server time).
+    filtering. The Activity Log also allows you to filter out entries that are
+    newer and/or older than an specific date and time (server time).
   </para>
   <para>
-    Once a filter has been set, the user must click Apply to filter out the
-    undesired entries and Reset to remove all the filters.
+    Once a filter has been set, click <guimenu>Apply</guimenu> to filter out the
+    undesired entries and <guimenu>Reset</guimenu> to remove all the filters.
   </para>
   <para>
     Entries related to user management can only be displayed by users that have
-    the all:all or all:users permissions. This includes:
+    the <constant>all:all</constant> or <constant>all:users</constant>  permissions. This includes the following:
   </para>
   <itemizedlist>
     <listitem>
@@ -75,26 +75,25 @@
     </listitem>
     <listitem>
       <para>
-        Profile updates.
+        Profile updates
       </para>
     </listitem>
   </itemizedlist>
   <para>
-    Entries in the Activity Log are sorted from newer to older. By clicking
-    Refresh, the user can update the Activity Log view with entries generated
-    since they accessed the view, or after the last refresh.
+    Entries in the Activity Log are sorted from newer to older. Click
+    <guimenu>Refresh</guimenu> to update the Activity Log view with entries
+    generated since they accessed the view or after the last refresh
   </para>
   <para>
-    The pagination features at the bottom of the Activity Log allow the user to
-    specify the number of entries to display in a page, scroll back and forth
-    through the different pages of the view, and jump directly to the last page
-    and back to first one.
+    The pagination features at the bottom of the Activity Log allow you to
+    specify the number of entries to display in a page, go the next or
+    previous page of the view, and jump to the last page and back to first one.
   </para>
   <para>
     The default retention time for entries in the Activity Log is one month.
-    This can be changed in the Activity Log section under Settings. Changing the
-    retention time requires the all:settings permissions. Entries expired after
-    the specified retention time are deleted every day at midnight (server
-    time).
+    This can be changed in the Activity Log section under
+    <guimenu>Settings</guimenu>. Changing the retention time requires the
+    <constant>all:settings</constant> permissions. Entries expired after the
+    specified retention time are deleted every day at midnight (server time).
   </para>
 </section>

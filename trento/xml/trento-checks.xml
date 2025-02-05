@@ -9,28 +9,25 @@
 
   <section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="sec-trento-checks">
     <title>Performing configuration checks</title>
-    <remark>toms 2024-04-18 (change#8): First saptune related configuration checks (host and cluster specific) -> update</remark>
     <para>
-     One of Trento's main features is to provide configuration checks that ensure your infrastructure setup adheres to our Best Practices,
-     or other vendor's Best Practices, and does not drift away in time. Configuration checks ara available for
+     &trento; provides configuration checks that ensure your infrastructure setup adheres to our or other vendor's Best Practices, and it does not diverge with time. Configuration checks ara available for
      HANA clusters, ASCS/ERS clusters and hosts. The following procedure is specific to a HANA cluster. The procedure for an ASCS/ERS cluster
-     or a host would be exactly the same, only starting from the corresponding Details view:
+     or a host would be exactly the same, except it starts from the corresponding Details view.
     </para>
     <procedure xml:id="pro-trento-checks">
       <title>Performing configuration checks on a HANA Cluster</title>
       <step>
-        <para>Log in to Trento</para>
+        <para>Log in to &trento;</para>
       </step>
       <step>
         <para>In the left panel, click <guimenu>Cluster</guimenu>.</para>
       </step>
       <step>
-        <para>In the list, search for an &hana; cluster.</para>
+        <para>In the list, search for a &hana; cluster.</para>
       </step>
       <step>
         <para>Click the respective cluster name in the <guimenu>Name</guimenu> column.
           The <guimenu>Details</guimenu> view opens.</para>
-        <remark>tom 2023-01-16: screenshot</remark>
         <figure>
           <title>&pace; cluster details</title>
           <mediaobject>
@@ -42,7 +39,7 @@
       </step>
       <step xml:id="st-trento-checks-settings">
         <para>Click the <guimenu>Settings</guimenu> button to change the cluster settings of the respective cluster.
-          For checks to be executed, a checks selection must be made. Select the checks to be executed and click the button <guimenu>Select Checks for Execution</guimenu>.
+          For checks to be executed, a checks selection must be made. Select the checks to be executed and click <guimenu>Select Checks for Execution</guimenu>.
           See <xref linkend="fig-pacemaker-clustersettings-checks"/>:
         </para>
         <figure xml:id="fig-pacemaker-clustersettings-checks">
@@ -57,16 +54,17 @@
       </step>
       <step>
         <para>
-          At this moment, you can either wait for Trento to execute the selected checks or trigger an execution
-          immediately by clicking the button that has appeared in the Checks Selection tab.
-          <remark>tom 2023-01-16: Why is this a two-step process?</remark>
+          You can then either wait for &trento; to execute the selected checks or trigger an execution
+          immediately by clicking the button that has appeared in the <guimenu>Checks Selection</guimenu> tab.
         </para>
       </step>
       <step>
         <para>
-          Investigate the result in the Checks Results view. Each row in this view shows you a check ID,
-          a short description of the check and the check execution result. By clicking on a row, a section will open
-         providing information about the execution on each node of the cluster. See <xref linkend="fig-pacemaker-checkresult"/>:
+          Investigate the result in the <guimenu>Checks Results</guimenu> view.
+          Each row in the view displays a check ID, a short description of the
+          check and the check execution result. C on a row to open a section
+          that provides information about the execution on each node of the
+          cluster. See <xref linkend="fig-pacemaker-checkresult"/>:
         </para>
         <figure xml:id="fig-pacemaker-checkresult">
           <title>Check results for a cluster</title>
@@ -77,7 +75,7 @@
           </mediaobject>
         </figure>
         <para>
-          The result of a check execution can be passing, warning or critical:
+          The result of a check execution can be passing, warning, critical:
         </para>
         <itemizedlist>
           <listitem>
@@ -90,25 +88,24 @@
               cluster.</para>
           </listitem>
           <listitem>
-            <para><emphasis>Critical</emphasis> means that either the execution itself errored (for
+            <para><emphasis>Critical</emphasis> means that either the execution itself failed (for
               example, a timeout) or the recommendation is not met and is
               critical for the well-being of the cluster.</para>
           </listitem>
         </itemizedlist>
         <para>
-          Use the filter to reduce the list to only show, for example, critical results.
+          Use the filter to narrow the list to specific results (for example, critical).
         </para>
       </step>
       <step>
         <para>
-          Click a check's link to open the <guimenu>Details</guimenu> view of this check. This shows you
-          an abstract and how to remedy the problem. The <guimenu>References</guimenu> section contains links to the documentation
-          of the different vendors to provide more context when necessary.
-          Close the view with the <keycap function="escape"/> key or click outside of the view.
+          Click a check's link to open the <guimenu>Details</guimenu> view of the check. This displays an abstract and a possible solution to the problem. The <guimenu>References</guimenu> section contains links to the documentation
+          from the different vendors for more context when necessary.
+          Close the view by pressing the <keycap function="escape"/> key or click outside of the view.
         </para>
         <para>
-         For each not-met expectation, there will be a detailed view providing information about it: what facts were gathered,
-         what values were expected and what was the result of the evaluation. This will help users understand better why a
+         For each non-met expectation, there is a detailed view with information about it: what facts were gathered,
+         what values were expected, and what was the result of the evaluation. This helps to understand why a
          certain configuration check is failing:
         </para>
         <figure xml:id="fig-non-met-expectation-detail">
@@ -122,8 +119,8 @@
       </step>
     </procedure>
     <para>
-      Once a check selection for a given cluster has been made, Trento executes them
-      automatically every five minutes, and results are updated accordingly. A check
-      execution result icon spinning means that an execution is running.
+      When checks for a given cluster have been selected, &trento; executes them
+      automatically every five minutes, updating the results. A spinning check
+      execution result icon means that an execution is running.
     </para>
   </section>
