@@ -551,7 +551,7 @@ The health boxes in the dashboard are clickable. By clicking on one particular b
                 shows a summary of the checks execution results for this particular host. </para>
               </listitem>
                <listitem>
-                <para>Available software updates sections: when settings for SUSE Manager are maintained and the host
+                <para>Available software updates sections: when settings for SUSE Multi-Linux Manager are maintained and the host
                  is managed by the SUMA instance for which connection data has been provided, this section shows
                  a summary of the available patches and upgradable packages for this particular host. Refer to section
                 <xref linkend="sec-integration-with-SUSE-Manager"/> for further details. </para>
@@ -2200,7 +2200,7 @@ trento-server-rabbitmq-0</screen>
               <para>SSO and third-party IDP integration via OIDC, OAUTH2 and SAML protocols.</para>
             </listitem>
                                   <listitem>
-              <para>Contextual, detailed overview of available patches and upgradable packages in the SUSE Manager integration.</para>
+              <para>Contextual, detailed overview of available patches and upgradable packages in the SUSE Multi-Linux Manager integration.</para>
             </listitem>
                                   <listitem>
               <para>Inception of the Activity Log, allowing users to browse a single centralized event log for their entire SAP landscape.</para>
@@ -2250,7 +2250,7 @@ trento-server-rabbitmq-0</screen>
             <listitem>
               <para>
                Information about available patches and upgradable packages for each registered hosts via integration
-               with SUSE manager.</para>
+               with SUSE Multi-Linux Manager.</para>
             </listitem>
                        <listitem>
               <para>Rotating API key.</para>
