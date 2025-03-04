@@ -14,7 +14,7 @@
          xmlns:xi="http://www.w3.org/2001/XInclude"
          xmlns:xlink="http://www.w3.org/1999/xlink"
          xmlns:its="http://www.w3.org/2005/11/its">
-  <title>Supported &ha; Solutions by &productname;</title>
+  <title>An overview of supported &ha; Solutions by &productname;</title>
   <info>
    <date><?dbtimestamp format="B d, Y" ?></date>
    <!-- History -->
