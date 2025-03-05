@@ -86,14 +86,13 @@
   </para>
   <para>
     The pagination features at the bottom of the Activity Log allow you to
-    specify the number of entries to display in a page, go the next or
+    specify the number of entries to display in a page, go to the next or
     previous page of the view, and jump to the last page and back to first one.
   </para>
   <para>
     The default retention time for entries in the Activity Log is one month.
     This can be changed in the Activity Log section under
     <guimenu>Settings</guimenu>. Changing the retention time requires the
-    <constant>all:settings</constant> permissions. Entries expired after the
-    specified retention time are deleted every day at midnight (server time).
+    <constant>all:settings</constant> permissions. Entries older than the specified retention time are deleted every day at midnight (server time).
   </para>
 </section>

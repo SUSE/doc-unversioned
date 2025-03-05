@@ -10,7 +10,7 @@
   <section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="sec-trento-checks">
     <title>Performing configuration checks</title>
     <para>
-     &trento; provides configuration checks that ensure your infrastructure setup adheres to our or other vendor's Best Practices, and it does not diverge with time. Configuration checks ara available for
+     &trento; provides configuration checks that ensure your infrastructure setup adheres to our or other vendor's Best Practices, and it does not diverge with time. Configuration checks are available for
      HANA clusters, ASCS/ERS clusters and hosts. The following procedure is specific to a HANA cluster. The procedure for an ASCS/ERS cluster
      or a host would be exactly the same, except it starts from the corresponding Details view.
     </para>
@@ -62,7 +62,7 @@
         <para>
           Investigate the result in the <guimenu>Checks Results</guimenu> view.
           Each row in the view displays a check ID, a short description of the
-          check and the check execution result. C on a row to open a section
+          check and the check execution result. Click on a row to open a section
           that provides information about the execution on each node of the
           cluster. See <xref linkend="fig-pacemaker-checkresult"/>:
         </para>
@@ -99,17 +99,17 @@
       </step>
       <step>
         <para>
-          Click a check's link to open the <guimenu>Details</guimenu> view of the check. This displays an abstract and a possible solution to the problem. The <guimenu>References</guimenu> section contains links to the documentation
+          Click a check's link to open a modal box with the check description. This displays an abstract and a possible solution to the problem. The <guimenu>References</guimenu> section contains links to the documentation
           from the different vendors for more context when necessary.
-          Close the view by pressing the <keycap function="escape"/> key or click outside of the view.
+          Close the modal box by pressing the <keycap function="escape"/> key or click outside of the box.
         </para>
         <para>
-         For each non-met expectation, there is a detailed view with information about it: what facts were gathered,
+         For each unmet expected result, there is a detailed view with information about it: what facts were gathered,
          what values were expected, and what was the result of the evaluation. This helps to understand why a
          certain configuration check is failing:
         </para>
         <figure xml:id="fig-non-met-expectation-detail">
-          <title>Non-met expectation detail view</title>
+          <title>Unmet expected result detail view</title>
           <mediaobject>
             <imageobject>
               <imagedata width="70%" fileref="trento-web-nonmetexpectation.png"/>
