@@ -298,8 +298,8 @@ The health boxes in the dashboard are clickable. Clicking on a box filters the d
                <listitem>
                 <para>Available software updates section shows a summary of the
                 available patches and upgradable packages for the current host
-                when settings for &suma; are maintained and the host is managed
-                by the &suma; instance for which connection data has been
+                when settings for SUSE Multi-Linux Manager are maintained and the host is managed
+                by the SUSE Multi-Linux Manager instance for which connection data has been
                 provided. Refer to section
                 <xref linkend="sec-integration-with-SUSE-Manager"/> for further details. </para>
               </listitem>
