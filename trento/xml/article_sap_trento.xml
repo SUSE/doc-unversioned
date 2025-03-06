@@ -288,14 +288,14 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
     </section>
 
   <section xml:id="sec-integration-with-SUSE-Manager">
-      <title>Integration with &suma;</title>
-      <para>Trento integrates with &suma; to provide the &sap; administrator with
+      <title>Integration with SUSE Multi-Linux Manager</title>
+      <para>Trento integrates with SUSE Multi-Linux Manager to provide the &sap; administrator with
       information about relevant patches and upgradable packages for any host
        that is registered with both applications.</para>
-      <para>The user must enter the connection settings for &suma;
+      <para>The user must enter the connection settings for SUSE Multi-Linux Manager
        in the <guimenu>Settings</guimenu> view:</para>
      <figure>
-         <title>&suma; settings</title>
+         <title>SUSE Multi-Linux Manager settings</title>
         <mediaobject>
           <imageobject>
             <imagedata
@@ -304,10 +304,10 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
         </mediaobject>
       </figure>
    <para>
-   Once the &suma; settings are configured, the &sap; Basis administrator can test the connection
+   Once the SUSE Multi-Linux Manager settings are configured, the &sap; Basis administrator can test the connection
    by clicking the <guimenu>Test</guimenu> button.
    If the connection is successful, the <guimenu>Host Details</guimenu> view of each host
-   managed by &suma; displays a summary
+   managed by SUSE Multi-Linux Manager displays a summary
    of available patches and upgradable packages:</para>
         <figure>
          <title><guimenu>Availale software updates in the Host Details view</guimenu></title>
@@ -354,10 +354,10 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
    enhancements. Security advisories are regarded as critical. If one is avaiable,
    the health of the host will be set to critical. If there are available patches but none of them
     is a security one, the health of the host will switch to warning. When a host cannot be found in
-    &suma; or there is a problem retrieving the data for it, its health is set as unknnown.
+    SUSE Multi-Linux Manager or there is a problem retrieving the data for it, its health is set as unknnown.
    </para>
     <para>
-    At any time, the user can clear the &suma; settings from the Settings view.
+    At any time, the user can clear the SUSE Multi-Linux Manager settings from the Settings view.
     As a result, all information about available software updates disappears from the console and the status of the hosts is adjusted accordingly.</para>
     </section>
 
@@ -1438,7 +1438,7 @@ trento-server-rabbitmq-0</screen>
               <para>SSO and third-party IDP integration via OIDC, OAUTH2 and SAML protocols.</para>
             </listitem>
                                   <listitem>
-              <para>Contextual, detailed overview of available patches and upgradable packages in the SUSE Manager integration.</para>
+              <para>Contextual, detailed overview of available patches and upgradable packages in the SUSE Multi-Linux Manager integration.</para>
             </listitem>
                                   <listitem>
               <para>Inception of the Activity Log, allowing users to browse a single centralized event log for their entire SAP landscape.</para>
@@ -1488,7 +1488,7 @@ trento-server-rabbitmq-0</screen>
             <listitem>
               <para>
                Information about available patches and upgradable packages for each registered hosts via integration
-               with SUSE manager.</para>
+               with SUSE Multi-Linux Manager.</para>
             </listitem>
                        <listitem>
               <para>Rotating API key.</para>
