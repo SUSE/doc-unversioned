@@ -9,17 +9,17 @@
 
 <section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="sec-trento-updating-trentoserver">
     <title>Updating &t.server;</title>
-    <para> The procedure to update &t.server; depends on the chosen deployment option: &k8s;, systemd or containerized.</para>
+    <para> The procedure to update &t.server; depends on the chosen deployment option: &k8s;, systemd, or containerized.</para>
       <para>Consider the following when performing an update:</para>
       <itemizedlist>
          <listitem>
-          <para>Before updating &t.server; ensure that all the &t.agent;s in the environment are supported by the target version.
-           See section <xref linkend="sec-trento-compatibility-matrix" /> for details.
+          <para>Before updating &t.server;, ensure that all the &t.agent;s in the environment are supported by the target version.
+           For more information, see section <xref linkend="sec-trento-compatibility-matrix" />.
           </para>
         </listitem>
        <listitem>
-        <para>When updating Trento to version 2.4 or higher, the admin password may need to be adjusted to
-         follow the rules described in the User Managmeent section .</para>
+        <para>When updating &trento; to version 2.4 or higher, the admin password may need to be adjusted to
+         follow the rules described in the User Management section .</para>
         </listitem>
       </itemizedlist>
    <para>In a &k8s; deployment, you can use Helm to update &t.server;:</para>
@@ -28,15 +28,15 @@
    --set trento-web.trentoWebOrigin=<replaceable>TRENTO_SERVER_HOSTNAME</replaceable> \
    --set trento-web.adminUser.password=<replaceable>ADMIN_PASSWORD</replaceable>
         </screen>
-   <para>If you have configured options, such as email alerting, the Helm command must be adjusted accordingly.
-  Additional considerations in this scenario:</para>
+   <para>If you have configured options like email alerting, the Helm command must be adjusted accordingly.
+  In this case, consider the following:</para>
 <itemizedlist>
          <listitem>
           <para>Remember to set the helm experimental flag if you are using a version of Helm lower than 3.8.0.
           </para>
         </listitem>
          <listitem>
-        <para>When updating Trento to version 2.0.0 or higher, an additional flag
+        <para>When updating &trento; to version 2.0.0 or higher, an additional flag
     must be set in the Helm command:</para>
    <screen>helm upgrade \
    --install trento-server oci://registry.suse.com/trento/trento-server \
@@ -46,7 +46,7 @@
         </screen>
         </listitem>
         <listitem>
-        <para>When updating Trento to version 2.3 or higher, a new API key is generated
+        <para>When updating &trento; to version 2.3 or higher, a new API key is generated
         and the configuration of all registered &t.agent;s must be updated accordingly.</para>
         </listitem>
 </itemizedlist>
@@ -58,7 +58,7 @@
  systemctl restart trento-web
  systemctl restart trento-wanda
         </screen>
-   <para>In a containerized deployment, you can use the same docker commands as for the installation. Keep in mind
-    that the volume for the Trento checks already exists, so there is no need to create it again. Also,  the
-    web and wanda containers must be stopped and removed before they can be redeployed with the latest version. In addition, make sure to include in the docker commands any other options that you have enabled after the original installation.</para>
+   <para>In a containerized deployment, you can use the same Docker commands as for the installation. Keep in mind
+    that the volume for the &trento; checks already exists, so there is no need to create it. Also, the
+    web and wanda containers must be stopped and removed before they can be redeployed with the latest version. Also make sure to include in the Docker commands any other options that you have enabled after the original installation.</para>
   </section>

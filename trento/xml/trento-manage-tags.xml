@@ -10,8 +10,7 @@
 <section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="sec-trento-manage-tags">
       <title>Managing tags</title>
       <para>
-       Tags are a means to label specific objects with a purpose, location, owner, or any other
-       property you like. Such objects can be hosts, clusters, databases, or SAP systems.
+       Tags are used to label specific objects with location, owner, etc. The objects can be hosts, clusters, databases or &sap; systems.
        Tags make it easier to distinguish and show all these different objects, making
        your lists more readable and searchable. You can use any text you like to create
        your tags except blank spaces and special characters other than + - = . , _ : and @.
@@ -23,22 +22,22 @@
       <section xml:id="sec-trento-add-tags">
         <title>Adding tags to hosts, clusters, databases, and SAP Systems</title>
         <para>
-          To add one or more tags to your objects, do the following:
+          To add one or more tags to your objects, proceed as follows:
         </para>
         <procedure>
           <step>
             <para>
-              Log in to Trento.
+              Log in to &trento;.
             </para>
           </step>
           <step>
             <para>
-              In the Trento dashboard, go to the overview corresponding to the object for which you want to create tags. For example, the <guimenu>Hosts</guimenu> overview.
+              In the Trento dashboard, go to the overview of the desired object. For example, the <guimenu>Hosts</guimenu> overview.
             </para>
           </step>
           <step>
             <para>
-              In the <guimenu>Hosts</guimenu> overview, search for the host you want to add a tag to.
+              In the <guimenu>Hosts</guimenu> overview, search for the host you want to tag.
             </para>
           </step>
           <step>
@@ -47,22 +46,18 @@
             </para>
           </step>
           <step>
-            <para>Enter the respective tag and finish with <keycap function="enter"/>.
+            <para>Enter the desired tag and press <keycap function="enter"/>.
             </para>
           </step>
           <step>
             <para>
-              Repeat this procedure to assign as many tags as you want. It can be on the same
-              or on a different host.
+              Use the described steps to assign other tags to the same
+              or a different host.
             </para>
           </step>
         </procedure>
         <para>
-          After you have finished the above procedure, the changed host contains one or
-          more tags.
-        </para>
-        <para>
-          The same principle applies to other objects in Trento, be it <guimenu>Clusters</guimenu>,
+          You can use the procedure to assign tags to other objects, such as <guimenu>Clusters</guimenu>,
           <guimenu>SAP Systems</guimenu>, or <guimenu>HANA Databases</guimenu>.
         </para>
       </section>
@@ -70,17 +65,17 @@
       <section xml:id="sec-trento-remove-tags">
         <title>Removing tags</title>
         <para>
-          If you want to remove existing tags, click the respective part in the dashboard:
+          To remove existing tags, click the appropriate part in the dashboard:
         </para>
         <procedure>
           <step>
             <para>
-              Log in to Trento.
+              Log in to &trento;.
             </para>
           </step>
           <step>
 <para>
-In the Trento dashboard, go to the overview corresponding to the object for which you want to remove tags. For example, the <guimenu>Hosts</guimenu> overview.
+In the Trento dashboard, go to the overview of the desired object. For example, the <guimenu>Hosts</guimenu> overview.
 </para>
           </step>
           <step>
@@ -96,8 +91,8 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
           </step>
           <step>
             <para>
-              Repeat this procedure to remove as many tags as you want. It can be on the same
-              or on a different host.
+              Use the described steps to remove other tags from the same
+              or a different host.
             </para>
           </step>
         </procedure>
@@ -106,38 +101,25 @@ In the Trento dashboard, go to the overview corresponding to the object for whic
       <section xml:id="sec-trento-filter-tags">
         <title>Filter by tags</title>
         <para>
-          With tags, you can show only those objects you are interested in. For example, if
-          you have created a <literal>drbd</literal> tag for some hosts, you can show only
-          those hosts that have this <literal>drbd</literal> tag assigned.
+          Tags can be used to filter objects.
         </para>
         <procedure>
           <step>
             <para>
-              In the Trento dashboard, go to the respective overview you are interested in.
+              In the &trento; dashboard, go to the desired overview.
             </para>
           </step>
           <step>
             <para>
-              Make sure you have already assigned some tags. If not, refer to <xref linkend="sec-trento-add-tags"/>.
+              In the second row, click the <guimenu>Filter tags</guimenu> drop-down list to view all existing tags.
             </para>
           </step>
           <step>
             <para>
-              In the second row, click the last drop-down list with the name <guimenu>Filter tags</guimenu>.
-              The drop-down list opens and shows you all of your defined tags.
-            </para>
-          </step>
-          <step>
-            <para>
-              Select the tag you want to filter from the drop-down list.
-              It is possible to select more than one tag.
+              Select one or more tags to display all hosts that have the selected tags.
             </para>
           </step>
         </procedure>
-        <para>
-          After you have finished the above procedure, Trento shows all respective hosts that
-          contain one or more of your selected tags.
-        </para>
         <para>
           To remove the filter, click the <guimenu>×</guimenu> icon from the same drop-down list.
         </para>
