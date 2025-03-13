@@ -10,17 +10,17 @@
 <section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="sec-trento-problemanalysis">
   <title>Problem Analysis</title>
   <para>
-    This section covers some common problems and how to analyze them.
+    This section covers common problems and how to analyze them.
   </para>
 
   <section>
     <title>&t.server;</title>
-    <para>There are two tools you can use to analyze issues with &t.server; in a &k8s; scenario. They both help us collect information/data that might be
-      useful when troubleshooting/analyzing the issue.</para>
+    <para>There are two tools you can use to analyze issues with &t.server; in a &k8s; scenario. These tools collect information and data that can be
+      useful when troubleshooting and analyzing the issue.</para>
 
     <section>
-      <title>Trento Support Plugin</title>
-      <para> The Trento support plugin automates the collection of logs and relevant
+      <title>&trento; Support Plugin</title>
+      <para> The &trento; support plugin automates the collection of logs and relevant
         runtime information on the server side. Using the plugin requires a host
        with the following setup:</para>
                  <itemizedlist>
@@ -31,14 +31,14 @@
           <para>Helm is installed.</para>
         </listitem>
         <listitem>
-          <para>The command <command>kubectl</command> is installed and connected to the K8s cluster where &t.server; is running.
+          <para>The command <command>kubectl</command> is installed and connected to the &k8s; cluster where &t.server; is running.
          </para>
         </listitem>
       </itemizedlist>
-     <para>To use it, proceed as follows: </para>
+     <para>To use the plugin, proceed as follows: </para>
       <procedure>
         <step>
-          <para>Download the Trento support plugin script:</para>
+          <para>Download the &trento; support plugin script:</para>
           <screen>&prompt.root;<command>wget</command> https://raw.githubusercontent.com/trento-project/support/refs/heads/main/trento-support.sh</screen>
 
           <note>
@@ -55,14 +55,14 @@
           <screen>&prompt.root;<command>chmod</command> +x trento-support.sh</screen>
         </step>
         <step>
-          <para>Ensure <command>kubectl</command> is connected to the K8s cluster where &t.server; is running and execute the script:</para>
+          <para>Make sure that <command>kubectl</command> is connected to the &k8s; cluster where &t.server; is running and execute the script:</para>
           <screen>&prompt.root;<command>./trento-support.sh</command> --output file-tgz --collect all</screen>
         </step>
         <step>
           <para>Send the generated archive file to support for analysis.</para>
         </step>
       </procedure>
-      <para>The Trento support plugin admits the following options:</para>
+      <para>The &trento; support plugin accepts the following options:</para>
       <variablelist>
         <varlistentry>
           <term><option>-o</option>, <option>--output</option></term>
@@ -99,12 +99,12 @@
 
     <section>
       <title>Scenario dump</title>
-      <para>The scenario dump is a dump of the Trento database. It helps the Trento team
+      <para>The scenario dump is a dump of the &trento; database. It helps the &trento; team
         to recreate the scenario to test it. Using the script
       that generates the dump requires a host with the following setup:</para>
                  <itemizedlist>
         <listitem>
-          <para>The command <command>kubectl</command> is installed and connected to the K8s cluster where Trento Server is running.
+          <para>The command <command>kubectl</command> is installed and connected to the &k8s; cluster where &trento; Server is running.
          </para>
         </listitem>
       </itemizedlist>
@@ -119,11 +119,11 @@
           <screen>&prompt.user;<command>chmod</command> +x dump_scenario_from_k8.sh</screen>
         </step>
         <step>
-          <para>Ensure <command>kubectl</command> is connected to the K8s cluster where &t.server; is running and execute the script as follows:</para>
+          <para>Make sure that <command>kubectl</command> is connected to the &k8s; cluster where &t.server; is running and execute the script as follows:</para>
           <screen>&prompt.user;<command>./dump_scenario_from_k8.sh</command> -n <replaceable>SCENARIO_NAME</replaceable> -p <replaceable>PATH</replaceable></screen>
         </step>
         <step>
-        <para>Go to <filename>/scenarios/</filename>, package all the JSON files and send
+        <para>Go to <filename>/scenarios/</filename>, collect all the JSON files and send
           them to support for analysis.</para>
         </step>
       </procedure>
@@ -131,13 +131,12 @@
 
   <section>
     <title>Pods descriptions and logs</title>
-    <para> In additon to the output of the Trento Support Plugin and the Dump Scenario script, the descriptions and logs of the
-     pods of the &t.server; can also be useful for analysis and troubleshooting purposes. These descriptions and logs can be
-     easily retrieved with the <command>kubectl</command> command, for which you need a host where command <command>kubectl</command>
-     is installed and connected to the K8s cluster where &t.server; is running.</para>
+    <para> In addition to the output of the &trento; Support Plugin and the Dump Scenario script, the descriptions and logs of the &t.server; pods can be useful for analysis and troubleshooting purposes. These descriptions and logs can be
+     easily retrieved with the <command>kubectl</command> command. For this to work, you need a host with <command>kubectl</command>
+     is installed. The host must be connected to the &k8s; cluster running &t.server;.</para>
     <procedure>
       <step>
-        <para>List the pods running in &k8s; cluster and their status. &t.server; currently consists of the following six pods: </para>
+        <para>List the pods running in &k8s; cluster and their statuses. &t.server; currently consists of the following six pods: </para>
         <screen>&prompt.user;<command>kubectl get pods</command>
 trento-server-prometheus-server-*
 trento-server-postgresql-0
@@ -146,15 +145,15 @@ trento-server-wanda-*
 trento-server-rabbitmq-0</screen>
       </step>
       <step>
-        <para>Retrieve the description of one particular pod as follows:</para>
+        <para>Retrieve the description of a pod as follows:</para>
         <screen>&prompt.user;<command>kubectl describe pod</command> <replaceable>POD_NAME</replaceable></screen>
       </step>
       <step>
-        <para>Retrieve the log of one particular pod as follows:</para>
+        <para>Retrieve the log of a pod as follows:</para>
         <screen>&prompt.user;<command>kubectl logs</command> <replaceable>POD_NAME</replaceable></screen>
       </step>
       <step>
-        <para>Monitor the log of one particular pod as follows:</para>
+        <para>Monitor the log of a pod as follows:</para>
         <screen>&prompt.user;<command>kubectl logs</command> <replaceable>POD_NAME</replaceable> --follow</screen>
       </step>
     </procedure>
@@ -165,9 +164,9 @@ trento-server-rabbitmq-0</screen>
   <section>
     <title>&t.agent;</title>
     <para>The first source to analyze issues with the &t.agent; is the &t.agent;
-      status, which can be retrieved as follows:</para>
+      status. It can be retrieved as follows:</para>
     <screen>&prompt.user;<command>sudo systemctl status</command> trento-agent</screen>
-    <para>If further analysis is required, it is convenient to activate
+    <para>If further analysis is required, activate
       debug log level for the agent. A detailed log can be then retrieved from the journal:</para>
     <procedure>
       <step>

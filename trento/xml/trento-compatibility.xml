@@ -47,7 +47,7 @@
       </thead>
       <tbody>
         <row>
-          <!-- HINT: If you add more rows, raise add +1 to the morerows attribute value -->
+          <!-- TIP: If you add more rows, raise add +1 to the morerows attribute value -->
           <entry morerows="7" align="center" valign="middle">
             <para>&t.agent;</para>
             <para>versions</para>

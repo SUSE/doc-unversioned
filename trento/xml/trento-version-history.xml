@@ -8,15 +8,14 @@
 ]>
 
 <section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="sec-trento-version-history">
-  <title>Highlights of Trento versions</title>
+  <title>Highlights of &trento; versions</title>
   <para>
-    The following list shows the most important user-facing features in the different versions
-   of Trento. For a more detailed information about the changes included in each new version, visit
-    the GitHub project at <link xlink:href="https://github.com/trento-project"/>. Particularly:
+    Below is a list of the most important user-facing features in the different versions
+   of &trento;. For a more detailed information about the changes included in each new version, visit <link xlink:href="https://github.com/trento-project"/>.
   </para>
  <itemizedlist>
     <listitem>
-      <para>For changes in the Trento Helm Chart, visit <link xlink:href="https://github.com/trento-project/helm-charts/releases"/>.</para>
+      <para>For changes in the &trento; Helm Chart, visit <link xlink:href="https://github.com/trento-project/helm-charts/releases"/>.</para>
     </listitem>
     <listitem>
       <para>For changes in the &t.server; Web component, visit <link xlink:href="https://github.com/trento-project/web/releases"/>.</para>
@@ -28,13 +27,13 @@
       <para>For changes in the &t.server; new checks engine component (wanda), visit <link xlink:href="https://github.com/trento-project/wanda/releases"/>.</para>
     </listitem>
   <listitem>
-   <para>For changes it the Trento checks, visit <link xlink:href="https://github.com/trento-project/checks/releases"/>.</para>
+   <para>For changes it the &trento; checks, visit <link xlink:href="https://github.com/trento-project/checks/releases"/>.</para>
   </listitem>
     <listitem>
       <para>For changes in the &t.agent;, visit <link xlink:href="https://github.com/trento-project/agent/releases"/>.</para>
     </listitem>
   </itemizedlist>
-  <!-- HINT: The list should be sorted by versions, having the most recent version at the
+  <!-- TIP: The list should be sorted by versions, having the most recent version at the
              first item.
   -->
         <variablelist>
@@ -57,7 +56,7 @@
             <para>Inception of the Activity Log, allowing users to browse a single centralized event log for their entire SAP landscape.</para>
           </listitem>
                                 <listitem>
-            <para>Trento Checks delivery is now decoupled from the core platform, and the Checks themselves have been relicensed from Apache 2.0 to GPL 3.0</para>
+            <para>&trento; Checks delivery is now decoupled from the core platform, and the Checks themselves have been relicensed from Apache 2.0 to GPL 3.0</para>
           </listitem>
                                 <listitem>
             <para>Enhanced discovery capabilities including clusters using angi architecture and SAP systems running on JAVA stacks.</para>
@@ -90,7 +89,7 @@
           (wanda) 1.3.0 and agent 2.3.0.</para>
         <itemizedlist>
           <listitem>
-            <para>non-K8s installation of Trento Server.</para>
+            <para>non-K8s installation of &trento; Server.</para>
           </listitem>
           <listitem>
             <para>Enhanced discovery capabilities, including improved
