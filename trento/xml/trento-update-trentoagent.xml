@@ -10,7 +10,7 @@
 <section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="sec-trento-updating-trentoagent">
   <title>Updating a &t.agent;</title>
   <para>
-    To update the &t.agent;, do the following:
+    To update the &t.agent;, follow the procedure below:
   </para>
   <procedure>
     <step>
@@ -29,10 +29,9 @@
     </step>
     <step>
       <para>
-        Copy file <filename>/etc/trento/agent.yaml.rpmsave</filename> onto <filename>/etc/trento/agent.yaml</filename>
-        and ensure that entries <parameter>facts-service-url</parameter>,
+        Copy the file <filename>/etc/trento/agent.yaml.rpmsave</filename> to <filename>/etc/trento/agent.yaml</filename>. Make sure that entries <parameter>facts-service-url</parameter>,
         <parameter>server-url</parameter>, and <parameter>api-key</parameter>
-        are maintained properly in the latter.
+        in <filename>/etc/trento/agent.yaml</filename> are correct.
       </para>
     </step>
     <step>
