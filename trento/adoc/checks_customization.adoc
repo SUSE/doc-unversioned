@@ -1,0 +1,101 @@
+[[checks_customization]]
+
+== Checks Customization
+
+=== Overview of Checks Customization
+
+Trento provides users a simple way to customize expected check values to adjust for target specific environmental requirements. This customization can be performed directly through the Trento Web console without modifying the original check YAML files or creating dedicated checks for different environments.
+
+The Trento web console receives a check catalog from Wanda. In the check selection view of a specific target, users can see all available check categories. Clicking on a category expands the list of checks associated with it. If a user has the *necessary permissions*, a settings icon appears to the right of a customizable check. Clicking on the settings icon opens a modal window where users can adjust check values.
+
+==== The check customization modal includes the following elements:
+
+* Selected Check ID.
+
+* Check description.
+
+* Warning message that Trento & SUSE are not liable for system malfunctions due to custom check values.
+
+* A list of all customizable check values. Each value includes a value name with the original default check value and an input field with the current customized or default value.
+
+* The current target specific provider.
+
+* Save, Reset and Close buttons at the bottom.
+
+The Save button is disabled by default and only becomes enabled when the user checks the warning and modifies a value. Pressing the Save button triggers a toast notification confirming successful check customization and the custom values are stored *persistently* in Wanda’s database. So even after a Reboot of the system the customized values are not lost.
+
+The Reset button remains disabled if the check is not customized.
+If the check has been customized previously, the Reset button inside the modal is enabled, allowing users to revert changes within the modal. When resetting the check, a confirmation dialog appears to confirm the action in order to avoid accidental resets. On a successful reset a toast notification appears that the check customization was reset.
+
+The modal closes automatically after saving or resetting the check.
+
+A Modified pill indicator appears next to the check ID, highlighting that the values have been customized. A Reset icon appears next to the settings icon, on the right side, allowing users to revert to default values after closing the modal. Pressing on the reset icon opens a confirmation dialog to confirm the action in order to avoid accidental resets.
+
+=== Target-Specific Check Customization
+
+A check is always executed on a target, which can be a host or a cluster. Users can customize check values specific to the target environment to ensure optimal system performance. Customizations are target-specific and do not affect other targets or the default check values in the YAML file.
+
+=== Required Permissions
+
+Only *admin users* or users with the `all:checks_customization` permission can customize checks. Users without this permission will not see the customization button in the Trento Web console. If a check was modified, the modified Pill is shown to all users.
+
+=== Customizable Checks
+
+By default, a check with expected values is customizable. This applies to all checks unless explicitly disabled in the check YAML file. It is not changable in the Trento server ui.
+
+Supported value types include:
+
+- Strings
+
+- Numbers
+
+- Booleans
+
+User input is validated to ensure that the input value matches the expected type before allowing to save the custom values in Wanda's database. If the input type is incorrect or mixed, the customization fails, triggering a toast notification, that checks customization failed and a warning message in the modal itself.
+
+=== Disable Check Customization
+
+By default, built-in checks are customizable, to disable customization for a specific check, the *customization_disabled: true* flag must be added to the corresponding check YAML file. This flag can be applied at the top level to disable customization entirely or at the value level to control which values remain customizable through the Web UI.
+
+==== Disable Check customization for all values:
+
+[source,yaml]
+----
+id: "156F64"
+name: Corosync `token` timeout
+group: Corosync
+description: Corosync `token` timeout is set to the correct value
+
+customization_disabled: true
+
+values:
+  - name: expected_token_timeout
+    default: 5000
+----
+
+Adding the `customization_disabled: true` flag on the top level of a check makes the check *not customizable*.
+
+==== Disable partial check customization values:
+
+[source,yaml]
+----
+id: "156F64"
+name: Corosync `token` timeout
+group: Corosync
+description: Corosync `token` timeout is set to the correct value
+
+
+values:
+  - name: expected_token_timeout
+    default: 5000
+
+  - name: expected_another_timeout_value
+    customization_disabled: true
+    default: 1000
+----
+
+Adding `customization_disabled: true` on value level keeps the check customizable and only the flagged value is *not customizable* and not shown in the checks customization modal.
+
+=== Check Customization Persistence
+
+Customized check values are persistently stored in Wanda’s database. When a check is executed, Trento retrieves the expected values from the database rather than the default YAML file. This ensures that any modifications made by users are consistently applied across subsequent executions. Additionally, customized values remain in effect even after system restarts or updates, ensuring continuous adherence to environment-specific configurations.
