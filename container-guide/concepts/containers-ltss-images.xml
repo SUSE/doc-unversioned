@@ -20,7 +20,7 @@
   </info>
   <para>
     Long Term Service Pack Support (LTSS) container images are available at
-    <link xlink:href="registry.suse.com/suse/ltss/"/>. To access and use the
+    <link xlink:href="registry.suse.com/"/>. To access and use the
     container images, you must have a valid LTSS subscription.
   </para>
   <para>
