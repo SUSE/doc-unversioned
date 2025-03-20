@@ -132,8 +132,7 @@
   <section>
     <title>Pods descriptions and logs</title>
     <para> In addition to the output of the &trento; Support Plugin and the Dump Scenario script, the descriptions and logs of the &t.server; pods can be useful for analysis and troubleshooting purposes. These descriptions and logs can be
-     easily retrieved with the <command>kubectl</command> command. For this to work, you need a host with <command>kubectl</command>
-     is installed. The host must be connected to the &k8s; cluster running &t.server;.</para>
+     easily retrieved with the <command>kubectl</command> command. For this to work, you need a host where kubectlis installed and connected to the &k8s; cluster running &t.server;.</para>
     <procedure>
       <step>
         <para>List the pods running in &k8s; cluster and their statuses. &t.server; currently consists of the following six pods: </para>
