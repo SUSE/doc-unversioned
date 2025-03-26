@@ -32,7 +32,7 @@
     <meta name="series" its:translate="no">Products &amp; Solutions</meta>
 
    <!-- Task -->
-    <meta name="task" its:translate="yes">
+    <meta name="task" its:translate="no">
      <phrase>High Availability</phrase>
     </meta>
 
