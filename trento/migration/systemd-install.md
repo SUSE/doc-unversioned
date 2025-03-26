@@ -387,7 +387,7 @@ Expected output if Trento web/wanda is ready and the database connection is setu
        ssl_session_cache shared:SSL:10m;
 
        # Wanda rule
-       location ~ ^/(api/checks|api/v1/checks|api/v2/checks|api/v3/checks)/  {
+       location ~ ^/(api/checks|api/v1/checks|api/v2/checks|api/v3/checks|api/groups|api/v1/groups|api/operations|api/v1/operations)/  {
            allow all;
 
            # Proxy Headers
