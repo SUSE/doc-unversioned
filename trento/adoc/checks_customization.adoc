@@ -41,7 +41,7 @@ Only *admin users* or users with the `all:checks_customization` permission can c
 
 === Customizable Checks
 
-By default, a check with expected values is customizable. This applies to all checks unless explicitly disabled in the check YAML file. It is not changable in the Trento server ui.
+By default, a check with expected values is customizable. This applies to all checks unless explicitly disabled in the check YAML file. It cannot be changed in the Trento Web console.
 
 Supported value types include:
 
