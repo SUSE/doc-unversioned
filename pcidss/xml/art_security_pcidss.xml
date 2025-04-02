@@ -534,9 +534,9 @@
         Default settings can be customized by automating system installation
         with an &ay; profile. This allows rolling out new instances of
         &productnamex; and automatically enabling an evaluated configuration.
-        This setup procedure can also be automated with the &susemgr;. For
-        more information, see the &susemgr; documentation at
-        <link xlink:href="https://documentation.suse.com/suma/"/>.
+        This setup procedure can also be automated with the &smlm;. For
+        more information, see the &smlm; documentation at
+        <link xlink:href="https://documentation.suse.com/multi-linux-manager/"/>.
        </para>
        <para>
         By default, &productnamex; does not create additional accounts
@@ -1009,7 +1009,7 @@
      </listitem>
      <listitem>
       <para>
-       For system management, &suse; provides &susemgr;, which provides an
+       For system management, &suse; provides &smlm;, which provides an
        efficient way to keep systems up-to-date. It offers seamless
        management of both &productnamex; and &rhel; client systems. This
        is particularly useful in larger system environments, when you need to
@@ -1017,8 +1017,8 @@
        security risks.
       </para>
       <para>
-       For information about &susemgr;, see the
-       <link xlink:href="https://documentation.suse.com/suma/">&susemgr;
+       For information about &smlm;, see the
+       <link xlink:href="https://documentation.suse.com/multi-linux-manager/">&smlm;
        documentation page</link>.
       </para>
      </listitem>
