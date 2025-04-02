@@ -9,7 +9,7 @@
 
   <section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="sec-integration-with-SUSE-Manager">
       <title>Integration with SUSE Multi-Linux Manager</title>
-      <para>&trento; can be inegrated with SUSE Multi-Linux Manager to provide the &sap; administrator with
+      <para>&trento; can be integrated with SUSE Multi-Linux Manager to provide the &sap; administrator with
       information about relevant patches and upgradable packages for any host
        that is registered with both applications.</para>
       <para>The user must enter the connection settings for SUSE Multi-Linux Manager

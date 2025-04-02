@@ -30,8 +30,8 @@
     <title>User Roles and Authentication</title>
     <para>
       User authentication is entirely managed by the IDP, which is
-      responsible for maintaining user accounts. A user, who does not
-      exist on the IDP, is unable to access the Trento web console.
+      responsible for maintaining user accounts. A user who does not
+      exist on the IDP is unable to access the Trento web console.
     </para>
     <para>
       During the installation process, a default admin user is defined
@@ -60,10 +60,10 @@
       packages or using Docker images.
     </para>
     <section xml:id="enabling-openid-connect-when-using-kubernetes-deployment">
-      <title>Enabling OpenID Connect when using kubernetes
+      <title>Enabling OpenID Connect when using Kubernetes
       deployment</title>
       <para>
-        To enable OIDC when using kubernetes deployment with helm,
+        To enable OIDC when using Kubernetes deployment with helm,
         proceed as follows:
       </para>
       <orderedlist numeration="arabic">
@@ -228,9 +228,9 @@ docker run -d \
       RPM packages or using Docker images.
     </para>
     <section xml:id="enabling-oauth-20-when-using-kubernetes-deployment">
-      <title>Enabling OAuth 2.0 when using kubernetes deployment</title>
+      <title>Enabling OAuth 2.0 when using Kubernetes deployment</title>
       <para>
-        To enable OAuth 2.0 when using kubernetes deployment with helm,
+        To enable OAuth 2.0 when using Kubernetes deployment with helm,
         proceed as follows:
       </para>
       <orderedlist numeration="arabic">
@@ -447,13 +447,13 @@ docker run -d \
     <para>
       Commonly, SAML protocol messages are signed with SSL. This is
       optional using Trento, and the signing is not required (even
-      though it is recommended). If the IDP signs the messages, and
-      expect signed messages back, certificates used by the SP (Trento
+      though it is recommended). If the IDP signs the messages and
+      expects signed messages back, certificates used by the SP (Trento
       in this case) must be provided to the IDP, the public certificate
       file in this case.
     </para>
     <para>
-      To use an existing SAML IDP, follow the next instrunctions to met
+      To use an existing SAML IDP, follow the next instructions to meet
       the specific requirements. You need:
     </para>
     <orderedlist numeration="arabic" spacing="compact">
@@ -495,7 +495,7 @@ docker run -d \
       <para>
         If the <option>SAML_METADATA_CONTENT</option> option is being
         used, the content of this variable must be updated with the IDP
-        metadata as single line string. On the other hand, if
+        metadata as a single-line string. On the other hand, if
         <option>SAML_METADATA_URL</option> is used, the new metadata is
         automatically fetched when Trento starts. If neither of these
         steps are completed, communication will fail because the message
@@ -511,7 +511,7 @@ docker run -d \
     <section xml:id="getting-certificates-from-trento">
       <title>Getting certificates from Trento</title>
       <para>
-        Trento provides a certificates set created during the
+        Trento provides a set of certificates created during
         installation. Regardless of the installation mode, when Trento
         is installed the first time and SAML is enabled the certificates
         are created and the public certificate file content is available
@@ -530,7 +530,7 @@ curl https://#{TRENTO_WEB_ORIGIN}/api/public_keys
         messages received from Trento.
       </para>
       <note>
-        <para>To get the certificate using this route Trento must be configured to start with SAML enabled.</para>
+        <para>To get the certificate using this route, Trento must be configured to start with SAML enabled.</para>
       </note>
     </section>
     <section xml:id="configuring-saml-idp-setup">
@@ -576,8 +576,8 @@ curl https://#{TRENTO_WEB_ORIGIN}/api/public_keys
         <orderedlist numeration="arabic">
           <listitem>
             <para>
-              Add the attributes if they don't exist in the IDP user
-              profile. If they already exist, don't change the
+              Add the attributes if they do not exist in the IDP user
+              profile. If they already exist, do not change the
               attributes and keep their original values.
             </para>
           </listitem>
@@ -609,9 +609,9 @@ curl https://#{TRENTO_WEB_ORIGIN}/api/public_keys
       </section>
     </section>
     <section xml:id="enabling-saml-when-using-kubernetes-deployment">
-      <title>Enabling SAML when using kubernetes deployment</title>
+      <title>Enabling SAML when using Kubernetes deployment</title>
       <para>
-        To enable SAML when using kubernetes deployment with helm,
+        To enable SAML when using Kubernetes deployment with helm,
         proceed as follows:
       </para>
       <orderedlist numeration="arabic">
@@ -988,8 +988,8 @@ docker run -d \
           </term>
           <listitem>
             <para>
-              Require to receive SAML assertion signed from the IDP. Set
-              to false if the IDP doesn't sign the assertion (default
+              Require receiving SAML assertion signed from the IDP. Set
+              to false if the IDP does not sign the assertion (default
               value: <literal>true</literal>)
             </para>
           </listitem>
@@ -1000,8 +1000,8 @@ docker run -d \
           </term>
           <listitem>
             <para>
-              Require to receive SAML envelopes signed from the IDP. Set
-              to false if the IDP doesn't sign the envelopes (default
+              Require receiving SAML envelopes signed from the IDP. Set
+              to false if the IDP does not sign the envelopes (default
               value: <literal>true</literal>)
             </para>
           </listitem>

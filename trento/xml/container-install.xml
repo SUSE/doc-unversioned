@@ -181,9 +181,9 @@ registry.suse.com/trento/trento-web:latest \
 -c &quot;/app/bin/trento eval 'Trento.Release.init()' &amp;&amp; /app/bin/trento start&quot;
 </programlisting>
           <para>
-            Email alerting are disabled by default, as described in
-            <link xlink:href="https://github.com/trento-project/web/blob/main/guides/alerting/alerting.md#enabling-alerting">enabling
-            alerting</link> guide. Enable alerting by setting <literal>ENABLE_ALERTING</literal>
+            Email alerting is disabled by default, as described in the
+            <link xlink:href="https://github.com/trento-project/web/blob/main/guides/alerting/alerting.md#enabling-alerting">Enabling
+            Alerting</link> guide. Enable alerting by setting <literal>ENABLE_ALERTING</literal>
             env to <literal>true</literal>. Additional required variables are:
             <literal>[ALERT_SENDER,ALERT_RECIPIENT,SMTP_SERVER,SMTP_PORT,SMTP_USER,SMTP_PASSWORD]</literal>
             All other settings should remain at their default.

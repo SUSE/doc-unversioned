@@ -16,7 +16,7 @@
   </para>
   <para>
     User management actions are performed in the <guimenu>Users</guimenu> view
-    in the left-hand side panel of the &t.web;.
+    in the left-hand panel of the &t.web;.
   </para>
   <para>
     By default, a newly created user is granted display access rights except for

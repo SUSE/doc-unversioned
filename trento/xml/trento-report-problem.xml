@@ -15,11 +15,11 @@
   </para>
     <para>
     When opening a support case for &trento;, provide the relevant deployment option for &t.server;: &k8s;, systemd or containerized.</para>
- <para>In case of a &k8s; deployment, provide the output of the &trento; support plugin and the scenario dump, as explained in section <xref linkend="sec-trento-problemanalysis" />.
+ <para>In the case of a &k8s; deployment, provide the output of the &trento; support plugin and the scenario dump, as explained in <xref linkend="sec-trento-problemanalysis" />.
   </para>
- <para>In case of a systemd deployment, provide the status and the journal of the trento-web and trento-wanda services.
+ <para>In the case of a systemd deployment, provide the status and the journal of the trento-web and trento-wanda services.
   </para>
- <para>In case of a containerized deployment, provide the logs of the trento-web and trento-wanda containers. Use <command>docker ps</command> to retrieve
+ <para>In the case of a containerized deployment, provide the logs of the trento-web and trento-wanda containers. Use <command>docker ps</command> to retrieve
   the IDs of both containers, then <command>docker logs <replaceable>CONTAINER_ID</replaceable></command> to retrieve the corresponding logs.
   </para>
  <para>
@@ -35,7 +35,7 @@
         <listitem>
           <para>output of the command <command>supportconfig</command> in the &t.agent; host. See
           <link xlink:href="https://documentation.suse.com/sles/html/SLES-all/cha-adm-support.html#sec-admsupport-cli"/>
-           for information on how to run this command from command line.
+           for information on how to run this command from the command line.
          </para>
         </listitem>
       </itemizedlist>

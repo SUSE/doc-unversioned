@@ -27,7 +27,7 @@
       <screen>&prompt.user;sudo zypper ref
 &prompt.user;sudo zypper update trento-checks</screen>
   <para>In a containerized deployment, checks are delivered as a container image, and
-   you can user Docker to pull the latest version into the trento-checks volume created during the installation process:</para>
+   you can use Docker to pull the latest version into the trento-checks volume created during the installation process:</para>
 <screen>&prompt.user;docker run \
 -v trento-checks:/usr/share/trento/checks \
 registry.suse.com/trento/trento-checks:latest

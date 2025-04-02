@@ -31,12 +31,12 @@
     <section xml:id="sec-trento-install-trentoserver-on-existing-k8s-cluster">
       <title>Installing &t.server; on an existing &k8s; cluster</title>
       <para>
-        &t.server; consists of a several components delivered as container images and intended for
+        &t.server; consists of several components delivered as container images and intended for
         deployment on a &k8s; cluster. A manual production-ready deployment of these components
         requires &k8s; knowledge. Customers without in-house &k8s; expertise and who want to try
         &trento; with a minimum of effort, can use the &trento; Helm chart. This approach automates
         the deployment of all the required components on a single &k8s; cluster node. You can use
-        the &trento; Helm chart to install &t.server; on a existing &k8s; cluster as follows:
+        the &trento; Helm chart to install &t.server; on an existing &k8s; cluster as follows:
       </para>
       <procedure>
         <step>

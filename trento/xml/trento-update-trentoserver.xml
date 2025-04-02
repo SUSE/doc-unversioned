@@ -14,7 +14,7 @@
       <itemizedlist>
          <listitem>
           <para>Before updating &t.server;, ensure that all the &t.agent;s in the environment are supported by the target version.
-           For more information, see section <xref linkend="sec-trento-compatibility-matrix" />.
+           For more information, see <xref linkend="sec-trento-compatibility-matrix" />.
           </para>
         </listitem>
        <listitem>

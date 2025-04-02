@@ -60,7 +60,7 @@
         <formalpara>
           <title><guimenu>Settings</guimenu></title>
           <para>
-           Allows you retrieve and manage the API key for the current installation, configure the connection data for a SUSE Multi-Linux Manager instance, and stablish the retention time for the entries in the activity log.
+           Allows you retrieve and manage the API key for the current installation, configure the connection data for a SUSE Multi-Linux Manager instance, and establish the retention time for the entries in the activity log.
           </para>
         </formalpara>
       </listitem>
@@ -113,7 +113,7 @@
         </listitem>
       </itemizedlist>
       <para>
-        In addition to the operating system layer, there is also information about the health status of the HA components, where they exist:
+        In addition to the operating system layer, there is also information about the health status of the HA components where they exist:
       </para>
       <itemizedlist>
         <listitem>
@@ -178,41 +178,41 @@ The health boxes in the dashboard are clickable. Clicking on a box filters the d
       <itemizedlist>
         <listitem>
           <formalpara>
-            <title><guimenu>Hosts health icon</guimenu>:</title>
+            <title><guimenu>Hosts health icon</guimenu>: </title>
             <para>Link to the Hosts overview filtered by SID equal to the SAPSID and the DBSID of the corresponding &sap; system.</para>
           </formalpara>
          </listitem>
          <listitem>
           <formalpara>
-            <title><guimenu>Database cluster health icon</guimenu>:</title>
+            <title><guimenu>Database cluster health icon</guimenu>: </title>
             <para>Link to the corresponding &hana; Cluster Details view.</para>
           </formalpara>
          </listitem>
         <listitem>
           <formalpara>
-            <title><guimenu>Database health icon</guimenu>:</title>
+            <title><guimenu>Database health icon</guimenu>: </title>
             <para>Link to the corresponding HANA Database Details view.</para>
           </formalpara>
          </listitem>
           <listitem>
           <formalpara>
-            <title><guimenu>Application cluster health icon</guimenu>:</title>
+            <title><guimenu>Application cluster health icon</guimenu>: </title>
             <para>Link to the corresponding ASCS/ERS Cluster Details view.</para>
           </formalpara>
          </listitem>
          <listitem>
           <formalpara>
-            <title><guimenu>Application Instances health icon</guimenu>:</title>
+            <title><guimenu>Application Instances health icon</guimenu>: </title>
             <para>Link to the corresponding &sap; System Details view.</para>
           </formalpara>
          </listitem>
        </itemizedlist>
       <para>
-        Grey status is returned when either a component does not exist, or it is stopped
+        Gray status is returned when either a component does not exist, or it is stopped
         (as returned by <command>sapcontrol</command>), or its status is unknown (for instance,
         if a command to determine the status fails).
       </para>
-      <para> Grey statuses are not yet counted in the calculation of the global health status.</para>
+      <para> Gray statuses are not yet counted in the calculation of the global health status.</para>
 
     </section>
 
@@ -256,7 +256,7 @@ The health boxes in the dashboard are clickable. Clicking on a box filters the d
               If the list is too long, shorten it using the filters.
             </para>
             <para>
-              Clicking on a host name opens the corresponding <guimenu>Host details</guimenu> view the following infomation:
+              Clicking on a host name opens the corresponding <guimenu>Host details</guimenu> view the following information:
             </para>
             <itemizedlist xml:id="lst-trento-web-hosts-details">
               <title><guimenu>Host details</guimenu> view</title>
@@ -300,7 +300,7 @@ The health boxes in the dashboard are clickable. Clicking on a box filters the d
                 available patches and upgradable packages for the current host
                 when settings for SUSE Multi-Linux Manager are maintained and the host is managed
                 by the SUSE Multi-Linux Manager instance for which connection data has been
-                provided. Refer to section
+                provided. Refer to 
                 <xref linkend="sec-integration-with-SUSE-Manager"/> for further details. </para>
               </listitem>
               <listitem>
@@ -390,7 +390,7 @@ The health boxes in the dashboard are clickable. Clicking on a box filters the d
               <listitem>
                 <para><guimenu>&pace; Site details</guimenu> section is split in three
                  subsections: one for each HANA site, and another one for cluster nodes without a HANA workload.
-                 For example, in case of a majority maker in a HANA scale out cluster, each HANA site subsection
+                 For example, in the case of a majority maker in a HANA scale out cluster, each HANA site subsection
                  informs about the site role (Primary or Secondary or Failed) and lists the
                  different nodes in the site. Each node entry displays the node status (Online or Maintenance or
                  Other), the roles of the nameserver and indexserver services in that node, the local IPs and any assigned
@@ -421,7 +421,7 @@ The health boxes in the dashboard are clickable. Clicking on a box filters the d
                   The next top-center multi-tab section shows the SAP SID, the
                   Enqueue Server version, whether the ASCS and ERS are running
                   on different hosts or not, and whether the instance
-                  filesystems are resource based or not. When multiple systems
+                  file systems are resource-based or not. When multiple systems
                   share the same cluster, there is a tab for each system in the
                   cluster, and you can scroll left and right to go through the
                   different systems.
@@ -437,7 +437,7 @@ The health boxes in the dashboard are clickable. Clicking on a box filters the d
                 <para>A <guimenu>Node details</guimenu> section shows the following for each
                  node in the cluster: the node status (Online or Maintenance or Other), the host name, the role of the node
                  in the cluster, the assigned virtual IP address and, in case of
-                 resource managed filesystems, the full mounting path. To view the attributes and resources associated to that particular node, click <guimenu>Details</guimenu>. Close the view using
+                 resource managed file systems, the full mounting path. To view the attributes and resources associated to that particular node, click <guimenu>Details</guimenu>. Close the view using
                  the <keycap function="escape"/> key.</para>
                  <para>
                   This section is system specific. It shows the information corresponding to the system selected

@@ -93,13 +93,13 @@
           </listitem>
           <listitem>
             <para>Enhanced discovery capabilities, including improved
-             support HANA multi-tenant architecture, HANA scale out cluster
-             discovery, discovery of clsluters using diskless SBD and
+             support for HANA multi-tenant architecture, HANA scale-out cluster
+             discovery, discovery of clusters using diskless SBD and
              maintenance awareness.</para>
           </listitem>
           <listitem>
             <para>
-             Information about available patches and upgradable packages for each registered hosts via integration
+             Information about available patches and upgradable packages for each registered host via integration
              with SUSE Multi-Linux Manager.</para>
           </listitem>
                      <listitem>
@@ -130,7 +130,7 @@
             <para>saptune Web integration.</para>
           </listitem>
           <listitem>
-            <para>Intance clean-up capabilities.</para>
+            <para>Instance clean-up capabilities.</para>
           </listitem>
           <listitem>
             <para>Ability to run host-level configuration checks.</para>
@@ -170,13 +170,13 @@
           (wanda) 1.0.0 and agent 2.0.0.</para>
         <itemizedlist>
           <listitem>
-            <para>A brand-new safer, faster, ligher SSH-less configuration
+            <para>A brand-new safer, faster, lighter SSH-less configuration
               checks engine (wanda) which not only opens the door to
               configuration checks for other HA scenarios (ASCS/ER, HANA
-              scale-up cost optimized, &hana; scale-out) and other targes in
+              scale-up cost optimized, &hana; scale-out) and other targets in
               the environment (hosts, &hana; databases, &netweaver;
               instances), but also will allow customization of existing checks
-              and addtion of custom checks.</para>
+              and addition of custom checks.</para>
           </listitem>
           <listitem>
             <para>Addition of VMware to the list of known platforms.</para>
@@ -188,7 +188,7 @@
                 xlink:href="https://www.trento-project.io/web/swaggerui/" />
               and <link
                 xlink:href="https://www.trento-project.io/wanda/swaggerui/" />
-              respectiverly.</para>
+              respectively.</para>
           </listitem>
         </itemizedlist>
       </listitem>
@@ -200,8 +200,8 @@
           agent 1.1.0.</para>
         <itemizedlist>
           <listitem>
-            <para>Configration checks for HANA scale-up peformance optimized
-              two-node clusters on on-premise bare metal platforms, including
+            <para>Configuration checks for HANA scale-up performance optimized
+              two-node clusters on on-premise bare-metal platforms, including
               KVM and Nutanix.</para>
           </listitem>
           <listitem>
@@ -232,7 +232,7 @@
           agent 1.0.0. </para>
         <itemizedlist>
           <listitem>
-            <para>Clean, simple Web console designed with SAP basis in mind.
+            <para>Clean, simple Web console designed with an SAP basis in mind.
               It reacts in real time to changes happening in the backend
               environment thanks to the event-driven technology behind
               it.</para>
