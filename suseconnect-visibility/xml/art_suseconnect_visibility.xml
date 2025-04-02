@@ -79,7 +79,7 @@
       &suse; is committed to helping provide better insights into the
       consumption of SUSE subscriptions, regardless of where they are running or
       how they are managed; physical or virtual, on-premises or in the cloud,
-      connected to SCC or RMT, or managed by SUSE Manager. To help you identify
+      connected to SCC or RMT, or managed by &smlm;. To help you identify
       or filter out systems in SCC that are decommissioned or no longer running,
       &suseconnect; now features a daily <quote>ping,</quote> which updates
       system information automatically. Each registered host contacts SCC or RMT
@@ -187,7 +187,7 @@
     <para>
       When &suseconnect; reports details about active hosts daily, SCC or RMT
       collect this information and let you filter out registered inactive hosts.
-      If your hosts are registered against RMT or &suma;, these registration
+      If your hosts are registered against RMT or &smlm;, these registration
       servers forward the received information to SCC.
     </para>
 
@@ -253,7 +253,7 @@
 
     <para>
       When a system is registered directly via SCC, or its registration
-      information is forwarded by RMT or &suma;, SCC collects the following
+      information is forwarded by RMT or &smlm;, SCC collects the following
       information:
     </para>
 
@@ -379,7 +379,7 @@
 
     <tip>
       <para>
-        &susemgr; sends additional data about the used hypervisor and
+        &smlm; sends additional data about the used hypervisor and
         virtualized systems. Find more details in
         <link
         xlink:href="https://documentation.suse.com/subscription/hypervisor-collector/html/SLE-scc-hypervisor-collector/index.html#scc-hypervisor-collector-data"/>.
@@ -448,8 +448,8 @@
       </listitem>
       <listitem>
         <para>
-          Find further information about &suma; at
-          <link xlink:href="https://documentation.suse.com/suma/"/>
+          Find further information about &smlm; at
+          <link xlink:href="https://documentation.suse.com/multi-linux-manager/"/>
         </para>
       </listitem>
     </itemizedlist>
