@@ -65,7 +65,7 @@
       </listitem>
               <listitem>
         <para>
-          Information about relevant patches and upgradable packages for registered hosts via integration with SUSE Multi-Linux Manager.
+          Information about relevant patches and upgradable packages for registered hosts via integration with &smlm;.
         </para>
       </listitem>
       <listitem>

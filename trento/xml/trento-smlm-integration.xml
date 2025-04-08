@@ -8,14 +8,14 @@
 ]>
 
   <section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="sec-integration-with-SUSE-Manager">
-      <title>Integration with SUSE Multi-Linux Manager</title>
-      <para>&trento; can be integrated with SUSE Multi-Linux Manager to provide the &sap; administrator with
+      <title>Integration with &smlm;</title>
+      <para>&trento; can be integrated with &smlm; to provide the &sap; administrator with
       information about relevant patches and upgradable packages for any host
        that is registered with both applications.</para>
-      <para>The user must enter the connection settings for SUSE Multi-Linux Manager
+      <para>The user must enter the connection settings for &smlm;
        in the <guimenu>Settings</guimenu> view:</para>
      <figure>
-         <title>SUSE Multi-Linux Manager settings</title>
+         <title>&smlm; settings</title>
         <mediaobject>
           <imageobject>
             <imagedata
@@ -24,10 +24,10 @@
         </mediaobject>
       </figure>
    <para>
-   When the SUSE Multi-Linux Manager settings are configured, the &sap; Basis administrator can test the connection
+   When the &smlm; settings are configured, the &sap; Basis administrator can test the connection
    by clicking the <guimenu>Test</guimenu> button.
    If the connection is successful, the <guimenu>Host Details</guimenu> view of each host
-   managed by SUSE Multi-Linux Manager displays a summary
+   managed by &smlm; displays a summary
    of available patches and upgradable packages:</para>
         <figure>
          <title><guimenu>Available software updates in the Host Details view</guimenu></title>
@@ -74,10 +74,10 @@
    enhancements. Security advisories are considered critical. If an advisory is available,
    the health of the host is set to critical. If there are available patches but none of them
     is a security one, the health of the host switches to warning. When a host cannot be found in
-    SUSE Multi-Linux Manager, or there is a problem retrieving the data for it, its health is set to unknown.
+    &smlm;, or there is a problem retrieving the data for it, its health is set to unknown.
    </para>
     <para>
-    You can clear the SUSE Multi-Linux Manager settings from the Settings view
+    You can clear the &smlm; settings from the Settings view
     at any time. When you do this, all information about available software
     updates disappears from the console, and the status of the hosts is adjusted
     accordingly.</para>

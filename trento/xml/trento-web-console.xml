@@ -60,7 +60,7 @@
         <formalpara>
           <title><guimenu>Settings</guimenu></title>
           <para>
-           Allows you retrieve and manage the API key for the current installation, configure the connection data for a SUSE Multi-Linux Manager instance, and establish the retention time for the entries in the activity log.
+           Allows you retrieve and manage the API key for the current installation, configure the connection data for a &smlm; instance, and establish the retention time for the entries in the activity log.
           </para>
         </formalpara>
       </listitem>
@@ -298,8 +298,8 @@ The health boxes in the dashboard are clickable. Clicking on a box filters the d
                <listitem>
                 <para>Available software updates section shows a summary of the
                 available patches and upgradable packages for the current host
-                when settings for SUSE Multi-Linux Manager are maintained and the host is managed
-                by the SUSE Multi-Linux Manager instance for which connection data has been
+                when settings for &smlm; are maintained and the host is managed
+                by the &smlm; instance for which connection data has been
                 provided. Refer to 
                 <xref linkend="sec-integration-with-SUSE-Manager"/> for further details. </para>
               </listitem>

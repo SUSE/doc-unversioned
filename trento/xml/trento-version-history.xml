@@ -50,7 +50,7 @@
             <para>SSO and third-party IDP integration via OIDC, OAUTH2 and SAML protocols.</para>
           </listitem>
                                 <listitem>
-            <para>Contextual, detailed overview of available patches and upgradable packages in the SUSE Multi-Linux Manager integration.</para>
+            <para>Contextual, detailed overview of available patches and upgradable packages in the &smlm; integration.</para>
           </listitem>
                                 <listitem>
             <para>Inception of the Activity Log, allowing users to browse a single centralized event log for their entire SAP landscape.</para>
@@ -100,7 +100,7 @@
           <listitem>
             <para>
              Information about available patches and upgradable packages for each registered host via integration
-             with SUSE Multi-Linux Manager.</para>
+             with &smlm;.</para>
           </listitem>
                      <listitem>
             <para>Rotating API key.</para>
