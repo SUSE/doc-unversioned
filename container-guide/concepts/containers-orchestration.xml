@@ -331,6 +331,6 @@
     optimized for the &arm; architecture.</para>
     <para>For more info, refer to
     <link xlink:href="https://www.suse.com/c/rancher_blog/introduction-to-k3s/">Introduction to K3s</link> and
-    <link xlink:href="https://documentation.suse.com/trd/kubernetes/single-html/kubernetes_ri_rancher-k3s-sles/index.html#id-introduction">How to install K3s and Rancher on SUSE Linux Enterprise Server</link>.</para>
+    <link xlink:href="https://documentation.suse.com/trd/suse/html/kubernetes_ri_rancher-k3s-slemicro/id-deployment.html">How to install K3s and Rancher on SUSE Linux Enterprise Server</link>.</para>
     </section>
 </article>
