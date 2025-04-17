@@ -8,11 +8,11 @@
 ]>
 
 <section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="sec-trento-what">
-    <title>What is &trento;?</title>
+    <title>What is {trento}?</title>
     <para>
-      &trento; is the official version of the Trento community project. It is a comprehensive monitoring solution
-      consisting of two main components: the &t.server; and the &t.agent;.
-      &trento; provides the following functionality and features:
+      {trento} is the official version of the Trento community project. It is a comprehensive monitoring solution
+      consisting of two main components: the {t.server} and the {t.agent}.
+      {trento} provides the following functionality and features:
     </para>
     <remark>toms 2024-04-18 (change#9): maybe a reference here about improved HANA multitenant support?</remark>
     <!--
@@ -20,11 +20,11 @@
     -->
     <itemizedlist>
       <listitem>
-        <para>A user-friendly reactive Web interface for &sap; Basis administrators.</para>
+        <para>A user-friendly reactive Web interface for {sap} Basis administrators.</para>
       </listitem>
       <listitem>
         <para>
-          Automated discovery of &pace; clusters using SAPHanaSR classic or angi
+          Automated discovery of {pace} clusters using SAPHanaSR classic or angi
           as well as different fencing mechanisms, including diskless SBD.
         </para>
       </listitem>
@@ -35,12 +35,12 @@
       </listitem>
           <listitem>
         <para>
-     Awareness of maintenance situations in a &pace; cluster at cluster, node, or resource level.
+     Awareness of maintenance situations in a {pace} cluster at cluster, node, or resource level.
                   </para>
       </listitem>
       <listitem>
-        <para>Configuration validation for &hana; Scale-Up
-        Performance-optimized, &hana; Scale-out and ASCS/ERS clusters deployed
+        <para>Configuration validation for {hana} Scale-Up
+        Performance-optimized, {hana} Scale-out and ASCS/ERS clusters deployed
         on Azure, AWS, GCP or on-premises bare metal platforms, including KVM
         and Nutanix.
         </para>
@@ -70,7 +70,7 @@
       </listitem>
       <listitem>
         <para>
-          Monitoring of CPU and memory usage at the host level through basic integration with &prometheus;.
+          Monitoring of CPU and memory usage at the host level through basic integration with {prometheus}.
         </para>
       </listitem>
            <listitem>
@@ -80,7 +80,7 @@
                   </listitem>
       <listitem>
              <para>
-          Rotating API key to protect communication from the &t.agent; to the &t.server;.
+          Rotating API key to protect communication from the {t.agent} to the {t.server}.
         </para>
       </listitem>
       <listitem>
@@ -91,10 +91,10 @@
 
     </itemizedlist>
 
-    <para> The <emphasis role="strong">&t.server;</emphasis> is an
+    <para> The <emphasis role="strong">{t.server}</emphasis> is an
       independent, distributed system designed to run
-      on a &k8s; cluster or as a regular systemd stack.
-      The &t.server; provides a Web front-end for user interaction. The &t.server; consists of the following components:
+      on a {k8s} cluster or as a regular systemd stack.
+      The {t.server} provides a Web front-end for user interaction. The {t.server} consists of the following components:
     </para>
     <itemizedlist>
       <listitem>
@@ -104,17 +104,17 @@
          <para>The checks engine named wanda that orchestrates the execution of configuration checks.</para>
         </listitem>
         <listitem>
-          <para>A &postgresql; database for data persistence.</para>
+          <para>A {postgresql} database for data persistence.</para>
         </listitem>
         <listitem>
          <para>The RabbitMQ message broker for communicating between the checks engine and the agents.
 </para>
         </listitem>
         <listitem>
-          <para>A &prometheus; instance that retrieves the metrics collected by the &prometheus; node exporter in the registered hosts.</para>
+          <para>A {prometheus} instance that retrieves the metrics collected by the {prometheus} node exporter in the registered hosts.</para>
         </listitem>
     </itemizedlist>
-    <para> The <emphasis role="strong">&t.agent;</emphasis> is a single
+    <para> The <emphasis role="strong">{t.agent}</emphasis> is a single
       background process (<systemitem>trento agent</systemitem>) running
       on each monitored host of the SAP infrastructure.
     </para>
