@@ -1,5 +1,5 @@
 include::attributes-generic.adoc[]
-include::attributes-product.adoc[]
+include::product-attributes.adoc[]
 
 = Getting Started with {trento}
 {sles4sapreg}
