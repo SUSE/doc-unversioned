@@ -1,5 +1,5 @@
 include::attributes-generic.adoc[]
-include::product-attibutes-cc.adoc[]
+include::product-attibutes.adoc[]
 
 [[sec-trento-what]]
 = What is {trento}?

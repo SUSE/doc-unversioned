@@ -5,6 +5,7 @@
 :productname:       PRODUCT
 :productnameshort:  ACRONYM
 :productnumber:     X.Y
+:trento:            Trento
 
 
 // PROJECT REPOSITORY URL
