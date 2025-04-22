@@ -1,4 +1,4 @@
-MAIN="article_sap_trento.xml"
+MAIN="trento-guide.adoc"
 # ROOTID=""
 
 PROFOS="sles"
