@@ -39,7 +39,7 @@ Initial version
 
 // include::common_copyright_gfdl.xml[]
 
-include::trento-intro.adoc[]
+include::trento-intro.adoc[leveloffset=+1]
 ////
 include::trento-lifecycle.xml[]
 include::trento-requirements.xml[]
@@ -64,3 +64,4 @@ include::trento-compatibility.xml[]
 include::trento-version-history.xml[]
 include::trento-more-info.xml[]
 ////
+
