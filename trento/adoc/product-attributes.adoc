@@ -6,6 +6,8 @@
 :productnameshort:  ACRONYM
 :productnumber:     X.Y
 :trento:            Trento
+:tragent:           Trento Agent
+:trserver:          Trento Server
 
 
 // PROJECT REPOSITORY URL

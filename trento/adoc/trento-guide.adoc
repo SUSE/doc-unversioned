@@ -1,7 +1,7 @@
 include::attributes-generic.adoc[]
 include::product-attributes.adoc[]
 
-= Getting Started with {trento}
+== Getting Started with {trento}
 {sles4sapreg}
 
 // History
@@ -39,29 +39,27 @@ Initial version
 
 // include::common_copyright_gfdl.xml[]
 
-include::trento-intro.adoc[leveloffset=+1]
-////
-include::trento-lifecycle.xml[]
-include::trento-requirements.xml[]
-include::trento-install-server.xml[]
-include::trento-install-agents.xml[]
-include::trento-user-manage.xml[]
-include::sso-integration.xml[]
-include::trento-activity-log.xml[]
-include::trento-checks.xml[]
-include::trento-web-console.xml[]
-include::trento-housekeeping.xml[]
-include::trento-manage-tags.xml[]
-include::trento-smlm-integration.xml[]
-include::trento-rotate-api-keys.xml[]
-include::trento-update-trentoserver.xml[]
-include::trento-update-trentoagent.xml[]
-include::trento-update-trento-checks.xml[]
-include::trento-uninstall-trentoserver.xml[]
-include::trento-report-problem.xml[]
-include::trento-analyze-problems.xml[]
-include::trento-compatibility.xml[]
-include::trento-version-history.xml[]
-include::trento-more-info.xml[]
-////
-
+include::trento-intro.adoc[]
+include::trento-lifecycle.adoc[]
+include::trento-requirements.adoc[]
+include::trento-install-server.adoc[]
+//include::trento-install-server.xml[]
+//include::trento-install-agents.xml[]
+//include::trento-user-manage.xml[]
+// include::sso-integration.xml[]
+// include::trento-activity-log.xml[]
+// include::trento-checks.xml[]
+// include::trento-web-console.xml[]
+// include::trento-housekeeping.xml[]
+// include::trento-manage-tags.xml[]
+// include::trento-smlm-integration.xml[]
+// include::trento-rotate-api-keys.xml[]
+// include::trento-update-trentoserver.xml[]
+// include::trento-update-trentoagent.xml[]
+// include::trento-update-trento-checks.xml[]
+// include::trento-uninstall-trentoserver.xml[]
+// include::trento-report-problem.xml[]
+// include::trento-analyze-problems.xml[]
+// include::trento-compatibility.xml[]
+// include::trento-version-history.xml[]
+// include::trento-more-info.xml[]

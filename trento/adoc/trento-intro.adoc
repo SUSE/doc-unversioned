@@ -2,9 +2,9 @@ include::attributes-generic.adoc[]
 include::product-attributes.adoc[]
 
 [[sec-trento-what]]
-= What is {trento}?
+== What is {trento}?
 
-{trento} is the official version of the Trento community project. It is a comprehensive monitoring solution consisting of two main components: the {t.server} and the {t.agent}. {trento} provides the following functionality and features:
+{trento} is the official version of the Trento community project. It is a comprehensive monitoring solution consisting of two main components: the {trserver} and the {tragent}. {trento} provides the following functionality and features:
 
 // toms 2024-04-18 (change#9): maybe a reference here about improved HANA multitenant support?
 // from https://confluence.suse.com/x/uoOyN
@@ -21,10 +21,10 @@ include::product-attributes.adoc[]
 * Information about relevant patches and upgradable packages for registered hosts via integration with SUSE Multi-Linux Manager.
 * Monitoring of CPU and memory usage at the host level through basic integration with {prometheus}.
 * API-based architecture to facilitate integration with other monitoring tools.
-* Rotating API key to protect communication from the {t.agent} to the {t.server}.
+* Rotating API key to protect communication from the {tragent} to the {trserver}.
 * Housekeeping capabilities.
 
-The *{t.server}* is an independent, distributed system designed to run on a {k8s} cluster or as a regular systemd stack. The {t.server} provides a Web front-end for user interaction. The {t.server} consists of the following components:
+The *{trserver}* is an independent, distributed system designed to run on a {k8s} cluster or as a regular systemd stack. The {trserver} provides a Web front-end for user interaction. The {trserver} consists of the following components:
 
 * The web component that acts as a control plane responsible for internal and external communications as well as rendering the UI.
 * The checks engine named wanda that orchestrates the execution of configuration checks.
@@ -32,7 +32,7 @@ The *{t.server}* is an independent, distributed system designed to run on a {k8s
 * The RabbitMQ message broker for communicating between the checks engine and the agents.
 * A {prometheus} instance that retrieves the metrics collected by the {prometheus} node exporter in the registered hosts.
 
-The *{t.agent}* is a single background process (`trento agent`) running on each monitored host of the SAP infrastructure.
+The *{tragent}* is a single background process (`trento agent`) running on each monitored host of the SAP infrastructure.
 
 See <<fig-trento-architecture>> for additional details.
 
