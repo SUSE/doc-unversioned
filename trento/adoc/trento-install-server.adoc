@@ -151,7 +151,7 @@ HELM_EXPERIMENTAL_OCI=1 helm upgrade \
 ----
 ====
 
-include::helm-event-pruning.adoc[]
+include::helm-event-pruning.adoc[leveloffset=+1]
 
 [[sec-trento-enabling-email-alerts]]
 === Enabling email alerts
@@ -221,6 +221,6 @@ For details on the required Ingress setup and configuration, refer to: https://k
 Additional steps are required on the Agent side.
 // toms 2022-09-14: which steps?
 
-include::systemd-install.adoc[]
+include::systemd-install.adoc[leveloffset=+1]
 include::container-install.adoc[]
 include::ansible-install.adoc[]
