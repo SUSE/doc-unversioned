@@ -7,9 +7,9 @@
   %entities;
 ]>
 <section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="sec-trento-installing-trentoagent">
-  <title>Installing &t.agent;s</title>
+  <title>Installing {t.agent}s</title>
   <para>
-    Before you can install a &t.agent;, you must obtain the API key of your &t.server;.
+    Before you can install a {t.agent}, you must obtain the API key of your {t.server}.
     Proceed as follows:
   </para>
   <procedure>
@@ -32,7 +32,7 @@
       <para>
         Enter the credentials for the <systemitem
         class="username">admin</systemitem> user (specified during installation of
-        &t.server;).
+        {t.server}).
       </para>
     </step>
     <step>
@@ -60,17 +60,17 @@
     </step>
   </procedure>
   <para>
-    To install the &t.agent; on an SAP host and register it with the &t.server;,
+    To install the {t.agent} on an SAP host and register it with the {t.server},
     repeat the steps in <xref linkend="pro-trento-installing-trentoagent"/>:
   </para>
   <procedure xml:id="pro-trento-installing-trentoagent">
-    <title>Installing &t.agent;s</title>
+    <title>Installing {t.agent}s</title>
     <step>
       <para>
         Install the package:
       </para>
-<screen>&prompt.user;sudo zypper ref
-&prompt.user;sudo zypper install trento-agent</screen>
+<screen>{prompt.user}sudo zypper ref
+{prompt.user}sudo zypper install trento-agent</screen>
     </step>
     <step>
       <para>
@@ -86,10 +86,10 @@
             <parameter>facts-service-url</parameter>: the address of the AMQP
             RabbitMQ service used for communication with the checks engine
             (wanda). The correct value of this parameter depends on how
-            &t.server; was deployed.
+            {t.server} was deployed.
           </para>
           <para>
-            In a &k8s; deployment, it is
+            In a {k8s} deployment, it is
             <uri>amqp://trento:trento@TRENTO_SERVER_HOSTNAME:5672/</uri>. If the
             default RabbitMQ username and password
             (<literal>trento:trento</literal>) were updated using Helm, the
@@ -130,7 +130,7 @@
         <listitem>
           <para>
             Import the certificate from the Certificate Authority that has
-            issued your &t.server; SSL certificate into the &t.agent; host as
+            issued your {t.server} SSL certificate into the {t.agent} host as
             follows:
           </para>
           <procedure>
@@ -154,16 +154,16 @@
     </step>
     <step>
       <para>
-        Start the &t.agent;:
+        Start the {t.agent}:
       </para>
-<screen>&prompt.user;sudo systemctl enable --now trento-agent</screen>
+<screen>{prompt.user}sudo systemctl enable --now trento-agent</screen>
     </step>
     <step>
       <para>
-        Check the status of the &t.agent;:
+        Check the status of the {t.agent}:
       </para>
-<screen>&prompt.user;sudo systemctl status trento-agent
-● trento-agent.service - &t.agent; service
+<screen>{prompt.user}sudo systemctl status trento-agent
+● trento-agent.service - {t.agent} service
      Loaded: loaded (/usr/lib/systemd/system/trento-agent.service; enabled; vendor preset: disabled)
      Active: active (running) since Wed 2021-11-24 17:37:46 UTC; 4s ago
    Main PID: 22055 (trento)
