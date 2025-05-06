@@ -8,6 +8,7 @@
 :trento:            Trento
 :tragent:           Trento Agent
 :trserver:          Trento Server
+:trweb:             Trento Web
 
 
 // PROJECT REPOSITORY URL

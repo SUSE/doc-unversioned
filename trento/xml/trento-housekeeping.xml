@@ -34,15 +34,15 @@
       <para>Use the <guimenu>Clean up</guimenu> button to remove all the components discovered by the agent in the host (including the host
        itself and other components that might depend on the ones running on the host) from the console.</para>
        <para>
-       For example, when cleaning up the host where the primary application server of an &sap; System is registered,
-       the entire &sap; System is removed from the console.
+       For example, when cleaning up the host where the primary application server of an {sap} System is registered,
+       the entire {sap} System is removed from the console.
       </para>
       <para>
-      Similarly, when a registered application or &hana; instance is no longer discovered, an option to clean it up is
+      Similarly, when a registered application or {hana} instance is no longer discovered, an option to clean it up is
        displayed in the corresponding overview and the corresponding details view.
       </para>
            <figure>
-              <title>Clean up button &sap; systems overview</title>
+              <title>Clean up button {sap} systems overview</title>
               <mediaobject>
                 <imageobject>
                   <imagedata fileref="trento-cleanup-sap-instance-overview.png"
@@ -51,7 +51,7 @@
               </mediaobject>
             </figure>
                  <figure>
-              <title>Clean up button in &sap; system details view</title>
+              <title>Clean up button in {sap} system details view</title>
               <mediaobject>
                 <imageobject>
                   <imagedata fileref="trento-cleanup-sap-instance-details-view.png"
@@ -61,7 +61,7 @@
             </figure>
            <para>Use the <guimenu>Clean up</guimenu> button to remove the instance and any dependencies from the console.</para>
            <para>
-           For example, cleaning up the ASCS instance of an &sap;
-           system removes the entire &sap; system from the console.
+           For example, cleaning up the ASCS instance of an {sap}
+           system removes the entire {sap} system from the console.
       </para>
     </section>

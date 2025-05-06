@@ -8,35 +8,35 @@
 ]>
 
   <section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="sec-trento-use-webconsole">
-    <title>Using &t.web;</title>
+    <title>Using {t.web}</title>
     <para>
-      The left sidebar in the &t.web; contains the following entries: </para>
+      The left sidebar in the {t.web} contains the following entries: </para>
     <itemizedlist>
       <listitem>
         <formalpara>
           <title><guimenu>Dashboard</guimenu></title>
-          <para>Determine at a glance the health status of your &sap;
+          <para>Determine at a glance the health status of your {sap}
             environment.</para>
         </formalpara>
       </listitem>
       <listitem>
         <formalpara>
           <title><guimenu>Hosts</guimenu></title>
-          <para>Overview of all registered hosts running the &t.agent;.
+          <para>Overview of all registered hosts running the {t.agent}.
           </para>
         </formalpara>
       </listitem>
       <listitem>
         <formalpara>
           <title><guimenu>Clusters</guimenu></title>
-          <para>Overview of all discovered &pace; clusters.
+          <para>Overview of all discovered {pace} clusters.
           </para>
         </formalpara>
       </listitem>
       <listitem>
         <formalpara>
-          <title><guimenu>&sap; Systems</guimenu></title>
-          <para>Overview of all discovered &sap; Systems; identified by the
+          <title><guimenu>{sap} Systems</guimenu></title>
+          <para>Overview of all discovered {sap} Systems; identified by the
             corresponding system IDs.
           </para>
         </formalpara>
@@ -44,14 +44,14 @@
       <listitem>
         <formalpara>
           <title><guimenu>HANA Databases</guimenu></title>
-          <para>Overview of all discovered &hana; databases; identified by
+          <para>Overview of all discovered {hana} databases; identified by
             the corresponding system IDs. </para>
         </formalpara>
       </listitem>
       <listitem>
         <formalpara>
           <title><guimenu>Checks catalog</guimenu></title>
-          <para>Overview of the catalog of configuration checks that &trento; may
+          <para>Overview of the catalog of configuration checks that {trento} may
             perform on the different targets (hosts or clusters), cluster types (HANA scale up, HANA scale out or ASCS/ERS)
            and supported platforms (Azure, AWS, GCP, Nutanix, on-premises/KVM or VMware). </para>
         </formalpara>
@@ -60,7 +60,7 @@
         <formalpara>
           <title><guimenu>Settings</guimenu></title>
           <para>
-           Allows you retrieve and manage the API key for the current installation, configure the connection data for a &smlm; instance, and establish the retention time for the entries in the activity log.
+           Allows you retrieve and manage the API key for the current installation, configure the connection data for a SUSE Multi-Linux Manager instance, and stablish the retention time for the entries in the activity log.
           </para>
         </formalpara>
       </listitem>
@@ -68,8 +68,8 @@
         <formalpara>
           <title><guimenu>About</guimenu></title>
           <para>Shows the current server version, a link to
-            the GitHub repository of the &trento; Web component, and the number of
-            registered &sles4sap;&nbsp;subscriptions that has been discovered. </para>
+            the GitHub repository of the {trento} Web component, and the number of
+            registered {sles4sap}{nbsp}subscriptions that has been discovered. </para>
         </formalpara>
       </listitem>
     </itemizedlist>
@@ -77,24 +77,24 @@
     <section xml:id="sec-trento-health">
       <title>Getting the global health state</title>
       <para>
-        The dashboard allows you to determine at a glance the health status of your &sap; environment.
-        It is the main page of the &t.web;, and you can always switch to it by clicking on <guimenu>Dashboard</guimenu> in the left sidebar.
+        The dashboard allows you to determine at a glance the health status of your {sap} environment.
+        It is the main page of the {t.web}, and you can always switch to it by clicking on <guimenu>Dashboard</guimenu> in the left sidebar.
       </para>
       <para>
-        The health status of a registered &sap; system is the sum of its health status at
+        The health status of a registered {sap} system is the sum of its health status at
         three
-        different layers representing the &sap; architecture:
+        different layers representing the {sap} architecture:
       </para>
       <itemizedlist>
         <listitem>
           <formalpara>
             <title><guimenu>Hosts</guimenu></title>
-            <para>Reflects the heartbeat of the &t.agent; and the tuning status returned by &saptune; (where applicable).</para>
+            <para>Reflects the heartbeat of the {t.agent} and the tuning status returned by {saptune} (where applicable).</para>
           </formalpara>
         </listitem>
         <listitem>
           <formalpara>
-            <title><guimenu>&pace; Clusters</guimenu></title>
+            <title><guimenu>{pace} Clusters</guimenu></title>
             <para>The status based on the running status of the cluster and the results
               of the configuration checks.</para>
           </formalpara>
@@ -113,7 +113,7 @@
         </listitem>
       </itemizedlist>
       <para>
-        In addition to the operating system layer, there is also information about the health status of the HA components where they exist:
+        In addition to the operating system layer, there is also information about the health status of the HA components, where they exist:
       </para>
       <itemizedlist>
         <listitem>
@@ -170,49 +170,49 @@
         </varlistentry>
       </variablelist>
 <para>
-The health boxes in the dashboard are clickable. Clicking on a box filters the dashboard by systems with the corresponding health status. In large &sap; environments, this feature can help the &sap; administrator to determine which systems are in a given status.
+The health boxes in the dashboard are clickable. Clicking on a box filters the dashboard by systems with the corresponding health status. In large {sap} environments, this feature can help the {sap} administrator to determine which systems are in a given status.
 </para>
       <para>
-        The icons representing the health summary of a particular layer contain links to the views in the &trento; console that can help determine the source of the issue:
+        The icons representing the health summary of a particular layer contain links to the views in the {trento} console that can help determine the source of the issue:
       </para>
       <itemizedlist>
         <listitem>
           <formalpara>
-            <title><guimenu>Hosts health icon</guimenu>: </title>
-            <para>Link to the Hosts overview filtered by SID equal to the SAPSID and the DBSID of the corresponding &sap; system.</para>
+            <title><guimenu>Hosts health icon</guimenu>:</title>
+            <para>Link to the Hosts overview filtered by SID equal to the SAPSID and the DBSID of the corresponding {sap} system.</para>
           </formalpara>
          </listitem>
          <listitem>
           <formalpara>
-            <title><guimenu>Database cluster health icon</guimenu>: </title>
-            <para>Link to the corresponding &hana; Cluster Details view.</para>
+            <title><guimenu>Database cluster health icon</guimenu>:</title>
+            <para>Link to the corresponding {hana} Cluster Details view.</para>
           </formalpara>
          </listitem>
         <listitem>
           <formalpara>
-            <title><guimenu>Database health icon</guimenu>: </title>
+            <title><guimenu>Database health icon</guimenu>:</title>
             <para>Link to the corresponding HANA Database Details view.</para>
           </formalpara>
          </listitem>
           <listitem>
           <formalpara>
-            <title><guimenu>Application cluster health icon</guimenu>: </title>
+            <title><guimenu>Application cluster health icon</guimenu>:</title>
             <para>Link to the corresponding ASCS/ERS Cluster Details view.</para>
           </formalpara>
          </listitem>
          <listitem>
           <formalpara>
-            <title><guimenu>Application Instances health icon</guimenu>: </title>
-            <para>Link to the corresponding &sap; System Details view.</para>
+            <title><guimenu>Application Instances health icon</guimenu>:</title>
+            <para>Link to the corresponding {sap} System Details view.</para>
           </formalpara>
          </listitem>
        </itemizedlist>
       <para>
-        Gray status is returned when either a component does not exist, or it is stopped
+        Grey status is returned when either a component does not exist, or it is stopped
         (as returned by <command>sapcontrol</command>), or its status is unknown (for instance,
         if a command to determine the status fails).
       </para>
-      <para> Gray statuses are not yet counted in the calculation of the global health status.</para>
+      <para> Grey statuses are not yet counted in the calculation of the global health status.</para>
 
     </section>
 
@@ -224,7 +224,7 @@ The health boxes in the dashboard are clickable. Clicking on a box filters the d
       </para>
       <para>
         The following subsection gives you an overview of specific parts of your
-        &sap; Landscape to show their state. Each status site shows an overview of
+        {sap} Landscape to show their state. Each status site shows an overview of
         the health states (see details in <xref linkend="vl-health-states"/>).
       </para>
     </section>
@@ -234,7 +234,7 @@ The health boxes in the dashboard are clickable. Clicking on a box filters the d
         <para>To display the lists of registered hosts and their details, proceed as follows:</para>
         <procedure>
           <step>
-            <para>Log in to the &t.web;.</para>
+            <para>Log in to the {t.web}.</para>
           </step>
           <step>
             <para>Click the <guimenu>Hosts</guimenu> entry in the left sidebar to show a summary
@@ -256,20 +256,20 @@ The health boxes in the dashboard are clickable. Clicking on a box filters the d
               If the list is too long, shorten it using the filters.
             </para>
             <para>
-              Clicking on a host name opens the corresponding <guimenu>Host details</guimenu> view the following information:
+              Clicking on a host name opens the corresponding <guimenu>Host details</guimenu> view the following infomation:
             </para>
             <itemizedlist xml:id="lst-trento-web-hosts-details">
               <title><guimenu>Host details</guimenu> view</title>
               <listitem>
                 <para><guimenu>Hosts details</guimenu> section shows the
-                  status of both the &t.agent; and the Node Exporter and
+                  status of both the {t.agent} and the Node Exporter and
                   provides the host name, the cluster name (when applicable),
-                  the &t.agent; version and the host IP addresses. </para>
+                  the {t.agent} version and the host IP addresses. </para>
               </listitem>
               <listitem>
-                <para>&saptune; summary section provides information generated by &saptune;. &saptune; comes with &sles4sap;,
-                 and it allows &sap; administrators to ensure that their &sap; hosts are properly configured to run the corresponding &sap; workloads.
-                 The integration of &saptune; in the &trento; console gives the &sap; administrator access to the &saptune; information even when they are not
+                <para>{saptune} summary section provides information generated by {saptune}. {saptune} comes with {sles4sap},
+                 and it allows {sap} administrators to ensure that their {sap} hosts are properly configured to run the corresponding {sap} workloads.
+                 The integration of {saptune} in the {trento} console gives the {sap} administrator access to the {saptune} information even when they are not
                  working at operating system level. The integration supports saptune 3.1.0 and higher, and includes the addition of
                  the host tuning status in the aggregated health status of the host.</para>
                      <figure xml:id="fig-saptune-summary-section">
@@ -280,9 +280,9 @@ The health boxes in the dashboard are clickable. Clicking on a box filters the d
           </imageobject>
         </mediaobject>
       </figure>
-                 <para>If an &sap; workload is running on the host but no saptune or a version lower than 3.1.0 is installed, a warning
-                 is added to the aggregated health status of the host. When &saptune; version 3.1.0 or higher is installed, a details view
-                 shows detailed information about the &saptune; status:</para>
+                 <para>If an {sap} workload is running on the host but no saptune or a version lower than 3.1.0 is installed, a warning
+                 is added to the aggregated health status of the host. When {saptune} version 3.1.0 or higher is installed, a details view
+                 shows detailed information about the {saptune} status:</para>
                        <figure xml:id="fig-saptune-details-view">
         <title>saptune details view</title>
         <mediaobject>
@@ -298,9 +298,9 @@ The health boxes in the dashboard are clickable. Clicking on a box filters the d
                <listitem>
                 <para>Available software updates section shows a summary of the
                 available patches and upgradable packages for the current host
-                when settings for &smlm; are maintained and the host is managed
-                by the &smlm; instance for which connection data has been
-                provided. Refer to 
+                when settings for SUSE Multi-Linux Manager are maintained and the host is managed
+                by the SUSE Multi-Linux Manager instance for which connection data has been
+                provided. Refer to section
                 <xref linkend="sec-integration-with-SUSE-Manager"/> for further details. </para>
               </listitem>
               <listitem>
@@ -323,11 +323,11 @@ The health boxes in the dashboard are clickable. Clicking on a box filters the d
                 the virtual machine, and other information.</para>
               </listitem>
               <listitem>
-                <para><guimenu>&sap; instances</guimenu> section lists the ID, SID, type, features, and instance number of any &sap;
-                  instance running on the host (&netweaver; or &hana;).</para>
+                <para><guimenu>{sap} instances</guimenu> section lists the ID, SID, type, features, and instance number of any {sap}
+                  instance running on the host ({netweaver} or {hana}).</para>
               </listitem>
               <listitem>
-                <para><guimenu>&suse; subscription details</guimenu> section
+                <para><guimenu>{suse} subscription details</guimenu> section
                 lists the different components or modules that are part of the
                 subscription. For each component and module, the section shows
                 the architecture, the version and type, the registration and
@@ -339,19 +339,19 @@ The health boxes in the dashboard are clickable. Clicking on a box filters the d
         </procedure>
       </section>
       <section xml:id="sec-trento-status-pacemakerclusters">
-        <title>Viewing the &pace; cluster status</title>
+        <title>Viewing the {pace} cluster status</title>
         <para>
-          To display a list of all available &pace; clusters and their details, proceed as follows:
+          To display a list of all available {pace} clusters and their details, proceed as follows:
         </para>
         <procedure>
           <step>
-            <para>Log in to the &t.web;.</para>
+            <para>Log in to the {t.web}.</para>
           </step>
           <step>
-            <para>Click the <guimenu>Clusters</guimenu> entry in the left sidebar to show a state summary for all &pace; clusters (see <xref linkend="fig-trento-status-pacemakerclusters"/>).
+            <para>Click the <guimenu>Clusters</guimenu> entry in the left sidebar to show a state summary for all {pace} clusters (see <xref linkend="fig-trento-status-pacemakerclusters"/>).
             </para>
             <figure xml:id="fig-trento-status-pacemakerclusters">
-              <title>&pace; clusters</title>
+              <title>{pace} clusters</title>
               <mediaobject>
                 <imageobject>
                   <imagedata width="80%" fileref="trento-web-pacemaker-view.png" />
@@ -361,8 +361,8 @@ The health boxes in the dashboard are clickable. Clicking on a box filters the d
           </step>
           <step>
             <para>
-              To view the specific &pace; cluster details, click the cluster name in the
-              appropriate column to open the corresponding <guimenu>&pace; cluster details</guimenu> view.
+              To view the specific {pace} cluster details, click the cluster name in the
+              appropriate column to open the corresponding <guimenu>{pace} cluster details</guimenu> view.
               If the list is too long, shorten it using filters.
             </para>
             <para> The detail views of a HANA cluster and an ASCS/ERS cluster are different: </para>
@@ -388,9 +388,9 @@ The health boxes in the dashboard are clickable. Clicking on a box filters the d
                 </para>
               </listitem>
               <listitem>
-                <para><guimenu>&pace; Site details</guimenu> section is split in three
+                <para><guimenu>{pace} Site details</guimenu> section is split in three
                  subsections: one for each HANA site, and another one for cluster nodes without a HANA workload.
-                 For example, in the case of a majority maker in a HANA scale out cluster, each HANA site subsection
+                 For example, in case of a majority maker in a HANA scale out cluster, each HANA site subsection
                  informs about the site role (Primary or Secondary or Failed) and lists the
                  different nodes in the site. Each node entry displays the node status (Online or Maintenance or
                  Other), the roles of the nameserver and indexserver services in that node, the local IPs and any assigned
@@ -421,7 +421,7 @@ The health boxes in the dashboard are clickable. Clicking on a box filters the d
                   The next top-center multi-tab section shows the SAP SID, the
                   Enqueue Server version, whether the ASCS and ERS are running
                   on different hosts or not, and whether the instance
-                  file systems are resource-based or not. When multiple systems
+                  filesystems are resource based or not. When multiple systems
                   share the same cluster, there is a tab for each system in the
                   cluster, and you can scroll left and right to go through the
                   different systems.
@@ -437,7 +437,7 @@ The health boxes in the dashboard are clickable. Clicking on a box filters the d
                 <para>A <guimenu>Node details</guimenu> section shows the following for each
                  node in the cluster: the node status (Online or Maintenance or Other), the host name, the role of the node
                  in the cluster, the assigned virtual IP address and, in case of
-                 resource managed file systems, the full mounting path. To view the attributes and resources associated to that particular node, click <guimenu>Details</guimenu>. Close the view using
+                 resource managed filesystems, the full mounting path. To view the attributes and resources associated to that particular node, click <guimenu>Details</guimenu>. Close the view using
                  the <keycap function="escape"/> key.</para>
                  <para>
                   This section is system specific. It shows the information corresponding to the system selected
@@ -463,15 +463,15 @@ The health boxes in the dashboard are clickable. Clicking on a box filters the d
         </para>
         <procedure>
           <step>
-            <para>Log in to the &t.web;.</para>
+            <para>Log in to the {t.web}.</para>
           </step>
           <step>
             <para>
-              Click the <guimenu>SAP Systems</guimenu> entry in the left sidebar to show a state summary for all &sap; Systems
+              Click the <guimenu>SAP Systems</guimenu> entry in the left sidebar to show a state summary for all {sap} Systems
               (see <xref linkend="fig-trento-status-sapsystems"/>).
             </para>
             <figure xml:id="fig-trento-status-sapsystems">
-              <title>&sap; Systems</title>
+              <title>{sap} Systems</title>
               <mediaobject>
                 <imageobject>
                   <imagedata width="70%" fileref="trento-web-sapsystems-view.png" />
@@ -484,10 +484,10 @@ The health boxes in the dashboard are clickable. Clicking on a box filters the d
               To open the <guimenu>SAP System Details</guimenu>
               view, click the corresponding SID. This view provides the following: </para>
             <itemizedlist xml:id="lst-trento-web-sapsystems-details">
-              <title>&sap; System details</title>
+              <title>{sap} System details</title>
               <listitem>
                 <para>The <guimenu>Name</guimenu> and <guimenu>Type</guimenu> of
-                  the current &sap; System.</para>
+                  the current {sap} System.</para>
               </listitem>
               <listitem>
                 <para>
@@ -499,14 +499,14 @@ The health boxes in the dashboard are clickable. Clicking on a box filters the d
                 <para>
                   <guimenu>Hosts</guimenu> section shows the host name, the IP
                   address, the cloud provider (when applicable), the cluster
-                  name (when applicable), and the &t.agent; version for each
+                  name (when applicable), and the {t.agent} version for each
                   listed host. Click the host name to go to the
                   corresponding <xref linkend="lst-trento-web-hosts-details" />.
                 </para>
               </listitem>
             </itemizedlist>
             <figure>
-              <title>&sap; System Details</title>
+              <title>{sap} System Details</title>
               <mediaobject>
                 <imageobject>
                   <imagedata fileref="trento-web-sapsystemsdetails-view.png"
@@ -518,18 +518,18 @@ The health boxes in the dashboard are clickable. Clicking on a box filters the d
         </procedure>
       </section>
       <section xml:id="sec-trento-status-hanadatabases">
-        <title>Viewing the &hana; database status</title>
+        <title>Viewing the {hana} database status</title>
         <para>
-          To display a list of all available &hana; databases and their details, proceed as follows:
+          To display a list of all available {hana} databases and their details, proceed as follows:
         </para>
         <procedure>
           <step>
-            <para>Log in to the &t.web;.</para>
+            <para>Log in to the {t.web}.</para>
           </step>
           <step>
             <para>
               Click the <guimenu>HANA databases</guimenu> entry in the left sidebar to show a summary
-              of the state for all &hana; databases (see <xref linkend="fig-trento-status-hanadb"/>).
+              of the state for all {hana} databases (see <xref linkend="fig-trento-status-hanadb"/>).
             </para>
             <figure xml:id="fig-trento-status-hanadb">
               <title>HANA databases</title>
@@ -548,11 +548,11 @@ The health boxes in the dashboard are clickable. Clicking on a box filters the d
               <title><guimenu>HANA Database</guimenu> details view</title>
               <listitem>
                 <para>The <guimenu>Name</guimenu> and <guimenu>Type</guimenu> of
-                  this &sap; System.</para>
+                  this {sap} System.</para>
               </listitem>
               <listitem>
                 <para>
-                  <guimenu>Layout</guimenu> section lists all related &hana;
+                  <guimenu>Layout</guimenu> section lists all related {hana}
                   instances with their virtual host names, instance
                   numbers, features (roles), HTTP/HTTPS ports, start priorities,
                   and SAPControl statuses. </para>
@@ -563,7 +563,7 @@ The health boxes in the dashboard are clickable. Clicking on a box filters the d
                   related instances are running. For each host, it
                   shows the host name, the local IP address(es), the cloud
                   provider (when applicable), the cluster name (when
-                  applicable), the system ID, and the &t.agent; version. </para>
+                  applicable), the system ID, and the {t.agent} version. </para>
                 <para> Click on a host name to go to the corresponding
                     <xref linkend="lst-trento-web-hosts-details" />. </para>
               </listitem>

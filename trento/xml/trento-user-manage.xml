@@ -9,14 +9,14 @@
 <section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="sec-trento-user-management">
   <title>User management</title>
   <para>
-    &trento; provides a local permission-based user management feature with
+    {trento} provides a local permission-based user management feature with
     optional multi-factor authentication. This feature enables segregation of
-    duties in the &trento; interface and ensures that only authorized users with
+    duties in the {trento} interface and ensures that only authorized users with
     the right permissions can access it.
   </para>
   <para>
     User management actions are performed in the <guimenu>Users</guimenu> view
-    in the left-hand panel of the &t.web;.
+    in the left-hand side panel of the {t.web}.
   </para>
   <para>
     By default, a newly created user is granted display access rights except for
@@ -87,7 +87,7 @@
     </listitem>
     <listitem>
       <formalpara>
-        <title>SAP Basis administrator with &trento; display-only access:</title>
+        <title>SAP Basis administrator with {trento} display-only access:</title>
         <para>
           users with default permissions
         </para>
@@ -95,7 +95,7 @@
     </listitem>
     <listitem>
       <formalpara>
-        <title>SAP Basis administrator with &trento; configuration access:</title>
+        <title>SAP Basis administrator with {trento} configuration access:</title>
         <para>
           users with <constant>all:checks_selection</constant>, <constant>all:tags</constant> and
           <constant>all:settings</constant> permissions
@@ -104,7 +104,7 @@
     </listitem>
     <listitem>
       <formalpara>
-        <title>SAP Basis administrator with &trento; operation access:</title>
+        <title>SAP Basis administrator with {trento} operation access:</title>
         <para>
           users with <constant>all:check_execution</constant> and <constant>cleanup:all</constant> permissions.
         </para>
@@ -121,7 +121,7 @@
     case all other access to the console is lost. If the password of the default
     admin user is lost, it can be reset by updating the Helm chart or the web
     component configuration, depending on which deployment method was used to
-    install &t.server;.
+    install {t.server}.
   </para>
   <para>
     User passwords, including the default admin user password, must follow the rules below:
@@ -170,7 +170,7 @@
       user, keeping its password safe is imperative. If the default admin user's
       password is compromised, reset it immediately by updating the Helm chart
       or the web component configuration, depending on which deployment method
-      was used to install &t.server;.
+      was used to install {t.server}.
     </para>
   </note>
   <para>

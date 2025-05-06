@@ -75,9 +75,9 @@
           <programlisting>
 HELM_EXPERIMENTAL_OCI=1 helm ... \
    --set trento-web.oidc.enabled=true \
-   --set trento-web.oidc.clientId=&lt;OIDC_CLIENT_ID&gt; \
-   --set trento-web.oidc.clientSecret=&lt;OIDC_CLIENT_SECRET&gt; \
-   --set trento-web.oidc.baseUrl=&lt;OIDC_BASE_URL&gt;
+   --set trento-web.oidc.clientId={lt}OIDC_CLIENT_ID{gt} \
+   --set trento-web.oidc.clientSecret={lt}OIDC_CLIENT_SECRET{gt} \
+   --set trento-web.oidc.baseUrl={lt}OIDC_BASE_URL{gt}
 </programlisting>
         </listitem>
       </orderedlist>
@@ -100,9 +100,9 @@ HELM_EXPERIMENTAL_OCI=1 helm ... \
           </para>
           <programlisting>
 ENABLE_OIDC=true
-OIDC_CLIENT_ID=&lt;OIDC_CLIENT_ID&gt;
-OIDC_CLIENT_SECRET=&lt;OIDC_CLIENT_SECRET&gt;
-OIDC_BASE_URL=&lt;OIDC_BASE_URL&gt;
+OIDC_CLIENT_ID={lt}OIDC_CLIENT_ID{gt}
+OIDC_CLIENT_SECRET={lt}OIDC_CLIENT_SECRET{gt}
+OIDC_BASE_URL={lt}OIDC_BASE_URL{gt}
 </programlisting>
         </listitem>
         <listitem>
@@ -114,7 +114,7 @@ OIDC_BASE_URL=&lt;OIDC_BASE_URL&gt;
             variable for that:
           </para>
           <programlisting>
-OIDC_CALLBACK_URL=&lt;OIDC_CALLBACK_URL&gt;
+OIDC_CALLBACK_URL={lt}OIDC_CALLBACK_URL{gt}
 </programlisting>
         </listitem>
         <listitem>
@@ -151,18 +151,18 @@ docker run -d \
 -p 4000:4000 \
 --name trento-web \
 --network trento-net \
---add-host &quot;host.docker.internal:host-gateway&quot; \
+--add-host {quot}host.docker.internal:host-gateway{quot} \
 
 ...[other settings]...
 
 # Required:
 -e ENABLE_OIDC=true \
--e OIDC_CLIENT_ID=&lt;OIDC_CLIENT_ID&gt; \
--e OIDC_CLIENT_SECRET=&lt;OIDC_CLIENT_SECRET&gt; \
--e OIDC_BASE_URL=&lt;OIDC_BASE_URL&gt; \
+-e OIDC_CLIENT_ID={lt}OIDC_CLIENT_ID{gt} \
+-e OIDC_CLIENT_SECRET={lt}OIDC_CLIENT_SECRET{gt} \
+-e OIDC_BASE_URL={lt}OIDC_BASE_URL{gt} \
 
 # Optional:
--e OIDC_CALLBACK_URL=&lt;OIDC_CALLBACK_URL&gt; \
+-e OIDC_CALLBACK_URL={lt}OIDC_CALLBACK_URL{gt} \
 
 ...[other settings]...
 </programlisting>
@@ -242,19 +242,19 @@ docker run -d \
           <programlisting>
 HELM_EXPERIMENTAL_OCI=1 helm ... \
    --set trento-web.oauth2.enabled=true \
-   --set trento-web.oauth2.clientId=&lt;OAUTH2_CLIENT_ID&gt; \
-   --set trento-web.oauth2.clientSecret=&lt;OAUTH2_CLIENT_SECRET&gt; \
-   --set trento-web.oauth2.baseUrl=&lt;OAUTH2_BASE_URL&gt; \
-   --set trento-web.oauth2.authorizeUrl=&lt;OAUTH2_AUTHORIZE_URL&gt; \
-   --set trento-web.oauth2.tokenUrl=&lt;OAUTH2_TOKEN_URL&gt; \
-   --set trento-web.oauth2.userUrl=&lt;OAUTH2_USER_URL&gt;
+   --set trento-web.oauth2.clientId={lt}OAUTH2_CLIENT_ID{gt} \
+   --set trento-web.oauth2.clientSecret={lt}OAUTH2_CLIENT_SECRET{gt} \
+   --set trento-web.oauth2.baseUrl={lt}OAUTH2_BASE_URL{gt} \
+   --set trento-web.oauth2.authorizeUrl={lt}OAUTH2_AUTHORIZE_URL{gt} \
+   --set trento-web.oauth2.tokenUrl={lt}OAUTH2_TOKEN_URL{gt} \
+   --set trento-web.oauth2.userUrl={lt}OAUTH2_USER_URL{gt}
 </programlisting>
           <para>
             Additionally, the following optional values are available:
           </para>
           <programlisting>
 HELM_EXPERIMENTAL_OCI=1 helm ... \
-   --set trento-web.oauth2.scopes=&lt;OAUTH2_SCOPES&gt;
+   --set trento-web.oauth2.scopes={lt}OAUTH2_SCOPES{gt}
 </programlisting>
         </listitem>
       </orderedlist>
@@ -278,16 +278,16 @@ HELM_EXPERIMENTAL_OCI=1 helm ... \
           <programlisting>
 # Required:
 ENABLE_OAUTH2=true
-OAUTH2_CLIENT_ID=&lt;OAUTH2_CLIENT_ID&gt;
-OAUTH2_CLIENT_SECRET=&lt;OAUTH2_CLIENT_SECRET&gt;
-OAUTH2_BASE_URL=&lt;OAUTH2_BASE_URL&gt;
-OAUTH2_AUTHORIZE_URL=&lt;OAUTH2_AUTHORIZE_URL&gt;
-OAUTH2_TOKEN_URL=&lt;OAUTH2_TOKEN_URL&gt;
-OAUTH2_USER_URL=&lt;OAUTH2_USER_URL&gt;
+OAUTH2_CLIENT_ID={lt}OAUTH2_CLIENT_ID{gt}
+OAUTH2_CLIENT_SECRET={lt}OAUTH2_CLIENT_SECRET{gt}
+OAUTH2_BASE_URL={lt}OAUTH2_BASE_URL{gt}
+OAUTH2_AUTHORIZE_URL={lt}OAUTH2_AUTHORIZE_URL{gt}
+OAUTH2_TOKEN_URL={lt}OAUTH2_TOKEN_URL{gt}
+OAUTH2_USER_URL={lt}OAUTH2_USER_URL{gt}
 
 # Optional:
-OAUTH2_SCOPES=&lt;OAUTH2_SCOPES&gt;
-OAUTH2_CALLBACK_URL=&lt;OAUTH2_CALLBACK_URL&gt;
+OAUTH2_SCOPES={lt}OAUTH2_SCOPES{gt}
+OAUTH2_CALLBACK_URL={lt}OAUTH2_CALLBACK_URL{gt}
 </programlisting>
         </listitem>
         <listitem>
@@ -325,21 +325,21 @@ docker run -d \
 -p 4000:4000 \
 --name trento-web \
 --network trento-net \
---add-host &quot;host.docker.internal:host-gateway&quot; \
+--add-host {quot}host.docker.internal:host-gateway{quot} \
 
 ...[other settings]...
 
 -e ENABLE_OAUTH2=true \
--e OAUTH2_CLIENT_ID=&lt;OAUTH2_CLIENT_ID&gt; \
--e OAUTH2_CLIENT_SECRET=&lt;OAUTH2_CLIENT_SECRET&gt; \
--e OAUTH2_BASE_URL=&lt;OAUTH2_BASE_URL&gt; \
--e OAUTH2_AUTHORIZE_URL=&lt;OAUTH2_AUTHORIZE_URL&gt; \
--e OAUTH2_TOKEN_URL=&lt;OAUTH2_TOKEN_URL&gt; \
--e OAUTH2_USER_URL=&lt;OAUTH2_USER_URL&gt; \
+-e OAUTH2_CLIENT_ID={lt}OAUTH2_CLIENT_ID{gt} \
+-e OAUTH2_CLIENT_SECRET={lt}OAUTH2_CLIENT_SECRET{gt} \
+-e OAUTH2_BASE_URL={lt}OAUTH2_BASE_URL{gt} \
+-e OAUTH2_AUTHORIZE_URL={lt}OAUTH2_AUTHORIZE_URL{gt} \
+-e OAUTH2_TOKEN_URL={lt}OAUTH2_TOKEN_URL{gt} \
+-e OAUTH2_USER_URL={lt}OAUTH2_USER_URL{gt} \
 
 # Optional:
--e OAUTH2_SCOPES=&lt;OAUTH2_SCOPES&gt; \
--e OAUTH2_CALLBACK_URL=&lt;OAUTH2_CALLBACK_URL&gt; \
+-e OAUTH2_SCOPES={lt}OAUTH2_SCOPES{gt} \
+-e OAUTH2_CALLBACK_URL={lt}OAUTH2_CALLBACK_URL{gt} \
 
 ...[other settings]...
 </programlisting>
@@ -623,9 +623,9 @@ curl https://#{TRENTO_WEB_ORIGIN}/api/public_keys
           <programlisting>
 HELM_EXPERIMENTAL_OCI=1 helm ... \
    --set trento-web.saml.enabled=true \
-   --set trento-web.saml.idpId=&lt;SAML_IDP_ID&gt; \
-   --set trento-web.saml.spId=&lt;SAML_SP_ID&gt; \
-   --set trento-web.saml.metadataUrl=&lt;SAML_METADATA_URL&gt;
+   --set trento-web.saml.idpId={lt}SAML_IDP_ID{gt} \
+   --set trento-web.saml.spId={lt}SAML_SP_ID{gt} \
+   --set trento-web.saml.metadataUrl={lt}SAML_METADATA_URL{gt}
 </programlisting>
           <para>
             To use the <option>SAML_METADATA_CONTENT</option> option
@@ -634,31 +634,31 @@ HELM_EXPERIMENTAL_OCI=1 helm ... \
           <programlisting>
 HELM_EXPERIMENTAL_OCI=1 helm ... \
    --set trento-web.saml.enabled=true \
-   --set trento-web.saml.idpId=&lt;SAML_IDP_ID&gt; \
-   --set trento-web.saml.spId=&lt;SAML_SP_ID&gt; \
-   --set trento-web.saml.metadataContent=&lt;SAML_METADATA_CONTENT&gt;
+   --set trento-web.saml.idpId={lt}SAML_IDP_ID{gt} \
+   --set trento-web.saml.spId={lt}SAML_SP_ID{gt} \
+   --set trento-web.saml.metadataContent={lt}SAML_METADATA_CONTENT{gt}
 </programlisting>
           <para>
             Additionally, the following optional values are available:
           </para>
           <programlisting>
 HELM_EXPERIMENTAL_OCI=1 helm ... \
-   --set trento-web.saml.idpNameIdFormat=&lt;SAML_IDP_NAMEID_FORMAT&gt; \
-   --set trento-web.saml.spDir=&lt;SAML_SP_DIR&gt; \
-   --set trento-web.saml.spEntityId=&lt;SAML_SP_ENTITY_ID&gt; \
-   --set trento-web.saml.spContactName=&lt;SAML_SP_CONTACT_NAME&gt; \
-   --set trento-web.saml.spContactEmail=&lt;SAML_SP_CONTACT_EMAIL&gt; \
-   --set trento-web.saml.spOrgName=&lt;SAML_SP_ORG_NAME&gt; \
-   --set trento-web.saml.spOrgDisplayName=&lt;SAML_SP_ORG_DISPLAYNAME&gt; \
-   --set trento-web.saml.spOrgUrl=&lt;SAML_SP_ORG_URL&gt; \
-   --set trento-web.saml.usernameAttrName=&lt;SAML_USERNAME_ATTR_NAME&gt; \
-   --set trento-web.saml.emailAttrName=&lt;SAML_EMAIL_ATTR_NAME&gt; \
-   --set trento-web.saml.firstNameAttrName=&lt;SAML_FIRSTNAME_ATTR_NAME&gt; \
-   --set trento-web.saml.lastNameAttrName=&lt;SAML_LASTNAME_ATTR_NAME&gt; \
-   --set trento-web.saml.signRequests=&lt;SAML_SIGN_REQUESTS&gt; \
-   --set trento-web.saml.signMetadata=&lt;SAML_SIGN_METADATA&gt; \
-   --set trento-web.saml.signedAssertion=&lt;SAML_SIGNED_ASSERTION&gt; \
-   --set trento-web.saml.signedEnvelopes=&lt;SAML_SIGNED_ENVELOPES&gt;
+   --set trento-web.saml.idpNameIdFormat={lt}SAML_IDP_NAMEID_FORMAT{gt} \
+   --set trento-web.saml.spDir={lt}SAML_SP_DIR{gt} \
+   --set trento-web.saml.spEntityId={lt}SAML_SP_ENTITY_ID{gt} \
+   --set trento-web.saml.spContactName={lt}SAML_SP_CONTACT_NAME{gt} \
+   --set trento-web.saml.spContactEmail={lt}SAML_SP_CONTACT_EMAIL{gt} \
+   --set trento-web.saml.spOrgName={lt}SAML_SP_ORG_NAME{gt} \
+   --set trento-web.saml.spOrgDisplayName={lt}SAML_SP_ORG_DISPLAYNAME{gt} \
+   --set trento-web.saml.spOrgUrl={lt}SAML_SP_ORG_URL{gt} \
+   --set trento-web.saml.usernameAttrName={lt}SAML_USERNAME_ATTR_NAME{gt} \
+   --set trento-web.saml.emailAttrName={lt}SAML_EMAIL_ATTR_NAME{gt} \
+   --set trento-web.saml.firstNameAttrName={lt}SAML_FIRSTNAME_ATTR_NAME{gt} \
+   --set trento-web.saml.lastNameAttrName={lt}SAML_LASTNAME_ATTR_NAME{gt} \
+   --set trento-web.saml.signRequests={lt}SAML_SIGN_REQUESTS{gt} \
+   --set trento-web.saml.signMetadata={lt}SAML_SIGN_METADATA{gt} \
+   --set trento-web.saml.signedAssertion={lt}SAML_SIGNED_ASSERTION{gt} \
+   --set trento-web.saml.signedEnvelopes={lt}SAML_SIGNED_ENVELOPES{gt}
 </programlisting>
         </listitem>
       </orderedlist>
@@ -682,29 +682,29 @@ HELM_EXPERIMENTAL_OCI=1 helm ... \
           <programlisting>
 # Required:
 ENABLE_SAML=true
-SAML_IDP_ID=&lt;SAML_IDP_ID&gt;
-SAML_SP_ID=&lt;SAML_SP_ID&gt;
+SAML_IDP_ID={lt}SAML_IDP_ID{gt}
+SAML_SP_ID={lt}SAML_SP_ID{gt}
 # Only SAML_METADATA_URL or SAML_METADATA_CONTENT must by provided
-SAML_METADATA_URL=&lt;SAML_METADATA_URL&gt;
-SAML_METADATA_CONTENT=&lt;SAML_METADATA_CONTENT&gt;
+SAML_METADATA_URL={lt}SAML_METADATA_URL{gt}
+SAML_METADATA_CONTENT={lt}SAML_METADATA_CONTENT{gt}
 
 # Optional:
-SAML_IDP_NAMEID_FORMAT=&lt;SAML_IDP_NAMEID_FORMAT&gt;
-SAML_SP_DIR=&lt;SAML_SP_DIR&gt;
-SAML_SP_ENTITY_ID=&lt;SAML_SP_ENTITY_ID&gt;
-SAML_SP_CONTACT_NAME=&lt;SAML_SP_CONTACT_NAME&gt;
-SAML_SP_CONTACT_EMAIL=&lt;SAML_SP_CONTACT_EMAIL&gt;
-SAML_SP_ORG_NAME=&lt;SAML_SP_ORG_NAME&gt;
-SAML_SP_ORG_DISPLAYNAME=&lt;SAML_SP_ORG_DISPLAYNAME&gt;
-SAML_SP_ORG_URL=&lt;SAML_SP_ORG_URL&gt;
-SAML_USERNAME_ATTR_NAME=&lt;SAML_USERNAME_ATTR_NAME&gt;
-SAML_EMAIL_ATTR_NAME=&lt;SAML_EMAIL_ATTR_NAME&gt;
-SAML_FIRSTNAME_ATTR_NAME=&lt;SAML_FIRSTNAME_ATTR_NAME&gt;
-SAML_LASTNAME_ATTR_NAME=&lt;SAML_LASTNAME_ATTR_NAME&gt;
-SAML_SIGN_REQUESTS=&lt;SAML_SIGN_REQUESTS&gt;
-SAML_SIGN_METADATA=&lt;SAML_SIGN_METADATA&gt;
-SAML_SIGNED_ASSERTION=&lt;SAML_SIGNED_ASSERTION&gt;
-SAML_SIGNED_ENVELOPES=&lt;SAML_SIGNED_ENVELOPES&gt;
+SAML_IDP_NAMEID_FORMAT={lt}SAML_IDP_NAMEID_FORMAT{gt}
+SAML_SP_DIR={lt}SAML_SP_DIR{gt}
+SAML_SP_ENTITY_ID={lt}SAML_SP_ENTITY_ID{gt}
+SAML_SP_CONTACT_NAME={lt}SAML_SP_CONTACT_NAME{gt}
+SAML_SP_CONTACT_EMAIL={lt}SAML_SP_CONTACT_EMAIL{gt}
+SAML_SP_ORG_NAME={lt}SAML_SP_ORG_NAME{gt}
+SAML_SP_ORG_DISPLAYNAME={lt}SAML_SP_ORG_DISPLAYNAME{gt}
+SAML_SP_ORG_URL={lt}SAML_SP_ORG_URL{gt}
+SAML_USERNAME_ATTR_NAME={lt}SAML_USERNAME_ATTR_NAME{gt}
+SAML_EMAIL_ATTR_NAME={lt}SAML_EMAIL_ATTR_NAME{gt}
+SAML_FIRSTNAME_ATTR_NAME={lt}SAML_FIRSTNAME_ATTR_NAME{gt}
+SAML_LASTNAME_ATTR_NAME={lt}SAML_LASTNAME_ATTR_NAME{gt}
+SAML_SIGN_REQUESTS={lt}SAML_SIGN_REQUESTS{gt}
+SAML_SIGN_METADATA={lt}SAML_SIGN_METADATA{gt}
+SAML_SIGNED_ASSERTION={lt}SAML_SIGNED_ASSERTION{gt}
+SAML_SIGNED_ENVELOPES={lt}SAML_SIGNED_ENVELOPES{gt}
 </programlisting>
         </listitem>
         <listitem>
@@ -741,34 +741,34 @@ docker run -d \
 -p 4000:4000 \
 --name trento-web \
 --network trento-net \
---add-host &quot;host.docker.internal:host-gateway&quot; \
+--add-host {quot}host.docker.internal:host-gateway{quot} \
 
 ...[other settings]...
 
 -e ENABLE_SAML=true
--e SAML_IDP_ID=&lt;SAML_IDP_ID&gt; \
--e SAML_SP_ID=&lt;SAML_SP_ID&gt; \
+-e SAML_IDP_ID={lt}SAML_IDP_ID{gt} \
+-e SAML_SP_ID={lt}SAML_SP_ID{gt} \
 # Only SAML_METADATA_URL or SAML_METADATA_CONTENT must by provided
--e SAML_METADATA_URL=&lt;SAML_METADATA_URL&gt; \
--e SAML_METADATA_CONTENT=&lt;SAML_METADATA_CONTENT&gt; \
+-e SAML_METADATA_URL={lt}SAML_METADATA_URL{gt} \
+-e SAML_METADATA_CONTENT={lt}SAML_METADATA_CONTENT{gt} \
 
 # Optional:
--e SAML_IDP_NAMEID_FORMAT=&lt;SAML_IDP_NAMEID_FORMAT&gt; \
--e SAML_SP_DIR=&lt;SAML_SP_DIR&gt; \
--e SAML_SP_ENTITY_ID=&lt;SAML_SP_ENTITY_ID&gt; \
--e SAML_SP_CONTACT_NAME=&lt;SAML_SP_CONTACT_NAME&gt; \
--e SAML_SP_CONTACT_EMAIL=&lt;SAML_SP_CONTACT_EMAIL&gt; \
--e SAML_SP_ORG_NAME=&lt;SAML_SP_ORG_NAME&gt; \
--e SAML_SP_ORG_DISPLAYNAME=&lt;SAML_SP_ORG_DISPLAYNAME&gt; \
--e SAML_SP_ORG_URL=&lt;SAML_SP_ORG_URL&gt; \
--e SAML_USERNAME_ATTR_NAME=&lt;SAML_USERNAME_ATTR_NAME&gt; \
--e SAML_EMAIL_ATTR_NAME=&lt;SAML_EMAIL_ATTR_NAME&gt; \
--e SAML_FIRSTNAME_ATTR_NAME=&lt;SAML_FIRSTNAME_ATTR_NAME&gt; \
--e SAML_LASTNAME_ATTR_NAME=&lt;SAML_LASTNAME_ATTR_NAME&gt; \
--e SAML_SIGN_REQUESTS=&lt;SAML_SIGN_REQUESTS&gt; \
--e SAML_SIGN_METADATA=&lt;SAML_SIGN_METADATA&gt; \
--e SAML_SIGNED_ASSERTION=&lt;SAML_SIGNED_ASSERTION&gt; \
--e SAML_SIGNED_ENVELOPES=&lt;SAML_SIGNED_ENVELOPES&gt; \
+-e SAML_IDP_NAMEID_FORMAT={lt}SAML_IDP_NAMEID_FORMAT{gt} \
+-e SAML_SP_DIR={lt}SAML_SP_DIR{gt} \
+-e SAML_SP_ENTITY_ID={lt}SAML_SP_ENTITY_ID{gt} \
+-e SAML_SP_CONTACT_NAME={lt}SAML_SP_CONTACT_NAME{gt} \
+-e SAML_SP_CONTACT_EMAIL={lt}SAML_SP_CONTACT_EMAIL{gt} \
+-e SAML_SP_ORG_NAME={lt}SAML_SP_ORG_NAME{gt} \
+-e SAML_SP_ORG_DISPLAYNAME={lt}SAML_SP_ORG_DISPLAYNAME{gt} \
+-e SAML_SP_ORG_URL={lt}SAML_SP_ORG_URL{gt} \
+-e SAML_USERNAME_ATTR_NAME={lt}SAML_USERNAME_ATTR_NAME{gt} \
+-e SAML_EMAIL_ATTR_NAME={lt}SAML_EMAIL_ATTR_NAME{gt} \
+-e SAML_FIRSTNAME_ATTR_NAME={lt}SAML_FIRSTNAME_ATTR_NAME{gt} \
+-e SAML_LASTNAME_ATTR_NAME={lt}SAML_LASTNAME_ATTR_NAME{gt} \
+-e SAML_SIGN_REQUESTS={lt}SAML_SIGN_REQUESTS{gt} \
+-e SAML_SIGN_METADATA={lt}SAML_SIGN_METADATA{gt} \
+-e SAML_SIGNED_ASSERTION={lt}SAML_SIGNED_ASSERTION{gt} \
+-e SAML_SIGNED_ENVELOPES={lt}SAML_SIGNED_ENVELOPES{gt} \
 
 ...[other settings]...
 </programlisting>
@@ -918,7 +918,7 @@ docker run -d \
           </term>
           <listitem>
             <para>
-              SAML user profile &quot;username&quot; attribute field
+              SAML user profile {quot}username{quot} attribute field
               name. This attribute must exist in the IDP user (default
               value: <literal>username</literal>)
             </para>
@@ -930,7 +930,7 @@ docker run -d \
           </term>
           <listitem>
             <para>
-              SAML user profile &quot;email&quot; attribute field name.
+              SAML user profile {quot}email{quot} attribute field name.
               This attribute must exist in the IDP user (default value:
               <literal>email</literal>)
             </para>
@@ -942,7 +942,7 @@ docker run -d \
           </term>
           <listitem>
             <para>
-              SAML user profile &quot;first name&quot; attribute field
+              SAML user profile {quot}first name{quot} attribute field
               name. This attribute must exist in the IDP user (default
               value: <literal>firstName</literal>)
             </para>
@@ -954,7 +954,7 @@ docker run -d \
           </term>
           <listitem>
             <para>
-              SAML user profile &quot;last name&quot; attribute field
+              SAML user profile {quot}last name{quot} attribute field
               name. This attribute must exist in the IDP user (default
               value: <literal>lastName</literal>)
             </para>
