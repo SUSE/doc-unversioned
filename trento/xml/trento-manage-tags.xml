@@ -10,7 +10,7 @@
 <section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="sec-trento-manage-tags">
       <title>Managing tags</title>
       <para>
-       Tags are used to label specific objects with location, owner, etc. The objects can be hosts, clusters, databases or &sap; systems.
+       Tags are used to label specific objects with location, owner, etc. The objects can be hosts, clusters, databases or {sap} systems.
        Tags make it easier to distinguish and show all these different objects, making
        your lists more readable and searchable. You can use any text you like to create
        your tags except blank spaces and special characters other than + - = . , _ : and @.
@@ -27,7 +27,7 @@
         <procedure>
           <step>
             <para>
-              Log in to &trento;.
+              Log in to {trento}.
             </para>
           </step>
           <step>
@@ -70,7 +70,7 @@
         <procedure>
           <step>
             <para>
-              Log in to &trento;.
+              Log in to {trento}.
             </para>
           </step>
           <step>
@@ -106,7 +106,7 @@ In the Trento dashboard, go to the overview of the desired object. For example, 
         <procedure>
           <step>
             <para>
-              In the &trento; dashboard, go to the desired overview.
+              In the {trento} dashboard, go to the desired overview.
             </para>
           </step>
           <step>

@@ -8,10 +8,10 @@
 ]>
 
 <section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="sec-trento-compatibility-matrix">
-  <title>Compatibility matrix between &t.server; and &t.agent;s</title>
+  <title>Compatibility matrix between {t.server} and {t.agent}s</title>
   <para></para>
   <table>
-    <title>Compatibility matrix between &t.server; and &t.agent;s</title>
+    <title>Compatibility matrix between {t.server} and {t.agent}s</title>
     <tgroup cols="10">
       <colspec colname="agent-start" colnum="1"/>
       <colspec colname="agent-end" colnum="2"/>
@@ -28,10 +28,10 @@
       <thead>
         <row>
           <entry morerows="1" spanname="tagent">
-            <para>&t.agent;</para>
+            <para>{t.agent}</para>
             <para>Compatibility matrix</para>
           </entry>
-          <entry spanname="tserver">&t.server; versions</entry>
+          <entry spanname="tserver">{t.server} versions</entry>
         </row>
         <row>
 <!--            <entry></entry>-->
@@ -49,7 +49,7 @@
         <row>
           <!-- TIP: If you add more rows, raise add +1 to the morerows attribute value -->
           <entry morerows="7" align="center" valign="middle">
-            <para>&t.agent;</para>
+            <para>{t.agent}</para>
             <para>versions</para>
           </entry>
           <entry>1.0</entry>

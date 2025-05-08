@@ -9,7 +9,7 @@
 
 <section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="sec-trento-rotating-apikeys">
     <title>Rotating API keys</title>
-    <para>Communication from the &t.agent; to the &t.server; is secured by an API key
+    <para>Communication from the {t.agent} to the {t.server} is secured by a API key
      that must be provided in the agent configuration file.</para>
    <para>By default, the API key does not have an expiration date. You can set up a custom expiration date to increase the
     overall security of the setup and meet internal security requirements.</para>
