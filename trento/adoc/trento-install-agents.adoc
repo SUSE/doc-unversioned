@@ -15,10 +15,9 @@ image::trento-web-login.png[trento-web-login,scaledwidth=30.0%]
 +
 . Enter the credentials for the `+admin+` user (specified during
 installation of {trserver}).
-. Click Login.
-. When you are logged in, go to Settings:
+. Click *Login*.
+. When you are logged in, go to *Settings*:
 +
-.
 image::trento-settings-apikey.png[trento-settings-apikey,scaledwidth=80.0%]
 . Click the **Copy** button to copy the key to the clipboard.
 
