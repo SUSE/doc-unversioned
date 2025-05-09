@@ -6,9 +6,6 @@ include::product-attributes.adoc[]
 
 {trento} is the official version of the Trento community project. It is a comprehensive monitoring solution consisting of two main components: the {trserver} and the {tragent}. {trento} provides the following functionality and features:
 
-// toms 2024-04-18 (change#9): maybe a reference here about improved HANA multitenant support?
-// from https://confluence.suse.com/x/uoOyN
-
 * A user-friendly reactive Web interface for {sap} Basis administrators.
 * Automated discovery of {pace} clusters using SAPHanaSR classic or angi as well as different fencing mechanisms, including diskless SBD.
 * Automated discovery of SAP systems running on ABAP or JAVA stacks and HANA databases.

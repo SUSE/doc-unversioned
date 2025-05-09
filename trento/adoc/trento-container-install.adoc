@@ -3,13 +3,12 @@ include::product-attributes.adoc[]
 
 == Containerized deployment
 
-A containerized deployment of Trento Server is identical to a systemd
+A containerized deployment of  is identical to a systemd
 deployment. However, the web and check engine components are deployed as
 Docker containers.
 
-Follow the steps in link:#systemd-deployment[???], but skip the *Install
-Trento using RPM packages* step and follow the procedures in
-link:#install-trento-using-docker[Install Trento using Docker].
+Follow the steps in <<sec-systemd-deployment>>, but skip the *Install
+Trento using RPM packages* step and follow the procedures as described below.
 
 === Install Trento using Docker
 

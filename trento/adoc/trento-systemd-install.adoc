@@ -1,6 +1,7 @@
 include::attributes-generic.adoc[]
 include::product-attributes.adoc[]
 
+[[sec-systemd-deployment]]
 == systemd deployment
 
 A systemd installation of Trento Server, based on RPM packages, can be
@@ -136,7 +137,7 @@ refers to the location where Trento web service is running.
 +
 [source,bash]
 ----
-systemctl enable --now prometheus
+# systemctl enable --now prometheus
 ----
 . If firewalld is running, allow Prometheus to be accessible and add an
 exception to firewalld:
