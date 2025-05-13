@@ -57,9 +57,9 @@ installation command:
 ....
 HELM_EXPERIMENTAL_OCI=1 helm ... \
    --set trento-web.oidc.enabled=true \
-   --set trento-web.oidc.clientId={lt}OIDC_CLIENT_ID{gt} \
-   --set trento-web.oidc.clientSecret={lt}OIDC_CLIENT_SECRET{gt} \
-   --set trento-web.oidc.baseUrl={lt}OIDC_BASE_URL{gt}
+   --set trento-web.oidc.clientId=<OIDC_CLIENT_ID> \
+   --set trento-web.oidc.clientSecret=<OIDC_CLIENT_SECRET> \
+   --set trento-web.oidc.baseUrl=<OIDC_BASE_URL>
 ....
 
 ==== Enabling OpenID Connect when using RPM packages
@@ -73,9 +73,9 @@ variables are:
 +
 ....
 ENABLE_OIDC=true
-OIDC_CLIENT_ID={lt}OIDC_CLIENT_ID{gt}
-OIDC_CLIENT_SECRET={lt}OIDC_CLIENT_SECRET{gt}
-OIDC_BASE_URL={lt}OIDC_BASE_URL{gt}
+OIDC_CLIENT_ID=<OIDC_CLIENT_ID>
+OIDC_CLIENT_SECRET=<OIDC_CLIENT_SECRET>
+OIDC_BASE_URL=<OIDC_BASE_URL>
 ....
 . Optionally, add the OIDC callback URL to the configuration. This can
 be useful if for some reason the default callback URL cannot be used,
@@ -83,7 +83,7 @@ for example, if `+http+` is used instead of `+https+`. Use the next
 variable for that:
 +
 ....
-OIDC_CALLBACK_URL={lt}OIDC_CALLBACK_URL{gt}
+OIDC_CALLBACK_URL=<OIDC_CALLBACK_URL>
 ....
 . Restart the application.
 
@@ -109,18 +109,18 @@ docker run -d \
 -p 4000:4000 \
 --name trento-web \
 --network trento-net \
---add-host {quot}host.docker.internal:host-gateway{quot} \
+--add-host "host.docker.internal:host-gateway" \
 
 ...[other settings]...
 
 # Required:
 -e ENABLE_OIDC=true \
--e OIDC_CLIENT_ID={lt}OIDC_CLIENT_ID{gt} \
--e OIDC_CLIENT_SECRET={lt}OIDC_CLIENT_SECRET{gt} \
--e OIDC_BASE_URL={lt}OIDC_BASE_URL{gt} \
+-e OIDC_CLIENT_ID=<OIDC_CLIENT_ID> \
+-e OIDC_CLIENT_SECRET=<OIDC_CLIENT_SECRET> \
+-e OIDC_BASE_URL=<OIDC_BASE_URL> \
 
 # Optional:
--e OIDC_CALLBACK_URL={lt}OIDC_CALLBACK_URL{gt} \
+-e OIDC_CALLBACK_URL=<OIDC_CALLBACK_URL> \
 
 ...[other settings]...
 ----
@@ -160,19 +160,19 @@ installation command:
 ....
 HELM_EXPERIMENTAL_OCI=1 helm ... \
    --set trento-web.oauth2.enabled=true \
-   --set trento-web.oauth2.clientId={lt}OAUTH2_CLIENT_ID{gt} \
-   --set trento-web.oauth2.clientSecret={lt}OAUTH2_CLIENT_SECRET{gt} \
-   --set trento-web.oauth2.baseUrl={lt}OAUTH2_BASE_URL{gt} \
-   --set trento-web.oauth2.authorizeUrl={lt}OAUTH2_AUTHORIZE_URL{gt} \
-   --set trento-web.oauth2.tokenUrl={lt}OAUTH2_TOKEN_URL{gt} \
-   --set trento-web.oauth2.userUrl={lt}OAUTH2_USER_URL{gt}
+   --set trento-web.oauth2.clientId=<OAUTH2_CLIENT_ID> \
+   --set trento-web.oauth2.clientSecret=<OAUTH2_CLIENT_SECRET> \
+   --set trento-web.oauth2.baseUrl=<OAUTH2_BASE_URL> \
+   --set trento-web.oauth2.authorizeUrl=<OAUTH2_AUTHORIZE_URL> \
+   --set trento-web.oauth2.tokenUrl=<OAUTH2_TOKEN_URL> \
+   --set trento-web.oauth2.userUrl=<OAUTH2_USER_URL>
 ....
 +
 Additionally, the following optional values are available:
 +
 ....
 HELM_EXPERIMENTAL_OCI=1 helm ... \
-   --set trento-web.oauth2.scopes={lt}OAUTH2_SCOPES{gt}
+   --set trento-web.oauth2.scopes=<OAUTH2_SCOPES>
 ....
 
 [[enabling-oauth-20-when-using-rpm-packages]]
@@ -188,16 +188,16 @@ variables are:
 ....
 # Required:
 ENABLE_OAUTH2=true
-OAUTH2_CLIENT_ID={lt}OAUTH2_CLIENT_ID{gt}
-OAUTH2_CLIENT_SECRET={lt}OAUTH2_CLIENT_SECRET{gt}
-OAUTH2_BASE_URL={lt}OAUTH2_BASE_URL{gt}
-OAUTH2_AUTHORIZE_URL={lt}OAUTH2_AUTHORIZE_URL{gt}
-OAUTH2_TOKEN_URL={lt}OAUTH2_TOKEN_URL{gt}
-OAUTH2_USER_URL={lt}OAUTH2_USER_URL{gt}
+OAUTH2_CLIENT_ID=<OAUTH2_CLIENT_ID>
+OAUTH2_CLIENT_SECRET=<OAUTH2_CLIENT_SECRET>
+OAUTH2_BASE_URL=<OAUTH2_BASE_URL>
+OAUTH2_AUTHORIZE_URL=<OAUTH2_AUTHORIZE_URL>
+OAUTH2_TOKEN_URL=<OAUTH2_TOKEN_URL>
+OAUTH2_USER_URL=<OAUTH2_USER_URL>
 
 # Optional:
-OAUTH2_SCOPES={lt}OAUTH2_SCOPES{gt}
-OAUTH2_CALLBACK_URL={lt}OAUTH2_CALLBACK_URL{gt}
+OAUTH2_SCOPES=<OAUTH2_SCOPES>
+OAUTH2_CALLBACK_URL=<OAUTH2_CALLBACK_URL>
 ....
 . Restart the application.
 
@@ -224,21 +224,21 @@ docker run -d \
 -p 4000:4000 \
 --name trento-web \
 --network trento-net \
---add-host {quot}host.docker.internal:host-gateway{quot} \
+--add-host "host.docker.internal:host-gateway" \
 
 ...[other settings]...
 
 -e ENABLE_OAUTH2=true \
--e OAUTH2_CLIENT_ID={lt}OAUTH2_CLIENT_ID{gt} \
--e OAUTH2_CLIENT_SECRET={lt}OAUTH2_CLIENT_SECRET{gt} \
--e OAUTH2_BASE_URL={lt}OAUTH2_BASE_URL{gt} \
--e OAUTH2_AUTHORIZE_URL={lt}OAUTH2_AUTHORIZE_URL{gt} \
--e OAUTH2_TOKEN_URL={lt}OAUTH2_TOKEN_URL{gt} \
--e OAUTH2_USER_URL={lt}OAUTH2_USER_URL{gt} \
+-e OAUTH2_CLIENT_ID=<OAUTH2_CLIENT_ID> \
+-e OAUTH2_CLIENT_SECRET=<OAUTH2_CLIENT_SECRET> \
+-e OAUTH2_BASE_URL=<OAUTH2_BASE_URL> \
+-e OAUTH2_AUTHORIZE_URL=<OAUTH2_AUTHORIZE_URL> \
+-e OAUTH2_TOKEN_URL=<OAUTH2_TOKEN_URL> \
+-e OAUTH2_USER_URL=<OAUTH2_USER_URL> \
 
 # Optional:
--e OAUTH2_SCOPES={lt}OAUTH2_SCOPES{gt} \
--e OAUTH2_CALLBACK_URL={lt}OAUTH2_CALLBACK_URL{gt} \
+-e OAUTH2_SCOPES=<OAUTH2_SCOPES> \
+-e OAUTH2_CALLBACK_URL=<OAUTH2_CALLBACK_URL> \
 
 ...[other settings]...
 ----
@@ -279,7 +279,7 @@ recommended). If the IDP signs the messages, and expect signed messages
 back, certificates used by the SP ({trento} in this case) must be provided
 to the IDP, the public certificate file in this case.
 
-To use an existing SAML IDP, follow the next instrunctions to met the
+To use an existing SAML IDP, follow the next instructions to met the
 specific requirements. You need:
 
 [arabic]
@@ -392,9 +392,9 @@ installation command:
 ....
 HELM_EXPERIMENTAL_OCI=1 helm ... \
    --set trento-web.saml.enabled=true \
-   --set trento-web.saml.idpId={lt}SAML_IDP_ID{gt} \
-   --set trento-web.saml.spId={lt}SAML_SP_ID{gt} \
-   --set trento-web.saml.metadataUrl={lt}SAML_METADATA_URL{gt}
+   --set trento-web.saml.idpId=<SAML_IDP_ID> \
+   --set trento-web.saml.spId=<SAML_SP_ID> \
+   --set trento-web.saml.metadataUrl=<SAML_METADATA_URL>
 ....
 +
 To use the `+SAML_METADATA_CONTENT+` option rather than
@@ -403,31 +403,31 @@ To use the `+SAML_METADATA_CONTENT+` option rather than
 ....
 HELM_EXPERIMENTAL_OCI=1 helm ... \
    --set trento-web.saml.enabled=true \
-   --set trento-web.saml.idpId={lt}SAML_IDP_ID{gt} \
-   --set trento-web.saml.spId={lt}SAML_SP_ID{gt} \
-   --set trento-web.saml.metadataContent={lt}SAML_METADATA_CONTENT{gt}
+   --set trento-web.saml.idpId=<SAML_IDP_ID> \
+   --set trento-web.saml.spId=<SAML_SP_ID> \
+   --set trento-web.saml.metadataContent=<SAML_METADATA_CONTENT>
 ....
 +
 Additionally, the following optional values are available:
 +
 ....
 HELM_EXPERIMENTAL_OCI=1 helm ... \
-   --set trento-web.saml.idpNameIdFormat={lt}SAML_IDP_NAMEID_FORMAT{gt} \
-   --set trento-web.saml.spDir={lt}SAML_SP_DIR{gt} \
-   --set trento-web.saml.spEntityId={lt}SAML_SP_ENTITY_ID{gt} \
-   --set trento-web.saml.spContactName={lt}SAML_SP_CONTACT_NAME{gt} \
-   --set trento-web.saml.spContactEmail={lt}SAML_SP_CONTACT_EMAIL{gt} \
-   --set trento-web.saml.spOrgName={lt}SAML_SP_ORG_NAME{gt} \
-   --set trento-web.saml.spOrgDisplayName={lt}SAML_SP_ORG_DISPLAYNAME{gt} \
-   --set trento-web.saml.spOrgUrl={lt}SAML_SP_ORG_URL{gt} \
-   --set trento-web.saml.usernameAttrName={lt}SAML_USERNAME_ATTR_NAME{gt} \
-   --set trento-web.saml.emailAttrName={lt}SAML_EMAIL_ATTR_NAME{gt} \
-   --set trento-web.saml.firstNameAttrName={lt}SAML_FIRSTNAME_ATTR_NAME{gt} \
-   --set trento-web.saml.lastNameAttrName={lt}SAML_LASTNAME_ATTR_NAME{gt} \
-   --set trento-web.saml.signRequests={lt}SAML_SIGN_REQUESTS{gt} \
-   --set trento-web.saml.signMetadata={lt}SAML_SIGN_METADATA{gt} \
-   --set trento-web.saml.signedAssertion={lt}SAML_SIGNED_ASSERTION{gt} \
-   --set trento-web.saml.signedEnvelopes={lt}SAML_SIGNED_ENVELOPES{gt}
+   --set trento-web.saml.idpNameIdFormat=<SAML_IDP_NAMEID_FORMAT> \
+   --set trento-web.saml.spDir=<SAML_SP_DIR> \
+   --set trento-web.saml.spEntityId=<SAML_SP_ENTITY_ID> \
+   --set trento-web.saml.spContactName=<SAML_SP_CONTACT_NAME> \
+   --set trento-web.saml.spContactEmail=<SAML_SP_CONTACT_EMAIL> \
+   --set trento-web.saml.spOrgName=<SAML_SP_ORG_NAME> \
+   --set trento-web.saml.spOrgDisplayName=<SAML_SP_ORG_DISPLAYNAME> \
+   --set trento-web.saml.spOrgUrl=<SAML_SP_ORG_URL> \
+   --set trento-web.saml.usernameAttrName=<SAML_USERNAME_ATTR_NAME> \
+   --set trento-web.saml.emailAttrName=<SAML_EMAIL_ATTR_NAME> \
+   --set trento-web.saml.firstNameAttrName=<SAML_FIRSTNAME_ATTR_NAME> \
+   --set trento-web.saml.lastNameAttrName=<SAML_LASTNAME_ATTR_NAME> \
+   --set trento-web.saml.signRequests=<SAML_SIGN_REQUESTS> \
+   --set trento-web.saml.signMetadata=<SAML_SIGN_METADATA> \
+   --set trento-web.saml.signedAssertion=<SAML_SIGNED_ASSERTION> \
+   --set trento-web.saml.signedEnvelopes=<SAML_SIGNED_ENVELOPES>
 ....
 
 ==== Enabling SAML when using RPM packages
@@ -442,29 +442,29 @@ variables are:
 ....
 # Required:
 ENABLE_SAML=true
-SAML_IDP_ID={lt}SAML_IDP_ID{gt}
-SAML_SP_ID={lt}SAML_SP_ID{gt}
+SAML_IDP_ID=<SAML_IDP_ID>
+SAML_SP_ID=<SAML_SP_ID>
 # Only SAML_METADATA_URL or SAML_METADATA_CONTENT must by provided
-SAML_METADATA_URL={lt}SAML_METADATA_URL{gt}
-SAML_METADATA_CONTENT={lt}SAML_METADATA_CONTENT{gt}
+SAML_METADATA_URL=<SAML_METADATA_URL>
+SAML_METADATA_CONTENT=<SAML_METADATA_CONTENT>
 
 # Optional:
-SAML_IDP_NAMEID_FORMAT={lt}SAML_IDP_NAMEID_FORMAT{gt}
-SAML_SP_DIR={lt}SAML_SP_DIR{gt}
-SAML_SP_ENTITY_ID={lt}SAML_SP_ENTITY_ID{gt}
-SAML_SP_CONTACT_NAME={lt}SAML_SP_CONTACT_NAME{gt}
-SAML_SP_CONTACT_EMAIL={lt}SAML_SP_CONTACT_EMAIL{gt}
-SAML_SP_ORG_NAME={lt}SAML_SP_ORG_NAME{gt}
-SAML_SP_ORG_DISPLAYNAME={lt}SAML_SP_ORG_DISPLAYNAME{gt}
-SAML_SP_ORG_URL={lt}SAML_SP_ORG_URL{gt}
-SAML_USERNAME_ATTR_NAME={lt}SAML_USERNAME_ATTR_NAME{gt}
-SAML_EMAIL_ATTR_NAME={lt}SAML_EMAIL_ATTR_NAME{gt}
-SAML_FIRSTNAME_ATTR_NAME={lt}SAML_FIRSTNAME_ATTR_NAME{gt}
-SAML_LASTNAME_ATTR_NAME={lt}SAML_LASTNAME_ATTR_NAME{gt}
-SAML_SIGN_REQUESTS={lt}SAML_SIGN_REQUESTS{gt}
-SAML_SIGN_METADATA={lt}SAML_SIGN_METADATA{gt}
-SAML_SIGNED_ASSERTION={lt}SAML_SIGNED_ASSERTION{gt}
-SAML_SIGNED_ENVELOPES={lt}SAML_SIGNED_ENVELOPES{gt}
+SAML_IDP_NAMEID_FORMAT=<SAML_IDP_NAMEID_FORMAT>
+SAML_SP_DIR=<SAML_SP_DIR>
+SAML_SP_ENTITY_ID=<SAML_SP_ENTITY_ID>
+SAML_SP_CONTACT_NAME=<SAML_SP_CONTACT_NAME>
+SAML_SP_CONTACT_EMAIL=<SAML_SP_CONTACT_EMAIL>
+SAML_SP_ORG_NAME=<SAML_SP_ORG_NAME>
+SAML_SP_ORG_DISPLAYNAME=<SAML_SP_ORG_DISPLAYNAME>
+SAML_SP_ORG_URL=<SAML_SP_ORG_URL>
+SAML_USERNAME_ATTR_NAME=<SAML_USERNAME_ATTR_NAME>
+SAML_EMAIL_ATTR_NAME=<SAML_EMAIL_ATTR_NAME>
+SAML_FIRSTNAME_ATTR_NAME=<SAML_FIRSTNAME_ATTR_NAME>
+SAML_LASTNAME_ATTR_NAME=<SAML_LASTNAME_ATTR_NAME>
+SAML_SIGN_REQUESTS=<SAML_SIGN_REQUESTS>
+SAML_SIGN_METADATA=<SAML_SIGN_METADATA>
+SAML_SIGNED_ASSERTION=<SAML_SIGNED_ASSERTION>
+SAML_SIGNED_ENVELOPES=<SAML_SIGNED_ENVELOPES>
 ....
 . Restart the application.
 
@@ -490,34 +490,34 @@ docker run -d \
 -p 4000:4000 \
 --name trento-web \
 --network trento-net \
---add-host {quot}host.docker.internal:host-gateway{quot} \
+--add-host "host.docker.internal:host-gateway" \
 
 ...[other settings]...
 
 -e ENABLE_SAML=true
--e SAML_IDP_ID={lt}SAML_IDP_ID{gt} \
--e SAML_SP_ID={lt}SAML_SP_ID{gt} \
+-e SAML_IDP_ID=<SAML_IDP_ID> \
+-e SAML_SP_ID=<SAML_SP_ID> \
 # Only SAML_METADATA_URL or SAML_METADATA_CONTENT must by provided
--e SAML_METADATA_URL={lt}SAML_METADATA_URL{gt} \
--e SAML_METADATA_CONTENT={lt}SAML_METADATA_CONTENT{gt} \
+-e SAML_METADATA_URL=<SAML_METADATA_URL> \
+-e SAML_METADATA_CONTENT=<SAML_METADATA_CONTENT> \
 
 # Optional:
--e SAML_IDP_NAMEID_FORMAT={lt}SAML_IDP_NAMEID_FORMAT{gt} \
--e SAML_SP_DIR={lt}SAML_SP_DIR{gt} \
--e SAML_SP_ENTITY_ID={lt}SAML_SP_ENTITY_ID{gt} \
--e SAML_SP_CONTACT_NAME={lt}SAML_SP_CONTACT_NAME{gt} \
--e SAML_SP_CONTACT_EMAIL={lt}SAML_SP_CONTACT_EMAIL{gt} \
--e SAML_SP_ORG_NAME={lt}SAML_SP_ORG_NAME{gt} \
--e SAML_SP_ORG_DISPLAYNAME={lt}SAML_SP_ORG_DISPLAYNAME{gt} \
--e SAML_SP_ORG_URL={lt}SAML_SP_ORG_URL{gt} \
--e SAML_USERNAME_ATTR_NAME={lt}SAML_USERNAME_ATTR_NAME{gt} \
--e SAML_EMAIL_ATTR_NAME={lt}SAML_EMAIL_ATTR_NAME{gt} \
--e SAML_FIRSTNAME_ATTR_NAME={lt}SAML_FIRSTNAME_ATTR_NAME{gt} \
--e SAML_LASTNAME_ATTR_NAME={lt}SAML_LASTNAME_ATTR_NAME{gt} \
--e SAML_SIGN_REQUESTS={lt}SAML_SIGN_REQUESTS{gt} \
--e SAML_SIGN_METADATA={lt}SAML_SIGN_METADATA{gt} \
--e SAML_SIGNED_ASSERTION={lt}SAML_SIGNED_ASSERTION{gt} \
--e SAML_SIGNED_ENVELOPES={lt}SAML_SIGNED_ENVELOPES{gt} \
+-e SAML_IDP_NAMEID_FORMAT=<SAML_IDP_NAMEID_FORMAT> \
+-e SAML_SP_DIR=<SAML_SP_DIR> \
+-e SAML_SP_ENTITY_ID=<SAML_SP_ENTITY_ID> \
+-e SAML_SP_CONTACT_NAME=<SAML_SP_CONTACT_NAME> \
+-e SAML_SP_CONTACT_EMAIL=<SAML_SP_CONTACT_EMAIL> \
+-e SAML_SP_ORG_NAME=<SAML_SP_ORG_NAME> \
+-e SAML_SP_ORG_DISPLAYNAME=<SAML_SP_ORG_DISPLAYNAME> \
+-e SAML_SP_ORG_URL=<SAML_SP_ORG_URL> \
+-e SAML_USERNAME_ATTR_NAME=<SAML_USERNAME_ATTR_NAME> \
+-e SAML_EMAIL_ATTR_NAME=<SAML_EMAIL_ATTR_NAME> \
+-e SAML_FIRSTNAME_ATTR_NAME=<SAML_FIRSTNAME_ATTR_NAME> \
+-e SAML_LASTNAME_ATTR_NAME=<SAML_LASTNAME_ATTR_NAME> \
+-e SAML_SIGN_REQUESTS=<SAML_SIGN_REQUESTS> \
+-e SAML_SIGN_METADATA=<SAML_SIGN_METADATA> \
+-e SAML_SIGNED_ASSERTION=<SAML_SIGNED_ASSERTION> \
+-e SAML_SIGNED_ENVELOPES=<SAML_SIGNED_ENVELOPES> \
 
 ...[other settings]...
 ----
@@ -546,28 +546,28 @@ SAML_SP_ENTITY_ID::
   SAML SP entity id. If it is not given, value from the metadata.xml
   file is used
 SAML_SP_CONTACT_NAME::
-  SAML SP contact name (default value: `+{trento} SP Admin+`)
+  SAML SP contact name (default value: `+Trento SP Admin+`)
 SAML_SP_CONTACT_EMAIL::
   SAML SP contact email (default value: `+admin@trento.suse.com+`)
 SAML_SP_ORG_NAME::
-  SAML SP organization name (default value: `+{trento} SP+`)
+  SAML SP organization name (default value: `+Trento SP+`)
 SAML_SP_ORG_DISPLAYNAME::
   SAML SP organization display name (default value:
-  `+SAML SP build with {trento}+`)
+  `+SAML SP build with Trento+`)
 SAML_SP_ORG_URL::
   SAML SP organization url (default value:
   `+https://www.trento-project.io/+`)
 SAML_USERNAME_ATTR_NAME::
-  SAML user profile \{quot}username\{quot} attribute field name. This
+  SAML user profile "username" attribute field name. This
   attribute must exist in the IDP user (default value: `+username+`)
 SAML_EMAIL_ATTR_NAME::
-  SAML user profile \{quot}email\{quot} attribute field name. This
+  SAML user profile "email" attribute field name. This
   attribute must exist in the IDP user (default value: `+email+`)
 SAML_FIRSTNAME_ATTR_NAME::
-  SAML user profile \{quot}first name\{quot} attribute field name. This
+  SAML user profile "first name" attribute field name. This
   attribute must exist in the IDP user (default value: `+firstName+`)
 SAML_LASTNAME_ATTR_NAME::
-  SAML user profile \{quot}last name\{quot} attribute field name. This
+  SAML user profile "last name" attribute field name. This
   attribute must exist in the IDP user (default value: `+lastName+`)
 SAML_SIGN_REQUESTS::
   Sign SAML requests in the SP side (default value: `+true+`)
