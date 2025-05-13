@@ -9,6 +9,7 @@
 :tragent:           Trento Agent
 :trserver:          Trento Server
 :trweb:             Trento Web
+:rancher_k8s_engine: Rancher Kubernetes Engine
 
 
 // PROJECT REPOSITORY URL

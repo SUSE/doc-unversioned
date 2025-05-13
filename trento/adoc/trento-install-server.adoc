@@ -1,4 +1,4 @@
-include::attributes-generic.adoc[]
+include::generic-attributes.adoc[]
 include::product-attributes.adoc[]
 
 [[sec-trento-installing-trentoserver]]
@@ -17,17 +17,18 @@ The subsection uses the following placeholders:
 
 {trserver} consists of a several components delivered as container images and intended for deployment on a {k8s} cluster. A manual production-ready deployment of these components requires {k8s} knowledge. Customers without in-house {k8s} expertise and who want to try {trento} with a minimum of effort, can use the {trento} Helm chart. This approach automates the deployment of all the required components on a single {k8s} cluster node. You can use the {trento} Helm chart to install {trserver} on a existing {k8s} cluster as follows:
 
-.Install Helm:
+. Install Helm:
++
 ====
 [source,bash]
 ----
 > curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
 ----
 ====
-
-.Connect Helm to an existing {k8s} cluster.
-
-.Use Helm to install {trserver} with the {trento} Helm chart:
++
+. Connect Helm to an existing {k8s} cluster.
+. Use Helm to install {trserver} with the {trento} Helm chart:
++
 ====
 [source,bash]
 ----
@@ -37,7 +38,9 @@ helm upgrade \
    --set trento-web.adminUser.password=ADMIN_PASSWORD
 ----
 ====
++
 When using a Helm version lower than 3.8.0, an experimental flag must be set as follows:
++
 ====
 [source,bash]
 ----
@@ -47,8 +50,8 @@ HELM_EXPERIMENTAL_OCI=1 helm upgrade \
    --set trento-web.adminUser.password=ADMIN_PASSWORD
 ----
 ====
-
-.To verify that the {trserver} installation was successful, open the URL of the {t.web} (`http://TRENTO_SERVER_HOSTNAME`) from a workstation on the {sap} administrator's LAN.
++
+. To verify that the {trserver} installation was successful, open the URL of the {trweb} (`http://TRENTO_SERVER_HOSTNAME`) from a workstation on the {sap} administrator's LAN.
 
 [[sec-trento-install-trentoserver-on-k3s]]
 ==== Installing {trserver} on K3s
@@ -63,43 +66,51 @@ The following procedure deploys {trserver} on a single-node K3s cluster. Note th
 [[pro-trento-manually-installing]]
 ===== Manually installing Trento on a {trserver} host
 
-.Log in to the {trserver} host.
-
+. Log in to the {trserver} host.
++
 [[st-install-k3s]]
-.Install K3s:
+. Install K3s either as {rootuser} or a non-{rootuser} user.
++
+* Installing as user {rootuser}:
++
 ====
-Installing as user {rootuser}
 [source,bash]
 ----
-# curl -sfL https://get.k3s.io | INSTALL_K3S_SKIP_SELINUX_RPM=true sh
-----
-
-Installing as non-{rootuser} user:
-[source,bash]
-----
-> curl -sfL https://get.k3s.io | INSTALL_K3S_SKIP_SELINUX_RPM=true sh -s - --write-kubeconfig-mode 644
+curl -sfL https://get.k3s.io | INSTALL_K3S_SKIP_SELINUX_RPM=true sh
 ----
 ====
-
++
+* Installing as a non-{rootuser} user:
++
+====
+[source,bash]
+----
+curl -sfL https://get.k3s.io | INSTALL_K3S_SKIP_SELINUX_RPM=true sh -s - --write-kubeconfig-mode 644
+----
+====
++
 [[st-install-helm]]
-.Install Helm as {rootuser}:
+. Install Helm as {rootuser}.
++
 ====
 [source,bash]
 ----
-# curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
 ----
 ====
-
-.Set the `KUBECONFIG` environment variable for the same user that installed K3s:
++
+. Set the `KUBECONFIG` environment variable for the same user that installed K3s:
++
 ====
 [source,bash]
 ----
 export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 ----
 ====
-
++
 [[st-deploy-k3s]]
-.With the same user that installed K3s, install {trserver} using the Helm chart:
+. With the same user that installed K3s, install {trserver} using the Helm chart:
++
 ====
 [source,bash]
 ----
@@ -110,6 +121,7 @@ helm upgrade \
 ----
 ====
 When using a Helm version lower than 3.8.0, an experimental flag must be set as follows:
++
 ====
 [source,bash]
 ----
@@ -119,19 +131,20 @@ HELM_EXPERIMENTAL_OCI=1 helm upgrade \
    --set trento-web.adminUser.password=ADMIN_PASSWORD
 ----
 ====
-
-.Monitor the creation and start-up of the {trserver} pods, and wait until they are ready and running:
++
+. Monitor the creation and start-up of the {trserver} pods, and wait until they are ready and running:
++
 ====
 [source,bash]
 ----
 watch kubectl get pods
 ----
 ====
++
 All pods must be in the ready and running state.
-
-.Log out of the {trserver} host.
-
-.To verify that the {trserver} installation was successful, open the URL of the {t.web} (`http://TRENTO_SERVER_HOSTNAME`) from a workstation on the {sap} administrator's LAN.
++
+. Log out of the {trserver} host.
+. To verify that the {trserver} installation was successful, open the URL of the {trweb} (`http://TRENTO_SERVER_HOSTNAME`) from a workstation on the {sap} administrator's LAN.
 
 [[sec-trento-deploying-trento-on-selected-nodes]]
 ==== Deploying {trserver} on selected nodes
@@ -167,29 +180,22 @@ The reported events include the following:
 
 This feature is disabled by default. It can be enabled at installation time or anytime at a later stage. In both cases, the procedure is the same and uses the following placeholders:
 
-[horizontal]
 `SMTP_SERVER`::
-+
 The SMTP server designated to send email alerts
 
 `SMTP_PORT`::
-+
 Port on the SMTP server
 
 `SMTP_USER`::
-+
 User name to access SMTP server
 
 `SMTP_PASSWORD`::
-+
 Password to access SMTP server
 
 `ALERTING_SENDER`::
-+
 Sender email for alert notifications
 
 `ALERTING_RECIPIENT`::
-+
 Recipient email for alert notifications.
 
 The command to enable email alerts is as follows:

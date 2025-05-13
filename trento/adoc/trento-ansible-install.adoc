@@ -1,4 +1,4 @@
-include::attributes-generic.adoc[]
+include::generic-attributes.adoc[]
 include::product-attributes.adoc[]
 
 == Automated deployment with Ansible

@@ -1,4 +1,4 @@
-include::attributes-generic.adoc[]
+include::generic-attributes.adoc[]
 include::product-attributes.adoc[]
 
 [[sec-trento-requirements]]
@@ -15,7 +15,7 @@ Running all the {trserver} components requires a minimum of 4 GB of RAM, two CPU
 
 {trserver} supports different deployment scenarios: {k8s}, systemd, and containers. A {k8s}-based deployment of {trserver} is cloud-native and OS-agnostic. It can be performed on the following services:
 
-* RKE1 ({rancher.k8s.engine} version 1)
+* RKE1 ({rancher_k8s_engine} version 1)
 * RKE2
 * a {k8s} service in a cloud provider
 * any other CNCF-certified {k8s} running on x86_64 architecture

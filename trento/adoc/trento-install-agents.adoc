@@ -1,5 +1,5 @@
 include::generic-attributes.adoc[]
-include::attributes-generic.adoc[]
+include::generic-attributes.adoc[]
 include::product-attributes.adoc[]
 
 [[sec-trento-installing-trentoagent]]
