@@ -9,25 +9,37 @@ To update the {tragent}, follow the procedure below:
 . Log in to the {tragent} host.
 . Stop the {tragent}:
 +
-....
-sudo systemctl stop trento-agent
-....
+====
+[source,bash,subs="attributes"]
+----
+{prompt_sudo}systemctl stop trento-agent
+----
+====
++
 . Install the new package:
 +
-....
-sudo zypper ref
-sudo zypper install trento-agent
-....
+====
+[source,bash,subs="attributes"]
+----
+{prompt_sudo}zypper ref
+{prompt_sudo}zypper install trento-agent
+----
+====
++
 . Copy the file `+/etc/trento/agent.yaml.rpmsave+` to
 `+/etc/trento/agent.yaml+`. Make sure that entries
 `+facts-service-url+`, `+server-url+`, and `+api-key+` in
 `+/etc/trento/agent.yaml+` are correct.
 . Start the {tragent}:
 +
-....
-sudo systemctl start trento-agent
-....
-* Check the status of the {tragent}:
+====
+[source,bash,subs="attributes"]
+----
+{prompt_sudo}systemctl start trento-agent
+----
+====
++
+. Check the status of the {tragent}:
 +
 ....
 sudo systemctl status trento-agent

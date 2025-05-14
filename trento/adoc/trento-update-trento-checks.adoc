@@ -26,17 +26,23 @@ you can use Helm with the following options to pull the latest image:
 In a systemd deployment, checks are delivered as an RPM package, and you
 can use Zypper to update your checks catalog:
 
-....
-sudo zypper ref
-sudo zypper update trento-checks
-....
+====
+[source,bash,subs="attributes"]
+----
+{prompt_sudo}zypper ref
+{prompt_sudo}zypper update trento-checks
+----
+====
 
 In a containerized deployment, checks are delivered as a container
 image, and you can user Docker to pull the latest version into the
 trento-checks volume created during the installation process:
 
-....
-docker run \
+====
+[source,bash,subs="attributes"]
+----
+{prompt_user}docker run \
 -v trento-checks:/usr/share/trento/checks \
 registry.suse.com/trento/trento-checks:latest
-....
+----
+====

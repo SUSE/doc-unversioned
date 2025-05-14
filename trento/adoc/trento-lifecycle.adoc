@@ -6,16 +6,14 @@ include::product-attributes.adoc[]
 
 Trento is available at no extra cost for {sles4sap} 15 subscribers. Particularly, Trento's two main components have the following product lifecycles:
 
-// Variable List for t.agent
-[horizontal]
+// Variable List for tragent
 {tragent}::
 +
 Delivery mechanism::: RPM package for {sles4sap} 15 SP3 and newer.
 
 Supported runtime::: Supported in {sles4sap} 15 SP3 and newer on x86_64 and ppc64le architectures.
 
-// Variable List for t.server
-[horizontal]
+// Variable List for trserver
 {trserver}::
 +
 Delivery mechanisms::: A set of container images from the {suse} public registry together with a Helm chart that facilitates their installation or a set of RPM packages for {sles4sap} 15 SP3 and newer.

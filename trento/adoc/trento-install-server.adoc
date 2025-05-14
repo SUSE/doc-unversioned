@@ -20,9 +20,9 @@ The subsection uses the following placeholders:
 . Install Helm:
 +
 ====
-[source,bash]
+[source,bash,subs="attributes"]
 ----
-> curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
 ----
 ====
 +
@@ -30,7 +30,7 @@ The subsection uses the following placeholders:
 . Use Helm to install {trserver} with the {trento} Helm chart:
 +
 ====
-[source,bash]
+[source,bash,subs="attributes"]
 ----
 helm upgrade \
    --install trento-server oci://registry.suse.com/trento/trento-server \
@@ -74,18 +74,18 @@ The following procedure deploys {trserver} on a single-node K3s cluster. Note th
 * Installing as user {rootuser}:
 +
 ====
-[source,bash]
+[source,bash,subs="attributes"]
 ----
-curl -sfL https://get.k3s.io | INSTALL_K3S_SKIP_SELINUX_RPM=true sh
+{prompt_root}curl -sfL https://get.k3s.io | INSTALL_K3S_SKIP_SELINUX_RPM=true sh
 ----
 ====
 +
 * Installing as a non-{rootuser} user:
 +
 ====
-[source,bash]
+[source,bash,subs="attributes"]
 ----
-curl -sfL https://get.k3s.io | INSTALL_K3S_SKIP_SELINUX_RPM=true sh -s - --write-kubeconfig-mode 644
+{prompt_user}curl -sfL https://get.k3s.io | INSTALL_K3S_SKIP_SELINUX_RPM=true sh -s - --write-kubeconfig-mode 644
 ----
 ====
 +
@@ -93,9 +93,9 @@ curl -sfL https://get.k3s.io | INSTALL_K3S_SKIP_SELINUX_RPM=true sh -s - --write
 . Install Helm as {rootuser}.
 +
 ====
-[source,bash]
+[source,bash,subs="attributes"]
 ----
-curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+{prompt_root}curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
 ----
 ====
 +

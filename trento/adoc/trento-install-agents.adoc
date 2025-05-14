@@ -26,10 +26,13 @@ Install the {tragent} on an {sap} host and register it with the
 
 . Install the package:
 +
-....
-sudo zypper ref
-sudo zypper install trento-agent
-....
+====
+[source,bash,subs="attributes"]
+----
+{prompt_sudo}zypper ref
+{prompt_sudo}zypper install trento-agent
+----
+====
 . Open the configuration file `+/etc/trento/agent.yaml+` and uncomment
 (remove the `+#+` character) the entries for `+facts-service-url+`,
 `+server-url+` and `+api-key+`. Update the values as necessary:
@@ -64,13 +67,18 @@ openssl x509 -in mycert.crt -out mycert.pem -outform PEM
 *** Run the `+update-ca-certificates+` command.
 . Start the {tragent}:
 +
-....
-sudo systemctl enable --now trento-agent
-....
+====
+[source,bash,subs="attributes"]
+----
+{prompt_sudo}systemctl enable --now trento-agent
+----
+====
 . Check the status of the {tragent}:
 +
-....
-sudo systemctl status trento-agent
+====
+[source,bash,subs="attributes"]
+----
+{prompt_sudo}systemctl status trento-agent
 ● trento-agent.service - Trento Agent service
      Loaded: loaded (/usr/lib/systemd/system/trento-agent.service; enabled; vendor preset: disabled)
      Active: active (running) since Wed 2021-11-24 17:37:46 UTC; 4s ago
@@ -81,5 +89,6 @@ sudo systemctl status trento-agent
              └─22220 /usr/bin/ruby.ruby2.5 /usr/sbin/SUSEConnect -s
 
 [...]
-....
+----
+====
 . Repeat this procedure on all SAP hosts that you want to monitor.
