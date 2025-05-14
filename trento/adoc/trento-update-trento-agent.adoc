@@ -6,23 +6,23 @@ include::product-attributes.adoc[]
 
 To update the {tragent}, follow the procedure below:
 
-* Log in to the {tragent} host.
-* Stop the {tragent}:
+. Log in to the {tragent} host.
+. Stop the {tragent}:
 +
 ....
 sudo systemctl stop trento-agent
 ....
-* Install the new package:
+. Install the new package:
 +
 ....
 sudo zypper ref
 sudo zypper install trento-agent
 ....
-* Copy the file `+/etc/trento/agent.yaml.rpmsave+` to
+. Copy the file `+/etc/trento/agent.yaml.rpmsave+` to
 `+/etc/trento/agent.yaml+`. Make sure that entries
 `+facts-service-url+`, `+server-url+`, and `+api-key+` in
 `+/etc/trento/agent.yaml+` are correct.
-* Start the {tragent}:
+. Start the {tragent}:
 +
 ....
 sudo systemctl start trento-agent
@@ -42,5 +42,5 @@ sudo systemctl status trento-agent
 
 [...]
 ....
-* Check the version in the Hosts overview of the {trweb} (URL `+http://TRENTO_SERVER_HOSTNAME+`).
-* Repeat this procedure in all {tragent} hosts.
+. Check the version in the Hosts overview of the {trweb} (URL `+http://TRENTO_SERVER_HOSTNAME+`).
+. Repeat this procedure in all {tragent} hosts.

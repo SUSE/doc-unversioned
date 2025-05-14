@@ -11,6 +11,7 @@ ASCS/ERS clusters and hosts. The following procedure is specific to a
 HANA cluster. The procedure for an ASCS/ERS cluster or a host would be
 exactly the same, except it starts from the corresponding *Details* view.
 
+[[checks-procedure, Performing configuration checks]]
 . Log in to {trento}
 . In the left panel, click *Cluster*.
 . In the list, search for a {hana} cluster.
@@ -19,7 +20,7 @@ opens.
 +
 .{pace} cluster details
 image::trento-web-pacemaker-cluster-details-view.png[trento-web-pacemaker-cluster-details-view,scaledwidth=80.0%]
-. Click the *Settings* button to change the cluster settings of the
+. [[step-5, Step 5]]Click the *Settings* button to change the cluster settings of the
 respective cluster. For checks to be executed, a checks selection must
 be made. Select the checks to be executed and click *Select Checks for
 Execution*.

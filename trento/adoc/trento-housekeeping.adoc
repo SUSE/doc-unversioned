@@ -6,7 +6,7 @@ include::product-attributes.adoc[]
 
 When the heartbeat of an agent fails, an option to clean-up the
 corresponding host is displayed in the *Hosts* overview and the
-corresponding Host details view.
+corresponding *Host details* view.
 
 .Clean up button in Hosts overview
 image::trento-cleanup-hosts-overview.png[trento-cleanup-hosts-overview,scaledwidth=70.0%]

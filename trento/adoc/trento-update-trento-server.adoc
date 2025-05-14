@@ -9,12 +9,12 @@ option: {k8s}, systemd, or containerized.
 
 Consider the following when performing an update:
 
-* Before updating {trserver}, ensure that all the {t.agent}s in the
+* Before updating {trserver}, ensure that all the {tragent}s in the
 environment are supported by the target version. For more information,
-see section link:#sec-trento-compatibility-matrix[???].
+see section <<sec-trento-compatibility-matrix>>.
 * When updating {trento} to version 2.4 or higher, the admin password
 may need to be adjusted to follow the rules described in the User
-Management section .
+Management section.
 
 In a {k8s} deployment, you can use Helm to update {trserver}:
 
@@ -43,7 +43,7 @@ helm upgrade \
         
 ....
 * When updating {trento} to version 2.3 or higher, a new API key is
-generated and the configuration of all registered {t.agent}s must be
+generated and the configuration of all registered {tragent}s must be
 updated accordingly.
 
 In a system deployment, you can use zypper to update {trserver}:
@@ -53,8 +53,7 @@ In a system deployment, you can use zypper to update {trserver}:
  zypper update trento-web
  zypper update trento-wanda
  systemctl restart trento-web
- systemctl restart trento-wanda
-        
+ systemctl restart trento-wanda     
 ....
 
 In a containerized deployment, you can use the same Docker commands as

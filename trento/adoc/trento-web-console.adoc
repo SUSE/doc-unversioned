@@ -97,8 +97,7 @@ further.
 
 The following subsection gives you an overview of specific parts of your
 {sap} Landscape to show their state. Each status site shows an overview
-of the health states (see details in
-link:#vl-health-states[variablelist_title]).
+of the health states.
 
 [[sec-trento-status-hosts]]
 === Viewing the status of hosts
@@ -152,7 +151,7 @@ execution results for the current host.
 patches and upgradable packages for the current host when settings for
 SUSE Multi-Linux Manager are maintained and the host is managed by the
 SUSE Multi-Linux Manager instance for which connection data has been
-provided. Refer to section link:#sec-integration-with-SUSE-Manager[???]
+provided. Refer to section <<sec-integration-with-SUSE-Manager>>.
 for further details.
 ** Monitoring dashboard shows the CPU and memory usage for the specific
 hosts.
@@ -193,8 +192,7 @@ different:
 
 ** The *Settings*, *Show Results*, and *Start Execution* buttons are used to
 enable or disable checks and to start them. To execute specific checks,
-follow the instructions in link:#st-trento-checks-settings[???] of
-link:#pro-trento-checks[???].
+follow the instructions in <<step-5>> of the <<checks-procedure>> procedure.
 ** Top section displays the cloud provider, the cluster type, the HANA
 log replication mode, the DBSID, the cluster maintenance status, the
 HANA secondary sync state, the fencing type, when the CIB was last
@@ -248,8 +246,7 @@ proceed as follows:
 
 * Log in to the {trweb}.
 * Click the SAP Systems entry in the left sidebar to show a state
-summary for all {sap} Systems (see
-link:#fig-trento-status-sapsystems[{sap} Systems]).
+summary for all {sap} Systems.
 +
 .{sap} Systems
 [#fig-trento-status-sapsystems]
@@ -263,8 +260,7 @@ priorities, and SAPControl statuses.
 ** The *Hosts* section shows the host name, the IP address, the cloud provider
 (when applicable), the cluster name (when applicable), and the
  {tragent} version for each listed host. Click the host name to go to
-the corresponding
-link:#lst-trento-web-hosts-details[itemizedlist_title].
+the corresponding *Host details* view.
 +
 .{sap} System Details
 image::trento-web-sapsystemsdetails-view.png[trento-web-sapsystemsdetails-view,scaledwidth=80.0%]
@@ -277,8 +273,7 @@ proceed as follows:
 
 * Log in to the {trweb}.
 * Click the HANA databases entry in the left sidebar to show a summary
-of the state for all {hana} databases (see
-link:#fig-trento-status-hanadb[HANA databases]).
+of the state for all {hana} databases.
 +
 .HANA databases
 [#fig-trento-status-hanadb]
@@ -295,8 +290,7 @@ running. For each host, it shows the host name, the local IP
 address(es), the cloud provider (when applicable), the cluster name
 (when applicable), the system ID, and the  {tragent} version.
 +
-Click on a host name to go to the corresponding
-link:#lst-trento-web-hosts-details[itemizedlist_title].
+Click on a host name to go to the corresponding *Host details* view.
 +
 .HANA Database details
 image::trento-web-hana-database-details-view.png[trento-web-hana-database-details-view,scaledwidth=70.0%]
