@@ -3,7 +3,7 @@ include::product-attributes.adoc[]
 
 == Containerized deployment
 
-A containerized deployment of  is identical to a systemd
+A containerized deployment of {trserver} is identical to the systemd
 deployment. However, the web and check engine components are deployed as
 Docker containers.
 

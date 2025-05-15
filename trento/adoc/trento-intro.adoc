@@ -29,7 +29,7 @@ The *{trserver}* is an independent, distributed system designed to run on a {k8s
 * The RabbitMQ message broker for communicating between the checks engine and the agents.
 * A {prometheus} instance that retrieves the metrics collected by the {prometheus} node exporter in the registered hosts.
 
-The *{tragent}* is a single background process (`trento agent`) running on each monitored host of the SAP infrastructure.
+The *{tragent}* is a single background process (`trento-agent`) running on each monitored host of the SAP infrastructure.
 
 See <<fig-trento-architecture>> for additional details.
 

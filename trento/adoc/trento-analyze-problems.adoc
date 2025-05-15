@@ -126,7 +126,7 @@ In addition to the output of the {trento} Support Plugin and the Dump
 Scenario script, the descriptions and logs of the {trserver} pods can
 be useful for analysis and troubleshooting purposes. These descriptions
 and logs can be easily retrieved with the `+kubectl+` command. For this
-to work, you need a host where kubectlis installed and connected to the
+to work, you need a host where kubectl is installed and connected to the
 {k8s} cluster running {trserver}.
 
 . List the pods running in {k8s} cluster and their statuses.

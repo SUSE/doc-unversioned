@@ -52,7 +52,7 @@ permissions who creates all the other required users). Once a user with
 treated as a fallback user in case all other access to the console is
 lost. If the password of the default admin user is lost, it can be reset
 by updating the Helm chart or the web component configuration, depending
-on which deployment method was used to install \{t.server}.
+on which deployment method was used to install {trserver}.
 
 User passwords, including the default admin user password, must follow
 the rules below:
@@ -63,7 +63,7 @@ a row (for example: 111 or aaa)
 * Password must not contain four consecutive numbers or letters (for
 example: 1234, abcd or ABCD)
 
-The Create User and Edit User views provide a built-in password
+The *Create User* and *Edit User* views provide a built-in password
 generation button that allows user managers to easily generate secure
 and compliant passwords. The user manager must provide the user with
 their password through an authorized secure channel.
@@ -85,7 +85,7 @@ Since multi-factor authentication cannot be enabled for the default
 admin user, keeping its password safe is imperative. If the default
 admin user's password is compromised, reset it immediately by updating
 the Helm chart or the web component configuration, depending on which
-deployment method was used to install \{t.server}.
+deployment method was used to install {trserver}.
 ====
 
 User managers can enable and disable users. When a user logged in the

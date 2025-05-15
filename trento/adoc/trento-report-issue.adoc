@@ -4,7 +4,7 @@ include::product-attributes.adoc[]
 [[sec-trento-report-problem]]
 == Reporting an Issue
 
-{suse} customer with registered {sles4sap}{nbsp}15 (SP3 or higher)
+{suse} customers with registered {sles4sap}{nbsp}15 (SP3 or higher)
 distributions can report {trento} issues either directly in the {scc}
 or through the corresponding vendor, depending on their licensing model.
 Problems must be reported under {sles4sap}{nbsp}15 and component
@@ -15,7 +15,7 @@ deployment option for {trserver}: {k8s}, systemd or containerized.
 
 In case of a {k8s} deployment, provide the output of the {trento}
 support plugin and the scenario dump, as explained in section
-link:#sec-trento-problemanalysis[???].
+<<sec-trento-problemanalysis>>.
 
 In case of a systemd deployment, provide the status and the journal of
 the trento-web and trento-wanda services.
