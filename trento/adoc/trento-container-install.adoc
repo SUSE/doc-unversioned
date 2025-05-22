@@ -187,7 +187,7 @@ docker run -d \
 
 ...[other settings]...
 ----
-* Check that everything is running as expected:
+. Check that everything is running as expected:
 +
 [source,bash]
 ----
