@@ -662,7 +662,7 @@
       <title xmlns:its="http://www.w3.org/2005/11/its" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink">使用 SUSE 注册表中的长期服务包支持容器映像</title>
     </info>
     <para>
-    <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="registry.suse.com/suse/ltss/"/> 上提供了长期服务包支持 (LTSS) 容器映像。要访问和使用此类容器映像，您必须拥有有效的 LTSS 订阅。
+    <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="registry.suse.com/"/> 上提供了长期服务包支持 (LTSS) 容器映像。要访问和使用此类容器映像，您必须拥有有效的 LTSS 订阅。
   </para>
     <para>
     您必须先以用户身份登录 SUSE 注册表，然后才能提取或下载 LTSS 容器映像。可通过三种方式登录。
@@ -2934,7 +2934,7 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
     <section xml:id="sec-k3s">
       <title>轻量级 Kubernetes (k3s)</title>
       <para><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://k3s.io">K3s</link> 是专为物联网和边缘计算构建且经过 CNCF 认证的轻量级 Kubernetes 发行版。与 Kubernetes 不同，K3s 封装为单个不到 60 MB 的二进制文件，并针对 Arm 架构进行了优化。</para>
-      <para>有关详细信息，请参见<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.suse.com/c/rancher_blog/introduction-to-k3s/">Introduction to K3s</link> 和<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://documentation.suse.com/trd/kubernetes/single-html/kubernetes_ri_rancher-k3s-sles/index.html#id-introduction">How to install K3s and Rancher on SUSE Linux Enterprise Server</link>。</para>
+      <para>有关详细信息，请参见<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.suse.com/c/rancher_blog/introduction-to-k3s/">Introduction to K3s</link> 和<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://documentation.suse.com/trd/suse/html/kubernetes_ri_rancher-k3s-slemicro/id-deployment.html">How to install K3s and Rancher on SUSE Linux Enterprise Server</link>。</para>
     </section>
   </section>
   <section xml:lang="zh-cn" role="concept" version="5.2" xml:id="container-support">
