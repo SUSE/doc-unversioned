@@ -74,7 +74,7 @@ The following procedure deploys {trserver} on a single-node K3s cluster. Note th
 * Installing as user {rootuser}:
 +
 ====
-[source,bash,subs="attributes"]
+[source,subs="attributes"]
 ----
 {prompt_root}curl -sfL https://get.k3s.io | INSTALL_K3S_SKIP_SELINUX_RPM=true sh
 ----
@@ -93,7 +93,7 @@ The following procedure deploys {trserver} on a single-node K3s cluster. Note th
 . Install Helm as {rootuser}.
 +
 ====
-[source,bash,subs="attributes"]
+[source,subs="attributes"]
 ----
 {prompt_root}curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
 ----

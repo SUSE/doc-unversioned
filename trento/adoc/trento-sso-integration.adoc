@@ -46,20 +46,18 @@ By default, OIDC is disabled.
 
 ==== Enabling OpenID Connect when using kubernetes deployment
 
-To enable OIDC when using kubernetes deployment with helm, proceed as
-follows:
+To enable OIDC when using kubernetes deployment with helm, add the following variables to the previously documented helm installation command:
 
-[arabic]
-. Add the following variables to the previously documented helm
-installation command:
-+
-....
+====
+[source,bash]
+----
 HELM_EXPERIMENTAL_OCI=1 helm ... \
    --set trento-web.oidc.enabled=true \
    --set trento-web.oidc.clientId=<OIDC_CLIENT_ID> \
    --set trento-web.oidc.clientSecret=<OIDC_CLIENT_SECRET> \
    --set trento-web.oidc.baseUrl=<OIDC_BASE_URL>
-....
+----
+====
 
 ==== Enabling OpenID Connect when using RPM packages
 
@@ -70,20 +68,28 @@ To enable OIDC when using RPM packages, proceed as follows:
 . Add the following environment variables to this file. Required
 variables are:
 +
-....
+====
+[source,bash]
+----
 ENABLE_OIDC=true
 OIDC_CLIENT_ID=<OIDC_CLIENT_ID>
 OIDC_CLIENT_SECRET=<OIDC_CLIENT_SECRET>
 OIDC_BASE_URL=<OIDC_BASE_URL>
-....
+----
+====
++
 . Optionally, add the OIDC callback URL to the configuration. This can
 be useful if for some reason the default callback URL cannot be used,
 for example, if `+http+` is used instead of `+https+`. Use the next
 variable for that:
 +
-....
+====
+[source,bash]
+----
 OIDC_CALLBACK_URL=<OIDC_CALLBACK_URL>
-....
+----
+====
++
 . Restart the application.
 
 ==== Enabling OpenID Connect when using Docker images
@@ -155,7 +161,9 @@ as follows:
 . Add the following variables to the previously documented helm
 installation command:
 +
-....
+====
+[source,bash]
+----
 HELM_EXPERIMENTAL_OCI=1 helm ... \
    --set trento-web.oauth2.enabled=true \
    --set trento-web.oauth2.clientId=<OAUTH2_CLIENT_ID> \
@@ -164,14 +172,18 @@ HELM_EXPERIMENTAL_OCI=1 helm ... \
    --set trento-web.oauth2.authorizeUrl=<OAUTH2_AUTHORIZE_URL> \
    --set trento-web.oauth2.tokenUrl=<OAUTH2_TOKEN_URL> \
    --set trento-web.oauth2.userUrl=<OAUTH2_USER_URL>
-....
+----
+====
 +
 Additionally, the following optional values are available:
 +
-....
+====
+[source,bash]
+----
 HELM_EXPERIMENTAL_OCI=1 helm ... \
    --set trento-web.oauth2.scopes=<OAUTH2_SCOPES>
-....
+----
+====
 
 [[enabling-oauth-20-when-using-rpm-packages]]
 ==== Enabling OAuth 2.0 when using RPM packages
@@ -183,7 +195,9 @@ To enable OAuth 2.0 when using RPM packages, proceed as follows:
 . Add the following environment variables to this file. Required
 variables are:
 +
-....
+====
+[source,bash]
+----
 # Required:
 ENABLE_OAUTH2=true
 OAUTH2_CLIENT_ID=<OAUTH2_CLIENT_ID>
@@ -196,7 +210,9 @@ OAUTH2_USER_URL=<OAUTH2_USER_URL>
 # Optional:
 OAUTH2_SCOPES=<OAUTH2_SCOPES>
 OAUTH2_CALLBACK_URL=<OAUTH2_CALLBACK_URL>
-....
+----
+====
++
 . Restart the application.
 
 [[enabling-oauth-20-when-using-docker-images]]
@@ -387,28 +403,36 @@ follows:
 . Add the following variables to the previously documented helm
 installation command:
 +
-....
+====
+[source,bash]
+----
 HELM_EXPERIMENTAL_OCI=1 helm ... \
    --set trento-web.saml.enabled=true \
    --set trento-web.saml.idpId=<SAML_IDP_ID> \
    --set trento-web.saml.spId=<SAML_SP_ID> \
    --set trento-web.saml.metadataUrl=<SAML_METADATA_URL>
-....
+----
+====
 +
 To use the `+SAML_METADATA_CONTENT+` option rather than
 `+SAML_METADATA_URL+` use:
 +
-....
+====
+[source,bash]
+----
 HELM_EXPERIMENTAL_OCI=1 helm ... \
    --set trento-web.saml.enabled=true \
    --set trento-web.saml.idpId=<SAML_IDP_ID> \
    --set trento-web.saml.spId=<SAML_SP_ID> \
    --set trento-web.saml.metadataContent=<SAML_METADATA_CONTENT>
-....
+----
+====
 +
 Additionally, the following optional values are available:
 +
-....
+====
+[source,bash]
+----
 HELM_EXPERIMENTAL_OCI=1 helm ... \
    --set trento-web.saml.idpNameIdFormat=<SAML_IDP_NAMEID_FORMAT> \
    --set trento-web.saml.spDir=<SAML_SP_DIR> \
@@ -426,7 +450,8 @@ HELM_EXPERIMENTAL_OCI=1 helm ... \
    --set trento-web.saml.signMetadata=<SAML_SIGN_METADATA> \
    --set trento-web.saml.signedAssertion=<SAML_SIGNED_ASSERTION> \
    --set trento-web.saml.signedEnvelopes=<SAML_SIGNED_ENVELOPES>
-....
+----
+====
 
 ==== Enabling SAML when using RPM packages
 
@@ -437,7 +462,9 @@ To enable SAML when using RPM packages, proceed as follows:
 . Add the following environment variables to this file. Required
 variables are:
 +
-....
+====
+[source,bash]
+----
 # Required:
 ENABLE_SAML=true
 SAML_IDP_ID=<SAML_IDP_ID>
@@ -463,7 +490,9 @@ SAML_SIGN_REQUESTS=<SAML_SIGN_REQUESTS>
 SAML_SIGN_METADATA=<SAML_SIGN_METADATA>
 SAML_SIGNED_ASSERTION=<SAML_SIGNED_ASSERTION>
 SAML_SIGNED_ENVELOPES=<SAML_SIGNED_ENVELOPES>
-....
+----
+====
++
 . Restart the application.
 
 ==== Enabling SAML when using Docker images

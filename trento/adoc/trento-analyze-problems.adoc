@@ -28,7 +28,7 @@ To use the plugin, proceed as follows:
 . Download the {trento} support plugin script:
 +
 ====
-[source,bash,subs="attributes"]
+[source,subs="attributes"]
 ----
 {prompt_root}wget https://raw.githubusercontent.com/trento-project/support/refs/heads/main/trento-support.sh
 ----
@@ -45,7 +45,7 @@ for installation.
 . Make the script executable:
 +
 ====
-[source,bash,subs="attributes"]
+[source,subs="attributes"]
 ----
 {prompt_root}chmod +x trento-support.sh
 ----
@@ -55,7 +55,7 @@ for installation.
 {trserver} is running and execute the script:
 +
 ====
-[source,bash,subs="attributes"]
+[source,subs="attributes"]
 ----
 {prompt_root}./trento-support.sh --output file-tgz --collect all
 ----
@@ -198,9 +198,12 @@ A detailed log can be then retrieved from the journal:
 +
 . Add the following entry:
 +
-....
+====
+[source,bash]
+----
 log-level: debug
-....
+----
+====
 +
 . Restart the agent:
 +

@@ -343,7 +343,9 @@ the UI.
 
 ==== trento-web configuration
 
-....
+====
+[source,bash]
+----
 # /etc/trento/trento-web
 AMQP_URL=amqp://trento_user:trento_user_password@localhost:5672/vhost
 DATABASE_URL=ecto://trento_user:web_password@localhost/trento
@@ -359,7 +361,8 @@ TRENTO_WEB_ORIGIN=trento.example.com
 SECRET_KEY_BASE=some-secret
 ACCESS_TOKEN_ENC_SECRET=some-secret
 REFRESH_TOKEN_ENC_SECRET=some-secret
-....
+----
+====
 
 [NOTE]
 ====
@@ -373,7 +376,9 @@ https://github.com/trento-project/web/blob/main/guides/alerting/alerting.md[aler
 system to receive email notifications] can be enabled by setting
 `+ENABLE_ALERTING+` to `+true+` and adding the following entries:
 
-....
+====
+[source,bash]
+----
 # /etc/trento/trento-web
 ENABLE_ALERTING=true
 ALERT_SENDER=<<SENDER_EMAIL_ADDRESS>>
@@ -382,11 +387,14 @@ SMTP_SERVER=<<SMTP_SERVER_ADDRESS>>
 SMTP_PORT=<<SMTP_PORT>>
 SMTP_USER=<<SMTP_USER>>
 SMTP_PASSWORD=<<SMTP_PASSWORD>>
-....
+----
+====
 
 ==== trento-wanda configuration
 
-....
+====
+[source,bash]
+----
 # /etc/trento/trento-wanda
 CORS_ORIGIN=http://localhost
 AMQP_URL=amqp://trento_user:trento_user_password@localhost:5672/vhost
@@ -394,7 +402,8 @@ DATABASE_URL=ecto://wanda_user:wanda_password@localhost/wanda
 PORT=4001
 SECRET_KEY_BASE=some-secret
 ACCESS_TOKEN_ENC_SECRET=some-secret
-....
+----
+====
 
 ==== Start the services
 
@@ -447,9 +456,12 @@ curl http://localhost:4001/api/healthz
 If {trento} web and wanda are ready, and the database connection is set up
 correctly, the output should be as follows:
 
-....
+====
+[source,bash]
+----
 {"ready":true}{"database":"pass"}
-....
+----
+====
 
 === Install and configure NGINX
 
@@ -481,7 +493,9 @@ vim /etc/nginx/conf.d/trento.conf
 ----
 . Add the following configuration to `+/etc/nginx/conf.d/trento.conf+`:
 +
-....
+====
+[source,bash]
+----
 server {
     # Redirect HTTP to HTTPS
     listen 80;
@@ -534,7 +548,9 @@ server {
         proxy_pass http://localhost:4000;
     }
 }
-....
+----
+====
++
 . Check the NGINX configuration:
 +
 [source,bash]

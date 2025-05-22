@@ -41,7 +41,9 @@ To update the {tragent}, follow the procedure below:
 +
 . Check the status of the {tragent}:
 +
-....
+====
+[source,bash]
+----
 sudo systemctl status trento-agent
 ● trento-agent.service - Trento Agent service
    Loaded: loaded (/usr/lib/systemd/system/trento-agent.service; enabled; vendor preset: disabled)
@@ -53,6 +55,8 @@ sudo systemctl status trento-agent
            └─22220 /usr/bin/ruby.ruby2.5 /usr/sbin/SUSEConnect -s
 
 [...]
-....
+----
+====
++
 . Check the version in the Hosts overview of the {trweb} (URL `+http://TRENTO_SERVER_HOSTNAME+`).
 . Repeat this procedure in all {tragent} hosts.

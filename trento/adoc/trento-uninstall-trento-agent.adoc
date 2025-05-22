@@ -17,6 +17,9 @@ To uninstall a {tragent}, perform the following steps:
 ====
 * Remove the package:
 +
-....
-sudo zypper remove trento-agent
-....
+====
+[source,bash,subs="attributes"]
+----
+{prompt_sudo}zypper remove trento-agent
+----
+====

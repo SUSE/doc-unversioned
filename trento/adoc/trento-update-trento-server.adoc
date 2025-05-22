@@ -18,13 +18,16 @@ Management section.
 
 In a {k8s} deployment, you can use Helm to update {trserver}:
 
-....
+====
+[source,bash]
+----
 helm upgrade \
    --install trento-server oci://registry.suse.com/trento/trento-server \
    --set trento-web.trentoWebOrigin=TRENTO_SERVER_HOSTNAME \
    --set trento-web.adminUser.password=ADMIN_PASSWORD
         
-....
+----
+====
 
 If you have configured options like email alerting, the Helm command
 must be adjusted accordingly. In this case, consider the following:
@@ -34,27 +37,34 @@ of Helm lower than 3.8.0.
 * When updating {trento} to version 2.0.0 or higher, an additional flag
 must be set in the Helm command:
 +
-....
+====
+[source,bash]
+----
 helm upgrade \
    --install trento-server oci://registry.suse.com/trento/trento-server \
    --set trento-web.trentoWebOrigin=TRENTO_SERVER_HOSTNAME \
    --set trento-web.adminUser.password=ADMIN_PASSWORD \
    --set rabbitmq.auth.erlangCookie=$(openssl rand -hex 16)
         
-....
+----
+====
++
 * When updating {trento} to version 2.3 or higher, a new API key is
 generated and the configuration of all registered {tragent}s must be
 updated accordingly.
 
 In a system deployment, you can use zypper to update {trserver}:
 
-....
+====
+[source,bash]
+----
  zypper refresh
  zypper update trento-web
  zypper update trento-wanda
  systemctl restart trento-web
  systemctl restart trento-wanda     
-....
+----
+====
 
 In a containerized deployment, you can use the same Docker commands as
 for the installation. Keep in mind that the volume for the {trento}

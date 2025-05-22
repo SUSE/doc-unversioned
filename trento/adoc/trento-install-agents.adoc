@@ -52,19 +52,23 @@ custom values, you must use them.
 ** `+server-url+`: URL for the Trento Server
 (http://TRENTO_SERVER_HOSTNAME)
 ** `+api-key+`: the API key retrieved from the Web console
-* If SSL termination has been enabled on the server side, you can
+. If SSL termination has been enabled on the server side, you can
 encrypt the communication from the agent to the server as follows:
-** Provide an HTTPS URL instead of an HTTP one.
-** Import the certificate from the Certificate Authority that has issued
+.. Provide an HTTPS URL instead of an HTTP one.
+.. Import the certificate from the Certificate Authority that has issued
 your {trserver} SSL certificate into the {tragent} host as follows:
-*** Copy the CA certificate in the PEM format to
+... Copy the CA certificate in the PEM format to
 `+/etc/pki/trust/anchors/+`. If the CA certificate is in the CRT format,
 convert it to PEM using the following `+openssl+` command:
 +
-....
+====
+[source,bash,subs="attributes"]
+----
 openssl x509 -in mycert.crt -out mycert.pem -outform PEM
-....
-*** Run the `+update-ca-certificates+` command.
+----
+====
++
+... Run the `+update-ca-certificates+` command.
 . Start the {tragent}:
 +
 ====
