@@ -6,6 +6,8 @@ include::product-attributes.adoc[]
 
 // History
 [[rh-article-trento]]
+*2025-05-23*::
+Complete revision
 *2021-12-10*::
 Initial version
 
