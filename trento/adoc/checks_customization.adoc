@@ -2,11 +2,11 @@
 
 == Checks Customization
 
-=== Overview of Checks Customization
+=== Overview of checks Customization
 
-Trento provides users a simple way to customize expected check values to adjust for target specific environmental requirements. This customization can be performed directly through the Trento Web console without modifying the original check YAML files or creating dedicated checks for different environments.
+Trento makes it possible to adjust expected check values to match target-specific environmental requirements. This can be done directly through the Trento Web console without modifying the original check YAML files or creating separate checks for different environments.
 
-The Trento web console receives a check catalog from Wanda. In the check selection view of a specific target, users can see all available check categories. Clicking on a category expands the list of checks associated with it. If a user has the *necessary permissions*, a settings icon appears to the right of a customizable check. Clicking on the settings icon opens a modal window where users can adjust check values.
+The Trento web console receives a check catalog from Wanda. In the check selection view of a specific target, you can see all available check categories. Click on a category to expand the list of checks associated with it. If you have the *required permissions*, a settings icon appears to the right of a customizable check. Click on the settings icon to open a modal window where you can adjust check values.
 
 ==== The check customization modal includes the following elements:
 
@@ -14,87 +14,43 @@ The Trento web console receives a check catalog from Wanda. In the check selecti
 
 * Check description.
 
-* Warning message that Trento & SUSE are not liable for system malfunctions due to custom check values.
+* Warning message that neither Trento nor SUSE can be held responsible for system malfunctions caused by modified check values.
 
 * A list of all customizable check values. Each value includes a value name with the original default check value and an input field with the current customized or default value.
 
-* The current target specific provider.
+* The current target-specific provider.
 
 * Save, Reset and Close buttons at the bottom.
 
-The Save button is disabled by default and only becomes enabled when the user checks the warning and modifies a value. Pressing the Save button triggers a toast notification confirming successful check customization and the custom values are stored *persistently* in Wanda’s database. So even after a Reboot of the system the customized values are not lost.
+The Save button is disabled by default. The button is enabled when the user checks the warning and modifies a value. The custom values are stored in the Wanda’s database, so they persist across system reboots.
 
-The Reset button remains disabled if the check is not customized.
-If the check has been customized previously, the Reset button inside the modal is enabled, allowing users to revert changes within the modal. When resetting the check, a confirmation dialog appears to confirm the action in order to avoid accidental resets. On a successful reset a toast notification appears that the check customization was reset.
+The Reset button is enabled only when the check has been customized. Use the button to reverse the changes.
 
-The modal closes automatically after saving or resetting the check.
+A Modified Pill indicator next to the check ID indicates that the values have been customized. A Reset icon next to the Settings icon can be used to revert to default values.
 
-A Modified pill indicator appears next to the check ID, highlighting that the values have been customized. A Reset icon appears next to the settings icon, on the right side, allowing users to revert to default values after closing the modal. Pressing on the reset icon opens a confirmation dialog to confirm the action in order to avoid accidental resets.
+=== Target-specific Check Customization
 
-=== Target-Specific Check Customization
+A check is always executed on a target, which can be a host or a cluster. Users can customize check values specific to the target environment to ensure optimal system performance. Customizations are target-specific, and they do not affect other targets or the default check values in the YAML file.
 
-A check is always executed on a target, which can be a host or a cluster. Users can customize check values specific to the target environment to ensure optimal system performance. Customizations are target-specific and do not affect other targets or the default check values in the YAML file.
+=== Required permissions
 
-=== Required Permissions
+Only admin users and users with the `all:checks_customization` permission can customize checks. The customization button in the Trento Web console is not shown for users without this permission.. If a check has been modified modified, the modified Pill is shown for all users.
 
-Only *admin users* or users with the `all:checks_customization` permission can customize checks. Users without this permission will not see the customization button in the Trento Web console. If a check was modified, the modified Pill is shown to all users.
+=== Customizable checks
 
-=== Customizable Checks
-
-By default, a check with expected values is customizable. This applies to all checks unless explicitly disabled in the check YAML file. It cannot be changed in the Trento Web console.
+By default, all checks with expected values are customizable, unless they are explicitly disabled in the check YAML file. This cannot be changed in the Trento Web console.
 
 Supported value types include:
 
-- Strings
-
-- Numbers
-
-- Booleans
+- String
+- Number
+- Boolean
 
 User input is validated to ensure that the input value matches the expected type before allowing to save the custom values in Wanda's database. If the input type is incorrect or mixed, the customization fails, triggering a toast notification, that checks customization failed and a warning message in the modal itself.
 
 === Disable Check Customization
 
-By default, built-in checks are customizable, to disable customization for a specific check, the *customization_disabled: true* flag must be added to the corresponding check YAML file. This flag can be applied at the top level to disable customization entirely or at the value level to control which values remain customizable through the Web UI.
-
-==== Disable Check customization for all values:
-
-[source,yaml]
-----
-id: "156F64"
-name: Corosync `token` timeout
-group: Corosync
-description: Corosync `token` timeout is set to the correct value
-
-customization_disabled: true
-
-values:
-  - name: expected_token_timeout
-    default: 5000
-----
-
-Adding the `customization_disabled: true` flag on the top level of a check makes the check *not customizable*.
-
-==== Disable partial check customization values:
-
-[source,yaml]
-----
-id: "156F64"
-name: Corosync `token` timeout
-group: Corosync
-description: Corosync `token` timeout is set to the correct value
-
-
-values:
-  - name: expected_token_timeout
-    default: 5000
-
-  - name: expected_another_timeout_value
-    customization_disabled: true
-    default: 1000
-----
-
-Adding `customization_disabled: true` on value level keeps the check customizable and only the flagged value is *not customizable* and not shown in the checks customization modal.
+By default, built-in checks are customizable. To disable customization for a specific check, add the *customization_disabled: true* flag to the corresponding check YAML file. This flag can be applied at the top level to disable customization entirely or at the value level to control which values remain customizable through the Web UI.
 
 === Check Customization Persistence
 
