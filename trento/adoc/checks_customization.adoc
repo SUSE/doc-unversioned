@@ -48,10 +48,6 @@ Supported value types include:
 
 User input is validated to ensure that the input value matches the expected type before allowing to save the custom values in Wanda's database. If the input type is incorrect or mixed, the customization fails, triggering a toast notification, that checks customization failed and a warning message in the modal itself.
 
-=== Disable Check Customization
-
-By default, built-in checks are customizable. To disable customization for a specific check, add the *customization_disabled: true* flag to the corresponding check YAML file. This flag can be applied at the top level to disable customization entirely or at the value level to control which values remain customizable through the Web UI.
-
 === Check Customization Persistence
 
 Customized check values are persistently stored in Wanda’s database. When a check is executed, Trento retrieves the expected values from the database rather than the default YAML file. This ensures that any modifications made by users are consistently applied across subsequent executions. Additionally, customized values remain in effect even after system restarts or updates, ensuring continuous adherence to environment-specific configurations.
