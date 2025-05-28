@@ -34,7 +34,7 @@ A check is always executed on a target, which can be a host or a cluster. Users 
 
 === Required permissions
 
-Only admin users and users with the `all:checks_customization` permission can customize checks. The customization button in the Trento Web console is not shown for users without this permission.. If a check has been modified modified, the modified Pill is shown for all users.
+Only admin users and users with the `all:checks_customization` permission can customize checks. The customization button in the Trento Web console is not shown for users without this permission. If a check has been modified, the modified Pill is shown for all users.
 
 === Customizable checks
 
