@@ -4,7 +4,7 @@
 
 === Overview of checks Customization
 
-Trento makes it possible to adjust expected check values to match target-specific environmental requirements. This can be done directly through the Trento Web console without modifying the original check YAML files or creating separate checks for different environments.
+Trento makes it possible to adjust expected check values to match target-specific requirements. This can be done directly through the Trento Web console without modifying the original check or impacting other targets.
 
 The Trento web console receives a check catalog from Wanda. In the check selection view of a specific target, you can see all available check categories. Click on a category to expand the list of checks associated with it. If you have the *required permissions*, a settings icon appears to the right of a customizable check. Click on the settings icon to open a modal window where you can adjust check values.
 
@@ -14,7 +14,7 @@ The Trento web console receives a check catalog from Wanda. In the check selecti
 
 * Check description.
 
-* Warning message that neither Trento nor SUSE can be held responsible for system malfunctions caused by modified check values.
+* Warning message that neither Trento nor SUSE can be held responsible for system malfunctions caused by deviations in the target configuration from best practices.
 
 * A list of all customizable check values. Each value includes a value name with the original default check value and an input field with the current customized or default value.
 
@@ -30,7 +30,7 @@ A Modified Pill indicator next to the check ID indicates that the values have be
 
 === Target-specific Check Customization
 
-A check is always executed on a target, which can be a host or a cluster. Users can customize check values specific to the target environment to ensure optimal system performance. Customizations are target-specific, and they do not affect other targets or the default check values in the YAML file.
+A check is always executed on a target, which can be a host or a cluster. Users can customize check values specific to the target environment to ensure optimal system performance. Customizations are target-specific, and they do not affect other targets or the original default check values.
 
 === Required permissions
 
@@ -38,9 +38,7 @@ Only admin users and users with the `all:checks_customization` permission can cu
 
 === Customizable checks
 
-By default, all checks with expected values are customizable, unless they are explicitly disabled in the check YAML file. This cannot be changed in the Trento Web console.
-
-Supported value types include:
+All checks with the following value types are customizable:
 
 - String
 - Number
@@ -50,4 +48,4 @@ User input is validated to ensure that the input value matches the expected type
 
 === Check Customization Persistence
 
-Customized check values are persistently stored in Wanda’s database. When a check is executed, Trento retrieves the expected values from the database rather than the default YAML file. This ensures that any modifications made by users are consistently applied across subsequent executions. Additionally, customized values remain in effect even after system restarts or updates, ensuring continuous adherence to environment-specific configurations.
+Customized check values are persistently stored in Wanda’s database. This ensures that any modifications made by users are consistently applied across subsequent executions. Additionally, customized values remain in effect even after system restarts or updates, ensuring continuous adherence to target-specific configurations.
