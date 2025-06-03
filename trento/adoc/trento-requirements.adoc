@@ -22,6 +22,11 @@ Running all the {trserver} components requires a minimum of 4 GB of RAM, two CPU
 
 A production-ready {k8s}-based deployment of {trserver} requires {k8s} knowledge. The Helm chart is intended to be used by customers without in-house {k8s} expertise, or as a way to try {trento} with a minimum of effort. However, Helm chart delivers a basic deployment of the {trserver} with all the components running on a single node of the cluster.
 
+[[sec-sap-requirements]]
+=== {sap} requirements
+
+{trento} must run on on a HANA database to be able to discover an {sap} system. In addition, the parameter `dbs/hdb/dbname` in the DEFAULT profile of the {sap} system must be set to the database (tenant) name as its value.
+
 [[sec-trento-agent-requirements]]
 === {tragent} requirements
 

@@ -27,7 +27,7 @@ unable to access the {trento} web console.
 
 During the installation process, a default admin user is defined using
 the `+ADMIN_USER+` variable, which defaults to `+admin+`. If the
-authenticated user’s IDP username matches this admin user's username,
+authenticated user's IDP username matches this admin user's username,
 that user is automatically granted `+all:all+` permissions within
 {trento}.
 
