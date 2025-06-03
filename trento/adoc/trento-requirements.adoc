@@ -25,7 +25,7 @@ A production-ready {k8s}-based deployment of {trserver} requires {k8s} knowledge
 [[sec-sap-requirements]]
 === {sap} requirements
 
-{trento} must run on on a HANA database to be able to discover an {sap} system. In addition, the parameter `dbs/hdb/dbname` in the DEFAULT profile of the {sap} system must be set to the database (tenant) name as its value.
+An {sap} system must run on a HANA database to be discovered by {trento}. In addition, the parameter `dbs/hdb/dbname` must be set in the DEFAULT profile of the {sap} system to the correct database (tenant) name.
 
 [[sec-trento-agent-requirements]]
 === {tragent} requirements
