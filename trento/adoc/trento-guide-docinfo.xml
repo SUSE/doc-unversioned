@@ -9,9 +9,11 @@
   </revision>
 </revhistory>
 <!-- Series -->
-<meta name="series" its:translate="no">Products &amp; Solutions</meta>
+<meta name="series" its:translate="no"
+xmlns:its="http://www.w3.org/2005/11/its">Products &amp; Solutions</meta>
 <!-- Task -->
-<meta name="task" its:translate="no"><phrase>Compliance</phrase><phrase>High Availability</phrase><phrase>Monitoring</phrase>
+<meta name="task" its:translate="no" xmlns:its="http://www.w3.org/2005/11/its"
+><phrase>Compliance</phrase><phrase>High Availability</phrase><phrase>Monitoring</phrase>
 </meta>
 <!-- Docmanager -->
 <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
@@ -31,14 +33,17 @@
 </meta>
 -->
 <!-- Social Media -->
-<meta name="title" its:translate="yes">Getting Started with &trento;</meta>
-<meta name="social-descr" its:translate="yes">Use &trento; for &sles4sapa;</meta>
+<meta name="title" its:translate="yes"
+      xmlns:its="http://www.w3.org/2005/11/its">Getting Started with {trento}</meta>
+<meta name="social-descr" its:translate="yes"
+      xmlns:its="http://www.w3.org/2005/11/its">Use {trento} for {sles4sapa}</meta>
 <!-- Search -->
-<meta name="description" its:translate="yes">How to use &trento; for &sles4sap;</meta>
+<meta name="description" its:translate="yes"
+      xmlns:its="http://www.w3.org/2005/11/its">How to use {trento} for {sles4sap}</meta>
 <abstract>
   <para>
-    &trento; is an open cloud native Web console that aims to help &sap; Basis consultants and
+    {trento} is an open cloud native Web console that aims to help {sap} Basis consultants and
     administrators to check the configuration, monitor and manage the entire OS stack of their
-    &sap; environments, including HA features.
+    {sap} environments, including HA features.
   </para>
 </abstract>
