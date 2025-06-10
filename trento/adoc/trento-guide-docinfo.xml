@@ -23,7 +23,7 @@ xmlns:its="http://www.w3.org/2005/11/its">Products &amp; Solutions</meta>
     <dm:product>Documentation</dm:product>
     <dm:assignee>dpopov@suse.com</dm:assignee>
   </dm:bugtracker>
-  <dm:editurl>https://github.com/SUSE/doc-unversioned/edit/main/trento/xml/</dm:editurl>
+  <!-- <dm:editurl>https://github.com/SUSE/doc-unversioned/edit/main/trento/adoc/</dm:editurl> -->
   <dm:translation>no</dm:translation>
 </dm:docmanager>
 <!-- Productname & Version -->
