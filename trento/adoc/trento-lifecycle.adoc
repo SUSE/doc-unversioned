@@ -1,4 +1,3 @@
-include::generic-attributes.adoc[]
 include::product-attributes.adoc[]
 
 [[sec-trento-product-lifecycle-update-strategy]]
