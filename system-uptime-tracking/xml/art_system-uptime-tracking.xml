@@ -192,8 +192,9 @@
       <step>
         <para>
           To download a CSV file that contains uptime data for all the systems
-          in your organization, click the <guimenu>Download system uptimes as
-          CSV</guimenu> button on the right.
+          in your organization, select <guilabel>System uptimes</guilabel> from
+          the <guimenu>Download as CSV</guimenu> pull down. The pull down is
+          only present if system uptime data is available.
         </para>
         <figure>
           <title>Download uptime data for all systems in an organization</title>
@@ -208,14 +209,6 @@
             </textobject>
           </mediaobject>
         </figure>
-        <note>
-          <title>Empty CSV file</title>
-          <para>
-            If no systems have reported uptime data, the <guimenu>Download
-            system uptimes as CSV</guimenu> button is still available but the
-            downloaded CSV file is empty.
-          </para>
-        </note>
       </step>
       <step>
         <para>
@@ -224,7 +217,7 @@
           14-day histogram provides a detailed visual representation of the
           system uptime.
         </para>
-        <figure>
+        <figure xml:id="fig-uptime-data-histogram">
           <title>Uptime data histogram</title>
           <mediaobject>
             <imageobject role="fo">
