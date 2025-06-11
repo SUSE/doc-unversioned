@@ -433,7 +433,7 @@ start the service as follows:
 <note>
 <title>Enabling audit access on &zseries; systems</title>
 <para>
-  To make a rootful container on am &zseries; system work with applications that require access to audit (for example, OpenSSH), you must run the container with the <parameter>--cap-add=AUDIT_WRITE</parameter>  parameter. For example: <command>podman run --cap-add=AUDIT_WRITE -it <replaceable>IMAGE</replaceable></command>.
+  To make a rootful container on an &zseries; system work with applications that require access to audit (for example, OpenSSH), you must run the container with the <parameter>--cap-add=AUDIT_WRITE</parameter>  parameter. For example: <command>podman run --cap-add=AUDIT_WRITE -it <replaceable>IMAGE</replaceable></command>.
 </para>
 </note>
   </section>
