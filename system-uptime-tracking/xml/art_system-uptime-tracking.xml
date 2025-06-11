@@ -212,7 +212,7 @@
         <para>
           To download a CSV file that contains uptime data for all the systems
           in your organization, select <guilabel>System uptimes</guilabel> from
-          the <guimenu>Download as CSV</guimenu> pull down. The pull down is
+          the <guimenu>Download as CSV</guimenu> drop-down list. The drop-down list is
           only present if system uptime data is available.
         </para>
         <figure>
@@ -297,7 +297,7 @@
           Retrieve the uptime data. The following examples retrieve uptime data
           for the system with ID <literal>16300735</literal> from May 28th, 2025
           to June 1st, 2025. You can use either the <command>curl</command> or
-          <command>wget</command> commands for the retrieval.
+          <command>wget</command> command for the retrieval.
         </para>
         <substeps>
           <step>
@@ -443,7 +443,7 @@ Id,Hostname,Online At Day,Online For Hours,Online At Hours,Labels
       <qandaentry>
         <question>
           <para>
-            Was the host up between 9–10 a.m. on 2024-02-28?
+            Was the host up between 9&ndash;10 a.m. on 2025-02-28?
           </para>
         </question>
         <answer>
@@ -451,7 +451,7 @@ Id,Hostname,Online At Day,Online For Hours,Online At Hours,Labels
             Retrieve the uptime data as described in
             <xref linkend="uptime-data-retrieve-cmdline"/>. Open the data file
             and search for the line that includes
-            <literal>2024-02-27</literal>. Inspect that day's bit pattern, for
+            <literal>2025-02-28</literal>. Inspect that day's bit pattern, for
             example, <literal>000011111111111111111111</literal> and count up to
             the 10th digit (the bit starts with 0 a.m.) from left. The
             corresponding bit is <literal>1</literal>, therefore the system was
@@ -462,7 +462,7 @@ Id,Hostname,Online At Day,Online For Hours,Online At Hours,Labels
       <qandaentry>
         <question>
           <para>
-            What is the total uptime and downtime of the host on 2024-05-28?
+            What is the total uptime and downtime of the host on 2025-05-28?
           </para>
         </question>
         <answer>
