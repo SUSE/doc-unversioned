@@ -88,7 +88,7 @@
             </listitem>
             <listitem>
               <para>
-                Introduced <emphasis>lables</emphasis> in the CSV output.
+                Introduced <emphasis>labels</emphasis> in the CSV output.
               </para>
             </listitem>
           </itemizedlist>
@@ -413,8 +413,8 @@ Id,Hostname,Online At Day,Online For Hours,Online At Hours,Labels
           <term>Labels</term>
           <listitem>
             <para>
-              List of customer applied labels. It is blank if the customer has
-              not applied any labels to the systems being metered.
+              List of custom labels. It is blank if you have not applied any
+              labels to the systems being metered.
             </para>
           </listitem>
       </varlistentry>
