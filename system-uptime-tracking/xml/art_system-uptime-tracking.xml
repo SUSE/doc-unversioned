@@ -75,6 +75,25 @@
           </itemizedlist>
         </revdescription>
       </revision>
+      <revision><date>2025-06-10</date>
+        <revdescription>
+          <para>
+            Update reflecting the following changes:
+          </para>
+          <itemizedlist>
+            <listitem>
+              <para>
+                Updated GUI navigation when downloading a CSV file.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Introduced <emphasis>labels</emphasis> in the CSV output.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </revdescription>
+      </revision>
     </revhistory>
   </info>
   <sect1 xml:id="uptime-requirements">
@@ -192,8 +211,9 @@
       <step>
         <para>
           To download a CSV file that contains uptime data for all the systems
-          in your organization, click the <guimenu>Download system uptimes as
-          CSV</guimenu> button on the right.
+          in your organization, select <guilabel>System uptimes</guilabel> from
+          the <guimenu>Download as CSV</guimenu> pull down. The pull down is
+          only present if system uptime data is available.
         </para>
         <figure>
           <title>Download uptime data for all systems in an organization</title>
@@ -208,14 +228,6 @@
             </textobject>
           </mediaobject>
         </figure>
-        <note>
-          <title>Empty CSV file</title>
-          <para>
-            If no systems have reported uptime data, the <guimenu>Download
-            system uptimes as CSV</guimenu> button is still available but the
-            downloaded CSV file is empty.
-          </para>
-        </note>
       </step>
       <step>
         <para>
@@ -224,7 +236,7 @@
           14-day histogram provides a detailed visual representation of the
           system uptime.
         </para>
-        <figure>
+        <figure xml:id="fig-uptime-data-histogram">
           <title>Uptime data histogram</title>
           <mediaobject>
             <imageobject role="fo">
@@ -283,8 +295,8 @@
       <step>
         <para>
           Retrieve the uptime data. The following examples retrieve uptime data
-          for the system with ID <literal>16300735</literal> from Apr 24th, 2024
-          to May 1st, 2024. You can use either the <command>curl</command> or
+          for the system with ID <literal>16300735</literal> from May 28th, 2025
+          to June 1st, 2025. You can use either the <command>curl</command> or
           <command>wget</command> commands for the retrieval.
         </para>
         <substeps>
@@ -325,17 +337,11 @@
     </para>
 
 <screen>
-System;Uuid;Online At Day;Online For Hours
-15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-08;15
-15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-09;3
-15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-11;9
-15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-12;14
-15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-13;15
-15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-14;3
-15892210;9e818a04-9e82-4584-8f41-b0f39a045526;2024-02-27;20
-15892210;9e818a04-9e82-4584-8f41-b0f39a045526;2024-02-28;20
-15892210;9e818a04-9e82-4584-8f41-b0f39a045526;2024-02-29;20
-15892210;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-01;13
+Id,Hostname,Online At Day,Online For Hours,Labels
+16300735,localhost.localdomain,2025-05-28,20,"test"
+16300735,localhost.localdomain,2025-05-29,5,"test"
+16300735,localhost.localdomain,2025-05-30,8,"test"
+16300735,localhost.localdomain,2025-06-01,7,"test"
 </screen>
 
     <para>
@@ -345,18 +351,12 @@ System;Uuid;Online At Day;Online For Hours
     </para>
 
 <screen>
-  System;Uuid;Online At Day;Online At Hours;Online For Hours
-  15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-08;111111100000000011111111;15
-  15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-09;111000000000000000000000;3
-  15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-11;000000000000000111111111;9
-  15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-12;111110000000000111111111;14
-  15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-13;111111000000000111111111;15
-  15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-14;111000000000000000000000;3
-  15892210;9e818a04-9e82-4584-8f41-b0f39a045526;2024-02-27;000011111111111111111111;20
-  15892210;9e818a04-9e82-4584-8f41-b0f39a045526;2024-02-28;000011111111111111111111;20
-  15892210;9e818a04-9e82-4584-8f41-b0f39a045526;2024-02-29;000011111111111111111111;20
-  15892210;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-01;011111000000000011111111;13
-  </screen>
+Id,Hostname,Online At Day,Online For Hours,Online At Hours,Labels
+16300735,localhost.localdomain,2025-05-28,20,000011111111111111111111,"test"
+16300735,localhost.localdomain,2025-05-29,5,000000000000000000111110,"test"
+16300735,localhost.localdomain,2025-05-30,8,000000000000000111111110,"test"
+16300735,localhost.localdomain,2025-06-01,7,000000000000000001111111,"test"
+</screen>
 
     <para>
       The columns have the following meaning:
@@ -364,7 +364,7 @@ System;Uuid;Online At Day;Online For Hours
 
     <variablelist>
       <varlistentry>
-        <term>System</term>
+        <term>Id</term>
         <listitem>
           <para>
             All the systems managed by SCC/RMT are uniquely identified by a
@@ -373,10 +373,10 @@ System;Uuid;Online At Day;Online For Hours
         </listitem>
       </varlistentry>
       <varlistentry>
-        <term>Uuid</term>
+        <term>Hostname</term>
         <listitem>
           <para>
-            A unique hardware identifier.
+            The host name of the system.
           </para>
         </listitem>
       </varlistentry>
@@ -409,6 +409,15 @@ System;Uuid;Online At Day;Online For Hours
           </para>
         </listitem>
       </varlistentry>
+      <varlistentry>
+          <term>Labels</term>
+          <listitem>
+            <para>
+              List of custom labels. It is blank if you have not applied any
+              labels to the systems being metered.
+            </para>
+          </listitem>
+      </varlistentry>
     </variablelist>
   </sect1>
   <sect1 xml:id="uptime-data-practical">
@@ -434,15 +443,14 @@ System;Uuid;Online At Day;Online For Hours
       <qandaentry>
         <question>
           <para>
-            Was the host up between 9–10 a.m. on 2024-02-27?
+            Was the host up between 9–10 a.m. on 2024-02-28?
           </para>
         </question>
         <answer>
           <para>
             Retrieve the uptime data as described in
-            <xref
-            linkend="uptime-data-retrieve-cmdline"/>. Open the
-            data file and search for the line that starts with
+            <xref linkend="uptime-data-retrieve-cmdline"/>. Open the data file
+            and search for the line that includes
             <literal>2024-02-27</literal>. Inspect that day's bit pattern, for
             example, <literal>000011111111111111111111</literal> and count up to
             the 10th digit (the bit starts with 0 a.m.) from left. The
@@ -454,7 +462,7 @@ System;Uuid;Online At Day;Online For Hours
       <qandaentry>
         <question>
           <para>
-            What is the total uptime and downtime of the host on 2024-02-27?
+            What is the total uptime and downtime of the host on 2024-05-28?
           </para>
         </question>
         <answer>
@@ -469,12 +477,12 @@ System;Uuid;Online At Day;Online For Hours
       <qandaentry>
         <question>
           <para>
-            How many days was the host up in February 2024?
+            How many hours was the host up from May 28th to June 1st?
           </para>
         </question>
         <answer>
           <para>
-            To retrieve statistics about the host in a specific month, adjust
+            To retrieve statistics about the host in a specific period, adjust
             the <option>online_from</option> and <option>online_to</option>
             parameters in the URL query mentioned in
             <xref linkend="uptime-data-retrieve-cmdline"/>, for example:
@@ -482,15 +490,17 @@ System;Uuid;Online At Day;Online For Hours
 <screen>
 &prompt.user;curl -X 'GET' \
 -u'<replaceable>USERNAME</replaceable>:<replaceable>PASSWORD</replaceable>' \
-'https://scc.suse.com/connect/organizations/system_uptimes?include_hourly=true&amp;system_id=16300735&amp;online_from=2024-02-01&amp;online_to=2024-02-29' \
+'https://scc.suse.com/connect/organizations/system_uptimes?include_hourly=true&amp;system_id=16300735&amp;online_from=2025-05-28&amp;online_to=2025-06-01' \
 -H 'accept: text/csv'
-System;Uuid;Online At Day;Online At Hours;Online For Hours
-16300735;78740b8c-7d23-42f8-b5fe-4776c47b9cb9;2024-04-24;000000000000000000000001;1
-16300735;78740b8c-7d23-42f8-b5fe-4776c47b9cb9;2024-04-25;110000000000000000000000;2
+Id,Hostname,Online At Day,Online For Hours,Online At Hours,Labels
+16300735,localhost.localdomain,2025-05-28,20,000011111111111111111111,"test"
+16300735,localhost.localdomain,2025-05-29,5,000000000000000000111110,"test"
+16300735,localhost.localdomain,2025-05-30,8,000000000000000111111110,"test"
+16300735,localhost.localdomain,2025-06-01,7,000000000000000001111111,"test"
 </screen>
           <para>
-            The sum in the rightmost column is 3, indicating the host was up for
-            3 days in February 2024.
+            The sum of the <literal>Online For Hours</literal> column is 40,
+            indicating the host was up for 3 40 hours.
           </para>
         </answer>
       </qandaentry>
@@ -511,17 +521,12 @@ System;Uuid;Online At Day;Online At Hours;Online For Hours
 -u'<replaceable>USERNAME</replaceable>:<replaceable>PASSWORD</replaceable>' \
 'https://scc.suse.com/connect/organizations/system_uptimes?include_hourly=true \
 -H 'accept: text/csv'
-System;Uuid;Online At Day;Online At Hours;Online For Hours
-15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-08;111111100000000011111111;15
-15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-09;111000000000000000000000;3
-15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-11;000000000000000111111111;9
-15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-12;111110000000000111111111;14
-15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-13;111111000000000111111111;15
-15892209;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-14;111000000000000000000000;3
-15892210;9e818a04-9e82-4584-8f41-b0f39a045526;2024-02-27;000011111111111111111111;20
-15892210;9e818a04-9e82-4584-8f41-b0f39a045526;2024-02-28;000011111111111111111111;20
-15892210;9e818a04-9e82-4584-8f41-b0f39a045526;2024-02-29;000011111111111111111111;20
-15892210;9e818a04-9e82-4584-8f41-b0f39a045526;2024-03-01;011111000000000011111111;13
+Id,Hostname,Online At Day,Online For Hours,Online At Hours,Labels
+16300735,localhost.localdomain,2025-05-28,20,000011111111111111111111,"test"
+16300736,localhost.localdomain,2025-05-29,5,000000000000000000111110,"lab"
+16300736,localhost.localdomain,2025-05-30,8,000000000000000111111110,"lab"
+16300737,localhost.localdomain,2025-05-30,7,000000000000000011111111,"prod"
+16300737,localhost.localdomain,2025-06-01,7,000000000000000000111111,"prod"
 </screen>
           <para>
             As you can see, the list includes system IDs from different hosts.
