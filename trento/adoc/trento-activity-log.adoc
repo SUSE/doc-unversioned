@@ -14,7 +14,7 @@ system event or the user action occurred
 * A message: type of the occurred event or user action
 * The user that triggered the event or performed the action. User system
 is used for events triggered by the system itself.
-* Severity status (Info, Warning, and Critical are the defaults)
+* Severity status (Info, Warning, and Critical are selected by default)
 
 Clicking on the chevron icon in the activity log entry opens a modal
 window containing the activity metadata.
@@ -46,7 +46,7 @@ following:
 * Profile updates
 
 The Activity Log features a privacy-related access level controlled through the
-_activity_logusers_ permission. For users without this permission, user-related
+_activity_log:users_ permission. For users without this permission, user-related
 info in the Activity Log is redacted. Unprivileged users can only see their own
 user names as well as user system.
 
