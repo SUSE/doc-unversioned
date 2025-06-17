@@ -55,7 +55,7 @@
       either create a named volume for the registry or to bind mount a
       persistent directory on the host to
       <filename>/var/lib/docker-registry</filename> in the container. This
-      ensures that pushed images persist deleting the container.
+      ensures that pushed images persist in deleting the container.
     </para>
     <para>
       Run the following command to pull the registry container image from the
@@ -98,7 +98,7 @@
       <listitem>
         <para> It lacks any form of authentication. That means everybody with
         access to &dreg; can push and pull images to it. That includes
-        overwriting existing images. It is recommended to setup some form of
+        overwriting existing images. It is recommended to set up some form of
         access restriction as described in the upstream documentation <link
         xlink:href="https://distribution.github.io/distribution/about/deploying/#restricting-access"/>.
         </para>
