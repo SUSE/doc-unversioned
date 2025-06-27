@@ -1,7 +1,7 @@
 include::product-attributes.adoc[]
 
-[[sec-trento-product-lifecycle-update-strategy]]
-== Product lifecycle and update strategy
+[[sec-trento-lifecycle]]
+== Lifecycle
 
 Trento is available at no extra cost for {sles4sap} 15 subscribers. Particularly, Trento's two main components have the following product lifecycles:
 
