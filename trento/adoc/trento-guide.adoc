@@ -3,10 +3,6 @@
 include::generic-attributes.adoc[]
 
 = Getting Started with {trento}
-{sles4sapreg}
-
-
-// include::common_copyright_gfdl.xml[]
 
 include::trento-intro.adoc[]
 include::trento-lifecycle.adoc[]
