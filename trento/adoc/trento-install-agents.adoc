@@ -33,7 +33,7 @@ Install the {tragent} on an {sap} host and register it with the
 ====
 . Open the configuration file `+/etc/trento/agent.yaml+` and uncomment
 (remove the `+#+` character) the entries for `+facts-service-url+`,
-`+server-url+` and `+api-key+`. Update the values as necessary:
+`+server-url+` and `+api-key+`. Update the values if necessary:
 ** `+facts-service-url+`: the address of the AMQP RabbitMQ service used
 for communication with the checks engine (wanda). The correct value of
 this parameter depends on how {trserver} was deployed.
@@ -50,6 +50,7 @@ custom values, you must use them.
 ** `+server-url+`: URL for the Trento Server
 (http://TRENTO_SERVER_HOSTNAME)
 ** `+api-key+`: the API key retrieved from the Web console
+** `+node-exporter-target+`: specifies IP address and port for node exporter as `<ip_address>:<port>`. In situations where the host has multiple IP addresses and/or the exporter is listening to a port different from the default one, configuring this settings enables Prometheus to connect to the correct IP address and port of the host.
 . If SSL termination has been enabled on the server side, you can
 encrypt the communication from the agent to the server as follows:
 .. Provide an HTTPS URL instead of an HTTP one.
