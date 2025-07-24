@@ -163,10 +163,10 @@ HELM_EXPERIMENTAL_OCI=1 helm upgrade \
 ----
 ====
 
-include::helm-event-pruning.adoc[leveloffset=+1]
+include::helm-event-pruning.adoc[leveloffset=+2]
 
 [[sec-trento-enabling-email-alerts]]
-=== Enabling email alerts
+==== Enabling email alerts
 
 Email alerting feature notifies the {sap} Basis administrator about important changes in the {sap} Landscape being monitored by {trento}.
 
@@ -215,7 +215,7 @@ HELM_EXPERIMENTAL_OCI=1 helm upgrade \
 ----
 
 [[sec-trento-enabling-ssl]]
-=== Enabling SSL
+==== Enabling SSL
 
 Ingress may be used to provide SSL termination for the Web component of {trserver}. This would allow to encrypt the communication from the agent to the server, which is already secured by the corresponding API key. It would also allow HTTPS access to the Web console with trusted certificates.
 
