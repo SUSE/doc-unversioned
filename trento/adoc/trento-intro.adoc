@@ -9,7 +9,7 @@ include::product-attributes.adoc[]
 * Automated discovery of {pace} clusters using SAPHanaSR classic or angi as well as different fencing mechanisms, including diskless SBD.
 * Automated discovery of SAP systems running on ABAP or JAVA stacks and HANA databases.
 * Awareness of maintenance situations in a {pace} cluster at cluster, node, or resource level.
-* Configuration validation for {hana} Scale-Up Performance-optimized, {hana} Scale-out and ASCS/ERS clusters deployed on Azure, AWS, GCP or on-premises bare metal platforms, including KVM and Nutanix.
+* Configuration validation for {hana} Scale-Up Performance/Cost-optimized, {hana} Scale-out and ASCS/ERS clusters deployed on Azure, AWS, GCP or on-premises bare metal platforms, including KVM and Nutanix.
 * Useful information that offers insights about the execution of configuration checks.
 * Delivery of configuration checks decoupled from core functionality.
 * Email alerting for critical events in the monitored landscape.
