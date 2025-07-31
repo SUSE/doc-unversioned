@@ -75,7 +75,7 @@ The following procedure deploys {trserver} on a single-node K3s cluster. Note th
 ====
 [source,subs="attributes"]
 ----
-{prompt_root}curl -sfL https://get.k3s.io | INSTALL_K3S_SKIP_SELINUX_RPM=true sh
+curl -sfL https://get.k3s.io | INSTALL_K3S_SKIP_SELINUX_RPM=true sh
 ----
 ====
 +
@@ -84,7 +84,7 @@ The following procedure deploys {trserver} on a single-node K3s cluster. Note th
 ====
 [source,bash,subs="attributes"]
 ----
-{prompt_user}curl -sfL https://get.k3s.io | INSTALL_K3S_SKIP_SELINUX_RPM=true sh -s - --write-kubeconfig-mode 644
+curl -sfL https://get.k3s.io | INSTALL_K3S_SKIP_SELINUX_RPM=true sh -s - --write-kubeconfig-mode 644
 ----
 ====
 +
@@ -94,7 +94,7 @@ The following procedure deploys {trserver} on a single-node K3s cluster. Note th
 ====
 [source,subs="attributes"]
 ----
-{prompt_root}curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
 ----
 ====
 +
