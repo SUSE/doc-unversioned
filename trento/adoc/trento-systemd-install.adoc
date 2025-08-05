@@ -3,12 +3,10 @@ include::product-attributes.adoc[]
 [[sec-systemd-deployment]]
 == systemd deployment
 
-A systemd installation of {trento} Server, based on RPM packages, can be
-done manually. The latest available version of SUSE Linux Enterprise
-Server for SAP Applications is used as the base operating system, which
-is https://www.suse.com/download/sles/[SLE 15 SP6] at the time of
-writing. For installations on Service Packs other than SP6, update the
-repository address as indicated in the respective notes provided
+A systemd installation of {trento} Server, based on RPM packages, can be done
+manually using the latest available version of SUSE Linux Enterprise Server for
+SAP Applications. For installations on Service Packs other than the current one,
+update the repository address as indicated in the respective notes provided
 throughout this guide.
 
 *Supported Service Packs*:
@@ -17,6 +15,7 @@ throughout this guide.
 * SP4
 * SP5
 * SP6
+* SP7
 
 === List of dependencies
 
@@ -63,11 +62,11 @@ but they do not come with the same level of support as the core SLES
 packages. Users should assess the suitability of these packages based on
 their own risk tolerance and support needs.
 
-. Enable PackageHub repository:
+. Enable PackageHub repository (replace `15.x` with the correct Service Pack version):
 +
 [source,bash]
 ----
-SUSEConnect --product PackageHub/15.5/x86_64
+SUSEConnect --product PackageHub/15.x/x86_64
 ----
 +
 [NOTE]
@@ -78,11 +77,6 @@ is not compatible with {trento}'s Prometheus configuration. Refer to
 <<prometheus-existing-installation>> for SLE 15 SP3.
 ====
 +
-[NOTE]
-====
-For SLE15 SP4 change the repository to
-`+SUSEConnect --product PackageHub/15.4/x86_64+`
-====
 . Add the Prometheus user/group:
 +
 [source,bash]
@@ -154,6 +148,8 @@ versions:
 * *13.9 for SP3*
 * *14.10 for SP4*
 * *15.5 for SP5*
+* *16.9 for SP6*
+* *17.5 for SP7*
 
 Using a different version of PostgreSQL may require different steps or
 configurations, especially when changing the major number. For more
@@ -516,7 +512,7 @@ server {
     ssl_session_cache shared:SSL:10m;
 
     # Wanda rule
-    location ~ ^/(api/checks|api/v1/checks|api/v2/checks|api/v3/checks)/  {
+    location ~ ^/(api/checks|api/v1/checks|api/v2/checks|api/v3/checks|api/groups|api/v1/groups)/  {
         allow all;
 
         # Proxy Headers
@@ -549,24 +545,6 @@ server {
 }
 ----
 ====
-+
-. Check the NGINX configuration:
-+
-[source,bash]
-----
-nginx -t
-----
-+
-If the configuration is correct, the output should be as follows:
-+
-[source,bash]
-----
-nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
-nginx: configuration file /etc/nginx/nginx.conf test is successful
-----
-+
-If there are issues with the configuration, the output indicates what
-needs to be adjusted.
 
 === Prepare SSL certificate for NGINX
 
@@ -609,11 +587,29 @@ mkdir -p /etc/nginx/ssl/certs/
 ----
 cp trento.crt /etc/nginx/ssl/certs/trento.crt
 ----
-. Reload NGINX to apply changes:
+. Check the NGINX configuration:
 +
 [source,bash]
 ----
-systemctl reload nginx
+nginx -t
+----
++
+If the configuration is correct, the output should be as follows:
++
+[source,bash]
+----
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+----
++
+If there are issues with the configuration, the output indicates what
+needs to be adjusted.
++
+. Enable NGINX:
++
+[source,bash]
+----
+systemctl enable --now nginx
 ----
 
 [[option-2-using-lets-encrypt-for-a-signed-certificate-using-packagehub-repository]]
@@ -638,7 +634,7 @@ zypper refresh
 +
 [source,bash]
 ----
-zypper install certbot python3-certbot-nginx
+zypper install certbot python311-certbot-nginx
 ----
 . Obtain a certificate and configure NGINX with Certbot:
 +
