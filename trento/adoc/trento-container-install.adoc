@@ -42,15 +42,6 @@ systemctl enable --now docker
 docker network create trento-net
 ----
 +
-[NOTE]
-====
-When creating the `+trento-net+` network, Docker assigns a default
-subnet to it (for example, `+172.17.0.0/16+`). Ensure that this subnet is allowed by
-the rules specified in your PostgreSQL configuration. For more
-information, refer to the upstream
-https://www.postgresql.org/docs/current/auth-pg-hba-conf.html[`+pg_hba.conf+`]
-documentation.
-====
 . Verify the subnet of `+trento-net+`:
 +
 [source,bash]
