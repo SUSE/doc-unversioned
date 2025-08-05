@@ -4,5 +4,4 @@ include::product-attributes.adoc[]
 
 An automated installation of Trento Server using on RPM packages or
 Docker images can be performed with a Ansible playbook. For further
-information, refer to the official
-https://github.com/trento-project/ansible[Trento Ansible project].
+information, refer to the https://github.com/trento-project/ansible[Trento Ansible project].
