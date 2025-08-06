@@ -26,6 +26,12 @@ A production-ready {k8s}-based deployment of {trserver} requires {k8s} knowledge
 
 An {sap} system must run on a HANA database to be discovered by {trento}. In addition, the parameter `dbs/hdb/dbname` must be set in the DEFAULT profile of the {sap} system to the correct database (tenant) name.
 
+The agent must be installed in the following locations:
+
+* the host where the ASCS instance is running
+* a host where an application server instance is running
+* all the database hosts
+
 [[sec-trento-agent-requirements]]
 === {tragent} requirements
 
