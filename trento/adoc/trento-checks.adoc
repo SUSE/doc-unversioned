@@ -68,3 +68,5 @@ image::trento-web-nonmetexpectation.png[trento-web-nonmetexpectation,scaledwidth
 When checks for a given cluster have been selected, {trento} executes
 them automatically every five minutes, updating the results. A spinning
 check execution result icon means that an execution is running.
+
+include::trento-checks-customization.adoc[leveloffset=+1]
