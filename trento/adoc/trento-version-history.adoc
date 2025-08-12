@@ -22,6 +22,17 @@ https://github.com/trento-project/checks/releases.
 https://github.com/trento-project/agent/releases.
 
 [indent=-1]
+
+Version 2.5.0 (released on 2025/08/07)::
+  Includes Helm chart 2.5.0, Web Component 2.4.0, checks engine (wanda) 1.5.0, configuration checks 1.1.0 and agent 2.5.0, with the following highlights:
+  
+  * Discovery of HANA scale-up cost-optimized clusters
+  * Checks customization
+  * Enhanced activity log (search by metadata, auto refresh capabilities, severity information and permission-based access level)
+  * A more flexible Prometheus integration
+  * Discovery optimization in edge-case scenarios
+  * Major updates to the Checks Catalog
+
 Version 2.4.0 (released on 2024/12/06)::
   Consisting of Helm chart 2.4.0, Web component 2.4.0, checks engine
   (wanda) 1.4.0, configuration checks 1.0.0 and agent 2.4.0.
