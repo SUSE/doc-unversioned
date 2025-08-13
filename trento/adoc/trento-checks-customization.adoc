@@ -1,4 +1,4 @@
-[[checks_customization]]
+[[checks-customization]]
 
 == Checks Customization
 
