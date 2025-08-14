@@ -3,6 +3,8 @@
 include::generic-attributes.adoc[]
 
 = Getting Started with {trento}
+:revdate: 2025-07-03
+
 
 include::trento-intro.adoc[]
 include::trento-lifecycle.adoc[]
