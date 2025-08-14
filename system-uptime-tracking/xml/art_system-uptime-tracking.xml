@@ -47,11 +47,23 @@
     <meta name="task" its:translate="no"><phrase>Subscription Management</phrase>
     </meta>
     <revhistory xml:id="rh-article-system-uptime-tracking">
-      <revision><date>2024-07-06</date>
+      <revision><date>2025-06-10</date>
         <revdescription>
           <para>
-            Initial release of the document
+            Update reflecting the following changes:
           </para>
+          <itemizedlist>
+            <listitem>
+              <para>
+                Updated GUI navigation when downloading a CSV file.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Introduced <emphasis>labels</emphasis> in the CSV output.
+              </para>
+            </listitem>
+          </itemizedlist>
         </revdescription>
       </revision>
       <revision><date>2024-10-21</date>
@@ -75,23 +87,11 @@
           </itemizedlist>
         </revdescription>
       </revision>
-      <revision><date>2025-06-10</date>
+      <revision><date>2024-07-06</date>
         <revdescription>
           <para>
-            Update reflecting the following changes:
+            Initial release of the document
           </para>
-          <itemizedlist>
-            <listitem>
-              <para>
-                Updated GUI navigation when downloading a CSV file.
-              </para>
-            </listitem>
-            <listitem>
-              <para>
-                Introduced <emphasis>labels</emphasis> in the CSV output.
-              </para>
-            </listitem>
-          </itemizedlist>
         </revdescription>
       </revision>
     </revhistory>
