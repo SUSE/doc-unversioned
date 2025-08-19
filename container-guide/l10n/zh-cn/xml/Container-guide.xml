@@ -1,46 +1,47 @@
-<?xml version="1.0"?>
-<article xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="container-guide" xml:lang="zh-cn" xmlns:its="http://www.w3.org/2005/11/its">
+<?xml version='1.0' encoding='UTF-8'?><article xmlns="http://docbook.org/ns/docbook" version="5.2" xml:id="container-guide" xml:lang="zh-cn">
   <info>
-    <title xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:trans="http://docbook.org/ns/transclusion">容器指南</title>
-    <revhistory>
-      <revision><date>2023-11-17</date>
-       <revdescription>
-        <para>
-         Add the Using Long Term Service Pack Support container images from the SUSE registry chapter.
-        </para>
-       </revdescription>
+    <title xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:trans="http://docbook.org/ns/transclusion" xmlns:its="http://www.w3.org/2005/11/its">容器指南</title>
+    <revhistory xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:trans="http://docbook.org/ns/transclusion" xmlns:its="http://www.w3.org/2005/11/its">
+      <revision>
+        <date>2023-11-17</date>
+        <revdescription>
+          <para>
+          Add the Using Long Term Service Pack Support container images from the SUSE Registry chapter.
+         </para>
+        </revdescription>
       </revision>
-       <revision><date>2023-08-10</date>
-         <revdescription>
-           <para>
-             Initial version.
-           </para>
-         </revdescription>
-       </revision>
-      </revhistory>
-    <meta xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:trans="http://docbook.org/ns/transclusion" name="updated" content="2023-07-04"/>
-    <meta xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:trans="http://docbook.org/ns/transclusion" name="architecture" content="x86_64;zseries;power;aarch64"/>
-    <meta xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:trans="http://docbook.org/ns/transclusion" name="title">容器指南</meta>
-    <meta xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:trans="http://docbook.org/ns/transclusion" name="description">
-      如何在 SUSE Linux Enterprise Server 容器生态系统中导航。
-     </meta>
-    <meta xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:trans="http://docbook.org/ns/transclusion" name="social-descr">
-      在 SLES 上管理容器。
-     </meta>
-     <meta name="task" its:translate="no">
+      <revision>
+        <date>2023-08-10</date>
+        <revdescription>
+          <para>
+              Initial version.
+            </para>
+        </revdescription>
+      </revision>
+    </revhistory>
+    <meta xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:trans="http://docbook.org/ns/transclusion" xmlns:its="http://www.w3.org/2005/11/its" name="updated" content="2023-07-04"/>
+    <meta xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:trans="http://docbook.org/ns/transclusion" xmlns:its="http://www.w3.org/2005/11/its" name="architecture" content="x86_64;zseries;power;aarch64"/> <meta xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:trans="http://docbook.org/ns/transclusion" xmlns:its="http://www.w3.org/2005/11/its" name="productname" its:translate="no">
+        
+      </meta>
+    <meta xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:trans="http://docbook.org/ns/transclusion" xmlns:its="http://www.w3.org/2005/11/its" name="title">容器指南</meta>
+    <meta xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:trans="http://docbook.org/ns/transclusion" xmlns:its="http://www.w3.org/2005/11/its" name="series" its:translate="no">Products &amp; Solutions</meta>
+    <meta xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:trans="http://docbook.org/ns/transclusion" xmlns:its="http://www.w3.org/2005/11/its" name="description" its:translate="yes">如何在 SUSE Linux Enterprise Server 容器生态系统中导航</meta>
+    <meta xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:trans="http://docbook.org/ns/transclusion" xmlns:its="http://www.w3.org/2005/11/its" name="social-descr" its:translate="yes">在 SLES 上管理容器</meta>
+    <meta xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:trans="http://docbook.org/ns/transclusion" xmlns:its="http://www.w3.org/2005/11/its" name="task" its:translate="no">
       <phrase>Containerization</phrase>
       <phrase>Container Management</phrase>
-     </meta>
-    <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:trans="http://docbook.org/ns/transclusion">
+    </meta>
+    <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:trans="http://docbook.org/ns/transclusion" xmlns:its="http://www.w3.org/2005/11/its">
       <dm:bugtracker>
         <dm:url>https://bugzilla.suse.com/enter_bug.cgi</dm:url>
         <dm:component>Smart Docs</dm:component>
         <dm:product>Documentation</dm:product>
         <dm:assignee>dmitri.popov@suse.com</dm:assignee>
       </dm:bugtracker>
-      <dm:translation>no</dm:translation>
+      <dm:editurl>https://bugzilla.suse.com/enter_bug.cgi</dm:editurl>
+      <dm:translation>yes</dm:translation>
     </dm:docmanager>
-    <abstract xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:trans="http://docbook.org/ns/transclusion">
+    <abstract xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:trans="http://docbook.org/ns/transclusion" xmlns:its="http://www.w3.org/2005/11/its">
       <para>
           以下指南介绍了 SUSE Linux Enterprise Server 容器生态系统。由于容器是一项不断发展的技术，本指南会定期更新、补充和改进，以反映最新的技术进展。
         </para>
@@ -85,7 +86,7 @@
         </listitem>
       </varlistentry>
       <varlistentry>
-        <term>容器的限制</term>
+        <term>容器的局限性</term>
         <listitem>
           <itemizedlist>
             <listitem>
@@ -122,11 +123,14 @@
     </para>
       <informalfigure>
         <mediaobject>
-          <imageobject>
+          <imageobject role="html">
+            <imagedata fileref="container-workflow.png" width="80.0%"/>
+          </imageobject>
+          <imageobject role="fo">
             <imagedata fileref="container-workflow.svg" width="80.0%"/>
           </imageobject>
           <textobject>
-            <phrase>image</phrase>
+            <phrase>Container workflow</phrase>
           </textobject>
         </mediaobject>
       </informalfigure>
@@ -163,15 +167,18 @@
       基本映像和自定义映像都可以通过称作“注册表”的映像储存库获得。除非明确指定了注册表，否则 Podman 将从 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://registry.opensuse.org">openSUSE</link> 和 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://docker.io">Docker Hub</link> 注册表中提取映像。尽管您可以手动提取基本映像，但 Podman 可以在构建自定义映像时自动提取基本映像。
     </para>
       <para>
-      要构建自定义映像，必须创建一个名为 <filename>Containerfile</filename> 或 <filename>Dockerfile</filename> 的特殊文件，其中包含构建指令。例如，<filename>Dockerfile</filename> 可以包含用于更新系统软件、安装所需应用程序、打开特定网络端口、运行命令等的指令
+      要构建自定义映像，必须创建一个名为 <filename>Containerfile</filename> 或 <filename>Dockerfile</filename> 的特殊文件，其中包含构建指令。例如，<filename>Dockerfile</filename> 可以包含用于更新系统软件、安装所需应用程序、打开特定网络端口、运行命令等的指令。
     </para>
       <informalfigure>
         <mediaobject>
-          <imageobject>
-            <imagedata fileref="container-image-layers.svg" width="80.0%"/>
+          <imageobject role="html">
+            <imagedata fileref="container-image-layers.png" width="80.0%"/>
+          </imageobject>
+          <imageobject role="fo">
+            <imagedata fileref="container-image-layers.png" width="80.0%"/>
           </imageobject>
           <textobject>
-            <phrase>image</phrase>
+            <phrase>Container image layers</phrase>
           </textobject>
         </mediaobject>
       </informalfigure>
@@ -185,25 +192,22 @@
       <title xmlns:its="http://www.w3.org/2005/11/its" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink">用于构建映像和管理容器的工具</title>
     </info>
     <para>
-    下面所述的所有工具（<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://openbuildservice.org">Open Build Service</link> 除外）都包含在 <emphasis role="strong">SUSE Linux Enterprise Server Containers 模块</emphasis>中。您可以在 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://scc.suse.com/packages">SUSE Customer
-    Center</link> 的 <emphasis role="strong">Containers 模块</emphasis>中查看完整的软件包列表。
+    下面所述的所有工具（<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://openbuildservice.org">Open Build Service</link> 除外）都包含在 <emphasis role="strong">SUSE Linux Enterprise Server Containers 模块</emphasis>中。您可以在 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://scc.suse.com/packages">SUSE Customer Center</link> 的 <emphasis role="strong">Containers 模块</emphasis>中查看完整的软件包列表。
   </para>
     <section xml:id="sec-tools-suse-registry">
       <title>SUSE 注册表</title>
-      <para><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://registry.suse.com"/> 是 SLE 基本容器映像的官方来源。其中包含已经过测试、更新和认证的 SLE 基本容器映像。SUSE 注册表中的所有映像会定期重构建，以包含更新和修复。SUSE 注册表的 Web 用户界面列出了一部分可用映像：基本容器映像、开发堆栈容器映像、应用程序容器映像、SUSE Linux Enterprise Server 映像，以及不再享受一般支持的版本。该 Web 用户界面还提供了每个映像的其他信息，包括发布日期、支持级别、大小、映像摘要以及映像中的软件包。
+      <para><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://registry.suse.com"></link> 是 SLE 基本容器映像的官方来源。其中包含已经过测试、更新和认证的 SLE 基本容器映像。SUSE 注册表中的所有映像会定期重构建，以包含更新和修复。SUSE 注册表的 Web 用户界面列出了一部分可用映像：基本容器映像、开发堆栈容器映像、应用程序容器映像、SUSE Linux Enterprise Server 映像，以及不再享受一般支持的版本。该 Web 用户界面还提供了每个映像的其他信息，包括发布日期、支持级别、大小、映像摘要以及映像中的软件包。
     </para>
     </section>
     <section xml:id="sec-tools-docker">
       <title>Docker</title>
       <para>
-      Docker 是用于创建和管理容器的系统。其核心是 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://github.com/moby/moby">Docker Open Source
-      Engine&#x2014;</link>，这是一种轻量级虚拟化解决方案，可在单台主机上同时运行多个容器。Docker 容器是使用 Dockerfile 构建的。
+      Docker 是用于创建和管理容器的系统。其核心是 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://github.com/moby/moby">Docker 开源引擎</link>，这是一种轻量级虚拟化解决方案，可在单台主机上同时运行多个容器。Docker 容器可以使用 Dockerfile 构建。
     </para>
     </section>
     <section xml:id="sec-tools-podman">
       <title>Podman</title>
-      <para><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://podman.io">Podman</link> 表示 Pod Manager 工具。它是一个无守护程序的容器引擎，用于在 Linux 系统上开发、管理和运行 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://opencontainers.org/about/overview/">Open
-      Container Initiative (OCI)</link> 容器，可以直接取代 Docker。Podman 是推荐用于 SLES 的容器运行时。有关 Podman 的总体介绍，请参见<xref linkend="container-podman"/>。
+      <para><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://podman.io">Podman</link> 表示 Pod Manager 工具。它是一个无守护程序的容器引擎，用于在 Linux 系统上开发、管理和运行 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://opencontainers.org/about/overview/">Open Container Initiative (OCI)</link> 容器，可以直接取代 Docker。Podman 是推荐用于 SLES 的容器运行时。有关 Podman 的总体介绍，请参见<xref linkend="container-podman"/>。
     </para>
     </section>
     <section xml:id="sec-tools-buildah">
@@ -213,34 +217,29 @@
     </section>
     <section xml:id="sec-tools-skopeo">
       <title>skopeo</title>
-      <para><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://github.com/containers/skopeo">skopeo</link> 是一个命令行实用程序，用于管理、检查容器映像和映像储存库并为其签名。skopeo 可用于检查远程与本地容器注册表中的容器和储存库。skopeo 可以在不同的存储后端之间复制容器映像。skopeo 包含在 SUSE Linux Enterprise Server 的 <literal>Basesystem Module</literal> 中。
+      <para><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://github.com/containers/skopeo">skopeo</link> 是一个命令行实用程序，用于管理、检查容器映像和映像储存库并为其签名。它可用于检查远程与本地容器注册表中的容器和储存库，还可以在不同的存储后端之间复制容器映像。skopeo 包含在 SUSE Linux Enterprise Server 的 <literal>Basesystem Module</literal> 中。
     </para>
     </section>
     <section xml:id="sec-tools-helm">
       <title>Helm</title>
-      <para><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://helm.sh">Helm</link> 是 Kubernetes 软件包管理器，它是使用图表在 Kubernetes 群集上部署容器化应用程序的事实标准。Helm 可用于在一个或多个容器中安装、更新和去除应用程序。它还可以处理关联的资源，如配置、存储卷等。例如，可以使用它来部署 RMT 服务器（有关详细信息，请参见 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://documentation.suse.com/sles/15-SP4/single-html/SLES-rmt/index.html#sec-rmt-deploy-kubernetes">RMT
-      documentation</link>）。
+      <para><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://helm.sh">Helm</link> 是 Kubernetes 软件包管理器，它是使用图表在 Kubernetes 群集上部署容器化应用程序的事实标准。Helm 可用于在 Kubernetes 环境中安装、更新和去除容器化应用程序。它还可以处理关联的资源，如配置、存储卷等。例如，可以使用它来部署 RMT 服务器（有关详细信息，请参见 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://documentation.suse.com/sles/15-SP4/single-html/SLES-rmt/index.html#sec-rmt-deploy-kubernetes">RMT 文档</link>）。
     </para>
     </section>
     <section xml:id="sec-tools-distribution">
       <title>Distribution</title>
-      <para><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://github.com/distribution/distribution">Distribution</link> 是一个开源的注册表实现，用于通过 OCI 分发规范存储和分发容器映像。它为构建大规模注册表解决方案或运行简单专用注册表提供了简单、安全且可缩放的基础。Distribution 还可以镜像 Docker Hub，但<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://docs.docker.com/registry/recipes/mirror/#gotcha">not
-      any other private registry</link>。
+      <para><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://github.com/distribution/distribution">Distribution</link> 是一个开源的注册表实现，用于通过 OCI 分发规范存储和分发容器映像。它为构建大规模注册表解决方案或运行简单专用注册表提供了简单、安全且可缩放的基础。Distribution 还可以镜像 Docker Hub，但<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://docs.docker.com/registry/recipes/mirror/#gotcha">不能镜像其他私用注册表</link>。
     </para>
     </section>
     <section xml:id="sec-tools-obs">
       <title>Open Build Service</title>
       <para>
-      <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://openbuildservice.org">Open Build Service
-      (OBS)</link> 提供用于构建和存储 RPM 软件包（包括不同的容器格式）的免费基础架构。<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://registry.opensuse.org">OBS Container
-      Registry</link> 提供由 OBS 构建的所有容器映像的详细列表，使用命令完成将映像提取到本地环境的操作。您可以根据特定需求修改 OBS <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://build.opensuse.org/image_templates">openSUSEcontainer
-      image templates</link>，这是创建您自己的容器分支的最简单方法。您可以使用 <filename>Dockerfile</filename> 通过 Docker 工具从现有映像构建容器映像。也可以使用 KIWI NG 映像构建解决方案从头开始构建映像。
+      <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://openbuildservice.org">Open Build Service (OBS)</link> 提供用于构建和存储 RPM 软件包（包括不同的容器格式）的免费基础架构。<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://registry.opensuse.org">OBS 容器注册表</link>提供由 OBS 构建的所有容器映像的详细列表，并附带将映像提取到您本地环境的命令。您可以根据特定需求修改 OBS <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://build.opensuse.org/image_templates">openSUSE 容器映像模板</link>，这是创建您自己的容器分支最简单的方法。您可以使用 <filename>Dockerfile</filename> 通过 Docker 工具从现有映像构建容器映像。也可以使用 KIWI NG 映像构建解决方案从头开始构建映像。
     </para>
       <para>
-      以下<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://openbuildservice.org/2018/05/09/container-building-and-distribution/">blog post</link> 中提供了有关如何在 OBS 上构建映像的说明。
+      以下<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://openbuildservice.org/2018/05/09/container-building-and-distribution/">博文</link>中提供了有关如何在 OBS 上构建映像的说明。
     </para>
       <para>
-      SUSE 容器映像称为 SLE 基本容器映像 (SLE BCI)，它们是仅有的官方容器映像。它们未在 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://build.opensuse.org"/> 上提供，导出到该网站的 RPM 与内部 RPM 不同。这意味着无法在 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://build.opensuse.org"/> 上构建官方支持的映像。
+      SUSE 容器映像称为 SLE 基本容器映像 (SLE BCI)，它们是仅有的官方容器映像。<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://build.opensuse.org"></link> 上未提供这些映像，OBS 上提供的 RPM 与作为 SUSE Linux Enterprise Server 一部分分发的 RPM 并不完全相同。这意味着无法在 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://build.opensuse.org"></link> 上构建支持的映像。
     </para>
       <para>
       有关 SLE BCI 的详细信息，请参见<xref linkend="container-bci-general"/>。
@@ -248,19 +247,15 @@
     </section>
     <section xml:id="sec-tools-kiwi">
       <title>KIWI NG</title>
-      <para><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://github.com/OSInside/kiwi">KIWI</link> Next Generation (KIWI NG) 是一种用于构建映像的多功能工具。除容器映像、常规安装 ISO 映像以及虚拟机映像之外，KIWI NG 还可构建通过 PXE 或 Vagrant 盒子引导的映像。KIWI NG 中的主要构建基块是映像 XML 说明，这是一个包含 <filename>config.xml</filename> 或 <filename>.kiwi</filename> 文件以及脚本或配置数据的目录。使用 KIWI NG 创建映像的过程是完全自动化的，不需要任何用户交互。映像创建过程所需的任何信息由主要配置文件 <filename>config.xml</filename> 提供。可以使用 <filename>config.sh</filename> 和 <filename>images.sh</filename> 脚本自定义该映像。KIWI NG 是 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://openbuildservice.org">Open Build Service
-      (OBS)</link> 的核心引擎。
+      <para><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://github.com/OSInside/kiwi">KIWI</link> Next Generation (KIWI NG) 是一种用于构建映像的多功能工具。除容器映像、常规安装 ISO 映像以及虚拟机映像之外，KIWI NG 还可构建通过 PXE 或 Vagrant 盒子引导的映像。KIWI NG 中的主要构建基块是映像 XML 说明，这是一个包含 <filename>config.xml</filename> 或 <filename>config.kiwi</filename> 文件以及脚本或配置数据的目录。使用 KIWI NG 创建映像的过程是完全自动化的，不需要任何用户交互。映像创建过程所需的任何信息由主要配置文件 <filename>config.xml</filename> 提供。可以使用 <filename>config.sh</filename> 和 <filename>images.sh</filename> 脚本自定义该映像。
     </para>
       <note>
         <para>
-        请务必将 KIWI NG（当前版本 9.20.9）与其不再维护的旧版本（7.x.x 或更早版本，现在称为 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://documentation.suse.com/kiwi/">KIWI
-        Legacy</link>）加以区分。
+        请务必将 KIWI NG（当前版本 9.20.9）与其不再维护的旧版本（7.x.x 或更早版本，现在称为<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://documentation.suse.com/kiwi/">旧版 KIWI</link>）加以区分。
       </para>
       </note>
       <para>
-      有关如何安装 KIWI NG 以及使用它来构建映像的信息，请参见 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://osinside.github.io/kiwi/">KIWI&#xA0;NG
-      documentation</link>。<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://github.com/OSInside/kiwi-descriptions">KIWI&#xA0;NG
-      GitHub repository</link> 上提供了一系列示例映像说明。
+      有关如何安装 KIWI NG 以及使用它来构建映像的信息，请参见 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://osinside.github.io/kiwi/">KIWI NG 文档</link>。<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://github.com/OSInside/kiwi-descriptions">KIWI NG GitHub 储存库</link>上提供了一系列示例映像描述。
     </para>
       <para>
       KIWI NG 手册页提供了使用该工具的相关信息。要访问手册页，请安装 <literal>kiwi-man-pages</literal> 软件包。
@@ -287,7 +282,7 @@
       </listitem>
     </itemizedlist>
     <para>
-    <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://registry.suse.com">SUSE Registry</link> 上提供了 SLE 基本容器映像。其中包含已经过测试和更新的 SLE 基本容器映像。SUSE 注册表中的所有映像都要经历一个维护过程。构建的映像包含最新可用的更新和修复。SUSE 注册表的 Web 用户界面列出了一部分可用映像。有关 SUSE 注册表的信息，请参见<xref linkend="sec-tools-suse-registry"/>。
+    <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://registry.suse.com">SUSE 注册表</link>中提供了 SLE 基本容器映像。其中包含已经过测试和更新的 SLE 基本容器映像。SUSE 注册表中的所有映像都要经历一个维护过程。构建的映像包含最新可用的更新和修复。SUSE 注册表的 Web 用户界面列出了一部分可用映像。有关 SUSE 注册表的信息，请参见<xref linkend="sec-tools-suse-registry"/>。
   </para>
     <para>
     SUSE 注册表中的 SLE 基本映像会收到安全更新，并涵盖在 SUSE 支持计划中。有关这些支持计划的详细信息，请参见<xref linkend="container-support"/>。
@@ -295,15 +290,14 @@
     <section xml:id="sec-bci-why">
       <title>为何使用选择 SLE 基本容器映像</title>
       <para>
-      SLE BCI 提供了一个平台，用于创建基于 SLES 的自定义容器映像和可任意分发的容器化应用程序。SLE BCI 具有与 SLES 相同的可预测企业生命周期。SLE_BCI 15 SP3 和 SP4 储存库（SLE 储存库的子集）使 SLE BCI 能够访问 4000 个适用于 AMD64/Intel 64、AArch64、POWER 和 IBM Z 体系结构的软件包。储存库中的软件包享有 SUSE 的质量保证并接受其安全审计。以 FIPS 模式在主机上运行时，容器映像符合 FIPS 规范。除此之外，SUSE 还可以通过 SUSE 订阅计划为 SLE BCI 提供官方支持。
+      SLE BCI 提供了一个平台，用于创建基于 SLES 的自定义容器映像和可任意分发的容器化应用程序。SLE BCI 具有与 SLES 相同的可预测企业生命周期。SLE_BCI 15 SP3 和 SP4 储存库（SLE 储存库的子集）使 SLE BCI 能够访问 4000 个适用于 AMD64/Intel 64、AArch64、POWER 和 IBM Z 体系结构的软件包。储存库中的软件包享有 SUSE 的质量保证并接受其安全审计。以 FIPS 模式在主机上运行时，容器映像符合 FIPS 规范。除此之外，SUSE 还可以通过 SUSE 订阅计划为 SLE BCI 提供支持。
     </para>
       <variablelist>
         <varlistentry>
           <term>安全性</term>
           <listitem>
             <para>
-            SLE_BCI 储存库中的每个软件包都接受安全审计，SLE BCI 享有与 SUSE Linux Enterprise Server 相同的 CVE 处理机制。所有发现和修复的漏洞将通过电子邮件、专门的 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.suse.com/security/cve/">CVE
-            pages</link>以 OVAL 和 CVRF 数据的形式公布。为确保供应链的安全，所有容器映像均已使用 Notary v1、Podman 的 GPG 签名和 Sigstore Cosign 进行签名。
+            SLE_BCI 储存库中的每个软件包都接受安全审计，SLE BCI 享有与 SUSE Linux Enterprise Server 相同的 CVE 处理机制。所有发现和修复的漏洞将通过电子邮件和专门的 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.suse.com/security/cve/">CVE 页面</link>以 OVAL 和 CVRF 数据的形式公布。为确保供应链的安全，所有容器映像均已使用 Notary v1、Podman 的 GPG 签名和 Sigstore Cosign 进行签名。
           </para>
           </listitem>
         </varlistentry>
@@ -366,7 +360,7 @@
       <note>
         <title>请求缺失的软件包</title>
         <para>
-        如果 SLE_BCI 储存库不包含您所需的软件包，您可以采取两种做法。现有的 SUSE 客户可以提交功能请求。普通用户可以通过在 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://bugzilla.suse.com/enter_bug.cgi?product=SUSE%20Linux%20Enterprise%20Base%20Container%20Images">Bugzilla</link> 中报告问题来请求创建软件包。
+        如果 SLE_BCI 储存库不包含您所需的软件包，您可以采取两种做法。现有的 SUSE 客户可以提交功能请求。普通用户可以通过在 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://bugzilla.suse.com/enter_bug.cgi?product=SUSE%20Linux%20Enterprise%20Base%20Container%20Images">Bugzilla</link> 中创建问题来请求创建软件包。
       </para>
       </note>
     </section>
@@ -376,10 +370,10 @@
       <title xmlns:its="http://www.w3.org/2005/11/its" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink">通用 SLE 基本容器映像</title>
     </info>
     <para>
-    通用 SLE BCI 有四个，其中每个容器映像附带最少量的一组软件包，以减小其大小。可将通用 SLE BCI 用作构建自定义容器映像的基础，或用作部署特定软件的平台。
+    通用 SLE BCI 有四个，每个容器映像所含的软件包数量均已减至最少，以控制其大小。可将通用 SLE BCI 用作构建自定义容器映像的基础，或用作部署特定软件的平台。
   </para>
     <para>
-    SUSE 提供了以下几个通用 SLE BCI：BCI-Base、BCI-Minimal、BCI-Micro 和 BCI-BusyBox。这些 SLE BCI 可用作部署目标或用作创建自定义映像的基础。这些映像采用通用的 SLES 基础，并且它们都不随附特定的语言或应用程序堆栈。所有映像具有 RPM 数据库（即使特定的映像不包含 RPM 软件包管理器），该数据库可用于校验映像中每个文件的来源。每个映像包含 SLES 证书分发包，已部署的应用程序可以通过该分发包使用系统的证书来校验 TLS 连接。
+    SUSE 提供了以下几个通用 SLE BCI 来作为部署目标或用作创建自定义映像的基础：BCI-Base、BCI-Minimal、BCI-Micro 和 BCI-BusyBox。这些映像采用通用的 SLES 基础，并且它们都不随附特定的语言或应用程序堆栈。所有映像具有 RPM 数据库（即使特定的映像不包含 RPM 软件包管理器），该数据库可用于校验映像中每个文件的来源。每个映像包含 SLES 证书分发包，已部署的应用程序可以通过该分发包使用系统的证书来校验 TLS 连接。
   </para>
     <para>
     下表简要概述了 SLE BCI-Base、SLE BCI-Minimal、SLE BCI-Micro 和 SLE BCI-BusyBox 之间的差异。
@@ -597,7 +591,7 @@
     <section xml:id="id-sle-bci-base-and-sle-bci-init-when-you-need-flexibility">
       <title>SLE BCI-Base 和 SLE BCI-Init：需要灵活性时</title>
       <para>
-      此 SLE BCI 附带 Zypper 软件包管理器和免费的 SLE_BCI 储存库。这样，您便可以安装储存库中提供的软件并在构建期间自定义映像。该映像的缺点在于其大小。它是最大的通用 SLE BCI，因此它不一定是最佳的部署映像选项。
+      SLE BCI-Base 附带 Zypper 软件包管理器和免费的 SLE_BCI 储存库。这样，您便可以安装储存库中提供的软件并在构建期间自定义映像。该映像的缺点在于其大小。它是最大的通用 SLE BCI，因此它不一定是最佳的部署映像选项。
     </para>
       <para>
       名为 SLE BCI-Init 的 SLE BCI-Base 变体中预安装了 systemd。在需要通过 systemd 在单个容器中管理服务的方案中，SLE BCI-Init 容器映像可能很有用。
@@ -623,7 +617,7 @@
     <section xml:id="sec-bci-variants-micro">
       <title>SLE BCI-Micro：需要部署静态二进制文件时</title>
       <para>
-      此映像类似于 SLE BCI-Minimal，但不包含 RPM 软件包管理器。该映像的主要用例是部署在外部生成的或者在多阶段构建期间生成的静态二进制文件。由于没有直截了当的方法可以在容器映像中安装其他依赖项，因此我们建议仅在最终构建工件捆绑了所有依赖项，并且不存在外部运行时要求（例如 Python 或 Ruby）时，才使用 SLE BCI-Minimal 映像来部署项目。
+      此映像类似于 SLE BCI-Minimal，但不包含 RPM 软件包管理器。该映像的主要用例是部署在外部生成的或者在多阶段构建期间生成的静态二进制文件。由于没有直截了当的方法可以在容器映像中安装其他依赖项，因此我们建议仅在最终构建工件捆绑了所有依赖项，并且不存在外部运行时要求（例如 Python 或 Ruby）时，才使用 SLE BCI-Micro 映像来部署项目。
     </para>
     </section>
     <section xml:id="sec-bci-variants-busybox">
@@ -662,7 +656,7 @@
       <title xmlns:its="http://www.w3.org/2005/11/its" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink">使用 SUSE 注册表中的长期服务包支持容器映像</title>
     </info>
     <para>
-    <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="registry.suse.com/"/> 上提供了长期服务包支持 (LTSS) 容器映像。要访问和使用此类容器映像，您必须拥有有效的 LTSS 订阅。
+    <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="registry.suse.com/"></link> 上提供了长期服务包支持 (LTSS) 容器映像。要访问和使用此类容器映像，您必须拥有有效的 LTSS 订阅。
   </para>
     <para>
     您必须先以用户身份登录 SUSE 注册表，然后才能提取或下载 LTSS 容器映像。可通过三种方式登录。
@@ -678,8 +672,8 @@
           文件 <filename>/etc/zypp/credentials.d/SCCcredentials</filename> 中包含了用户名和口令。这些身份凭证让您能够访问在相应主机系统的订阅下可用的任何容器。您可以使用这些身份凭证通过以下命令来登录 SUSE 注册表（请在 <command>echo</command> 命令前使用前导空格，以避免将身份凭证存储到外壳历史记录中）：
         </para>
           <screen><prompt>&gt; </prompt>set +o history
-  <prompt>&gt; </prompt>echo <replaceable>PASSWORD</replaceable> | podman login -u <replaceable>USERNAME</replaceable> --password-stdin registry.suse.com
-  <prompt>&gt; </prompt>set -o history</screen>
+<prompt>&gt; </prompt>echo <replaceable>PASSWORD</replaceable> | podman login -u <replaceable>USERNAME</replaceable> --password-stdin registry.suse.com
+<prompt>&gt; </prompt>set -o history</screen>
         </listitem>
       </varlistentry>
       <varlistentry>
@@ -688,9 +682,9 @@
           <para>
           如果主机系统未在 SUSE Customer Center 中注册，您可以使用有效的 SUSE Customer Center 注册代码登录注册表，如下所示：
         </para>
-          <screen>set +o history
-  echo <replaceable>SCC_REGISTRATION_CODE</replaceable> | podman login -u "regcode" --password-stdin registry.suse.com
-set -o history</screen>
+          <screen><prompt>&gt; </prompt>set +o history
+<prompt>&gt; </prompt>echo <replaceable>SCC_REGISTRATION_CODE</replaceable> | podman login -u "regcode" --password-stdin registry.suse.com
+<prompt>&gt; </prompt>set -o history</screen>
           <para>
           本例中的用户参数为逐字字符串 <literal>regcode</literal>，<replaceable>SCC_REGISTRATION_CODE</replaceable> 则是从 SUSE 获取的实际注册代码。
         </para>
@@ -702,9 +696,9 @@ set -o history</screen>
           <para>
           您还可以使用组织镜像身份凭证来登录 SUSE 注册表，如下所示：
         </para>
-          <screen>set +o history
- echo <replaceable>SCC_MIRRORING_PASSWORD</replaceable> | podman login -u "<replaceable>SCC_MIRRORING_USER</replaceable>" --password-stdin registry.suse.com
-set -o history</screen>
+          <screen><prompt>&gt; </prompt>set +o history
+<prompt>&gt; </prompt>echo <replaceable>SCC_MIRRORING_PASSWORD</replaceable> | podman login -u "<replaceable>SCC_MIRRORING_USER</replaceable>" --password-stdin registry.suse.com
+<prompt>&gt; </prompt>set -o history</screen>
           <para>
           这些身份凭证让您能够访问组织拥有的所有订阅，包括与 SUSE 注册表中的容器映像相关的订阅。身份凭证具有较高权限，最好仅用于专用镜像注册表。
         </para>
@@ -720,7 +714,7 @@ set -o history</screen>
     开发堆栈 SLE BCI 构建在 SLE BCI-Base 的基础之上。每个容器映像附带 Zypper 堆栈和免费的 <literal>SLE_BCI</literal> 储存库。此外，每个映像包含用于在特定语言环境中构建和部署应用程序的最常用工具。其中包括编译器或解释器等工具，以及特定于语言的软件包管理器。
   </para>
     <para>
-    下面概述了 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://registry.suse.com">SUSE Registry</link> 中提供的开发堆栈 SLE BCI。
+    下面概述了 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://registry.suse.com">SUSE 注册表</link>中提供的开发堆栈 SLE BCI。
   </para>
     <variablelist>
       <varlistentry>
@@ -819,15 +813,15 @@ set -o history</screen>
       <title xmlns:its="http://www.w3.org/2005/11/its" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink">应用程序 SLE 基本容器映像</title>
     </info>
     <para>
-    应用程序 SLE BCI 是基于 SLE BCI 的容器映像，其中包含特定的应用程序，例如 PostgreSQL 数据库和 Performance Co-Pilot（系统级性能分析工具包）。应用程序 SLE BCI 在 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://registry.suse.com/#apps">SUSE Registry</link> 的专门部分中提供。
+    应用程序 SLE BCI 是基于 SLE BCI 的容器映像，其中包含特定的应用程序，例如 PostgreSQL 数据库和 Performance Co-Pilot（系统级性能分析工具包）。应用程序 SLE BCI 在 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://registry.suse.com/#apps">SUSE 注册表</link>的专门部分中提供。
   </para>
   </section>
   <section xml:lang="zh-cn" role="concept" version="5.2" xml:id="container-bci-lifecycle">
     <info>
-      <title xmlns:its="http://www.w3.org/2005/11/its" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink">有关 SLE 基本容器映像的状态和生命周期的重要说明</title>
+      <title xmlns:its="http://www.w3.org/2005/11/its" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink">关于 SLE 基本容器映像支持状态的重要说明</title>
     </info>
     <para>
-    除基本映像以外的其他所有容器映像目前都归类为技术预览，SUSE 不为它们提供官方支持。此信息会在 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://registry.suse.com">registry.suse.com</link> 网站上显示。此外，还会通过 <literal>com.suse.supportlevel</literal> 标签来指示某个容器映像是否仍处于技术预览状态。可以使用 skopeo 和 jq 实用程序检查所需 SLE BCI 的状态，如下所示：
+    除基本映像以外的其他所有容器映像目前都归类为技术预览，SUSE 不为它们提供支持。此信息会在 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://registry.suse.com">registry.suse.com</link> 网站上显示。此外，还会通过 <literal>com.suse.supportlevel</literal> 标签来指示某个容器映像是否仍处于技术预览状态。可以使用 skopeo 和 jq 实用程序检查所需 SLE BCI 的状态，如下所示：
   </para>
     <screen><prompt>&gt; </prompt>skopeo inspect docker://registry.suse.com/bci/bci-micro:15.4 | jq '.Labels["com.suse.supportlevel"]'
     "techpreview"
@@ -835,7 +829,7 @@ set -o history</screen>
     <prompt>&gt; </prompt>skopeo inspect docker://registry.suse.com/bci/bci-base:15.4 | jq '.Labels["com.suse.supportlevel"]'
     "l3"</screen>
     <para>
-    在上面的示例中，<literal>bci-micro</literal> 容器映像中的 <literal>com.suse.supportlevel</literal> 标签设置为 <literal>techpreview</literal>，表示该映像仍处于技术预览状态。相比之下，<literal>bci-base</literal> 容器映像则享受完全的 L3 支持。与通用 SLE BCI 不同，开发堆栈 SLE BCI 可能不遵循 SLES 分发套件的生命周期：只要相应的语言堆栈能够获得支持，语言堆栈 SLE BCI 就受支持。换言之，新版本的 SLE BCI（由 OCI 标记表示）可能会在 SLES Service Pack 的生命周期内发布，而旧版本可能不受支持。请访问 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://suse.com/lifecycle"/> 确定相关容器是否仍受支持。
+    在上面的示例中，<literal>bci-micro</literal> 容器映像中的 <literal>com.suse.supportlevel</literal> 标签设置为 <literal>techpreview</literal>，表示该映像仍处于技术预览状态。相比之下，<literal>bci-base</literal> 容器映像则享受完全的 L3 支持。与通用 SLE BCI 不同，开发堆栈 SLE BCI 可能不遵循 SLES 分发套件的生命周期：只要相应的语言堆栈能够获得支持，开发堆栈 SLE BCI 就受支持。换言之，新版本的 SLE BCI（由 OCI 标记表示）可能会在 SLES Service Pack 的生命周期内发布，而旧版本可能不受支持。请访问 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://suse.com/lifecycle"></link> 确定相关容器是否仍受支持。
   </para>
     <important>
       <para>
@@ -867,7 +861,7 @@ set -o history</screen>
         </para>
           <itemizedlist>
             <listitem>
-              <para><literal>prototype</literal> 指示容器映像处于 ALP 原型阶段。
+              <para><literal>prototype</literal> 指示容器映像处于原型阶段。
             </para>
             </listitem>
             <listitem>
@@ -919,7 +913,7 @@ set -o history</screen>
         <term>com.suse.lifecycle-url</term>
         <listitem>
           <para>
-          指向提供映像生命周期信息的 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.suse.com/lifecycle/">https://www.suse.com/lifecycle/</link> 页面。
+          指向 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.suse.com/lifecycle/">https://www.suse.com/lifecycle/</link> 页面，该页面提供映像所基于的产品的生命周期信息。
         </para>
         </listitem>
       </varlistentry>
@@ -1043,8 +1037,7 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
           <listitem>
             <para>
               <command>zypper --non-interactive addrepo
-            <replaceable>REPOSITORY_URL</replaceable>;</command>
-              <command>zypper --non-interactive refresh</command>
+            <replaceable>REPOSITORY_URL</replaceable>;</command> <command>zypper --non-interactive refresh</command>
             </para>
           </listitem>
         </varlistentry>
@@ -1074,7 +1067,7 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
         </varlistentry>
       </variablelist>
       <para>
-      有关使用 Zypper 的详细信息，请参见 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://documentation.suse.com/sles/html/SLES-all/cha-sw-cl.html#sec-zypper"/>。
+      有关使用 Zypper 的详细信息，请参见 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://documentation.suse.com/sles/html/SLES-all/cha-sw-cl.html#sec-zypper"></link>。
     </para>
       <para>
       所述的所有命令都使用 <option>--non-interactive</option> 标志来跳过确认，因为在容器构建期间您无法手动同意这些提示。请记住，必须将该标志与任何修改系统的命令一起使用。另请注意，<option>--non-interactive</option> 不是一个“全部为是”标志。<option>--non-interactive</option> 确认用户的意图。例如，如果某个附带 <option>--non-interactive</option> 选项的安装命令需要导入新的储存库签名密钥，则该命令将会失败，因为该操作必须由用户自己来校验。
@@ -1082,7 +1075,7 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
     </section>
     <section xml:id="sec-bci-suseconnect">
       <title>将 container-suseconnect 与 SLE BCI 配合使用</title>
-      <para><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://github.com/SUSE/container-suseconnect"><literal>container-suseconnect</literal></link> 是 Zypper 随附的所有 SLE BCI 中的一个可用插件。当该插件检测到主机的 SUSE Linux Enterprise Server 注册身份凭证时，会使用这些身份凭证来向容器授予对 SUSE Linux Enterprise 储存库的访问权限。这包括不属于免费 SLE_BCI 储存库的其他模块和以前的软件包版本。有关如何使用 SLES、openSUSE 和非 SLES 主机的储存库的详细信息，请参见<xref linkend="sec-container-suseconnect"/>。
+      <para><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://github.com/SUSE/container-suseconnect"><literal>container-suseconnect</literal></link> 是 Zypper 随附的所有 SLE BCI 中的一个可用插件。当该插件检测到主机的 SUSE Linux Enterprise Server 注册身份凭证时，会使用这些身份凭证向容器授予对 SUSE Linux Enterprise 储存库的访问权限。这包括不属于免费 SLE_BCI 储存库的其他模块和以前的软件包版本。有关如何使用 SLES、openSUSE 和非 SLES 主机的储存库的详细信息，请参见<xref linkend="sec-container-suseconnect"/>。
     </para>
     </section>
     <section xml:id="sec-bci-tasks">
@@ -1179,7 +1172,10 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
     <section xml:id="sec-bci-gpg-keys">
       <title>添加 GPG 签名密钥</title>
       <para>
-      将外部储存库添加到容器或容器映像通常需要导入用于对软件包进行签名的 GPG 密钥。这可以使用 <command>rpm --import
+      SUSE 密钥已在 SLE Base 容器映像的 RPM 数据库中，因此您不必导入。
+    </para>
+      <para>
+      但是，将外部储存库添加到容器或容器映像通常需要导入用于对软件包进行签名的 GPG 密钥。这可以使用 <command>rpm --import
       <replaceable>KEY_URL</replaceable></command> 命令来完成。这会将密钥添加到 RPM 数据库，然后可以安装储存库中的所有软件包。
     </para>
     </section>
@@ -1189,7 +1185,7 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
       <title xmlns:its="http://www.w3.org/2005/11/its" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink">SLE 基本容器映像入门</title>
     </info>
     <para>
-    可以直接从 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://registry.suse.com">SUSE Registry</link> 以 OCI 兼容容器映像的形式获取 SLE BCI，并可以像使用任何其他容器映像一样使用它们，例如：
+    可以直接从 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://registry.suse.com">SUSE 注册表</link>以 OCI 兼容容器映像的形式获取 SLE BCI，并可以像使用任何其他容器映像一样使用它们，例如：
   </para>
     <screen><prompt>&gt; </prompt>podman run --rm -it registry.suse.com/bci/bci-base:15.4 grep '^NAME' /etc/os-release NAME="{sles}"</screen>
     <para>
@@ -1218,10 +1214,10 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
      ---&gt; Using cache
      ---&gt; 48b33ec590a6
     Successfully built 48b33ec590a6
-
+    
     <prompt>&gt; </prompt>docker run -p 8000:8000 --rm -d 48b33ec590a6
     575ad7edf43e11c2c9474055f7f6b7a221078739fc8ce5765b0e34a0c899b46a
-
+    
     <prompt>&gt; </prompt>curl localhost:8000
     Hello Green World!</screen>
   </section>
@@ -1230,7 +1226,7 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
       <title xmlns:its="http://www.w3.org/2005/11/its" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink">注册和联机储存库</title>
     </info>
     <para>
-    要在 SUSE Linux Enterprise Server 上使用容器，首先必须启用 SLE Containers 模块。此模块由与容器相关的软件包组成，其中包括容器引擎和核心容器工具，例如本地注册表。有关 SLE 模块的详细信息，请参见 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://documentation.suse.com/sles/html/SLES-all/article-modules.html"/>。
+    要在 SUSE Linux Enterprise Server 上使用容器，首先必须启用 SLE Containers 模块。此模块由与容器相关的软件包组成，其中包括容器引擎和核心容器工具，例如本地注册表。有关 SLE 模块的详细信息，请参见 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://documentation.suse.com/sles/html/SLES-all/article-modules.html"></link>。
   </para>
     <para>
     常规 SLE 订阅包含免费的 SLE Containers 模块。
@@ -1250,7 +1246,7 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
         </step>
         <step>
           <para>
-          在<option>Registration Server</option>中选择<option>Extensions and Modules</option>，然后单击<guimenu>下一步</guimenu>。
+          在 <option>Registration Server</option> 中选择 <option>Extensions and Modules</option>，然后单击<guimenu>下一步</guimenu>。
         </para>
         </step>
         <step>
@@ -1275,7 +1271,7 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
     </section>
     <section xml:id="sec-container-suseconnect">
       <title>container-suseconnect</title>
-      <para><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://github.com/SUSE/container-suseconnect"><literal>container-suseconnect</literal></link> 是 Zypper 随附的所有 SLE 基本容器映像中的一个可用插件。当该插件检测到主机的 SUSE Linux Enterprise Server 注册身份凭证时，会使用这些身份凭证来向容器授予对 SUSE Linux Enterprise 储存库的访问权限。这包括不属于免费 SLE_BCI 储存库的其他模块和以前的软件包版本。
+      <para><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://github.com/SUSE/container-suseconnect"><literal>container-suseconnect</literal></link> 是 Zypper 随附的所有 SLE 基本容器映像中的一个可用插件。当该插件检测到主机的 SUSE Linux Enterprise Server 注册身份凭证时，会使用这些身份凭证来向容器授予对 SUSE Linux Enterprise 储存库的访问权限。其中包括对 SLES 中包含的所有软件包提供访问权限的附加模块。
       </para>
       <section xml:id="sec-container-suseconnect-sle">
         <title>在 SLES 和 openSUSE 上使用 container-suseconnect</title>
@@ -1309,7 +1305,7 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
         请不要将 <filename>SCCcredentials</filename> 和 <filename>SUSEConnect</filename> 文件复制到容器映像中，以免无意中将这些文件添加到最终映像中。请改用机密，因为它们仅适用于单个层，而不是构建的映像的一部分。为此，请将 <literal>SCCcredentials</literal>（以及可选的 <filename>SUSEConnect</filename>）的副本放到文件系统上的某个位置，并修改调用 Zypper 的 <command>RUN</command> 指令，如下所示：
       </para>
         <screen>FROM registry.suse.com/bci/bci-base:latest
-
+    
     RUN --mount=type=secret,id=SUSEConnect \
         --mount=type=secret,id=SCCcredentials \
         zypper -n in fluxbox</screen>
@@ -1339,7 +1335,7 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
       </para>
         <screen>FROM registry.suse.com/bci/bci-base:latest
     ENV ADDITIONAL_MODULES sle-module-desktop-applications,sle-module-development-tools
-
+    
     RUN --mount=type=secret,id=SCCcredentials zypper -n in fluxbox &amp;&amp; zypper -n clean</screen>
       </section>
     </section>
@@ -1522,7 +1518,7 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
         <para>
         由于 Podman 与 Docker 开源引擎兼容，因此它提供相同的命令行界面。您还可以安装软件包 <package>podman-docker</package>，以便可以将模拟的 Docker CLI 与 Podman 配合使用。例如，从注册表提取容器映像的 <command>docker
         pull</command> 命令会改而执行 <command>podman pull</command>。<command>docker
-        build</command> 命令执行 <command>podman build</command> 等命令
+        build</command> 命令执行 <command>podman build</command> 等命令。
       </para>
         <para>
         Podman 还具有与 Docker 开源引擎兼容的套接字，可使用以下命令来启动该套接字：
@@ -1597,16 +1593,14 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
       <para>
       将 SLE BCI-Base 映像重命名为 <literal>my-base</literal>：
     </para>
-      <screen>podman tag 34578a383c7b my-base</screen>
-      <screen>podman images
+      <screen>podman tag 34578a383c7b my-base</screen> <screen>podman images
     REPOSITORY                      TAG         IMAGE ID      CREATED        SIZE
     registry.suse.com/bci/bci-base  latest      34578a383c7b  22 hours ago   122 MB
     localhost/my-base               latest      34578a383c7b  22 hours ago   122 MB</screen>
       <para>
       将自定义标记 <literal>1</literal>（表示这是映像版本 1）添加到 <literal>my-base</literal>：
     </para>
-      <screen><prompt>&gt; </prompt>podman tag 34578a383c7b my-base:1</screen>
-      <screen><prompt>&gt; </prompt>podman images
+      <screen><prompt>&gt; </prompt>podman tag 34578a383c7b my-base:1</screen> <screen><prompt>&gt; </prompt>podman images
     REPOSITORY                      TAG         IMAGE ID      CREATED        SIZE
     registry.suse.com/bci/bci-base  latest      34578a383c7b  22 hours ago   122 MB
     localhost/my-base               latest      34578a383c7b  22 hours ago   122 MB
@@ -1639,6 +1633,12 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
   建议您为希望可从主机外部访问的容器添加永久防火墙规则。这样可以确保规则在防火墙重新加载和系统重引导时不会丢失。这种方法还提供了更大的灵活性（例如，它允许您将规则分配给特定的 firewalld 区域）。
 </para>
       </note>
+      <note>
+        <title>在 IBM-2/1Z 系统上启用审计访问权限</title>
+        <para>
+  要使 IBM Z 系统上有 root 权限的容器支持需要访问审计功能的应用程序（例如 OpenSSH），必须使用 <parameter>--cap-add=AUDIT_WRITE</parameter> 参数运行容器。例如 <command>podman run --cap-add=AUDIT_WRITE -it <replaceable>IMAGE</replaceable></command>。
+</para>
+      </note>
     </section>
     <section xml:id="sec-podman-build-images">
       <title>使用 Podman 构建映像</title>
@@ -1663,7 +1663,7 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
       <note>
         <title>内置 Docker 编排支持</title>
         <para>
-        容器编排是 Docker 开源引擎的一部分。尽管此功能已在 <phrase><phrase os="sle">SUSE Linux Enterprise</phrase></phrase> 中提供，但 SUSE 并不提供对它的支持，此功能仅作为技术预览提供。使用 Kubernetes 进行容器编排。有关细节，请参见 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://kubernetes.io/docs/getting-started-guides/kubeadm/">Kubernetes documentation</link>。
+        容器编排是 Docker 开源引擎的一部分。尽管可以在 <phrase><phrase os="sle">SUSE Linux Enterprise</phrase></phrase> 中使用此功能，但 SUSE 并不提供对它的支持，此功能仅作为技术预览提供。使用 Kubernetes 进行容器编排。有关细节，请参见 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://kubernetes.io/docs/getting-started-guides/kubeadm/">Kubernetes 文档</link>。
       </para>
       </note>
       <section xml:id="id-installing-and-configuring-docker-open-source-engine">
@@ -1733,12 +1733,10 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
       <section xml:id="sec-docker-setup-net-docs">
         <title>Docker 开源引擎与 iptables 交互的方式</title>
         <para>
-        要了解有关容器如何相互交互以及如何与系统防火墙交互的详细信息，请参见 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://docs.docker.com/v17.09/engine/userguide/networking/default_network/container-communication/">Docker
-        documentation</link>。
+        要了解有关容器如何彼此交互以及如何与系统防火墙交互的详细信息，请参见 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://docs.docker.com/v17.09/engine/userguide/networking/default_network/container-communication/">Docker 文档</link>。
       </para>
         <para>
-        也可以阻止 Docker 开源引擎操作 <literal>iptables</literal>。请参见 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://docs.docker.com/network/iptables/#prevent-docker-from-manipulating-iptables">Docker
-        documentation</link>。
+        也可以阻止 Docker 开源引擎操作 <literal>iptables</literal>。请参见 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://docs.docker.com/network/iptables/#prevent-docker-from-manipulating-iptables">Docker 文档</link>。
       </para>
       </section>
     </section>
@@ -1755,7 +1753,7 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
         </listitem>
         <listitem>
           <para>
-          devicemapper：此驱动程序依赖于 device-mapper 精简配置模块。它支持写入时复制，因此能够提供 Docker 开源引擎的所有优势。
+          devicemapper：此驱动程序依赖于 device-mapper 精简供应模块。它支持写入时复制，因此能够提供 Docker 开源引擎的所有优势。
         </para>
         </listitem>
         <listitem>
@@ -1779,7 +1777,7 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
         建议在单独的分区或卷上挂载 <filename>/var/lib/docker</filename>。这样，在文件系统损坏的情况下，操作系统能够不受影响地运行 Docker 开源引擎。
       </para>
         <para>
-        如果您为 <filename>/var/lib/docker</filename> 选择了 Btrfs 文件系统，强烈建议为其创建一个子卷。这可以确保从文件系统快照中排除该目录。如果不从快照中排除 <filename>/var/lib/docker</filename>，那么在开始部署容器后不久，就会出现文件系统耗尽磁盘空间的风险。此外，回滚到以前的快照也会重置 Docker 数据库和映像。有关详细信息，请参见<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://documentation.suse.com/sles/html/SLES-all/cha-snapper.html#sec-snapper-setup-customizing-new-subvolume"/>。
+        如果您为 <filename>/var/lib/docker</filename> 选择了 Btrfs 文件系统，强烈建议为其创建一个子卷。这可以确保从文件系统快照中排除该目录。如果不从快照中排除 <filename>/var/lib/docker</filename>，那么在开始部署容器后不久，就会出现文件系统耗尽磁盘空间的风险。此外，回滚到以前的快照也会重置 Docker 数据库和映像。有关详细信息，请参见 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://documentation.suse.com/sles/html/SLES-all/cha-snapper.html#sec-snapper-setup-customizing-new-subvolume"></link>。
       </para>
       </important>
     </section>
@@ -1821,30 +1819,23 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
     <section xml:id="sec-docker-registry-installation">
       <title>运行 Docker 注册表</title>
       <para>
-      SUSE 注册表提供了一个容器映像，可用于将本地 Docker 注册表作为容器运行。在启动容器之前，请创建包含以下示例配置的 <filename>config.yml</filename> 文件：
-    </para>
-      <screen>version: 0.1
-    log:
-      level: info
-    storage:
-      filesystem:
-        rootdirectory: /var/lib/docker-registry
-    http:
-      addr: 0.0.0.0:5000</screen>
-      <para>
-      另外，创建一个空目录以映射容器外部的 <filename>/var/lib/docker-registry</filename> 目录。此目录用于存储容器映像。
+      SUSE 注册表提供了一个容器映像，可用于将本地 Docker 注册表作为容器运行。它将推送的图像存储在容器内目录 <filename>/var/lib/docker-registry</filename> 对应的卷中。建议为注册表创建命名卷或将主机上的持久目录绑定挂载到容器中的 <filename>/var/lib/docker-registry</filename>。这可确保推送的图像在容器删除后仍保留。
     </para>
       <para>
-      运行以下命令以从 SUSE 注册表提取注册表容器映像，并启动一个可以通过端口 5000 访问的容器：
+      运行以下命令从 SUSE 注册表提取注册表容器映像，并启动一个可以通过端口 5000 访问的容器，同时将容器存储绑定挂载到本地目录 <replaceable>/PATH/DIR/</replaceable>：
     </para>
       <screen><prompt>&gt; </prompt>podman run -d --restart=always --name registry -p 5000:5000 \
-    -v /PATH/config.yml:/etc/docker/registry/config.yml \
-    -v /PATH/DIR:/var/lib/ \ docker-registry registry.suse.com/sles12/registry:2.6.2</screen>
+    -v /PATH/DIR:/var/lib/docker-registry registry.suse.com/suse/registry</screen>
+      <para>
+      或者，为 SUSE 注册表容器创建命名卷 <replaceable>registry</replaceable>，如下所示：
+    </para>
+      <screen><prompt>&gt; </prompt>podman run -d --restart=always --name registry -p 5000:5000 \
+     -v registry:/var/lib/docker-registry registry.suse.com/suse/registry</screen>
       <para>
       为了更方便地管理注册表，请创建相应的系统单元：
     </para>
-      <screen><prompt>&gt; </prompt> sudo podman generate systemd registry &gt;  \
-     /etc/systemd/system/suse_registry.service</screen>
+      <screen><prompt>&gt; </prompt> podman generate systemd registry | \
+     sudo tee /etc/systemd/system/suse_registry.service</screen>
       <para>
       启用并启动注册表服务，然后校验其状态：
     </para>
@@ -1852,7 +1843,7 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
       <prompt>&gt; </prompt>sudo systemctl start suse_registry.service
       <prompt>&gt; </prompt>sudo systemctl status suse_registry.service</screen>
       <para>
-      有关 Docker 注册表及其配置的更多细节，请参见 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://docs.docker.com/registry/"/> 上的官方文档。
+      有关 Docker 注册表及其配置的更多细节，请参见 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://docs.docker.com/registry/"></link> 上的官方文档。
     </para>
     </section>
     <section xml:id="sec-docker-registry-limitations">
@@ -1862,8 +1853,7 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
     </para>
       <itemizedlist>
         <listitem>
-          <para>
-          它缺少任何形式的身份验证。这意味着，有权访问 Docker 注册表的任何人都可以向它推送映像以及从中提取映像，包括重写现有映像。
+          <para> 它缺少任何形式的身份验证。这意味着，有权访问 Docker 注册表的任何人都可以向它推送映像以及从中提取映像，包括重写现有映像。建议设置某种形式的访问限制，如上游文档 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://distribution.github.io/distribution/about/deploying/#restricting-access"></link> 中所述。
         </para>
         </listitem>
         <listitem>
@@ -1899,12 +1889,12 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
     <section xml:id="sec-verify-cosign">
       <title>使用 Cosign 校验 SLE 基本容器映像</title>
       <para>
-      要校验 SLE BCI，请在容器中运行 Cosign。以下命令会从 SUSE 服务器提取签名密钥，并使用该密钥来校验最新的 SLE BCI 基本容器映像。
+      要校验 SLE BCI，请在容器中运行 Cosign。以下命令会从 SUSE 注册表提取包含 SUSE 签名密钥的 cosign 容器，并使用该密钥来校验最新的 SLE BCI 基本容器映像。
     </para>
-      <screen><prompt>&gt; </prompt>podman run --rm -it gcr.io/projectsigstore/cosign verify \
-        --key https://ftp.suse.com/pub/projects/security/keys/container-key.pem \
+      <screen><prompt>&gt; </prompt>podman run --rm -it registry.suse.com/suse/cosign verify \
+        --key /usr/share/pki/containers/suse-container-key.pem \
         registry.suse.com/bci/bci-base:latest | tail -1 | jq
-
+    
     [
       {
         "critical": {
@@ -1922,13 +1912,13 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
       }
     ]</screen>
       <para>
-      签名密钥可用于校验所有 SLE BCI，<phrase><phrase os="sle">SUSE Linux Enterprise</phrase></phrase> 也附带了签名密钥（<filename>/usr/share/container-keys/suse-container-key.pem</filename> 文件）。
+      签名密钥可用于校验所有 SLE BCI，<phrase><phrase os="sle">SUSE Linux Enterprise</phrase></phrase> 也附带了签名密钥（<filename>/usr/share/pki/containers/suse-container-key.pem</filename> 文件）。
     </para>
       <para>
-      您还可以对照不可变防篡改帐本 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://github.com/sigstore/rekor">rekor</link> 检查 SLE BCI。例如：
+      您还可以对照不可变防篡改帐簿 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://github.com/sigstore/rekor">rekor</link> 检查 SLE BCI。例如：
     </para>
-      <screen><prompt>&gt; </prompt>podman run --rm -it -e COSIGN_EXPERIMENTAL=1 gcr.io/projectsigstore/cosign \
-        verify --key https://ftp.suse.com/pub/projects/security/keys/container&#x2013;key.pem \
+      <screen><prompt>&gt; </prompt>podman run --rm -it -e COSIGN_EXPERIMENTAL=1 registry.suse.com/suse/cosign \
+        verify --key /usr/share/pki/containers/suse-container-key.pem \
         registry.suse.com/bci/bci-base:latest | tail -1 | jq
     [
       {
@@ -1953,6 +1943,13 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
     crypto/rsa: verification error
     main.go:62: error during command execution: no matching signatures:
     crypto/rsa: verification error</screen>
+    </section>
+    <section xml:id="sec-verify-helm-chart">
+      <title>使用 Cosign 验证 Helm chart</title>
+      <para>
+      Cosign 也可用于验证 Helm chart，方法是使用以下命令：
+    </para>
+      <screen><prompt>&gt; </prompt>podman run --rm -it registry.suse.com/suse/cosign verify --key /usr/share/pki/containers/suse-container-key.pem registry.suse.com/path/to/chart</screen>
     </section>
     <section xml:id="sec-verify-podman">
       <title>使用 Podman 校验 SLE 基本容器映像</title>
@@ -2013,10 +2010,9 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
       </note>
       <informalexample>
         <para>
-        从 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.suse.com/support/security/keys/">SUSE
-        Signing Keys</link> 提取用来为 SLE BCI 签名的公共密钥，或使用以下命令：
+        从 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.suse.com/support/security/keys/">SUSE 签名密钥</link>提取用来为 SLE BCI 签名的公共密钥，或使用以下命令：
       </para>
-        <screen language="ShellSession" linenumbering="unnumbered">&gt; sudo curl -s https://ftp.suse.com/pub/projects/security/keys/container&#x2013;key.pem \
+        <screen language="ShellSession" linenumbering="unnumbered">&gt; sudo curl -s https://ftp.suse.com/pub/projects/security/keys/container–key.pem \
         -o /usr/share/pki/containers/suse-container-key.pem</screen>
         <note>
           <para>
@@ -2238,11 +2234,10 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
       <section xml:id="sec-customize-repo-registration">
         <title>储存库和注册</title>
         <para>
-        预构建的映像未配置任何储存库，也不包含任何模块或扩展。它们包含一个 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://github.com/SUSE/container-suseconnect">zypper
-        service</link>，该服务根据运行容器的 SUSE Linux Enterprise Server 主机的配置联系 SUSE Customer Center 或 Repository Mirroring Tool (RMT) 服务器。该服务会获取容器映像所用产品的可用储存库列表。您还可以直接在 <literal>Dockerfile</literal> 中声明扩展。有关详细信息，请参见<xref linkend="sec-container-suseconnect"/>。
+        预构建的映像未配置任何储存库，也不包含任何模块或扩展。它们包含一个 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://github.com/SUSE/container-suseconnect">zypper 服务</link>，该服务根据运行容器的 SUSE Linux Enterprise Server 主机的配置联系 SUSE Customer Center 或 Repository Mirroring Tool (RMT) 服务器。该服务会获取容器映像所用产品的可用储存库列表。您还可以直接在 <literal>Dockerfile</literal> 中声明扩展。有关详细信息，请访问 <xref linkend="sec-container-suseconnect"/>。
       </para>
         <note>
-          <title>SLE_BCI 软件源</title>
+          <title>SLE_BCI 储存库</title>
           <para>
           默认基本映像包含 SLE_BCI 储存库。仅当某个容器是在未注册的 SLES 主机上构建的或是在此类主机上运行时，或者当容器无法使用注册身份凭证时，才使用此储存库。该储存库提供一部分可用于自定义 SLES 容器映像的 SLE 软件包。无需注册即可使用该储存库，但 SUSE 不对其提供支持。
         </para>
@@ -2259,7 +2254,7 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
         <note xml:id="note-build-images-different-codebase">
           <title>在已于 RMT 中注册的系统上构建映像</title>
           <para>
-          如果用于构建容器映像的主机系统已在 RMT 中注册，则默认行为只允许构建其代码库与主机相同的容器。例如，如果您的容器主机是 SLE 15 系统，则默认只能在该主机上构建基于 SLE 15 的映像。要为不同的 SLE 版本（例如，SLE 15 主机上的 SLE 12）构建映像，可将目标版本的主机计算机身份凭证插入到容器中，如下所述。
+          如果用于构建容器映像的主机系统已在 RMT 中注册，则默认行为只允许构建其代码库与主机相同的容器。例如，如果您的容器主机是 SLE 15 系统，则默认只能在该主机上构建基于 SLE 15 的映像。要为不同的 SLE 版本（例如，SLE 15 主机上的 SLE 12）构建映像，可将目标版本的主机计算机身份凭证插入到容器中（如下所述）。
         </para>
           <para>
           请注意，如果 RMT 服务器使用自我签名证书，则需要将匹配的 CA 证书添加到 <filename>CA_TRUSTSTORE/rmt-server.pem</filename> 中的容器才能接受证书。
@@ -2286,8 +2281,7 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
       </para>
         <screen><prompt>&gt; </prompt>podman build .</screen>
         <para>
-        有关 <literal>podman build</literal> 选项的详细信息，请参见<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://docs.podman.io/en/latest/markdown/podman-build.1.html">official
-        Podman documentation</link>。
+        有关 <literal>podman build</literal> 选项的详细信息，请参见<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://docs.podman.io/en/latest/markdown/podman-build.1.html">官方 Podman 文档</link>。
       </para>
       </section>
       <section xml:id="sec-docker-sle-images-customizing-the-images-sles12sp3">
@@ -2637,7 +2631,7 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
         </para>
           <screen><prompt>&gt; </prompt>docker build -t <replaceable>EXAMPLEUSER_PLAIN</replaceable>/apache2 .</screen>
           <para>
-          Docker 开源引擎会执行 <filename>Dockerfile</filename> 中提供的指令：提取基本映像、复制内容、刷新储存库、安装 Apache2 等
+          Docker 开源引擎会执行 <filename>Dockerfile</filename> 中提供的指令：提取基本映像、复制内容、刷新储存库、安装 Apache2 等。
         </para>
         </listitem>
         <listitem>
@@ -2652,7 +2646,7 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
         </listitem>
         <listitem>
           <para>
-          在浏览器中访问 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://localhost:80/test.html">http://localhost:80/test.html</link>。您应该会看到消息 <emphasis>Web 服务器正在运行</emphasis>。
+          在浏览器中打开 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://localhost:80/test.html">http://localhost:80/test.html</link>。您应该会看到消息 <emphasis>Web 服务器正在运行</emphasis>。
         </para>
         </listitem>
         <listitem>
@@ -2708,10 +2702,10 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
         </listitem>
       </orderedlist>
       <para>
-      要查看已发布的数据，请在浏览器中指向 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://localhost:80/test.html">http://localhost:80/test.html</link>。
+      要查看发布的数据，请将浏览器指向 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://localhost:80/test.html">http://localhost:80/test.html</link>。
     </para>
       <para>
-      为了避免将网站数据复制到容器中，请与容器共享主机的某个目录。有关详细信息，请访问 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://docs.docker.com/storage/volumes/"/>。
+      为了避免将网站数据复制到容器中，请与容器共享主机的某个目录。有关详细信息，请参见 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://docs.docker.com/storage/volumes/"></link>。
     </para>
     </section>
   </section>
@@ -2719,11 +2713,14 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
     <info>
       <title xmlns:its="http://www.w3.org/2005/11/its" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink">容器编排</title>
     </info>
-    <para>在生产环境中，您可能会管理多个容器。要使用多个容器，您必须将多个容器组合成一个 Pod，该 Pod 提供有关部署和运行容器的规范，并允许它们共享存储和网络资源。换言之，Pod 会将包含多个容器的应用程序封装成一个单元。pod 的概念是由<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://kubernetes.io/docs/concepts/workloads/pods/">Kubernetes</link>Podman 使用了与 Kubernetes 相同的定义。</para>
+    <para>在生产环境中，您可能会管理多个容器。要使用多个容器，您必须将多个容器组合成一个 Pod，该 Pod 提供有关部署和运行容器的规范，并允许它们共享存储和网络资源。换言之，Pod 会将包含多个容器的应用程序封装成一个单元。 pod 的概念是由 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://kubernetes.io/docs/concepts/workloads/pods/">Kubernetes</link> 引入的。Podman 使用了与 Kubernetes 相同的定义。</para>
     <para>通常，一个 Pod 中的容器可以直接相互通讯。每个 Pod 包含一个基础架构容器 (INFRA)，其用途是保存名称空间。INFRA 还允许 Podman 在 Pod 中添加其他容器。端口绑定、cgroup-parent 值和内核名称空间全都分配给基础架构容器。因此，以后无法更改这些值中的任何一个。</para>
     <informalfigure>
       <mediaobject>
-        <imageobject>
+        <imageobject role="html">
+          <imagedata fileref="pods_architecture.png" width="80.0%"/>
+        </imageobject>
+        <imageobject role="fo">
           <imagedata fileref="pods_architecture.svg" width="80.0%"/>
         </imageobject>
         <textobject>
@@ -2734,51 +2731,51 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
     <para>Pod 中的每个容器具有自身的监控程序实例。该监控程序会监控容器的进程，如果该容器消亡，监控程序会保存其退出代码。该程序还保持打开特定容器的 tty 接口。当 Podman 退出时，您可以使用该监控程序以分离模式运行容器，因为此程序会持续运行，并允许您稍后附加 tty。</para>
     <section xml:id="sec-orchestration-podman">
       <title>使用 Podman 的单容器主机</title>
-      <para><command>podman pod</command> 是用于创建、去除、查询和检查 Pod 的命令行工具。您可以在<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://docs.podman.io/en/latest/markdown/podman-pod.1.html">官方上游文档</link> 中查看 <command>podman pod</command> 的所有子命令。</para>
+      <para><command>podman pod</command> 是用于创建、去除、查询和检查 Pod 的命令行工具。您可以在<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://docs.podman.io/en/latest/markdown/podman-pod.1.html">官方上游文档</link>中查看 <command>podman pod</command> 的所有子命令。</para>
       <para><command>podman pod create</command> 会创建一个随机命名的 Pod。可以使用 <option>--name</option> 参数为 Pod 分配所需名称。</para>
       <screen><prompt>&gt; </prompt>podman pod create
     344940492c00b6a19ececbc5b109351bf0a3b8b19b3c279a097da7a653c592d0</screen>
       <para>可以使用 <command>podman pod list</command> 命令列出 Pod：</para>
       <screen><prompt>&gt; </prompt>podman pod list
-    POD ID&#xA0; &#xA0; &#xA0; &#xA0; NAME&#xA0; &#xA0; &#xA0; &#xA0; &#xA0; STATUS&#xA0; &#xA0; &#xA0; CREATED&#xA0; &#xA0; &#xA0; &#xA0; INFRA ID&#xA0; &#xA0; &#xA0; # OF CONTAINERS
-    344940492c00 &#xA0;suspicious_curie &#xA0;Created &#xA0; &#xA0; 2 minutes ago&#xA0; 617d7e3ce399&#xA0; 1</screen>
+    POD ID        NAME          STATUS      CREATED        INFRA ID      # OF CONTAINERS
+    344940492c00  suspicious_curie  Created     2 minutes ago  617d7e3ce399  1</screen>
       <para>还可以列出所有容器及其关联的 Pod：</para>
       <screen><prompt>&gt; </prompt>podman ps -a --pod
-    CONTAINER ID&#xA0; IMAGE &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; COMMAND &#xA0; &#xA0; CREATED&#xA0; &#xA0; &#xA0; &#xA0; STATUS&#xA0; &#xA0; &#xA0; PORTS &#xA0; &#xA0; &#xA0; NAMES &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; POD ID&#xA0; &#xA0; &#xA0; &#xA0; PODNAME
-    617d7e3ce399&#xA0; localhost/podman-pause:4.3.1-1669118400&#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; 5 minutes ago&#xA0; Created &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; 344940492c00-infra&#xA0; 344940492c00 &#xA0;suspicious_curie</screen>
+    CONTAINER ID  IMAGE                 COMMAND     CREATED        STATUS      PORTS       NAMES               POD ID        PODNAME
+    617d7e3ce399  localhost/podman-pause:4.3.1-1669118400              5 minutes ago  Created                 344940492c00-infra  344940492c00  suspicious_curie</screen>
       <para>创建的 Pod 包含一个通过 <literal>localhost/podman-pause:4.x</literal> 名称标识的 infra 容器。此容器的用途是预留与 Pod 关联的名称空间，并使 Podman 能够在 Pod 中添加其他容器。</para>
       <para>使用 <command>podman run --pod</command> 命令可以运行容器并将其添加到所需的 Pod。例如，以下命令会运行一个基于 <package>suse/sle15</package> 映像的容器，并将该容器添加到 <literal>suspicious_curie</literal> Pod：</para>
       <screen><prompt>&gt; </prompt>podman run -d --pod suspicious_curie registry.suse.com/bci/bci-base sleep 1h
     8f5af62a7c385bbd1a3a5cc3a53a8d0f8cf942adc26a065960d4232fcc93ac98</screen>
       <warning>
-        <para>如果此命令显示以下警告，请参见<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://documentation.suse.com/container/all/single-html/SLES-container/#sec-bci-suseconnect-podman-buildah-nerdctl">Using container-suseconnect on non-SLE hosts or with Podman, Buildah, and nerdctl</link>：</para>
+        <para>如果此命令显示以下警告，请参阅<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://documentation.suse.com/container/all/single-html/SLES-container/#sec-bci-suseconnect-podman-buildah-nerdctl">在非 SLES 主机上使用 container-suseconnect 或将其与 Podman、Buildah 和 nerdctl 配合使用</link>：</para>
       </warning>
       <screen>WARN[0005] Path "/etc/SUSEConnect" from "/etc/containers/mounts.conf" doesn't exist, skipping
     WARN[0005] Failed to mount subscriptions, skipping entry in /etc/containers/mounts.conf: open /etc/zypp/credentials.d/SCCcredentials: permission denied</screen>
       <para>上面的命令会添加一个休眠 60 分钟然后退出的容器。再次运行 <command>podman ps -a --pod</command> 命令，您应该会看到该 Pod 现在包含两个容器。</para>
       <para>您也可以使用命令 <command>podman pod ps</command> 来查看：</para>
       <screen><prompt>&gt; </prompt>podman pod ps
-    POD ID&#xA0; &#xA0; &#xA0; &#xA0; NAME&#xA0; &#xA0; &#xA0; &#xA0; &#xA0; STATUS&#xA0; &#xA0; &#xA0; CREATED &#xA0; &#xA0; &#xA0; &#xA0; INFRA ID&#xA0; &#xA0; &#xA0; # OF CONTAINERS
-    344940492c00&#xA0; suspicious_curie Running &#xA0; &#xA0; 21 minutes ago&#xA0; 617d7e3ce399&#xA0; 2</screen>
+    POD ID        NAME          STATUS      CREATED         INFRA ID      # OF CONTAINERS
+    344940492c00  suspicious_curie Running     21 minutes ago  617d7e3ce399  2</screen>
       <para>要停止新建的 <literal>objective_jemison</literal> 容器，请使用以下命令：</para>
       <screen><prompt>&gt; </prompt>podman ps -a --pod
-    CONTAINER ID&#xA0; IMAGE&#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; COMMAND &#xA0; &#xA0; CREATED &#xA0; &#xA0; &#xA0; &#xA0; STATUS&#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; PORTS &#xA0; &#xA0; &#xA0; NAMES &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; POD ID&#xA0; &#xA0; &#xA0; &#xA0; PODNAME
-    617d7e3ce399&#xA0; localhost/podman-pause:4.3.1-1669118400 &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; 14 minutes ago&#xA0; Up 4 minutes ago&#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; 344940492c00-infra&#xA0; 344940492c00 &#xA0;suspicious_curie 8f5af62a7c38&#xA0; registry.suse.com/bci/bci-base:latest&#xA0; sleep 1h&#xA0; &#xA0; 4 minutes ago &#xA0; Up 4 minutes ago&#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; objective_jemison &#xA0; 344940492c00 &#xA0;suspicious_curie
+    CONTAINER ID  IMAGE                                COMMAND     CREATED         STATUS            PORTS       NAMES               POD ID        PODNAME
+    617d7e3ce399  localhost/podman-pause:4.3.1-1669118400                             14 minutes ago  Up 4 minutes ago              344940492c00-infra  344940492c00  suspicious_curie 8f5af62a7c38  registry.suse.com/bci/bci-base:latest  sleep 1h    4 minutes ago   Up 4 minutes ago              objective_jemison   344940492c00  suspicious_curie
     <prompt>&gt; </prompt>podman stop objective_jemison
     objective_jemison
     <prompt>&gt; </prompt>podman pod ps
-    POD ID&#xA0; &#xA0; &#xA0; &#xA0; NAME&#xA0; &#xA0; &#xA0; &#xA0; &#xA0; STATUS&#xA0; &#xA0; &#xA0; CREATED &#xA0; &#xA0; &#xA0; &#xA0; INFRA ID&#xA0; &#xA0; &#xA0; # OF CONTAINERS
-    344940492c00 &#xA0;suspicious_curie &#xA0;Degraded&#xA0; &#xA0; 25 minutes ago&#xA0; 617d7e3ce399&#xA0; 2
+    POD ID        NAME          STATUS      CREATED         INFRA ID      # OF CONTAINERS
+    344940492c00  suspicious_curie  Degraded    25 minutes ago  617d7e3ce399  2
     <prompt>&gt; </prompt>podman ps -a --pod
-    CONTAINER ID&#xA0; IMAGE&#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; COMMAND &#xA0; &#xA0; CREATED &#xA0; &#xA0; &#xA0; &#xA0; STATUS &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; PORTS &#xA0; &#xA0; &#xA0; NAMES &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; POD ID&#xA0; &#xA0; &#xA0; &#xA0; PODNAME
-    617d7e3ce399&#xA0; localhost/podman-pause:4.3.1-1669118400 &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; 25 minutes ago&#xA0; Up 15 minutes ago&#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; 344940492c00-infra&#xA0; 344940492c00 &#xA0;suspicious_curie 8f5af62a7c38&#xA0; registry.suse.com/bci/bci-base:latest&#xA0; sleep 1h&#xA0; &#xA0; 15 minutes ago&#xA0; Exited (137) 14 seconds ago&#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; objective_jemison &#xA0; 344940492c00 &#xA0;suspicious_curie</screen>
+    CONTAINER ID  IMAGE                                COMMAND     CREATED         STATUS                       PORTS       NAMES               POD ID        PODNAME
+    617d7e3ce399  localhost/podman-pause:4.3.1-1669118400                             25 minutes ago  Up 15 minutes ago                        344940492c00-infra  344940492c00  suspicious_curie 8f5af62a7c38  registry.suse.com/bci/bci-base:latest  sleep 1h    15 minutes ago  Exited (137) 14 seconds ago              objective_jemison   344940492c00  suspicious_curie</screen>
       <para>还可以使用 <command>podman pod stop</command> 停止 Pod 及其所有容器：</para>
       <screen># podman pod stop suspicious_curie
     344940492c00b6a19ececbc5b109351bf0a3b8b19b3c279a097da7a653c592d0
     <prompt>&gt; </prompt>podman ps -ap
-    CONTAINER ID&#xA0; IMAGE&#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; COMMAND &#xA0; &#xA0; CREATED &#xA0; &#xA0; &#xA0; &#xA0; STATUS&#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; PORTS &#xA0; &#xA0; &#xA0; NAMES &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; POD ID&#xA0; &#xA0; &#xA0; &#xA0; PODNAME
-    617d7e3ce399&#xA0; localhost/podman-pause:4.3.1-1669118400 &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; 29 minutes ago&#xA0; Exited (0) 7 seconds ago&#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; 344940492c00-infra&#xA0; 344940492c00 &#xA0;suspicious_curie 8f5af62a7c38&#xA0; registry.suse.com/bci/bci-base:latest&#xA0; sleep 1h&#xA0; &#xA0; 19 minutes ago&#xA0; Exited (137) 3 minutes ago&#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; &#xA0; objective_jemison &#xA0; 344940492c00 &#xA0;suspicious_curie</screen>
-      <para>您还可以使用 <command>sudo podman start <replaceable>CONTAINER_NAME</replaceable></command>、<command>podman pod start <replaceable>POD_NAME</replaceable></command> 或 <command>podman pod restart <replaceable>POD_NAME</replaceable></command> 来启动和重启动一切对象。</para>
+    CONTAINER ID  IMAGE                                COMMAND     CREATED         STATUS                      PORTS       NAMES               POD ID        PODNAME
+    617d7e3ce399  localhost/podman-pause:4.3.1-1669118400                             29 minutes ago  Exited (0) 7 seconds ago                344940492c00-infra  344940492c00  suspicious_curie 8f5af62a7c38  registry.suse.com/bci/bci-base:latest  sleep 1h    19 minutes ago  Exited (137) 3 minutes ago              objective_jemison   344940492c00  suspicious_curie</screen>
+      <para>您还可以使用 <command>sudo podman start <replaceable>CONTAINER_NAME</replaceable></command>、<command>podman pod start <replaceable>POD_NAME</replaceable></command> 或 <command>podman pod restart <replaceable>POD_NAME</replaceable></command> 来启动和重启动所有对象。</para>
       <para>可以通过两种方式去除删除 Pod。可以使用 <command>podman pod rm</command> 命令去除一个或多个 Pod。或者，可以使用 <command>podman pod prune</command> 命令去除所有已停止的 Pod。要去除一个或多个 Pod，请如下所示运行 <command>podman pod rm</command> 命令：</para>
       <screen><prompt>&gt; </prompt>podman pod rm <replaceable>POD</replaceable></screen>
       <para>POD 可以是 Pod 名称或 Pod ID。要去除所有当前已停止的 Pod，请使用 <command>podman pod prune</command> 命令。在运行 <command>podman pod prune</command> 命令之前，请确保所有已停止的 Pod 是您想要去除的 Pod，否则会存在去除仍在使用的 Pod 的风险。</para>
@@ -2821,7 +2818,7 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
 
     [Install]
     WantedBy=default.target</screen>
-      <para>Podman 将一个单元文件输出到控制台，可将此文件放入用户单元 systemd 目录（<filename>~/.config/systemd/user/</filename> 或 <filename>/etc/systemd/user/</filename>）或系统单元 systemd 目录 (<filename>/etc/systemd/system</filename>) 中，它可以通过 systemd 控制容器。<option>--new</option> 标志指示 Podman 在重启动时重新创建容器。这可以确保 systemd 单元是自给性的，不依赖于任何外部状态。<option>&#x2011;&#x2011;name</option> 标志可用于为容器分配一个用户友好的名称：如果不指定此标志，Podman 将使用容器 ID 而不是其名称。</para>
+      <para>Podman 将一个单元文件输出到控制台，可将此文件放入用户单元 systemd 目录（<filename>~/.config/systemd/user/</filename> 或 <filename>/etc/systemd/user/</filename>）或系统单元 systemd 目录 (<filename>/etc/systemd/system</filename>) 中，它可以通过 systemd 控制容器。<option>--new</option> 标志指示 Podman 在重启动时重新创建容器。这可以确保 systemd 单元是自给性的，不依赖于任何外部状态。<option>--name</option> 标志可用于为容器分配一个用户友好的名称：如果不指定此标志，Podman 将使用容器 ID 而不是其名称。</para>
       <para>要将容器作为用户单元进行控制，请执行以下命令：</para>
       <screen><prompt>&gt; </prompt>podman generate systemd --name --new --files web
     /home/user/container-web.service
@@ -2845,7 +2842,7 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
     <prompt>&gt; </prompt>podman ps
     CONTAINER ID  IMAGE                           COMMAND               CREATED        STATUS            PORTS                 NAMES
     0b5be4493251  docker.io/library/nginx:latest  nginx -g daemon o...  4 seconds ago  Up 4 seconds ago  0.0.0.0:8080-&gt;80/tcp  web</screen>
-      <para>请注意，如果容器是正常停止的（例如通过 <command>podman stop web</command>），则<emphasis role="strong">不会</emphasis>重启动。要使容器始终可重启动，请将标志 <option>--restart-policy=always</option> 添加到 <command>podman generate systemd</command> 中。</para>
+      <para>请注意，如果容器是正常停止的（例如通过 <command>podman stop web</command>），则<emphasis role="strong">不会</emphasis>重启动。要使容器始终重启动，请在 <command>podman generate systemd</command> 中添加标志 <option>--restart-policy=always</option>。</para>
     </section>
     <section xml:id="id-updating-container-images">
       <title>更新容器映像</title>
@@ -2871,14 +2868,14 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
       <para>最好进行外部测试，以确保映像更新在一般情况下可以安全部署。如果您对我们的容器映像的质量有信心，可以通过启用 <option>podman-auto-update.timer</option> 来让 Podman 自动定期应用映像更新：</para>
       <screen># only for the current user
     <prompt>&gt; </prompt>systemctl --user enable podman-auto-update.timer
-    Created symlink /home/user/.config/systemd/user/timers.target.wants/podman-auto-update.timer &#x2192; /usr/lib/systemd/user/podman-auto-update.timer.
+    Created symlink /home/user/.config/systemd/user/timers.target.wants/podman-auto-update.timer → /usr/lib/systemd/user/podman-auto-update.timer.
     # or as root
     <prompt>&gt; </prompt>sudo systemctl enable podman-auto-update.timer
-    Created symlink /etc/systemd/system/timers.target.wants/podman-auto-update.timer &#x2192; /usr/lib/systemd/system/podman-auto-update.timer.</screen>
+    Created symlink /etc/systemd/system/timers.target.wants/podman-auto-update.timer → /usr/lib/systemd/system/podman-auto-update.timer.</screen>
     </section>
     <section xml:id="id-managing-multiple-containers">
       <title>管理多个容器</title>
-      <para>某些应用程序需要依赖于多个容器才能正常运行，例如 Web 前端、后端服务器和数据库。<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://docs.docker.com/compose/">Docker compose</link> 是在一台计算机上部署多容器应用程序的流行工具。虽然 Podman 并不原生支持 <command>compose</command> 命令，但在大多数情况下，可以将 compose 文件移植到某个 Podman Pod 和多个容器。</para>
+      <para>某些应用程序需要依赖于多个容器才能正常运行，例如 Web 前端、后端服务器和数据库。<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://docs.docker.com/compose/">Docker compose</link> 是在单台计算机上部署多容器应用程序的一种常见工具。虽然 Podman 并不原生支持 <command>compose</command> 命令，但在大多数情况下，可以将 compose 文件移植到某个 Podman Pod 和多个容器。</para>
       <para>以下示例会在单个 Pod 中部署 Drupal 和 PostgreSQL 容器，并通过 systemd 单元管理这些容器。首先，创建一个公开 Drupal Web 界面的新 Pod：</para>
       <screen><prompt>&gt; </prompt>podman pod create -p 8080:80 --name drupal
     736cab072c49e68ad368ba819e9117be13ef8fa048a2eb88736b5968b3a19a64</screen>
@@ -2923,18 +2920,18 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
     </section>
     <section xml:id="sec-orchestration-podman-more">
       <title>有关 Podman 的详细信息</title>
-      <para>如要了解更多关于 Podman 和处理 Pod 部署的信息，请访问 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://docs.podman.io/en/latest/">https://docs.podman.io/en/latest/</link> 和 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://github.com/containers/podman">https://github.com/containers/podman</link>。</para>
+      <para>如果您想了解有关 Podman 和处理 Pod 部署的更多信息，请访问 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://docs.podman.io/en/latest/">https://docs.podman.io/en/latest/</link> 和 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://github.com/containers/podman">https://github.com/containers/podman</link>。</para>
     </section>
     <section xml:id="sec-orchestration-kubernetes">
       <title>使用 Kubernetes 的多容器主机</title>
-      <para><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://kubernetes.io">Kubernetes</link> 是一个开源容器编排引擎，用于自动执行容器化应用程序的部署、缩放和管理工作。该开源项目由云原生计算基金会 (<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.cncf.io/about">CNCF</link>) 主办。</para>
+      <para><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://kubernetes.io">Kubernetes</link> 是一个开源容器编排引擎，用于自动执行容器化应用程序的部署、扩展和管理工作。该开源项目由云原生计算基金会 (<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.cncf.io/about">CNCF</link>) 主办。</para>
       <para>使用 Kubernetes 可使多台计算机（或者服务器或节点）能够协同工作并形成一个群集，然后您可以通过 API 来与此群集交互。我们建议使用 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://ranchermanager.docs.rancher.com">Rancher</link> 来部署 Kubernetes 群集并管理在群集中运行的应用程序。单个 Rancher 设置可以管理在任何位置运行的多个 Kubernetes 群集：从裸机到本地或云服务提供商。</para>
       <para>有关 Rancher 的详细信息，请参见<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://ranchermanager.docs.rancher.com">官方 Rancher 文档</link>。</para>
     </section>
     <section xml:id="sec-k3s">
       <title>轻量级 Kubernetes (k3s)</title>
       <para><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://k3s.io">K3s</link> 是专为物联网和边缘计算构建且经过 CNCF 认证的轻量级 Kubernetes 发行版。与 Kubernetes 不同，K3s 封装为单个不到 60 MB 的二进制文件，并针对 Arm 架构进行了优化。</para>
-      <para>有关详细信息，请参见<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.suse.com/c/rancher_blog/introduction-to-k3s/">Introduction to K3s</link> 和<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://documentation.suse.com/trd/suse/html/kubernetes_ri_rancher-k3s-slemicro/id-deployment.html">How to install K3s and Rancher on SUSE Linux Enterprise Server</link>。</para>
+      <para>有关详细信息，请参见 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.suse.com/c/rancher_blog/introduction-to-k3s/">K3s 简介</link>和<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://documentation.suse.com/trd/suse/html/kubernetes_ri_rancher-k3s-slemicro/id-deployment.html">如何在 SUSE Linux Enterprise Server 上安装 K3s 和 Rancher</link>。</para>
     </section>
   </section>
   <section xml:lang="zh-cn" role="concept" version="5.2" xml:id="container-support">
@@ -2942,7 +2939,7 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
       <title xmlns:its="http://www.w3.org/2005/11/its" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink">兼容性和支持条件</title>
     </info>
     <para>
-    术语“支持”指两个不同的概念：a) 功能或组合（例如主机和容器）的技术支持，以及 b) SUSE 向 SUSE 客户提供的企业支持。根据 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.suse.com/products/terms_and_conditions.pdf"/>，企业支持要求订阅 SUSE 产品。技术支持如下所述。
+    术语“支持”指两个不同的概念：a) 功能或组合（例如主机和容器）的技术支持，以及 b) SUSE 向 SUSE 客户提供的企业支持。根据 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.suse.com/products/terms_and_conditions.pdf"></link>，企业支持要求有订阅 SUSE 产品。技术支持如下所述。
   </para>
     <section xml:id="sec-sle-container-non-sle-host-support">
       <title>对 SLES 主机的支持</title>
@@ -3000,7 +2997,24 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
             <row>
               <entry align="center" valign="top">
                 <para>
-                  <emphasis role="strong">SLE Micro</emphasis>
+                  <emphasis role="strong">SUSE Linux Micro</emphasis>
+                </para>
+              </entry>
+              <entry align="center" valign="top">
+                <para>
+                ✓
+              </para>
+              </entry>
+              <entry align="center" valign="top">
+                <para>
+                ✓
+              </para>
+              </entry>
+            </row>
+            <row>
+              <entry align="center" valign="top">
+                <para>
+                  <emphasis role="strong">SUSE Multi-Linux Manager</emphasis>
                 </para>
               </entry>
               <entry align="center" valign="top">
@@ -3193,7 +3207,7 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
               </entry>
               <entry align="center" valign="top">
                 <para>
-                ❋❋
+                ✓
               </para>
               </entry>
             </row>
@@ -3207,10 +3221,7 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
       ❋ 取决于工作负载：完全受支持，但兼容性视容器类型（特权或非特权）和应用程序交互（直接与内核版本特定的数据结构、内核版本特定的模块等交互）而定
     </para>
       <para>
-      ❋❋ 在完全兼容和全面支持测试完成前，处于临时支持状态。
-    </para>
-      <para>
-      有关对 Rancher 相关产品的支持的详细信息，请参见 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.suse.com/suse-rancher/support-matrix/all-supported-versions/">Rancher 支持矩阵</link>。
+      有关对 Rancher 相关产品的支持的详细信息，请参见 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.suse.com/suse-rancher/support-matrix/all-supported-versions/">Rancher 支持一览表</link>。
     </para>
     </section>
     <section xml:id="sec-sle-container-support-plans">
@@ -3245,11 +3256,10 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
         </listitem>
       </orderedlist>
       <para>
-      有关更多信息，请访问 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.suse.com/lifecycle">Product Support
-      Lifecycle</link> 页面，以及适用于 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://registry.suse.com">SUSE Registry</link> 中特定容器映像的文档。
+      有关更多信息，请访问<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.suse.com/lifecycle">产品支持生命周期</link>页面，以及适用于 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://registry.suse.com">SUSE 注册表</link>中特定容器映像的文档。
     </para>
       <para>
-      容器映像可以处于不同的支持状态，因此对它们的支持可能有限制。有关特定容器映像的更多信息，请参见相应的 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://registry.suse.com"/>页面。
+      容器映像可以处于不同的支持状态，因此对它们的支持可能有限制。有关特定容器映像的更多信息，请参见相应的 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://registry.suse.com"></link> 页面。
     </para>
     </section>
     <section xml:id="sec-supported-containers-hosts">
@@ -3258,8 +3268,7 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
       以下支持选项对 SUSE 主机环境中的 SLES 容器有效。
     </para>
       <para>
-      SUSE 提供的容器和主机环境完全受支持。这也适用于所有受支持的产品，包括一般支持和 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.suse.com/products/long-term-service-pack-support/">Long
-      Term Service Pack Support</link> (LTSS)。
+      SUSE 提供的容器和主机环境完全受支持。这也适用于所有受支持的产品，包括一般支持和<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.suse.com/products/long-term-service-pack-support/">长期服务包支持</link> (LTSS)。
     </para>
       <para>
       签署了联合工程协作协议的合作伙伴容器和主机环境受到完全支持。此层级适用于协议涵盖的容器、主机环境以及支持（包括一般支持和 LTSS）下的所有产品。
@@ -3274,7 +3283,7 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
     <section xml:id="sec-tech-previews">
       <title>技术预览</title>
       <para>
-      标记为<emphasis>技术预览</emphasis>的容器映像由 SUSE 提供，让您有机会在环境中测试新技术并分享反馈。如果您测试了技术预览，请联系 SUSE 代表，以分享您的经验和用例。您的反馈对于我们的未来开发非常有帮助。
+      标记为<emphasis>技术预览</emphasis>的容器映像由 SUSE 提供，目的是为了让您能够在环境中测试新技术并分享反馈。如果您测试了技术预览，请联系 SUSE 代表，以分享您的经验和用例。您的反馈对于我们的未来开发非常有帮助。
     </para>
       <para>
       技术预览存在以下限制：
@@ -3310,6 +3319,47 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
       容器映像标记为<emphasis>技术预览</emphasis>，并且在 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://registry.suse.com">registry.suse.com</link> 上也采用这种标记。此外，作为技术预览提供的容器映像在容器映像元数据中包含 <literal>com.suse.supportlevel="techpreview"</literal> 标签。可以使用 <literal>docker inspect</literal> 命令或其他容器运行时中的相应命令检查元数据是否包含该标签。
     </para>
     </section>
+    <section xml:id="sec-test-platforms">
+      <title>测试平台和环境</title>
+      <para>
+      SLE Base 容器映像使用以下平台和环境进行测试：
+    </para>
+      <itemizedlist>
+        <listitem>
+          <para>
+    支持的 openSUSE Leap（仅限 AMD64/Intel 64）
+    </para>
+        </listitem>
+        <listitem>
+          <para>
+      所有支持的 SUSE Linux Enterprise Server 版本和硬件体系结构
+    </para>
+        </listitem>
+        <listitem>
+          <para>
+      SUSE Liberty 第 8 版和第 9 版（仅限 AMD64/Intel 64）
+    </para>
+        </listitem>
+        <listitem>
+          <para>
+      最新的 Ubuntu LTS（仅限 AMD64/Intel 64）
+    </para>
+        </listitem>
+        <listitem>
+          <para>
+      CentOS Stream（仅限 AMD64/Intel 64）
+    </para>
+        </listitem>
+        <listitem>
+          <para>
+      所有主要公有云 Kubernetes 平台，包括 Microsoft Azure Kubernetes Service、Google Kubernetes Engine 和 Amazon Web Services
+    </para>
+        </listitem>
+      </itemizedlist>
+      <para>
+      SLE 基本容器映像已使用 Podman 和 Docker 进行测试。使用 FIPS 认证加密库的 SLE 基本容器映像已在 FIPS 认证的平台上进行测试。
+    </para>
+    </section>
   </section>
   <section xml:lang="zh-cn" role="concept" version="5.2" xml:id="container-troubleshoot">
     <info>
@@ -3322,7 +3372,7 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
     </para>
       <para><package>container-diff</package> 可以分析映像的变化，具体方式是计算映像之间的差异并以直观易懂且可处理的格式呈现差异。该工具可以找出系统软件包、语言级软件包和容器映像中的文件的差异。
     </para>
-      <para><package>container-diff</package> 可以处理本地容器映像（使用前缀 <literal>daemon://</literal>）、远程注册表中的映像（使用前缀 <literal>remote://</literal>），以及另存为 <filename>.tar</filename> 存档的映像。可以使用 <package>container-diff</package> 来计算映像的本地版本与远程版本之间的差异。
+      <para><package>container-diff</package> 可以处理本地容器映像（使用前缀 <literal>daemon://</literal>）、远程注册表中的映像（使用前缀 <literal>remote://</literal>），以及另存为 <filename>.tar</filename> 归档的映像。可以使用 <package>container-diff</package> 来计算映像的本地版本与远程版本之间的差异。
     </para>
       <para>
       要安装 <package>container-diff</package>，请运行 <command>sudo
@@ -3357,7 +3407,7 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
         <term>容器</term>
         <listitem>
           <para>
-          <emphasis>容器</emphasis>是基于特定容器映像的正在运行的实例。每个<emphasis>容器</emphasis>都可通过唯一的容器 ID 来识别。
+          <emphasis>容器</emphasis>是基于特定容器映像的运行中实例。每个<emphasis>容器</emphasis>都可通过唯一的容器 ID 来识别。
         </para>
         </listitem>
       </varlistentry>
@@ -3376,15 +3426,15 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
         </para>
           <itemizedlist>
             <listitem>
-              <para><emphasis role="strong">守护程序：</emphasis> + Docker 开源引擎的服务器端，负责管理所有 Docker 对象（映像、容器、容器使用的网络连接等）。
+              <para><emphasis role="strong">守护程序：</emphasis>+ Docker 开源引擎的服务器端，负责管理所有 Docker 对象（映像、容器、容器使用的网络连接等）。
             </para>
             </listitem>
             <listitem>
-              <para><emphasis role="strong">REST API：</emphasis> + 应用程序可以使用此 API 来直接与守护程序通讯。
+              <para><emphasis role="strong">REST API：</emphasis>+ 应用程序可以使用此 API 直接与守护程序通讯。
             </para>
             </listitem>
             <listitem>
-              <para><emphasis role="strong">CLI 客户端：</emphasis> + 可让您与守护程序通讯。如果守护程序与 CLI 客户端在不同的计算机上运行，CLI 客户端可以使用 Docker 开源引擎提供的网络套接字或 REST API 进行通讯。
+              <para><emphasis role="strong">CLI 客户端：</emphasis>+ 可让您与守护程序通讯。如果守护程序与 CLI 客户端在不同的计算机上运行，CLI 客户端可以使用 Docker 开源引擎提供的网络套接字或 REST API 进行通讯。
             </para>
             </listitem>
           </itemizedlist>
@@ -3402,8 +3452,7 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
         <term>映像</term>
         <listitem>
           <para>
-          <emphasis>映像</emphasis>是用于创建<emphasis>容器</emphasis>的只读模板。Docker 映像由一系列相互叠加构建的层组成。每个层对应于一项永久性更改，例如，应用程序的一项更新。更改存储在称作 <emphasis>Dockerfile</emphasis> 的文件中。有关细节，请参见<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://docs.docker.com/engine/reference/glossary#image">the
-          official Docker documentation</link>。
+          <emphasis>映像</emphasis>是用于创建<emphasis>容器</emphasis>的只读模板。Docker 映像由一系列相互叠加构建的层组成。每个层对应于一项永久性更改，例如，应用程序的一项更新。更改存储在名为 <emphasis>Dockerfile</emphasis> 的文件中。有关更多细节，请参见<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://docs.docker.com/engine/reference/glossary#image">官方 Docker 文档</link>。
         </para>
         </listitem>
       </varlistentry>
@@ -3456,7 +3505,7 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
           <itemizedlist>
             <listitem>
               <para>
-              公共注册表：任何用户（通常是已注册的用户）都可以下载和使用映像。公共注册表的一个典型示例是 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://hub.docker.com/">Docker Hub</link>。
+              公共注册表：任何用户（通常是已注册的用户）都可以下载和使用映像。公共注册表的典型示例是 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://hub.docker.com/">Docker Hub</link>。
             </para>
             </listitem>
             <listitem>
@@ -3468,10 +3517,10 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
         </listitem>
       </varlistentry>
       <varlistentry>
-        <term>软件源</term>
+        <term>储存库</term>
         <listitem>
           <para>
-          <emphasis>软件源</emphasis>是<emphasis>注册表</emphasis>中的映像的储存区。
+          <emphasis>储存库</emphasis>是<emphasis>注册表</emphasis>中映像的储存区。
         </para>
         </listitem>
       </varlistentry>
@@ -3489,7 +3538,7 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
         <term>服务请求和支持</term>
         <listitem>
           <para>
-          有关产品可用的服务和支持选项，请参见 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.suse.com/support/"/>。要创建服务请求，需在 SUSE Customer Center 中注册订阅的 SUSE 产品。请转到 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://scc.suse.com/support/requests"/> 并登录，然后单击<emphasis>新建</emphasis>。
+          有关产品可用的服务和支持选项，请参见 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.suse.com/support/"></link>。要创建服务请求，需在 SUSE Customer Center 中注册订阅的 SUSE 产品。请前往 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://scc.suse.com/support/requests"></link> 并登录，然后单击<emphasis>新建</emphasis>。
         </para>
         </listitem>
       </varlistentry>
@@ -3497,7 +3546,7 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
         <term>Bug 报告</term>
         <listitem>
           <para>
-          在 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://bugzilla.suse.com/"/> 中报告文档问题（需要 Bugzilla 帐户）。要简化此过程，可以使用本文档 HTML 版本中的<emphasis>报告问题</emphasis>链接。将光标指向所需的句子，然后在右侧导航面板的<emphasis>提供反馈</emphasis>部分单击<emphasis>报告问题</emphasis>。这样会自动在 Bugzilla 中选择正确的产品和类别，并添加当前章节的链接。您现在可以编写 bug 报告。
+          在 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://bugzilla.suse.com/"></link> 中报告文档问题（需要 Bugzilla 帐户）。要简化此过程，可以使用本文档 HTML 版本中的<emphasis>报告问题</emphasis>链接。将光标指向相应的语句，然后在右侧导航面板的<emphasis>提供反馈</emphasis>部分单击<emphasis>报告问题</emphasis>。这样会自动在 Bugzilla 中选择正确的产品和类别，并添加当前章节的链接。您现在可以编写 bug 报告。
         </para>
         </listitem>
       </varlistentry>
@@ -3505,7 +3554,7 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
         <term>贡献</term>
         <listitem>
           <para>
-          要帮助改进本文档，请使用本文档 HTML 版本中的 <emphasis>Edit source document</emphasis>（编辑源文档）链接（需要 GitHub 帐户）。将光标指向所需的句子，然后在右侧导航面板的<emphasis>提供反馈</emphasis>部分单击<emphasis>报告问题</emphasis>。这样您将会转到 GitHub 上的源代码，可以在其中提出拉取请求。
+          要帮助改进本文档，请使用本文档 HTML 版本中的 <emphasis>Edit source document</emphasis>（编辑源文档）链接（需要 GitHub 帐户）。将光标指向相应的语句，然后在右侧导航面板的<emphasis>提供反馈</emphasis>部分单击<emphasis>报告问题</emphasis>。这样您将会转到 GitHub 上的源代码，可以在其中提出拉取请求。
         </para>
         </listitem>
       </varlistentry>
@@ -3517,7 +3566,7 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
     </para>
     </note>
     <para>
-    有关本文档使用的文档环境的详细信息，请参见储存库的 <emphasis>README</emphasis> 文件（网址为 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://github.com/SUSE/doc-unversioned/blob/main/README.adoc"/>）
+    有关本文档使用的文档环境的详细信息，请参见储存库的 <emphasis>README</emphasis> 文件（网址为 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://github.com/SUSE/doc-unversioned/blob/main/README.adoc"></link>）
   </para>
     <variablelist>
       <varlistentry>
@@ -3534,13 +3583,12 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
     <info>
       <title xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink">法律声明</title>
     </info>
-    <para> 版权所有 © 2006–<?dbtimestamp format="Y"?>
- SUSE LLC 和贡献者。保留所有权利。 </para>
+    <para> 版权所有© 2006– <?dbtimestamp format="Y"?> SUSE LLC 和撰稿人。保留所有权利。</para>
     <para>
-    根据 GNU 自由文档许可证 (GNU Free Documentation License) 版本 1.2 或（根据您的选择）版本 1.3 中的条款，在此授予您复制、分发和/或修改本文档的权限；本版权声明和许可证附带不可变部分。许可版本 1.2 的副本包含在题为<quote>GNU Free Documentation License</quote>的部分。
+    根据 GNU 自由文档许可证 (GNU Free Documentation License) 版本 1.2 或（根据您的选择）版本 1.3 中的条款，在此授予您复制、分发和/或修改本文档的权限；本版权声明和许可证附带不可变部分。许可版本 1.2 的副本包含在<quote>GNU Free Documentation License</quote>部分。
   </para>
     <para>
-    有关 SUSE 商标，请参见 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.suse.com/company/legal/"/>。所有其他第三方商标分别为相应所有者的财产。商标符号（®、™ 等）代表 SUSE 及其关联公司的商标。星号 (*) 代表第三方商标。
+    有关 SUSE 商标，请参见 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.suse.com/company/legal/"></link>。所有其他第三方商标分别为相应所有者的财产。商标符号（®、™ 等）代表 SUSE 及其关联公司的商标。星号 (*) 代表第三方商标。
   </para>
     <para>
     本指南力求涵盖所有细节，但这不能确保本指南准确无误。SUSE LLC 及其关联公司、作者和译者对于可能出现的错误或由此造成的后果皆不承担责任。
@@ -3551,10 +3599,10 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
       <title xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink">GNU 自由文档许可证</title>
     </info>
     <para>
-  Copyright (C) 2000, 2001, 2002 Free Software Foundation, Inc. 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.允许任何人复制和分发此许可证文档的逐字副本，但禁止对其进行更改。
+  Copyright (C) 2000, 2001, 2002 Free Software Foundation, Inc.51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.允许任何人复制和分发此许可证文档的逐字副本，但禁止对其进行更改。
  </para>
     <bridgehead renderas="sect4">
-    0. 导言
+    0.导言
   </bridgehead>
     <para>
   此许可证的目的是赋予手册、教科书或其他功能性的和有用的文档以“自由”：即保证每个人都有复制和再分发此类文档的有效自由，无论是否进行修改，也无论将其用于商业或非商业用途。其次，此许可证为作者和出版者保留了因工作获得声誉但不视为对他人所做修改负责的方式。
@@ -3566,7 +3614,7 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
   我们设计此许可证旨在将其用于免费软件的手册，因为免费软件需要自由文档：免费程序所附手册应具有与软件本身同样的自由。但是此许可证不限于软件手册；它可以用于任何文本作品，无论主题如何或它是否作为印刷书籍出版。建议本许可证主要用于目的是指导或参考的作品。
  </para>
     <bridgehead renderas="sect4">
-    1. 适用性和定义
+    1.适用性和定义
   </bridgehead>
     <para>
   此许可证适用的对象：由版权所有者在其中明确声明可按照此许可证条款以任何媒体分发的任何手册和其他作品。此类声明授予在此处所述的条款和条件下使用该作品的全球无限期无版权许可证。下述“文档”指任何此类手册或作品。任何公众成员都是一个被许可人，以下称为“您”。如果您以需要版权法许可的任何方式复制、修改或分发该作品，则表示您接受该许可证。
@@ -3599,7 +3647,7 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
   文档可能在文档遵照此许可证的声明后面包含免责声明。这些免责声明应作为参考信息包含在此许可证中，但是只能将其视作免责声明：这些免责声明暗指的任何其他含义均无效，且对此许可证的含义不产生任何影响。
  </para>
     <bridgehead renderas="sect4">
-    2. 逐字复制
+    2.逐字复制
   </bridgehead>
     <para>
   您可以用任何媒体复制并分发文档，无论是出于商业还是非商业目的，只要保证此许可证、版权声明和声称此许可证应用于文档的声明都完整地、无任何附加条件地存在于所有副本中。不能使用任何技术手段阻碍或控制您制作或发布的副本的阅读或再次复制。不过您可以在副本交易中得到报酬。如果发布足够多的副本，则您必须遵循下面第三节中的条件。
@@ -3608,10 +3656,10 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
   您也可以在如上的条件下出租副本和向公众放映副本。
  </para>
     <bridgehead renderas="sect4">
-    3. 大量复制
+    3.大量复制
   </bridgehead>
     <para>
-  如果您出版的文档印刷版副本（或是有印制封页的其他媒体副本）多于 100 份，而文档的许可证声明中要求有封页文本，则您必须将它清晰地置于封页之上，封面文本在封面上，封底文本在封底上。封面和封底上还必须标明您是这些副本的出版者。封面必须同等显著地完整展现标题的所有文字。您可以在封页上加入其他资料。改动仅限于封页的复制，只要保持文档的标题不变并满足这些条件，可以在其他方面被视为逐字复制。
+  如果您发布的文档印刷版副本（或是通常有印制封页的其他媒体副本）超过 100 份，而文档的许可证声明中要求有封页文本，则您必须将它清晰合规地置于封页之上：封面文本在封面上，封底文本在封底上。封面和封底上还必须标明您是这些副本的出版者。封面必须同等显著地完整展现标题的所有文字。您可以在封页上加入其他资料。改动仅限于封页的复制，只要保持文档的标题不变并满足这些条件，可以在其他方面被视为逐字复制。
  </para>
     <para>
   如果需要加上的文本对于封面或封底过多，无法明显地表示，您应该在封页上列出前面的（在合理的前提下尽量多），把其他的放在邻近的页面上。
@@ -3623,7 +3671,7 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
   在重新大量发布副本之前，请您（但不是必须）与文档的作者联系，以便他们可以有机会向您提供文档的更新版本。
  </para>
     <bridgehead renderas="sect4">
-    4. 修改
+    4.修改
   </bridgehead>
     <para>
   在上述第 2、3 节的条件下，您可以复制和分发文档的修改版本，前提是严格按照此许可证发布修改后的文档，将修改版本用作文档，从而允许任何拥有此修改版副本的人执行分发或修改。另外，在修改版中，您需要做到如下几点：
@@ -3712,13 +3760,13 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
   您可以加入一个命名为“签名”的章节，只要它只包含对您的修改版本由不同的各方给出的签名，例如书评或是声明文本已经被一个组织认定为一个标准的权威定义。
  </para>
     <para>
-  您可以加入一个最多 5 个字的段落作为封面文本和一个最多 25 个字的段落作为封底文本，将它们加入修改版本的封页文本列表末端。一个实体只可以添加（或编排）一段封面和一段封底文本。如果原文档已经为该封页（封面或封底）包含了封页文本，由您或您所代表的实体先前加入或排列的文本，不能再新加入一个，但您可以在原来的发行者的显式许可下替换掉原来的那个。
+  您可以加入一个最多 5 个字的段落作为封面文本和一个最多 25 个字的段落作为封底文本，将它们加入修改版本的封页文本列表末端。一个实体只可以添加（或编排）一段封面和一段封底文本。如果原文档已经为该封页（封面或封底）包含了封页文本，由您或您所代表的实体先前加入或排列的文本，不能再新加入一个，但您可以在原来的发行者的明确许可下替换掉原来的那个。
  </para>
     <para>
   作者和发行者不能通过本许可证授权公众使用他们的名字推荐或暗示认可任何一个修改版本。
  </para>
     <bridgehead renderas="sect4">
-    5. 组合文档
+    5.组合文档
   </bridgehead>
     <para>
   遵照第 4 节所说的修改版本的规定，您以将文档和其他文档合并并以本许可证发布，只要您在合并结果中包含原文档的所有不可变章节，对它们不加以任何改动，并在合并结果的许可声明中将它们全部列为不可变章节，而且维持原作者的免责声明不变。
@@ -3730,7 +3778,7 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
   在合并过程中，必须合并不同原始文档中任何命名为“历史”的章节，从而形成新的命名为“历史”的章节；类似地，还要合并命名为“致谢”和“题献”的章节。必须删除所有命名为“签名”的章节。
  </para>
     <bridgehead renderas="sect4">
-    6. 文档的合集
+    6.文档的合集
   </bridgehead>
     <para>
   您可以制作一个文档和其他文档的合集，在本许可证下发布，并在合集中将不同文档中的多个本许可证的副本以一个单独的副本来代替，只要您在文档的其他方面遵循本许可证的逐字复制的条款即可。
@@ -3739,7 +3787,7 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
   您可以从一个这样的合集中提取一个单独的文档，并将它在本许可证下单独发布，只要您想这个提取出的文档中加入一份本许可证的副本，并在文档的其他方面遵循本许可证的逐字复制的原则。
  </para>
     <bridgehead renderas="sect4">
-    7. 独立作品的聚合体
+    7.独立作品的聚合体
   </bridgehead>
     <para>
   将文档或其派生品以及其他独立和无关文档或作品编撰在一个储存卷中或分发媒体上，这称为文档的“聚合体”，前提是编撰成品的著作权对其使用者的法律权限的限制未超出各个独立作品的许可范围。当基于此许可证发布的文档包含在一个聚合体中时，此许可证不适用于聚合体中的本非该文档派生作品的其他作品。
@@ -3748,7 +3796,7 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
   如果第 3 节中的封页文本要求适用于这些文档的副本，则若文档在聚合体中所占的比重小于全作品的一半，文档的封页文本可以放置在聚合体内包含文档部分的封页上，或是电子文档中的等效部分。否则，它必须位于整个聚合体的印刷的封页上。
  </para>
     <bridgehead renderas="sect4">
-    8. 翻译
+    8.翻译
   </bridgehead>
     <para>
   翻译被视为一种修改，因此您可以根据第 4 节的条款分发文档的翻译。将固定章节替换为翻译内容需要经得其版权所有者的特别许可，但除了这些固定章节的原始版本之外，您还可以包含一部分或所有固定章节的翻译。您可以包含一个此许可证以及所有许可证声明和免责声明的翻译版本，前提是同时包含它们的原始英文版本。当翻译版本和英文版发生冲突的时候，原始版本有效。
@@ -3757,32 +3805,32 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
   如果在文档中有命名为“致谢”、“题献”或“历史”的章节，保持标题（第 1 节）的要求（第 4 节）恰恰需要更换实际的标题。
  </para>
     <bridgehead renderas="sect4">
-    9. 终止
+    9.许可的终止
   </bridgehead>
     <para>
   除非此许可证中有明确规定，否则您不能对该文档进行复制、修改、分授许可或分发。在此许可证规定外对该文档所进行的任何复制、修改、分授许可或分发都是无效的，并且将自动终止您在此许可证下所拥有的权利。但是，对于在此许可证的规定下从您这里获得副本或权利的各方，只要其完全遵守此许可证的规定，其许可证将不会被终止。
  </para>
     <bridgehead renderas="sect4">
-    10. 本许可的未来修订版本
+    10.本许可的未来修订版本
   </bridgehead>
     <para>
-  自由软件基金会有时会发布 GNU 自由文档许可证的新的修订版版本。这些新版本的主旨和精神与当前版本是一致的，但在解决新问题的具体细节方面可能有所不同。请参见 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.gnu.org/copyleft/"/>。
+  自由软件基金会有时会发布 GNU 自由文档许可证的新的修订版版本。这些新版本的主旨和精神与当前版本是一致的，但在解决新问题的具体细节方面可能有所不同。请访问 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.gnu.org/copyleft/"></link>。
  </para>
     <para>
   许可证的每个版本都有一个不同的版本号。如果文档指定了适用于它的此许可证“或任何后续版本”的特定带编号版本，则您可以选择遵从指定版本或自由软件基金会发布的任何随后版本（非草稿）的条款和条件。如果文档没有指定此许可证的版本号，您可以选择自由软件基金会发布的任何许可证版本（非草稿）。
  </para>
     <bridgehead renderas="sect4">
-    附录：如何针对您的文档使用此许可证
+    附录：如何对您的文档使用本许可证
   </bridgehead>
     <screen>Copyright (c) YEAR YOUR NAME.
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.2
 or any later version published by the Free Software Foundation;
 with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
-A copy of the license is included in the section entitled &#x201C;GNU
-Free Documentation License&#x201D;.</screen>
+A copy of the license is included in the section entitled “GNU
+Free Documentation License”.</screen>
     <para>
-  如果您有固定章节、封面文本和封底文本，请将“with...Texts”部分替换为：
+  如果有不可变章节、封面文本和封底文本，请使用以下内容替换“附带...文本”部分：
  </para>
     <screen>with the Invariant Sections being LIST THEIR TITLES, with the
 Front-Cover Texts being LIST, and with the Back-Cover Texts being LIST.</screen>
