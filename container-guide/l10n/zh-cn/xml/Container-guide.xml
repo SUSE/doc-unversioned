@@ -1793,7 +1793,7 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
   </section>
   <section xml:lang="zh-cn" role="concept" version="5.2" xml:id="container-registry">
     <info>
-      <title xmlns:its="http://www.w3.org/2005/11/its" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink">配置映像存储设备</title>
+      <title xmlns:its="http://www.w3.org/2005/11/its" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink">配置映像存储区</title>
     </info>
     <para>
     在创建自定义映像之前，需要确定映像的存储位置。最简单的解决方案是将映像推送到 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://hub.docker.com">Docker Hub</link>。默认情况下，推送到 Docker Hub 的所有映像都是公用映像。切勿发布敏感数据或未授权的软件供公众使用。
@@ -1847,9 +1847,9 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
     </para>
     </section>
     <section xml:id="sec-docker-registry-limitations">
-      <title>限制</title>
+      <title>局限性</title>
       <para>
-      Docker 注册表存在两项主要限制：
+      Docker 注册表存在两大局限性：
     </para>
       <itemizedlist>
         <listitem>
@@ -1945,9 +1945,9 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
     crypto/rsa: verification error</screen>
     </section>
     <section xml:id="sec-verify-helm-chart">
-      <title>使用 Cosign 验证 Helm chart</title>
+      <title>使用 Cosign 校验 Helm chart</title>
       <para>
-      Cosign 也可用于验证 Helm chart，方法是使用以下命令：
+      Cosign 也可用于校验 Helm chart，方法是使用以下命令：
     </para>
       <screen><prompt>&gt; </prompt>podman run --rm -it registry.suse.com/suse/cosign verify --key /usr/share/pki/containers/suse-container-key.pem registry.suse.com/path/to/chart</screen>
     </section>
@@ -3322,7 +3322,7 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
     <section xml:id="sec-test-platforms">
       <title>测试平台和环境</title>
       <para>
-      SLE Base 容器映像使用以下平台和环境进行测试：
+      SLE 基本容器映像使用以下平台和环境进行测试：
     </para>
       <itemizedlist>
         <listitem>
