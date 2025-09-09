@@ -263,7 +263,7 @@
      </varlistentry>
      <varlistentry xml:id="vle-pcidss-deny-all">
       <term>
-       1.2.1.c 校验是否明确拒绝所有其他入站和出站流量。
+       1.2.1.c 校验是否明确拒绝所有其他入站和出站流量<!--。-->
       </term>
       <listitem>
        <para>
@@ -600,7 +600,7 @@
     <variablelist>
      <varlistentry xml:id="vle-pcidss-encrypt-disk">
       <term>
-       3.4.1.a 如果使用磁盘加密，请检查配置并观察身份验证流程，以校验对加密文件系统的逻辑访问是否是通过一种与本机操作系统身份验证机制不同的机制（例如，不使用本地用户帐户数据库或一般的网络登录身份凭证）实现的。
+       3.4.1.a 如果使用磁盘加密，请检查配置并观察身份验证流程，以校验对加密文件系统的逻辑访问是否是通过一种与本机操作系统身份验证机制不同的机制（例如，不使用本地用户帐户数据库或一般的网络登录身份凭证）实现的<!--。-->
       </term>
       <listitem>
        <para>
@@ -865,7 +865,7 @@ other::r--
     <variablelist>
      <varlistentry xml:id="vle-pcidss-disable-user">
       <term>
-       8.1.4 去除/禁用在 90 天内处于非活动状态的用户帐户。
+       8.1.4 去除/禁用在 90 天内处于非活动状态的用户帐户<!--。-->
       </term>
       <listitem>
       <para>
@@ -893,7 +893,7 @@ other::r--
      </varlistentry>
      <varlistentry xml:id="vle-pcidss-lock-user">
       <term>
-       8.1.6 通过在用户 ID 尝试访问最多六次后锁定该 ID 来限制重复的访问尝试。
+       8.1.6 通过在用户 ID 尝试访问最多六次后锁定该 ID 来限制重复的访问尝试<!--。-->
       </term>
       <listitem>
        <para>
@@ -913,7 +913,7 @@ other::r--
      </varlistentry>
      <varlistentry xml:id="vle-pcidss-multi-factor-local">
       <term>
-       8.3.1 针对进行管理访问的人员，将用于所有非控制台访问的多重身份验证纳入 CDE 中。
+       8.3.1 针对进行管理访问的人员，将用于所有非控制台访问的多重身份验证纳入 CDE 中<!--。-->
       </term>
       <listitem>
        <para>
