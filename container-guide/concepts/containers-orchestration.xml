@@ -282,7 +282,7 @@
     a4dc31b24000  docker.io/library/postgres:11            postgres              40 seconds ago      Up 41 seconds ago      0.0.0.0:8080-&gt;80/tcp  drupal-pg</screen>
     <para>Creating a systemd unit for the pod is done similarly to a
     single container:</para>
-    <screen language="Shell" linenumbering="unnumbered">&prompt.user;podman generate systemd --name --new --files drupal
+    <screen linenumbering="unnumbered">&prompt.user;podman generate systemd --name --new --files drupal
     /home/user/pod-drupal.service
     /home/user/container-drupal-frontend.service
     /home/user/container-drupal-pg.service
