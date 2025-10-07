@@ -2011,7 +2011,7 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
         <para>
         从 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.suse.com/support/security/keys/">SUSE 签名密钥</link>提取用来为 SLE BCI 签名的公共密钥，或使用以下命令：
       </para>
-        <screen language="ShellSession" linenumbering="unnumbered">&gt; sudo curl -s https://ftp.suse.com/pub/projects/security/keys/container–key.pem \
+        <screen linenumbering="unnumbered">&gt; sudo curl -s https://ftp.suse.com/pub/projects/security/keys/container–key.pem \
         -o /usr/share/pki/containers/suse-container-key.pem</screen>
         <note>
           <para>
@@ -2025,7 +2025,7 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
       <para>
       如果校验失败，该命令会返回如下所示的错误消息：
     </para>
-      <screen language="ShellSession" linenumbering="unnumbered"><prompt>&gt; </prompt>podman pull registry.suse.com/bci/bci-base:latest
+      <screen linenumbering="unnumbered"><prompt>&gt; </prompt>podman pull registry.suse.com/bci/bci-base:latest
     Trying to pull registry.suse.com/bci/bci-base:latest...
     Error: copying system image from manifest list: Source image rejected: Signature for identity registry.suse.com/bci/bci-base is not accepted</screen>
       <para>
@@ -2895,7 +2895,7 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
     ffd2fbd6d445  docker.io/library/drupal:latest          apache2-foregroun...  About a minute ago  Up About a minute ago  0.0.0.0:8080-&gt;80/tcp  drupal-frontend
     a4dc31b24000  docker.io/library/postgres:11            postgres              40 seconds ago      Up 41 seconds ago      0.0.0.0:8080-&gt;80/tcp  drupal-pg</screen>
       <para>为 Pod 创建 systemd 单元的方式类似于为单个容器创建此单元：</para>
-      <screen language="Shell" linenumbering="unnumbered"><prompt>&gt; </prompt>podman generate systemd --name --new --files drupal
+      <screen linenumbering="unnumbered"><prompt>&gt; </prompt>podman generate systemd --name --new --files drupal
     /home/user/pod-drupal.service
     /home/user/container-drupal-frontend.service
     /home/user/container-drupal-pg.service

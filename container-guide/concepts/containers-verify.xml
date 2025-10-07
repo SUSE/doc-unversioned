@@ -195,7 +195,7 @@
         <link xlink:href="https://www.suse.com/support/security/keys/">&suse;
         Signing Keys</link>, or use the following command:
       </para>
-<screen language="ShellSession" linenumbering="unnumbered">&gt; sudo curl -s https://ftp.suse.com/pub/projects/security/keys/container–key.pem \
+<screen linenumbering="unnumbered">&gt; sudo curl -s https://ftp.suse.com/pub/projects/security/keys/container–key.pem \
         -o /usr/share/pki/containers/suse-container-key.pem</screen>
       <note>
         <para>
@@ -213,7 +213,7 @@
     <para>
       If verification fails, the command returns an error message as follows:
     </para>
-<screen language="ShellSession" linenumbering="unnumbered">&prompt.user;podman pull registry.suse.com/bci/bci-base:latest
+<screen linenumbering="unnumbered">&prompt.user;podman pull registry.suse.com/bci/bci-base:latest
     Trying to pull registry.suse.com/bci/bci-base:latest...
     Error: copying system image from manifest list: Source image rejected: Signature for identity registry.suse.com/bci/bci-base is not accepted</screen>
     <para>
