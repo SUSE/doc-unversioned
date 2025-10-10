@@ -212,4 +212,26 @@
       </para>
     </section>
   </section>
+ <section xml:id="sec-building-known-issues">
+   <title>Known issues</title>
+      <section xml:id="sec-building-known-issues-blkid">
+        <para>
+          The default behavior of <literal>blkid</literal> depends on a running <literal>udev</literal>.
+          If the container does not contain <literal>udev</literal>, or if <literal>udev</literal> is not running
+          inside the container, <literal>blkid</literal> must be configured correctly.
+        </para>
+        <para>
+          The <literal>/etc/blkid.conf</literal> file, or a file inside
+          <literal>/etc/blkid.conf.d</literal> must have the following parameter:
+          <screen> 
+          EVALUATE=scan
+          </screen>
+        </para>
+        <para>
+         This is required, because <literal>EVALUATE=udev</literal> does not work reliably
+         for udev-less containers.
+        </para>
+      </section>
+    </section>
+  </section>
 </article>
