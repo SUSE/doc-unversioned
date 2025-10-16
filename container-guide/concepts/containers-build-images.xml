@@ -70,22 +70,15 @@
         </para>
       </note>
       <para>
-        You do not need to add any credentials to the container image, because
-        the machine credentials are automatically injected into the
-        <filename>/run/secrets</filename> directory in the container by the
-        docker daemon. The same applies to the
-        <filename>/etc/SUSEConnect</filename> file of the host system, which is
-        automatically injected into the <filename>/run/secrets</filename>
-        directory.
+        To take advantage of repositories available through your &suse; subscription, build an image so that the secret in the host system is mounted inside the container image. This can be done using the following command:
       </para>
-      <note>
-        <title>Credentials and security</title>
-        <para>
-          The contents of the <filename>/run/secrets</filename> directory are
-          never included in a container image, which means that there is no
-          risk of your credentials leaking.
-        </para>
-      </note>
+<screen>podman build --no-cache --secret id=SCCcredentials,src=/etc/zypp/credentials.d/SCCcredentials,type=file .</screen>
+
+      <para>
+        It is possible to enable additional non-recommended modules via the environment variable <literal>ADDITIONAL_MODULES</literal>, for example:
+      </para>
+<screen>podman build --env ADDITIONAL_MODULES=sle-module-desktop-applications,sle-module-development-tools</screen>
+
       <note xml:id="note-build-images-different-codebase">
         <title>Building images on systems registered with &rmt;</title>
         <para>
