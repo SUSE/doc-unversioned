@@ -212,8 +212,8 @@
         <para>
           To download a CSV file that contains uptime data for all the systems
           in your organization, select <guilabel>System uptimes</guilabel> from
-          the <guimenu>Download as CSV</guimenu> drop-down list. The drop-down list is
-          only present if system uptime data is available.
+          the <guimenu>Download as CSV</guimenu> drop-down list. The drop-down
+          list is only present if system uptime data is available.
         </para>
         <figure>
           <title>Download uptime data for all systems in an organization</title>
@@ -410,13 +410,13 @@ Id,Hostname,Online At Day,Online For Hours,Online At Hours,Labels
         </listitem>
       </varlistentry>
       <varlistentry>
-          <term>Labels</term>
-          <listitem>
-            <para>
-              List of custom labels. It is blank if you have not applied any
-              labels to the systems being metered.
-            </para>
-          </listitem>
+        <term>Labels</term>
+        <listitem>
+          <para>
+            List of custom labels. It is blank if you have not applied any
+            labels to the systems being metered.
+          </para>
+        </listitem>
       </varlistentry>
     </variablelist>
   </sect1>
@@ -450,12 +450,12 @@ Id,Hostname,Online At Day,Online For Hours,Online At Hours,Labels
           <para>
             Retrieve the uptime data as described in
             <xref linkend="uptime-data-retrieve-cmdline"/>. Open the data file
-            and search for the line that includes
-            <literal>2025-02-28</literal>. Inspect that day's bit pattern, for
-            example, <literal>000011111111111111111111</literal> and count up to
-            the 10th digit (the bit starts with 0 a.m.) from left. The
-            corresponding bit is <literal>1</literal>, therefore the system was
-            up between 9 and 10 a.m.
+            and search for the line that includes <literal>2025-02-28</literal>.
+            Inspect that day's bit pattern, for example,
+            <literal>000011111111111111111111</literal> and count up to the 10th
+            digit (the bit starts with 0 a.m.) from left. The corresponding bit
+            is <literal>1</literal>, therefore the system was up between 9 and
+            10 a.m.
           </para>
         </answer>
       </qandaentry>
@@ -534,5 +534,27 @@ Id,Hostname,Online At Day,Online For Hours,Online At Hours,Labels
         </answer>
       </qandaentry>
     </qandaset>
+  </sect1>
+  <sect1 xml:id="uptime-tracking-formoreinfo">
+    <title>For more information</title>
+
+    <para>
+      The following sources include additional contextual information.
+    </para>
+
+    <itemizedlist>
+      <listitem>
+        <para>
+          <link xlink:href="https://documentation.suse.com/sles/15-SP7/html/SLES-all/cha-register-sle.html">Registering
+          &sle;</link>
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <link xlink:href="https://documentation.suse.com/subscription/suseconnect/single-html/SLE-suseconnect-visibility/#system-data-gathered-by-scc">System
+          data gathered by &scc;</link>
+        </para>
+      </listitem>
+    </itemizedlist>
   </sect1>
 </article>
