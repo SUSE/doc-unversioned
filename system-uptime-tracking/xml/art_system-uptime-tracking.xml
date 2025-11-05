@@ -36,8 +36,8 @@
         The system uptime tracking feature monitors when a client system is up.
         It works on an hourly basis&mdash;the system is considered up if it was
         running at any part of the given hour. The information is stored in
-        &scc; (SCC) and Repository Mirroring Tool (RMT), and serves as a source
-        for analytics purposes.
+        &scc; (SCC) and &rmtool; (RMT), and serves as a source for analytics
+        purposes.
       </para>
     </abstract>
     <meta name="title" its:translate="yes">System Uptime Tracking</meta>
@@ -47,6 +47,20 @@
     <meta name="task" its:translate="no"><phrase>Subscription Management</phrase>
     </meta>
     <revhistory xml:id="rh-article-system-uptime-tracking">
+      <revision><date>2025-11-05</date>
+        <revdescription>
+          <para>
+            Update reflecting the following changes:
+          </para>
+          <itemizedlist>
+            <listitem>
+              <para>
+                Added a section with additional information sources.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </revdescription>
+      </revision>
       <revision><date>2025-06-10</date>
         <revdescription>
           <para>
