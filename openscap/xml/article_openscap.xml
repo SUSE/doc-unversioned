@@ -177,7 +177,7 @@
       For each group member, create a list of rules and recommendations you plan to implement. You
       should consider the following:
      </para>
-     <orderedlist>
+     <itemizedlist>
       <listitem>
        <para>
         Preconditions necessary for some of the rules
@@ -208,19 +208,19 @@
         Additional security controls or measures will be implemented to address excluded recommendations
        </para>
       </listitem>
-     </orderedlist>
+     </itemizedlist>
     </step>
     <step>
      <para>
       Create a test environment that simulates your environment. Use it as a reference before
       implementing the technology in your real environment. You should consider the following:
      </para>
-     <orderedlist>
+     <itemizedlist>
       <listitem>
        <para>
         The remediation has to be executed more than twice, because:
        </para>
-       <orderedlist>
+       <itemizedlist>
         <listitem>
          <para>
            The recommendations are executed in alphabetical order
@@ -236,7 +236,7 @@
           The operating system needs to be restarted after each pass
          </para>
         </listitem>
-       </orderedlist>
+       </itemizedlist>
       </listitem>
       <listitem>
        <para>
@@ -249,7 +249,7 @@
         </para>
        </note>
       </listitem>
-     </orderedlist>
+     </itemizedlist>
     </step>
     <step>
      <para>
@@ -260,7 +260,7 @@
      <para>
       In case of an error during the remediation, you can try the following:
      </para>
-     <orderedlist>
+     <itemizedlist>
       <listitem>
        <para>
         Apply the rule manually
@@ -276,7 +276,7 @@
         Register a bug, providing details about the version of &ssg;, logs from execution and steps performed by you
        </para>
       </listitem>
-     </orderedlist>
+     </itemizedlist>
     </step>
     <step>
      <para>
