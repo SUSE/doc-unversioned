@@ -348,7 +348,7 @@
       </listitem>
     </itemizedlist>
 
-<screen>&prompt.sudo;<command>zypper install scap-workbench scap-workbench-doc ssg-apply</command></screen>
+<screen>&prompt.sudo;<command>zypper install scap-workbench ssg-apply</command></screen>
 
     <tip>
       <title>Security best practice for SCAP Workbench</title>
