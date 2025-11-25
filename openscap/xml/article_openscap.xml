@@ -338,6 +338,12 @@
           Workbench graphical utility to perform common
           <systemitem>oscap</systemitem> tasks.
         </para>
+        <note>
+         <para>
+          The <package>scap-workbench</package> package, being a GUI software, is available only for
+          desktop installations of &sle;.
+         </para>
+        </note>
       </listitem>
       <listitem>
         <para>
