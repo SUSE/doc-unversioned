@@ -44,6 +44,14 @@
     </meta>
     <revhistory xml:id="rh-openscap">
       <revision>
+        <date>2025-11-18</date>
+        <revdescription>
+          <para>
+            Added steps for preparing IT infrastructure, and other minor miscellaneous enhancements.
+          </para>
+        </revdescription>
+      </revision>
+      <revision>
         <date>2024-05-27</date>
         <revdescription>
           <para>
@@ -134,6 +142,153 @@
       machine-readable format which then can be used by &openscap; and other
       tools.
     </para>
+  </sect1>
+  <sect1 xml:id="openscap-prepare-infrastructure">
+   <title>Infrastructure Preparation</title>
+   <para>
+    Before installation and hardening, it is recommended to prepare your IT infrastructure for the
+    implementation of the &ssg;. As a preparation, do the following steps approximately in the order
+    mentioned:
+   </para>
+   <procedure>
+    <step>
+     <para>
+      Create an inventory of the hosts on which &ssg; will be installed.
+     </para>
+    </step>
+    <step>
+     <para>
+      Create an inventory of IT and business services that will be in the scope of the installation.
+     </para>
+    </step>
+    <step>
+     <para>
+      Split the inventory into a few groups, considering that the configuration of hosts belonging to a group will be identical.
+     </para>
+    </step>
+    <step>
+     <para>
+      Select the standard or profile you are planning to implement in your infrastructure. For
+      example, you can use &stig; from &disa;, &pcidss; and &hipaa;.
+     </para>
+    </step>
+    <step>
+     <para>
+      For each group member, create a list of rules and recommendations you plan to implement. You
+      should consider the following:
+     </para>
+     <orderedlist>
+      <listitem>
+       <para>
+        Preconditions necessary for some of the rules
+       </para>
+      </listitem>
+      <listitem>
+       <para>
+        Configuration parameters for each recommendation, if they exist
+       </para>
+      </listitem>
+      <listitem>
+       <para>
+        Recommendations to be applied manually
+       </para>
+      </listitem>
+      <listitem>
+       <para>
+        Recommendations to be applied automatically
+       </para>
+      </listitem>
+      <listitem>
+       <para>
+        Recommendations to be excluded
+       </para>
+      </listitem>
+      <listitem>
+       <para>
+        Additional security controls or measures will be implemented to address excluded recommendations
+       </para>
+      </listitem>
+     </orderedlist>
+    </step>
+    <step>
+     <para>
+      Create a test environment that simulates your environment. Use it as a reference before
+      implementing the technology in your real environment. You should consider the following:
+     </para>
+     <orderedlist>
+      <listitem>
+       <para>
+        The remediation has to be executed more than twice, because:
+       </para>
+       <orderedlist>
+        <listitem>
+         <para>
+           The recommendations are executed in alphabetical order
+         </para>
+        </listitem>
+        <listitem>
+         <para>
+          Between some recommendations, there are dependencies
+         </para>
+        </listitem>
+        <listitem>
+         <para>
+          The operating system needs to be restarted after each pass
+         </para>
+        </listitem>
+       </orderedlist>
+      </listitem>
+      <listitem>
+       <para>
+        A 100% hardening is impossible, and you have to specify an acceptable level of risk for
+        members of each group
+       </para>
+       <note>
+        <para>
+         The acceptable level is a number of rules that will show the result “not pass” in case of an audit. Document these rules and apply additional security controls to compensate for them.
+        </para>
+       </note>
+      </listitem>
+     </orderedlist>
+    </step>
+    <step>
+     <para>
+      Use the test environment to test new patches and new updates of &ssg;.
+     </para>
+    </step>
+    <step>
+     <para>
+      In case of an error during the remediation, you can try the following:
+     </para>
+     <orderedlist>
+      <listitem>
+       <para>
+        Apply the rule manually
+       </para>
+      </listitem>
+      <listitem>
+       <para>
+        Exclude the rule using tailoring and use an additional security control instead
+       </para>
+      </listitem>
+      <listitem>
+       <para>
+        Register a bug, providing details about the version of &ssg;, logs from execution and steps performed by you
+       </para>
+      </listitem>
+     </orderedlist>
+    </step>
+    <step>
+     <para>
+      Create an implementation plan covering your production environment.
+     </para>
+    </step>
+    <step>
+     <para>
+      Create backups.
+     </para>
+    </step>
+   </procedure>
   </sect1>
   <sect1 xml:id="openscap-installation">
     <title>Installation</title>
@@ -300,8 +455,9 @@
             which are all based on XML. All XML files in that directory are
             named according to the SCAP component and to the &sle; codestream
             they apply to (code 12 or 15). The directory also holds XML files
-            specific to &osuse;.
+            specific to &osuse;. For example, you can view all available security policies by getting a list of DataStream files:
           </para>
+<screen>&prompt.root;<command>ls -1 /usr/share/xml/scap/ssg/content/ssg-*-ds.xml</command></screen>
         </listitem>
       </varlistentry>
       <varlistentry>
