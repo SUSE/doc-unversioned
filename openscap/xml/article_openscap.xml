@@ -30,45 +30,40 @@
     </dm:docmanager>
     <abstract>
       <para>
-        This document introduces you to auditing and hardening &sle; with
-        &openscap; and the <literal>&ssg;</literal>.
+        This document introduces you to auditing and hardening &sle; with &openscap; and the
+        <literal>&ssg;</literal>.
       </para>
     </abstract>
     <meta name="title" its:translate="yes">Hardening &productname; with &openscap;</meta>
     <meta name="series" its:translate="no">Products &amp; Solutions</meta>
     <meta name="description" its:translate="yes">How to audit and harden &productname; with &openscap; and the &ssg;</meta>
     <meta name="social-descr" its:translate="yes">Harden &productnameshort; with &openscap;</meta>
-    <meta name="task" its:translate="no">
-      <phrase>Auditing</phrase>
-      <phrase>Compliance</phrase>
+    <meta name="task" its:translate="no"><phrase>Auditing</phrase><phrase>Compliance</phrase>
     </meta>
     <revhistory xml:id="rh-openscap">
-      <revision>
-        <date>2025-11-18</date>
+      <revision><date>2025-11-18</date>
         <revdescription>
           <para>
-            Added steps for preparing IT infrastructure, and other minor miscellaneous enhancements.
+            Added steps for preparing IT infrastructure, and other minor miscellaneous
+            enhancements.
           </para>
         </revdescription>
       </revision>
-      <revision>
-        <date>2024-05-27</date>
+      <revision><date>2024-05-27</date>
         <revdescription>
           <para>
             Removed outdated &pcidssa; profile.
           </para>
         </revdescription>
       </revision>
-      <revision>
-        <date>2024-05-17</date>
+      <revision><date>2024-05-17</date>
         <revdescription>
           <para>
             Added how to use external or remote resources for scanning.
           </para>
         </revdescription>
       </revision>
-      <revision>
-        <date>2024-01-31</date>
+      <revision><date>2024-01-31</date>
         <revdescription>
           <itemizedlist>
             <listitem>
@@ -89,8 +84,7 @@
           </itemizedlist>
         </revdescription>
       </revision>
-      <revision>
-        <date>2023-03-06</date>
+      <revision><date>2023-03-06</date>
         <revdescription>
           <para>
             Initial release of this document.
@@ -102,14 +96,12 @@
   <important xml:id="openscap-disclaimer">
     <title>Disclaimer</title>
     <para>
-      &suse; seeks to provide customers with quick and easy guides that can
-      assist them in maintaining security compliance. Implementation of the
-      settings contained within this guide without its prior testing in a
-      non-operational environment is highly discouraged. The developers of
-      these profiles and documentation have made reasonable efforts to ensure
-      overall compliance. They assume no responsibility for its use by other
-      parties, and make no guarantee, expressed or implied, about its quality,
-      reliability or any other characteristic.
+      &suse; seeks to provide customers with quick and easy guides that can assist them in
+      maintaining security compliance. Implementation of the settings contained within this guide
+      without its prior testing in a non-operational environment is highly discouraged. The
+      developers of these profiles and documentation have made reasonable efforts to ensure overall
+      compliance. They assume no responsibility for its use by other parties, and make no
+      guarantee, expressed or implied, about its quality, reliability or any other characteristic.
     </para>
   </important>
   <sect1 xml:id="openscap-whatis">
@@ -117,16 +109,15 @@
 
     <para>
       SCAP stands for <systemitem class="protocol">Security Content Automation
-      Protocol</systemitem>. It is a framework of specifications that support
-      automated configuration, vulnerability scanning, and policy compliance
-      evaluation of systems deployed in an organization. It also standardizes
-      how vulnerabilities and security configurations are communicated both to
-      machines and human beings.
+      Protocol</systemitem>. It is a framework of specifications that support automated
+      configuration, vulnerability scanning, and policy compliance evaluation of systems deployed
+      in an organization. It also standardizes how vulnerabilities and security configurations are
+      communicated both to machines and human beings.
     </para>
 
     <para>
-      &openscap; is a collection of open source tools that implement the SCAP
-      framework for Linux. SCAP is maintained by the
+      &openscap; is a collection of open source tools that implement the SCAP framework for Linux.
+      SCAP is maintained by the
       <orgname>National Institute of Standards and Technology (NIST)</orgname>
       . &openscap; received the SCAP 1.2 certification by NIST in 2014.
     </para>
@@ -135,168 +126,173 @@
     <title>Benefits</title>
 
     <para>
-      The &openscap; tools, together with the <literal>&ssg;</literal>, can be
-      used for auditing your system in an automated way. The
-      <literal>&ssg;</literal> implements security guidances recommended by
-      respected authorities. These security guidances are transformed into a
-      machine-readable format which then can be used by &openscap; and other
-      tools.
+      The &openscap; tools, together with the <literal>&ssg;</literal>, can be used for auditing
+      your system in an automated way. The <literal>&ssg;</literal> implements security guidances
+      recommended by respected authorities. These security guidances are transformed into a
+      machine-readable format which then can be used by &openscap; and other tools.
     </para>
   </sect1>
   <sect1 xml:id="openscap-prepare-infrastructure">
-   <title>Infrastructure Preparation</title>
-   <para>
-    Before installation and hardening, it is recommended to prepare your IT infrastructure for the
-    implementation of the &ssg;. As a preparation, do the following steps approximately in the order
-    mentioned:
-   </para>
-   <procedure>
-    <step>
-     <para>
-      Create an inventory of the hosts on which &ssg; will be installed.
-     </para>
-    </step>
-    <step>
-     <para>
-      Create an inventory of IT and business services that will be in the scope of the installation.
-     </para>
-    </step>
-    <step>
-     <para>
-      Split the inventory into a few groups, considering that the configuration of hosts belonging to a group will be identical.
-     </para>
-    </step>
-    <step>
-     <para>
-      Select the standard or profile you are planning to implement in your infrastructure. For
-      example, you can use &stig; from &disa;, &pcidss; and &hipaa;.
-     </para>
-    </step>
-    <step>
-     <para>
-      For each group member, create a list of rules and recommendations you plan to implement. You
-      should consider the following:
-     </para>
-     <itemizedlist>
-      <listitem>
-       <para>
-        Preconditions necessary for some of the rules
-       </para>
-      </listitem>
-      <listitem>
-       <para>
-        Configuration parameters for each recommendation, if they exist
-       </para>
-      </listitem>
-      <listitem>
-       <para>
-        Recommendations to be applied manually
-       </para>
-      </listitem>
-      <listitem>
-       <para>
-        Recommendations to be applied automatically
-       </para>
-      </listitem>
-      <listitem>
-       <para>
-        Recommendations to be excluded
-       </para>
-      </listitem>
-      <listitem>
-       <para>
-        Additional security controls or measures will be implemented to address excluded recommendations
-       </para>
-      </listitem>
-     </itemizedlist>
-    </step>
-    <step>
-     <para>
-      Create a test environment that simulates your environment. Use it as a reference before
-      implementing the technology in your real environment. You should consider the following:
-     </para>
-     <itemizedlist>
-      <listitem>
-       <para>
-        The remediation has to be executed more than twice, because:
-       </para>
-       <itemizedlist>
-        <listitem>
-         <para>
-           The recommendations are executed in alphabetical order
-         </para>
-        </listitem>
-        <listitem>
-         <para>
-          Between some recommendations, there are dependencies
-         </para>
-        </listitem>
-        <listitem>
-         <para>
-          The operating system needs to be restarted after each pass
-         </para>
-        </listitem>
-       </itemizedlist>
-      </listitem>
-      <listitem>
-       <para>
-        A 100% hardening is impossible, and you have to specify an acceptable level of risk for
-        members of each group
-       </para>
-       <note>
+    <title>Infrastructure Preparation</title>
+
+    <para>
+      Before installation and hardening, it is recommended to prepare your IT infrastructure for
+      the implementation of the &ssg;. As a preparation, do the following steps approximately in
+      the order mentioned:
+    </para>
+
+    <procedure>
+      <step>
         <para>
-         The acceptable level is a number of rules that will show the result “not pass” in case of an audit. Document these rules and apply additional security controls to compensate for them.
+          Create an inventory of the hosts on which &ssg; will be installed.
         </para>
-       </note>
-      </listitem>
-     </itemizedlist>
-    </step>
-    <step>
-     <para>
-      Use the test environment to test new patches and new updates of &ssg;.
-     </para>
-    </step>
-    <step>
-     <para>
-      In case of an error during the remediation, you can try the following:
-     </para>
-     <itemizedlist>
-      <listitem>
-       <para>
-        Apply the rule manually
-       </para>
-      </listitem>
-      <listitem>
-       <para>
-        Exclude the rule using tailoring and use an additional security control instead
-       </para>
-      </listitem>
-      <listitem>
-       <para>
-        Register a bug, providing details about the version of &ssg;, logs from execution and steps performed by you
-       </para>
-      </listitem>
-     </itemizedlist>
-    </step>
-    <step>
-     <para>
-      Create an implementation plan covering your production environment.
-     </para>
-    </step>
-    <step>
-     <para>
-      Create backups.
-     </para>
-    </step>
-   </procedure>
+      </step>
+      <step>
+        <para>
+          Create an inventory of IT and business services that will be in the scope of the
+          installation.
+        </para>
+      </step>
+      <step>
+        <para>
+          Split the inventory into a few groups, considering that the configuration of hosts
+          belonging to a group will be identical.
+        </para>
+      </step>
+      <step>
+        <para>
+          Select the standard or profile you are planning to implement in your infrastructure. For
+          example, you can use &stig; from &disa;, &pcidss; and &hipaa;.
+        </para>
+      </step>
+      <step>
+        <para>
+          For each group member, create a list of rules and recommendations you plan to implement.
+          You should consider the following:
+        </para>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Preconditions necessary for some of the rules
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Configuration parameters for each recommendation, if they exist
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Recommendations to be applied manually
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Recommendations to be applied automatically
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Recommendations to be excluded
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Additional security controls or measures will be implemented to address excluded
+              recommendations
+            </para>
+          </listitem>
+        </itemizedlist>
+      </step>
+      <step>
+        <para>
+          Create a test environment that simulates your environment. Use it as a reference before
+          implementing the technology in your real environment. You should consider the following:
+        </para>
+        <itemizedlist>
+          <listitem>
+            <para>
+              The remediation has to be executed more than twice, because:
+            </para>
+            <itemizedlist>
+              <listitem>
+                <para>
+                  The recommendations are executed in alphabetical order
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  Between some recommendations, there are dependencies
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  The operating system needs to be restarted after each pass
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+          <listitem>
+            <para>
+              A 100% hardening is impossible, and you have to specify an acceptable level of risk
+              for members of each group
+            </para>
+            <note>
+              <para>
+                The acceptable level is a number of rules that will show the result “not pass” in
+                case of an audit. Document these rules and apply additional security controls to
+                compensate for them.
+              </para>
+            </note>
+          </listitem>
+        </itemizedlist>
+      </step>
+      <step>
+        <para>
+          Use the test environment to test new patches and new updates of &ssg;.
+        </para>
+      </step>
+      <step>
+        <para>
+          In case of an error during the remediation, you can try the following:
+        </para>
+        <itemizedlist>
+          <listitem>
+            <para>
+              Apply the rule manually
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Exclude the rule using tailoring and use an additional security control instead
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Register a bug, providing details about the version of &ssg;, logs from execution and
+              steps performed by you
+            </para>
+          </listitem>
+        </itemizedlist>
+      </step>
+      <step>
+        <para>
+          Create an implementation plan covering your production environment.
+        </para>
+      </step>
+      <step>
+        <para>
+          Create backups.
+        </para>
+      </step>
+    </procedure>
   </sect1>
   <sect1 xml:id="openscap-installation">
     <title>Installation</title>
 
     <para>
-      To use the &openscap; tools and the <literal>&ssg;</literal> for
-      hardening your target system by scanning and remediating vulnerabilities,
-      install the following core packages:
+      To use the &openscap; tools and the <literal>&ssg;</literal> for hardening your target system
+      by scanning and remediating vulnerabilities, install the following core packages:
     </para>
 
     <itemizedlist>
@@ -320,10 +316,14 @@
 <screen>&prompt.sudo;<command>zypper install openscap openscap-utils scap-security-guide</command>
 </screen>
 
+    <!--Installation Command SLE Micro to be included
+      sudo transactional-update pkg install openscap openscap-utils scap-security-guide
+      sudo reboot
+      -->
+
     <note>
       <para>
-        These packages are dependencies for other optional packages discussed
-        below.
+        These packages are dependencies for other optional packages discussed below.
       </para>
     </note>
 
@@ -334,22 +334,20 @@
     <itemizedlist>
       <listitem>
         <para>
-          <package>scap-workbench</package>: This package provides the SCAP
-          Workbench graphical utility to perform common
-          <systemitem>oscap</systemitem> tasks.
+          <package>scap-workbench</package>: This package provides the SCAP Workbench graphical
+          utility to perform common <systemitem>oscap</systemitem> tasks.
         </para>
         <note>
-         <para>
-          The <package>scap-workbench</package> package, being a GUI software, is available only for
-          desktop installations of &sle;.
-         </para>
+          <para>
+            The <package>scap-workbench</package> package, being a GUI software, is available only
+            for desktop installations of &sle;.
+          </para>
         </note>
       </listitem>
       <listitem>
         <para>
-          <package>ssg-apply</package>: When used along with SCAP Workbench,
-          this package helps you conveniently apply a tailoring file for
-          customized hardening.
+          <package>ssg-apply</package>: When used along with SCAP Workbench, this package helps you
+          conveniently apply a tailoring file for customized hardening.
         </para>
       </listitem>
     </itemizedlist>
@@ -359,11 +357,11 @@
     <tip>
       <title>Security best practice for SCAP Workbench</title>
       <para>
-        As a security best practice, avoid installing an application software
-        such as SCAP Workbench on the target system that you are planning to
-        harden. Instead, install SCAP Workbench on a client machine and apply
-        the hardening on the target system, while maintaining an air gap before
-        the target system is connected to a potentially insecure network.
+        As a security best practice, avoid installing an application software such as SCAP
+        Workbench on the target system that you are planning to harden. Instead, install SCAP
+        Workbench on a client machine and apply the hardening on the target system, while
+        maintaining an air gap before the target system is connected to a potentially insecure
+        network.
       </para>
     </tip>
   </sect1>
@@ -371,8 +369,7 @@
     <title>Important SCAP components</title>
 
     <para>
-      SCAP consists of the following important components which interact with
-      each other.
+      SCAP consists of the following important components which interact with each other.
     </para>
 
     <variablelist>
@@ -388,12 +385,11 @@
         <term>Extensible Configuration Checklist Description Format (XCCDF)</term>
         <listitem>
           <para>
-            An XML format that specifies security checklists, benchmarks and
-            configuration documentation. The XCCDF file includes a benchmark as
-            a set of different profiles related to different groups. Each group
-            is a set of rules which have OVAL definitions. Each profile is
-            related to different good practices such as STIG, HIPAA, PCI-DSS,
-            or ANSSI.
+            An XML format that specifies security checklists, benchmarks and configuration
+            documentation. The XCCDF file includes a benchmark as a set of different profiles
+            related to different groups. Each group is a set of rules which have OVAL definitions.
+            Each profile is related to different good practices such as STIG, HIPAA, PCI-DSS, or
+            ANSSI.
           </para>
         </listitem>
       </varlistentry>
@@ -401,9 +397,9 @@
         <term>Common Platform Enumeration (CPE)</term>
         <listitem>
           <para>
-            A structured naming scheme to identify information technology
-            systems, platforms and software packages. It is maintained by NIST
-            and NDV. The naming scheme consists of the following elements:
+            A structured naming scheme to identify information technology systems, platforms and
+            software packages. It is maintained by NIST and NDV. The naming scheme consists of the
+            following elements:
             <literal>cpe:/<replaceable>part</replaceable>:<replaceable>vendor</replaceable>:<replaceable>product</replaceable>:<replaceable>version</replaceable>:<replaceable>update</replaceable>:<replaceable>edition</replaceable>:<replaceable>language</replaceable></literal>
           </para>
         </listitem>
@@ -412,11 +408,10 @@
         <term>DataStreams (DS)</term>
         <listitem>
           <para>
-            An XML format which packs different SCAP components (CPE, XCCDF,
-            OVAL) into a single file. It can be used to distribute SCAP content
-            over the network. The DataStreams files are useful because they
-            include everything you need when you want to harden and audit your
-            &sle; system.
+            An XML format which packs different SCAP components (CPE, XCCDF, OVAL) into a single
+            file. It can be used to distribute SCAP content over the network. The DataStreams files
+            are useful because they include everything you need when you want to harden and audit
+            your &sle; system.
           </para>
         </listitem>
       </varlistentry>
@@ -435,18 +430,16 @@
 
     <para>
       &suse; ships the <literal>&ssg;</literal> (SSG) toolset in the
-      <package>scap-security-guide</package> package. It contains the latest
-      set of security polices for Linux systems. The <literal>&ssg;</literal>
-      is maintained upstream in the
+      <package>scap-security-guide</package> package. It contains the latest set of security
+      polices for Linux systems. The <literal>&ssg;</literal> is maintained upstream in the
       <link xlink:href="https://github.com/ComplianceAsCode/"
     >ComplianceAsCode</link>
       repository.
     </para>
 
     <para>
-      After you have installed the package, the SSG security content and the
-      related files are available in your system from the following
-      directories:
+      After you have installed the package, the SSG security content and the related files are
+      available in your system from the following directories:
     </para>
 
     <variablelist xml:id="ssg-directories">
@@ -457,25 +450,26 @@
           <para>
             Contains the SSG security content. It consists of several
             <xref linkend="openscap-components"
-      xrefstyle="select:title"/>,
-            which are all based on XML. All XML files in that directory are
-            named according to the SCAP component and to the &sle; codestream
-            they apply to (code 12 or 15). The directory also holds XML files
-            specific to &osuse;. For example, you can view all available security policies by getting a list of DataStream files:
+      xrefstyle="select:title"/>, which are all
+            based on XML. All XML files in that directory are named according to the SCAP component
+            and to the &sle; codestream they apply to (code 12 or 15). The directory also holds XML
+            files specific to &slem; and &osuse;.
           </para>
-<screen>&prompt.root;<command>ls -1 /usr/share/xml/scap/ssg/content/ssg-*-ds.xml</command></screen>
+          <para>
+            You can view all available security policies by getting a list of datastream files:
+          </para>
+<screen>&prompt.user;<command>ls -l /usr/share/xml/scap/ssg/content/ssg-*-ds.xml</command></screen>
         </listitem>
       </varlistentry>
       <varlistentry>
         <term><filename>/usr/share/doc/scap-security-guide/guides/</filename></term>
         <listitem>
           <para>
-            Contains profiles for different hardening policies in
-            human-readable format. They describe the profiles that are included
-            in the DataStream files. The profiles applicable to &sle; are
-            codestream-specific and differ between code 12 and code 15. Each
-            profile is a guide on securing your operating system to ensure
-            compliance with a regulation.
+            Contains profiles for different hardening policies in human-readable format. They
+            describe the profiles that are included in the DataStream files. The profiles
+            applicable to &sle; are codestream-specific and differ between code 12 and code 15.
+            Each profile is a guide on securing your operating system to ensure compliance with a
+            regulation.
           </para>
           <para>
             The guides usually have the following structure:
@@ -488,8 +482,7 @@
             </listitem>
             <listitem>
               <para>
-                Profile Title. For example: <citetitle>DISA STIG for &sle;
-                15</citetitle>
+                Profile Title. For example: <citetitle>DISA STIG for &sle; 15</citetitle>
               </para>
             </listitem>
             <listitem>
@@ -500,16 +493,14 @@
             </listitem>
             <listitem>
               <para>
-                Revision History. Information about the current version and
-                status of the profile. For example:
-                <citetitle>xccdf_org.ssgproject.content_profile_stig</citetitle>
+                Revision History. Information about the current version and status of the profile.
+                For example: <citetitle>xccdf_org.ssgproject.content_profile_stig</citetitle>
               </para>
             </listitem>
             <listitem>
               <para>
-                Platforms (in CPE notation). Which product or system the
-                profile applies to. For example:
-                <citetitle>cpe:/o:suse:linux_enterprise_server:15</citetitle>
+                Platforms (in CPE notation). Which product or system the profile applies to. For
+                example: <citetitle>cpe:/o:suse:linux_enterprise_server:15</citetitle>
               </para>
             </listitem>
             <listitem>
@@ -522,22 +513,19 @@
                 A checklist which consists of groups (and subgroups) with rules
               </para>
               <para>
-                Each rule consists of a short description, the rationale behind
-                the rule, a severity (low, medium or high) and a unique
-                identifier in the <literal>Common Configuration Enumeration
-                (CCE)</literal> format. The CCE number for each rule is
+                Each rule consists of a short description, the rationale behind the rule, a
+                severity (low, medium or high) and a unique identifier in the <literal>Common
+                Configuration Enumeration (CCE)</literal> format. The CCE number for each rule is
                 provided to &suse; by NIST.
               </para>
               <para>
-                Each rule also lists references to different good practices.
-                For example, the rule known by the unique identifier
-                <literal>CCE-83289-9</literal> in STIG has a reference to a
-                specific good practice <literal>A.12.4.1</literal> in ISO/IEC
+                Each rule also lists references to different good practices. For example, the rule
+                known by the unique identifier <literal>CCE-83289-9</literal> in STIG has a
+                reference to a specific good practice <literal>A.12.4.1</literal> in ISO/IEC
                 27001:2013.
               </para>
               <para>
-                If remediation options exist for a rule, they are listed in
-                different formats.
+                If remediation options exist for a rule, they are listed in different formats.
               </para>
             </listitem>
           </itemizedlist>
@@ -547,12 +535,10 @@
         <term><filename>/usr/share/scap-security-guide</filename></term>
         <listitem>
           <para>
-            Contains subdirectories with fix scripts which can be used to
-            remediate the target system in case a vulnerability is found during
-            a scan. Fix scripts are available in the following two formats:
-            Shell scripts
-            (<filename>bash/<replaceable>*.sh</replaceable></filename>) and
-            Ansible snippets
+            Contains subdirectories with fix scripts which can be used to remediate the target
+            system in case a vulnerability is found during a scan. Fix scripts are available in the
+            following two formats: Shell scripts
+            (<filename>bash/<replaceable>*.sh</replaceable></filename>) and Ansible snippets
             (<filename>ansible/<replaceable>*.yml</replaceable></filename>).
             <!--taroth 2022-10-28: I suppose SUSE does not support nor ship the following formats:
               'Puppet snippet' and 'OSBuild Blueprint' snippet - at least there are no subdirectories within
@@ -567,9 +553,8 @@
     <title>&ssg; profiles</title>
 
     <para>
-      The <literal>&ssg;</literal> contains multiple profiles. The profiles
-      applicable to &sle; are codestream-specific and differ between code 12
-      and code 15.
+      The <literal>&ssg;</literal> contains multiple profiles. The profiles applicable to &sle; are
+      codestream-specific and differ between code 12 and code 15.
     </para>
 
     <para>
@@ -594,11 +579,23 @@
     </itemizedlist>
 
     <para>
-      After the installation of the <package>scap-security-guide</package>
-      package, human-readable versions of the profiles are available in your
-      file system in
+      After the installation of the <package>scap-security-guide</package> package, human-readable
+      versions of the profiles are available in your file system in
       <filename>/usr/share/doc/scap-security-guide/guides</filename>.
     </para>
+
+    <para>
+      To list the guides for each profile in an HTML format, run the following command:
+    </para>
+
+<screen>&prompt.user;<command>ls -l /usr/share/doc/scap-security-guide/guides/ssg*.html</command></screen>
+
+    <para>
+      You can then see the guide related to a specific profile in your web browser. For example, to
+      see the SLE 15 STIG profile using the Mozilla Firefox web browser, run the following command:
+    </para>
+
+<screen>&prompt.user;<command>firefox /usr/share/doc/scap-security-guide/guides/ssg-sle15-guide-stig.html</command></screen>
 
     <para>
       Alternatively, find the same content online as static HTML pages:
@@ -618,11 +615,122 @@
     </itemizedlist>
 
     <para>
-      In the online versions, use the drop-down list in the upper-right corner
-      of the page to select one of the available profiles and to view a
-      command-line snippet about how to evaluate the respective profile with
-      &openscap;.
+      In the online versions, use the drop-down list in the upper-right corner of the page to
+      select one of the available profiles and to view a command-line snippet about how to evaluate
+      the respective profile with &openscap;.
     </para>
+
+    <sect2 xml:id="openscap-ssg-profiles-info">
+      <title>Viewing information on &ssg; profiles</title>
+      <para>
+        Each security policy can have multiple profiles, which provide policies implemented
+        according to specific security baselines. Every profile can select different rules and use
+        different values. You can list these profiles using the following command format:
+      </para>
+<screen>&prompt.user;<command>oscap info
+/usr/share/xml/scap/ssg/content/ssg-<replaceable>OPERATING-SYSTEM</replaceable>-<replaceable>TYPE-OF-FILE</replaceable>.xml</command><co
+xml:id="ssg-profiles-info-view"></co></screen>
+      <calloutlist>
+        <callout arearefs="ssg-profiles-info-view">
+          <para>
+            In the above command:
+          </para>
+          <itemizedlist>
+            <listitem>
+              <para>
+                Replace <replaceable>OPERATING-SYSTEM</replaceable> with either
+                <literal>sle15</literal>, <literal>sle12</literal> or <literal>slmicro5</literal>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Replace <replaceable>TYPE-OF-FILE</replaceable> with either <literal>ds</literal>
+                or <literal>xccdf</literal>
+              </para>
+            </listitem>
+          </itemizedlist>
+        </callout>
+      </calloutlist>
+      <para>
+        For example, you can view information about the <literal>ds</literal> files of
+        <literal>sle15</literal> using the following command:
+      </para>
+<screen>&prompt.user;<command>oscap info
+/usr/share/xml/scap/ssg/content/ssg-sle15-ds.xml</command></screen>
+      <para>
+        It is useful to know about some of the technical terms displayed in the output of the
+        <command>oscap info</command> command for <literal>ds</literal> and
+        <literal>xccdf</literal> files:
+      </para>
+      <itemizedlist>
+        <listitem>
+          <formalpara>
+            <title>Document type</title>
+            <para>
+              Describes what format the file is in. Common types include XCCDF, OVAL, Source Data
+              Stream, and Result Data Stream.
+            </para>
+          </formalpara>
+        </listitem>
+        <listitem>
+          <formalpara>
+            <title>Checklist version</title>
+            <para>
+              The XCCDF version only shown for XCCDF files. Common values are
+              <literal>1.1</literal> and <literal>1.2</literal>.
+            </para>
+          </formalpara>
+        </listitem>
+        <listitem>
+          <formalpara>
+            <title>Imported</title>
+            <para>
+              The date the file was imported for use with &openscap;. As &openscap; uses the local
+              file system and has no proprietary database format, the imported date is the same as
+              the file modification date.
+            </para>
+          </formalpara>
+        </listitem>
+        <listitem>
+          <formalpara>
+            <title>Status</title>
+            <para>
+              The XCCDF Benchmark status. Common values include "accepted", "draft", "deprecated",
+              and "incomplete". Please refer to the XCCDF specification for details. This is only
+              shown for XCCDF files.
+            </para>
+          </formalpara>
+        </listitem>
+        <listitem>
+          <formalpara>
+            <title>Generated</title>
+            <para>
+              The date the file was created. This date is shown for XCCDF files and Checklists, and
+              is sourced from the XCCDF Status element.
+            </para>
+          </formalpara>
+        </listitem>
+        <listitem>
+          <formalpara>
+            <title>Profiles</title>
+            <para>
+              Available profile IDs that you can use for the <option>--profile</option> command
+              line attribute with <command>oscap xccdf eval</command> command.
+            </para>
+          </formalpara>
+        </listitem>
+        <listitem>
+          <formalpara>
+            <title>Checklists</title>
+            <para>
+              Lists available checklists incorporated in the Data Stream that you can use for the
+              <option>--benchmark-id</option> command line attribute with the <command>oscap xccdf
+              eval</command> command. Also, each checklist has detailed information displayed.
+            </para>
+          </formalpara>
+        </listitem>
+      </itemizedlist>
+    </sect2>
 
     <sect2 xml:id="openscap-ssg-profiles-sle15">
       <title>&sle; 15 profiles</title>
@@ -677,8 +785,7 @@
         </listitem>
         <listitem>
           <para>
-            Hardening for Public Cloud Image of &sles; (SLES) for SAP
-            Applications 15
+            Hardening for Public Cloud Image of &sles; (SLES) for SAP Applications 15
           </para>
         </listitem>
         <listitem>
@@ -800,8 +907,8 @@
     <sect2 xml:id="openscap-scan-targets">
       <title>Targets to scan</title>
       <para>
-        The content provided by the <literal>&ssg;</literal> can be used to
-        scan the following targets for vulnerabilities:
+        The content provided by the <literal>&ssg;</literal> can be used to scan the following
+        targets for vulnerabilities:
       </para>
       <itemizedlist>
         <listitem>
@@ -831,10 +938,9 @@
         </listitem>
       </itemizedlist>
       <para>
-        Automated checks help to identify the target and to select only the
-        rules that make sense for this specific target. For example, checks for
-        separate partitions make sense for bare-metal machines but not for
-        containers.
+        Automated checks help to identify the target and to select only the rules that make sense
+        for this specific target. For example, checks for separate partitions make sense for
+        bare-metal machines but not for containers.
       </para>
     </sect2>
 
@@ -842,29 +948,26 @@
       <title>Tools for scanning</title>
       <note>
         <para>
-          Before using the tools described in this section, ensure that you
-          have installed them as described in
-          <xref linkend="openscap-installation"></xref>, as they are
-          interdependent.
+          Before using the tools described in this section, ensure that you have installed them as
+          described in <xref linkend="openscap-installation"></xref>, as they are interdependent.
         </para>
       </note>
       <para>
-        Depending on your setup and the target to scan (remote or local), you
-        can use either of the following tools:
+        Depending on your setup and the target to scan (remote or local), you can use either of the
+        following tools:
       </para>
       <variablelist>
         <varlistentry>
           <term>oscap</term>
           <listitem>
             <para>
-              A command-line interface that can be used to scan local machines.
-              Both the <package>openscap-utils</package> and
-              <package>scap-security-guide</package> package need to be
-              installed on the local machine.
+              A command-line interface that can be used to scan local machines. Both the
+              <package>openscap-utils</package> and <package>scap-security-guide</package> package
+              need to be installed on the local machine.
             </para>
             <para>
-              To understand the basic usage of <command>oscap</command>, run it
-              with the <command>-h</command> option:
+              To understand the basic usage of <command>oscap</command>, run it with the
+              <command>-h</command> option:
             </para>
 <screen>&prompt.user;<command>oscap -h</command>
 
@@ -896,8 +999,8 @@
 
 </screen>
             <para>
-              To understand <literal>oscap</literal> in greater detail, read
-              its man pages by running the <command>man oscap</command>.
+              To understand <literal>oscap</literal> in greater detail, read its man pages by
+              running the <command>man oscap</command>.
             </para>
           </listitem>
         </varlistentry>
@@ -905,16 +1008,14 @@
           <term>oscap-ssh</term>
           <listitem>
             <para>
-              A command-line interface that can be used to scan a remote
-              machine via SSH with an interface resembling the
-              <command>oscap</command> tool. On the local machine, the package
-              <package>openscap-utils</package> needs to be installed. On the
-              remote machine, the <package>openscap-utils</package> package
-              needs to be installed.
+              A command-line interface that can be used to scan a remote machine via SSH with an
+              interface resembling the <command>oscap</command> tool. On the local machine, the
+              package <package>openscap-utils</package> needs to be installed. On the remote
+              machine, the <package>openscap-utils</package> package needs to be installed.
             </para>
             <para>
-              To understand the basic usage of <command>oscap-ssh</command>,
-              run it with the <command>-h</command> option:
+              To understand the basic usage of <command>oscap-ssh</command>, run it with the
+              <command>-h</command> option:
             </para>
 <screen>&prompt.user;<command>oscap -h</command>
 
@@ -980,8 +1081,8 @@
 
 </screen>
             <para>
-              To understand <literal>oscap-ssh</literal> in greater detail,
-              read its man pages by running <command>man oscap-ssh</command>.
+              To understand <literal>oscap-ssh</literal> in greater detail, read its man pages by
+              running <command>man oscap-ssh</command>.
             </para>
           </listitem>
         </varlistentry>
@@ -989,16 +1090,15 @@
           <term>SCAP Workbench</term>
           <listitem>
             <para>
-              SCAP Workbench is a graphical user interface for &openscap;. You
-              can use it for convenience instead of using
-              <literal>oscap</literal>. For example, you can use SCAP Workbench
-              for scanning a single machine, either local or remote (via SSH).
+              SCAP Workbench is a graphical user interface for &openscap;. You can use it for
+              convenience instead of using <literal>oscap</literal>. For example, you can use SCAP
+              Workbench for scanning a single machine, either local or remote (via SSH).
             </para>
             <para>
-              To use SCAP Workbench, both the <package>scap-workbench</package>
-              and <package>scap-security-guide</package> packages need to be
-              installed on the local machine. On the remote machine, the
-              <package>openscap-utils</package> package needs to be installed.
+              To use SCAP Workbench, both the <package>scap-workbench</package> and
+              <package>scap-security-guide</package> packages need to be installed on the local
+              machine. On the remote machine, the <package>openscap-utils</package> package needs
+              to be installed.
             </para>
             <para>
               To start SCAP Workbench, run the following command:
@@ -1018,10 +1118,9 @@
               </mediaobject>
             </figure>
             <para>
-              Although not recommended, you can invoke and perform certain
-              basic operations by using SCAP Workbench as a command-line tool.
-              To know more, read its man page by running <command>man
-              scap-workbench</command>.
+              Although not recommended, you can invoke and perform certain basic operations by
+              using SCAP Workbench as a command-line tool. To know more, read its man page by
+              running <command>man scap-workbench</command>.
             </para>
           </listitem>
         </varlistentry>
@@ -1031,10 +1130,9 @@
     <sect2 xml:id="openscap-scan-sle15">
       <title>Scanning a &sle; system</title>
       <para>
-        The following example shows how to scan &sle; 15 locally with
-        <command>oscap</command> for vulnerability issues according to a
-        certain profile. You can save the results in XML format and generate an
-        HTML report.
+        The following example shows how to scan &sle; 15 locally with <command>oscap</command> for
+        vulnerability issues according to a certain profile. You can save the results in XML format
+        and generate an HTML report.
       </para>
       <example xml:id="ex-oscap-scan-sle15">
         <title>Scanning &sle; with oscap</title>
@@ -1046,67 +1144,139 @@
         <calloutlist>
           <callout arearefs="co-oscap-eval">
             <para>
-              Calls the <command>oscap xccdf</command> module and tells it to
-              perform an evaluation (vulnerability scan).
+              Calls the <command>oscap xccdf</command> module and tells it to perform an evaluation
+              (vulnerability scan).
             </para>
           </callout>
           <callout arearefs="co-oscap-eval-profile">
             <para>
-              Specifies the profile to use, in this case,
-              <literal>stig</literal>.
+              Specifies the profile to use, in this case, <literal>stig</literal>.
             </para>
           </callout>
           <callout arearefs="co-oscap-eval-results">
             <para>
-              Saves the results of the evaluation to
-              <replaceable>/tmp/results.xml</replaceable>.
+              Saves the results of the evaluation to <replaceable>/tmp/results.xml</replaceable>.
             </para>
           </callout>
           <callout arearefs="co-oscap-eval-report">
             <para>
-              Generates an HTML report called
-              <replaceable>/tmp/report.html</replaceable> in addition to the
-              results in XML.
+              Generates an HTML report called <replaceable>/tmp/report.html</replaceable> in
+              addition to the results in XML.
             </para>
           </callout>
           <callout arearefs="co-oscap-eval-ssg">
             <para>
-              Specifies the <literal>&ssg;</literal> policy file to use. In
-              this example, we use a policy file in the
-              <literal>DataStream</literal> format that applies to &sle; code
+              Specifies the <literal>&ssg;</literal> policy file to use. In this example, we use a
+              policy file in the <literal>DataStream</literal> format that applies to &sle; code
               15. To list all available policies, run: <command>ls -1
-              /usr/share/xml/scap/ssg/content/ssg-*-ds.xml</command>. For more
-              information about a particular policy, run <command>oscap
-              info</command> on the file.
+              /usr/share/xml/scap/ssg/content/ssg-*-ds.xml</command>. For more information about a
+              particular policy, run <command>oscap info</command> on the file.
             </para>
           </callout>
         </calloutlist>
         <para>
-          The evaluation process usually takes a few minutes, depending on the
-          number of selected rules.
+          The evaluation process usually takes a few minutes, depending on the number of selected
+          rules.
         </para>
       </example>
     </sect2>
 
+     <sect2 xml:id="openscap-evaluate-rules">
+      <title>Evaluating with rules</title>
+      <para>
+      For each rule, we have the following fields:
+     </para>
+     <itemizedlist>
+      <listitem>
+       <formalpara>
+        <title>Rule</title>
+        <para>
+         For example, <guilabel>Install AIDE</guilabel>
+        </para>
+       </formalpara>
+      </listitem>
+      <listitem>
+       <formalpara>
+        <title>Rule ID</title>
+        <para>
+         For example, <guilabel>xccdf_org.ssgproject.content_rule_package_aide_installed</guilabel>
+        </para>
+       </formalpara>
+      </listitem>
+     </itemizedlist>
+      <para>
+       After determining the security policy and profile, use <command>oscap</command> to perform an
+       evaluation against them. For example, to evaluate the profile
+       <literal>xccdf_org.ssgproject.content_profile_stig</literal> and generate an HTML report, you
+       can use the following command format
+      </para>
+<screen>&prompt.root;<command>oscap xccdf eval \
+--profile <replaceable>xccdf_org.ssgproject.content_profile_stig</replaceable> \
+--report report_<replaceable>OPERATING-SYSTEM</replaceable>_stig.html \
+/usr/share/xml/scap/ssg/content/ssg-<replaceable>OPERATING-SYSTEM</replaceable>-ds.xml</command><co xml:id="evaluate-all-rules"></co>
+</screen>
+     <calloutlist>
+      <callout arearefs="evaluate-all-rules">
+       <para>
+        Replace <replaceable>OPERATING-SYSTEM</replaceable> with either
+        <literal>sle15</literal>, <literal>sle12</literal>, or <literal>slmicro5</literal>
+       </para>
+      </callout>
+     </calloutlist>
+     <para>
+      To evaluate with a specific rule, you can specify the <guilabel>Rule ID</guilabel> using the
+      <option>--rule</option> command option. For example, you can evaluate only with the rule <guilabel>xccdf_org.ssgproject.content_rule_package_aide_installed</guilabel>:
+     </para>
+<screen>&prompt.root;<command>oscap xccdf eval \
+--profile <replaceable>xccdf_org.ssgproject.content_profile_stig</replaceable> \
+--report report_<replaceable>OPERATING-SYSTEM</replaceable>_stig.html \
+--rule <replaceable>xccdf_org.ssgproject.content_rule_package_aide_installed</replaceable>
+/usr/share/xml/scap/ssg/content/ssg-<replaceable>OPERATING-SYSTEM</replaceable>-ds.xml</command><co xml:id="evaluate-specific-rule"></co>
+</screen>
+     <calloutlist>
+      <callout arearefs="evaluate-specific-rule">
+       <para>
+        Replace <replaceable>OPERATING-SYSTEM</replaceable> with either
+        <literal>sle15</literal>, <literal>sle12</literal>, or <literal>slmicro5</literal>
+       </para>
+      </callout>
+     </calloutlist>
+     <para>
+      To evaluate <emphasis>without</emphasis> a specific rule, you can specify to skip the <guilabel>Rule ID</guilabel> using the
+      <option>--skip-rule</option> command option. For example, you can evaluate without the rule <guilabel>xccdf_org.ssgproject.content_rule_package_aide_installed</guilabel>:
+     </para>
+<screen>&prompt.root;<command>oscap xccdf eval \
+--profile <replaceable>xccdf_org.ssgproject.content_profile_stig</replaceable> \
+--report report_<replaceable>OPERATING-SYSTEM</replaceable>_stig.html \
+--skip-rule <replaceable>xccdf_org.ssgproject.content_rule_package_aide_installed</replaceable>
+/usr/share/xml/scap/ssg/content/ssg-<replaceable>OPERATING-SYSTEM</replaceable>-ds.xml</command><co xml:id="evaluate-without-rule"></co>
+</screen>
+     <calloutlist>
+      <callout arearefs="evaluate-without-rule">
+       <para>
+        Replace <replaceable>OPERATING-SYSTEM</replaceable> with either
+        <literal>sle15</literal>, <literal>sle12</literal>, or <literal>slmicro5</literal>
+       </para>
+      </callout>
+     </calloutlist>
+     </sect2>
+
     <sect2 xml:id="openscap-external-remote-resources-eval">
       <title>Using external or remote resources for scanning</title>
       <para>
-        SCAP content may reference external resources. For example, the &ssg;
-        uses an external OVAL file to check whether the system is up to date
-        and patched against known security vulnerabilities. However, &openscap;
-        can handle remote resources differently, based on the options used
-        while invoking the <command>oscap</command> command. In addition, you
-        can use strategies like downloading specific remote resources in
-        advance, and pointing the &openscap; tool towards the downloaded
-        resources while invoking it.
+        SCAP content may reference external resources. For example, the &ssg; uses an external OVAL
+        file to check whether the system is up to date and patched against known security
+        vulnerabilities. However, &openscap; can handle remote resources differently, based on the
+        options used while invoking the <command>oscap</command> command. In addition, you can use
+        strategies like downloading specific remote resources in advance, and pointing the
+        &openscap; tool towards the downloaded resources while invoking it.
       </para>
       <sect3>
         <title>Default warning for remote resources by &openscap; while performing evaluation</title>
         <para>
-          While evaluating SCAP content with external resources, the &openscap;
-          tool displays a <emphasis role="strong">warning</emphasis>. For
-          example, &openscap; displays the following warning while performing
-          the default evaluation of a system based on the &ssg;:
+          While evaluating SCAP content with external resources, the &openscap; tool displays a
+          <emphasis role="strong">warning</emphasis>. For example, &openscap; displays the
+          following warning while performing the default evaluation of a system based on the &ssg;:
         </para>
 <screen>&prompt.sudo;oscap xccdf eval \
 --profile xccdf_org.ssgproject.content_profile_stig \
@@ -1123,17 +1293,17 @@ which is referenced from datastream
 WARNING: Skipping ./pub-projects-security-oval-suse.linux.enterprise.15-patch.xml.bz2 file which is referenced
 from XCCDF content</screen>
         <para>
-          The following sections describe certain strategies to force
-          &openscap; to fetch remote resources in real time, or download them
-          in advance and use for evaluation and scanning the system.
+          The following sections describe certain strategies to force &openscap; to fetch remote
+          resources in real time, or download them in advance and use for evaluation and scanning
+          the system.
         </para>
       </sect3>
       <sect3 xml:id="openscap-fetching-remote-resource">
         <title>Fetching remote resources for evaluation</title>
         <para>
-          If you trust your local content and the remote content it references,
-          you can use the <option>--fetch-remote-resources</option> option to
-          automatically download it when invoking the &openscap; tool.
+          If you trust your local content and the remote content it references, you can use the
+          <option>--fetch-remote-resources</option> option to automatically download it when
+          invoking the &openscap; tool.
         </para>
 <screen>&prompt.sudo;oscap xccdf eval \
 --fetch-remote-resources \
@@ -1146,24 +1316,23 @@ Downloading: https://ftp.suse.com/pub/projects/security/oval/suse.linux.enterpri
 --- Starting Evaluation —
 ...</screen>
         <para>
-          However, if access to the Internet is unavailable at the time of
-          evaluation, or is considered a security risk, you can instruct
-          &openscap; to use local files instead of remote resources.
+          However, if access to the Internet is unavailable at the time of evaluation, or is
+          considered a security risk, you can instruct &openscap; to use local files instead of
+          remote resources.
         </para>
       </sect3>
       <sect3 xml:id="openscap-downloading-saving-remote-resource">
         <title>Downloading and saving remote resources locally for evaluation</title>
         <para>
-          On systems without Internet access, or in security sensitive
-          deployments where &openscap; cannot connect to the Internet, download
-          the remote content using other tools and save it locally. You can
-          then pass it to &openscap; as a local file using the
+          On systems without Internet access, or in security sensitive deployments where &openscap;
+          cannot connect to the Internet, download the remote content using other tools and save it
+          locally. You can then pass it to &openscap; as a local file using the
           <option>--local-files</option> option, instead of the
           <option>--fetch-remote-resources</option> option.
         </para>
         <para>
-          For example, to prevent &openscap; from accessing the Internet but
-          still use the patch file
+          For example, to prevent &openscap; from accessing the Internet but still use the patch
+          file
           <link
          xlink:href="https://ftp.suse.com/pub/projects/security/oval/suse.linux.enterprise.15-patch.xml.bz2"></link>,
           perform the following procedure.
@@ -1171,15 +1340,15 @@ Downloading: https://ftp.suse.com/pub/projects/security/oval/suse.linux.enterpri
         <procedure>
           <step>
             <para>
-              <emphasis>(Optional)</emphasis> Create a directory for storing
-              the downloaded remote resources.
+              <emphasis>(Optional)</emphasis> Create a directory for storing the downloaded remote
+              resources.
             </para>
 <screen>&prompt.user;mkdir ~/scap-files <co xml:id="scap-files-directory"></co></screen>
             <calloutlist>
               <callout arearefs="scap-files-directory">
                 <para>
-                  Directory to store downloaded remote resources. If you have
-                  identified a suitable directory, skip this step.
+                  Directory to store downloaded remote resources. If you have identified a suitable
+                  directory, skip this step.
                 </para>
               </callout>
             </calloutlist>
@@ -1207,9 +1376,8 @@ https://ftp.suse.com/pub/projects/security/oval/suse.linux.enterprise.15-patch.x
               <para>
                 In this example, the name of the local file is
                 <emphasis
-         role="strong">not</emphasis> arbitrary.
-                Notice the following information in the SCAP source data stream
-                file available at
+         role="strong">not</emphasis> arbitrary. Notice the following
+                information in the SCAP source data stream file available at
                 <filename>/usr/share/xml/scap/ssg/content/ssg-sle15-ds.xml</filename>:
               </para>
 <screen>&prompt.user;cat /usr/share/xml/scap/ssg/content/ssg-sle15-ds.xml | \
@@ -1222,8 +1390,7 @@ grep -n "scap_org.open-scap_cref_pub-projects-security-oval-suse.linux.enterpris
           </step>
           <step>
             <para>
-              Run the evaluation using the local files downloaded earlier from
-              the remote source.
+              Run the evaluation using the local files downloaded earlier from the remote source.
             </para>
 <screen>&prompt.sudo;oscap xccdf eval \
  --local-files ~/scap-files \
@@ -1238,13 +1405,12 @@ grep -n "scap_org.open-scap_cref_pub-projects-security-oval-suse.linux.enterpris
 </screen>
             <tip>
               <para>
-                Download and use the specific files that are relevant for your
-                &sle; product version, and avoid more generic ones. Being
-                specific about the purpose and the files helps reduce the usage
-                of server resources such as the processor, memory, storage and
-                bandwidth. In addition, smaller file sizes also reduce the time
-                required to complete the evaluation. For example, if you are
-                interested only in &sle; 15 SP5, use the file available at
+                Download and use the specific files that are relevant for your &sle; product
+                version, and avoid more generic ones. Being specific about the purpose and the
+                files helps reduce the usage of server resources such as the processor, memory,
+                storage and bandwidth. In addition, smaller file sizes also reduce the time
+                required to complete the evaluation. For example, if you are interested only in
+                &sle; 15 SP5, use the file available at
                 <link
 xlink:href="https://ftp.suse.com/pub/projects/security/oval/suse.linux.enterprise.15-sp5-patch.xml.bz2"></link>.
               </para>
@@ -1252,17 +1418,16 @@ xlink:href="https://ftp.suse.com/pub/projects/security/oval/suse.linux.enterpris
           </step>
           <step>
             <para>
-              <emphasis>Optionally</emphasis>, you can generate an HTML report
-              from the XML results file.
+              <emphasis>Optionally</emphasis>, you can generate an HTML report from the XML results
+              file.
             </para>
 <screen>&prompt.sudo;oscap xccdf generate report ssg-sle15-xccdf-stig-results.xml &gt;
 ssg-sle15-xccdf-stig-report.html</screen>
             <tip>
               <para>
-                You can generate an HTML report directly using the
-                <command>oscap xccdf eval --report</command> option, but
-                separating the scan and the HTML report generation leads to
-                less usage of server resources.
+                You can generate an HTML report directly using the <command>oscap xccdf eval
+                --report</command> option, but separating the scan and the HTML report generation
+                leads to less usage of server resources.
               </para>
             </tip>
           </step>
@@ -1273,10 +1438,9 @@ ssg-sle15-xccdf-stig-report.html</screen>
     <sect2 xml:id="openscap-scanning-audits-oval-files">
       <title>Scanning and auditing systems using OVAL files</title>
       <para>
-        Using the OVAL content files for &sle; products, you can assess your
-        &sle; systems and generate reports on the RPM package names and
-        versions that are known to be affected by security issues in published
-        CVEs.
+        Using the OVAL content files for &sle; products, you can assess your &sle; systems and
+        generate reports on the RPM package names and versions that are known to be affected by
+        security issues in published CVEs.
       </para>
       <para>
         The OVAL data provided by &suse; includes the following:
@@ -1284,14 +1448,13 @@ ssg-sle15-xccdf-stig-report.html</screen>
       <itemizedlist>
         <listitem>
           <para>
-            The patch-style OVAL data, which expresses all security updates on
-            a patch level. These can include multiple CVEs per patch.
+            The patch-style OVAL data, which expresses all security updates on a patch level. These
+            can include multiple CVEs per patch.
           </para>
         </listitem>
         <listitem>
           <para>
-            The vulnerability OVAL data, which expresses security
-            vulnerabilities on a CVE level.
+            The vulnerability OVAL data, which expresses security vulnerabilities on a CVE level.
           </para>
         </listitem>
       </itemizedlist>
@@ -1302,23 +1465,22 @@ ssg-sle15-xccdf-stig-report.html</screen>
       <para>
         You can download OVAL files provided by &suse; from
         <link
-        xlink:href="https://ftp.suse.com/pub/projects/security/oval/"></link>.
-        As a best practice for scanning and auditing systems using OVAL files,
-        perform the following procedure:
+        xlink:href="https://ftp.suse.com/pub/projects/security/oval/"></link>. As a
+        best practice for scanning and auditing systems using OVAL files, perform the following
+        procedure:
       </para>
       <procedure>
         <step>
           <para>
-            <emphasis>(Optional)</emphasis> Create a directory for downloading
-            and storing remote resources.
+            <emphasis>(Optional)</emphasis> Create a directory for downloading and storing remote
+            resources.
           </para>
 <screen>&prompt.user;mkdir ~/oval-files <co xml:id="oval-files-directory"></co></screen>
           <calloutlist>
             <callout arearefs="oval-files-directory">
               <para>
-                Directory to store downloaded remote resources such as OVAL
-                patch files. If you have identified a suitable directory, skip
-                this step.
+                Directory to store downloaded remote resources such as OVAL patch files. If you
+                have identified a suitable directory, skip this step.
               </para>
             </callout>
           </calloutlist>
@@ -1345,8 +1507,7 @@ https://ftp.suse.com/pub/projects/security/oval/suse.linux.enterprise.15-patch.x
         </step>
         <step>
           <para>
-            Run the evaluation using the local files downloaded earlier from
-            the remote source.
+            Run the evaluation using the local files downloaded earlier from the remote source.
           </para>
 <screen>&prompt.sudo;oscap oval eval \
 --results sle15-oval-results.xml \
@@ -1365,13 +1526,12 @@ Evaluation done.
 </screen>
           <tip>
             <para>
-              Download and use the specific files that are relevant for your
-              &sle; product version, and avoid more generic ones. Being
-              specific about the purpose and the files helps reduce the usage
-              of server resources such as the processor, memory, storage and
-              bandwidth. In addition, smaller file sizes also reduce the time
-              required to complete the evaluation. For example, if you are
-              interested only in &sle; 15 SP5, use the file available at
+              Download and use the specific files that are relevant for your &sle; product version,
+              and avoid more generic ones. Being specific about the purpose and the files helps
+              reduce the usage of server resources such as the processor, memory, storage and
+              bandwidth. In addition, smaller file sizes also reduce the time required to complete
+              the evaluation. For example, if you are interested only in &sle; 15 SP5, use the file
+              available at
               <link
     xlink:href="https://ftp.suse.com/pub/projects/security/oval/suse.linux.enterprise.15-sp5-patch.xml.bz2"></link>.
             </para>
@@ -1379,17 +1539,16 @@ Evaluation done.
         </step>
         <step>
           <para>
-            <emphasis>Optionally</emphasis>, you can generate an HTML report
-            from the XML results file.
+            <emphasis>Optionally</emphasis>, you can generate an HTML report from the XML results
+            file.
           </para>
 <screen>&prompt.sudo;oscap oval generate report results sle15-oval-results.xml &gt;
 sle15-oval-report.html</screen>
           <tip>
             <para>
-              You can generate an HTML report directly using the <command>oscap
-              oval eval --report</command> option, but separating the scan and
-              the HTML report generation leads to less usage of server
-              resources.
+              You can generate an HTML report directly using the <command>oscap oval eval
+              --report</command> option, but separating the scan and the HTML report generation
+              leads to less usage of server resources.
             </para>
           </tip>
         </step>
@@ -1402,33 +1561,30 @@ sle15-oval-report.html</screen>
     <!--taroth 2022-10-20: todo: oscap, scap-workbench, ansible playbooks, bash scripts-->
 
     <para>
-      The security policy profiles in the <literal>&ssg;</literal> can not only
-      be used to scan a target system and to generate reports, but also to
-      automatically apply fixes to the target system
-      (<literal>remediation</literal>), if possible.
+      The security policy profiles in the <literal>&ssg;</literal> can not only be used to scan a
+      target system and to generate reports, but also to automatically apply fixes to the target
+      system (<literal>remediation</literal>), if possible.
     </para>
 
     <important>
       <title>Automatic remediation not always available</title>
       <para>
-        Automatic remediation is <emphasis>not</emphasis> offered in case the
-        automatic application of a fix is too dangerous to be enforced in a
-        running target system.
+        Automatic remediation is <emphasis>not</emphasis> offered in case the automatic application
+        of a fix is too dangerous to be enforced in a running target system.
       </para>
     </important>
 
     <sect2 xml:id="openscap-remediate-process">
       <title>&openscap; remediation process</title>
       <para>
-        &openscap; allows to automatically remediate target systems that have
-        been found in a non-compliant state. This requires an XCCDF file with
-        instructions. The overall process is as follows:
+        &openscap; allows to automatically remediate target systems that have been found in a
+        non-compliant state. This requires an XCCDF file with instructions. The overall process is
+        as follows:
       </para>
       <procedure>
         <step>
           <para>
-            The <command>oscap</command> command-line tool performs a system
-            scan.
+            The <command>oscap</command> command-line tool performs a system scan.
           </para>
         </step>
         <step>
@@ -1438,17 +1594,16 @@ sle15-oval-report.html</screen>
         </step>
         <step>
           <para>
-            Within the XCCDF file, <command>oscap</command> then searches for
-            an appropriate &lt;xccdf:fix&gt; element, resolves it, prepares the
-            environment, and executes the fix script. The fix scripts can be
-            either Bash <filename>*.sh</filename> files or Ansible playbook
-            <filename>*.yml</filename> files.
+            Within the XCCDF file, <command>oscap</command> then searches for an appropriate
+            &lt;xccdf:fix&gt; element, resolves it, prepares the environment, and executes the fix
+            script. The fix scripts can be either Bash <filename>*.sh</filename> files or Ansible
+            playbook <filename>*.yml</filename> files.
           </para>
         </step>
         <step>
           <para>
-            After the execution of the script, the respective rule is evaluated
-            again to check if the fix was successful.
+            After the execution of the script, the respective rule is evaluated again to check if
+            the fix was successful.
           </para>
         </step>
       </procedure>
@@ -1460,18 +1615,17 @@ sle15-oval-report.html</screen>
     <sect2 xml:id="openscap-remediate-options">
       <title>&openscap; remediation options</title>
       <para>
-        For remediating a target system with <command>oscap</command>, you have
-        the following options:
+        For remediating a target system with <command>oscap</command>, you have the following
+        options:
       </para>
       <variablelist>
         <varlistentry>
           <term>Remediation on the fly</term>
           <listitem>
             <para>
-              You can remediate a target system on the fly, while you are
-              scanning it. In this case, evaluation and remediation are
-              performed as a part of a single command. For details, see
-              <xref linkend="oscap-remediate-sle-fly"/>.
+              You can remediate a target system on the fly, while you are scanning it. In this
+              case, evaluation and remediation are performed as a part of a single command. For
+              details, see <xref linkend="oscap-remediate-sle-fly"/>.
             </para>
           </listitem>
         </varlistentry>
@@ -1479,12 +1633,10 @@ sle15-oval-report.html</screen>
           <term>Remediation after scanning</term>
           <listitem>
             <para>
-              You can remediate a target system after you have scanned it. In
-              the first step, the system is only evaluated, and the results are
-              stored in the XCCDF results file. In the second step,
-              <command>oscap</command> executes the fix scripts and verifies
-              the result. For details, see
-              <xref linkend="oscap-remediate-sle-post"/>.
+              You can remediate a target system after you have scanned it. In the first step, the
+              system is only evaluated, and the results are stored in the XCCDF results file. In
+              the second step, <command>oscap</command> executes the fix scripts and verifies the
+              result. For details, see <xref linkend="oscap-remediate-sle-post"/>.
             </para>
           </listitem>
         </varlistentry>
@@ -1492,9 +1644,8 @@ sle15-oval-report.html</screen>
           <term>Review mode</term>
           <listitem>
             <para>
-              The review mode allows to save remediation instructions to a file
-              for further review. The remediation content is not executed
-              during this operation. For details, see
+              The review mode allows to save remediation instructions to a file for further review.
+              The remediation content is not executed during this operation. For details, see
               <xref linkend="oscap-remediate-sle-review"/>.
             </para>
           </listitem>
@@ -1505,14 +1656,13 @@ sle15-oval-report.html</screen>
     <sect2 xml:id="openscap-remediate-sle">
       <title>Remediating a &slea; system with <command>oscap</command></title>
       <para>
-        The following examples show how to scan and remediate &sle; locally
-        with <command>oscap</command> to comply with a certain profile.
+        The following examples show how to scan and remediate &sle; locally with
+        <command>oscap</command> to comply with a certain profile.
       </para>
       <sect3 xml:id="oscap-remediate-sle-fly">
         <title>Remediating &sle; (on the fly)</title>
         <para>
-          For remediation on the fly, use the <option>--remediate</option>
-          command-line option.
+          For remediation on the fly, use the <option>--remediate</option> command-line option.
         </para>
         <example xml:id="ex-oscap-remediate-sle15-fly">
           <title>Remediating &slea; 15 (on the fly)</title>
@@ -1523,57 +1673,49 @@ sle15-oval-report.html</screen>
           <calloutlist>
             <callout arearefs="co-oscap-remedy-fly">
               <para>
-                Calls the <command>oscap xccdf</command> module and tells it to
-                perform an evaluation plus a remediation of the target system
-                in one go.
+                Calls the <command>oscap xccdf</command> module and tells it to perform an
+                evaluation plus a remediation of the target system in one go.
               </para>
             </callout>
             <callout arearefs="co-oscap-remedy-fly-profile">
               <para>
-                Specifies the profile to use, in this case,
-                <literal>stig</literal>.
+                Specifies the profile to use, in this case, <literal>stig</literal>.
               </para>
             </callout>
             <callout arearefs="co-oscap-remedy-fly-results">
               <para>
-                Saves the results of the evaluation to
-                <replaceable>/tmp/results.xml</replaceable>.
+                Saves the results of the evaluation to <replaceable>/tmp/results.xml</replaceable>.
               </para>
             </callout>
             <callout arearefs="co-oscap-remedy-fly-ssg">
               <para>
-                Specifies the <literal>&ssg;</literal> policy file to use. In
-                this example, we use a policy file in the
-                <literal>DataStream</literal> format that applies to &sle; code
-                15. To list all available policies, run: <command>ls -1
-                /usr/share/xml/scap/ssg/content/ssg-*-ds.xml</command>. For
-                more information about a particular policy, run <command>oscap
-                info</command> on the file.
+                Specifies the <literal>&ssg;</literal> policy file to use. In this example, we use
+                a policy file in the <literal>DataStream</literal> format that applies to &sle;
+                code 15. To list all available policies, run: <command>ls -1
+                /usr/share/xml/scap/ssg/content/ssg-*-ds.xml</command>. For more information about
+                a particular policy, run <command>oscap info</command> on the file.
               </para>
             </callout>
           </calloutlist>
           <para>
-            In the resulting <replaceable>/tmp/results.xml</replaceable> file,
-            the first <tag class="element"
-      >TestResult</tag> element
-            shows the result of the scan <emphasis>before</emphasis> the
-            remediation. The second <tag class="element">TestResult</tag>
-            element shows the result of the scan <emphasis>after</emphasis>
-            applying the remediation. In the second
-            <tag class="element">TestResult</tag> element, if the result of a
-            rule is <literal>fixed</literal>, this means that the fix was
-            successfully applied, and this rule now passes evaluation. If the
-            result of a rule is <literal>error</literal>, this means that the
-            remediation for this rule was not successful, and the rule still
-            does not pass evaluation.
+            In the resulting <replaceable>/tmp/results.xml</replaceable> file, the first
+            <tag class="element"
+      >TestResult</tag> element shows the result of the scan
+            <emphasis>before</emphasis> the remediation. The second
+            <tag class="element">TestResult</tag> element shows the result of the scan
+            <emphasis>after</emphasis> applying the remediation. In the second
+            <tag class="element">TestResult</tag> element, if the result of a rule is
+            <literal>fixed</literal>, this means that the fix was successfully applied, and this
+            rule now passes evaluation. If the result of a rule is <literal>error</literal>, this
+            means that the remediation for this rule was not successful, and the rule still does
+            not pass evaluation.
           </para>
         </example>
       </sect3>
       <sect3 xml:id="oscap-remediate-sle-post">
         <title>Remediating &sle; (after scanning)</title>
         <para>
-          In this example, we first execute a scan and then run the remediation
-          as next step.
+          In this example, we first execute a scan and then run the remediation as next step.
         </para>
         <example xml:id="ex-oscap-remediate-sle15-post">
           <title>Remediating &slea; (after scanning)</title>
@@ -1586,14 +1728,13 @@ sle15-oval-report.html</screen>
               <calloutlist>
                 <callout arearefs="co-oscap-remedy-post1">
                   <para>
-                    Calls the <command>oscap xccdf</command> module and tells
-                    it to perform an evaluation.
+                    Calls the <command>oscap xccdf</command> module and tells it to perform an
+                    evaluation.
                   </para>
                 </callout>
                 <callout arearefs="co-oscap-remedy-post1-profile">
                   <para>
-                    Specifies the profile to use, in this case,
-                    <literal>stig</literal>.
+                    Specifies the profile to use, in this case, <literal>stig</literal>.
                   </para>
                 </callout>
                 <callout arearefs="co-oscap-remedy-post1-results">
@@ -1604,20 +1745,18 @@ sle15-oval-report.html</screen>
                 </callout>
                 <callout arearefs="co-oscap-remedy-post1-ssg">
                   <para>
-                    Specifies the <literal>&ssg;</literal> policy file to use.
-                    In this example, we use a policy file in the
-                    <literal>DataStream</literal> format that applies to &sle;
-                    code 15. To list all available policies, run: <command>ls
-                    -1 /usr/share/xml/scap/ssg/content/ssg-*-ds.xml</command>.
-                    For more information about a particular policy, run
-                    <command>oscap info</command> on the file.
+                    Specifies the <literal>&ssg;</literal> policy file to use. In this example, we
+                    use a policy file in the <literal>DataStream</literal> format that applies to
+                    &sle; code 15. To list all available policies, run: <command>ls -1
+                    /usr/share/xml/scap/ssg/content/ssg-*-ds.xml</command>. For more information
+                    about a particular policy, run <command>oscap info</command> on the file.
                   </para>
                 </callout>
               </calloutlist>
               <para>
-                During this step, the system is only evaluated, and the results
-                are stored in a <tag class="element">TestResult</tag> element
-                in <replaceable>/tmp/results.xml</replaceable>.
+                During this step, the system is only evaluated, and the results are stored in a
+                <tag class="element">TestResult</tag> element in
+                <replaceable>/tmp/results.xml</replaceable>.
               </para>
             </step>
             <step>
@@ -1627,8 +1766,8 @@ sle15-oval-report.html</screen>
               <calloutlist>
                 <callout arearefs="co-oscap-remedy-post2-command">
                   <para>
-                    Calls the <command>oscap xccdf</command> module and tells
-                    it to perform a remediation.
+                    Calls the <command>oscap xccdf</command> module and tells it to perform a
+                    remediation.
                   </para>
                 </callout>
                 <callout arearefs="co-oscap-remedy-post2-results">
@@ -1639,25 +1778,21 @@ sle15-oval-report.html</screen>
                 </callout>
                 <callout arearefs="co-oscap-remedy-post2-ssg">
                   <para>
-                    Uses the <replaceable>/tmp/results.xml</replaceable> XCCDF
-                    file from the first step (evaluation) as input file.
+                    Uses the <replaceable>/tmp/results.xml</replaceable> XCCDF file from the first
+                    step (evaluation) as input file.
                   </para>
                 </callout>
               </calloutlist>
               <para>
-                During this step, the results file from the first step is used
-                as input for the <command>oscap</command> command. You can
-                safely store the results from the second step in the same file
-                that you use as input file,
+                During this step, the results file from the first step is used as input for the
+                <command>oscap</command> command. You can safely store the results from the second
+                step in the same file that you use as input file,
                 <replaceable>/tmp/results.xml</replaceable>. During this run,
-                <command>oscap</command> creates a new
-                <tag class="element">xccdf:TestResult</tag> element in the
-                file. The new element is based on the previous one and inherits
-                all the data. The newly created
-                <tag class="element">xccdf:TestResult</tag> element differs
-                only in the <tag class="element">rule-result</tag> elements
-                which failed in the first run. Only for those is the
-                remediation executed.
+                <command>oscap</command> creates a new <tag class="element">xccdf:TestResult</tag>
+                element in the file. The new element is based on the previous one and inherits all
+                the data. The newly created <tag class="element">xccdf:TestResult</tag> element
+                differs only in the <tag class="element">rule-result</tag> elements which failed in
+                the first run. Only for those is the remediation executed.
               </para>
             </step>
           </procedure>
@@ -1666,10 +1801,9 @@ sle15-oval-report.html</screen>
       <sect3 xml:id="oscap-remediate-sle-review">
         <title>Storing &slea; remediation instructions for review</title>
         <para>
-          You can also run <command>oscap</command> in review mode to store
-          remediation instructions to a file for further review. During this
-          operation, the remediation content is <emphasis>not</emphasis>
-          executed. The following shows how to generate remediation
+          You can also run <command>oscap</command> in review mode to store remediation
+          instructions to a file for further review. During this operation, the remediation content
+          is <emphasis>not</emphasis> executed. The following shows how to generate remediation
           instructions in the form of a shell script:
         </para>
         <example xml:id="ex-oscap-remediate-sle15-review">
@@ -1682,8 +1816,8 @@ sle15-oval-report.html</screen>
           <calloutlist>
             <callout arearefs="co-oscap-generate-fix">
               <para>
-                Calls the <command>oscap xccdf</command> module and tells it to
-                generate a file with remediation instructions.
+                Calls the <command>oscap xccdf</command> module and tells it to generate a file
+                with remediation instructions.
               </para>
             </callout>
             <callout arearefs="co-oscap-generate-template">
@@ -1693,25 +1827,21 @@ sle15-oval-report.html</screen>
             </callout>
             <callout arearefs="co-oscap-generate-profile">
               <para>
-                Specifies the profile to use, in this case,
-                <literal>stig</literal>.
+                Specifies the profile to use, in this case, <literal>stig</literal>.
               </para>
             </callout>
             <callout arearefs="co-oscap-generate-output">
               <para>
-                Specifies the file to which the remediation instructions are
-                written.
+                Specifies the file to which the remediation instructions are written.
               </para>
             </callout>
             <callout arearefs="co-oscap-generate-ssg">
               <para>
-                Specifies the <literal>&ssg;</literal> policy file to use. In
-                this example, we use a policy file in the
-                <literal>DataStream</literal> format that applies to &sle; code
-                15. To list all available policies, run: <command>ls -1
-                /usr/share/xml/scap/ssg/content/ssg-*-ds.xml</command>. For
-                more information about a particular policy, run <command>oscap
-                info</command> on the file.
+                Specifies the <literal>&ssg;</literal> policy file to use. In this example, we use
+                a policy file in the <literal>DataStream</literal> format that applies to &sle;
+                code 15. To list all available policies, run: <command>ls -1
+                /usr/share/xml/scap/ssg/content/ssg-*-ds.xml</command>. For more information about
+                a particular policy, run <command>oscap info</command> on the file.
               </para>
             </callout>
           </calloutlist>
@@ -1722,37 +1852,34 @@ sle15-oval-report.html</screen>
     <sect2 xml:id="openscap-remediate-sle-ansible">
       <title>Remediating a &slea; system with Ansible</title>
       <para>
-        You can use the Ansible playbooks provided by the
-        <literal>&ssg;</literal> to remediate a local system.
+        You can use the Ansible playbooks provided by the <literal>&ssg;</literal> to remediate a
+        local system.
       </para>
       <para>
-        The <package>ansible</package> package is available from <literal>SUSE
-        Package Hub</literal>. Register your &sle; system and enable the
-        <literal>SUSE Package Hub</literal> extension. For &sle; 12, you
-        additionally need to enable the <literal>Public Cloud</literal> module.
-        Then install the package with <command>sudo zypper in
+        The <package>ansible</package> package is available from <literal>SUSE Package
+        Hub</literal>. Register your &sle; system and enable the <literal>SUSE Package
+        Hub</literal> extension. For &sle; 12, you additionally need to enable the <literal>Public
+        Cloud</literal> module. Then install the package with <command>sudo zypper in
         ansible</command>.
       </para>
       <example xml:id="ex-remediate-sle15-ansible">
         <title>Remediating &slea; 15 with Ansible</title>
         <para>
-          For example, to remediate your system using the &stiga; Ansible
-          playbook for &sle; 15 provided by the <literal>&ssg;</literal>, use
-          the following command.
+          For example, to remediate your system using the &stiga; Ansible playbook for &sle; 15
+          provided by the <literal>&ssg;</literal>, use the following command.
         </para>
         <warning>
           <title>System configuration changes</title>
           <para>
-            The following command alters the configuration of your system
-            immediately. Make sure to test this thoroughly in a non-production
-            system first.
+            The following command alters the configuration of your system immediately. Make sure to
+            test this thoroughly in a non-production system first.
           </para>
         </warning>
 <screen>&prompt.sudo;ansible-playbook -i "localhost," -c local \
 /usr/share/scap-security-guide/ansible/sle15-playbook-stig.yml</screen>
         <para>
-          After the playbook has finished, you are prompted to log in to your
-          system, which is now compliant to the chosen policy.
+          After the playbook has finished, you are prompted to log in to your system, which is now
+          compliant to the chosen policy.
         </para>
       </example>
     </sect2>
@@ -1770,8 +1897,7 @@ sle15-oval-report.html</screen>
       </listitem>
       <listitem>
         <para>
-          For general instructions on how to use the <literal>&ssg;</literal>,
-          see the README in
+          For general instructions on how to use the <literal>&ssg;</literal>, see the README in
           <link
       xlink:href="https://github.com/ComplianceAsCode/content/"/>.
         </para>
