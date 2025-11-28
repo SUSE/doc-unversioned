@@ -1136,7 +1136,7 @@ xml:id="ssg-profiles-info-view"></co></screen>
       </para>
       <example xml:id="ex-oscap-scan-sle15">
         <title>Scanning &sle; with oscap</title>
-<screen>&prompt.sudo;<command>oscap</command> xccdf eval<co xml:id="co-oscap-eval"/> \
+<screen>&prompt.user;<command>oscap</command> xccdf eval<co xml:id="co-oscap-eval"/> \
     --profile <replaceable>stig</replaceable><co xml:id="co-oscap-eval-profile"/> \
     --results <replaceable>/tmp/results.xml</replaceable><co xml:id="co-oscap-eval-results"/> \
     --report <replaceable>/tmp/report.html</replaceable><co xml:id="co-oscap-eval-report"/> \
@@ -1282,7 +1282,7 @@ xml:id="ssg-profiles-info-view"></co></screen>
           <emphasis role="strong">warning</emphasis>. For example, &openscap; displays the
           following warning while performing the default evaluation of a system based on the &ssg;:
         </para>
-<screen>&prompt.sudo;oscap xccdf eval \
+<screen>&prompt.user;oscap xccdf eval \
 --profile xccdf_org.ssgproject.content_profile_stig \
 --results ssg-sle15-xccdf-stig-results.xml \
 /usr/share/xml/scap/ssg/content/ssg-sle15-ds.xml
@@ -1309,7 +1309,7 @@ from XCCDF content</screen>
           <option>--fetch-remote-resources</option> option to automatically download it when
           invoking the &openscap; tool.
         </para>
-<screen>&prompt.sudo;oscap xccdf eval \
+<screen>&prompt.user;oscap xccdf eval \
 --fetch-remote-resources \
 --profile xccdf_org.ssgproject.content_profile_stig \
 --results ssg-sle15-xccdf-stig-results.xml \
@@ -1396,7 +1396,7 @@ grep -n "scap_org.open-scap_cref_pub-projects-security-oval-suse.linux.enterpris
             <para>
               Run the evaluation using the local files downloaded earlier from the remote source.
             </para>
-<screen>&prompt.sudo;oscap xccdf eval \
+<screen>&prompt.user;oscap xccdf eval \
  --local-files ~/scap-files \
  --profile xccdf_org.ssgproject.content_profile_stig \
  --results ssg-sle15-xccdf-stig-results.xml \
@@ -1425,7 +1425,7 @@ xlink:href="https://ftp.suse.com/pub/projects/security/oval/suse.linux.enterpris
               <emphasis>Optionally</emphasis>, you can generate an HTML report from the XML results
               file.
             </para>
-<screen>&prompt.sudo;oscap xccdf generate report ssg-sle15-xccdf-stig-results.xml &gt;
+<screen>&prompt.user;oscap xccdf generate report ssg-sle15-xccdf-stig-results.xml &gt;
 ssg-sle15-xccdf-stig-report.html</screen>
             <tip>
               <para>
@@ -1513,7 +1513,7 @@ https://ftp.suse.com/pub/projects/security/oval/suse.linux.enterprise.15-patch.x
           <para>
             Run the evaluation using the local files downloaded earlier from the remote source.
           </para>
-<screen>&prompt.sudo;oscap oval eval \
+<screen>&prompt.user;oscap oval eval \
 --results sle15-oval-results.xml \
 ~/oval-files/suse.linux.enterprise.15-patch.xml.bz2 \
 
@@ -1546,7 +1546,7 @@ Evaluation done.
             <emphasis>Optionally</emphasis>, you can generate an HTML report from the XML results
             file.
           </para>
-<screen>&prompt.sudo;oscap oval generate report sle15-oval-results.xml &gt;
+<screen>&prompt.user;oscap oval generate report sle15-oval-results.xml &gt;
 sle15-oval-report.html</screen>
           <tip>
             <para>
@@ -1670,7 +1670,7 @@ sle15-oval-report.html</screen>
         </para>
         <example xml:id="ex-oscap-remediate-sle15-fly">
           <title>Remediating &slea; 15 (on the fly)</title>
-<screen>&prompt.sudo;<command>oscap</command> xccdf eval --remediate<co xml:id="co-oscap-remedy-fly"/> \
+<screen>&prompt.user;<command>oscap</command> xccdf eval --remediate<co xml:id="co-oscap-remedy-fly"/> \
      --profile <replaceable>stig</replaceable><co xml:id="co-oscap-remedy-fly-profile"/> \
      --results <replaceable>/tmp/results.xml</replaceable><co xml:id="co-oscap-remedy-fly-results"/> \
      /usr/share/xml/scap/ssg/content/ssg-sle15-ds.xml<co xml:id="co-oscap-remedy-fly-ssg"/></screen>
@@ -1725,7 +1725,7 @@ sle15-oval-report.html</screen>
           <title>Remediating &slea; (after scanning)</title>
           <procedure>
             <step>
-<screen>&prompt.sudo;<command>oscap</command> xccdf eval<co xml:id="co-oscap-remedy-post1"/> \
+<screen>&prompt.user;<command>oscap</command> xccdf eval<co xml:id="co-oscap-remedy-post1"/> \
       --profile <replaceable>stig</replaceable><co xml:id="co-oscap-remedy-post1-profile"/> \
       --results <replaceable>/tmp/results.xml</replaceable><co xml:id="co-oscap-remedy-post1-results"/> \
       /usr/share/xml/scap/ssg/content/ssg-sle15-ds.xml<co xml:id="co-oscap-remedy-post1-ssg"/></screen>
@@ -1764,7 +1764,7 @@ sle15-oval-report.html</screen>
               </para>
             </step>
             <step>
-<screen>&prompt.sudo;<command>oscap</command> xccdf remediate<co xml:id="co-oscap-remedy-post2-command"/> \
+<screen>&prompt.user;<command>oscap</command> xccdf remediate<co xml:id="co-oscap-remedy-post2-command"/> \
      --results <replaceable>/tmp/results.xml</replaceable><co xml:id="co-oscap-remedy-post2-results"/> \
      <replaceable>/tmp/results.xml</replaceable><co xml:id="co-oscap-remedy-post2-ssg"/></screen>
               <calloutlist>
@@ -1812,7 +1812,7 @@ sle15-oval-report.html</screen>
         </para>
         <example xml:id="ex-oscap-remediate-sle15-review">
           <title>Storing &slea; 15 remediation instructions for review</title>
-<screen>&prompt.sudo;<command>oscap</command> xccdf generate fix<co xml:id="co-oscap-generate-fix"/> \
+<screen>&prompt.user;<command>oscap</command> xccdf generate fix<co xml:id="co-oscap-generate-fix"/> \
      --template urn:xccdf:fix:script:sh<co xml:id="co-oscap-generate-template"/> \
      --profile <replaceable>stig</replaceable><co xml:id="co-oscap-generate-profile"/> \
      --output <replaceable>my-remediation-script.sh</replaceable><co xml:id="co-oscap-generate-output"/> \
@@ -1879,7 +1879,7 @@ sle15-oval-report.html</screen>
             test this thoroughly in a non-production system first.
           </para>
         </warning>
-<screen>&prompt.sudo;ansible-playbook -i "localhost," -c local \
+<screen>&prompt.user;ansible-playbook -i "localhost," -c local \
 /usr/share/scap-security-guide/ansible/sle15-playbook-stig.yml</screen>
         <para>
           After the playbook has finished, you are prompted to log in to your system, which is now
