@@ -1181,85 +1181,89 @@ xml:id="ssg-profiles-info-view"></co></screen>
       </example>
     </sect2>
 
-     <sect2 xml:id="openscap-evaluate-rules">
+    <sect2 xml:id="openscap-evaluate-rules">
       <title>Evaluating with rules</title>
       <para>
-      For each rule, we have the following fields:
-     </para>
-     <itemizedlist>
-      <listitem>
-       <formalpara>
-        <title>Rule</title>
-        <para>
-         For example, <guilabel>Install AIDE</guilabel>
-        </para>
-       </formalpara>
-      </listitem>
-      <listitem>
-       <formalpara>
-        <title>Rule ID</title>
-        <para>
-         For example, <guilabel>xccdf_org.ssgproject.content_rule_package_aide_installed</guilabel>
-        </para>
-       </formalpara>
-      </listitem>
-     </itemizedlist>
+        For each rule, we have the following fields:
+      </para>
+      <itemizedlist>
+        <listitem>
+          <formalpara>
+            <title>Rule</title>
+            <para>
+              For example, <guilabel>Install AIDE</guilabel>
+            </para>
+          </formalpara>
+        </listitem>
+        <listitem>
+          <formalpara>
+            <title>Rule ID</title>
+            <para>
+              For example,
+              <guilabel>xccdf_org.ssgproject.content_rule_package_aide_installed</guilabel>
+            </para>
+          </formalpara>
+        </listitem>
+      </itemizedlist>
       <para>
-       After determining the security policy and profile, use <command>oscap</command> to perform an
-       evaluation against them. For example, to evaluate the profile
-       <literal>xccdf_org.ssgproject.content_profile_stig</literal> and generate an HTML report, you
-       can use the following command format
+        After determining the security policy and profile, use <command>oscap</command> to perform
+        an evaluation against them. For example, to evaluate the profile
+        <literal>xccdf_org.ssgproject.content_profile_stig</literal> and generate an HTML report,
+        you can use the following command format
       </para>
 <screen>&prompt.root;<command>oscap xccdf eval \
 --profile <replaceable>xccdf_org.ssgproject.content_profile_stig</replaceable> \
 --report report_<replaceable>OPERATING-SYSTEM</replaceable>_stig.html \
 /usr/share/xml/scap/ssg/content/ssg-<replaceable>OPERATING-SYSTEM</replaceable>-ds.xml</command><co xml:id="evaluate-all-rules"></co>
 </screen>
-     <calloutlist>
-      <callout arearefs="evaluate-all-rules">
-       <para>
-        Replace <replaceable>OPERATING-SYSTEM</replaceable> with either
-        <literal>sle15</literal>, <literal>sle12</literal>, or <literal>slmicro5</literal>
-       </para>
-      </callout>
-     </calloutlist>
-     <para>
-      To evaluate with a specific rule, you can specify the <guilabel>Rule ID</guilabel> using the
-      <option>--rule</option> command option. For example, you can evaluate only with the rule <guilabel>xccdf_org.ssgproject.content_rule_package_aide_installed</guilabel>:
-     </para>
+      <calloutlist>
+        <callout arearefs="evaluate-all-rules">
+          <para>
+            Replace <replaceable>OPERATING-SYSTEM</replaceable> with either
+            <literal>sle15</literal>, <literal>sle12</literal>, or <literal>slmicro5</literal>
+          </para>
+        </callout>
+      </calloutlist>
+      <para>
+        To evaluate with a specific rule, you can specify the <guilabel>Rule ID</guilabel> using
+        the <option>--rule</option> command option. For example, you can evaluate only with the
+        rule <guilabel>xccdf_org.ssgproject.content_rule_package_aide_installed</guilabel>:
+      </para>
 <screen>&prompt.root;<command>oscap xccdf eval \
 --profile <replaceable>xccdf_org.ssgproject.content_profile_stig</replaceable> \
 --report report_<replaceable>OPERATING-SYSTEM</replaceable>_stig.html \
 --rule <replaceable>xccdf_org.ssgproject.content_rule_package_aide_installed</replaceable>
 /usr/share/xml/scap/ssg/content/ssg-<replaceable>OPERATING-SYSTEM</replaceable>-ds.xml</command><co xml:id="evaluate-specific-rule"></co>
 </screen>
-     <calloutlist>
-      <callout arearefs="evaluate-specific-rule">
-       <para>
-        Replace <replaceable>OPERATING-SYSTEM</replaceable> with either
-        <literal>sle15</literal>, <literal>sle12</literal>, or <literal>slmicro5</literal>
-       </para>
-      </callout>
-     </calloutlist>
-     <para>
-      To evaluate <emphasis>without</emphasis> a specific rule, you can specify to skip the <guilabel>Rule ID</guilabel> using the
-      <option>--skip-rule</option> command option. For example, you can evaluate without the rule <guilabel>xccdf_org.ssgproject.content_rule_package_aide_installed</guilabel>:
-     </para>
+      <calloutlist>
+        <callout arearefs="evaluate-specific-rule">
+          <para>
+            Replace <replaceable>OPERATING-SYSTEM</replaceable> with either
+            <literal>sle15</literal>, <literal>sle12</literal>, or <literal>slmicro5</literal>
+          </para>
+        </callout>
+      </calloutlist>
+      <para>
+        To evaluate <emphasis>without</emphasis> a specific rule, you can specify to skip the
+        <guilabel>Rule ID</guilabel> using the <option>--skip-rule</option> command option. For
+        example, you can evaluate without the rule
+        <guilabel>xccdf_org.ssgproject.content_rule_package_aide_installed</guilabel>:
+      </para>
 <screen>&prompt.root;<command>oscap xccdf eval \
 --profile <replaceable>xccdf_org.ssgproject.content_profile_stig</replaceable> \
 --report report_<replaceable>OPERATING-SYSTEM</replaceable>_stig.html \
 --skip-rule <replaceable>xccdf_org.ssgproject.content_rule_package_aide_installed</replaceable>
 /usr/share/xml/scap/ssg/content/ssg-<replaceable>OPERATING-SYSTEM</replaceable>-ds.xml</command><co xml:id="evaluate-without-rule"></co>
 </screen>
-     <calloutlist>
-      <callout arearefs="evaluate-without-rule">
-       <para>
-        Replace <replaceable>OPERATING-SYSTEM</replaceable> with either
-        <literal>sle15</literal>, <literal>sle12</literal>, or <literal>slmicro5</literal>
-       </para>
-      </callout>
-     </calloutlist>
-     </sect2>
+      <calloutlist>
+        <callout arearefs="evaluate-without-rule">
+          <para>
+            Replace <replaceable>OPERATING-SYSTEM</replaceable> with either
+            <literal>sle15</literal>, <literal>sle12</literal>, or <literal>slmicro5</literal>
+          </para>
+        </callout>
+      </calloutlist>
+    </sect2>
 
     <sect2 xml:id="openscap-external-remote-resources-eval">
       <title>Using external or remote resources for scanning</title>
