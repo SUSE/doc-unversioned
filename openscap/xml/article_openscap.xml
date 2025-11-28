@@ -23,7 +23,7 @@
         <dm:url>https://bugzilla.suse.com/enter_bug.cgi</dm:url>
         <dm:component>Security</dm:component>
         <dm:product>Documentation</dm:product>
-        <dm:assignee>ssarkar@suse.com</dm:assignee>
+        <dm:assignee>souvik.sarkar@suse.com</dm:assignee>
       </dm:bugtracker>
       <dm:editurl>https://github.com/SUSE/doc-unversioned/edit/main/openscap/xml/</dm:editurl>
       <dm:translation>no</dm:translation>
@@ -1206,7 +1206,7 @@ xml:id="ssg-profiles-info-view"></co></screen>
         </listitem>
       </itemizedlist>
       <para>
-        After determining the security policy and profile, use <command>oscap</command> to perform
+        After determining the security policy and profile, use <command>oscap xccdf eval</command> to perform
         an evaluation against them. For example, to evaluate the profile
         <literal>xccdf_org.ssgproject.content_profile_stig</literal> and generate an HTML report,
         you can use the following command format
@@ -1546,7 +1546,7 @@ Evaluation done.
             <emphasis>Optionally</emphasis>, you can generate an HTML report from the XML results
             file.
           </para>
-<screen>&prompt.sudo;oscap oval generate report results sle15-oval-results.xml &gt;
+<screen>&prompt.sudo;oscap oval generate report sle15-oval-results.xml &gt;
 sle15-oval-report.html</screen>
           <tip>
             <para>
