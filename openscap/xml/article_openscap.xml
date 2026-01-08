@@ -557,7 +557,7 @@
 
     <para>
       The <literal>&ssg;</literal> contains multiple profiles. The profiles applicable to &sle; are
-      codestream-specific and differ between code 12 and code 15.
+      codestream-specific and differ between code 12, code 15, and &slema;.
     </para>
 
     <para>
@@ -578,6 +578,11 @@
       xlink:href="https://github.com/ComplianceAsCode/content/tree/master/products/sle12/profiles"
      />
         </para>
+      </listitem>
+      <listitem>
+       <para>
+        https://github.com/ComplianceAsCode/content/tree/master/products/slmicro5/profiles
+       </para>
       </listitem>
     </itemizedlist>
 
@@ -907,6 +912,39 @@ xml:id="ssg-profiles-info-view"></co></screen>
         </mediaobject>
       </figure>
     </sect2>
+
+    <sect2 xml:id="openscap-ssg-profiles-slem">
+      <title>&slem; 5 profiles</title>
+      <para>
+        For &slem; 5, the following profiles are supported by &suse;:
+      </para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            DISA STIG for &slem; (SLEM) 5
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Public Cloud Hardening for &slem; (SLEM) 5
+          </para>
+        </listitem>
+      </itemizedlist>
+      <figure>
+        <title>&ssg; profiles for &slem; 5 </title>
+        <mediaobject>
+          <imageobject role="fo">
+            <imagedata fileref="scap-workbench-ssg-slem5-profiles.png" width="95%"/>
+          </imageobject>
+          <imageobject role="html">
+            <imagedata fileref="scap-workbench-ssg-slem5-profiles.png" width="90%"/>
+          </imageobject>
+          <textobject role="description"><phrase>&ssg; profiles for &slem; 5</phrase>
+          </textobject>
+        </mediaobject>
+      </figure>
+    </sect2>
+
   </sect1>
   <sect1 xml:id="openscap-customize-scap-security-guide">
     <title>Customizing the &ssg;</title>
