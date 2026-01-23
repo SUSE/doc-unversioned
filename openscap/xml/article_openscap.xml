@@ -313,14 +313,14 @@
       </listitem>
     </itemizedlist>
 
-<screen>&prompt.sudo;<command>zypper install openscap openscap-utils scap-security-guide</command>
+<screen>&prompt.sudo;<command>zypper install openscap-utils scap-security-guide</command>
 </screen>
 
     <para>
       For &slem;, install using the following commands:
     </para>
 
-<screen>&prompt.sudo;<command>transactional-update pkg install openscap openscap-utils scap-security-guide</command></screen>
+<screen>&prompt.sudo;<command>transactional-update pkg install openscap-utils scap-security-guide</command></screen>
 
 <screen>&prompt.sudo;<command>reboot</command></screen>
 
