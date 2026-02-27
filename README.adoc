@@ -52,7 +52,28 @@ To contribute to the documentation, you need to write DocBook.
 * SUSE documents are generally built with DAPS (package `daps`) and the
   SUSE XSL Stylesheets (package `suse-xsl-stylesheets`).
 
-*  Install the documentation environment with the following command:
+
+* The documentation toolchain can be utilized from a container using
+  daps2docker. To do this, ensure that the Documentation:Tools repo is configured on the system
+  then install daps2docker and create a config file for daps2docker.
++
+[source]
+----
+sudo addrepo https://download.opensuse.org/repositories/Documentation:/Tools/16.0/ Documentation:Tools
+sudo zypper install daps2docker
+----
+
+** ensure that ~/.config/daps2docker/config contains
++
+[source]
+----
+formats="html,pdf"
+
+containername="registry.opensuse.org/documentation/containers/15.6/opensuse-daps-toolchain:latest"
+----
+
+
+*  For a non-containerized install of the documentation environment use the following command:
 +
 [source]
 ----
@@ -66,3 +87,6 @@ sudo OneClickInstallUI https://susedoc.github.io/ymp/Documentation.ymp
 ** `$ daps -d DC-<YOUR_BOOK> html`: Build multi-page HTML document
 ** `$ daps -d DC-<YOUR_BOOK> optipng`: Always optimize new PNG images
 ** Learn more at https://opensuse.github.io/daps
+
+* daps2docker usage:
+** replace `daps` with `daps2docker` and run per above

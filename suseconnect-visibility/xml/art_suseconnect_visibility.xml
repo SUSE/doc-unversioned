@@ -373,6 +373,45 @@
             <entry>list</entry>
             <entry>The subscription registration code used to activate each product</entry>
           </row>
+          <row>
+            <entry>pci_data</entry>
+            <entry>List</entry>
+            <entry>
+              <para>
+                PCI Device information
+              </para>
+<screen>
+{
+  "identifier":"37191ca7bc6a0d021638e57585e391ee77af81f4c97679ce5e5e9533109e06fc",
+  "data":[
+    "00:00.0 Host bridge: Intel Corporation Xeon E7 v3/Xeon E5 v3/Core i7 DMI2 (rev 02)",
+    "00:01.0 PCI bridge: Intel Corporation Xeon E7 v3/Xeon E5 v3/Core i7 PCI Express Root Port 1 (rev 02)",
+    ...
+  ]
+}
+</screen>
+            </entry>
+          </row>
+          <row>
+            <entry>mod_list</entry>
+            <entry>List</entry>
+            <entry>
+              <para>
+                Loaded kernel modules
+              </para>
+<screen>
+{
+  "identifier":"5eff37558df4d7d34963f123f01244f6ee80fc737e2356a42802afea16bbb879",
+  "data":[
+    "aesni_intel",
+    "af_packet",
+    "button",
+    ...
+  ]
+}
+</screen>
+            </entry>
+          </row>
         </tbody>
       </tgroup>
     </table>
