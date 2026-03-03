@@ -46,6 +46,14 @@
     </meta>
     <revhistory xml:id="rh-article-suseconnect-visibility">
       <revision>
+        <date>2026-03-03</date>
+        <revdescription>
+          <para>
+            Added pci profile collection information (pci_data, mod_list).
+          </para>
+        </revdescription>
+      </revision>
+      <revision>
         <date>2022-09-22</date>
         <revdescription>
           <para>
@@ -382,7 +390,7 @@
               </para>
 <screen>
 {
-  "identifier":"37191ca7bc6a0d021638e57585e391ee77af81f4c97679ce5e5e9533109e06fc",
+  "identifier":"37191ca7bc6a[...]e5e5e9533109e06fc",
   "data":[
     "00:00.0 Host bridge: Intel Corporation Xeon E7 v3/Xeon E5 v3/Core i7 DMI2 (rev 02)",
     "00:01.0 PCI bridge: Intel Corporation Xeon E7 v3/Xeon E5 v3/Core i7 PCI Express Root Port 1 (rev 02)",
@@ -401,7 +409,7 @@
               </para>
 <screen>
 {
-  "identifier":"5eff37558df4d7d34963f123f01244f6ee80fc737e2356a42802afea16bbb879",
+  "identifier":"5eff37558df4[...]3f01244f6ee80fc73",
   "data":[
     "aesni_intel",
     "af_packet",
