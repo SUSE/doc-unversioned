@@ -41,6 +41,13 @@
     <meta name="task" its:translate="no"><phrase>Auditing</phrase><phrase>Compliance</phrase>
     </meta>
     <revhistory xml:id="rh-openscap">
+      <revision><date>2026-02-18</date>
+        <revdescription>
+          <para>
+            Profiled content for &slema;.
+          </para>
+        </revdescription>
+      </revision>
       <revision><date>2025-11-18</date>
         <revdescription>
           <para>
@@ -313,16 +320,12 @@
       </listitem>
     </itemizedlist>
 
-<screen>&prompt.sudo;<command>zypper install openscap-utils scap-security-guide</command>
+<screen os="sles">&prompt.sudo;<command>zypper install openscap-utils scap-security-guide</command>
 </screen>
 
-    <para>
-      For &slem;, install using the following commands:
-    </para>
+<screen os="slem">&prompt.sudo;<command>transactional-update pkg install openscap-utils scap-security-guide</command></screen>
 
-<screen>&prompt.sudo;<command>transactional-update pkg install openscap-utils scap-security-guide</command></screen>
-
-<screen>&prompt.sudo;<command>reboot</command></screen>
+<screen os="slem">&prompt.sudo;<command>reboot</command></screen>
 
     <note>
       <para>
@@ -355,7 +358,7 @@
       </listitem>
     </itemizedlist>
 
-<screen>&prompt.sudo;<command>zypper install scap-workbench ssg-apply</command></screen>
+<screen os="sles">&prompt.sudo;<command>zypper install scap-workbench ssg-apply</command></screen>
 
     <tip>
       <title>Security best practice for SCAP Workbench</title>
@@ -565,23 +568,23 @@
     </para>
 
     <itemizedlist>
-      <listitem>
+      <listitem os="sles">
         <para>
           <link
       xlink:href="https://github.com/ComplianceAsCode/content/tree/master/products/sle15/profiles"
      />
         </para>
       </listitem>
-      <listitem>
+      <listitem os="sles">
         <para>
           <link
       xlink:href="https://github.com/ComplianceAsCode/content/tree/master/products/sle12/profiles"
      />
         </para>
       </listitem>
-      <listitem>
+      <listitem os="slem">
        <para>
-        https://github.com/ComplianceAsCode/content/tree/master/products/slmicro5/profiles
+        <link xlink:href="https://github.com/ComplianceAsCode/content/tree/master/products/slmicro5/profiles"></link>
        </para>
       </listitem>
     </itemizedlist>
@@ -646,8 +649,9 @@ xml:id="ssg-profiles-info-view"></co></screen>
           <itemizedlist>
             <listitem>
               <para>
-                Replace <replaceable>OPERATING-SYSTEM</replaceable> with either
-                <literal>sle15</literal>, <literal>sle12</literal> or <literal>slmicro5</literal>
+                Replace <replaceable>OPERATING-SYSTEM</replaceable> with <phrase os="sles">either
+                <literal>sle15</literal> or <literal>sle12</literal></phrase><literal
+                os="slem">slmicro5</literal>
               </para>
             </listitem>
             <listitem>
@@ -913,7 +917,7 @@ xml:id="ssg-profiles-info-view"></co></screen>
       </figure>
     </sect2>
 
-    <sect2 xml:id="openscap-ssg-profiles-slem">
+    <sect2 xml:id="openscap-ssg-profiles-slem" os="slem">
       <title>&slem; 5 profiles</title>
       <para>
         For &slem; 5, the following profiles are supported by &suse;:
@@ -962,7 +966,8 @@ xml:id="ssg-profiles-info-view"></co></screen>
       </step>
       <step>
         <para>
-          Select a variant for the target system&mdash;one of SLe12, SLe15, SLmicro5, then select
+          Select a variant for the target system&mdash;one of <phrase os="sles">SLe12 and
+          SLe15</phrase><phrase os="slem">SLmicro5</phrase>, then select
           <guilabel>Load Content</guilabel>.
         </para>
       </step>
@@ -1862,19 +1867,14 @@ sle15-oval-report.html</screen>
           <para>
             Make the script executable, and run it.
           </para>
-<screen>&prompt.sudo; -s <command>chmod +x
+<screen os="sles">&prompt.sudo; -s <command>chmod +x
 <replaceable>NAME-OF-PRODUCT</replaceable>-script-<replaceable>NAME-OF-PROFILE</replaceable>.sh</command></screen>
-<screen>&prompt.user;<command>./<replaceable>NAME-OF-PRODUCT</replaceable>-script-<replaceable>NAME-OF-PROFILE</replaceable>.sh</command></screen>
-          <note>
-            <title>Reboot for &slem;</title>
-            <para>
-              For &slem;, reboot the system after running the script. For example:
-            </para>
-          </note>
-<screen>&prompt.sudo; -s <command>chmod +x slmicro5-script-<replaceable>NAME-OF-PROFILE</replaceable>.sh</command></screen>
-<screen>&prompt.sudo;<command>transactional-update run
+<screen os="sles">&prompt.user;<command>./<replaceable>NAME-OF-PRODUCT</replaceable>-script-<replaceable>NAME-OF-PROFILE</replaceable>.sh</command></screen>
+
+<screen os="slem">&prompt.sudo; -s <command>chmod +x slmicro5-script-<replaceable>NAME-OF-PROFILE</replaceable>.sh</command></screen>
+<screen os="slem">&prompt.sudo;<command>transactional-update run
 ./slmicro5-script-<replaceable>NAME-OF-PROFILE</replaceable>.sh</command></screen>
-<screen>&prompt.sudo;<command>reboot</command></screen>
+<screen os="slem">&prompt.sudo;<command>reboot</command></screen>
         </step>
       </procedure>
     </sect2>
@@ -1896,7 +1896,7 @@ sle15-oval-report.html</screen>
           During the execution of the remediation, you will see the status as
           <literal>fixed</literal> or <literal>error</literal>, after some of the rules.
         </para>
-        <example xml:id="ex-oscap-remediate-sle-fly">
+        <example xml:id="ex-oscap-remediate-sle-fly" os="sles">
           <title>Remediating &slea; systems (on the fly)</title>
 <screen>&prompt.sudo;<command>oscap</command> xccdf eval --remediate<co xml:id="co-oscap-remedy-fly"/> \
 --profile <replaceable>stig</replaceable><co xml:id="co-oscap-remedy-fly-profile"/> \
@@ -1957,7 +1957,7 @@ xml:id="co-oscap-remedy-fly-ssg"/></screen>
             not pass evaluation.
           </para>
         </example>
-        <example xml:id="ex-oscap-remediate-slem-fly">
+        <example xml:id="ex-oscap-remediate-slem-fly" os="slem">
           <title>Remediating &slem; systems (on the fly)</title>
 <screen>&prompt.sudo;<command>sudo transactional-update run oscap xccdf eval --remediate \
 --profile stig \
@@ -2113,11 +2113,11 @@ xml:id="oscap-ansible-remediation"/></screen>
             </callout>
           </calloutlist>
         </example>
-        <example>
+        <example os="slem">
           <title>Remediating &slem; systems using <command>oscap</command> and bash</title>
 <screen>&prompt.root;<command>oscap xccdf generate fix --profile stig --fetch-remote-resources – fix-type bash --output <replaceable>GENERATED-BASH-REMEDIATION-SCRIPT-NAME</replaceable>.sh /usr/share/xml/scap/ssg/content/ssg-slmicro5-ds.xml</command></screen>
         </example>
-        <example>
+        <example os="slem">
           <title>Remediating &slem; systems using <command>oscap</command> and &ansible;</title>
 <screen>&prompt.root;<command>oscap xccdf generate fix --profile stig --fetch-remote-resources – fix-type ansible --output <replaceable>GENERATED-ANSIBLE-REMEDIATION-SCRIPT-NAME</replaceable>.yml /usr/share/xml/scap/ssg/content/ssg-slmicro5-ds.xml</command></screen>
         </example>
@@ -2125,7 +2125,7 @@ xml:id="oscap-ansible-remediation"/></screen>
           After running any of the above commands, you can run the generated script to remediate
           the system.
         </para>
-        <note>
+        <note  os="slem">
           <para>
             To execute remediation on &slem; systems, you may need to run the remediation scripts
             <emphasis>more than once</emphasis> using the following command:
@@ -2277,7 +2277,7 @@ xml:id="scap-ansible"></co></screen>
               </para>
 <screen>&prompt.sudo;<command>ansible-playbook -i ansible_inventory.yml sle15-playbook-<replaceable>NAME-OF-PROFILE</replaceable>.yml –tag “--tags "package_aide_installed,aide_build_database”</command></screen>
             </step>
-            <step>
+            <step os="slem">
               <para>
                 For &slem;, run the following commands:
               </para>
