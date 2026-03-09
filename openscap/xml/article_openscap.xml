@@ -605,18 +605,18 @@
 
 <screen>&prompt.user;<command>ls -l /usr/share/doc/scap-security-guide/guides/ssg*.html</command></screen>
 
-    <para>
+    <para os="sles">
       You can then see the guide related to a specific profile in your web browser. For example, to
       see the SLE 15 STIG profile using the Mozilla Firefox web browser, run the following command:
     </para>
 
-<screen>&prompt.user;<command>firefox /usr/share/doc/scap-security-guide/guides/ssg-sle15-guide-stig.html</command></screen>
+<screen os="sles">&prompt.user;<command>firefox /usr/share/doc/scap-security-guide/guides/ssg-sle15-guide-stig.html</command></screen>
 
-    <para>
+    <para os="sles">
       Alternatively, find the same content online as static HTML pages:
     </para>
 
-    <itemizedlist>
+    <itemizedlist os="sles">
       <listitem>
         <para>
           <link xlink:href="https://static.open-scap.org/ssg-guides/ssg-sle15-guide-index.html"></link>
@@ -629,7 +629,7 @@
       </listitem>
     </itemizedlist>
 
-    <para>
+    <para os="sles">
       In the online versions, use the drop-down list in the upper-right corner of the page to
       select one of the available profiles and to view a command-line snippet about how to evaluate
       the respective profile with &openscap;.
@@ -752,7 +752,7 @@ xml:id="ssg-profiles-info-view"></co></screen>
       </para>
     </sect2>
 
-    <sect2 xml:id="openscap-ssg-profiles-sle15">
+    <sect2 xml:id="openscap-ssg-profiles-sle15" os="sles">
       <title>&sle; 15 profiles</title>
       <para>
         For code 15, the following profiles are supported by &suse;:
@@ -844,7 +844,7 @@ xml:id="ssg-profiles-info-view"></co></screen>
       </figure>
     </sect2>
 
-    <sect2 xml:id="openscap-ssg-profiles-sle12">
+    <sect2 xml:id="openscap-ssg-profiles-sle12" os="sles">
       <title>&sle; 12 profiles</title>
       <para>
         For code 12, the following profiles are supported by &suse;:
@@ -1878,7 +1878,9 @@ sle15-oval-report.html</screen>
 <screen os="slem">&prompt.sudo; -s <command>chmod +x slmicro5-script-<replaceable>NAME-OF-PROFILE</replaceable>.sh</command></screen>
 <screen os="slem">&prompt.sudo;<command>transactional-update run
 ./slmicro5-script-<replaceable>NAME-OF-PROFILE</replaceable>.sh</command></screen>
-<screen os="slem">&prompt.sudo;<command>reboot</command></screen>
+        </step>
+        <step os="slem">
+         <para>Reboot the system for the transactional updates to take effect.</para>
         </step>
       </procedure>
     </sect2>
@@ -2089,7 +2091,7 @@ xml:id="co-oscap-remedy-fly-ssg"/></screen>
             using the <command>oscap sccdf eval</command> commands.
           </para>
         </note>
-        <example>
+        <example os="sles">
           <title>Remediating &sle; systems using <command>oscap</command> and bash</title>
 <screen>&prompt.root;<command>oscap xccdf generate fix --profile stig --fetch-remote-resources –
 fix-type bash --output <replaceable>GENERATED-BASH-REMEDIATION-SCRIPT-NAME</replaceable>.sh
@@ -2104,7 +2106,7 @@ xml:id="oscap-bash-remediation"/></screen>
             </callout>
           </calloutlist>
         </example>
-        <example>
+        <example os="sles">
           <title>Remediating &sle; systems using <command>oscap</command> and &ansible;</title>
 <screen>&prompt.root;<command>oscap xccdf generate fix --profile stig --fetch-remote-resources – fix-type ansible --output <replaceable>GENERATED-ANSIBLE-REMEDIATION-SCRIPT-NAME</replaceable>.yml /usr/share/xml/scap/ssg/content/ssg-<replaceable>PRODUCT-NAME</replaceable>-ds.xml</command><co
 xml:id="oscap-ansible-remediation"/></screen>
