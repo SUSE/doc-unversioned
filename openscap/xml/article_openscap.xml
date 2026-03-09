@@ -325,19 +325,23 @@
 
 <screen os="slem">&prompt.sudo;<command>transactional-update pkg install openscap-utils scap-security-guide</command></screen>
 
+<para os="slem">
+ The updates in &slema; are transactional and takes effect only after a reboot.
+</para>
+
 <screen os="slem">&prompt.sudo;<command>reboot</command></screen>
 
-    <note>
+    <note os="sles">
       <para>
         These packages are dependencies for other optional packages discussed below.
       </para>
     </note>
 
-    <para>
+    <para os="sles">
       Optionally, install the following packages:
     </para>
 
-    <itemizedlist>
+    <itemizedlist os="sles">
       <listitem>
         <para>
           <package>scap-workbench</package>: This package provides the SCAP Workbench graphical
@@ -360,7 +364,7 @@
 
 <screen os="sles">&prompt.sudo;<command>zypper install scap-workbench ssg-apply</command></screen>
 
-    <tip>
+    <tip os="sles">
       <title>Security best practice for SCAP Workbench</title>
       <para>
         As a security best practice, avoid installing an application software such as SCAP
