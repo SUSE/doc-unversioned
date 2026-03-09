@@ -6,6 +6,9 @@
 [
 <!ENTITY % entities SYSTEM "generic-entities.ent">
 %entities;
+  <!ENTITY scap.path "<phrase xmlns='http://docbook.org/ns/docbook'><phrase
+   os='sles'>/usr/share/xml/scap/ssg/content/ssg-sle15-ds.xml</phrase><phrase
+   os='slem'>/usr/share/xml/scap/ssg/content/ssg-slmicro5-ds.xml</phrase><!-- ... --></phrase>">
 ]>
 <article xml:id="article-openscap"
  xmlns="http://docbook.org/ns/docbook"
@@ -661,12 +664,12 @@
         according to specific security baselines. Every profile can select different rules and use
         different values. You can list these profiles using the following command format:
       </para>
-<screen os="sles;slem">&prompt.user;<command>oscap info --fetch-remote-resources
+<screen>&prompt.user;<command>oscap info --fetch-remote-resources
 /usr/share/xml/scap/ssg/content/ssg-<replaceable>OPERATING-SYSTEM</replaceable>-<replaceable>TYPE-OF-FILE</replaceable>.xml</command><co
 xml:id="ssg-profiles-info-view"></co></screen>
-<screen condition="6">&prompt.user;<command>oscap info --fetch-remote-resources
+<!--<screen condition="6">&prompt.user;<command>oscap info -\-fetch-remote-resources
 /usr/share/xml/scap/ssg/content/ssg-<replaceable>OPERATING-SYSTEM</replaceable>-<replaceable>TYPE-OF-FILE</replaceable>.xml</command><co
-xml:id="ssg-profiles-info-view"></co></screen>
+xml:id="ssg-profiles-info-view"></co></screen>-->
       <calloutlist>
         <callout arearefs="ssg-profiles-info-view">
           <para>
@@ -946,7 +949,7 @@ xml:id="ssg-profiles-info-view"></co></screen>
       </figure>
     </sect2>
 
-    <sect2 xml:id="openscap-ssg-profiles-slem" os="slem" condition="5">
+    <!--<sect2 xml:id="openscap-ssg-profiles-slem" os="slem" condition="5">
       <title>&productnameshort; 5 profiles</title>
       <para>
         For &productnameshort; 5, the following profiles are supported by &suse;:
@@ -962,19 +965,37 @@ xml:id="ssg-profiles-info-view"></co></screen>
             Public Cloud Hardening for &slem; (SLEM) 5
           </para>
         </listitem>
-      </itemizedlist>      
-    </sect2>
+      </itemizedlist>
+    </sect2>-->
 
-    <sect2 xml:id="openscap-ssg-profiles-slem" os="slem" condition="6">
+    <!--<sect2 xml:id="openscap-ssg-profiles-slem" os="slem" condition="6">
       <title>&productnameshort; 6 profiles</title>
       <para>
         For &productnameshort; 6, the profile <emphasis>General profile for SUSE Linux Enterprise
         Micro (SLEM) 6</emphasis> is supported by &suse;:
       </para>
-      
+    </sect2>-->
+
+    <sect2 xml:id="openscap-ssg-profiles-slem" os="slem" >
+      <title><phrase condition="5">&productnameshort; 5 profiles</phrase
+            ><phrase condition="6">&productnameshort; 6 profiles</phrase></title>
+      <para condition="5">For &productnameshort; 5, the following profiles are supported by &suse;:</para>
+      <para condition="6">For &productnameshort; 6, the profile <emphasis>General profile for SUSE Linux Enterprise
+        Micro (SLEM) 6</emphasis> is supported by &suse;:</para>
+      <itemizedlist condition="5">
+        <listitem>
+          <para>
+            DISA STIG for &productnameshort; (SLEM) 5
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Public Cloud Hardening for &slem; (SLEM) 5
+          </para>
+        </listitem>
+      </itemizedlist>
     </sect2>
-
-
+    
   </sect1>
   <sect1 os="sles" xml:id="openscap-customize-scap-security-guide">
     <title>Customizing the &ssg;</title>
@@ -1300,22 +1321,27 @@ xml:id="ssg-profiles-info-view"></co></screen>
       </para>
       <example xml:id="ex-oscap-scan-sle15">
         <title>Scanning &productnameshort; with oscap</title>
-<screen os="sles">&prompt.user;<command>oscap</command> xccdf eval<co xml:id="co-oscap-eval"/> \
+        <screen>&prompt.user;<command>oscap</command> xccdf eval<co xml:id="co-oscap-eval"/> \
     --profile <replaceable>stig</replaceable><co xml:id="co-oscap-eval-profile"/> \
     --results <replaceable>/tmp/results.xml</replaceable><co xml:id="co-oscap-eval-results"/> \
     --report <replaceable>/tmp/report.html</replaceable><co xml:id="co-oscap-eval-report"/> \
+    &scap.path;<co xml:id="co-oscap-eval-ssg"/></screen>
+<!--<screen os="sles">&prompt.user;<command>oscap</command> xccdf eval<co xml:id="co-oscap-eval"/> \
+    -\-profile <replaceable>stig</replaceable><co xml:id="co-oscap-eval-profile"/> \
+    -\-results <replaceable>/tmp/results.xml</replaceable><co xml:id="co-oscap-eval-results"/> \
+    -\-report <replaceable>/tmp/report.html</replaceable><co xml:id="co-oscap-eval-report"/> \
     /usr/share/xml/scap/ssg/content/ssg-sle15-ds.xml<co xml:id="co-oscap-eval-ssg"/></screen>
     <screen os="slem" condition="5">&prompt.user;<command>oscap</command> xccdf eval<co xml:id="co-oscap-eval"/> \
-    --profile <replaceable>stig</replaceable><co xml:id="co-oscap-eval-profile"/> \
-    --results <replaceable>/tmp/results.xml</replaceable><co xml:id="co-oscap-eval-results"/> \
-    --report <replaceable>/tmp/report.html</replaceable><co xml:id="co-oscap-eval-report"/> \
+    -\-profile <replaceable>stig</replaceable><co xml:id="co-oscap-eval-profile"/> \
+    -\-results <replaceable>/tmp/results.xml</replaceable><co xml:id="co-oscap-eval-results"/> \
+    -\-report <replaceable>/tmp/report.html</replaceable><co xml:id="co-oscap-eval-report"/> \
     /usr/share/xml/scap/ssg/content/ssg-slmicro5-ds.xml<co xml:id="co-oscap-eval-ssg"/></screen>
     <screen os="slem" condition="6">&prompt.user;<command>oscap</command> xccdf eval<co xml:id="co-oscap-eval"/> \
-    --profile <replaceable>general</replaceable><co xml:id="co-oscap-eval-profile"/> \
-    --fetch-remote-resources \
-    --results <replaceable>/tmp/results.xml</replaceable><co xml:id="co-oscap-eval-results"/> \
-    --report <replaceable>/tmp/report.html</replaceable><co xml:id="co-oscap-eval-report"/> \
-    /usr/share/xml/scap/ssg/content/ssg-slmicro6-ds.xml<co xml:id="co-oscap-eval-ssg"/></screen>
+    -\-profile <replaceable>general</replaceable><co xml:id="co-oscap-eval-profile"/> \
+    -\-fetch-remote-resources \
+    -\-results <replaceable>/tmp/results.xml</replaceable><co xml:id="co-oscap-eval-results"/> \
+    -\-report <replaceable>/tmp/report.html</replaceable><co xml:id="co-oscap-eval-report"/> \
+    /usr/share/xml/scap/ssg/content/ssg-slmicro6-ds.xml<co xml:id="co-oscap-eval-ssg"/></screen>-->
         <calloutlist>
           <callout arearefs="co-oscap-eval">
             <para>
@@ -1398,7 +1424,7 @@ xml:id="ssg-profiles-info-view"></co></screen>
           <para>
             Replace <replaceable>OPERATING-SYSTEM</replaceable> with <phrase os="sles">either
             <literal>sle15</literal> or <literal>sle12</literal></phrase><phrase os="slem"
-            condition="5"><literal>slmicro5</literal></phrase><phase os="slem" condition="6"><literal>slmicro6</literal></phase>
+            condition="5"><literal>slmicro5</literal></phrase><phrase os="slem" condition="6"><literal>slmicro6</literal></phrase>
           </para>
         </callout>
       </calloutlist>
