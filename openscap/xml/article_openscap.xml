@@ -2165,7 +2165,7 @@ xml:id="co-oscap-remedy-fly-ssg"/></screen>
             using the <command>oscap sccdf eval</command> commands.
           </para>
         </note>
-        <example>
+        <example os="sles">
           <title>Remediating &sle; systems using <command>oscap</command> and bash</title>
 <screen>&prompt.root;<command>oscap xccdf generate fix --profile stig --fetch-remote-resources –
 fix-type bash --output <replaceable>GENERATED-BASH-REMEDIATION-SCRIPT-NAME</replaceable>.sh
@@ -2180,7 +2180,7 @@ xml:id="oscap-bash-remediation"/></screen>
             </callout>
           </calloutlist>
         </example>
-        <example>
+        <example os="sles">
           <title>Remediating &sle; systems using <command>oscap</command> and &ansible;</title>
 <screen>&prompt.root;<command>oscap xccdf generate fix --profile stig --fetch-remote-resources – fix-type ansible --output <replaceable>GENERATED-ANSIBLE-REMEDIATION-SCRIPT-NAME</replaceable>.yml /usr/share/xml/scap/ssg/content/ssg-<replaceable>PRODUCT-NAME</replaceable>-ds.xml</command><co
 xml:id="oscap-ansible-remediation"/></screen>
