@@ -308,11 +308,6 @@
     <itemizedlist>
       <listitem>
         <para>
-          <package>openscap</package>
-        </para>
-      </listitem>
-      <listitem>
-        <para>
           <package>openscap-utils</package>
         </para>
       </listitem>
