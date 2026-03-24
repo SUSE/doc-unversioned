@@ -23,26 +23,7 @@
     ensuring the supply chain security. This chapter provides information on
     signing and verifying container images.
   </para>
-  <section xml:id="sec-verify-docker">
-    <title>Verifying &bci;s with &docker;</title>
-    <para>
-      Signatures for images available through &suseregistry; are stored in the
-      Notary. You can verify the signature of a specific image using the
-      following command:
-    </para>
-<screen>&prompt.user;docker trust inspect --pretty registry.suse.com/suse/<replaceable>IMAGE</replaceable>:<replaceable>TAG</replaceable></screen>
-    <para>
-      For example, the command <command>docker trust inspect --pretty
-      registry.suse.com/suse/sle15:latest</command> verifies the signature of
-      the latest SLE15 base image.
-    </para>
-    <para>
-      To automatically validate an image when you pull it, set the environment
-      <literal>DOCKER_CONTENT_TRUST</literal> to <literal>1</literal>. For
-      example:
-    </para>
-<screen>env DOCKER_CONTENT_TRUST=1 docker pull registry.suse.com/suse/sle15:latest</screen>
-  </section>
+  
   <section xml:id="sec-verify-cosign">
     <title>Verifying &bci;s with Cosign</title>
     <para>
