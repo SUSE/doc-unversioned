@@ -325,7 +325,7 @@
             <entry>Linux lair 6.9.7-1-default #1 SMP PREEMPT_DYNAMIC Fri Jun 28 05:50:47 UTC 2024 (a5efffa) x86_64 x86_64 x86_64 GNU/Linux</entry>
           </row>
           <row>
-            <entry>vendor</entry>
+            <entry>Vendor</entry>
             <entry>string</entry>
             <entry>Hardware manufacturer for the system. For virtual machines this will be the hypervisor. A sample of the possible values would be Dell Inc., IBM, HP, QEMU, ...</entry>
           </row>
