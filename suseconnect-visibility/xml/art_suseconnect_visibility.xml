@@ -45,6 +45,14 @@
       <phrase>Subscription Management</phrase>
     </meta>
     <revhistory xml:id="rh-article-suseconnect-visibility">
+    <revision>
+        <date>2026-03-25</date>
+        <revdescription>
+          <para>
+            Added 'Vendor' to the table of collected system attributes
+          </para>
+        </revdescription>
+      </revision>
       <revision>
         <date>2026-03-03</date>
         <revdescription>
@@ -323,6 +331,11 @@
             <entry>uname</entry>
             <entry>string</entry>
             <entry>Linux lair 6.9.7-1-default #1 SMP PREEMPT_DYNAMIC Fri Jun 28 05:50:47 UTC 2024 (a5efffa) x86_64 x86_64 x86_64 GNU/Linux</entry>
+          </row>
+          <row>
+            <entry>Vendor</entry>
+            <entry>string</entry>
+            <entry>Hardware manufacturer for the system. For virtual machines this is the hypervisor. A sample of the possible values would be Dell Inc., IBM, HP, QEMU, ...</entry>
           </row>
           <row>
             <entry>Architecture specifics</entry>
