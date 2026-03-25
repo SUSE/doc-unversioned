@@ -327,7 +327,7 @@
           <row>
             <entry>Vendor</entry>
             <entry>string</entry>
-            <entry>Hardware manufacturer for the system. For virtual machines this will be the hypervisor. A sample of the possible values would be Dell Inc., IBM, HP, QEMU, ...</entry>
+            <entry>Hardware manufacturer for the system. For virtual machines this is the hypervisor. A sample of the possible values would be Dell Inc., IBM, HP, QEMU, ...</entry>
           </row>
           <row>
             <entry>Architecture specifics</entry>
