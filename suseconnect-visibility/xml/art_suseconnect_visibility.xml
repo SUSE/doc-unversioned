@@ -45,6 +45,14 @@
       <phrase>Subscription Management</phrase>
     </meta>
     <revhistory xml:id="rh-article-suseconnect-visibility">
+    <revision>
+        <date>2026-03-25</date>
+        <revdescription>
+          <para>
+            Added 'Vendor' to the table of collected system attributes
+          </para>
+        </revdescription>
+      </revision>
       <revision>
         <date>2026-03-03</date>
         <revdescription>
