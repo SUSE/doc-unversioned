@@ -260,7 +260,7 @@
         By using the <command>rmt-cli systems purge</command> command, you can
         view and remove hosts that have not contacted the RMT server since a
         given date in the past. For more details, refer to
-        <link xlink:href="https://documentation.suse.com/sles/html/SLES-all/cha-rmt-tools.html#sec-rmt-tools-rmt-cli-systems"/>
+        <link xlink:href="https://documentation.suse.com/sles/15-SP7/html/SLES-all/cha-rmt-tools.html#sec-rmt-tools-rmt-cli-systems"/>
       </para>
     </sect2>
   </sect1>
@@ -503,7 +503,7 @@
       <listitem>
         <para>
           Find further information about RMT at
-          <link xlink:href="https://documentation.suse.com/sles/html/SLES-all/book-rmt.html"/>
+          <link xlink:href="https://documentation.suse.com/sles/15-SP7/html/SLES-all/book-rmt.html"/>
         </para>
       </listitem>
       <listitem>

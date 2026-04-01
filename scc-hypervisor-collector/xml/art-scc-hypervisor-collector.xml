@@ -444,7 +444,7 @@ RandomizedDelaySec=6h
       <listitem>
         <para>
           Virtualization limits and support information are described in
-          <link xlink:href="https://documentation.suse.com/sles/html/SLES-all/cha-virt-support.html"/>.
+          <link xlink:href="https://documentation.suse.com/sles/html/SLES-virtualization-support/"/>.
         </para>
       </listitem>
     </itemizedlist>
