@@ -2,9 +2,27 @@
 <!-- This file can be edited downstream. -->
 
 <!-- PRODUCT NAME AND VERSIONS -->
+<!--
 <!ENTITY productname            "<phrase xmlns='http://docbook.org/ns/docbook' role='productname'><phrase os='sles'>&sls;</phrase><phrase os='slem'>&slem;</phrase></phrase>">
+-->
+<!ENTITY productname "<phrase xmlns='http://docbook.org/ns/docbook' role='productname'>
+  <phrase os='sles'>&sls;</phrase>
+  <phrase os='slem' condition='5'>&slem;</phrase>
+  <phrase os='slem' condition='6'>&slm;</phrase>
+</phrase>">
+<!--
 <!ENTITY productnamereg         "<phrase xmlns='http://docbook.org/ns/docbook' role='productname'><phrase os='sles'>&slsreg;</phrase><phrase os='sles'>&slemreg;</phrase></phrase>">
+-->
+<!ENTITY productnamereg "<phrase xmlns='http://docbook.org/ns/docbook' role='productname'>
+  <phrase os='sles'>&slsreg;</phrase>
+  <phrase os='slem' condition='5'>&slemreg;</phrase>
+  <phrase os='slem' condition='6'>&slm;&reg;</phrase>
+</phrase>">
+
+<!--
 <!ENTITY productnameshort       "<phrase xmlns='http://docbook.org/ns/docbook' role='productname'><phrase os='sles'>&slsa;</phrase><phrase os='slem'>&slema;</phrase></phrase>">
+-->
+<!ENTITY productnameshort       "<phrase xmlns='http://docbook.org/ns/docbook' role='productname'><phrase os='sles'>&slsa;</phrase><phrase os='slem' condition='5'>&slema;</phrase><phrase os='slem' condition='6'>SL Micro</phrase></phrase>">
 
 <!ENTITY product-ga             "15">
 <!ENTITY product-sp             "Code stream">
