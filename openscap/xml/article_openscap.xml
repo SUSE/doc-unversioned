@@ -781,7 +781,7 @@ xml:id="ssg-profiles-info-view"></co></screen>-->
     <sect2 os="sles" xml:id="openscap-ssg-profiles-sle16">
       <title>&productname; 16 profiles</title>
       <para>
-        For &productname; 16, the following profiles are supported by &suse;:
+        For &productname; 16, the following profiles are <emphasis role="strong">supported</emphasis> by &suse;:
       </para>
       <itemizedlist>
         <listitem>
@@ -803,6 +803,14 @@ xml:id="ssg-profiles-info-view"></co></screen>-->
           <para>PCI-DSS v4 Control Baseline for &productname; 16</para>
         </listitem>
       </itemizedlist>
+      <note>
+       <title>Text-based list as updated information on supported profiles</title>
+       <para>
+        If there is a mismatch between the supported profiles listed above and the profiles shown in
+        the image below, refer to the text-based list above as the updated information. The image
+        below is for illustration only, and may not reflect the updated list of supported profiles.
+       </para>
+      </note>
       <figure>
         <title>&ssg; profiles for &productname; 16</title>
         <mediaobject>
@@ -822,7 +830,7 @@ xml:id="ssg-profiles-info-view"></co></screen>-->
     <sect2 os="sles" xml:id="openscap-ssg-profiles-sle15">
       <title>&productname; 15 profiles</title>
       <para>
-        For &productname; 15, the following profiles are supported by &suse;:
+        For &productname; 15, the following profiles are <emphasis role="strong">supported</emphasis> by &suse;:
       </para>
       <itemizedlist>
         <listitem>
@@ -881,6 +889,14 @@ xml:id="ssg-profiles-info-view"></co></screen>-->
           </para>
         </listitem>
       </itemizedlist>
+      <note>
+       <title>Text-based list as updated information on supported profiles</title>
+       <para>
+        If there is a mismatch between the supported profiles listed above and the profiles shown in
+        the image below, refer to the text-based list above as the updated information. The image
+        below is for illustration only, and may not reflect the updated list of supported profiles.
+       </para>
+      </note>
       <figure>
         <title>&ssg; profiles for &productname; 15</title>
         <mediaobject>
@@ -899,7 +915,7 @@ xml:id="ssg-profiles-info-view"></co></screen>-->
     <sect2 os="sles" xml:id="openscap-ssg-profiles-sle12">
       <title>&productname; 12 profiles</title>
       <para>
-        For &productname; 12, the following profiles are supported by &suse;:
+        For &productname; 12, the following profiles are <emphasis role="strong">supported</emphasis> by &suse;:
       </para>
       <itemizedlist>
         <listitem>
@@ -938,6 +954,14 @@ xml:id="ssg-profiles-info-view"></co></screen>-->
           </para>
         </listitem>
       </itemizedlist>
+      <note>
+       <title>Text-based list as updated information on supported profiles</title>
+       <para>
+        If there is a mismatch between the supported profiles listed above and the profiles shown in
+        the image below, refer to the text-based list above as the updated information. The image
+        below is for illustration only, and may not reflect the updated list of supported profiles.
+       </para>
+      </note>
       <figure>
         <title>&ssg; profiles for &productname; 12</title>
         <mediaobject>
