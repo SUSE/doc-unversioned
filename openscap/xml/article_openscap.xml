@@ -6,6 +6,11 @@
 [
 <!ENTITY % entities SYSTEM "generic-entities.ent">
 %entities;
+  <!ENTITY scap.path "<phrase xmlns='http://docbook.org/ns/docbook'><phrase
+   os='sles'>/usr/share/xml/scap/ssg/content/ssg-sle15-ds.xml</phrase><phrase
+   os='slem5'>/usr/share/xml/scap/ssg/content/ssg-slmicro5-ds.xml</phrase>
+   <phrase
+   os='slem6'>/usr/share/xml/scap/ssg/content/ssg-slmicro6-ds.xml</phrase><!-- ... --></phrase>">
 ]>
 <article xml:id="article-openscap"
  xmlns="http://docbook.org/ns/docbook"
@@ -14,8 +19,8 @@
  xml:lang="en"
  xmlns:xi="http://www.w3.org/2001/XInclude"
  xmlns:xlink="http://www.w3.org/1999/xlink">
-  <title>Hardening &sle; with &openscap;</title>
-  <titleabbrev>Hardening &sle; with &openscap;</titleabbrev>
+  <title>Hardening &productname; with &openscap;</title>
+  <titleabbrev>Hardening &productname; with &openscap;</titleabbrev>
   <info><productname>&productname;</productname><date>
 <?dbtimestamp format="B d, Y"?></date>
     <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
@@ -30,7 +35,7 @@
     </dm:docmanager>
     <abstract>
       <para>
-        This document introduces you to auditing and hardening &sle; with &openscap; and the
+        This document introduces you to auditing and hardening &productname; with &openscap; and the
         <literal>&ssg;</literal>.
       </para>
     </abstract>
@@ -41,6 +46,13 @@
     <meta name="task" its:translate="no"><phrase>Auditing</phrase><phrase>Compliance</phrase>
     </meta>
     <revhistory xml:id="rh-openscap">
+      <revision><date>2026-02-18</date>
+        <revdescription>
+          <para>
+            Profiled content for &slema;.
+          </para>
+        </revdescription>
+      </revision>
       <revision><date>2025-11-18</date>
         <revdescription>
           <para>
@@ -298,11 +310,6 @@
     <itemizedlist>
       <listitem>
         <para>
-          <package>openscap</package>
-        </para>
-      </listitem>
-      <listitem>
-        <para>
           <package>openscap-utils</package>
         </para>
       </listitem>
@@ -313,28 +320,32 @@
       </listitem>
     </itemizedlist>
 
-<screen>&prompt.sudo;<command>zypper install openscap-utils scap-security-guide</command>
+<screen os="sles">&prompt.sudo;<command>zypper install openscap-utils scap-security-guide</command>
 </screen>
-
-    <para>
-      For &slem;, install using the following commands:
-    </para>
-
+<procedure os="slem">
+  <step>
+    <para>To install the packages:</para>
 <screen>&prompt.sudo;<command>transactional-update pkg install openscap-utils scap-security-guide</command></screen>
+</step>
+<step>
+  <para>
+    Reboot the system to switch to the new snapshot
+  </para>
+  <screen>&prompt.sudo;<command>reboot</command></screen>
+</step>
+</procedure>
 
-<screen>&prompt.sudo;<command>reboot</command></screen>
-
-    <note>
+    <note os="sles">
       <para>
         These packages are dependencies for other optional packages discussed below.
       </para>
     </note>
 
-    <para>
+    <para os="sles">
       Optionally, install the following packages:
     </para>
 
-    <itemizedlist>
+    <itemizedlist os="sles">
       <listitem>
         <para>
           <package>scap-workbench</package>: This package provides the SCAP Workbench graphical
@@ -343,7 +354,7 @@
         <note>
           <para>
             The <package>scap-workbench</package> package, being a GUI software, is available only
-            for desktop installations of &sle;.
+            for desktop installations of &productname;.
           </para>
         </note>
       </listitem>
@@ -355,9 +366,9 @@
       </listitem>
     </itemizedlist>
 
-<screen>&prompt.sudo;<command>zypper install scap-workbench ssg-apply</command></screen>
+<screen os="sles">&prompt.sudo;<command>zypper install scap-workbench ssg-apply</command></screen>
 
-    <tip>
+    <tip os="sles">
       <title>Security best practice for SCAP Workbench</title>
       <para>
         As a security best practice, avoid installing an application software such as SCAP
@@ -414,7 +425,7 @@
             An XML format which packs different SCAP components (CPE, XCCDF, OVAL) into a single
             file. It can be used to distribute SCAP content over the network. The DataStreams files
             are useful because they include everything you need when you want to harden and audit
-            your &sle; system.
+            your &suselinux; system.
           </para>
         </listitem>
       </varlistentry>
@@ -455,8 +466,7 @@
             <xref linkend="openscap-components"
       xrefstyle="select:title"/>, which are all
             based on XML. All XML files in that directory are named according to the SCAP component
-            and to the &sle; codestream they apply to (code 12 or 15). The directory also holds XML
-            files specific to &slem; and &osuse;.
+            and to the product they apply to.
           </para>
           <para>
             You can view all available security policies by getting a list of datastream files:
@@ -470,7 +480,7 @@
           <para>
             Contains profiles for different hardening policies in human-readable format. They
             describe the profiles that are included in the DataStream files. The profiles
-            applicable to &sle; are codestream-specific and differ between code 12 and code 15.
+            applicable to &productname; are product-specific and differ between each codestream.
             Each profile is a guide on securing your operating system to ensure compliance with a
             regulation.
           </para>
@@ -485,7 +495,9 @@
             </listitem>
             <listitem>
               <para>
-                Profile Title. For example: <citetitle>DISA STIG for &sle; 15</citetitle>
+                Profile Title. For example: <citetitle os="sles">DISA STIG for &productname;
+                <replaceable>MAJOR_VERSION</replaceable></citetitle><citetitle os="slem"
+                condition="6">General profile for &productname; (SLEM) 6</citetitle>
               </para>
             </listitem>
             <listitem>
@@ -503,7 +515,10 @@
             <listitem>
               <para>
                 Platforms (in CPE notation). Which product or system the profile applies to. For
-                example: <citetitle>cpe:/o:suse:linux_enterprise_server:15</citetitle>
+                example: <citetitle
+                os="sles">cpe:/o:suse:linux_enterprise_server:15</citetitle><citetitle os="slem"
+                condition="5">cpe:/o:suse:linux_enterprise_micro:5</citetitle><citetitle os="slem"
+                condition="6">cpe:/o:suse:sl-micro:6</citetitle>
               </para>
             </listitem>
             <listitem>
@@ -556,15 +571,14 @@
     <title>&ssg; profiles</title>
 
     <para>
-      The <literal>&ssg;</literal> contains multiple profiles. The profiles applicable to &sle; are
-      codestream-specific and differ between code 12, code 15, and &slema;.
+      The <literal>&ssg;</literal> contains multiple profiles. The applicable profiles are specific to the individual product and its underlying development stream.
     </para>
 
     <para>
       They are maintained and hosted at the following repositories:
     </para>
 
-    <itemizedlist>
+    <itemizedlist os="sles">
       <listitem>
         <para>
           <link
@@ -580,9 +594,23 @@
         </para>
       </listitem>
       <listitem>
+        <para>
+          <link
+      xlink:href="https://github.com/ComplianceAsCode/content/tree/master/products/sle16/profiles"
+     />
+        </para>
+      </listitem>
+    </itemizedlist>
+    <itemizedlist os="slem">
+      <listitem condition="5">
        <para>
-        https://github.com/ComplianceAsCode/content/tree/master/products/slmicro5/profiles
+        <link xlink:href="https://github.com/ComplianceAsCode/content/tree/master/products/slmicro5/profiles"/>
        </para>
+      </listitem>
+      <listitem condition="6">
+        <para>
+          <link xlink:href="https://github.com/ComplianceAsCode/content/tree/master/products/slmicro6/profiles"/>
+        </para>
       </listitem>
     </itemizedlist>
 
@@ -599,33 +627,32 @@
 <screen>&prompt.user;<command>ls -l /usr/share/doc/scap-security-guide/guides/ssg*.html</command></screen>
 
     <para>
-      You can then see the guide related to a specific profile in your web browser. For example, to
-      see the SLE 15 STIG profile using the Mozilla Firefox web browser, run the following command:
+      You can then see the guide related to a specific profile in your web browser<phrase
+      os="slem"> by running the following command</phrase>.<phrase os="sles"> For example, to
+      see the SLE 15 STIG profile using the Mozilla Firefox web browser, run the following command:</phrase>
     </para>
 
-<screen>&prompt.user;<command>firefox /usr/share/doc/scap-security-guide/guides/ssg-sle15-guide-stig.html</command></screen>
+<screen os="sles">&prompt.user;<command>firefox
+/usr/share/doc/scap-security-guide/guides/ssg-sle15-guide-stig.html</command></screen>
+<screen os="slem" condition="5">&prompt.user;<command>firefox
+/usr/share/doc/scap-security-guide/guides/ssg-slmicro5-guide-stig.html</command></screen>
+<screen os="slem" condition="6">&prompt.user;<command>firefox /usr/share/doc/scap-security-guide/guides/ssg-slmicro6-guide-stig.html</command></screen>
 
-    <para>
+    <para os="sles">
       Alternatively, find the same content online as static HTML pages:
     </para>
 
-    <itemizedlist>
+    <itemizedlist os="sles">
       <listitem>
         <para>
-          <link xlink:href="https://static.open-scap.org/ssg-guides/ssg-sle15-guide-index.html"></link>
-        </para>
-      </listitem>
-      <listitem>
-        <para>
-          <link xlink:href="https://static.open-scap.org/ssg-guides/ssg-sle12-guide-index.html"></link>
+          <link xlink:href="https://complianceascode.github.io/content-pages/guides/index.html"/>
         </para>
       </listitem>
     </itemizedlist>
 
-    <para>
-      In the online versions, use the drop-down list in the upper-right corner of the page to
-      select one of the available profiles and to view a command-line snippet about how to evaluate
-      the respective profile with &openscap;.
+    <para os="sles">
+      In the online versions, scroll to the appropriate product and select one of the
+      available profiles.
     </para>
 
     <sect2 xml:id="openscap-ssg-profiles-info">
@@ -635,9 +662,12 @@
         according to specific security baselines. Every profile can select different rules and use
         different values. You can list these profiles using the following command format:
       </para>
-<screen>&prompt.user;<command>oscap info
+<screen>&prompt.user;<command>oscap info --fetch-remote-resources
 /usr/share/xml/scap/ssg/content/ssg-<replaceable>OPERATING-SYSTEM</replaceable>-<replaceable>TYPE-OF-FILE</replaceable>.xml</command><co
 xml:id="ssg-profiles-info-view"></co></screen>
+<!--<screen condition="6">&prompt.user;<command>oscap info -\-fetch-remote-resources
+/usr/share/xml/scap/ssg/content/ssg-<replaceable>OPERATING-SYSTEM</replaceable>-<replaceable>TYPE-OF-FILE</replaceable>.xml</command><co
+xml:id="ssg-profiles-info-view"></co></screen>-->
       <calloutlist>
         <callout arearefs="ssg-profiles-info-view">
           <para>
@@ -646,8 +676,10 @@ xml:id="ssg-profiles-info-view"></co></screen>
           <itemizedlist>
             <listitem>
               <para>
-                Replace <replaceable>OPERATING-SYSTEM</replaceable> with either
-                <literal>sle15</literal>, <literal>sle12</literal> or <literal>slmicro5</literal>
+                Replace <replaceable>OPERATING-SYSTEM</replaceable> with <phrase os="sles">either
+                <literal>sle16</literal> or <literal>sle15</literal> or <literal>sle12</literal></phrase><literal
+                os="slem"  condition="5">slmicro5</literal><literal
+                os="slem"  condition="6">slmicro6</literal>
               </para>
             </listitem>
             <listitem>
@@ -661,14 +693,16 @@ xml:id="ssg-profiles-info-view"></co></screen>
       </calloutlist>
       <para>
         For example, you can view information about the <literal>ds</literal> files of
-        <literal>sle15</literal> using the following command:
+        <phrase os="sles">&productname; 15</phrase><phrase>&productnameshort;</phrase> using the following command:
       </para>
-<screen>&prompt.user;<command>oscap info
+<screen os="sles">&prompt.user;<command>oscap info
 /usr/share/xml/scap/ssg/content/ssg-sle15-ds.xml</command></screen>
+<screen os="slem" condition="5">&prompt.user;<command>oscap info
+/usr/share/xml/scap/ssg/content/ssg-slmicro5-ds.xml</command></screen>
+<screen os="slem" condition="6">&prompt.user;<command>oscap info
+/usr/share/xml/scap/ssg/content/ssg-slmicro6-ds.xml</command></screen>
       <para>
-        It is useful to know about some of the technical terms displayed in the output of the
-        <command>oscap info</command> command for <literal>ds</literal> and
-        <literal>xccdf</literal> files:
+        The following technical terms appear in the <command>oscap info</command> output for <literal>ds</literal> and <literal>xccdf</literal> files:
       </para>
       <itemizedlist>
         <listitem>
@@ -744,10 +778,59 @@ xml:id="ssg-profiles-info-view"></co></screen>
       </para>
     </sect2>
 
-    <sect2 xml:id="openscap-ssg-profiles-sle15">
-      <title>&sle; 15 profiles</title>
+    <sect2 os="sles" xml:id="openscap-ssg-profiles-sle16">
+      <title>&productname; 16 profiles</title>
       <para>
-        For code 15, the following profiles are supported by &suse;:
+        For &productname; 16, the following profiles are <emphasis role="strong">supported</emphasis> by &suse;:
+      </para>
+      <itemizedlist>
+        <listitem>
+          <para>ANSSI-BP-028 (enhanced)</para>
+        </listitem>
+        <listitem>
+          <para>ANSSI-BP-028 (high)</para>
+        </listitem>
+        <listitem>
+          <para>ANSSI-BP-028 (intermediary)</para>
+        </listitem>
+        <listitem>
+          <para>ANSSI-BP-028 (minimal)</para>
+        </listitem>
+        <listitem>
+          <para>Health Insurance Portability and Accountability Act (HIPAA)</para>
+        </listitem>
+        <listitem>
+          <para>PCI-DSS v4 Control Baseline for &productname; 16</para>
+        </listitem>
+      </itemizedlist>
+      <note>
+       <title>Text-based list as updated information on supported profiles</title>
+       <para>
+        If there is a mismatch between the supported profiles listed above and the profiles shown in
+        the image below, refer to the text-based list above as the updated information. The image
+        below is for illustration only, and may not reflect the updated list of supported profiles.
+       </para>
+      </note>
+      <figure>
+        <title>&ssg; profiles for &productname; 16</title>
+        <mediaobject>
+          <imageobject role="fo">
+            <imagedata fileref="openscap-ssg-static-html-sle16.png" width="95%"/>
+          </imageobject>
+          <imageobject role="html">
+            <imagedata fileref="openscap-ssg-static-html-sle16.png" width="90%"/>
+          </imageobject>
+          <textobject role="description">
+            <phrase>&ssg; profiles for &productname; 16</phrase>
+          </textobject>
+        </mediaobject>
+      </figure>
+    </sect2>
+
+    <sect2 os="sles" xml:id="openscap-ssg-profiles-sle15">
+      <title>&productname; 15 profiles</title>
+      <para>
+        For &productname; 15, the following profiles are <emphasis role="strong">supported</emphasis> by &suse;:
       </para>
       <itemizedlist>
         <listitem>
@@ -772,32 +855,12 @@ xml:id="ssg-profiles-info-view"></co></screen>
         </listitem>
         <listitem>
           <para>
-            CIS SUSE &sle; 15 Benchmark Level 2 (Workstation)
+            DISA STIG for &productname; 15
           </para>
         </listitem>
         <listitem>
           <para>
-            CIS &sle; 15 Benchmark for Level 1 (Server)
-          </para>
-        </listitem>
-        <listitem>
-          <para>
-            CIS &sle; 15 Benchmark for Level 1 (Workstation)
-          </para>
-        </listitem>
-        <listitem>
-          <para>
-            CIS &sle; 15 Benchmark for Level 2 (Server)
-          </para>
-        </listitem>
-        <listitem>
-          <para>
-            DISA STIG for &sle; 15
-          </para>
-        </listitem>
-        <listitem>
-          <para>
-            Hardening for Public Cloud Image of &sles; (SLES) for SAP Applications 15
+            Hardening for Public Cloud Image of &productname; for SAP Applications 15
           </para>
         </listitem>
         <listitem>
@@ -807,22 +870,35 @@ xml:id="ssg-profiles-info-view"></co></screen>
         </listitem>
         <listitem>
           <para>
-            PCI-DSS v4 Control Baseline for &sle; 15
+            PCI-DSS v4 Control Baseline for &productname; 15
           </para>
         </listitem>
         <listitem>
           <para>
-            Public Cloud Hardening for &sle; 15
+            Public Cloud Hardening for &productname; 15
           </para>
         </listitem>
         <listitem>
           <para>
-            Standard System Security Profile for &sle; 15
+            Standard System Security Profile for &productname; 15
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            General System Security Profile for &productname; (&slsa;) 15
           </para>
         </listitem>
       </itemizedlist>
+      <note>
+       <title>Text-based list as updated information on supported profiles</title>
+       <para>
+        If there is a mismatch between the supported profiles listed above and the profiles shown in
+        the image below, refer to the text-based list above as the updated information. The image
+        below is for illustration only, and may not reflect the updated list of supported profiles.
+       </para>
+      </note>
       <figure>
-        <title>&ssg; profiles for &sle; 15</title>
+        <title>&ssg; profiles for &productname; 15</title>
         <mediaobject>
           <imageobject role="fo">
             <imagedata fileref="openscap-ssg-static-html-sle15.png" width="95%"/>
@@ -830,16 +906,16 @@ xml:id="ssg-profiles-info-view"></co></screen>
           <imageobject role="html">
             <imagedata fileref="openscap-ssg-static-html-sle15.png" width="90%"/>
           </imageobject>
-          <textobject role="description"><phrase>&ssg; profiles for &sle; 15</phrase>
+          <textobject role="description"><phrase>&ssg; profiles for &productname; 15</phrase>
           </textobject>
         </mediaobject>
       </figure>
     </sect2>
 
-    <sect2 xml:id="openscap-ssg-profiles-sle12">
-      <title>&sle; 12 profiles</title>
+    <sect2 os="sles" xml:id="openscap-ssg-profiles-sle12">
+      <title>&productname; 12 profiles</title>
       <para>
-        For code 12, the following profiles are supported by &suse;:
+        For &productname; 12, the following profiles are <emphasis role="strong">supported</emphasis> by &suse;:
       </para>
       <itemizedlist>
         <listitem>
@@ -864,42 +940,30 @@ xml:id="ssg-profiles-info-view"></co></screen>
         </listitem>
         <listitem>
           <para>
-            CIS SUSE &sle; 12 Benchmark Level 2 (Workstation)
+            DISA STIG for &productname; 12
           </para>
         </listitem>
         <listitem>
           <para>
-            CIS &sle; 12 Benchmark for Level 1 (Server)
+            PCI-DSS v.4 Control Baseline for &productname; 12
           </para>
         </listitem>
         <listitem>
           <para>
-            CIS &sle; 12 Benchmark for Level 1 (Workstation)
-          </para>
-        </listitem>
-        <listitem>
-          <para>
-            CIS &sle; 12 Benchmark for Level 2 (Server)
-          </para>
-        </listitem>
-        <listitem>
-          <para>
-            DISA STIG for &sle; 12
-          </para>
-        </listitem>
-        <listitem>
-          <para>
-            PCI-DSS v.4 Control Baseline for &sle; 12
-          </para>
-        </listitem>
-        <listitem>
-          <para>
-            Standard System Security Profile for &sle; 12
+            Standard System Security Profile for &productname; 12
           </para>
         </listitem>
       </itemizedlist>
+      <note>
+       <title>Text-based list as updated information on supported profiles</title>
+       <para>
+        If there is a mismatch between the supported profiles listed above and the profiles shown in
+        the image below, refer to the text-based list above as the updated information. The image
+        below is for illustration only, and may not reflect the updated list of supported profiles.
+       </para>
+      </note>
       <figure>
-        <title>&ssg; profiles for &sle; 12</title>
+        <title>&ssg; profiles for &productname; 12</title>
         <mediaobject>
           <imageobject role="fo">
             <imagedata fileref="openscap-ssg-static-html-sle12.png" width="95%"/>
@@ -907,21 +971,21 @@ xml:id="ssg-profiles-info-view"></co></screen>
           <imageobject role="html">
             <imagedata fileref="openscap-ssg-static-html-sle12.png" width="90%"/>
           </imageobject>
-          <textobject role="description"><phrase>&ssg; profiles for &sle; 12</phrase>
+          <textobject role="description"><phrase>&ssg; profiles for &productname; 12</phrase>
           </textobject>
         </mediaobject>
       </figure>
     </sect2>
 
-    <sect2 xml:id="openscap-ssg-profiles-slem">
-      <title>&slem; 5 profiles</title>
+    <!--<sect2 xml:id="openscap-ssg-profiles-slem" os="slem" condition="5">
+      <title>&productnameshort; 5 profiles</title>
       <para>
-        For &slem; 5, the following profiles are supported by &suse;:
+        For &productnameshort; 5, the following profiles are supported by &suse;:
       </para>
       <itemizedlist>
         <listitem>
           <para>
-            DISA STIG for &slem; (SLEM) 5
+            DISA STIG for &productnameshort; (SLEM) 5
           </para>
         </listitem>
         <listitem>
@@ -930,23 +994,42 @@ xml:id="ssg-profiles-info-view"></co></screen>
           </para>
         </listitem>
       </itemizedlist>
-      <figure>
-        <title>&ssg; profiles for &slem; 5 </title>
-        <mediaobject>
-          <imageobject role="fo">
-            <imagedata fileref="scap-workbench-ssg-slem5-profiles.png" width="95%"/>
-          </imageobject>
-          <imageobject role="html">
-            <imagedata fileref="scap-workbench-ssg-slem5-profiles.png" width="90%"/>
-          </imageobject>
-          <textobject role="description"><phrase>&ssg; profiles for &slem; 5</phrase>
-          </textobject>
-        </mediaobject>
-      </figure>
+    </sect2>-->
+
+    <!--<sect2 xml:id="openscap-ssg-profiles-slem" os="slem" condition="6">
+      <title>&productnameshort; 6 profiles</title>
+      <para>
+        For &productnameshort; 6, the profile <emphasis>General profile for SUSE Linux
+        Micro (SLEM) 6</emphasis> is supported by &suse;:
+      </para>
+    </sect2>-->
+
+    <sect2 xml:id="openscap-ssg-profiles-slem" os="slem" >
+      <title><phrase condition="5">&productnameshort; 5 profiles</phrase
+            ><phrase condition="6">&productnameshort; 6 profiles</phrase></title>
+      <para condition="5">For &productnameshort; 5, the following profiles are supported by &suse;:</para>
+      <para condition="6">For &productnameshort; 6, the following profiles are supported by &suse;:</para>
+      <itemizedlist condition="6">
+        <listitem>
+          <para>General profile for &productname; (SLEM) 6</para>
+        </listitem>
+      </itemizedlist>
+      <itemizedlist condition="5">
+        <listitem>
+          <para>
+            DISA STIG for &productnameshort; (SLEM) 5
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Public Cloud Hardening for &productnameshort; (SLEM) 5
+          </para>
+        </listitem>
+      </itemizedlist>
     </sect2>
 
   </sect1>
-  <sect1 xml:id="openscap-customize-scap-security-guide">
+  <sect1 os="sles" xml:id="openscap-customize-scap-security-guide">
     <title>Customizing the &ssg;</title>
 
     <para>
@@ -958,11 +1041,11 @@ xml:id="ssg-profiles-info-view"></co></screen>
         <para>
           Run the SCAP Workbench GUI software installed earlier.
         </para>
-<screen>&prompt.root;<command>scap-workbench</command></screen>
+<screen>&prompt.sudo;<command>scap-workbench</command></screen>
       </step>
       <step>
         <para>
-          Select a variant for the target system&mdash;one of SLe12, SLe15, SLmicro5, then select
+          Select a variant for the target system&mdash;one of SLe12, SLe15, and SLe16, then select
           <guilabel>Load Content</guilabel>.
         </para>
       </step>
@@ -1024,7 +1107,7 @@ xml:id="ssg-profiles-info-view"></co></screen>
           the <option>--tailoring-file <replaceable>NAME-OF-TAILORING-FILE</replaceable></option>
           option. For example:
         </para>
-<screen>&prompt.root;<command>oscap xccdf eval \
+<screen>&prompt.sudo;<command>oscap xccdf eval \
 --profile xccdf_org.ssgproject.content_profile_stig_customized \
 --report report_sle15_stig.html \
 --tailoring-file ssg-sle15-ds-tailoring.xml \
@@ -1219,7 +1302,7 @@ xml:id="ssg-profiles-info-view"></co></screen>
             </para>
           </listitem>
         </varlistentry>
-        <varlistentry>
+        <varlistentry os="sles">
           <term>SCAP Workbench</term>
           <listitem>
             <para>
@@ -1261,19 +1344,35 @@ xml:id="ssg-profiles-info-view"></co></screen>
     </sect2>
 
     <sect2 xml:id="openscap-scan-sle15">
-      <title>Scanning a &sle; system</title>
+      <title>Scanning a &productname; system</title>
       <para>
-        The following example shows how to scan &sle; 15 locally with <command>oscap</command> for
+        You can scan your system locally with <command>oscap</command> for
         vulnerability issues according to a certain profile. You can save the results in XML format
         and generate an HTML report.
       </para>
       <example xml:id="ex-oscap-scan-sle15">
-        <title>Scanning &sle; with oscap</title>
-<screen>&prompt.user;<command>oscap</command> xccdf eval<co xml:id="co-oscap-eval"/> \
-    --profile <replaceable>stig</replaceable><co xml:id="co-oscap-eval-profile"/> \
+        <title>Scanning &productnameshort; with oscap</title>
+        <screen>&prompt.user;<command>oscap</command> xccdf eval<co xml:id="co-oscap-eval"/> \
+    --profile <replaceable os="sles">stig</replaceable><replaceable os="slem" condition="5">stig</replaceable><replaceable os="slem" condition="6">general</replaceable><co xml:id="co-oscap-eval-profile"/> \
     --results <replaceable>/tmp/results.xml</replaceable><co xml:id="co-oscap-eval-results"/> \
     --report <replaceable>/tmp/report.html</replaceable><co xml:id="co-oscap-eval-report"/> \
+    &scap.path;<co xml:id="co-oscap-eval-ssg"/></screen>
+<!--<screen os="sles">&prompt.user;<command>oscap</command> xccdf eval<co xml:id="co-oscap-eval"/> \
+    -\-profile <replaceable>stig</replaceable><co xml:id="co-oscap-eval-profile"/> \
+    -\-results <replaceable>/tmp/results.xml</replaceable><co xml:id="co-oscap-eval-results"/> \
+    -\-report <replaceable>/tmp/report.html</replaceable><co xml:id="co-oscap-eval-report"/> \
     /usr/share/xml/scap/ssg/content/ssg-sle15-ds.xml<co xml:id="co-oscap-eval-ssg"/></screen>
+    <screen os="slem" condition="5">&prompt.user;<command>oscap</command> xccdf eval<co xml:id="co-oscap-eval"/> \
+    -\-profile <replaceable>stig</replaceable><co xml:id="co-oscap-eval-profile"/> \
+    -\-results <replaceable>/tmp/results.xml</replaceable><co xml:id="co-oscap-eval-results"/> \
+    -\-report <replaceable>/tmp/report.html</replaceable><co xml:id="co-oscap-eval-report"/> \
+    /usr/share/xml/scap/ssg/content/ssg-slmicro5-ds.xml<co xml:id="co-oscap-eval-ssg"/></screen>
+    <screen os="slem" condition="6">&prompt.user;<command>oscap</command> xccdf eval<co xml:id="co-oscap-eval"/> \
+    -\-profile <replaceable>general</replaceable><co xml:id="co-oscap-eval-profile"/> \
+    -\-fetch-remote-resources \
+    -\-results <replaceable>/tmp/results.xml</replaceable><co xml:id="co-oscap-eval-results"/> \
+    -\-report <replaceable>/tmp/report.html</replaceable><co xml:id="co-oscap-eval-report"/> \
+    /usr/share/xml/scap/ssg/content/ssg-slmicro6-ds.xml<co xml:id="co-oscap-eval-ssg"/></screen>-->
         <calloutlist>
           <callout arearefs="co-oscap-eval">
             <para>
@@ -1283,7 +1382,9 @@ xml:id="ssg-profiles-info-view"></co></screen>
           </callout>
           <callout arearefs="co-oscap-eval-profile">
             <para>
-              Specifies the profile to use, in this case, <literal>stig</literal>.
+              Specifies the profile to use, in this case, <literal os="sles">stig</literal><literal
+              os="slem" condition="5">stig</literal><literal
+              os="slem" condition="6">general</literal>.
             </para>
           </callout>
           <callout arearefs="co-oscap-eval-results">
@@ -1300,13 +1401,13 @@ xml:id="ssg-profiles-info-view"></co></screen>
           <callout arearefs="co-oscap-eval-ssg">
             <para>
               Specifies the <literal>&ssg;</literal> policy file to use. In this example, we use a
-              policy file in the <literal>DataStream</literal> format that applies to &sle; code
-              15. To list all available policies, run: <command>ls -1
+              policy file in the <literal>DataStream</literal> format. To list all available policies, run: <command>ls -1
               /usr/share/xml/scap/ssg/content/ssg-*-ds.xml</command>. For more information about a
               particular policy, run <command>oscap info</command> on the file.
             </para>
           </callout>
         </calloutlist>
+
         <para>
           The evaluation process usually takes a few minutes, depending on the number of selected
           rules.
@@ -1344,7 +1445,7 @@ xml:id="ssg-profiles-info-view"></co></screen>
         <literal>xccdf_org.ssgproject.content_profile_stig</literal> and generate an HTML report,
         you can use the following command format
       </para>
-<screen>&prompt.root;<command>oscap xccdf eval \
+<screen>&prompt.sudo;<command>oscap xccdf eval \
 --profile <replaceable>xccdf_org.ssgproject.content_profile_stig</replaceable> \
 --report report_<replaceable>OPERATING-SYSTEM</replaceable>_stig.html \
 /usr/share/xml/scap/ssg/content/ssg-<replaceable>OPERATING-SYSTEM</replaceable>-ds.xml</command><co xml:id="evaluate-all-rules"></co>
@@ -1352,8 +1453,9 @@ xml:id="ssg-profiles-info-view"></co></screen>
       <calloutlist>
         <callout arearefs="evaluate-all-rules">
           <para>
-            Replace <replaceable>OPERATING-SYSTEM</replaceable> with either
-            <literal>sle15</literal>, <literal>sle12</literal>, or <literal>slmicro5</literal>
+            Replace <replaceable>OPERATING-SYSTEM</replaceable> with <phrase os="sles">either
+            <literal>sle16</literal> or <literal>sle15</literal> or <literal>sle12</literal></phrase><phrase os="slem"
+            condition="5"><literal>slmicro5</literal></phrase><phrase os="slem" condition="6"><literal>slmicro6</literal></phrase>
           </para>
         </callout>
       </calloutlist>
@@ -1362,7 +1464,7 @@ xml:id="ssg-profiles-info-view"></co></screen>
         the <option>--rule</option> command option. For example, you can evaluate only with the
         rule <guilabel>xccdf_org.ssgproject.content_rule_package_aide_installed</guilabel>:
       </para>
-<screen>&prompt.root;<command>oscap xccdf eval \
+<screen>&prompt.sudo;<command>oscap xccdf eval \
 --profile <replaceable>xccdf_org.ssgproject.content_profile_stig</replaceable> \
 --report report_<replaceable>OPERATING-SYSTEM</replaceable>_stig.html \
 --rule <replaceable>xccdf_org.ssgproject.content_rule_package_aide_installed</replaceable>
@@ -1371,8 +1473,8 @@ xml:id="ssg-profiles-info-view"></co></screen>
       <calloutlist>
         <callout arearefs="evaluate-specific-rule">
           <para>
-            Replace <replaceable>OPERATING-SYSTEM</replaceable> with either
-            <literal>sle15</literal>, <literal>sle12</literal>, or <literal>slmicro5</literal>
+            Replace <replaceable>OPERATING-SYSTEM</replaceable> with <phrase os="sles">either
+            <literal>sle16</literal> or <literal>sle15</literal> or <literal>sle12</literal></phrase><phrase os="slem" condition="5"><literal>slmicro5</literal></phrase><phrase os="slem" condition="6"><literal>slmicro6</literal></phrase>
           </para>
         </callout>
       </calloutlist>
@@ -1382,7 +1484,7 @@ xml:id="ssg-profiles-info-view"></co></screen>
         example, you can evaluate without the rule
         <guilabel>xccdf_org.ssgproject.content_rule_package_aide_installed</guilabel>:
       </para>
-<screen>&prompt.root;<command>oscap xccdf eval \
+<screen>&prompt.sudo;<command>oscap xccdf eval \
 --profile <replaceable>xccdf_org.ssgproject.content_profile_stig</replaceable> \
 --report report_<replaceable>OPERATING-SYSTEM</replaceable>_stig.html \
 --skip-rule <replaceable>xccdf_org.ssgproject.content_rule_package_aide_installed</replaceable>
@@ -1391,14 +1493,16 @@ xml:id="ssg-profiles-info-view"></co></screen>
       <calloutlist>
         <callout arearefs="evaluate-without-rule">
           <para>
-            Replace <replaceable>OPERATING-SYSTEM</replaceable> with either
-            <literal>sle15</literal>, <literal>sle12</literal>, or <literal>slmicro5</literal>
+            Replace <replaceable>OPERATING-SYSTEM</replaceable> with <phrase os="sles">either
+            <literal>sle16</literal> or <literal>sle15</literal> or <literal>sle12</literal></phrase><phrase os="slem"
+            condition="5"><literal>slmicro5</literal></phrase><phrase os="slem"
+            condition="6"><literal>slmicro6</literal></phrase>
           </para>
         </callout>
       </calloutlist>
     </sect2>
 
-    <sect2 xml:id="openscap-external-remote-resources-eval">
+    <sect2 os="sles" xml:id="openscap-external-remote-resources-eval">
       <title>Using external or remote resources for scanning</title>
       <para>
         SCAP content may reference external resources. For example, the &ssg; uses an external OVAL
@@ -1542,12 +1646,12 @@ grep -n "scap_org.open-scap_cref_pub-projects-security-oval-suse.linux.enterpris
 </screen>
             <tip>
               <para>
-                Download and use the specific files that are relevant for your &sle; product
+                Download and use the specific files that are relevant for your &productname; product
                 version, and avoid more generic ones. Being specific about the purpose and the
                 files helps reduce the usage of server resources such as the processor, memory,
                 storage and bandwidth. In addition, smaller file sizes also reduce the time
                 required to complete the evaluation. For example, if you are interested only in
-                &sle; 15 SP5, use the file available at
+                &productname; 15 SP5, use the file available at
                 <link
 xlink:href="https://ftp.suse.com/pub/projects/security/oval/suse.linux.enterprise.15-sp5-patch.xml.bz2"></link>.
               </para>
@@ -1572,10 +1676,10 @@ ssg-sle15-xccdf-stig-report.html</screen>
       </sect3>
     </sect2>
 
-    <sect2 xml:id="openscap-scanning-audits-oval-files">
+    <sect2 os="sles" xml:id="openscap-scanning-audits-oval-files">
       <title>Scanning and auditing systems using OVAL files</title>
       <para>
-        Using the OVAL content files for &sle; products, you can assess your &sle; systems and
+        Using the OVAL content files for &productname; products, you can assess your &productname; systems and
         generate reports on the RPM package names and versions that are known to be affected by
         security issues in published CVEs.
       </para>
@@ -1663,11 +1767,11 @@ Evaluation done.
 </screen>
           <tip>
             <para>
-              Download and use the specific files that are relevant for your &sle; product version,
+              Download and use the specific files that are relevant for your &productname; product version,
               and avoid more generic ones. Being specific about the purpose and the files helps
               reduce the usage of server resources such as the processor, memory, storage and
               bandwidth. In addition, smaller file sizes also reduce the time required to complete
-              the evaluation. For example, if you are interested only in &sle; 15 SP5, use the file
+              the evaluation. For example, if you are interested only in &productname; 15 SP5, use the file
               available at
               <link
     xlink:href="https://ftp.suse.com/pub/projects/security/oval/suse.linux.enterprise.15-sp5-patch.xml.bz2"></link>.
@@ -1698,9 +1802,7 @@ sle15-oval-report.html</screen>
     <!--taroth 2022-10-20: todo: oscap, scap-workbench, ansible playbooks, bash scripts-->
 
     <para>
-      The security policy profiles in the <literal>&ssg;</literal> can not only be used to scan a
-      target system and to generate reports, but also to automatically apply fixes to the target
-      system (<literal>remediation</literal>), if possible.
+      Beyond scanning and reporting, the <literal>&ssg;</literal> security profiles can automatically remediate the target system by applying necessary fixes.
     </para>
 
     <important>
@@ -1790,7 +1892,7 @@ sle15-oval-report.html</screen>
       </variablelist>
     </sect2>
 
-    <sect2 xml:id="openscap-remediate-specific-profile-shell-script">
+    <sect2 os ="sles" xml:id="openscap-remediate-specific-profile-shell-script">
       <title>Remediating for a specific profile using shell scripts</title>
       <para>
         For simple remediation of a profile without any condition, you can use the shell scripts
@@ -1807,8 +1909,9 @@ sle15-oval-report.html</screen>
             <filename><replaceable>NAME-OF-PRODUCT</replaceable>-script-<replaceable>NAME-OF-PROFILE</replaceable>.sh</filename>.
           </para>
           <para>
-            The supported products are as follows: <literal>sle12</literal>,
-            <literal>sle15</literal>, and <literal>slmicro5</literal>.
+            <replaceable>NAME-OF-PRODUCT</replaceable> can be<phrase os="sles">:
+            <literal>sle12</literal> or <literal>sle15</literal> or
+            <literal>sle16</literal>.</phrase><phrase os="slem" condition="5"><literal>slmicro5</literal></phrase><phrase os="slem" condition="6"><literal>slmicro6</literal></phrase>.
           </para>
           <para>
             The supported profiles are as follows: <literal>stig</literal>,
@@ -1846,7 +1949,7 @@ sle15-oval-report.html</screen>
               There are certain rules that contains a line ending with <literal>IS
               MISSING!</literal> in between the <literal>BEGIN</literal> and <literal>END</literal>
               lines for a rule block. These rules do not have a remediation part; you have to do
-              remediation manually if you want to apply it.
+              remediation manually to apply it.
             </para>
           </note>
         </step>
@@ -1860,33 +1963,39 @@ sle15-oval-report.html</screen>
         </step>
         <step>
           <para>
-            Make the script executable, and run it.
+            Make the script executable: and run it.
           </para>
-<screen>&prompt.sudo; -s <command>chmod +x
+<screen os="sles">&prompt.sudo; -s <command>chmod +x
 <replaceable>NAME-OF-PRODUCT</replaceable>-script-<replaceable>NAME-OF-PROFILE</replaceable>.sh</command></screen>
-<screen>&prompt.user;<command>./<replaceable>NAME-OF-PRODUCT</replaceable>-script-<replaceable>NAME-OF-PROFILE</replaceable>.sh</command></screen>
-          <note>
-            <title>Reboot for &slem;</title>
-            <para>
-              For &slem;, reboot the system after running the script. For example:
-            </para>
-          </note>
-<screen>&prompt.sudo; -s <command>chmod +x slmicro5-script-<replaceable>NAME-OF-PROFILE</replaceable>.sh</command></screen>
-<screen>&prompt.sudo;<command>transactional-update run
+<screen os="slem">&prompt.sudo; -s <command>chmod +x slmicro5-script-<replaceable>NAME-OF-PROFILE</replaceable>.sh</command></screen>
+<screen os="slem">&prompt.sudo;<command>reboot</command></screen>
+        </step>
+        <step>
+          <para>
+            Run the script:
+          </para>
+          <screen
+          os="sles">&prompt.user;<command>./<replaceable>NAME-OF-PRODUCT</replaceable>-script-<replaceable>NAME-OF-PROFILE</replaceable>.sh</command></screen>
+          <screen os="slem">&prompt.sudo;<command>transactional-update run
 ./slmicro5-script-<replaceable>NAME-OF-PROFILE</replaceable>.sh</command></screen>
-<screen>&prompt.sudo;<command>reboot</command></screen>
+        </step>
+        <step os="slem">
+          <para>
+            Reboot the system:
+            </para>
+<screen os="slem">&prompt.sudo;<command>reboot</command></screen>
         </step>
       </procedure>
     </sect2>
 
     <sect2 xml:id="openscap-remediate-sle">
-      <title>Remediating a &slea; system with <command>oscap</command></title>
+      <title>Remediating a &productnameshort; system with <command>oscap</command></title>
       <para>
-        The following examples show how to scan and remediate &sle; locally with
+        The following examples show how to scan and remediate &productname; locally with
         <command>oscap</command> to comply with a certain profile.
       </para>
       <sect3 xml:id="oscap-remediate-sle-fly">
-        <title>Remediating &sle; (on the fly)</title>
+        <title>Remediating &productname; (on the fly)</title>
         <para>
           To remediate a system (on the fly), you can use a combination of <option>--eval</option>
           and <option>--remediate</option> options of the <command>oscap</command> command. In this
@@ -1896,8 +2005,8 @@ sle15-oval-report.html</screen>
           During the execution of the remediation, you will see the status as
           <literal>fixed</literal> or <literal>error</literal>, after some of the rules.
         </para>
-        <example xml:id="ex-oscap-remediate-sle-fly">
-          <title>Remediating &slea; systems (on the fly)</title>
+        <example xml:id="ex-oscap-remediate-sle-fly" os="sles">
+          <title>Remediating &productnameshort; systems (on the fly)</title>
 <screen>&prompt.sudo;<command>oscap</command> xccdf eval --remediate<co xml:id="co-oscap-remedy-fly"/> \
 --profile <replaceable>stig</replaceable><co xml:id="co-oscap-remedy-fly-profile"/> \
 --results <replaceable>/tmp/results.xml</replaceable><co xml:id="co-oscap-remedy-fly-results"/> \
@@ -1936,10 +2045,8 @@ xml:id="co-oscap-remedy-fly-ssg"/></screen>
             <callout arearefs="co-oscap-remedy-fly-ssg">
               <para>
                 Specifies the <literal>&ssg;</literal> policy file to use. Replace
-                <replaceable>PRODUCT-NAME</replaceable> with <literal>sle15</literal> or
-                <literal>sle12</literal>. To list all available policies, run: <command>ls -1
-                /usr/share/xml/scap/ssg/content/ssg-*-ds.xml</command>. For more information about
-                a particular policy, run <command>oscap info</command> on the file.
+                <replaceable>PRODUCT-NAME</replaceable> with <literal>sle16</literal> or
+                <literal>sle15</literal> or <literal>sle12</literal>.
               </para>
             </callout>
           </calloutlist>
@@ -1957,48 +2064,58 @@ xml:id="co-oscap-remedy-fly-ssg"/></screen>
             not pass evaluation.
           </para>
         </example>
-        <example xml:id="ex-oscap-remediate-slem-fly">
-          <title>Remediating &slem; systems (on the fly)</title>
-<screen>&prompt.sudo;<command>sudo transactional-update run oscap xccdf eval --remediate \
---profile stig \
+        <example xml:id="ex-oscap-remediate-slem-fly-slem" os="slem">
+          <title>Remediating &productnameshort; systems (on the fly)</title>
+<screen>&prompt.sudo;<command>transactional-update run oscap xccdf eval --remediate \
+--profile <phrase condition="5">stig</phrase><phrase condition="6">general</phrase> \
 --results /tmp/results_1.xml \
 --report /tmp/report_1.html \
 --skip-rule xccdf_org.ssgproject.content_rule_accounts_authorized_local_users \
-/usr/share/xml/scap/ssg/content/ssg-slmicro5-ds.xml
+/usr/share/xml/scap/ssg/content/ssg-slmicro<phrase condition="5">5</phrase><phrase condition="6">6</phrase>-ds.xml
 </command></screen>
+<para>
+  Restart the system to switch to the new snapshot:
+</para>
 <screen>&prompt.sudo;<command>reboot</command></screen>
-<screen>&prompt.sudo;<command>sudo oscap xccdf eval --remediate \
---profile stig \
+<para>
+  Perform scanning and remediation again:
+</para>
+<screen>&prompt.sudo;<command>oscap xccdf eval --remediate \
+--profile <phrase condition="5">stig</phrase><phrase condition="6">general</phrase> \
 --results /tmp/results_2.xml \
 --report /tmp/report_2.html \
 --skip-rule xccdf_org.ssgproject.content_rule_accounts_authorized_local_users \
-/usr/share/xml/scap/ssg/content/ssg-slmicro5-ds.xml
+/usr/share/xml/scap/ssg/content/ssg-slmicro<phrase condition="5">5</phrase><phrase condition="6">6</phrase>-ds.xml
 </command></screen>
+<para>
+  Restart the system to apply the changes:
+</para>
 <screen>&prompt.sudo;<command>reboot</command></screen>
         </example>
+
         <warning>
           <title>Usage of the <option>--skip-rule</option> option</title>
           <para>
             In the above examples, the <literal>--skip-rule</literal> option is optional. However,
-            it is necessary to use it if you did not set the variable
+            it is necessary to use it if you did not change the variable
             <literal>var_accounts_authorized_local_users_regex</literal>. Otherwise, you will not
             be able to do a <command>sudo</command> after reboot.
           </para>
         </warning>
       </sect3>
       <sect3 xml:id="oscap-remediate-sle-post">
-        <title>Remediating &sle; (after scanning)</title>
+        <title>Remediating &productname; (after scanning)</title>
         <para>
           In this example, we first execute a scan and then run the remediation as next step.
         </para>
-        <example xml:id="ex-oscap-remediate-sle15-post">
-          <title>Remediating &slea; (after scanning)</title>
+        <example xml:id="ex-oscap-remediate-sle15-post" os="sles">
+          <title>Remediating &productnameshort; (after scanning)</title>
           <procedure>
             <step>
 <screen>&prompt.user;<command>oscap</command> xccdf eval<co xml:id="co-oscap-remedy-post1"/> \
-      --profile <replaceable>stig</replaceable><co xml:id="co-oscap-remedy-post1-profile"/> \
+      --profile <replaceable os="sles;slem5">stig</replaceable><replaceable os="slem6">general</replaceable><co xml:id="co-oscap-remedy-post1-profile"/> \
       --results <replaceable>/tmp/results.xml</replaceable><co xml:id="co-oscap-remedy-post1-results"/> \
-      /usr/share/xml/scap/ssg/content/ssg-sle15-ds.xml<co xml:id="co-oscap-remedy-post1-ssg"/></screen>
+      /usr/share/xml/scap/ssg/content/ssg-<phrase os="sles">sle15</phrase><phrase os="slem" condition="5">slmicro5</phrase><phrase os="slem" condition="6">slmicro6</phrase>-ds.xml<co xml:id="co-oscap-remedy-post1-ssg"/></screen>
               <calloutlist>
                 <callout arearefs="co-oscap-remedy-post1">
                   <para>
@@ -2008,7 +2125,8 @@ xml:id="co-oscap-remedy-fly-ssg"/></screen>
                 </callout>
                 <callout arearefs="co-oscap-remedy-post1-profile">
                   <para>
-                    Specifies the profile to use, in this case, <literal>stig</literal>.
+                    Specifies the profile to use, in this case, <literal
+                    os="sles;slem5">stig</literal><literal os="slem6">general</literal>.
                   </para>
                 </callout>
                 <callout arearefs="co-oscap-remedy-post1-results">
@@ -2021,7 +2139,7 @@ xml:id="co-oscap-remedy-fly-ssg"/></screen>
                   <para>
                     Specifies the <literal>&ssg;</literal> policy file to use. In this example, we
                     use a policy file in the <literal>DataStream</literal> format that applies to
-                    &sle; code 15. To list all available policies, run: <command>ls -1
+                    &productname;<phrase os="sles"> 15</phrase>. To list all available policies, run: <command>ls -1
                     /usr/share/xml/scap/ssg/content/ssg-*-ds.xml</command>. For more information
                     about a particular policy, run <command>oscap info</command> on the file.
                   </para>
@@ -2071,7 +2189,86 @@ xml:id="co-oscap-remedy-fly-ssg"/></screen>
             </step>
           </procedure>
         </example>
-      </sect3>
+        <example xml:id="ex-oscap-remediate-slem-post" os="slem">
+          <title>Remediating &productnameshort; (after scanning)</title>
+          <procedure>
+            <step>
+<screen>&prompt.user;<command>oscap</command> xccdf eval<co xml:id="co-oscap-remedy-slem-post1"/> \
+      --profile <phrase condition="5">stig</phrase><phrase condition="6">general</phrase><co xml:id="co-oscap-remedy-slem-post1-profile"/> \
+      --results <replaceable>/tmp/results.xml</replaceable><co xml:id="co-oscap-remedy-slem-post1-results"/> \
+      /usr/share/xml/scap/ssg/content/ssg-slmicro<phrase condition="5">5</phrase><phrase condition="6">6</phrase>-ds.xml<co xml:id="co-oscap-remedy-slem-post1-ssg"/></screen>
+              <calloutlist>
+                <callout arearefs="co-oscap-remedy-slem-post1">
+                  <para>
+                    Calls the <command>oscap xccdf</command> module and tells it to perform an
+                    evaluation.
+                  </para>
+                </callout>
+                <callout arearefs="co-oscap-remedy-slem-post1-profile">
+                  <para>
+                    Specifies the profile to use, in this case,
+                    <literal condition="5">stig</literal><literal condition="6">general</literal>.
+                  </para>
+                </callout>
+                <callout arearefs="co-oscap-remedy-slem-post1-results">
+                  <para>
+                    Saves the results of the evaluation as an XCCDF file to
+                    <replaceable>/tmp/results.xml</replaceable>.
+                  </para>
+                </callout>
+                <callout arearefs="co-oscap-remedy-slem-post1-ssg">
+                  <para>
+                    Specifies the <literal>&ssg;</literal> policy file to use. In this example, we
+                    use a policy file in the <literal>DataStream</literal> format that applies to
+                    &productname; <phrase condition="5">5</phrase><phrase condition="6">6</phrase>.
+                    To list all available policies, run: <command>ls -1
+                    /usr/share/xml/scap/ssg/content/ssg-*-ds.xml</command>. For more information
+                    about a particular policy, run <command>oscap info</command> on the file.
+                  </para>
+                </callout>
+              </calloutlist>
+              <para>
+                During this step, the system is only evaluated, and the results are stored in a
+                <tag class="element">TestResult</tag> element in
+                <replaceable>/tmp/results.xml</replaceable>.
+              </para>
+            </step>
+            <step>
+<screen>&prompt.sudo;<command>transactional-update run oscap</command> xccdf remediate<co xml:id="co-oscap-remedy-slem-post2-command"/> \
+     --results <replaceable>/tmp/results.xml</replaceable><co xml:id="co-oscap-remedy-slem-post2-results"/> \
+     <replaceable>/tmp/results.xml</replaceable><co xml:id="co-oscap-remedy-slem-post2-ssg"/></screen>
+              <calloutlist>
+                <callout arearefs="co-oscap-remedy-slem-post2-command">
+                  <para>
+                    Calls the <command>oscap xccdf</command> module and tells it to perform a
+                    remediation.
+                  </para>
+                </callout>
+                <callout arearefs="co-oscap-remedy-slem-post2-results">
+                  <para>
+                    Saves the results of the remediation to
+                    <replaceable>/tmp/results.xml</replaceable>.
+                  </para>
+                </callout>
+                <callout arearefs="co-oscap-remedy-slem-post2-ssg">
+                  <para>
+                    Uses the <replaceable>/tmp/results.xml</replaceable> XCCDF file from the first
+                    step (evaluation) as input file.
+                  </para>
+                </callout>
+              </calloutlist>
+              <para>Restart the system to switch to the new snapshot:</para>
+<screen>&prompt.sudo;<command>reboot</command></screen>
+              <para>Perform remediation again:</para>
+<screen>&prompt.sudo;<command>oscap</command> xccdf remediate \
+     --results <replaceable>/tmp/results.xml</replaceable> \
+     <replaceable>/tmp/results.xml</replaceable></screen>
+              <para>Restart the system to apply the changes:</para>
+<screen>&prompt.sudo;<command>reboot</command></screen>
+            </step>
+          </procedure>
+        </example>
+       </sect3>
       <sect3 xml:id="oscap-remediate-bash-ansible">
         <title>Remediating systems using <command>oscap</command> and scripts</title>
         <para>
@@ -2082,12 +2279,12 @@ xml:id="co-oscap-remedy-fly-ssg"/></screen>
           <title>Evaluate the system before remediation</title>
           <para>
             Before running the examples in this section, ensure that you have evaluated the system
-            using the <command>oscap sccdf eval</command> commands.
+            using the <command>oscap xccdf eval</command> commands.
           </para>
         </note>
-        <example>
-          <title>Remediating &sle; systems using <command>oscap</command> and bash</title>
-<screen>&prompt.root;<command>oscap xccdf generate fix --profile stig --fetch-remote-resources –
+        <example os="sles">
+          <title>Remediating &productname; systems using <command>oscap</command> and bash</title>
+<screen>&prompt.sudo;<command>oscap xccdf generate fix --profile stig --fetch-remote-resources –
 fix-type bash --output <replaceable>GENERATED-BASH-REMEDIATION-SCRIPT-NAME</replaceable>.sh
 /usr/share/xml/scap/ssg/content/ssg-<replaceable>PRODUCT-NAME</replaceable>-ds.xml</command><co
 xml:id="oscap-bash-remediation"/></screen>
@@ -2095,46 +2292,50 @@ xml:id="oscap-bash-remediation"/></screen>
             <callout arearefs="oscap-bash-remediation">
               <para>
                 Replace <replaceable>PRODUCT-NAME</replaceable> with <literal>sle12</literal> or
-                <literal>sle15</literal>.
+                <literal>sle15</literal> or <literal>sle16</literal>.
               </para>
             </callout>
           </calloutlist>
         </example>
-        <example>
-          <title>Remediating &sle; systems using <command>oscap</command> and &ansible;</title>
-<screen>&prompt.root;<command>oscap xccdf generate fix --profile stig --fetch-remote-resources – fix-type ansible --output <replaceable>GENERATED-ANSIBLE-REMEDIATION-SCRIPT-NAME</replaceable>.yml /usr/share/xml/scap/ssg/content/ssg-<replaceable>PRODUCT-NAME</replaceable>-ds.xml</command><co
+        <example os="sles">
+          <title>Remediating &productname; systems using <command>oscap</command> and &ansible;</title>
+<screen>&prompt.sudo;<command>oscap xccdf generate fix --profile stig --fetch-remote-resources – fix-type ansible --output <replaceable>GENERATED-ANSIBLE-REMEDIATION-SCRIPT-NAME</replaceable>.yml /usr/share/xml/scap/ssg/content/ssg-<replaceable>PRODUCT-NAME</replaceable>-ds.xml</command><co
 xml:id="oscap-ansible-remediation"/></screen>
           <calloutlist>
             <callout arearefs="oscap-ansible-remediation">
               <para>
                 Replace <replaceable>PRODUCT-NAME</replaceable> with <literal>sle12</literal> or
-                <literal>sle15</literal>.
+                <literal>sle15</literal> or <literal>sle16</literal>.
               </para>
             </callout>
           </calloutlist>
         </example>
-        <example>
-          <title>Remediating &slem; systems using <command>oscap</command> and bash</title>
-<screen>&prompt.root;<command>oscap xccdf generate fix --profile stig --fetch-remote-resources – fix-type bash --output <replaceable>GENERATED-BASH-REMEDIATION-SCRIPT-NAME</replaceable>.sh /usr/share/xml/scap/ssg/content/ssg-slmicro5-ds.xml</command></screen>
+        <example os="slem">
+          <title>Remediating &productnameshort; systems using <command>oscap</command> and bash</title>
+<screen>&prompt.sudo;<command>oscap xccdf generate fix --profile stig --fetch-remote-resources –
+fix-type bash --output <replaceable>GENERATED-BASH-REMEDIATION-SCRIPT-NAME</replaceable>.sh
+/usr/share/xml/scap/ssg/content/ssg-slmicro<phrase condition="5">5</phrase><phrase condition="6">6</phrase>-ds.xml</command></screen>
         </example>
-        <example>
-          <title>Remediating &slem; systems using <command>oscap</command> and &ansible;</title>
-<screen>&prompt.root;<command>oscap xccdf generate fix --profile stig --fetch-remote-resources – fix-type ansible --output <replaceable>GENERATED-ANSIBLE-REMEDIATION-SCRIPT-NAME</replaceable>.yml /usr/share/xml/scap/ssg/content/ssg-slmicro5-ds.xml</command></screen>
-        </example>
+
         <para>
           After running any of the above commands, you can run the generated script to remediate
           the system.
         </para>
-        <note>
+        <note os="slem">
           <para>
-            To execute remediation on &slem; systems, you may need to run the remediation scripts
-            <emphasis>more than once</emphasis> using the following command:
+            To execute remediation on &productnameshort; systems, you may need to make it
+            executable and to run the remediation scripts <emphasis>more than once</emphasis>
+            using the following commands:
           </para>
-<screen>&prompt.root;<command>transcational-update run <replaceable>GENERATED-BASH-REMEDIATION-SCRIPT-NAME</replaceable>.sh</command></screen>
+<screen>&prompt.sudo;<command>chmod u+x <replaceable>GENERATED-BASH-REMEDIATION-SCRIPT-NAME</replaceable>.sh</command></screen>
+<screen>&prompt.sudo;<command>transactional-update run <replaceable>GENERATED-BASH-REMEDIATION-SCRIPT-NAME</replaceable>.sh</command></screen>
+<screen>&prompt.sudo;<command>reboot</command></screen>
+<screen>&prompt.sudo;<command><replaceable>GENERATED-BASH-REMEDIATION-SCRIPT-NAME</replaceable>.sh</command></screen>
+<screen>&prompt.sudo;<command>reboot</command></screen>
         </note>
       </sect3>
       <sect3 xml:id="oscap-remediate-sle-review">
-        <title>Storing &slea; remediation instructions for review</title>
+        <title>Storing &productnameshort; remediation instructions for review</title>
         <para>
           You can also run <command>oscap</command> in review mode to store remediation
           instructions to a file for further review. During this operation, the remediation content
@@ -2142,12 +2343,12 @@ xml:id="oscap-ansible-remediation"/></screen>
           instructions in the form of a shell script:
         </para>
         <example xml:id="ex-oscap-remediate-sle15-review">
-          <title>Storing &slea; 15 remediation instructions for review</title>
+          <title>Storing &productnameshort; remediation instructions for review</title>
 <screen>&prompt.user;<command>oscap</command> xccdf generate fix<co xml:id="co-oscap-generate-fix"/> \
      --template urn:xccdf:fix:script:sh<co xml:id="co-oscap-generate-template"/> \
-     --profile <replaceable>stig</replaceable><co xml:id="co-oscap-generate-profile"/> \
+     --profile <replaceable os="sles;slem5">stig</replaceable><replaceable os="slem6">general</replaceable><co xml:id="co-oscap-generate-profile"/> \
      --output <replaceable>my-remediation-script.sh</replaceable><co xml:id="co-oscap-generate-output"/> \
-     /usr/share/xml/scap/ssg/content/ssg-sle15-ds.xml<co xml:id="co-oscap-generate-ssg"/></screen>
+     /usr/share/xml/scap/ssg/content/ssg-<phrase os="sles">sle15</phrase><phrase os="slem" condition="5">slmicro5</phrase><phrase os="slem" condition="6">slmicro6</phrase>-ds.xml<co xml:id="co-oscap-generate-ssg"/></screen>
           <calloutlist>
             <callout arearefs="co-oscap-generate-fix">
               <para>
@@ -2173,8 +2374,8 @@ xml:id="oscap-ansible-remediation"/></screen>
             <callout arearefs="co-oscap-generate-ssg">
               <para>
                 Specifies the <literal>&ssg;</literal> policy file to use. In this example, we use
-                a policy file in the <literal>DataStream</literal> format that applies to &sle;
-                code 15. To list all available policies, run: <command>ls -1
+                a policy file in the <literal>DataStream</literal> format that applies to &productname;
+                15. To list all available policies, run: <command>ls -1
                 /usr/share/xml/scap/ssg/content/ssg-*-ds.xml</command>. For more information about
                 a particular policy, run <command>oscap info</command> on the file.
               </para>
@@ -2184,23 +2385,23 @@ xml:id="oscap-ansible-remediation"/></screen>
       </sect3>
     </sect2>
 
-    <sect2 xml:id="openscap-remediate-sle-ansible">
-      <title>Remediating a &slea; system with Ansible</title>
+    <sect2 os="sles" xml:id="openscap-remediate-sle-ansible">
+      <title>Remediating a &productnameshort; system with Ansible</title>
       <para>
         You can use the Ansible playbooks provided by the <literal>&ssg;</literal> to remediate a
         local system.
       </para>
       <para>
         The <package>ansible</package> package is available from <literal>SUSE Package
-        Hub</literal>. Register your &sle; system and enable the <literal>SUSE Package
-        Hub</literal> extension. For &sle; 12, you additionally need to enable the <literal>Public
+        Hub</literal>. Register your &productname; system and enable the <literal>SUSE Package
+        Hub</literal> extension. For &productname; 12, you additionally need to enable the <literal>Public
         Cloud</literal> module. Then install the package with <command>sudo zypper in
         ansible</command>.
       </para>
       <example xml:id="ex-remediate-sle15-ansible">
-        <title>Remediating &slea; 15 with Ansible</title>
+        <title>Remediating &productnameshort; 15 with Ansible</title>
         <para>
-          For example, to remediate your system using the &stiga; Ansible playbook for &sle; 15
+          For example, to remediate your system using the &stiga; Ansible playbook for &productname; 15
           provided by the <literal>&ssg;</literal>, use the following command.
         </para>
         <warning>
@@ -2233,7 +2434,7 @@ xml:id="oscap-ansible-remediation"/></screen>
 <screen>&prompt.user;<command>ls -l /usr/share/scap-security-guide/ansible/</command></screen>
           <para>
             The file names are in the following format:
-            <filename><replaceable>NAME-OF-PRODUCT</replaceable>-playbook-<replaceable>NAME-OF-PROFILE</replaceable>.sh</filename>.
+            <filename><replaceable>NAME-OF-PRODUCT</replaceable>-playbook-<replaceable>NAME-OF-PROFILE</replaceable>.yml</filename>.
           </para>
         </step>
         <step>
@@ -2249,11 +2450,10 @@ all:
  	     ansible_connection: local
 </screen>
         </step>
-        <step>
-          <stepalternatives>
-            <step>
+
+            <step os="sles">
               <para>
-                For &sle; products, run the following command:
+                Then run the following command:
               </para>
 <screen>&prompt.sudo;<command>ansible-playbook -i ansible_inventory.yml
 <replaceable>NAME-OF-PRODUCT</replaceable>-playbook-<replaceable>NAME-OF-PROFILE</replaceable>.yml</command><co
@@ -2261,8 +2461,7 @@ xml:id="scap-ansible"></co></screen>
               <calloutlist>
                 <callout arearefs="scap-ansible">
                   <para>
-                    Substitute <replaceable>NAME-OF-PRODUCT</replaceable> with
-                    <literal>sle12</literal> or <literal>sle15</literal>. In addition, substitute
+                    Substitute <replaceable>NAME-OF-PRODUCT</replaceable> with <literal>sle12</literal> or <literal>sle15</literal> or <literal>sle16</literal>. In addition, substitute
                     <replaceable>NAME-OF-PROFILE</replaceable> with any of the supported profiles,
                     as seen in the file names within the directory
                     <filename>/usr/share/scap-security-guide/ansible/</filename>.
@@ -2272,31 +2471,46 @@ xml:id="scap-ansible"></co></screen>
               <para>
                 To skip some of the rules during the execution, use the <option>--tag</option>
                 option. You can find the tag of a specific rule by searching for the rule’s tag in
-                the playbook file. For example, to skip some rules for &sle; 15, run the following
+                the playbook file. For example, to skip some rules for &productname;, run the following
                 command:
               </para>
 <screen>&prompt.sudo;<command>ansible-playbook -i ansible_inventory.yml sle15-playbook-<replaceable>NAME-OF-PROFILE</replaceable>.yml –tag “--tags "package_aide_installed,aide_build_database”</command></screen>
             </step>
-            <step>
+            <step os="slem">
               <para>
-                For &slem;, run the following commands:
+                Then run the following commands:
               </para>
 <screen>&prompt.sudo;<command>transactional-update run ansible-playbook -i
-/root/ansible_inventory.yml smicro5-playbook-<replaceable>NAME-OF-PROFILE</replaceable>.yml</command></screen>
+/root/ansible_inventory.yml <phrase condition="5">slmicro5-playbook</phrase><phrase condition="6">slmicro6-playbook</phrase>-<replaceable>NAME-OF-PROFILE</replaceable>.yml</command></screen>
+</step>
+<step os="slem">
+  <para>
+    Reboot the system:
+  </para>
 <screen>&prompt.sudo;<command>reboot</command></screen>
+</step>
+<step>
               <para>
                 To skip some of the rules during the execution, use the <option>--tag</option>
                 option. You can find the tag of a specific rule by searching for the rule’s tag in
-                the playbook file. For example, to skip some rules for &slem;, run the following
+                the playbook file. For example, to skip some rules for &productnameshort;, run the following
                 command:
               </para>
 <screen>&prompt.sudo;<command>transactional-update run ansible-playbook -i ansible_inventory.yml
-slmicro5-playbook-<replaceable>NAME-OF-PROFILE</replaceable>.yml –tag “--tags
+slmicro<phrase condition="5">5</phrase><phrase condition="6">6</phrase>-playbook-<replaceable>NAME-OF-PROFILE</replaceable>.yml –tag “--tags
 "package_aide_installed,aide_build_database”</command></screen>
+</step>
+<step>
+  <para>
+    Reboot the system again to swith to the new snapshot:
+  </para>
 <screen>&prompt.sudo;<command>reboot</command></screen>
+</step>
+</procedure>
+
               <note>
                 <para>
-                  For &slem;, you might need to repeat the steps more than twice, because of the
+                  You might need to repeat the steps above more than twice, because of the
                   following reasons:
                 </para>
                 <itemizedlist>
@@ -2312,10 +2526,8 @@ slmicro5-playbook-<replaceable>NAME-OF-PROFILE</replaceable>.yml –tag “--tag
                   </listitem>
                 </itemizedlist>
               </note>
-            </step>
-          </stepalternatives>
-        </step>
-      </procedure>
+
+
     </sect2>
   </sect1>
   <sect1 xml:id="oscap-related-topics">

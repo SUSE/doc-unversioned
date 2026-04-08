@@ -1,0 +1,17 @@
+## ---------------------------- 
+## OpenSCAP, unversioned
+## repo: SUSE/doc-unversioned
+## ----------------------------
+##
+## Basics
+MAIN="article_openscap.xml"
+ROOTID=article-openscap
+
+## Profiling
+PROFOS="slem;slem6"
+PROFARCH="x86_64;zseries;power;aarch64"
+PROFCONDITION="6"
+
+## stylesheet location
+STYLEROOT="/usr/share/xml/docbook/stylesheet/suse2022-ns"
+FALLBACK_STYLEROOT="/usr/share/xml/docbook/stylesheet/suse-ns"
