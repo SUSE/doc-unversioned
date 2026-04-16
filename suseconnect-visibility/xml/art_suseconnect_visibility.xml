@@ -14,8 +14,7 @@
          xml:lang="en"
          xmlns:xi="http://www.w3.org/2001/XInclude"
          xmlns:xlink="http://www.w3.org/1999/xlink">
-  <title>Enriched system visibility in the &scc;</title>
-  <titleabbrev>Enriched system visibility in the &scc;</titleabbrev>
+  <title>How to Identify Inactive Systems and Manage Subscriptions in &scc;</title>
   <info>
     <productname>&sls;</productname>
     <!-- <productnumber>&productnumber;</productnumber> -->
@@ -32,15 +31,17 @@
     </dm:docmanager>
     <abstract>
       <para>
-        This document describes what &suseconnect; is and how the &scc; (SCC)
-        and Repository Mirroring Tool (RMT) use it to gather updated information
-        about active systems and their hardware environment.
+        Tracking active versus decommissioned servers is critical for
+        maintaining an accurate inventory and optimizing infrastructure costs.
+        This guide explains how to use the &suseconnect;
+        <quote>keep-alive</quote> timer to automatically identify inactive
+        systems and manage your overall subscription consumption.
       </para>
     </abstract>
     <meta name="title" its:translate="yes">Enriched system visibility in the &scc;</meta>
     <meta name="series" its:translate="no">Products &amp; Solutions</meta>
-    <meta name="description" its:translate="yes">How to use SUSEConnect to monitor active systems</meta>
-    <meta name="social-descr" its:translate="yes">Monitor active systems with SUSEConnect</meta>
+    <meta name="description" its:translate="yes">How to use &suseconnect; to monitor active systems</meta>
+    <meta name="social-descr" its:translate="yes">Monitor active systems with &suseconnect;</meta>
     <meta name="task" its:translate="no">
       <phrase>Subscription Management</phrase>
     </meta>
@@ -72,11 +73,11 @@
     </revhistory>
   </info>
   <sect1 xml:id="suseconnect-whatis">
-    <title>What is &suseconnect;?</title>
+    <title>What is &suseconnect; keep-alive timer?</title>
 
     <para>
       &suseconnect; is a tool to register SLE-based operating systems with SCC
-      or RMT. Registered systems receive updates to installed packages, for
+      or &rmt;. Registered systems receive updates to installed packages, for
       example, to increase security of the operating system. With &suseconnect;,
       you can additionally register extensions and modules that extend the base
       system functionality.
@@ -92,15 +93,14 @@
     </tip>
 
     <para>
-      &suse; is committed to helping provide better insights into the
-      consumption of SUSE subscriptions, regardless of where they are running or
-      how they are managed; physical or virtual, on-premises or in the cloud,
-      connected to SCC or RMT, or managed by &smlm;. To help you identify
-      or filter out systems in SCC that are decommissioned or no longer running,
-      &suseconnect; now features a daily <quote>ping,</quote> which updates
-      system information automatically. Each registered host contacts SCC or RMT
-      and sends the unique identification of the host and the description of its
-      hardware environment.
+      To improve visibility into subscription consumption, &suseconnect; now
+      features a daily <quote>ping</quote>. This ping automatically updates
+      system information in the &scc; or &rmt;, helping you to identify and
+      filter out decommissioned or inactive systems regardless of where they are
+      running or how they are managed; physical or virtual, on-premises or in
+      the cloud, connected to SCC or &rmt;, or managed by &smlm;. As a result,
+      you can maintain an accurate inventory of active systems and optimize your
+      subscription costs.
     </para>
   </sect1>
   <sect1 xml:id="suseconnect-visibility-requirements">
@@ -132,7 +132,7 @@
       We extended &suseconnect; with the new option
       <option>--keepalive</option>. The command <command>&suseconnect;
       --keepalive</command> updates the last time that a host contacted SCC or
-      RMT and updates the host's hardware information.
+      &rmt; and updates the host's hardware information.
     </para>
 
     <para>
@@ -163,7 +163,7 @@
 
     <para>
       These units are responsible for keeping the system information up to date
-      with the SCC or RMT, and for providing accurate data about subscription
+      with the SCC or &rmt;, and for providing accurate data about subscription
       usage.
     </para>
 
@@ -177,7 +177,7 @@
     </note>
 
     <sect2 xml:id="disabling-suseconnect-timer">
-      <title>Disabling the keep-alive timer</title>
+      <title>How do I disable the &suseconnect; keep-alive timer?</title>
       <para>
         If you prefer to not have the &suseconnect; keep-alive timer running on
         your system, you can disable it with <command>systemctl</command>:
@@ -201,14 +201,14 @@
     <title>Identifying inactive systems</title>
 
     <para>
-      When &suseconnect; reports details about active hosts daily, SCC or RMT
+      When &suseconnect; reports details about active hosts daily, SCC or &rmt;
       collect this information and let you filter out registered inactive hosts.
-      If your hosts are registered against RMT or &smlm;, these registration
+      If your hosts are registered against &rmt; or &smlm;, these registration
       servers forward the received information to SCC.
     </para>
 
     <sect2 xml:id="identifying-inactive-systems-with-scc">
-      <title>Identifying inactive systems with SCC</title>
+      <title>How to filter and deregister inactive systems in SCC?</title>
       <para>
         In the SCC Web user interface, you can limit the list of systems to see
         only inactive hosts.
@@ -231,7 +231,7 @@
             Select <guimenu>Inactive</guimenu> from the upper-left drop-down
             list.
           </para>
-          <figure>
+          <figure xml:id="fig-filter-inactive-hosts">
             <title>Drop-down list with a filter for inactive hosts</title>
             <mediaobject>
               <imageobject role="fo">
@@ -240,6 +240,9 @@
               <imageobject role="html">
                 <imagedata fileref="scc-inactive-filter.png" width="45%"/>
               </imageobject>
+              <textobject role="description">
+                <phrase>A screenshot showing a filter for inactive hosts</phrase>
+              </textobject>
             </mediaobject>
           </figure>
         </step>
@@ -255,21 +258,21 @@
     </sect2>
 
     <sect2 xml:id="identifying-inactive-systems-with-rmt">
-      <title>Identifying inactive systems with RMT</title>
+      <title>Identifying inactive systems with &rmt;</title>
       <para>
         By using the <command>rmt-cli systems purge</command> command, you can
-        view and remove hosts that have not contacted the RMT server since a
+        view and remove hosts that have not contacted the &rmt; server since a
         given date in the past. For more details, refer to
         <link xlink:href="https://documentation.suse.com/sles/15-SP7/html/SLES-all/cha-rmt-tools.html#sec-rmt-tools-rmt-cli-systems"/>
       </para>
     </sect2>
   </sect1>
   <sect1 xml:id="system-data-gathered-by-scc">
-    <title>System data gathered by SCC</title>
+    <title>What hardware and system data does SCC collect?</title>
 
     <para>
       When a system is registered directly via SCC, or its registration
-      information is forwarded by RMT or &smlm;, SCC collects the following
+      information is forwarded by &rmt; or &smlm;, SCC collects the following
       information:
     </para>
 
@@ -370,7 +373,7 @@
           <row>
             <entry>Last Seen Date</entry>
             <entry>date</entry>
-            <entry>2021-05-05 (the last time that the system contacted SCC or RMT)</entry>
+            <entry>2021-05-05 (the last time that the system contacted SCC or &rmt;)</entry>
           </row>
           <row>
             <entry>Products</entry>
@@ -447,7 +450,7 @@
     </tip>
   </sect1>
   <sect1 xml:id="suseconnect-benefits">
-    <title>Benefits</title>
+    <title>Why use the keep-alive timer for subscription management?</title>
 
     <para>
       The new functionality of &suseconnect; brings the following benefits to
@@ -464,7 +467,7 @@
       </listitem>
       <listitem>
         <para>
-          By contacting SCC or RMT regularly, you can obtain the number of
+          By contacting SCC or &rmt; regularly, you can obtain the number of
           actually running registered systems. This provides a better insight
           into the consumption of &suse; subscriptions.
         </para>
@@ -502,7 +505,7 @@
       </listitem>
       <listitem>
         <para>
-          Find further information about RMT at
+          Find further information about &rmt; at
           <link xlink:href="https://documentation.suse.com/sles/15-SP7/html/SLES-all/book-rmt.html"/>
         </para>
       </listitem>
