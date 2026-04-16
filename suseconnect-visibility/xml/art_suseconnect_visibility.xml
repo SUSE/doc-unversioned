@@ -208,7 +208,7 @@
     </para>
 
     <sect2 xml:id="identifying-inactive-systems-with-scc">
-      <title>How to filter and deregister inactive systems in SCC</title>
+      <title>How to filter and deregister inactive systems in SCC?</title>
       <para>
         In the SCC Web user interface, you can limit the list of systems to see
         only inactive hosts.
@@ -231,7 +231,7 @@
             Select <guimenu>Inactive</guimenu> from the upper-left drop-down
             list.
           </para>
-          <figure>
+          <figure xml:id="fig-filter-inactive-hosts">
             <title>Drop-down list with a filter for inactive hosts</title>
             <mediaobject>
               <imageobject role="fo">
@@ -240,6 +240,9 @@
               <imageobject role="html">
                 <imagedata fileref="scc-inactive-filter.png" width="45%"/>
               </imageobject>
+              <textobject role="description">
+                <phrase>A screenshot showing a filter for inactive hosts</phrase>
+              </textobject>
             </mediaobject>
           </figure>
         </step>
