@@ -10,3 +10,4 @@ FALLBACK_STYLEROOT="/usr/share/xml/docbook/stylesheet/suse2021-ns"
 
 # Setting the TOC depth to sect 2
 XSLTPARAM="--param toc.section.depth=2"
+XSLTPARAM+="--param generate.revhistory=0"
