@@ -46,7 +46,15 @@
       <phrase>Subscription Management</phrase>
     </meta>
     <revhistory xml:id="rh-article-suseconnect-visibility">
-    <revision>
+      <revision>
+        <date>2026-05-20</date>
+        <revdescription>
+          <para>
+            Added 'kubernetes_provider' to the table of collected system attributes
+          </para>
+        </revdescription>
+      </revision>
+      <revision>
         <date>2026-03-25</date>
         <revdescription>
           <para>
@@ -362,6 +370,22 @@
       ]
     }
 ]
+</screen>
+            </entry>
+          </row>
+          <row>
+            <entry>Kubernetes Provider</entry>
+            <entry>map</entry>
+            <entry>
+             <para>
+	       <literal>role</literal> (string), <literal>type</literal> (string), and <literal>version</literal> (string) when a recognised Kubernetes provider is detected.
+             </para>
+<screen>
+"kubernetes_provider": {
+  "role": "server",
+  "type": "rke2",
+  "version": "v1.35.4+rke2r1"
+}
 </screen>
             </entry>
           </row>
