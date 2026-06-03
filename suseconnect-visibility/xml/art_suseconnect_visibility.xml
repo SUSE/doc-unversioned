@@ -360,7 +360,7 @@
           <row>
             <entry>ha_active</entry>
             <entry>string</entry>
-            <entry>the pacemaker version, if the pacemaker.service is running on the client, for example 2.1.10+20250718.fdf796ebc8-150700.3.3.1</entry>
+            <entry>The pacemaker version, if the `pacemaker.service` is running on the client. For example, 2.1.10+20250718.fdf796ebc8-150700.3.3.1</entry>
           </row>
           <row>
             <entry>Architecture specifics</entry>
