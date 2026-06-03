@@ -54,6 +54,15 @@
         </revdescription>
       </revision>
       <revision>
+    <revision>
+        <date>2026-06-02</date>
+        <revdescription>
+          <para>
+            Added 'ha_active' to the table of collected system attributes
+          </para>
+        </revdescription>
+      </revision>
+    <revision>
         <date>2026-03-25</date>
         <revdescription>
           <para>
@@ -347,6 +356,11 @@
             <entry>Vendor</entry>
             <entry>string</entry>
             <entry>Hardware manufacturer for the system. For virtual machines this is the hypervisor. A sample of the possible values would be Dell Inc., IBM, HP, QEMU, ...</entry>
+          </row>
+          <row>
+            <entry>ha_active</entry>
+            <entry>string</entry>
+            <entry>The pacemaker version, if the `pacemaker.service` is running on the client. For example, 2.1.10+20250718.fdf796ebc8-150700.3.3.1</entry>
           </row>
           <row>
             <entry>Architecture specifics</entry>
