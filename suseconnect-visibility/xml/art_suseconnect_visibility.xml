@@ -46,10 +46,19 @@
     </meta>
     <revhistory xml:id="rh-article-suseconnect-visibility">
       <revision>
+        <date>2026-06-08</date>
+        <revdescription>
+          <para>
+            Added information about collector configuration and opt-in/opt-out capabilities for optional collectors. 
+            Updated configuration format documentation to reflect transition from line-by-line format to YAML-based configuration
+          </para>
+        </revdescription>
+      </revision>  
+      <revision>  
         <date>2026-06-02</date>
         <revdescription>
           <para>
-            Added information about collector configuration and opt-in/opt-out capabilities for optional collectors. Updated configuration format documentation to reflect transition from line-by-line format to YAML-based configuration
+            Added 'ha_active' to the table of collected system attributes
           </para>
         </revdescription>
       </revision>
@@ -367,6 +376,11 @@
             <entry>string</entry>
             <entry>Hardware manufacturer for the system. For virtual machines this is the hypervisor. A sample of the possible values would be Dell Inc., IBM, HP, QEMU, ...</entry>
             <entry>No</entry>
+          </row>
+          <row>
+            <entry>ha_active</entry>
+            <entry>string</entry>
+            <entry>The pacemaker version, if the <literal>pacemaker.service</literal> is running on the client. For example, 2.1.10+20250718.fdf796ebc8-150700.3.3.1</entry>
           </row>
           <row>
             <entry>Architecture specifics</entry>
