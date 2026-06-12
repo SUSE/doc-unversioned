@@ -33,4 +33,31 @@
     For example, the tag for the latest published image of &slea; 15 SP2 would
     be <literal>suse/sle15:15.2</literal>.
   </para>
+  <important>
+    <title>The <literal>latest</literal> tag now points to &suselinux; 16</title>
+    <para>
+      Since 15 January 2026, the <literal>latest</literal> tag for the
+      core-infrastructure &bcia;s (<literal>bci-base</literal>,
+      <literal>bci-init</literal>, <literal>bci-minimal</literal>,
+      <literal>bci-micro</literal>, <literal>bci-busybox</literal>) points to
+      &suselinux; 16, not to &slsa; 15. Pulling
+      <literal>registry.suse.com/bci/bci-base:latest</literal> today therefore
+      gives you a 16.0-based image.
+    </para>
+    <para>
+      If you want to stay on &slsa; 15, always pin to an explicit version
+      tag (for example <literal>15.7</literal>) in your <literal>FROM</literal>
+      lines, in your CI pipelines and in any <literal>podman pull</literal>
+      command. &slsa; 15 SP7 &bcia;s remain maintained until the end of general
+      support for SP7 (31 July 2031). For SP6 and earlier, refer to
+      <link xlink:href="https://www.suse.com/lifecycle"/>.
+    </para>
+    <para>
+      See
+      <link xlink:href="https://www.suse.com/c/suse-linux-base-container-images-latest-tag-moving-to-sles-16/"/>
+      and
+      <link xlink:href="https://github.com/SUSE/bci/discussions/60"/>
+      for the original announcement.
+    </para>
+  </important>
 </article>
