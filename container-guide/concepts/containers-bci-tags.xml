@@ -37,17 +37,18 @@
     <title>The <literal>latest</literal> tag is migrating to &suselinux; 16</title>
     <para>
       The base of the &bcia; family is migrating from &slsa; 15 to
-      &suselinux; 16. The migration is staged image by image, not flipped at
-      once: <literal>bci-nano</literal> is the first general-purpose image
-      to move, and the core-infrastructure images
+      &suselinux; 16. The migration is staged image by image, not flipped
+      at once: <literal>bci-nano</literal> is the first general-purpose
+      image to move, and the core-infrastructure images
       (<literal>bci-base</literal>, <literal>bci-init</literal>,
       <literal>bci-minimal</literal>, <literal>bci-micro</literal>,
-      <literal>bci-busybox</literal>) will follow at a later date that is
-      pre-announced on the SUSE blog and on the
+      <literal>bci-busybox</literal>) will follow later. SUSE will
+      communicate the timing of each flip through the usual channels (the
+      SUSE blog and the
       <link xlink:href="https://github.com/SUSE/bci/discussions">SUSE/bci
-      discussions board</link>. Until that flip happens, pulling
+      discussions board</link>); until each flip happens, pulling
       <literal>registry.suse.com/bci/bci-base:latest</literal> still gives
-      you a 15 SP7-based image; check the live registry page or
+      you a 15 SP7-based image. Check the live registry page or
       <command>cat /etc/os-release</command> in the image to confirm the
       current target of <literal>:latest</literal> for any given image.
     </para>
