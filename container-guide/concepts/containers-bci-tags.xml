@@ -34,30 +34,42 @@
     be <literal>suse/sle15:15.2</literal>.
   </para>
   <important>
-    <title>The <literal>latest</literal> tag now points to &suselinux; 16</title>
+    <title>The <literal>latest</literal> tag is migrating to &suselinux; 16</title>
     <para>
-      Since 15 January 2026, the <literal>latest</literal> tag for the
-      core-infrastructure &bcia;s (<literal>bci-base</literal>,
-      <literal>bci-init</literal>, <literal>bci-minimal</literal>,
-      <literal>bci-micro</literal>, <literal>bci-busybox</literal>) points to
-      &suselinux; 16, not to &slsa; 15. Pulling
-      <literal>registry.suse.com/bci/bci-base:latest</literal> today therefore
-      gives you a 16.0-based image.
+      The base of the &bcia; family is migrating from &slsa; 15 to
+      &suselinux; 16. The migration is staged image by image, not flipped at
+      once: <literal>bci-nano</literal> is the first general-purpose image
+      to move, and the core-infrastructure images
+      (<literal>bci-base</literal>, <literal>bci-init</literal>,
+      <literal>bci-minimal</literal>, <literal>bci-micro</literal>,
+      <literal>bci-busybox</literal>) will follow at a later date that is
+      pre-announced on the SUSE blog and on the
+      <link xlink:href="https://github.com/SUSE/bci/discussions">SUSE/bci
+      discussions board</link>. Until that flip happens, pulling
+      <literal>registry.suse.com/bci/bci-base:latest</literal> still gives
+      you a 15 SP7-based image; check the live registry page or
+      <command>cat /etc/os-release</command> in the image to confirm the
+      current target of <literal>:latest</literal> for any given image.
     </para>
     <para>
-      If you want to stay on &slsa; 15, always pin to an explicit version
-      tag (for example <literal>15.7</literal>) in your <literal>FROM</literal>
-      lines, in your CI pipelines and in any <literal>podman pull</literal>
-      command. &slsa; 15 SP7 &bcia;s remain maintained until the end of general
-      support for SP7 (31 July 2031). For SP6 and earlier, refer to
-      <link xlink:href="https://www.suse.com/lifecycle"/>.
+      Regardless of the current target, do not rely on
+      <literal>:latest</literal> for reproducible builds. Always pin to an
+      explicit version tag (for example <literal>15.7</literal> for &slsa;
+      15 SP7, or the relevant <literal>16.x</literal> tag for &suselinux;
+      16) in your <literal>FROM</literal> lines, in your CI pipelines and
+      in any <literal>podman pull</literal> command, so that a future
+      <literal>:latest</literal> pivot does not silently change the base of
+      your deployment. &slsa; 15 SP7 &bcia;s remain maintained until the
+      end of general support for SP7 (31 July 2031). For SP6 and earlier,
+      refer to <link xlink:href="https://www.suse.com/lifecycle"/>.
     </para>
     <para>
       See
       <link xlink:href="https://www.suse.com/c/suse-linux-base-container-images-latest-tag-moving-to-sles-16/"/>
       and
       <link xlink:href="https://github.com/SUSE/bci/discussions/60"/>
-      for the original announcement.
+      for the original announcement and the up-to-date status of the
+      per-image flips.
     </para>
   </important>
 </article>
