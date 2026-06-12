@@ -102,7 +102,7 @@
       applications on Kubernetes clusters using charts. Helm can be used to install, update and remove containerized applications in Kubernetes environments. It can also handle the associated resources, such as
       configuration, storage volumes, etc. For instance, it is used for
       instance to deploy the &rmt; server (see
-      <link xlink:href="https://documentation.suse.com/sles/15-SP4/single-html/SLES-rmt/index.html#sec-rmt-deploy-kubernetes">&rmt;
+      <link xlink:href="https://documentation.suse.com/sles/15-SP7/single-html/SLES-rmt/index.html#sec-rmt-deploy-kubernetes">&rmt;
       documentation</link> for more information).
     </para>
   </section>

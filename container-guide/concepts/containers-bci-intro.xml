@@ -55,9 +55,10 @@
     <para>
       &bcia;s offer a platform for creating &slsa;-based custom container
       images and containerized applications that can be distributed freely.
-      &bcia;s feature the same predictable enterprise lifecycle as &slsa;. The
-      SLE_BCI 15 SP3 and SP4 repository (which is a subset of the &slea;
-      repository) gives &bcia;s access to 4000 packages available for the
+      &bcia;s feature the same predictable enterprise lifecycle as &slsa;.
+      Each SLE_BCI repository (one per &slsa; Service Pack, for example
+      SLE_BCI 15 SP6 or SLE_BCI 15 SP7) is a subset of the &slea;
+      repository and gives &bcia;s access to over 4000 packages available for the
       &x86-64;, &aarch64;, &power; and &zseries; architectures. The packages in
       the repository have undergone quality assurance and security audits by
       &suse;. The container images are FIPS-compliant when running on a host in
@@ -160,8 +161,8 @@
       <title>SLE_BCI repository</title>
       <para>
         There is a SLE_BCI repository for each SLE service pack. This means
-        that &bcia;s based on SP4 have access to the SLE_BCI repository for
-        SP4, all &bcia;s based on SP5 use the SLE_BCI repository for SP5, and
+        that &bcia;s based on SP6 have access to the SLE_BCI repository for
+        SP6, all &bcia;s based on SP7 use the SLE_BCI repository for SP7, and
         so on. Each SLE_BCI repository contains all SLE packages except
         kernels, boot loaders, installers (including YaST), desktop
         environments and hypervisors (such as KVM and Xen).
