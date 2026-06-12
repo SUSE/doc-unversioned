@@ -154,14 +154,13 @@
     <title>Available versions</title>
     <para>
       The Development Stack &bcia;s ship multiple concurrent versions of each
-      language runtime (for example, a current "stable" tag and one or more
-      previous tags). The set of available tags evolves continuously, with new
-      runtime versions published as they reach stability and older ones
-      reaching end-of-support on their upstream schedule. Always consult
+      language runtime. The set of available tags evolves continuously: new
+      runtime versions are published as they reach stability and older ones
+      reach end-of-support on their upstream schedule. Always consult
       <link xlink:href="https://registry.suse.com">&suseregistry;</link> for
       the currently published tags and their support level, and pin to an
       explicit version tag in production rather than relying on a rolling tag
-      such as <literal>stable</literal> or <literal>latest</literal>.
+      such as <literal>latest</literal>.
     </para>
   </note>
 </article>
