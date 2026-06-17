@@ -513,10 +513,10 @@
 
         <itemizedlist>
           <listitem>
-            <para>Host Name</para>
+            <para>Host name</para>
           </listitem>
           <listitem>
-            <para>CPUs, Sockets, and Total Memory</para>
+            <para>CPUs, sockets and total memory</para>
           </listitem>
           <listitem>
             <para>Architecture</para>
@@ -543,10 +543,10 @@
             <para>SAP workload detection</para>
           </listitem>
           <listitem>
-            <para>Kubernetes Provider detection</para>
+            <para>Kubernetes provider detection</para>
           </listitem>
           <listitem>
-            <para>Cloud Provider</para>
+            <para>Cloud provider</para>
           </listitem>
         </itemizedlist>
       </sect3>
