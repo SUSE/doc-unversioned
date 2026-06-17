@@ -50,7 +50,7 @@
         <revdescription>
           <para>
             Added information about collector configuration and opt-in/opt-out capabilities for optional collectors.
-            Updated configuration format documentation to reflect transition from line-by-line format to YAML-based configuration.
+            Updated configuration format documentation to reflect the transition from line-by-line format to YAML-based configuration.
           </para>
         </revdescription>
       </revision>  
