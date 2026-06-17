@@ -34,3 +34,12 @@
 <!ENTITY amdsev                  "AMD SEV">
 <!ENTITY ansible                 "Ansible">
 <!ENTITY kea                     "Kea">
+
+<!-- Override BCI entities defined in generic-entities.ent so this product
+     uses the current "SUSE Linux BCI" branding instead of the legacy
+     "SLE BCI" form. XML entity resolution uses first-definition-wins, and
+     product-entities.ent is included by generic-entities.ent before its own
+     bci/bcia/bci-product definitions, so the overrides below take effect. -->
+<!ENTITY bci-product             "&suselinux; Base Container Images">
+<!ENTITY bci                     "&suselinux; Base Container Image">
+<!ENTITY bcia                    "&suselinux; BCI">
