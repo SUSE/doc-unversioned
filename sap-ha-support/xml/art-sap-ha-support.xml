@@ -521,7 +521,7 @@
        </informalfigure>
        <para>
         In &hana; 2.0 SPS03 or older, where multi-target system replication is not available,
-        the third side replicates the secondary in a chain topology. Only the first replication pair
+        the third site replicates the secondary in a chain topology. Only the first replication pair
         (A and B) is managed by the cluster. Because of the mandatory chain topology, the
         resource agent feature <literal>AUTOMATED_REGISTER=true</literal> is not possible with
         pure multi-tier replication.
