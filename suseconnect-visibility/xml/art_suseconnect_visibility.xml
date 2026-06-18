@@ -46,6 +46,15 @@
     </meta>
     <revhistory xml:id="rh-article-suseconnect-visibility">
       <revision>
+        <date>2026-06-08</date>
+        <revdescription>
+          <para>
+            Added information about collector configuration and opt-in/opt-out capabilities for optional collectors.
+            Updated configuration format documentation to reflect the transition from line-by-line format to YAML-based configuration.
+          </para>
+        </revdescription>
+      </revision>  
+      <revision>
         <date>2026-06-02</date>
         <revdescription>
           <para>
@@ -61,7 +70,7 @@
           </para>
         </revdescription>
       </revision>
-    <revision>
+      <revision>
         <date>2026-03-25</date>
         <revdescription>
           <para>
@@ -485,6 +494,125 @@
         xlink:href="https://documentation.suse.com/subscription/hypervisor-collector/html/SLE-scc-hypervisor-collector/index.html#scc-hypervisor-collector-data"/>.
       </para>
     </tip>
+
+    <sect2 xml:id="configuring-collectors">
+      <title>Configuring system data collectors</title>
+
+      <para>
+        &suseconnect; collects system data through a configurable collector system.
+        Most collectors are mandatory and cannot be disabled, as they provide essential system information required for proper subscription management and support.
+        However, certain optional collectors can be configured to suit your privacy and performance requirements.
+      </para>
+
+      <sect3 xml:id="mandatory-collectors">
+        <title>Mandatory collectors</title>
+
+        <para>
+          The following collectors are always enabled and cannot be disabled:
+        </para>
+
+        <itemizedlist>
+          <listitem>
+            <para>Host name</para>
+          </listitem>
+          <listitem>
+            <para>CPUs, sockets and total memory</para>
+          </listitem>
+          <listitem>
+            <para>Architecture</para>
+          </listitem>
+          <listitem>
+            <para>UUID</para>
+          </listitem>
+          <listitem>
+            <para>Hypervisor</para>
+          </listitem>
+          <listitem>
+            <para>Container runtime</para>
+          </listitem>
+          <listitem>
+            <para>uname (kernel version and OS details)</para>
+          </listitem>
+          <listitem>
+            <para>Vendor (hardware manufacturer)</para>
+          </listitem>
+          <listitem>
+            <para>Architecture specifics</para>
+          </listitem>
+          <listitem>
+            <para>SAP workload detection</para>
+          </listitem>
+          <listitem>
+            <para>Kubernetes provider detection</para>
+          </listitem>
+          <listitem>
+            <para>Cloud provider</para>
+          </listitem>
+        </itemizedlist>
+      </sect3>
+
+      <sect3 xml:id="optional-collectors">
+        <title>Optional collectors</title>
+
+        <para>
+          The following collectors are enabled by default but can be disabled through configuration:
+        </para>
+
+        <itemizedlist>
+          <listitem>
+            <para><literal>pci_data</literal> — PCI device information</para>
+          </listitem>
+          <listitem>
+            <para><literal>mod_list</literal> — Loaded kernel modules</para>
+          </listitem>
+        </itemizedlist>
+
+        <sect4 xml:id="collector-configuration-file">
+          <title>Collector configuration</title>
+
+          <para>
+            To configure optional collectors, edit the &suseconnect; configuration file at <filename>/etc/SUSEConnect</filename>.
+            Add a <literal>collectors</literal> section with the desired collector configuration:
+          </para>
+
+<screen>
+---
+url: https://scc.suse.com
+language: en
+insecure: false
+auto_agree_with_licenses: false
+enable_system_uptime_tracking: false
+no_zypper_refs: false
+
+collectors:
+  pci_data:
+    state: disabled
+  mod_list:
+    state: disabled
+</screen>
+
+          <para>
+            For each optional collector, set the <literal>state</literal> field to one of the following:
+          </para>
+
+          <itemizedlist>
+            <listitem>
+              <para><literal>enabled</literal> — Enable the collector (default)</para>
+            </listitem>
+            <listitem>
+              <para><literal>disabled</literal> — Disable the collector</para>
+            </listitem>
+          </itemizedlist>
+
+          <note>
+            <para>
+              If a collector is not configured in the file, it will use its default state.
+              When a collector is disabled, &suseconnect; will not collect or relay that data when contacting SCC or &rmt;.
+            </para>
+          </note>
+        </sect4>
+      </sect3>
+    </sect2>
   </sect1>
   <sect1 xml:id="suseconnect-benefits">
     <title>What are the benefits of using the keep-alive timer?</title>
