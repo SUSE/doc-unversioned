@@ -20,7 +20,7 @@
   </info>
   <para>
     The support level of a given &bci; varies per image and per Service Pack:
-    most general-purpose &bcia;s (including Base, Init, Minimal, Micro, Nano
+    most general-purpose BCIs (including Base, Init, Minimal, Micro, Nano
     and BusyBox) on currently shipping Service Packs are classified as
     <literal>l3</literal> (full SUSE support), while a smaller number of newer
     or experimental images are still classified as <literal>techpreview</literal>
@@ -48,7 +48,7 @@
     (a newly published image may still be flagged as techpreview).
   </para>
   <para>
-    Unlike the general-purpose &bcia;s, the Development Stack &bcia;s may not
+    Unlike the general-purpose &bcia;s, the Development Stack BCIs may not
     follow the lifecycle of the &slsa; distribution: they are supported as long
     as the respective language stack receives support. In other words, new
     versions of &bcia;s (indicated by the OCI tags) may be released during the

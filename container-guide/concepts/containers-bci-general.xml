@@ -21,11 +21,11 @@
   <para>
     There are several general-purpose &bcia;s, and each container image comes
     with a minimum set of packages to keep its size small. You can use a
-    general-purpose &bcia; either as a starting point for building custom
-    container images, or as a platform for deploying specific software.
+general-purpose BCI as a starting point for building custom
+container images or as a platform for deploying specific software.
   </para>
   <para>
-    &suse; offers the following general-purpose &bcia;s that are intended as
+    &suse; offers the following general-purpose BCIs that are intended as
     deployment targets or as foundations for creating customized images:
     &bcia;-Base, &bcia;-Init, &bcia;-Minimal, &bcia;-Micro, &bcia;-Nano and
     &bcia;-BusyBox. These images share the common &slsa; base, and none of them
@@ -209,9 +209,9 @@
   <section xml:id="sec-bci-variants-nano">
     <title>&bcia;-Nano: When you need zero glibc dependency</title>
     <para>
-      The &bcia;-Nano image is the most minimal of the general-purpose &bcia;s.
+      The &bcia;-Nano image is the most minimal of the general-purpose BCIs.
       It strips the environment down to the absolute bare essentials: no glibc,
-      no shell, no coreutils and no package manager. The image ships only with
+      no shell, no coreutils, and no package manager. The image ships only with
       the RPM database (so the provenance of every file remains auditable) and
       the &slsa; CA certificate bundle.
     </para>
@@ -258,8 +258,8 @@
       The FIPS variants are configured to run their cryptographic libraries in
       FIPS mode out of the box. They are intended for deployment scenarios that
       mandate FIPS 140-2 or FIPS 140-3 compliance. Validated certified
-      binaries themselves are only provided under an active LTSS subscription;
-      without LTSS, the image still runs in FIPS mode but ships uncertified
+      binaries themselves are only provided under an active LTSS subscription.
+      Without LTSS, the image still runs in FIPS mode but ships uncertified
       builds. See the page of each image on
       <link xlink:href="https://registry.suse.com">&suseregistry;</link> for
       the current support level and certification status.
@@ -270,7 +270,7 @@
     <para>
       For your reference, the list below provides an approximate size of each
       &bcia;. Keep in mind that the provided numbers are rough estimations and
-      change between Service Packs; the values below correspond to the
+      change between Service Packs. The values below correspond to the
       <literal>15.7</literal> tags published on
       <link xlink:href="https://registry.suse.com">&suseregistry;</link>.
     </para>
