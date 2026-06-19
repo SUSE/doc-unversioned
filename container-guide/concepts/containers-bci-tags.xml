@@ -33,4 +33,44 @@
     For example, the tag for the latest published image of &slea; 15 SP7 would
     be <literal>bci/bci-base:15.7</literal>.
   </para>
+  <important>
+    <title>The <literal>latest</literal> tag is migrating to &suselinux; 16</title>
+    <para>
+      The base of the &bcia; family is migrating from &slsa; 15 to
+      &suselinux; 16. The migration is staged image by image, not flipped
+      at once. <literal>bci-nano</literal> is the first general-purpose
+      image to move, and the core-infrastructure images
+      (<literal>bci-base</literal>, <literal>bci-init</literal>,
+      <literal>bci-minimal</literal>, <literal>bci-micro</literal>,
+      <literal>bci-busybox</literal>) will follow later. SUSE will
+      communicate the timing of each flip through the usual channels (the
+      SUSE blog and the
+      <link xlink:href="https://github.com/SUSE/bci/discussions">SUSE/bci
+      discussions board</link>). Until each flip happens, pulling
+      <uri role="web">registry.suse.com/bci/bci-base:latest</uri> still gives
+      you a 15 SP7-based image. Check the live registry page or
+      <command>cat /etc/os-release</command> in the image to confirm the
+      current target of <literal>:latest</literal> for any given image.
+    </para>
+    <para>
+      Regardless of the current target, do not rely on
+      <literal>:latest</literal> for reproducible builds. Always pin to an
+      explicit version tag (for example <literal>15.7</literal> for &slsa;
+      15 SP7, or the relevant <literal>16.x</literal> tag for &suselinux;
+      16) in your <literal>FROM</literal> lines, in your CI pipelines and
+      in any <command>podman pull</command> command, so that a future
+      <literal>:latest</literal> pivot does not silently change the base of
+      your deployment. &slsa; 15 SP7 &bcia;s remain maintained until the
+      end of general support for SP7 (31 July 2031). For SP6 and earlier,
+      refer to <link xlink:href="https://www.suse.com/lifecycle"/>.
+    </para>
+    <para>
+      See
+      <link xlink:href="https://www.suse.com/c/suse-linux-base-container-images-latest-tag-moving-to-sles-16/"/>
+      and
+      <link xlink:href="https://github.com/SUSE/bci/discussions/60"/>
+      for the original announcement and the up-to-date status of the
+      per-image flips.
+    </para>
+  </important>
 </article>

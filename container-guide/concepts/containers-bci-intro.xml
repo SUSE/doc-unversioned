@@ -76,8 +76,10 @@
             vulnerabilities are announced via e-mail, the dedicated
             <link xlink:href="https://www.suse.com/security/cve/">CVE
             pages</link>, and as OVAL and CVRF data. To ensure a secure supply
-            chain, all container images are signed with Notary v1, &podman;'s GPG
-            signatures, and Sigstore Cosign.
+            chain, all container images are signed with Sigstore Cosign and
+            &podman;'s GPG signatures. Notary v1 / Docker Content Trust is no
+            longer used. Its deprecation on <link xlink:href="https://registry.suse.com">&suseregistry;</link>
+            was announced in February 2026.
           </para>
         </listitem>
       </varlistentry>
