@@ -19,22 +19,24 @@
     <title>Application &bci;s</title>
   </info>
   <para>
-    Application &bcia;s are &bcia;-Base container images that include a
+    Applications are built on &bci-product; that include a
     specific server, runtime or developer tool, ready to run without any
     further customization. They are published in the dedicated section of the
-    <link xlink:href="https://registry.suse.com/#apps">&suseregistry;</link>;
-    the list below summarizes the broad categories currently available. The
-    set of published applications evolves continuously, so consult the
+    <link xlink:href="https://registry.suse.com/#apps">&suseregistry;</link>.
+    The list below summarizes the broad categories currently available. 
+    <note><title>Image availability and support</title>
+    <para>The set of published applications evolves continuously, so consult the
     registry for the authoritative, up-to-date inventory and the support
     level of each image.
   </para>
+  </note>
   <variablelist>
     <varlistentry>
       <term>Databases</term>
       <listitem>
         <para>
           Relational and document databases shipped as application images, for
-          example PostgreSQL (including the
+          example, PostgreSQL (including the
           <literal>postgresql-contrib</literal> variants), MariaDB Server and
           Client, and Valkey/Redis-compatible key-value stores.
         </para>
@@ -45,7 +47,7 @@
       <listitem>
         <para>
           Ready-to-run network services such as the ISC BIND 9 DNS server,
-          the ISC KEA DHCP server, and Samba Server / Client / Toolbox.
+          the ISC KEA DHCP server and the Samba Server/Client/Toolbox.
         </para>
       </listitem>
     </varlistentry>
@@ -76,7 +78,7 @@
     The above is a non-exhaustive snapshot of the application image catalog.
     The <link xlink:href="https://registry.suse.com/#apps">Application Images
     section</link> of the &suseregistry; is the source of truth for which
-    images are currently published, which tags they expose and their support
+    images are currently published, which tags they expose, and their support
     level. New application images are also announced on the
     <link xlink:href="https://github.com/SUSE/bci/discussions">&bci; project
     discussions</link>.

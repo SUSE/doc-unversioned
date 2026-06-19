@@ -76,8 +76,8 @@
           A standard Ruby development environment featuring
           <command>ruby</command>, <command>gem</command> and
           <command>bundler</command> as well as <command>git</command> and
-          <command>curl</command>. The Ruby version is specified by the tag;
-          refer to the
+          <command>curl</command>. The Ruby version is specified by the tag.
+          Refer to the
           <link xlink:href="https://registry.suse.com">&suseregistry;</link>
           for the currently published versions.
         </para>
@@ -107,10 +107,11 @@
       <term>gcc</term>
       <listitem>
         <para>
-          Ships with the GNU Compiler Collection (C, C++, Fortran) and the
-          associated build tooling. Intended as a build-time image for
-          compiling C/C++ sources; pair with a smaller deployment image such
-          as &bcia;-Micro or &bcia;-Nano in a multi-stage build.
+          Ships with the GNU Compiler Collection (C, C++, Fortran) and
+          associated build tooling. This image is intended as a build-time 
+          environment for compiling C/C++ sources. Pair it with a smaller 
+          deployment image, such as &bcia;-Micro or &bcia;-Nano, in a 
+          multi-stage build.
         </para>
       </listitem>
     </varlistentry>
@@ -155,7 +156,7 @@
     <para>
       The Development Stack &bcia;s ship multiple concurrent versions of each
       language runtime. The set of available tags evolves continuously: new
-      runtime versions are published as they reach stability and older ones
+      runtime versions are published as they reach stability, and older ones
       reach end-of-support on their upstream schedule. Always consult
       <link xlink:href="https://registry.suse.com">&suseregistry;</link> for
       the currently published tags and their support level, and pin to an
