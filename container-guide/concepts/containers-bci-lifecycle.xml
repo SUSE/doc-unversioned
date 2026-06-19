@@ -19,31 +19,41 @@
     <title>Important note about the support status of &bci;s</title>
   </info>
   <para>
-    All container images, except for base, are currently classified as tech
-    preview, and &suse; does not provide support for them. This
-    information is visible on the web on
-    <link xlink:href="https://registry.suse.com">registry.suse.com</link>. It
-    is also indicated via the <literal>com.suse.supportlevel</literal> label
-    whether a container image still has the tech preview status. You can use
-    the skopeo and jq utilities to check the status of the desired &bcia; as
-    follows:
+    The support level of a given &bci; varies per image and per Service Pack:
+    most general-purpose BCIs (including Base, Init, Minimal, Micro, Nano
+    and BusyBox) on currently shipping Service Packs are classified as
+    <literal>l3</literal> (full SUSE support), while a smaller number of newer
+    or experimental images are still classified as <literal>techpreview</literal>
+    or <literal>beta</literal>. The authoritative, live status for every image
+    is published on
+    <link xlink:href="https://registry.suse.com">registry.suse.com</link> and
+    is also exposed inside each image as the
+    <literal>com.suse.supportlevel</literal> label (and, for namespaced
+    metadata, as <literal>com.suse.bci.&lt;image&gt;.supportlevel</literal>).
+    You can use the skopeo and jq utilities to check the status of the desired
+    &bcia; as follows:
   </para>
-<screen>&prompt.user;skopeo inspect docker://registry.suse.com/bci/bci-micro:15.4 | jq '.Labels["com.suse.supportlevel"]'
-    "techpreview"
+<screen>&prompt.user;skopeo inspect docker://registry.suse.com/bci/bci-micro:15.7 | jq '.Labels["com.suse.supportlevel"]'
+    "l3"
 
-    &prompt.user;skopeo inspect docker://registry.suse.com/bci/bci-base:15.4 | jq '.Labels["com.suse.supportlevel"]'
+    &prompt.user;skopeo inspect docker://registry.suse.com/bci/bci-base:15.7 | jq '.Labels["com.suse.supportlevel"]'
     "l3"</screen>
   <para>
-    In the example above, the <literal>com.suse.supportlevel</literal> label is
-    set to <literal>techpreview</literal> in the <literal>bci-micro</literal>
-    container image, indicating that the image still has the tech preview
-    status. The <literal>bci-base</literal> container image, on the other hand,
-    has full L3 support. Unlike the general purpose &bcia;s, the
-    Development Stack &bcia;s may not follow the lifecycle of the &slsa;
-    distribution: they are supported as long as the respective language stack
-    receives support. In other words, new versions of &bcia;s (indicated by the
-    OCI tags) may be released during the lifecycle of a &slsa; Service Pack,
-    while older versions may become unsupported. Refer to
+    In the example above, both <literal>bci-micro:15.7</literal> and
+    <literal>bci-base:15.7</literal> report a <literal>com.suse.supportlevel</literal>
+    of <literal>l3</literal>, meaning they are fully supported by &suse; for
+    the lifetime of &slsa; 15 SP7. Always check the label of the exact tag you
+    consume, since the value may differ between Service Packs (an older
+    tag may have already reached end-of-support) and between images
+    (a newly published image may still be flagged as techpreview).
+  </para>
+  <para>
+    Unlike the general-purpose &bcia;s, the Development Stack BCIs may not
+    follow the lifecycle of the &slsa; distribution: they are supported as long
+    as the respective language stack receives support. In other words, new
+    versions of &bcia;s (indicated by the OCI tags) may be released during the
+    lifecycle of a &slsa; Service Pack, while older versions may become
+    unsupported. Refer to
     <link xlink:href="https://suse.com/lifecycle"/> to find out whether the
     container in question is still under support.
   </para>

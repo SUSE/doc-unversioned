@@ -19,232 +19,122 @@
     <title>General-purpose &bci;s</title>
   </info>
   <para>
-    There are four general-purpose &bcia;s, and each container image comes with
-    a minimum set of packages to keep its size small. You can use a
-    general-purpose &bcia; either as a starting point for building custom
-    container images, or as a platform for deploying specific software.
+    There are several general-purpose &bcia;s, and each container image comes
+    with a minimum set of packages to keep its size small. You can use a
+general-purpose BCI as a starting point for building custom
+container images or as a platform for deploying specific software.
   </para>
   <para>
-    &suse; offers several general-purpose &bcia;s that are intended as
+    &suse; offers the following general-purpose BCIs that are intended as
     deployment targets or as foundations for creating customized images:
-    &bcia;-Base, &bcia;-Minimal, &bcia;-Micro and &bcia;-BusyBox. These images
-    share the common &slsa; base, and none of them ship with a specific
-    language or an application stack. All images feature the RPM database (even
-    if the specific image does not include the RPM package manager) that can be
-    used to verify the provenance of every file in the image. Each image
-    includes the &slsa; certificate bundle, which allows the deployed
-    applications to use the system's certificates to verify TLS connections.
+    &bcia;-Base, &bcia;-Init, &bcia;-Minimal, &bcia;-Micro, &bcia;-Nano and
+    &bcia;-BusyBox. These images share the common &slsa; base, and none of them
+    ship with a specific language or an application stack. All images feature
+    the RPM database (even if the specific image does not include the RPM
+    package manager) that can be used to verify the provenance of every file
+    in the image. Each image includes the &slsa; certificate bundle, which
+    allows the deployed applications to use the system's certificates to
+    verify TLS connections. FIPS-validated variants of &bcia;-Base and
+    &bcia;-Micro are also published for deployments that require FIPS 140-3
+    cryptography (see <xref linkend="sec-bci-variants-fips"/>).
   </para>
   <para>
-    The table below provides a quick overview of the differences between
-    &bcia;-Base, &bcia;-Minimal, &bcia;-Micro and &bcia;-BusyBox.
+    The table below provides a quick overview of the differences between the
+    general-purpose &bcia;s.
   </para>
   <table frame="all" rowsep="1" colsep="1">
     <title>Support matrix</title>
-    <tgroup cols="5">
+    <tgroup cols="7">
       <colspec colname="col_1" colwidth="20*"/>
-      <colspec colname="col_2" colwidth="20*"/>
-      <colspec colname="col_3" colwidth="20*"/>
-      <colspec colname="col_4" colwidth="20*"/>
-      <colspec colname="col_5" colwidth="20*"/>
+      <colspec colname="col_2" colwidth="13*"/>
+      <colspec colname="col_3" colwidth="13*"/>
+      <colspec colname="col_4" colwidth="13*"/>
+      <colspec colname="col_5" colwidth="13*"/>
+      <colspec colname="col_6" colwidth="13*"/>
+      <colspec colname="col_7" colwidth="15*"/>
       <thead>
         <row>
           <entry align="center" valign="top">Features</entry>
           <entry align="center" valign="top">&bcia;-Base</entry>
+          <entry align="center" valign="top">&bcia;-Init</entry>
           <entry align="center" valign="top">&bcia;-Minimal</entry>
           <entry align="center" valign="top">&bcia;-Micro</entry>
+          <entry align="center" valign="top">&bcia;-Nano</entry>
           <entry align="center" valign="top">&bcia;-BusyBox</entry>
         </row>
       </thead>
       <tbody>
         <row>
-          <entry align="center" valign="top">
-            <para>
-              glibc
-            </para>
-          </entry>
-          <entry align="center" valign="top">
-            <para>
-              ✓
-            </para>
-          </entry>
-          <entry align="center" valign="top">
-            <para>
-              ✓
-            </para>
-          </entry>
-          <entry align="center" valign="top">
-            <para>
-              ✓
-            </para>
-          </entry>
-          <entry align="center" valign="top">
-            <para>
-              ✓
-            </para>
-          </entry>
+          <entry align="center" valign="top"><para>glibc</para></entry>
+          <entry align="center" valign="top"><para>✓</para></entry>
+          <entry align="center" valign="top"><para>✓</para></entry>
+          <entry align="center" valign="top"><para>✓</para></entry>
+          <entry align="center" valign="top"><para>✓</para></entry>
+          <entry align="center" valign="top"><para>╳</para></entry>
+          <entry align="center" valign="top"><para>✓</para></entry>
         </row>
         <row>
-          <entry align="center" valign="top">
-            <para>
-              CA certificates
-            </para>
-          </entry>
-          <entry align="center" valign="top">
-            <para>
-              ✓
-            </para>
-          </entry>
-          <entry align="center" valign="top">
-            <para>
-              ✓
-            </para>
-          </entry>
-          <entry align="center" valign="top">
-            <para>
-              ✓
-            </para>
-          </entry>
-          <entry align="center" valign="top">
-            <para>
-              ✓
-            </para>
-          </entry>
+          <entry align="center" valign="top"><para>CA certificates</para></entry>
+          <entry align="center" valign="top"><para>✓</para></entry>
+          <entry align="center" valign="top"><para>✓</para></entry>
+          <entry align="center" valign="top"><para>✓</para></entry>
+          <entry align="center" valign="top"><para>✓</para></entry>
+          <entry align="center" valign="top"><para>✓</para></entry>
+          <entry align="center" valign="top"><para>✓</para></entry>
         </row>
         <row>
-          <entry align="center" valign="top">
-            <para>
-              rpm database
-            </para>
-          </entry>
-          <entry align="center" valign="top">
-            <para>
-              ✓
-            </para>
-          </entry>
-          <entry align="center" valign="top">
-            <para>
-              ✓
-            </para>
-          </entry>
-          <entry align="center" valign="top">
-            <para>
-              ✓
-            </para>
-          </entry>
-          <entry align="center" valign="top">
-            <para>
-              ✓
-            </para>
-          </entry>
+          <entry align="center" valign="top"><para>rpm database</para></entry>
+          <entry align="center" valign="top"><para>✓</para></entry>
+          <entry align="center" valign="top"><para>✓</para></entry>
+          <entry align="center" valign="top"><para>✓</para></entry>
+          <entry align="center" valign="top"><para>✓</para></entry>
+          <entry align="center" valign="top"><para>✓</para></entry>
+          <entry align="center" valign="top"><para>✓</para></entry>
         </row>
         <row>
-          <entry align="center" valign="top">
-            <para>
-              coreutils
-            </para>
-          </entry>
-          <entry align="center" valign="top">
-            <para>
-              ✓
-            </para>
-          </entry>
-          <entry align="center" valign="top">
-            <para>
-              ✓
-            </para>
-          </entry>
-          <entry align="center" valign="top">
-            <para>
-              ✓
-            </para>
-          </entry>
-          <entry align="center" valign="top">
-            <para>
-              busybox
-            </para>
-          </entry>
+          <entry align="center" valign="top"><para>coreutils</para></entry>
+          <entry align="center" valign="top"><para>✓</para></entry>
+          <entry align="center" valign="top"><para>✓</para></entry>
+          <entry align="center" valign="top"><para>✓</para></entry>
+          <entry align="center" valign="top"><para>✓</para></entry>
+          <entry align="center" valign="top"><para>╳</para></entry>
+          <entry align="center" valign="top"><para>busybox</para></entry>
         </row>
         <row>
-          <entry align="center" valign="top">
-            <para>
-              bash
-            </para>
-          </entry>
-          <entry align="center" valign="top">
-            <para>
-              ✓
-            </para>
-          </entry>
-          <entry align="center" valign="top">
-            <para>
-              ✓
-            </para>
-          </entry>
-          <entry align="center" valign="top">
-            <para>
-              ✓
-            </para>
-          </entry>
-          <entry align="center" valign="top">
-            <para>
-              ╳
-            </para>
-          </entry>
+          <entry align="center" valign="top"><para>bash</para></entry>
+          <entry align="center" valign="top"><para>✓</para></entry>
+          <entry align="center" valign="top"><para>✓</para></entry>
+          <entry align="center" valign="top"><para>✓</para></entry>
+          <entry align="center" valign="top"><para>✓</para></entry>
+          <entry align="center" valign="top"><para>╳</para></entry>
+          <entry align="center" valign="top"><para>╳</para></entry>
         </row>
         <row>
-          <entry align="center" valign="top">
-            <para>
-              rpm (binary)
-            </para>
-          </entry>
-          <entry align="center" valign="top">
-            <para>
-              ✓
-            </para>
-          </entry>
-          <entry align="center" valign="top">
-            <para>
-              ✓
-            </para>
-          </entry>
-          <entry align="center" valign="top">
-            <para>
-              ╳
-            </para>
-          </entry>
-          <entry align="center" valign="top">
-            <para>
-              ╳
-            </para>
-          </entry>
+          <entry align="center" valign="top"><para>rpm (binary)</para></entry>
+          <entry align="center" valign="top"><para>✓</para></entry>
+          <entry align="center" valign="top"><para>✓</para></entry>
+          <entry align="center" valign="top"><para>✓</para></entry>
+          <entry align="center" valign="top"><para>╳</para></entry>
+          <entry align="center" valign="top"><para>╳</para></entry>
+          <entry align="center" valign="top"><para>╳</para></entry>
         </row>
         <row>
-          <entry align="center" valign="top">
-            <para>
-              zypper
-            </para>
-          </entry>
-          <entry align="center" valign="top">
-            <para>
-              ✓
-            </para>
-          </entry>
-          <entry align="center" valign="top">
-            <para>
-              ╳
-            </para>
-          </entry>
-          <entry align="center" valign="top">
-            <para>
-              ╳
-            </para>
-          </entry>
-          <entry align="center" valign="top">
-            <para>
-              ╳
-            </para>
-          </entry>
+          <entry align="center" valign="top"><para>zypper</para></entry>
+          <entry align="center" valign="top"><para>✓</para></entry>
+          <entry align="center" valign="top"><para>✓</para></entry>
+          <entry align="center" valign="top"><para>╳</para></entry>
+          <entry align="center" valign="top"><para>╳</para></entry>
+          <entry align="center" valign="top"><para>╳</para></entry>
+          <entry align="center" valign="top"><para>╳</para></entry>
+        </row>
+        <row>
+          <entry align="center" valign="top"><para>systemd</para></entry>
+          <entry align="center" valign="top"><para>╳</para></entry>
+          <entry align="center" valign="top"><para>✓</para></entry>
+          <entry align="center" valign="top"><para>╳</para></entry>
+          <entry align="center" valign="top"><para>╳</para></entry>
+          <entry align="center" valign="top"><para>╳</para></entry>
+          <entry align="center" valign="top"><para>╳</para></entry>
         </row>
       </tbody>
     </tgroup>
@@ -316,31 +206,103 @@
       may require modification to work with BusyBox.
     </para>
   </section>
-  <section xml:id="sec-bci-variants-size">
-    <title>Approximate sizes</title>
+  <section xml:id="sec-bci-variants-nano">
+    <title>&bcia;-Nano: When you need zero glibc dependency</title>
     <para>
-      For your reference, the list below provides an approximate size of each
-      &bcia;. Keep in mind that the provided numbers are rough estimations.
+      The &bcia;-Nano image is the most minimal of the general-purpose BCIs.
+      It strips the environment down to the absolute bare essentials: no glibc,
+      no shell, no coreutils, and no package manager. The image ships only with
+      the RPM database (so the provenance of every file remains auditable) and
+      the &slsa; CA certificate bundle.
+    </para>
+    <para>
+      &bcia;-Nano is intended for deploying statically compiled binaries that
+      bring their own runtime and do not require the GNU C Library, such as Go
+      or Rust binaries built with a fully static toolchain. Because there is no
+      shell, no package manager and no diagnostic tools inside the image, all
+      debugging must be performed from outside the running container (for
+      example, with <command>podman exec</command> against a sibling debug
+      container or with kubectl ephemeral debug containers).
+    </para>
+    <note>
+      <title>Recently introduced</title>
+      <para>
+        &bcia;-Nano was introduced in May 2026 and is currently published for
+        &slsa; 15 SP7 and &suselinux; 16.0. See
+        <link xlink:href="https://github.com/SUSE/bci/discussions/92"/> for the
+        original announcement.
+      </para>
+    </note>
+  </section>
+  <section xml:id="sec-bci-variants-fips">
+    <title>FIPS variants: When you need FIPS 140-3 cryptography</title>
+    <para>
+      For deployments that require validated cryptography under FIPS 140-2 or
+      FIPS 140-3, &suse; publishes FIPS-enabled variants of the
+      <literal>&bcia;-Base</literal> and <literal>&bcia;-Micro</literal>
+      images:
     </para>
     <itemizedlist>
       <listitem>
         <para>
-          <literal>&bcia;-Base</literal> ~94 MB
+          <literal>registry.suse.com/bci/bci-base-fips</literal>
         </para>
       </listitem>
       <listitem>
         <para>
-          <literal>&bcia;-Minimal</literal> ~42 MB
+          <literal>registry.suse.com/bci/bci-micro-fips</literal>
+        </para>
+      </listitem>
+    </itemizedlist>
+    <para>
+      The FIPS variants are configured to run their cryptographic libraries in
+      FIPS mode out of the box. They are intended for deployment scenarios that
+      mandate FIPS 140-2 or FIPS 140-3 compliance. Validated certified
+      binaries themselves are only provided under an active LTSS subscription.
+      Without LTSS, the image still runs in FIPS mode but ships uncertified
+      builds. See the page of each image on
+      <link xlink:href="https://registry.suse.com">&suseregistry;</link> for
+      the current support level and certification status.
+    </para>
+  </section>
+  <section xml:id="sec-bci-variants-size">
+    <title>Approximate sizes</title>
+    <para>
+      For your reference, the list below provides an approximate size of each
+      &bcia;. Keep in mind that the provided numbers are rough estimations and
+      change between Service Packs. The values below correspond to the
+      <literal>15.7</literal> tags published on
+      <link xlink:href="https://registry.suse.com">&suseregistry;</link>.
+    </para>
+    <itemizedlist>
+      <listitem>
+        <para>
+          <literal>&bcia;-Base</literal> ~135 MB
         </para>
       </listitem>
       <listitem>
         <para>
-          <literal>&bcia;-Micro</literal> ~26 MB
+          <literal>&bcia;-Init</literal> ~167 MB
         </para>
       </listitem>
       <listitem>
         <para>
-          <literal>&bcia;-BusyBox</literal> ~14 MB
+          <literal>&bcia;-Minimal</literal> ~48 MB
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <literal>&bcia;-Micro</literal> ~28 MB
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <literal>&bcia;-BusyBox</literal> ~12 MB
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          <literal>&bcia;-Nano</literal> ~5 MB
         </para>
       </listitem>
     </itemizedlist>
