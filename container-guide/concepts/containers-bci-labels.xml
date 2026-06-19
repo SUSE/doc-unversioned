@@ -185,7 +185,7 @@
     </para>
     <para>
       Use &podman; to retrieve labels of a local image. The following command
-      lists all labels and only the labels information of the
+      lists all labels and only the information about the labels of the
       <package>bci-base:15.7</package> image:
     </para>
 <screen>podman inspect -f {{.Labels | json}} registry.suse.com/bci/bci-base:15.7</screen>
