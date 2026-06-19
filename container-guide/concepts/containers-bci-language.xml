@@ -73,8 +73,13 @@
       <term>ruby</term>
       <listitem>
         <para>
-          A standard development environment based on Ruby 2.5, featuring ruby,
-          gem and bundler as well as git and curl.
+          A standard Ruby development environment featuring
+          <command>ruby</command>, <command>gem</command> and
+          <command>bundler</command> as well as <command>git</command> and
+          <command>curl</command>. The Ruby version is specified by the tag.
+          Refer to the
+          <link xlink:href="https://registry.suse.com">&suseregistry;</link>
+          for the currently published versions.
         </para>
       </listitem>
     </varlistentry>
@@ -82,7 +87,8 @@
       <term>rust</term>
       <listitem>
         <para>
-          Ships with the Rust compiler and the Cargo package manager.
+          Ships with the Rust compiler and the Cargo package manager. The Rust
+          version is specified by the tag.
         </para>
       </listitem>
     </varlistentry>
@@ -90,7 +96,22 @@
       <term>golang</term>
       <listitem>
         <para>
-          Ships with the go compiler version specified in the tag.
+          Ships with the <command>go</command> compiler version specified in
+          the tag. A variant linked against OpenSSL
+          (<literal>golang:&lt;version&gt;-openssl</literal>) is also
+          published for workloads that require the system FIPS crypto.
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>gcc</term>
+      <listitem>
+        <para>
+          Ships with the GNU Compiler Collection (C, C++, Fortran) and
+          associated build tooling. This image is intended as a build-time 
+          environment for compiling C/C++ sources. Pair it with a smaller 
+          deployment image, such as &bcia;-Micro or &bcia;-Nano, in a 
+          multi-stage build.
         </para>
       </listitem>
     </varlistentry>
@@ -130,4 +151,17 @@
       </listitem>
     </varlistentry>
   </variablelist>
+  <note>
+    <title>Available versions</title>
+    <para>
+      The Development Stack &bcia;s ship multiple concurrent versions of each
+      language runtime. The set of available tags evolves continuously: new
+      runtime versions are published as they reach stability, and older ones
+      reach end-of-support on their upstream schedule. Always consult
+      <link xlink:href="https://registry.suse.com">&suseregistry;</link> for
+      the currently published tags and their support level, and pin to an
+      explicit version tag in production rather than relying on a rolling tag
+      such as <literal>latest</literal>.
+    </para>
+  </note>
 </article>
