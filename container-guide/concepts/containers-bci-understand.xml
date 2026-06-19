@@ -207,8 +207,8 @@
       registry.suse.com/bci/bci-base:<replaceable>OS_VERSION</replaceable>
       zypper search <replaceable>PACKAGE_NAME</replaceable></command> (replace
       <replaceable>OS_VERSION</replaceable> with the appropriate service
-      version number, for example: <literal>15.3</literal> or
-      <literal>15.4</literal>).
+      version number, for example: <literal>15.6</literal> or
+      <literal>15.7</literal>).
     </para>
   </section>
   <section xml:id="sec-bci-gpg-keys">

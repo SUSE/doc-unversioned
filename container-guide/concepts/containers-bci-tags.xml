@@ -30,7 +30,7 @@
   <para>
     The conventional tag format is <literal>repository name</literal>:
     <literal>image version specification</literal> (usually version number).
-    For example, the tag for the latest published image of &slea; 15 SP2 would
-    be <literal>suse/sle15:15.2</literal>.
+    For example, the tag for the latest published image of &slea; 15 SP7 would
+    be <literal>bci/bci-base:15.7</literal>.
   </para>
 </article>
