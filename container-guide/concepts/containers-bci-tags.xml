@@ -38,7 +38,7 @@
     <para>
       The base of the &bcia; family is migrating from &slsa; 15 to
       &suselinux; 16. The migration is staged image by image, not flipped
-      at once: <literal>bci-nano</literal> is the first general-purpose
+      at once. <literal>bci-nano</literal> is the first general-purpose
       image to move, and the core-infrastructure images
       (<literal>bci-base</literal>, <literal>bci-init</literal>,
       <literal>bci-minimal</literal>, <literal>bci-micro</literal>,
@@ -46,8 +46,8 @@
       communicate the timing of each flip through the usual channels (the
       SUSE blog and the
       <link xlink:href="https://github.com/SUSE/bci/discussions">SUSE/bci
-      discussions board</link>); until each flip happens, pulling
-      <literal>registry.suse.com/bci/bci-base:latest</literal> still gives
+      discussions board</link>). Until each flip happens, pulling
+      <uri role="web">registry.suse.com/bci/bci-base:latest</uri> still gives
       you a 15 SP7-based image. Check the live registry page or
       <command>cat /etc/os-release</command> in the image to confirm the
       current target of <literal>:latest</literal> for any given image.
@@ -58,7 +58,7 @@
       explicit version tag (for example <literal>15.7</literal> for &slsa;
       15 SP7, or the relevant <literal>16.x</literal> tag for &suselinux;
       16) in your <literal>FROM</literal> lines, in your CI pipelines and
-      in any <literal>podman pull</literal> command, so that a future
+      in any <command>podman pull</command> command, so that a future
       <literal>:latest</literal> pivot does not silently change the base of
       your deployment. &slsa; 15 SP7 &bcia;s remain maintained until the
       end of general support for SP7 (31 July 2031). For SP6 and earlier,
