@@ -23,12 +23,15 @@
     specific server, runtime or developer tool, ready to run without any
     further customization. They are published in the dedicated section of the
     <link xlink:href="https://registry.suse.com/#apps">&suseregistry;</link>.
-    The list below summarizes the broad categories currently available. 
-    <note><title>Image availability and support</title>
-    <para>The set of published applications evolves continuously, so consult the
-    registry for the authoritative, up-to-date inventory and the support
-    level of each image.
+    The list below summarizes the broad categories currently available.
   </para>
+  <note>
+    <title>Image availability and support</title>
+    <para>
+      The set of published applications evolves continuously, so consult the
+      registry for the authoritative, up-to-date inventory and the support level
+      of each image.
+    </para>
   </note>
   <variablelist>
     <varlistentry>
