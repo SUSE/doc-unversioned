@@ -653,6 +653,67 @@ collectors:
       </listitem>
     </itemizedlist>
   </sect1>
+  <sect1 xml:id="suseconnect-mcp-server">
+    <title>Using the MCP server</title>
+
+    <para>
+      The MCP server of &suseconnect; is available for SLES starting with version 16. 
+      It can be used as <literal>stdio</literal> by pointing to the suseconnect-mcp executable. 
+      In the SLES agentic framework, the system's MCP servers run behind a proxy. 
+      For more information, refer to 
+      <link xlink:href="https://www.suse.com/c/suse-linux-enterprise-server-16-agentic-ai/"/>
+    </para>
+      <sect2 xml:id="installing-mcp-server">
+      <title>Installing the MCP server</title>
+
+      <para>
+        Install MCP server of &suseconnect; using zypper
+      </para>
+<screen>
+zypper in mcp-server-suseconnect
+</screen>
+    </sect2>
+    <sect2 xml:id="configuring-mcp-server">
+      <title>Configuring the MCP server</title>
+
+      <para>
+	Add the MCP server to config in <filename>~/.gemini/settings.json</filename> or <filename>~/.mcp.json</filename>:
+      </para>
+<screen>
+{
+    "mcpServers": {
+     "suseconnect-mcp-stdio": {
+	"command": "/usr/bin/suseconnect-mcp",
+        "args": []
+    }
+  }
+}
+</screen>
+    </sect2>
+    <sect2 xml:id="mcp-tools">
+      <title>Available tools</title>
+      <itemizedlist>
+          <listitem>
+            <para><literal>ActivateProduct</literal> — Activates an additional extension product or module</para>
+          </listitem>
+          <listitem>
+            <para><literal>DeactivateProduct</literal> — Deactivates an extension product or module</para>
+          </listitem>
+          <listitem>
+            <para><literal>DeregisterSystem</literal> — Removes the system's registration and disables access to online repositories</para>
+          </listitem>
+          <listitem>
+            <para><literal>ListExtensions</literal> — Lists available extensions or products</para>
+          </listitem>
+          <listitem>
+            <para><literal>RegisterSystem</literal> — Enables access to online repositories and additional extensions and modules</para>
+          </listitem>
+          <listitem>
+            <para><literal>RegistrationStatus</literal> — Displays the registration status and activated/non-activated installed products</para>
+          </listitem>
+      </itemizedlist>
+    </sect2>
+  </sect1>
   <sect1 xml:id="suseconnect-visibility-related-topics">
     <title>Related topics</title>
 
