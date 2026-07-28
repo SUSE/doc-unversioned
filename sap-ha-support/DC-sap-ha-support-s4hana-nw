@@ -1,9 +1,7 @@
-MAIN="art-sap-ha-support.xml"
-ROOTID="article-sap-ha-support"
+MAIN="art-sap-ha-support-s4hana-nw.xml"
+ROOTID="sap-ha-support-s4hana-nw"
 
-PROFCONDITION="suse-product"
-#PROFCONDITION="suse-product;beta"
-#PROFCONDITION="community-project"
+PROFCONDITION="s4hana-nw"
 
 DOCBOOK5_RNG_URI="urn:x-suse:rng:v2:geekodoc-flat"
 
