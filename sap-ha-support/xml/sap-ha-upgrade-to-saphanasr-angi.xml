@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section
+[
+  <!ENTITY % entities SYSTEM "generic-entities.ent">
+    %entities;
+]>
+
+<section xml:id="sap-ha-upgrade-to-saphanasr-angi" xml:lang="en"
+  xmlns="http://docbook.org/ns/docbook" version="5.2"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Upgrading to SAPHanaSR-angi</title>
+
+  <info>
+    <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
+    <dm:bugtracker></dm:bugtracker>
+    <dm:translation>no</dm:translation>
+    </dm:docmanager>
+  </info>
+
+  <para>
+    Existing &hana; &ha; clusters can be upgraded from the legacy
+    <systemitem>SAPHanaSR</systemitem> or <systemitem>SAPHanaSR-ScaleOut</systemitem>
+    resource agents to <systemitem>SAPHanaSR-angi</systemitem> without requiring &hana; downtime.
+    The in-place upgrade replaces the legacy resource agents and provider scripts with the new
+    <systemitem>SAPHanaSR-angi</systemitem> components while preserving the existing cluster and
+    &hanasr; configuration, minimizing service disruption and avoiding a full cluster rebuild.
+  </para>
+  <para>
+    The environment must meet the documented prerequisites and the upgrade must be carefully
+    planned. &suse; recommends the following approach:
+  </para>
+  <orderedlist>
+    <listitem>
+      <para>
+        Validate the cluster configuration.
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+        Back up the existing configuration.
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+        Test the upgrade procedure in a non-production environment.
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+        Use the upgrade guidance and automation scripts to generate a cluster-specific runbook
+        before performing the production upgrade.
+      </para>
+    </listitem>
+  </orderedlist>
+  <para>
+    For more information, see <link xlink:href="https://www.suse.com/c/how-to-upgrade-to-saphanasr-angi/"/>.
+  </para>
+</section>
