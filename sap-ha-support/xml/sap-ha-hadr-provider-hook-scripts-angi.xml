@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section
+[
+  <!ENTITY % entities SYSTEM "generic-entities.ent">
+    %entities;
+]>
+
+<section xml:id="sap-ha-hadr-provider-hook-scripts-angi" xml:lang="en"
+  xmlns="http://docbook.org/ns/docbook" version="5.2"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>HANA database HADR provider hook scripts</title>
+
+  <info>
+    <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
+    <dm:bugtracker></dm:bugtracker>
+    <dm:translation>no</dm:translation>
+    </dm:docmanager>
+  </info>
+
+  <para>
+    &suse; provides several hook scripts to enhance the integration between &hana; and the
+    &sleha; cluster. This section describes the HADR provider hook scripts for the
+    <systemitem>SAPHanaSR-angi</systemitem> resource agent. The &suse; best practice configuration
+    guides explain how to use and configure these hooks.
+  </para>
+  <table xml:id="table-sap-ha-hook-scripts-angi">
+    <title>HADR provider hook scripts</title>
+    <tgroup cols="2">
+    <colspec colwidth='2*'/>
+    <colspec colwidth='8*'/>
+      <thead>
+      <row>
+        <entry>Script</entry>
+        <entry>Usage</entry>
+      </row>
+      </thead>
+      <tbody>
+      <row>
+        <entry><para>susHanaSR.py</para></entry>
+        <entry>Mandatory for data integrity in case of cluster sr_takeover</entry>
+      </row>
+      <row>
+        <entry>susTkOver.py</entry>
+        <entry>Protects from data inconsistency caused by manual sr_takeover</entry>
+      </row>
+      <row>
+        <entry>susChkSrv.py</entry>
+        <entry>Avoids downtime caused by local indexserver restart</entry>
+      </row>
+      <row>
+        <entry>susCostOpt.py</entry>
+        <entry>Handles secondary site in case of cluster sr_takeover</entry>
+      </row>
+      </tbody>
+    </tgroup>
+  </table>
+  <table xml:id="table-sap-ha-solutions-sap-hana-hook-scripts-angi">
+    <title>Supported scenarios for HADR provider hook scripts</title>
+    <tgroup cols="4">
+      <thead>
+      <row>
+        <entry>HADR provider hook script</entry>
+        <entry>Scale-up cost optimized</entry>
+        <entry>Scale-up performance optimized</entry>
+        <entry>Scale-out performance optimized</entry>
+      </row>
+      </thead>
+      <tbody>
+      <row>
+        <entry>susHanaSR.py</entry>
+        <entry>Mandatory</entry>
+        <entry>Mandatory</entry>
+        <entry>Mandatory</entry>
+      </row>
+      <row>
+        <entry>susTkOver.py</entry>
+        <entry>Supported</entry>
+        <entry>Supported</entry>
+        <entry>Supported</entry>
+      </row>
+      <row>
+        <entry>susChkSrv.py</entry>
+        <entry>Non-supported</entry>
+        <entry>Supported</entry>
+        <entry>Supported</entry>
+      </row>
+      <row>
+        <entry>susCostOpt.py</entry>
+        <entry>Mandatory</entry>
+        <entry>Not Applicable</entry>
+        <entry>Not Applicable</entry>
+      </row>
+      </tbody>
+    </tgroup>
+  </table>
+</section>
