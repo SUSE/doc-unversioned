@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section
+[
+  <!ENTITY % entities SYSTEM "generic-entities.ent">
+    %entities;
+]>
+
+<section xml:id="sap-ha-configuration-guides" xml:lang="en"
+ xmlns="http://docbook.org/ns/docbook" version="5.2"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <title>Documentation and configuration guides</title>
+
+ <info>
+  <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
+   <dm:bugtracker></dm:bugtracker>
+   <dm:translation>no</dm:translation>
+  </dm:docmanager>
+ </info>
+
+  <para>
+    Refer to the official Web sites for up-to-date documentation and configuration guides:
+  </para>
+  <variablelist>
+    <varlistentry>
+      <term>&suse; Best Practices</term>
+      <listitem>
+        <itemizedlist>
+          <listitem condition="saphana-angi;s4hana-nw">
+            <para>
+              &suse; Best Practices: &sap; applications on &suselinux; 16:
+              <link xlink:href="https://documentation.suse.com/sbp/sap-16/"/>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              &suse; Best Practices: &sap; applications on &sle; 15:
+              <link xlink:href="https://documentation.suse.com/sbp/sap-15/"/>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </listitem>
+    </varlistentry>
+    <varlistentry condition="saphana-angi">
+      <term>SAPHanaSR-angi</term>
+      <listitem>
+        <itemizedlist>
+          <listitem>
+            <para>
+              What is <systemitem>SAPHanaSR-angi</systemitem>?: <link xlink:href="https://www.suse.com/c/what-is-saphanasr-angi/"/>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              What are <systemitem>SAPHanaSR-angi</systemitem> configuration variants?:
+              <link xlink:href="https://www.suse.com/c/what-are-saphanasr-angi-configuration-variants/"/>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              How to upgrade to <systemitem>SAPHanaSR-angi</systemitem>:
+              <link xlink:href="https://www.suse.com/c/how-to-upgrade-to-saphanasr-angi/"/>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              &suse; HA for &hana; scale-up cost-optimized improved using ANGI:
+              <link xlink:href="https://www.suse.com/c/suse-ha-for-sap-hana-scale-up-cost-optimized-improved/"/>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Man pages for <systemitem>SAPHanaSR-angi</systemitem>:
+              <link xlink:href="https://manpages.opensuse.org/Leap-16.0/SAPHanaSR-angi/index.html"/>
+              (For reference only. For the latest information, view the man pages on your
+              &productnameshort; system.)
+            </para>
+          </listitem>
+        </itemizedlist>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>Public cloud providers</term>
+      <listitem>
+        <itemizedlist>
+          <listitem>
+            <para>
+              &ms; Azure: <link xlink:href="https://azure.microsoft.com/en-us/solutions/sap/#documentation"/>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              &aws;: <link xlink:href="https://docs.aws.amazon.com/sap/"/>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              &gcloud;: <link xlink:href="https://cloud.google.com/solutions/sap/"/>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </listitem>
+    </varlistentry>
+  </variablelist>
+</section>

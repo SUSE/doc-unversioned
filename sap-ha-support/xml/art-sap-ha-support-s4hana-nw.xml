@@ -788,35 +788,7 @@
   </table>
  </section>
 
- <section xml:id="sap-ha-solutions-documentation">
-  <title>Documentation and configuration guides</title>
-  <para>
-   Refer to the official Web sites for up-to-date documentation and configuration
-   guides:
-  </para>
-  <itemizedlist>
-   <listitem>
-    <para>
-     &suse;: <link xlink:href="&dsc;/sbp/sap-15/"/>
-    </para>
-   </listitem>
-   <listitem>
-    <para>
-     &ms; Azure: <link xlink:href="https://azure.microsoft.com/en-us/solutions/sap/azure-solutions/#documentation "/>
-    </para>
-   </listitem>
-   <listitem>
-    <para>
-     &aws;: <link xlink:href="https://aws.amazon.com/sap/docs/ "/>
-    </para>
-   </listitem>
-   <listitem>
-    <para>
-     &gcloud;: <link xlink:href="https://cloud.google.com/solutions/sap/"/>
-    </para>
-   </listitem>
-  </itemizedlist>
- </section>
+  <xi:include href="sap-ha-configuration-guides.xml"/>
 
- <xi:include href="common_legal.xml"/>
+  <xi:include href="common_legal.xml"/>
 </article>
