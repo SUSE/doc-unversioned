@@ -24,7 +24,7 @@
       &s4h; is supported on &productnameshort; 15 and 16. &netweaver; is only supported on
       &productnameshort; 15.
     </para>
-    <table xml:id="tab-os-support-s4hana-nw" pgwide="1">
+    <table xml:id="table-os-support-s4hana-nw" pgwide="1">
       <title>OS support for HA solutions for &s4hana; and &nwshort;</title>
       <tgroup cols="4">
         <thead>
