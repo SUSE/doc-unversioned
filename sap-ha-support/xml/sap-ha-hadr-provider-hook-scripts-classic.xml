@@ -27,8 +27,8 @@
   <table xml:id="table-sap-ha-hook-scripts">
     <title>HADR provider hook scripts</title>
     <tgroup cols="2">
-    <colspec colwidth='2*'/>
-    <colspec colwidth='8*'/>
+    <colspec colwidth='3*'/>
+    <colspec colwidth='7*'/>
       <thead>
       <row>
         <entry>Script</entry>
