@@ -1066,7 +1066,7 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
         </varlistentry>
       </variablelist>
       <para>
-      有关使用 Zypper 的详细信息，请参见 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://documentation.suse.com/sles/html/SLES-all/cha-sw-cl.html#sec-zypper"></link>。
+      有关使用 Zypper 的详细信息，请参见 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://documentation.suse.com/sles-15/html/SLES-all/cha-sw-cl.html#sec-zypper"></link>。
     </para>
       <para>
       所述的所有命令都使用 <option>--non-interactive</option> 标志来跳过确认，因为在容器构建期间您无法手动同意这些提示。请记住，必须将该标志与任何修改系统的命令一起使用。另请注意，<option>--non-interactive</option> 不是一个“全部为是”标志。<option>--non-interactive</option> 确认用户的意图。例如，如果某个附带 <option>--non-interactive</option> 选项的安装命令需要导入新的储存库签名密钥，则该命令将会失败，因为该操作必须由用户自己来校验。
@@ -1776,7 +1776,7 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
         建议在单独的分区或卷上挂载 <filename>/var/lib/docker</filename>。这样，在文件系统损坏的情况下，操作系统能够不受影响地运行 Docker 开源引擎。
       </para>
         <para>
-        如果您为 <filename>/var/lib/docker</filename> 选择了 Btrfs 文件系统，强烈建议为其创建一个子卷。这可以确保从文件系统快照中排除该目录。如果不从快照中排除 <filename>/var/lib/docker</filename>，那么在开始部署容器后不久，就会出现文件系统耗尽磁盘空间的风险。此外，回滚到以前的快照也会重置 Docker 数据库和映像。有关详细信息，请参见 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://documentation.suse.com/sles/html/SLES-all/cha-snapper.html#sec-snapper-setup-customizing-new-subvolume"></link>。
+        如果您为 <filename>/var/lib/docker</filename> 选择了 Btrfs 文件系统，强烈建议为其创建一个子卷。这可以确保从文件系统快照中排除该目录。如果不从快照中排除 <filename>/var/lib/docker</filename>，那么在开始部署容器后不久，就会出现文件系统耗尽磁盘空间的风险。此外，回滚到以前的快照也会重置 Docker 数据库和映像。有关详细信息，请参见 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://documentation.suse.com/sles-15/html/SLES-all/cha-snapper.html#sec-snapper-setup-customizing-new-subvolume"></link>。
       </para>
       </important>
     </section>
