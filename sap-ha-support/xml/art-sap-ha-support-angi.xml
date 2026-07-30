@@ -19,7 +19,9 @@
    <revhistory xml:id="rh-sap-ha-support-angi">
     <revision><date>2026-07-27</date><!-- Change date after review -->
       <revdescription>
-        <para/>
+        <para>
+          Initial split into separate angi guide
+        </para>
       </revdescription>
      </revision>
     </revhistory>
@@ -81,8 +83,8 @@
 
     <abstract>
       <para>
-        &sles4sap; is the leading Linux platform for &hana;, &sap; &s4hana;, and &netweaver;,
-        and an Endorsed App by &sap;. Two of the key components of &productnameshort; are &sleha;
+        &sles4sap; is the leading Linux platform for &hana;, &s4h;, and &netweaver;, and an
+        Endorsed App by &sap;. Two of the key components of &productnameshort; are &sleha;
         (&slehaa;) and resource agents (RAs). &slehaa; provides &pace;, an open-source cluster
         framework. The resource agents manage automated failover of &hanasr;, &s4hana; ASCS/ERS,
         and &nwshort; ASCS/ERS.

@@ -19,7 +19,9 @@
    <revhistory xml:id="rh-sap-ha-support-s4hana-nw">
     <revision><date>2026-07-27</date><!-- Change date after review -->
       <revdescription>
-        <para/>
+        <para>
+          Initial split into separate &s4hana;/&nwshort; guide
+        </para>
       </revdescription>
      </revision>
     </revhistory>
@@ -81,8 +83,8 @@
 
     <abstract>
       <para>
-        &sles4sap; is the leading Linux platform for &hana;, &sap; &s4hana;, and &netweaver;,
-        and an Endorsed App by &sap;. Two of the key components of &productnameshort; are &sleha;
+        &sles4sap; is the leading Linux platform for &hana;, &s4h;, and &netweaver;, and an
+        Endorsed App by &sap;. Two of the key components of &productnameshort; are &sleha;
         (&slehaa;) and resource agents (RAs). &slehaa; provides &pace;, an open-source cluster
         framework. The resource agents manage automated failover of &hanasr;, &s4hana; ASCS/ERS,
         and &nwshort; ASCS/ERS.
@@ -96,33 +98,14 @@
   </info>
 
   <!-- Support statement -->
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="sap-ha-support-statement.xml"/>
+  <xi:include href="sap-ha-support-statement.xml"/>
 
-
+  <!-- Overview -->
+  <xi:include href="sap-ha-solutions-for-s4hana-nw.xml"/>
 
  <section xml:id="sap-ha-solutions-s4hana">
   <title>HA solutions for &s4hana; based on ABAP Platform 1809 or newer</title>
-  <para>
-   &ensa2long; (&ensa2;) is the successor to &ensa1long; (&ensa1;). Starting from
-   ABAP Platform 1809, &ensa2long; is the default installation. The use of the new
-   &ensa2long; and Enqueue Replicator 2 provides an improved &ha; architecture
-   with robust and fast replication, and failover.
-  </para>
-  <informalfigure>
-   <mediaobject>
-    <imageobject role="fo">
-     <imagedata fileref="ensa2.svg" width="100%"/>
-    </imageobject>
-    <imageobject role="html">
-     <imagedata fileref="ensa2.svg" width="100%"/>
-    </imageobject>
-    <textobject role="description">
-     <phrase>
-      &ensa2; two-node cluster configuration.
-     </phrase>
-    </textobject>
-   </mediaobject>
-  </informalfigure>
+
   <para>
    The support details are for high level overview only. Refer to the official documentation
    for the full conditions.
@@ -207,26 +190,7 @@
 
  <section xml:id="sap-ha-solutions-netweaver">
   <title>HA solutions for &netweaver; based on ABAP Platform 1709 or older</title>
-  <para>
-   Under the &ensa1long; (&ensa1;), the ASCS has to fail over to the
-   cluster node where the active ERS is running, because it needs to
-   access the shared memory that stores the enqueue replication table.
-  </para>
-  <informalfigure>
-   <mediaobject>
-    <imageobject role="fo">
-     <imagedata fileref="ensa1.svg" width="80%"/>
-    </imageobject>
-    <imageobject role="html">
-     <imagedata fileref="ensa1.svg" width="80%"/>
-    </imageobject>
-    <textobject role="description">
-     <phrase>
-      &ensa1; two-node cluster configuration.
-     </phrase>
-    </textobject>
-   </mediaobject>
-  </informalfigure>
+
   <para>
    The support details are for high level overview only. Refer to the official documentation
    for the full conditions.
@@ -309,6 +273,7 @@
   </table>
  </section>
 
+  <!-- Documentation -->
   <xi:include href="sap-ha-configuration-guides.xml"/>
 
   <xi:include href="common_legal.xml"/>
