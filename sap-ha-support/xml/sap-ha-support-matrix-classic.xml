@@ -23,7 +23,7 @@
     for the full conditions.
   </para>
   <para>
-    See also Notation Formula.
+    For help reading the support details, see <xref linkend="sap-ha-solutions-sap-hana-notation"/>.
   </para>
 
   <section xml:id="sap-ha-support-matrix-classic-scaleup">

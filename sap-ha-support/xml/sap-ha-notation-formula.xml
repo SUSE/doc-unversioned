@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section
+[
+  <!ENTITY % entities SYSTEM "generic-entities.ent">
+    %entities;
+]>
+
+<section xml:id="sap-ha-solutions-sap-hana-notation" xml:lang="en"
+  xmlns="http://docbook.org/ns/docbook" version="5.2"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Notation formula</title>
+
+  <info>
+    <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
+    <dm:bugtracker></dm:bugtracker>
+    <dm:translation>no</dm:translation>
+    </dm:docmanager>
+  </info>
+
+  <para>
+    This table shows the notation formula used in the following sections to describe the different
+    configurations for &hanasr;.
+  </para>
+  <table xml:id="table-sap-ha-solutions-sap-hana-notation">
+    <title>Notation formula for &hana; configuration</title>
+    <tgroup cols="2">
+    <colspec colwidth="20%"/>
+    <colspec colwidth="40%"/>
+      <thead>
+        <row>
+        <entry>Notation</entry>
+        <entry>Definition</entry>
+        </row>
+      </thead>
+      <tbody>
+        <row>
+          <entry>[]</entry>
+          <entry>Cluster running</entry>
+        </row>
+        <row>
+          <entry>{}</entry>
+          <entry>Cluster DR passive</entry>
+        </row>
+        <row>
+          <entry>A B C D</entry>
+          <entry>Master nameserver node</entry>
+        </row>
+        <row>
+          <entry>a b c d</entry>
+          <entry>Worker node</entry>
+        </row>
+        <row>
+          <entry>_</entry>
+          <entry>Standby node</entry>
+        </row>
+        <row>
+          <entry>x</entry>
+          <entry>XSA node</entry>
+        </row>
+        <row>
+          <entry>=&gt;</entry>
+          <entry>Sync, syncmem replication</entry>
+        </row>
+        <row>
+          <entry>-&gt;</entry>
+          <entry>Async replication</entry>
+        </row>
+        <row>
+          <entry>'</entry>
+          <entry>Primary IP address</entry>
+        </row>
+        <row>
+          <entry>"</entry>
+          <entry>Secondary IP address</entry>
+        </row>
+      </tbody>
+    </tgroup>
+  </table>
+</section>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section
+[
+  <!ENTITY % entities SYSTEM "generic-entities.ent">
+    %entities;
+]>
+
+<section xml:id="sap-ha-resource-agents-saphanasr" xml:lang="en"
+  xmlns="http://docbook.org/ns/docbook" version="5.2"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Resource agents for automated &hanasr;</title>
+
+  <info>
+    <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
+    <dm:bugtracker></dm:bugtracker>
+    <dm:translation>no</dm:translation>
+    </dm:docmanager>
+  </info>
+
+  <para>
+    To provide a streamlined &ha; solution, &suse; is evolving its &hana; clustering infrastructure
+    away from legacy, decade-old code bases. The traditional framework required administrators to
+    manage two distinct resource agents: <systemitem>SAPHanaSR</systemitem> for scale-up topologies
+    and <systemitem>SAPHanaSR-ScaleOut</systemitem> for scale-out topologies. This architectural
+    division is being consolidated into <systemitem>SAPHanaSR-angi</systemitem> (Advanced Next
+    Generation Interface), a unified, single code base engineered to sustain reliable &ha; for
+    &hana; over the next decade.
+  </para>
+  <para>
+    This evolution drastically reduces operational complexity by introducing an identical software
+    package and highly similar configuration models regardless of the underlying scale-up or
+    scale-out environment. Although the classic resource agents will remain supported for the
+    entire lifetime of &productnameshort; 15, <systemitem>SAPHanaSR-angi</systemitem> is also
+    available in &productnameshort; 15 SP4+. This is the recommended choice for all new deployments,
+    and will completely replace the classic resource agents as the default standard in
+    &productnameshort; 16.
+  </para>
+  <para>
+    Along with optimizations like faster takeover capabilities, <systemitem>SAPHanaSR-angi</systemitem>
+    also supports a live, in-place upgrade from the classic resource agents, without requiring any
+    &hana; downtime.
+  </para>
+  <para condition="saphana-classic">
+    This document describes the supported scenarios for the <systemitem>SAPHanaSR</systemitem> and
+    <systemitem>SAPHanaSR-ScaleOut</systemitem> resource agents in existing deployments.
+    <emphasis role="bold">All new deployments should use <systemitem>SAPHanaSR-angi</systemitem>.</emphasis>
+  </para>
+  <table xml:id="table-resource-agents-saphanasr">
+    <title>Supported resource agents for each operating system release</title>
+    <tgroup cols="3">
+      <thead>
+        <row>
+          <entry>OS release</entry>
+          <entry>HANA scale-up</entry>
+          <entry>HANA scale-out</entry>
+        </row>
+      </thead>
+      <tbody>
+        <row>
+          <entry>&productnameshort; 16</entry>
+          <entry><systemitem>SAPHanaSR-angi</systemitem> only</entry>
+          <entry><systemitem>SAPHanaSR-angi</systemitem> only</entry>
+        </row>
+        <row>
+          <entry>&productnameshort; 15</entry>
+          <entry>
+            <itemizedlist spacing="compact">
+              <listitem>
+                <para>
+                  <systemitem>SAPHanaSR-angi</systemitem> in &productnameshort; 15 SP4+
+                  (recommended for new deployments)
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <systemitem>SAPHanaSR</systemitem>
+                </para>
+              </listitem>
+            </itemizedlist>
+          </entry>
+          <entry>
+            <itemizedlist spacing="compact">
+              <listitem>
+                <para>
+                  <systemitem>SAPHanaSR-angi</systemitem> in &productnameshort; 15 SP4+
+                  (recommended for new deployments)
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <systemitem>SAPHanaSR-ScaleOut</systemitem>
+                </para>
+              </listitem>
+            </itemizedlist></entry>
+        </row>
+      </tbody>
+    </tgroup>
+  </table>
+</section>

@@ -101,98 +101,17 @@
   <!-- Support statement -->
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="sap-ha-support-statement.xml"/>
 
- <section xml:id="sap-ha-solutions-sap-hana">
-  <title>HA solutions for &hanasr;</title>
-  <section xml:id="sap-ha-solutions-sap-hana-overview">
-   <title>Overview of &hanasr; </title>
-   <para>
-    &hanasr; (HSR) provides the ability to copy and continuously synchronize an &hana; database
-    to a secondary location in the same or another data center. &hanasr; is implemented between
-    two different &hana; systems with the same number of active nodes. After system replication
-    is set up between the two &hana; systems, it replicates all the data from the primary &hana;
-    system to the secondary &hana; system (initial copy). After this, any logged changes in the
-    primary system are also sent to the secondary system.
-   </para>
-   <informalfigure>
-    <mediaobject>
-     <imageobject role="fo">
-      <imagedata fileref="overview-sr-single-nodes.svg" width="80%"/>
-     </imageobject>
-     <imageobject role="html">
-      <imagedata fileref="overview-sr-single-nodes.svg" width="80%"/>
-     </imageobject>
-     <textobject role="description">
-      <phrase>
-       System replication from the primary system in data center 1 to the
-       secondary system in data center 2.
-      </phrase>
-     </textobject>
-    </mediaobject>
-   </informalfigure>
-   <para>
-    If the primary &hana; system fails, the system administrator must perform a manual takeover.
-    Takeover can be performed using &hana; Cockpit or the command line. Manual failover requires
-    continuous monitoring and could lead to higher recovery time. To automate the failover process,
-    the &sleha; can be used. Using the &hasi; for the takeover process helps customers achieve
-    service-level agreements for &hana; downtime by enabling faster recovery
-    without any manual intervention.
-   </para>
-   <para>
-    Multiple &hana; &ha; scenarios are supported based on &hanasr;. For variations, contact &suse;
-    to discuss defining a PoC for a scenario that is not mentioned in the documentation.
-   </para>
-   <para>
-    You can use &hana; Fast Restart on RAM-tmpfs and &hana; on persistent memory if they are transparent to the &ha; cluster.
-   </para>
-   <para>
-     &hana; Native Storage Extension (NSE) is supported in &ha; solutions for automated &hanasr;
-     in both Scale-up and Scale-out. This feature does <emphasis>not</emphasis> change the
-     &hana; topology or interfaces to the &ha; cluster. However, unlike &hana; NSE, the
-     HANA Extension Nodes <emphasis>do</emphasis> change the topology and are therefore not
-     currently supported by &sleha;. Refer to the &sap; documentation for details
-     of &hana; NSE and its functional restrictions.
-   </para>
-  </section>
+  <section xml:id="sap-ha-solutions-sap-hana">
+    <title>Overview of HA solutions for &hanasr;</title>
 
-  <section xml:id="sap-ha-solutions-sap-hana-notation">
-   <title>Notation formula</title>
-   <informaltable>
-    <tgroup cols="2">
-     <thead>
-      <row>
-       <entry>Notation</entry>
-       <entry>Definition</entry>
-      </row>
-     </thead>
-     <tbody>
-      <row>
-       <entry>A, B, C</entry>
-       <entry>HANA scale-up instance or HANA scale-out site</entry>
-      </row>
-      <row>
-       <entry>=&gt;</entry>
-       <entry>Sync, syncmem replication</entry>
-      </row>
-      <row>
-       <entry>-&gt;</entry>
-       <entry>Async replication</entry>
-      </row>
-      <row>
-       <entry>'</entry>
-       <entry>Primary IP address</entry>
-      </row>
-      <row>
-       <entry>"</entry>
-       <entry>Secondary IP address</entry>
-      </row>
-      <row>
-       <entry>()</entry>
-       <entry>&suse; cluster</entry>
-      </row>
-     </tbody>
-    </tgroup>
-   </informaltable>
-  </section>
+    <!-- Overview of SAP HANA system replication -->
+    <xi:include href="sap-ha-overview-saphanasr.xml"/>
+
+    <!-- Resource agents -->
+    <xi:include href="sap-ha-resource-agents-saphanasr.xml"/>
+
+    <!-- Notation formula -->
+     <xi:include href="sap-ha-notation-formula.xml"/>
 
   <section xml:id="sap-ha-solutions-sap-hana-scale-up">
    <title>HA solutions for automated &hanasr; in HANA scale-up</title>
