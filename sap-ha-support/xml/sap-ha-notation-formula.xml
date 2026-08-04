@@ -35,11 +35,11 @@
       </thead>
       <tbody>
         <row>
-          <entry>[]</entry>
+          <entry>[ ]</entry>
           <entry>Cluster running</entry>
         </row>
         <row>
-          <entry>{}</entry>
+          <entry>{ }</entry>
           <entry>Cluster DR passive</entry>
         </row>
         <row>

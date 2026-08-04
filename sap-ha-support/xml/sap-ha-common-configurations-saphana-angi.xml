@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section
+[
+  <!ENTITY % entities SYSTEM "generic-entities.ent">
+    %entities;
+]>
+
+<section xml:id="sap-ha-common-configurations-saphana-angi" xml:lang="en"
+  xmlns="http://docbook.org/ns/docbook" version="5.2"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Common configurations for automated &hanasr;</title>
+
+  <info>
+    <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
+    <dm:bugtracker></dm:bugtracker>
+    <dm:translation>no</dm:translation>
+    </dm:docmanager>
+  </info>
+
+    <para>
+      Below is a summary of the most common and newly supported configurations for
+      <systemitem>SAPHanaSR-angi</systemitem>. For the complete support matrix for all
+      supported topologies, see <xref linkend="sap-ha-support-matrix-angi"/>.
+    </para>
+    <tip>
+      <title><systemitem>SAPHanaSR-angi</systemitem> configuration variants</title>
+      <para>
+        <systemitem>SAPHanaSR-angi</systemitem> introduces two configuration variants that allow
+        administrators to choose the failover behavior that best aligns with their operational and
+        availability requirements. While both variants provide &ha; for &hana;, they differ in how
+        they respond to failures and balance recovery speed against service stability.
+      </para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <emphasis role="bold">Progressive variant:</emphasis> Optimized for rapid recovery by proactively fencing the affected site when critical &hana; or filesystem failures are detected, enabling fast and reliable failover. This is the recommended option for most new deployments, particularly in cloud and performance-optimized environments.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="bold">Conservative variant:</emphasis> Prioritizes service stability by attempting to recover &hana; locally before fencing cluster nodes, reducing the likelihood of unnecessary fencing. This variant is best suited for traditional on-premises environments where maximizing local recovery is preferred over the fastest possible failover.
+          </para>
+        </listitem>
+      </itemizedlist>
+    </tip>
+    <variablelist>
+      <varlistentry>
+        <term>Scale-up, performance-optimized [A' =&gt; B], including read-enabled on the secondary site [A' =&gt; B"]</term>
+        <listitem>
+        <figure xml:id="fig-common-configurations-saphana-angi-perfopt">
+          <title>Scale-up, performance optimized</title>
+          <mediaobject>
+          <imageobject role="fo">
+            <imagedata fileref="performance-optimized-angi.png" width="100%"/>
+          </imageobject>
+          <imageobject role="html">
+            <imagedata fileref="performance-optimized-angi.png" width="100%"/>
+          </imageobject>
+          <textobject role="description">
+            <phrase>
+              &hana; performance-optimized configuration
+            </phrase>
+          </textobject>
+          </mediaobject>
+        </figure>
+        <para>
+          In the performance-optimized scenario, an &hana; RDBMS site A is synchronizing with an
+          &hana; RDBMS site B on a second node. As the &hana; RDBMS on the second node is configured
+          to preload the tables, the takeover time is typically very short.
+        </para>
+        <para>
+          Read access can be allowed on the secondary site. To support this read-enabled scenario,
+          a second virtual IP address is added to the cluster and bound to the secondary role of
+          the system replication.
+        </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>&hana; XSA stand-alone [xB &lt;= A'x']</term>
+        <listitem>
+        <figure xml:id="fig-common-configurations-saphana-angi-xsa">
+          <title>&hana; XSA stand-alone</title>
+          <mediaobject>
+          <imageobject role="fo">
+            <imagedata fileref="xsa-standalone.png" width="100%"/>
+          </imageobject>
+          <imageobject role="html">
+            <imagedata fileref="xsa-standalone.png" width="100%"/>
+          </imageobject>
+          <textobject role="description">
+            <phrase>
+              &hana; XSA stand-alone configuration
+            </phrase>
+          </textobject>
+          </mediaobject>
+        </figure>
+        <para>
+          &hana; XSA stand-alone is supported in the cluster by deploying XSA worker nodes alongside
+          the &hana; master/worker nodes. Dedicated IP addresses are assigned to the primary XSA
+          worker as well as the primary HANA master/worker node to ensure consistent service access.
+          &hanasr; is enabled between the two HANA master/worker nodes, while a shared NFS file
+          system maintains the XSA work directory across both sites to support seamless failover.
+          The &sleha; solution for SAP XSA stand-alone is based on the &ha; architecture for &hana;
+          scale-out ERP, with the <systemitem>SAPHanaSR-angi</systemitem> Progressive variant.
+        </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>DR region with passive cluster (Technology Preview) {D &lt;= C} &lt;- [A' =&gt; B]</term>
+        <listitem>
+        <figure xml:id="fig-common-configurations-saphana-angi-passive-dr">
+          <title>DR region with passive cluster</title>
+          <mediaobject>
+          <imageobject role="fo">
+            <imagedata fileref="passive-dr.png" width="100%"/>
+          </imageobject>
+          <imageobject role="html">
+            <imagedata fileref="passive-dr.png" width="100%"/>
+          </imageobject>
+          <textobject role="description">
+            <phrase>
+              &hana; disaster recovery configuration
+            </phrase>
+          </textobject>
+          </mediaobject>
+        </figure>
+        <para>
+          This deployment consists of a production region protected by a &ha; cluster using the
+          <systemitem>SAPHanaSR-angi</systemitem> scale-up performance-optimized with Progressive
+          variant. A separate disaster recovery (DR) region is equipped with a passive &ha; cluster
+          to support recovery operations. In the event of a disaster, failover to the DR region is
+          performed through a manual DR takeover process. There is no automated cluster takeover
+          between the production and DR sites.
+        </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
