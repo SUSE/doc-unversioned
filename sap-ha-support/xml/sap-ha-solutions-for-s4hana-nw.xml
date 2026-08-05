@@ -72,7 +72,7 @@
         </imageobject>
         <textobject role="description">
         <phrase>
-          &ensa2; two-node cluster configuration.
+          &ensa2; two-node cluster configuration
         </phrase>
         </textobject>
       </mediaobject>
@@ -90,14 +90,14 @@
       <title>&netweaver; based on ABAP Platform 1709 or older</title>
       <mediaobject>
         <imageobject role="fo">
-        <imagedata fileref="ensa1.svg" width="80%"/>
+        <imagedata fileref="ensa1.svg" width="100%"/>
         </imageobject>
         <imageobject role="html">
-        <imagedata fileref="ensa1.svg" width="80%"/>
+        <imagedata fileref="ensa1.svg" width="100%"/>
         </imageobject>
         <textobject role="description">
         <phrase>
-          &ensa1; two-node cluster configuration.
+          &ensa1; two-node cluster configuration
         </phrase>
         </textobject>
       </mediaobject>

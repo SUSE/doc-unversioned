@@ -24,7 +24,7 @@
     <systemitem>SAPHanaSR</systemitem> and <systemitem>SAPHanaSR-ScaleOut</systemitem> resource
     agents. The &suse; best practice configuration guides explain how to use and configure these hooks.
   </para>
-  <table xml:id="table-sap-ha-hook-scripts">
+  <table xml:id="table-sap-ha-hook-scripts-classic">
     <title>HADR provider hook scripts</title>
     <tgroup cols="2">
     <colspec colwidth='3*'/>
@@ -55,7 +55,7 @@
       </tbody>
     </tgroup>
   </table>
-  <table xml:id="table-sap-ha-solutions-sap-hana-hook-scripts">
+  <table xml:id="table-sap-ha-solutions-hook-scripts-classic">
     <title>Supported scenarios for HADR provider hook scripts</title>
     <tgroup cols="4">
       <thead>

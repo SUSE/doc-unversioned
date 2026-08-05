@@ -5,7 +5,7 @@
     %entities;
 ]>
 
-<section xml:id="sap-ha-solutions-sap-hana-overview" xml:lang="en"
+<section xml:id="sap-ha-overview-saphanasr" xml:lang="en"
   xmlns="http://docbook.org/ns/docbook" version="5.2"
   xmlns:xi="http://www.w3.org/2001/XInclude"
   xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -26,7 +26,7 @@
     system to the secondary &hana; system (initial copy). After this, any logged changes in the
     primary system are also sent to the secondary system.
   </para>
-  <figure xml:id="fig-sap-ha-solutions-sap-hana-overview-single-nodes">
+  <figure xml:id="fig-sap-ha-overview-saphanasr-single-nodes">
     <title>Overview of system replication with single nodes</title>
     <mediaobject>
       <imageobject role="fo">

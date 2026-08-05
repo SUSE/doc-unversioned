@@ -55,7 +55,7 @@
       </tbody>
     </tgroup>
   </table>
-  <table xml:id="table-sap-ha-solutions-sap-hana-hook-scripts-angi">
+  <table xml:id="table-sap-ha-solutions-hook-scripts-angi">
     <title>Supported scenarios for HADR provider hook scripts</title>
     <tgroup cols="4">
       <thead>

@@ -34,12 +34,19 @@
       <itemizedlist>
         <listitem>
           <para>
-            <emphasis role="bold">Progressive variant:</emphasis> Optimized for rapid recovery by proactively fencing the affected site when critical &hana; or filesystem failures are detected, enabling fast and reliable failover. This is the recommended option for most new deployments, particularly in cloud and performance-optimized environments.
+            <emphasis role="bold">Progressive variant:</emphasis> Optimized for rapid recovery by
+            proactively fencing the affected site when critical &hana; or file system failures are
+            detected, enabling fast and reliable failover. This is the recommended option for most
+            new deployments, particularly in cloud and performance-optimized environments.
           </para>
         </listitem>
         <listitem>
           <para>
-            <emphasis role="bold">Conservative variant:</emphasis> Prioritizes service stability by attempting to recover &hana; locally before fencing cluster nodes, reducing the likelihood of unnecessary fencing. This variant is best suited for traditional on-premises environments where maximizing local recovery is preferred over the fastest possible failover.
+            <emphasis role="bold">Conservative variant:</emphasis> Prioritizes service stability by
+            attempting to recover &hana; locally before fencing cluster nodes, reducing the
+            likelihood of unnecessary fencing. This variant is best suited for traditional
+            on-premises environments where maximizing local recovery is preferred over the fastest
+            possible failover.
           </para>
         </listitem>
       </itemizedlist>
