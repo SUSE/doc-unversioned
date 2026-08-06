@@ -50,7 +50,7 @@
       </row>
       <row>
         <entry>susCostOpt.py</entry>
-        <entry>Handles secondary site in case of cluster sr_takeover</entry>
+        <entry>Used in scale-up cost-optimized to handle secondary site in case of cluster sr_takeover</entry>
       </row>
       </tbody>
     </tgroup>

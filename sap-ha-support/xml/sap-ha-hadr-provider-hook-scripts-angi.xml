@@ -27,8 +27,8 @@
   <table xml:id="table-sap-ha-hook-scripts-angi">
     <title>HA/DR provider hook scripts</title>
     <tgroup cols="2">
-    <colspec colwidth='2*'/>
-    <colspec colwidth='8*'/>
+    <colspec colwidth='3*'/>
+    <colspec colwidth='7*'/>
       <thead>
       <row>
         <entry>Script</entry>
@@ -50,7 +50,7 @@
       </row>
       <row>
         <entry>susCostOpt.py</entry>
-        <entry>Handles secondary site in case of cluster sr_takeover</entry>
+        <entry>Used in scale-up cost-optimized to handle secondary site in case of cluster sr_takeover</entry>
       </row>
       </tbody>
     </tgroup>

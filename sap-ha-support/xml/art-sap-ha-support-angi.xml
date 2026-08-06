@@ -83,11 +83,10 @@
 
     <abstract>
       <para>
-        &sles4sap; is the leading Linux platform for &hana;, &s4h;, and &netweaver;, and an
-        Endorsed App by &sap;. Two of the key components of &productnameshort; are &sleha;
-        (&slehaa;) and resource agents (RAs). &slehaa; provides &pace;, an open-source cluster
-        framework. The resource agents manage automated failover of &hanasr;, &s4hana; ASCS/ERS,
-        and &nwshort; ASCS/ERS.
+        &sles4sap; is the leading Linux platform for &hana;, &s4h; and &netweaver;. Two of the key
+        components of &productnameshort; are &sleha; (&slehaa;) and resource agents (RAs).
+        &slehaa; provides &pace;, an open-source cluster framework. The resource agents manage
+        automated failover of &hanasr;, &s4hana; ASCS/ERS, and &nwshort; ASCS/ERS.
       </para>
       <para>
         This document provides an overview of the &ha; solutions that &suse; supports for &hanasr;

@@ -24,9 +24,11 @@
     <table xml:id="table-sap-ha-solutions-sap-hana-angi-scale-up">
       <title>Supported configurations for automated &hanasr; in HANA scale-up</title>
       <tgroup cols="2">
+      <colspec colwidth="6*"/>
+      <colspec colwidth="4*"/>
         <thead>
           <row>
-            <entry>&hana; scale-up configurations</entry>
+            <entry>&hana; scale-up configuration</entry>
             <entry>Status</entry>
           </row>
         </thead>
@@ -89,9 +91,11 @@
     <table xml:id="table-sap-ha-solutions-sap-hana-angi-scale-out">
       <title>Supported configurations for automated &hanasr; in HANA scale-out</title>
       <tgroup cols="2">
+      <colspec colwidth="6*"/>
+      <colspec colwidth="4*"/>
         <thead>
           <row>
-            <entry>&hana; scale-up configurations</entry>
+            <entry>&hana; scale-out configuration</entry>
             <entry>Status</entry>
           </row>
         </thead>
