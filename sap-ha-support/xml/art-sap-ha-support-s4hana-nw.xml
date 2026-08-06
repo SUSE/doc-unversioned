@@ -17,7 +17,8 @@
    <date><?dbtimestamp format="B d, Y" ?></date>
    <!-- History -->
    <revhistory xml:id="rh-sap-ha-support-s4hana-nw">
-    <revision><date>2026-07-27</date><!-- Change date after review -->
+    <revision>
+      <date>2026-08-07</date>
       <revdescription>
         <para>
           Initial split into separate &s4hana;/&nwshort; guide
