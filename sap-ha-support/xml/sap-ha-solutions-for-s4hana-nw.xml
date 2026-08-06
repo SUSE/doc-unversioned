@@ -59,7 +59,7 @@
       &ensa2long; (&ensa2;) is the successor to &ensa1long; (&ensa1;). Starting from
       ABAP Platform 1809, &ensa2long; is the default installation. The use of the new &ensa2long;
       and Enqueue Replicator 2 provides an improved &ha; architecture with robust and fast
-      replication, and failover.
+      replication and failover.
     </para>
     <figure xml:id="fig-sap-ha-solutions-for-s4hana">
       <title>&s4h; based on ABAP Platform 1809 or newer</title>

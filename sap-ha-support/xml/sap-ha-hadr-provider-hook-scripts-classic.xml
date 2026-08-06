@@ -61,9 +61,9 @@
       <thead>
       <row>
         <entry>HA/DR provider hook script</entry>
-        <entry>Scale-up cost optimized</entry>
-        <entry>Scale-up performance optimized</entry>
-        <entry>Scale-out performance optimized</entry>
+        <entry>Scale-up cost-optimized</entry>
+        <entry>Scale-up performance-optimized</entry>
+        <entry>Scale-out performance-optimized</entry>
       </row>
       </thead>
       <tbody>

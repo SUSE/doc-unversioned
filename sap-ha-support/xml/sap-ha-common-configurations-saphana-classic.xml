@@ -27,7 +27,7 @@
         <term>Scale-up, performance-optimized, including read-enabled on the secondary site [A =&gt; B]</term>
         <listitem>
         <figure xml:id="fig-common-configurations-saphana-classic-perfopt">
-          <title>Scale-up, performance optimized</title>
+          <title>Scale-up, performance-optimized</title>
           <mediaobject>
           <imageobject role="fo">
             <imagedata fileref="performance-optimized.svg" width="100%"/>
@@ -58,7 +58,7 @@
         <term>Scale-up, cost-optimized [A =&gt; B, Q]</term>
         <listitem>
         <figure xml:id="fig-common-configurations-saphana-classic-costopt">
-          <title>Scale-up, cost optimized</title>
+          <title>Scale-up, cost-optimized</title>
           <mediaobject>
           <imageobject role="fo">
             <imagedata fileref="cost-optimized.svg" width="100%"/>
@@ -78,7 +78,7 @@
           non-replicated &hana; RDBMS system (such as QAS or TST). Whenever a takeover is needed,
           the non-replicated system must be stopped first. As the productive secondary system on
           this node must be limited in using system resources, the table preload must be switched
-          off. A possible takeover needs more time than in the performance optimized use case.
+          off. A possible takeover needs more time than in the performance-optimized use case.
           We recommend running a PoC to determine the SLA before using it in production.
         </para>
         <para>

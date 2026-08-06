@@ -56,7 +56,7 @@
         <term>Scale-up, performance-optimized [A' =&gt; B], including read-enabled on the secondary site [A' =&gt; B"]</term>
         <listitem>
         <figure xml:id="fig-common-configurations-saphana-angi-perfopt">
-          <title>Scale-up, performance optimized</title>
+          <title>Scale-up, performance-optimized</title>
           <mediaobject>
           <imageobject role="fo">
             <imagedata fileref="performance-optimized-angi.png" width="100%"/>
