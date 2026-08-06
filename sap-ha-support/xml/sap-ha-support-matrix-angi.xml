@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section
+[
+  <!ENTITY % entities SYSTEM "generic-entities.ent">
+    %entities;
+]>
+
+<section xml:id="sap-ha-support-matrix-angi" xml:lang="en"
+  xmlns="http://docbook.org/ns/docbook" version="5.2"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Support matrix for automated &hanasr;</title>
+
+  <info>
+    <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
+    <dm:bugtracker></dm:bugtracker>
+    <dm:translation>no</dm:translation>
+    </dm:docmanager>
+  </info>
+
+
+  <section xml:id="sap-ha-support-matrix-angi-scaleup">
+    <title>Automated &hanasr; in HANA scale-up</title>
+    <table xml:id="table-sap-ha-solutions-sap-hana-angi-scale-up">
+      <title>Supported configurations for automated &hanasr; in HANA scale-up</title>
+      <tgroup cols="2">
+      <colspec colwidth="6*"/>
+      <colspec colwidth="4*"/>
+        <thead>
+          <row>
+            <entry>&hana; scale-up configuration</entry>
+            <entry>Status</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>Performance-optimized</entry>
+            <entry>Supported</entry>
+          </row>
+          <row>
+            <entry>Performance-optimized, second site read-enabled</entry>
+            <entry>Supported</entry>
+          </row>
+          <row>
+            <entry>Performance-optimized, Multi-Target SR, third site NOT managed by the cluster</entry>
+            <entry>Supported</entry>
+          </row>
+          <row>
+            <entry>Performance-optimized, Multi-Target SR, third site in passive cluster (Tech Preview)</entry>
+            <entry>Supported, but undocumented</entry>
+          </row>
+          <row>
+            <entry>Performance-optimized, Multi-SID in one cluster (MCOS)</entry>
+            <entry>Supported, but undocumented</entry>
+          </row>
+          <row>
+            <entry>Performance-optimized, with S/4 &ensa2; in the same cluster</entry>
+            <entry>Supported, but undocumented</entry>
+          </row>
+          <row>
+            <entry>Performance-optimized, with S/4 &ensa1; in the same cluster (only on &productnameshort; 15)</entry>
+            <entry>Supported, but undocumented</entry>
+          </row>
+          <row>
+            <entry>Performance-optimized, with stand-alone S/4 Application Server in the same cluster</entry>
+            <entry>Supported, but undocumented</entry>
+          </row>
+          <row>
+            <entry>Cost-optimized</entry>
+            <entry>Supported, but undocumented</entry>
+          </row>
+          <row>
+            <entry>Cost-optimized, Multi-Target</entry>
+            <entry>Non-supported</entry>
+          </row>
+          <row>
+            <entry>Performance-optimized, Multi-Target SR, third site in the same cluster</entry>
+            <entry>Non-supported</entry>
+          </row>
+          <row>
+            <entry>Two performance-optimized clusters connected</entry>
+            <entry>Non-supported</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+  </section>
+
+  <section xml:id="sap-ha-support-matrix-angi-scaleout">
+    <title>Automated &hanasr; in HANA scale-out</title>
+    <table xml:id="table-sap-ha-solutions-sap-hana-angi-scale-out">
+      <title>Supported configurations for automated &hanasr; in HANA scale-out</title>
+      <tgroup cols="2">
+      <colspec colwidth="6*"/>
+      <colspec colwidth="4*"/>
+        <thead>
+          <row>
+            <entry>&hana; scale-out configuration</entry>
+            <entry>Status</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>Performance-optimized, up to 12 nodes, NO standby (BW)</entry>
+            <entry>Supported</entry>
+          </row>
+          <row>
+            <entry>Performance-optimized, up to 4 nodes, second site read-enabled (ERP)</entry>
+            <entry>Supported</entry>
+          </row>
+          <row>
+            <entry>Performance-optimized, Multi-Target SR, third site NOT managed by the cluster</entry>
+            <entry>Supported</entry>
+          </row>
+          <row>
+            <entry>Performance-optimized, up to 30 nodes including standby (BW)</entry>
+            <entry>Supported, but undocumented</entry>
+          </row>
+          <row>
+            <entry>Performance-optimized, up to 4 nodes, with stand-alone XSA, NO standby</entry>
+            <entry>Supported, but undocumented</entry>
+          </row>
+          <row>
+            <entry>Performance-optimized, Multi-Target SR, third site in the same cluster</entry>
+            <entry>Non-supported</entry>
+          </row>
+          <row>
+            <entry>Performance-optimized, Multi-SID</entry>
+            <entry>Non-supported</entry>
+          </row>
+          <row>
+            <entry>Cost-optimized</entry>
+            <entry>Non-supported</entry>
+          </row>
+          <row>
+            <entry>Two performance-optimized clusters connected</entry>
+            <entry>Non-supported</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+  </section>
+</section>

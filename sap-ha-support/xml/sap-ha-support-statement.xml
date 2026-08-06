@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section
+[
+  <!ENTITY % entities SYSTEM "generic-entities.ent">
+    %entities;
+]>
+
+<section xml:id="sap-ha-support-statement" xml:lang="en"
+ xmlns="http://docbook.org/ns/docbook" version="5.2"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <title>Support statement</title>
+
+ <info>
+  <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
+   <dm:bugtracker></dm:bugtracker>
+   <dm:translation>no</dm:translation>
+  </dm:docmanager>
+ </info>
+
+ <section xml:id="sap-ha-support-definition">
+   <title>Supportability definition</title>
+   <informaltable>
+    <tgroup cols="2">
+     <thead>
+      <row>
+       <entry>Category</entry>
+       <entry>Definition</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>Mandatory</entry>
+       <entry>De facto, must be implemented this way.</entry>
+      </row>
+      <row>
+       <entry>Supported</entry>
+       <entry>Supported, with a published configuration guide.</entry>
+      </row>
+      <row>
+       <entry>Supported but undocumented</entry>
+       <entry>Supported, but a configuration guide is not published. &suse; will
+        accept bug reports and fix code, if needed.</entry>
+      </row>
+      <row>
+       <entry>Supported with consulting PoC</entry>
+       <entry>Support is possible if the consulting PoC proves to be working.</entry>
+      </row>
+      <row>
+       <entry>Non-supported</entry>
+       <entry>Not supported or not applicable.</entry>
+      </row>
+      <row>
+       <entry>Planned</entry>
+       <entry>On the roadmap to be tested and supported.</entry>
+      </row>
+      <row>
+       <entry>Legacy</entry>
+       <entry>Only supported for older release legacy systems.</entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </informaltable>
+  </section>
+
+  <section xml:id="sap-ha-support-infrastructure">
+   <title>Infrastructure support</title>
+   <para>
+    The infrastructure can be on-premises, physical, virtual or in public cloud.
+    The infrastructure must be supported by both &sap; and &sleha; so that important
+    functions like fencing and virtual IP are supported.
+   </para>
+   <para>
+    Public cloud deployment usually needs additional documentation focusing on the cloud-specific
+    implementation details. Check the documentation provided by the respective public cloud vendor.
+   </para>
+   <para>
+    The support details for &suse;'s &ha; solutions for &sap; and the support process for each
+    public cloud vendor are defined in the following &sap; Notes:
+   </para>
+   <informaltable>
+    <tgroup cols="2">
+     <thead>
+      <row>
+       <entry>Company</entry>
+       <entry>&sap; Note</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>&suse;</entry>
+       <entry><link xlink:href="https://launchpad.support.sap.com/#/notes/1763512">
+       &sap; Note 1763512</link>: Support details for &suse; Linux Enterprise for
+       &sap; Applications - HA Solution for &netweaver; and &sap; &s4hana;</entry>
+      </row>
+      <row>
+       <entry>&ms; Azure</entry>
+       <entry><link xlink:href="https://launchpad.support.sap.com/#/notes/2513384">
+       &sap; Note 2513384</link>: &s4s; on Azure</entry>
+      </row>
+      <row>
+       <entry>&aws;</entry>
+       <entry><link xlink:href="https://launchpad.support.sap.com/#/notes/1656099">
+       &sap; Note 1656099</link>: &sap; Applications on &aws;: Supported DB/OS and &aws; EC2 products</entry>
+      </row>
+      <row>
+       <entry>&gcloud;</entry>
+       <entry><link xlink:href="https://launchpad.support.sap.com/#/notes/2456432">
+       &sap; Note 2456432</link>: &sap; Applications on &gcloud;: Supported Products
+       and GCP VM types</entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </informaltable>
+   <para>
+    For more details, see the &suse; knowledgebase article
+    <link xlink:href="https://support.scc.suse.com/s/kb/SLES-for-SAP-How-To-Engage-SAP-and-SUSE-to-address-Product-Issues-1583239437585">
+    &slsa; for &sap; - How To Engage &sap; and &suse; to address Product Issues</link>.
+   </para>
+   <note>
+    <para>
+     If necessary, all documented &sleha; scenarios can run the &sap; workload while the
+     &ha; cluster is temporarily disabled.
+    </para>
+   </note>
+  </section>
+
+  <section xml:id="sap-ha-support-software">
+    <title>Supported &suse; software versions</title>
+    <para condition="saphana-angi;s4hana-nw">
+      This document applies to &productname; 16 and 15.
+    </para>
+    <para condition="saphana-classic">
+      This document applies to &productname; 15.
+    </para>
+    <para>
+      The general &suse; software lifecycle applies for the described scenarios.
+      See the &suse; lifecycle page for details:
+    </para>
+    <para condition="saphana-angi;s4hana-nw">
+      <link xlink:href="https://www.suse.com/lifecycle/#suse-linux-enterprise-server-for-sap-applications-16"/>
+    </para>
+    <para>
+      <link xlink:href="https://www.suse.com/lifecycle/#suse-linux-enterprise-server-for-sap-applications-15"/>
+    </para>
+    <note condition="saphana-classic;s4hana-nw">
+      <para>
+        &productname; 12 SP5 is still supported but not covered by this document,
+        as &suse; strongly recommends upgrading to newer OS versions. If you need
+        details about version 12, check the individual guides available at
+        <link xlink:href="https://documentation.suse.com/sbp/sap-12/"></link>.
+      </para>
+    </note>
+  </section>
+</section>

@@ -2,11 +2,8 @@
 <!-- This file can be edited downstream. -->
 
 <!-- PRODUCT NAME AND VERSIONS -->
-<!ENTITY productname            "&slsa; for &sap; applications">
-<!ENTITY productnameshort       "&s4sa;">
-<!ENTITY product-ga             "15">
-<!ENTITY product-sp             "Code stream">
-<!ENTITY productnumber          "&product-ga; &product-sp;">
+<!ENTITY productname            "&sles4sap;">
+<!ENTITY productnameshort       "&sles4sapa;">
 
 
 <!-- PROJECT REPOSITORY URL -->

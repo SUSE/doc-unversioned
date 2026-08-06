@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section
+[
+  <!ENTITY % entities SYSTEM "generic-entities.ent">
+    %entities;
+]>
+
+<section xml:id="sap-ha-hadr-provider-hook-scripts-classic" xml:lang="en"
+  xmlns="http://docbook.org/ns/docbook" version="5.2"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>HANA database HA/DR provider hook scripts</title>
+
+  <info>
+    <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
+    <dm:bugtracker></dm:bugtracker>
+    <dm:translation>no</dm:translation>
+    </dm:docmanager>
+  </info>
+
+  <para>
+    &suse; provides several hook scripts to enhance the integration between &hana; and the
+    &sleha; cluster. This section describes the HA/DR provider hook scripts for the
+    <systemitem>SAPHanaSR</systemitem> and <systemitem>SAPHanaSR-ScaleOut</systemitem> resource
+    agents. The &suse; best practice configuration guides explain how to use and configure these hooks.
+  </para>
+  <table xml:id="table-sap-ha-hook-scripts-classic">
+    <title>HA/DR provider hook scripts</title>
+    <tgroup cols="2">
+    <colspec colwidth='3*'/>
+    <colspec colwidth='7*'/>
+      <thead>
+      <row>
+        <entry>Script</entry>
+        <entry>Usage</entry>
+      </row>
+      </thead>
+      <tbody>
+      <row>
+        <entry><para>SAPHanaSR.py</para><para>SAPHanaSrMultiTarget.py</para></entry>
+        <entry>Mandatory for data integrity in case of cluster sr_takeover</entry>
+      </row>
+      <row>
+        <entry>susTkOver.py</entry>
+        <entry>Protects from data inconsistency caused by manual sr_takeover</entry>
+      </row>
+      <row>
+        <entry>susChkSrv.py</entry>
+        <entry>Avoids downtime caused by local indexserver restart</entry>
+      </row>
+      <row>
+        <entry>susCostOpt.py</entry>
+        <entry>Used in scale-up cost-optimized to handle secondary site in case of cluster sr_takeover</entry>
+      </row>
+      </tbody>
+    </tgroup>
+  </table>
+  <table xml:id="table-sap-ha-solutions-hook-scripts-classic">
+    <title>Supported scenarios for HA/DR provider hook scripts</title>
+    <tgroup cols="4">
+      <thead>
+      <row>
+        <entry>HA/DR provider hook script</entry>
+        <entry>Scale-up cost-optimized</entry>
+        <entry>Scale-up performance-optimized</entry>
+        <entry>Scale-out performance-optimized</entry>
+      </row>
+      </thead>
+      <tbody>
+      <row>
+        <entry>SAPHanaSR.py</entry>
+        <entry><link xlink:href="https://documentation.suse.com/sbp/sap-15/html/SLES4SAP-hana-sr-guide-costopt-15/index.html#cha.s4s.hana-hook">Mandatory</link></entry>
+        <entry><link xlink:href="https://documentation.suse.com/sbp/sap-15/html/SLES4SAP-hana-sr-guide-PerfOpt-15/index.html#cha.s4s.hana-hook">Mandatory</link></entry>
+        <entry>Legacy (mandatory for all versions before &hana;&nbsp;2.0 SPS03)</entry>
+      </row>
+      <row>
+        <entry>SAPHanaSrMultiTarget.py</entry>
+        <entry>-</entry>
+        <entry>-</entry>
+        <entry><link xlink:href="https://documentation.suse.com/sbp/sap-15/html/SLES4SAP-hana-scaleOut-PerfOpt-15/index.html#id-integrating-sap-hana-with-the-cluster">Mandatory</link></entry>
+      </row>
+      <row>
+        <entry>susTkOver.py</entry>
+        <entry>Supported but undocumented</entry>
+        <entry><link xlink:href="https://documentation.suse.com/sbp/sap-15/html/SLES4SAP-hana-sr-guide-PerfOpt-15/index.html#cha.s4s.hana-hook">Not mandatory but recommended</link></entry>
+        <entry><link xlink:href="https://documentation.suse.com/sbp/sap-15/html/SLES4SAP-hana-scaleout-multitarget-perfopt-15/index.html#id-implementing-sustkover-py-for-pretakeover">Not mandatory but recommended</link></entry>
+      </row>
+      <row>
+        <entry>susChkSrv.py</entry>
+        <entry>-</entry>
+        <entry><link xlink:href="https://documentation.suse.com/sbp/sap-15/html/SLES4SAP-hana-sr-guide-PerfOpt-15/index.html#cha.s4s.hana-hook">Not mandatory but recommended</link></entry>
+        <entry>Not mandatory but recommended</entry>
+      </row>
+      <row>
+        <entry>susCostOpt.py</entry>
+        <entry><link xlink:href="https://documentation.suse.com/sbp/sap-15/html/SLES4SAP-hana-sr-guide-costopt-15/index.html#cha.s4s.hana-hook">Mandatory</link></entry>
+        <entry>-</entry>
+        <entry>-</entry>
+      </row>
+      </tbody>
+    </tgroup>
+  </table>
+</section>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section
+[
+  <!ENTITY % entities SYSTEM "generic-entities.ent">
+    %entities;
+]>
+
+<section xml:id="sap-ha-overview-saphanasr" xml:lang="en"
+  xmlns="http://docbook.org/ns/docbook" version="5.2"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Overview of &hanasr;</title>
+
+  <info>
+    <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
+    <dm:bugtracker></dm:bugtracker>
+    <dm:translation>no</dm:translation>
+    </dm:docmanager>
+  </info>
+
+  <para>
+    &hanasr; (HSR) provides the ability to copy and continuously synchronize an &hana; database
+    to a secondary location in the same or another data center. &hanasr; is implemented between
+    two different &hana; systems with the same number of active nodes. After system replication
+    is set up between the two systems, it replicates all the data from the primary &hana;
+    system to the secondary &hana; system (initial copy). After this, any logged changes in the
+    primary system are also sent to the secondary system.
+  </para>
+  <figure xml:id="fig-sap-ha-overview-saphanasr-single-nodes">
+    <title>Overview of system replication with single nodes</title>
+    <mediaobject>
+      <imageobject role="fo">
+        <imagedata fileref="overview-sr-single-nodes.svg" width="100%"/>
+      </imageobject>
+      <imageobject role="html">
+        <imagedata fileref="overview-sr-single-nodes.svg" width="100%"/>
+      </imageobject>
+      <textobject role="description">
+        <phrase>
+          System replication from the primary system in data center 1 to the
+          secondary system in data center 2.
+        </phrase>
+      </textobject>
+    </mediaobject>
+  </figure>
+  <para>
+    If the primary &hana; system fails, the system administrator must perform a manual takeover.
+    Takeover can be performed using &hana; &cockpit; or the command line. Manual failover requires
+    continuous monitoring and could lead to higher recovery time. To automate the failover process,
+    &sleha; can be used. Using &ha; for the takeover process helps customers achieve service-level
+    agreements for &hana; downtime by enabling faster recovery without any manual intervention.
+  </para>
+  <para>
+    Multiple &hana; &ha; scenarios are supported based on &hanasr;. For variations, contact &suse;
+    to discuss defining a PoC for a scenario that is not mentioned in the documentation.
+  </para>
+  <para condition="saphana-angi">
+    You can use &hana; Fast Restart on RAM-tmpfs and &hana; on persistent memory if they are
+    transparent to the &ha; cluster. On &productnameshort; 16, virtual persistent memory (vPMEM)
+    is still supported, but Physical PMEM (Intel Optane) is not supported.
+  </para>
+  <para condition="saphana-classic">
+    You can use &hana; Fast Restart on RAM-tmpfs and &hana; on persistent memory on
+    &productnameshort; 15, if they are transparent to the &ha; cluster.
+  </para>
+  <para>
+     &hana; Native Storage Extension (NSE) is supported in &ha; solutions for automated &hanasr;
+     in both Scale-up and Scale-out. This feature does <emphasis>not</emphasis> change the
+     &hana; topology or interfaces to the &ha; cluster. However, unlike &hana; NSE, the
+     HANA Extension Nodes <emphasis>do</emphasis> change the topology and are therefore not
+     currently supported by &sleha;. Refer to the &sap; documentation for details
+     of &hana; NSE and its functional restrictions.
+  </para>
+  </section>

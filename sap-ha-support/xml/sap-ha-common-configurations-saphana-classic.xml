@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section
+[
+  <!ENTITY % entities SYSTEM "generic-entities.ent">
+    %entities;
+]>
+
+<section xml:id="sap-ha-common-configurations-saphana-classic" xml:lang="en"
+  xmlns="http://docbook.org/ns/docbook" version="5.2"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Common configurations for automated &hanasr;</title>
+
+  <info>
+    <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
+    <dm:bugtracker></dm:bugtracker>
+    <dm:translation>no</dm:translation>
+    </dm:docmanager>
+  </info>
+
+    <para>
+      Below is a summary of the most common configurations. For the complete support matrix for all
+      supported topologies, see <xref linkend="sap-ha-support-matrix-classic"/>.
+    </para>
+    <variablelist>
+      <varlistentry>
+        <term>Scale-up, performance-optimized, including read-enabled on the secondary site [A =&gt; B]</term>
+        <listitem>
+        <figure xml:id="fig-common-configurations-saphana-classic-perfopt">
+          <title>Scale-up, performance-optimized</title>
+          <mediaobject>
+          <imageobject role="fo">
+            <imagedata fileref="performance-optimized.svg" width="100%"/>
+          </imageobject>
+          <imageobject role="html">
+            <imagedata fileref="performance-optimized.svg" width="100%"/>
+          </imageobject>
+          <textobject role="description">
+            <phrase>
+              &hana; performance-optimized configuration
+            </phrase>
+          </textobject>
+          </mediaobject>
+        </figure>
+        <para>
+          In the performance-optimized scenario, an &hana; RDBMS site A is synchronizing with an
+          &hana; RDBMS site B on a second node. As the &hana; RDBMS on the second node is configured
+          to preload the tables, the takeover time is typically very short.
+        </para>
+        <para>
+          Read access can be allowed on the secondary site. To support this read-enabled scenario,
+          a second virtual IP address is added to the cluster and bound to the secondary role of
+          the system replication.
+        </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Scale-up, cost-optimized [A =&gt; B, Q]</term>
+        <listitem>
+        <figure xml:id="fig-common-configurations-saphana-classic-costopt">
+          <title>Scale-up, cost-optimized</title>
+          <mediaobject>
+          <imageobject role="fo">
+            <imagedata fileref="cost-optimized.svg" width="100%"/>
+          </imageobject>
+          <imageobject role="html">
+            <imagedata fileref="cost-optimized.svg" width="100%"/>
+          </imageobject>
+          <textobject role="description">
+            <phrase>
+              &hana; cost-optimized configuration
+            </phrase>
+          </textobject>
+          </mediaobject>
+        </figure>
+        <para>
+          In the cost-optimized scenario, the second node is also used for a stand-alone
+          non-replicated &hana; RDBMS system (such as QAS or TST). Whenever a takeover is needed,
+          the non-replicated system must be stopped first. As the productive secondary system on
+          this node must be limited in using system resources, the table preload must be switched
+          off. A possible takeover needs more time than in the performance-optimized use case.
+          We recommend running a PoC to determine the SLA before using it in production.
+        </para>
+        <para>
+          The secondary productive system needs to be running in a reduced memory consumption
+          configuration, so read-enabled must not be used in this scenario. The HA/DR provider
+          script needs to remove the memory restrictions when a takeover occurs, so multi-SID
+          (MCOS) must not be used in this scenario either.
+        </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Scale-up, multi-target (B &lt;= A' ) -&gt; C</term>
+        <listitem>
+        <figure xml:id="fig-common-configurations-saphana-classic-multitarget">
+          <title>Scale-up, multi-target</title>
+          <mediaobject>
+          <imageobject role="fo">
+            <imagedata fileref="multi-target.svg" width="100%"/>
+          </imageobject>
+          <imageobject role="html">
+            <imagedata fileref="multi-target.svg" width="100%"/>
+          </imageobject>
+          <textobject role="description">
+            <phrase>
+              &hana; multi-target configuration
+            </phrase>
+          </textobject>
+          </mediaobject>
+        </figure>
+        <para>
+          Multi-target system replication is supported in &hana; 2.0 SPS04 or newer. Only the first
+          replication pair (A and B) is managed by the cluster. The main difference between
+          multi-target and multi-tier (chain) replication is that multi-target allows
+          auto-registration for HANA after takeover.
+        </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Scale-out, performance-optimized ['Aaaa =&gt; Bbbb]</term>
+        <listitem>
+          <figure xml:id="fig-common-configurations-saphana-classic-scaleout">
+            <title>Scale-out, performance-optimized</title>
+            <mediaobject>
+            <imageobject role="fo">
+              <imagedata fileref="pacemaker-cluster.svg" width="100%"/>
+            </imageobject>
+            <imageobject role="html">
+              <imagedata fileref="pacemaker-cluster.svg" width="100%"/>
+            </imageobject>
+            <textobject role="description">
+              <phrase>
+                System replication between clusters managed by &pace;
+              </phrase>
+            </textobject>
+            </mediaobject>
+          </figure>
+          <para>
+            &pace; manages the automated failover of &hanasr; between two sites of HANA scale-out
+            clusters. An auxiliary third site is needed for the decision-maker node.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>

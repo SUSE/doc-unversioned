@@ -1,0 +1,15 @@
+MAIN="art-sap-ha-support-angi.xml"
+ROOTID="sap-ha-support-angi"
+
+PROFCONDITION="saphana-angi"
+
+DOCBOOK5_RNG_URI="urn:x-suse:rng:v2:geekodoc-flat"
+
+STYLEROOT="/usr/share/xml/docbook/stylesheet/suse2022-ns"
+FALLBACK_STYLEROOT="/usr/share/xml/docbook/stylesheet/suse-ns"
+
+# Setting the TOC depth to sect 2
+XSLTPARAM="--param toc.section.depth=2"
+
+# Don't generate revision history
+XSLTPARAM+="--param generate.revhistory=0"

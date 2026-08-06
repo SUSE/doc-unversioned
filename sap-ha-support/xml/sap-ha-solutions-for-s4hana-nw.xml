@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section
+[
+  <!ENTITY % entities SYSTEM "generic-entities.ent">
+    %entities;
+]>
+
+<section xml:id="sap-ha-solutions-for-s4hana-nw" xml:lang="en"
+  xmlns="http://docbook.org/ns/docbook" version="5.2"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Overview of HA solutions for &s4hana; and &nwshort;</title>
+
+  <info>
+    <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
+    <dm:bugtracker></dm:bugtracker>
+    <dm:translation>no</dm:translation>
+    </dm:docmanager>
+  </info>
+
+  <section>
+    <title>Operating system support</title>
+    <para>
+      &s4h; is supported on &productnameshort; 15 and 16. &netweaver; is only supported on
+      &productnameshort; 15.
+    </para>
+    <table xml:id="table-os-support-s4hana-nw" pgwide="1">
+      <title>OS support for HA solutions for &s4hana; and &nwshort;</title>
+      <tgroup cols="4">
+        <thead>
+          <row>
+            <entry>OS release</entry>
+            <entry>&s4hana;</entry>
+            <entry>&nwshort;</entry>
+            <entry>Simple Mount file system structure</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>&productnameshort; 16</entry>
+            <entry>Supported</entry>
+            <entry>Non-supported</entry>
+            <entry>Mandatory</entry>
+          </row>
+          <row>
+            <entry>&productnameshort; 15</entry>
+            <entry>Supported</entry>
+            <entry>Supported</entry>
+            <entry>Supported</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+  </section>
+
+  <section xml:id="sap-ha-solutions-for-s4hana-overview">
+    <title>&s4hana; based on ABAP Platform 1809 or newer</title>
+    <para>
+      &ensa2long; (&ensa2;) is the successor to &ensa1long; (&ensa1;). Starting from
+      ABAP Platform 1809, &ensa2long; is the default installation. The use of the new &ensa2long;
+      and Enqueue Replicator 2 provides an improved &ha; architecture with robust and fast
+      replication and failover.
+    </para>
+    <figure xml:id="fig-sap-ha-solutions-for-s4hana">
+      <title>&s4h; based on ABAP Platform 1809 or newer</title>
+      <mediaobject>
+        <imageobject role="fo">
+        <imagedata fileref="ensa2.svg" width="100%"/>
+        </imageobject>
+        <imageobject role="html">
+        <imagedata fileref="ensa2.svg" width="100%"/>
+        </imageobject>
+        <textobject role="description">
+        <phrase>
+          &ensa2; two-node cluster configuration
+        </phrase>
+        </textobject>
+      </mediaobject>
+    </figure>
+  </section>
+
+  <section xml:id="sap-ha-solutions-for-nw-overview">
+    <title>&nwshort; based on ABAP Platform 1709 or older</title>
+    <para>
+      Under the &ensa1long; (&ensa1;), the ASCS has to fail over to the
+      cluster node where the active ERS is running, because it needs to
+      access the shared memory that stores the enqueue replication table.
+    </para>
+    <figure xml:id="fig-sap-ha-solutions-for-nw">
+      <title>&netweaver; based on ABAP Platform 1709 or older</title>
+      <mediaobject>
+        <imageobject role="fo">
+        <imagedata fileref="ensa1.svg" width="100%"/>
+        </imageobject>
+        <imageobject role="html">
+        <imagedata fileref="ensa1.svg" width="100%"/>
+        </imageobject>
+        <textobject role="description">
+        <phrase>
+          &ensa1; two-node cluster configuration
+        </phrase>
+        </textobject>
+      </mediaobject>
+    </figure>
+  </section>
+</section>

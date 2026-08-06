@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section
+[
+  <!ENTITY % entities SYSTEM "generic-entities.ent">
+    %entities;
+]>
+
+<section xml:id="sap-ha-support-matrix-classic" xml:lang="en"
+  xmlns="http://docbook.org/ns/docbook" version="5.2"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Support matrix for automated &hanasr;</title>
+
+  <info>
+    <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
+    <dm:bugtracker></dm:bugtracker>
+    <dm:translation>no</dm:translation>
+    </dm:docmanager>
+  </info>
+
+  <para>
+    The support details are for a high-level overview only. Refer to the official documentation
+    for the full conditions.
+  </para>
+  <para>
+    For help reading the support details, see <xref linkend="sap-ha-notation-formula"/>.
+  </para>
+
+  <section xml:id="sap-ha-support-matrix-classic-scaleup">
+    <title>Automated &hanasr; in HANA scale-up</title>
+    <table xml:id="table-sap-ha-solutions-sap-hana-scale-up">
+      <title>Supported configurations for automated &hanasr; in HANA scale-up</title>
+      <tgroup cols="3">
+      <colspec colwidth="3*"/>
+      <colspec colwidth="3*"/>
+      <colspec colwidth="4*"/>
+        <thead>
+        <row>
+          <entry>Configuration</entry>
+          <entry>Status</entry>
+          <entry>Support details</entry>
+        </row>
+        </thead>
+        <tbody>
+        <row>
+          <entry>HANA performance-optimized, plain setup</entry>
+          <entry>Supported (<link xlink:href="https://documentation.suse.com/sbp/all/html/SLES4SAP-hana-sr-guide-PerfOpt-15/index.html">Documentation</link>)</entry>
+          <entry>[A' =&gt; B] Secondary site is not read-only enabled, so does not accept client's inquiries.</entry>
+        </row>
+        <row>
+          <entry>HANA performance-optimized, secondary site read-enabled</entry>
+          <entry>Supported (<link xlink:href="https://documentation.suse.com/sbp/all/html/SLES4SAP-hana-sr-guide-PerfOpt-15/index.html">Documentation</link>)</entry>
+          <entry>[A' =&gt; B”] Secondary site is read-enabled and can accept client's read-only inquiries.</entry>
+        </row>
+        <row>
+          <entry>HANA cost-optimized</entry>
+          <entry>Supported (<link xlink:href="https://documentation.suse.com/sbp/all/html/SLES4SAP-hana-sr-guide-costopt-15/index.html">Documentation</link>)</entry>
+          <entry>[A' =&gt; B, Q”] topology is supported. Q is a QA instance running on the secondary site.</entry>
+        </row>
+        <row>
+          <entry>HANA multi-tier system replication (replication chain), third site NOT managed by &pace;</entry>
+          <entry>Supported (<link xlink:href="https://documentation.suse.com/sbp/all/html/SLES4SAP-hana-sr-guide-PerfOpt-15/index.html">Documentation</link>)</entry>
+          <entry>[A' =&gt; B] -&gt; C topology is supported with conditions: A to B system replication
+          in &pace; is supported. B to C system replication is not managed by &pace;.</entry>
+        </row>
+        <row>
+          <entry>HANA multi-target system replication, third site NOT managed by &pace;</entry>
+          <entry>Supported (<link xlink:href="https://documentation.suse.com/sbp/all/html/SLES4SAP-hana-sr-guide-PerfOpt-15/index.html">Documentation</link>)</entry>
+          <entry>[B &lt;= A'] -&gt; C topology is supported with conditions: A to B system replication
+          in &pace; is supported. A to C system replication is not managed by &pace;.</entry>
+        </row>
+        <row>
+          <entry>Multi-tenancy or MDC</entry>
+          <entry>Supported</entry>
+          <entry>This scenario is supported since &hana; 1.0 SPS09. The setup and configuration
+          from a cluster point of view is the same for multi-tenancy and single container,
+          so existing documentation can be used.</entry>
+        </row>
+        <row>
+          <entry>HANA multi-SID performance-optimized in one cluster (MCOS)</entry>
+          <entry>Supported but undocumented</entry>
+          <entry>-</entry>
+        </row>
+        <row>
+          <entry>HANA performance-optimized and &s4hana; &ensa2; in one cluster</entry>
+          <entry>Supported but undocumented</entry>
+          <entry>-</entry>
+        </row>
+        <row>
+          <entry>HANA performance-optimized cluster and stand-alone application server</entry>
+          <entry>Supported but undocumented</entry>
+          <entry>-</entry>
+        </row>
+        </tbody>
+      </tgroup>
+    </table>
+  </section>
+
+  <section xml:id="sap-ha-support-matrix-classic-scaleout">
+    <title>Automated &hanasr; in HANA scale-out</title>
+    <table xml:id="table-sap-ha-solutions-sap-hana-scale-out">
+      <title>Supported configurations for automated &hanasr; in HANA scale-out</title>
+      <tgroup cols="3">
+      <colspec colwidth="3*"/>
+      <colspec colwidth="3*"/>
+      <colspec colwidth="4*"/>
+      <thead>
+        <row>
+        <entry>Configuration</entry>
+        <entry>Status</entry>
+        <entry>Support details</entry>
+        </row>
+      </thead>
+      <tbody>
+        <row>
+        <entry>HANA performance-optimized, up to 30 nodes including standby</entry>
+        <entry>Supported (<link xlink:href="https://documentation.suse.com/sbp/sap-15/html/SLES4SAP-hana-scaleOut-PerfOpt-15/index.html">Documentation</link>)</entry>
+        <entry>Up to 30 HANA nodes including standby nodes.</entry>
+        </row>
+        <row>
+        <entry>HANA performance-optimized, up to 12 nodes, no standby</entry>
+        <entry>Supported (<link xlink:href="https://documentation.suse.com/sbp/sap-15/html/SLES4SAP-hana-scaleout-multitarget-perfopt-15/index.html">Documentation</link>)</entry>
+        <entry>Up to 12 HANA nodes, NO standby nodes.</entry>
+        </row>
+        <row>
+        <entry>HANA performance-optimized, up to 4 nodes, secondary site read-enabled</entry>
+        <entry>Supported (<link xlink:href="https://documentation.suse.com/sbp/all/html/SLES4SAP-hana-scaleOut-PerfOpt-15/index.html">Documentation</link>)</entry>
+        <entry>Up to 4 HANA nodes, NO standby nodes.</entry>
+        </row>
+        <row>
+        <entry>HANA multi-target system replication, third site NOT managed by the cluster</entry>
+        <entry>Supported (<link xlink:href="https://documentation.suse.com/sbp/sap-15/html/SLES4SAP-hana-scaleout-multitarget-perfopt-15/index.html">Documentation</link>)</entry>
+        <entry>[B &lt;= A'] -&gt; C topology is supported with conditions: Site A to site B system
+        replication in &pace; is supported. Site A to site C system replication is not managed by &pace;.</entry>
+        </row>
+        <row>
+        <entry>HANA multi-tier system replication, third site NOT managed by the cluster</entry>
+        <entry>Supported (<link xlink:href="https://documentation.suse.com/sbp/sap-15/html/SLES4SAP-hana-scaleout-multitarget-perfopt-15/index.html">Documentation</link>)</entry>
+        <entry>[A' =&gt; B] -&gt; C topology is supported with conditions: A to B system replication
+        in &pace; is supported. B to C system replication is not managed by &pace;.</entry>
+        </row>
+        <row>
+        <entry>Performance-optimized, multi-tenancy (MDC)</entry>
+        <entry>Supported</entry>
+        <entry>Multi-tenancy is available for all the supported scenarios and use cases.
+        This scenario is supported since &hana; 1.0 SPS12, and the default installation type for
+        &hana; 2.0. The setup and configuration from a cluster point of view is the same for
+        multi-tenancy and single containers because the tenants are managed all together by
+        the &pace; cluster.</entry>
+        </row>
+      </tbody>
+      </tgroup>
+    </table>
+  </section>
+</section>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook50-profile.xsl"
+ type="text/xml"
+ title="Profiling step"?>
+<!DOCTYPE article
+[
+  <!ENTITY % entities SYSTEM "generic-entities.ent">
+    %entities;
+]>
+<article xml:id="sap-ha-support-angi" xml:lang="en"
+         xmlns="http://docbook.org/ns/docbook" version="5.2"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xmlns:its="http://www.w3.org/2005/11/its">
+  <title>HA Solutions for &hana; using SAPHanaSR-angi</title>
+  <info>
+   <date><?dbtimestamp format="B d, Y" ?></date>
+   <!-- History -->
+   <revhistory xml:id="rh-sap-ha-support-angi">
+    <revision>
+      <date>2026-08-07</date>
+      <revdescription>
+        <para>
+          Initial split into separate angi guide
+        </para>
+      </revdescription>
+     </revision>
+    </revhistory>
+
+   <!-- Series -->
+    <meta name="series" its:translate="no">Products &amp; Solutions</meta>
+
+   <!-- Task -->
+    <meta name="task" its:translate="no">
+     <phrase>High Availability</phrase>
+    </meta>
+
+   <!-- Docmanager -->
+   <xi:include href="common_copyright_gfdl.xml"/>
+    <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
+      <dm:bugtracker>
+        <dm:url>https://bugzilla.suse.com/enter_bug.cgi</dm:url>
+        <dm:product>Documentation</dm:product>
+        <dm:component>SLE Family</dm:component>
+        <dm:assignee>tahlia.richardson@suse.com</dm:assignee>
+      </dm:bugtracker>
+      <dm:editurl>https://github.com/SUSE/doc-unversioned/edit/main/sap-ha-support/xml/</dm:editurl>
+    </dm:docmanager>
+
+    <!-- Productname & Version -->
+    <!--
+    <meta name="productname" its:translate="no">
+     <productname version="sap-ha-support">&productname;</productname>
+    </meta>
+    -->
+
+    <!-- Social Media -->
+    <meta name="title" its:translate="yes">HA Solutions for &hana; using SAPHanaSR-angi</meta>
+    <meta name="social-descr" its:translate="yes">HA solutions for &hana; using SAPHanaSR-angi</meta>
+
+    <!-- Search -->
+    <meta name="description" its:translate="yes">An overview of supported &ha; solutions for &hana; on &productname;, using the SAPHanaSR-angi resource agent</meta>
+
+    <authorgroup>
+      <author><personname><firstname>Fabian</firstname><surname>Herschel</surname></personname>
+        <affiliation>
+          <jobtitle>Distinguished Information Systems Architect</jobtitle>
+          <orgname>&suse;</orgname>
+        </affiliation>
+      </author>
+      <author><personname><firstname>Lars</firstname><surname>Pinne</surname></personname>
+        <affiliation>
+          <jobtitle>Information Systems Architect</jobtitle>
+          <orgname>&suse;</orgname>
+        </affiliation>
+      </author>
+      <author><personname><firstname>Sherry</firstname><surname>Yu</surname></personname>
+       <affiliation>
+         <jobtitle>Global Alliance Director</jobtitle>
+         <orgname>&suse;</orgname>
+       </affiliation>
+     </author>
+    </authorgroup>
+
+    <abstract>
+      <para>
+        &sles4sap; is the leading Linux platform for &hana;, &s4h; and &netweaver;. Two of the key
+        components of &productnameshort; are &sleha; (&slehaa;) and resource agents (RAs).
+        &slehaa; provides &pace;, an open-source cluster framework. The resource agents manage
+        automated failover of &hanasr;, &s4hana; ASCS/ERS, and &nwshort; ASCS/ERS.
+      </para>
+      <para>
+        This document provides an overview of the &ha; solutions that &suse; supports for &hanasr;
+        on &productnameshort; 15 and 16, using the <systemitem>SAPHanaSR-angi</systemitem>
+        resource agent. New solutions will be added when they become available.
+      </para>
+    </abstract>
+  </info>
+
+  <!-- Support statement -->
+  <xi:include href="sap-ha-support-statement.xml"/>
+
+  <section xml:id="sap-ha-solutions-sap-hana">
+    <title>Overview of HA solutions for &hanasr;</title>
+
+    <!-- Overview of SAP HANA system replication -->
+    <xi:include href="sap-ha-overview-saphanasr.xml"/>
+
+    <!-- Resource agents -->
+    <xi:include href="sap-ha-resource-agents-saphanasr.xml"/>
+
+        <!-- Notation formula -->
+     <xi:include href="sap-ha-notation-formula.xml"/>
+
+    <!-- Common configurations -->
+    <xi:include href="sap-ha-common-configurations-saphana-angi.xml"/>
+ </section>
+
+  <xi:include href="sap-ha-support-matrix-angi.xml"/>
+
+  <xi:include href="sap-ha-hadr-provider-hook-scripts-angi.xml"/>
+
+  <xi:include href="sap-ha-upgrade-to-saphanasr-angi.xml"/>
+
+  <xi:include href="sap-ha-configuration-guides.xml"/>
+
+  <xi:include href="common_legal.xml"/>
+</article>
