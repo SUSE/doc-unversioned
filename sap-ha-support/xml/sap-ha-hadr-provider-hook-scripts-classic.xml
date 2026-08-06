@@ -9,7 +9,7 @@
   xmlns="http://docbook.org/ns/docbook" version="5.2"
   xmlns:xi="http://www.w3.org/2001/XInclude"
   xmlns:xlink="http://www.w3.org/1999/xlink">
-  <title>HANA database HADR provider hook scripts</title>
+  <title>HANA database HA/DR provider hook scripts</title>
 
   <info>
     <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
@@ -20,12 +20,12 @@
 
   <para>
     &suse; provides several hook scripts to enhance the integration between &hana; and the
-    &sleha; cluster. This section describes the HADR provider hook scripts for the
+    &sleha; cluster. This section describes the HA/DR provider hook scripts for the
     <systemitem>SAPHanaSR</systemitem> and <systemitem>SAPHanaSR-ScaleOut</systemitem> resource
     agents. The &suse; best practice configuration guides explain how to use and configure these hooks.
   </para>
   <table xml:id="table-sap-ha-hook-scripts-classic">
-    <title>HADR provider hook scripts</title>
+    <title>HA/DR provider hook scripts</title>
     <tgroup cols="2">
     <colspec colwidth='3*'/>
     <colspec colwidth='7*'/>
@@ -56,11 +56,11 @@
     </tgroup>
   </table>
   <table xml:id="table-sap-ha-solutions-hook-scripts-classic">
-    <title>Supported scenarios for HADR provider hook scripts</title>
+    <title>Supported scenarios for HA/DR provider hook scripts</title>
     <tgroup cols="4">
       <thead>
       <row>
-        <entry>HADR provider hook script</entry>
+        <entry>HA/DR provider hook script</entry>
         <entry>Scale-up cost optimized</entry>
         <entry>Scale-up performance optimized</entry>
         <entry>Scale-out performance optimized</entry>

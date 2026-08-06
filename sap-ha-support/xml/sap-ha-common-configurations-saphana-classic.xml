@@ -83,7 +83,7 @@
         </para>
         <para>
           The secondary productive system needs to be running in a reduced memory consumption
-          configuration, so read-enabled must not be used in this scenario. The HADR provider
+          configuration, so read-enabled must not be used in this scenario. The HA/DR provider
           script needs to remove the memory restrictions when a takeover occurs, so multi-SID
           (MCOS) must not be used in this scenario either.
         </para>
