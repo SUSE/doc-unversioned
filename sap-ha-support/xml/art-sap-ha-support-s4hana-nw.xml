@@ -18,6 +18,14 @@
    <!-- History -->
    <revhistory xml:id="rh-sap-ha-support-s4hana-nw">
     <revision>
+      <date>2026-08-21</date>
+      <revdescription>
+        <para>
+          Add new &productnameshort; 16 SBP links
+        </para>
+      </revdescription>
+     </revision>
+    <revision>
       <date>2026-08-07</date>
       <revdescription>
         <para>
