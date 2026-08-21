@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file originates from the project https://github.com/openSUSE/doc-kit -->
+<!-- This file can be edited downstream. -->
+<?xml-stylesheet href="urn:x-suse:xslt:profiling:docbook51-profile.xsl"
+ type="text/xml"
+ title="Profiling step"?>
+<!DOCTYPE article
+[
+  <!ENTITY % entities SYSTEM "generic-entities.ent">
+    %entities;
+]>
+<article xml:id="sap-virtualization-supported-scenarios" xml:lang="en"
+         xmlns="http://docbook.org/ns/docbook" version="5.2"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xmlns:its="http://www.w3.org/2005/11/its">
+  <title>Virtualizing &sap; Workloads: Supported Scenarios</title>
+  <info><date>
+<?dbtimestamp format="B d, Y"?></date>
+    <!-- History -->
+    <revhistory xml:id="rh-sap-virtualization-supported-scenarios">
+      <revision><date>2026-08-24</date>
+        <revdescription>
+          <para>
+            Initial version
+          </para>
+        </revdescription>
+      </revision>
+    </revhistory>
+    <xi:include href="common_copyright_gfdl.xml"/>
+    <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
+      <dm:bugtracker>
+        <dm:url>https://bugzilla.suse.com/enter_bug.cgi</dm:url>
+        <dm:product>Documentation</dm:product>
+        <dm:component>SLE Family</dm:component>
+        <dm:assignee>eliska.romanova@suse.com</dm:assignee>
+      </dm:bugtracker>
+      <dm:editurl>https://github.com/SUSE/doc-unversioned/edit/main/sap-virtualization/xml/</dm:editurl>
+    </dm:docmanager>
+    <meta name="title" its:translate="yes">Virtualizing &sap; Workloads: Supported Scenarios</meta>
+    <meta name="series" its:translate="no">Products &amp; Solutions</meta>
+    <meta name="description" its:translate="yes">How to virtualize &hana; and cloud-native workloads on &sles4sap; using &kvm; and &ranchera;</meta>
+    <meta name="social-descr" its:translate="yes">Virtualize &sap; workloads on &sles4sapa;</meta>
+    <meta name="task" its:translate="no"><phrase>Virtualization</phrase>
+    </meta>
+    <author><personname><firstname>Gereon</firstname><surname>Vey</surname></personname>
+      <affiliation>
+        <jobtitle>Head of &sap; Solutions Engineering</jobtitle>
+        <orgname>&suse;</orgname>
+      </affiliation>
+    </author>
+    <abstract>
+      <para>
+        &suse; infrastructure solutions provide validated environments for running traditional and
+        cloud-native &sap; workloads. This infrastructure enables hardware consolidation, reduced
+        operational costs and near bare-metal performance across physical servers and containerized
+        clusters. It maintains validated support across core application layers, &hana; and
+        containerized edge deployments.
+      </para>
+    </abstract>
+  </info>
+  <xi:include href="sap-supported-scenarios-overview.xml"/>
+  <xi:include href="sap-supported-scenarios-traditional.xml"/>
+  <xi:include href="sap-cloud-workloads.xml"/>
+  <xi:include href="sap-supported-scenarios-references.xml"/>
+  <xi:include href="common_legal.xml"/>
+</article>

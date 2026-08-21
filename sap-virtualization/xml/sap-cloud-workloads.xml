@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section
+[
+  <!ENTITY % entities SYSTEM "generic-entities.ent">
+    %entities;
+]>
+<section xml:id="sap-cloud-workloads" xml:lang="en"
+  xmlns="http://docbook.org/ns/docbook" version="5.2"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Cloud-native &sap; workloads</title>
+  <info>
+    <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
+      <dm:bugtracker></dm:bugtracker>
+      <dm:translation>no</dm:translation>
+    </dm:docmanager>
+  </info>
+  <para>
+    With the current trend towards cloud-based services, the need arises to connect on-premises
+    systems to these cloud-based services. To support these scenarios, &rancherforsap; provides a
+    complete software stack tailored for hosting your containerized &sap; edge workloads,
+    complementing your &sap; cloud counterparts, specifically &sap; &sapeic; (&sapeica;) and &sap;
+    &sapdme;. You deploy these solutions on lightweight &k8s; clusters virtualized within
+    hyperconverged infrastructure. &rancherforsap; provides this infrastructure.
+  </para>
+  <section xml:id="sap-edge-integration-cell">
+    <title>&sap; &sapeic;</title>
+    <para>
+      &sap; &sapeic; (&sapeica;) acts as an on-premises integration runtime, complementing the
+      cloud-based &sap; Integration Suite by bringing integration flows close to your on-premises
+      systems. To run &sapeica; in a supported, production-ready and resilient configuration, you
+      must deploy the workload on &ranchera; &k8s; Engine 2 (&rke2a;) clusters managed by
+      &rancherprime;. You run these clusters inside virtual machines hosted on &svirtualization;.
+    </para>
+    <para>
+      &sap; validates &sapeic; on certain &k8s; platforms. You can find the support matrix in
+      <link xlink:href="https://me.sap.com/notes/3247839">&sapnote; 3247839</link>.
+    </para>
+    <para>
+      You can access &suse; Best Practices Guides for &sap; Edge Integration Cell at
+      <link xlink:href="https://documentation.suse.com/sbp/sap-other"></link>.
+    </para>
+  </section>
+  <section xml:id="sap-digital-manufacturing-edge">
+    <title>&sap; &sapdme;</title>
+    <para>
+      &sap; &sapdme; extends your cloud-based &sap; Digital Manufacturing
+      to the shop floor, ensuring continuous manufacturing operations even during cloud
+      disconnections. You can deploy &sapdme; on the same virtualized &rancherprime; and
+      &svirtualization; (Harvester) infrastructure by using virtualized &rke2a; clusters running on
+      &slm; 6.0.
+    </para>
+    <para>
+      You can access &suse; Best Practices Guides for &sapdme; at
+      <link xlink:href="https://documentation.suse.com/sbp/sap-other"></link>.
+    </para>
+  </section>
+</section>

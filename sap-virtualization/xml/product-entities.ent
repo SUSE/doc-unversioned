@@ -1,0 +1,35 @@
+<!-- This file originates from the project https://github.com/openSUSE/doc-kit -->
+<!-- This file can be edited downstream. -->
+
+<!-- PRODUCT NAME AND VERSIONS -->
+<!ENTITY productname            "&sles4sap;">
+<!ENTITY productnameshort       "&sles4sapa;">
+
+
+<!-- PROJECT REPOSITORY URL -->
+<!ENTITY repo-url               "https://github.com/SUSE/doc-unversioned">
+<!ENTITY repo-readme            "&repo-url;/blob/main/README.adoc">
+
+<!-- DOCUMENTATION.SUSE.COM PRODUCT URL -->
+<!ENTITY doc-url                "&dsc;/[PRODUCT]/[VERSION]">
+
+<!-- RELEASE NOTES URL -->
+<!ENTITY rn-url                 "&sc-rn;/x86_64/[PRODUCT]/[VERSION]">
+
+
+<!-- START YEAR OF COPYRIGHT -->
+<!ENTITY copyrightstart         "2026">
+<!-- COPYRIGHT HOLDER(S) -->
+<!ENTITY copyrightholder        "SUSE LLC">
+
+<!-- PRODUCT NAMES -->
+<!ENTITY skvm                "SUSE KVM">
+<!ENTITY sapnote             "&sap; Note">
+<!ENTITY sapase              "&sap; Adaptive Server Enterprise">
+<!ENTITY sapasea             "&sap; ASE">
+<!ENTITY ibmdb2              "&ibm; Db2">
+<!ENTITY intel               "Intel">
+<!ENTITY rancherforsap       "&suse; &ranchera; for &sap; applications">
+<!ENTITY sapdme              "Digital Manufacturing Edge">
+<!ENTITY sapeic              "Edge Integration Cell">
+<!ENTITY sapeica             "EIC">

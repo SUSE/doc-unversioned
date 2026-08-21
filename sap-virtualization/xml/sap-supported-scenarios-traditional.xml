@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section
+[
+  <!ENTITY % entities SYSTEM "generic-entities.ent">
+    %entities;
+]>
+<section xml:id="sap-supported-scenarios-traditional" xml:lang="en"
+  xmlns="http://docbook.org/ns/docbook" version="5.2"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Supported scenarios for traditional &sap; applications</title>
+  <info>
+    <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
+      <dm:bugtracker></dm:bugtracker>
+      <dm:translation>no</dm:translation>
+    </dm:docmanager>
+  </info>
+  <para>
+    &suse; and &sap; maintain a joint support commitment for your traditional virtualized &sap;
+    deployments. This support framework enables you to host production workloads on &skvm; with
+    full confidence, provided your environment conforms to the specific software versions,
+    processor architectures and sizing principles documented by both vendors.
+  </para>
+  <section xml:id="sap-traditional-workloads">
+    <title>Traditional &sap; workloads</title>
+    <para>
+      &sap; fully supports traditional &sap; application components, such as ABAP and Java
+      Application Servers (for example, &netweaver;, &s4h; application layers) for your production
+      deployment on &skvm;. This production support is applicable for &sles; 11 SP1 or later as the
+      hypervisor. However, &suse; requires &sles4sapa; as the hypervisor for &sap; workloads.
+    </para>
+    <para>
+      For relational database management systems (RDBMS) hosting your &sap; database instances,
+      production support on &skvm; covers most enterprise-grade relational databases. This includes
+      &sapase; (&sapasea;) and &ibmdb2;. However, you must respect specific
+      vendor limitations. For example, &sap; explicitly does not support Oracle databases for
+      production use on the &skvm; platform.
+    </para>
+    <para>
+      Before deployment, you must consult the general support parameters laid out in the official
+      &sapnote;s. For general virtualization support rules, see
+      <link xlink:href="https://me.sap.com/notes/1492000">&sapnote; 1492000</link>. For details
+      regarding the &skvm; support statements and virtualization agreements, see
+      <link xlink:href="https://me.sap.com/notes/1522993">&sapnote; 1522993</link>. This &sapnote;
+      also includes instructions on how to set up host monitoring from within the virtual machines,
+      which is a requirement for running virtualized &sap; applications.
+    </para>
+  </section>
+  <section xml:id="sap-hana">
+    <title>&hana;</title>
+    <para>
+      Due to the high-performance memory-bound nature of &hana;, &sap; supports &kvm;
+      virtualization under strict validation boundaries. You must ensure your sizing, hypervisor
+      setup and configuration adhere to validated hardware topologies to maintain support
+      eligibility. Validated configurations support multiple physical layouts, including
+      single-virtual machine (Single-VM) setups, multi-virtual machine (Multi-VM) multi-tenant
+      configurations, &ha; (HA) cluster nodes and live migration configurations.
+    </para>
+    <para>
+      To assist you in matching your physical processor configurations with validated software
+      versions, &suse; and &sap; publish specific validation notes. These notes map particular
+      &sles4sapa; service packs and &intel; Xeon processor architectures to your validated workloads.
+      The following table summarizes these validated scenarios:
+    </para>
+    <table xml:id="table-validated-processor-architectures">
+      <title>Validated &intel; processor architectures for &sles4sapa;</title>
+      <tgroup cols="3">
+        <thead>
+          <row>
+            <entry>&sles4sapa; version</entry>
+            <entry>Processor architecture (Intel)</entry>
+            <entry>Reference &sapnote;</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry><link xlink:href="https://documentation.suse.com/sbp/sap-12/html/SBP-HANAonKVM-SLES12SP2/index.html">&sles4sapa; 12 SP2</link>
+            </entry>
+            <entry>&intel; Xeon E3, E5 and E7 v3 series (Haswell)</entry>
+            <entry><link xlink:href="https://me.sap.com/notes/2607144">&sapnote; 2607144</link>
+            </entry>
+          </row>
+          <row>
+            <entry><link xlink:href="https://documentation.suse.com/sbp/sap-15/html/SBP-SLES4SAP-HANAonKVM-SLES15SP2/index.html">&sles4sapa; 15 SP2</link>
+            </entry>
+            <entry>1st Generation &intel; Xeon Scalable Processor (Skylake)</entry>
+            <entry><link xlink:href="https://me.sap.com/notes/3120786">&sapnote; 3120786</link>
+            </entry>
+          </row>
+          <row>
+            <entry><link xlink:href="https://documentation.suse.com/sbp/sap-15/html/SBP-SLES4SAP-HANAonKVM-SLES15SP4/index.html">&sles4sapa; 15 SP4</link>
+            </entry>
+            <entry>2nd Generation &intel; Xeon Scalable Processor (Cascade Lake)</entry>
+            <entry><link xlink:href="https://me.sap.com/notes/3366235">&sapnote; 3366235</link>
+            </entry>
+          </row>
+          <row>
+            <entry><link xlink:href="https://documentation.suse.com/sbp/sap-15/html/SBP-SLES4SAP-HANAonKVM-SLES15SP5/index.html">&sles4sapa; 15 SP5</link>
+            </entry>
+            <entry>4th and 5th Generation &intel; Xeon Scalable Processor (Sapphire Rapids and Emerald Rapids)</entry>
+            <entry><link xlink:href="https://me.sap.com/notes/3538596">&sapnote; 3538596</link>
+            </entry>
+          </row>
+          <row>
+            <entry><link xlink:href="https://documentation.suse.com/sbp/sap-15/html/SBP-SLES4SAP-HANAonKVM-SLES15SP7/index.html">&sles4sapa; 15 SP7</link>
+            </entry>
+            <entry>2nd, 4th, 5th and 6th Generation &intel; Xeon Scalable Processor (Cascade Lake, Sapphire Rapids, Emerald Rapids* and Granite Rapids*)</entry>
+            <entry><link xlink:href="https://me.sap.com/notes/3741904">&sapnote; 3741904</link>
+            </entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+    <para>
+      <emphasis>&#160;&#160;* &sap; validation on-going, check the respective &sapnote; for support
+      status.</emphasis>
+    </para>
+    <para>
+      For detailed architecture sizing and configuration guidelines, refer to the official &suse;
+      Best Practices Guides for &hana; on &kvm;, available via the &suse; Documentation site. The
+      respective guides are linked in the previous table.
+      <link xlink:href="https://me.sap.com/notes/3430656">&sapnote; 3430656</link> provides a list
+      of all &skvm; hypervisors validated for &hana; workloads. For all hypervisors supported to
+      virtualize &hana;, see <link xlink:href="https://me.sap.com/notes/1788665">&sapnote;
+      1788665</link>.
+    </para>
+    <para>
+      The guest operating system can be any that is supported both by &suse; as a guest operating
+      system for the specific hypervisor, and by &sap; as an operating system for &hana;.
+    </para>
+    <para>
+      Through the introduction of Tailored Datacenter Integration (TDI) Phase 5, &sap; began
+      shifting away from established core-to-RAM ratios for &hana; appliances toward workload-based
+      sizing. &sap; also supports this for your &hana; instances virtualized on &skvm;. See
+      <link xlink:href="https://me.sap.com/notes/2779240">&sapnote; 2779240</link> for details.
+    </para>
+  </section>
+</section>

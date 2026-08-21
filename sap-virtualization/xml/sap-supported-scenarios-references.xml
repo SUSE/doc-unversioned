@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section
+[
+  <!ENTITY % entities SYSTEM "generic-entities.ent">
+    %entities;
+]>
+<section xml:id="sap-overview-references" xml:lang="en"
+  xmlns="http://docbook.org/ns/docbook" version="5.2"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>References</title>
+  <info>
+    <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
+      <dm:bugtracker></dm:bugtracker>
+      <dm:translation>no</dm:translation>
+    </dm:docmanager>
+  </info>
+  <itemizedlist>
+    <listitem>
+      <para>
+        <link xlink:href="https://me.sap.com/notes/1492000">&sapnote; 1492000</link> - General
+        Virtualization Support Statement
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+        <link xlink:href="https://me.sap.com/notes/1522993">&sapnote; 1522993</link> -
+        Virtualization Support on &skvm;
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+        <link xlink:href="https://me.sap.com/notes/1788665">&sapnote; 1788665</link> - &hana;
+        Support on Virtualized Environments
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+        <link xlink:href="https://me.sap.com/notes/2779240">&sapnote; 2779240</link> - Sizing and
+        &slsa; TDI Phase 5 Sizing Subelements
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+        <link xlink:href="https://me.sap.com/notes/3430656">&sapnote; 3430656</link> - Hypervisor
+        Validation Statement for &hana; on &kvm;
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+        <link xlink:href="https://me.sap.com/notes/3247839">&sapnote; 3247839</link> - Database
+        Version and Compatibility Guidelines for &sapeic;
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+        <link xlink:href="https://me.sap.com/notes/3618713">&sapnote; 3618713</link> - Restricted
+        Access Configuration and Security Policies for &sapeic;
+      </para>
+    </listitem>
+  </itemizedlist>
+</section>

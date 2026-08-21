@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section
+[
+  <!ENTITY % entities SYSTEM "generic-entities.ent">
+    %entities;
+]>
+<section xml:id="sap-supported-scenarios-overview" xml:lang="en"
+  xmlns="http://docbook.org/ns/docbook" version="5.2"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Overview</title>
+  <info>
+    <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
+      <dm:bugtracker></dm:bugtracker>
+      <dm:translation>no</dm:translation>
+    </dm:docmanager>
+  </info>
+  <para>
+    Virtualization represents a foundational element in modern enterprise architecture. It allows
+    you to consolidate hardware resources, reduce operational costs and simplify lifecycle
+    management. &sles4sap; provides a highly optimized platform for you to virtualize demanding
+    &sap; workloads using Kernel-based Virtual Machine (&kvm;) technology. By using &skvm;, you can
+    run critical databases and application servers on a single high-performance physical server.
+    This optimizes resource usage while maintaining strict security boundaries.
+  </para>
+  <para>
+    To ensure operational integrity, data safety and alignment with support policies, &sap; and
+    &suse; conduct collaborative hypervisor validations. These validation processes ensure that
+    your virtualized &sap; systems deliver near bare-metal performance, meeting strict performance
+    criteria and minimizing virtualization latency across CPU, memory, storage and network
+    subsystems. This reference document acts as your architectural guide, mapping out supported
+    scenarios and validation requirements, for both traditional and cloud-native deployments.
+  </para>
+</section>
