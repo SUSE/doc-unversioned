@@ -45,7 +45,11 @@
         </row>
         <row>
           <entry>Simple mount file system structure</entry>
-          <entry>Supported (<link xlink:href="https://documentation.suse.com/sbp/sap-15/html/SAP-S4HA10-setupguide-simplemount-sle15/index.html">Documentation</link>)</entry>
+          <entry>
+            <para>Supported</para>
+            <para>(<link xlink:href="https://documentation.suse.com/sbp/sap-16/html/SAP-S4HA10-setupguide-simplemount-sle16/index.html">Documentation for &productnameshort; 16</link>)</para>
+            <para>(<link xlink:href="https://documentation.suse.com/sbp/sap-15/html/SAP-S4HA10-setupguide-simplemount-sle15/index.html">Documentation for &productnameshort; 15</link>)</para>
+          </entry>
           <entry>Shared file system mounts are NOT managed by the cluster. This is the recommended
           configuration over the <emphasis>Filesystem</emphasis> resource-based solution.</entry>
         </row>
