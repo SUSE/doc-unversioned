@@ -16,10 +16,10 @@
     </dm:docmanager>
   </info>
   <para>
-    With the current trend towards cloud-based services, the need arises to connect on-premises
+    With the current trend toward cloud-based services, the need arises to connect on-premises
     systems to these cloud-based services. To support these scenarios, &rancherforsap; provides a
     complete software stack tailored for hosting your containerized &sap; edge workloads,
-    complementing your &sap; cloud counterparts, specifically &sap; &sapeic; (&sapeica;) and &sap;
+    complementing the corresponding &sap; cloud counterparts, specifically &sap; &sapeic; (&sapeica;) and &sap;
     &sapdme;. You deploy these solutions on lightweight &k8s; clusters virtualized within
     hyperconverged infrastructure. &rancherforsap; provides this infrastructure.
   </para>
@@ -44,11 +44,10 @@
   <section xml:id="sap-digital-manufacturing-edge">
     <title>&sap; &sapdme;</title>
     <para>
-      &sap; &sapdme; extends your cloud-based &sap; Digital Manufacturing
-      to the shop floor, ensuring continuous manufacturing operations even during cloud
-      disconnections. You can deploy &sapdme; on the same virtualized &rancherprime; and
-      &svirtualization; (Harvester) infrastructure by using virtualized &rke2a; clusters running on
-      &slm; 6.0.
+      &sap; &sapdme; extends your cloud-based &sap; Digital Manufacturing to the shop floor,
+      ensuring continuous manufacturing operations even during cloud disconnections. You can deploy
+      &sapdme; on the same virtualized &rancherprime; and &svirtualization; (Harvester)
+      infrastructure by using virtualized &rke2a; clusters running on &slm; 6.0.
     </para>
     <para>
       You can access &suse; Best Practices Guides for &sapdme; at

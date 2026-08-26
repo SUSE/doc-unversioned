@@ -52,15 +52,16 @@
     <abstract>
       <para>
         &suse; infrastructure solutions provide validated environments for running traditional and
-        cloud-native &sap; workloads. This infrastructure enables hardware consolidation, reduced
-        operational costs and near bare-metal performance across physical servers and containerized
-        clusters. It maintains validated support across core application layers, &hana; and
-        containerized edge deployments.
+        cloud-native &sap; workloads on &kvm; virtualization, covering &sap; application servers,
+        databases, &hana; and containerized &sap; edge workloads on &rancherprime; and
+        &svirtualization;. The result is hardware consolidation, lower costs and near-bare-metal
+        performance, with validated support across all layers. Use this guide to confirm whether
+        your &sap; deployment falls within supported boundaries and which &sap; notes apply.
       </para>
     </abstract>
   </info>
   <xi:include href="sap-supported-scenarios-overview.xml"/>
-  <xi:include href="sap-supported-scenarios-traditional.xml"/>
+  <xi:include href="sap-supported-scenarios-kvm.xml"/>
   <xi:include href="sap-cloud-workloads.xml"/>
   <xi:include href="sap-supported-scenarios-references.xml"/>
   <xi:include href="common_legal.xml"/>

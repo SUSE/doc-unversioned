@@ -4,11 +4,11 @@
   <!ENTITY % entities SYSTEM "generic-entities.ent">
     %entities;
 ]>
-<section xml:id="sap-supported-scenarios-traditional" xml:lang="en"
+<section xml:id="sap-supported-scenarios-kvm" xml:lang="en"
   xmlns="http://docbook.org/ns/docbook" version="5.2"
   xmlns:xi="http://www.w3.org/2001/XInclude"
   xmlns:xlink="http://www.w3.org/1999/xlink">
-  <title>Supported scenarios for traditional &sap; applications</title>
+  <title>Supported scenarios on &skvm;</title>
   <info>
     <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
       <dm:bugtracker></dm:bugtracker>
@@ -21,8 +21,8 @@
     full confidence, provided your environment conforms to the specific software versions,
     processor architectures and sizing principles documented by both vendors.
   </para>
-  <section xml:id="sap-traditional-workloads">
-    <title>Traditional &sap; workloads</title>
+  <section xml:id="sap-application-servers">
+    <title>&sap; application servers and non-HANA databases</title>
     <para>
       &sap; fully supports traditional &sap; application components, such as ABAP and Java
       Application Servers (for example, &netweaver;, &s4h; application layers) for your production
@@ -32,9 +32,9 @@
     <para>
       For relational database management systems (RDBMS) hosting your &sap; database instances,
       production support on &skvm; covers most enterprise-grade relational databases. This includes
-      &sapase; (&sapasea;) and &ibmdb2;. However, you must respect specific
-      vendor limitations. For example, &sap; explicitly does not support Oracle databases for
-      production use on the &skvm; platform.
+      &sapase; (&sapasea;) and &ibmdb2;. However, you must respect specific vendor limitations. For
+      example, &sap; explicitly does not support Oracle databases for production use on the &skvm;
+      platform.
     </para>
     <para>
       Before deployment, you must consult the general support parameters laid out in the official
@@ -53,17 +53,17 @@
       virtualization under strict validation boundaries. You must ensure your sizing, hypervisor
       setup and configuration adhere to validated hardware topologies to maintain support
       eligibility. Validated configurations support multiple physical layouts, including
-      single-virtual machine (Single-VM) setups, multi-virtual machine (Multi-VM) multi-tenant
-      configurations, &ha; (HA) cluster nodes and live migration configurations.
+      single-virtual machine (Single-VM) setups, multi-virtual machine (Multi-VM) configurations,
+      &ha; (HA) cluster nodes and live migration configurations.
     </para>
     <para>
       To assist you in matching your physical processor configurations with validated software
       versions, &suse; and &sap; publish specific validation notes. These notes map particular
-      &sles4sapa; service packs and &intel; Xeon processor architectures to your validated workloads.
-      The following table summarizes these validated scenarios:
+      &sles4sapa; service packs and &intel; Xeon processor architectures to your validated
+      workloads. The following table summarizes these validated scenarios:
     </para>
     <table xml:id="table-validated-processor-architectures">
-      <title>Validated &intel; processor architectures for &sles4sapa;</title>
+      <title>Validated &intel; processor architectures for &hana; on &skvm;</title>
       <tgroup cols="3">
         <thead>
           <row>
@@ -83,28 +83,28 @@
           <row>
             <entry><link xlink:href="https://documentation.suse.com/sbp/sap-15/html/SBP-SLES4SAP-HANAonKVM-SLES15SP2/index.html">&sles4sapa; 15 SP2</link>
             </entry>
-            <entry>1st Generation &intel; Xeon Scalable Processor (Skylake)</entry>
+            <entry>1st Generation &intel; Xeon Scalable Processors (Skylake)</entry>
             <entry><link xlink:href="https://me.sap.com/notes/3120786">&sapnote; 3120786</link>
             </entry>
           </row>
           <row>
             <entry><link xlink:href="https://documentation.suse.com/sbp/sap-15/html/SBP-SLES4SAP-HANAonKVM-SLES15SP4/index.html">&sles4sapa; 15 SP4</link>
             </entry>
-            <entry>2nd Generation &intel; Xeon Scalable Processor (Cascade Lake)</entry>
+            <entry>2nd Generation &intel; Xeon Scalable Processors (Cascade Lake)</entry>
             <entry><link xlink:href="https://me.sap.com/notes/3366235">&sapnote; 3366235</link>
             </entry>
           </row>
           <row>
             <entry><link xlink:href="https://documentation.suse.com/sbp/sap-15/html/SBP-SLES4SAP-HANAonKVM-SLES15SP5/index.html">&sles4sapa; 15 SP5</link>
             </entry>
-            <entry>4th and 5th Generation &intel; Xeon Scalable Processor (Sapphire Rapids and Emerald Rapids)</entry>
+            <entry>4th and 5th Generation &intel; Xeon Scalable Processors (Sapphire Rapids and Emerald Rapids)</entry>
             <entry><link xlink:href="https://me.sap.com/notes/3538596">&sapnote; 3538596</link>
             </entry>
           </row>
           <row>
             <entry><link xlink:href="https://documentation.suse.com/sbp/sap-15/html/SBP-SLES4SAP-HANAonKVM-SLES15SP7/index.html">&sles4sapa; 15 SP7</link>
             </entry>
-            <entry>2nd, 4th, 5th and 6th Generation &intel; Xeon Scalable Processor (Cascade Lake, Sapphire Rapids, Emerald Rapids* and Granite Rapids*)</entry>
+            <entry>2nd, 4th, 5th and 6th Generation &intel; Xeon Scalable Processors (Cascade Lake, Sapphire Rapids, Emerald Rapids* and Granite Rapids*)</entry>
             <entry><link xlink:href="https://me.sap.com/notes/3741904">&sapnote; 3741904</link>
             </entry>
           </row>
@@ -131,8 +131,9 @@
     <para>
       Through the introduction of Tailored Datacenter Integration (TDI) Phase 5, &sap; began
       shifting away from established core-to-RAM ratios for &hana; appliances toward workload-based
-      sizing. &sap; also supports this for your &hana; instances virtualized on &skvm;. See
-      <link xlink:href="https://me.sap.com/notes/2779240">&sapnote; 2779240</link> for details.
+      sizing. &sap; also supports workload-based sizing for your &hana; instances virtualized on
+      &skvm;. See <link xlink:href="https://me.sap.com/notes/2779240">&sapnote; 2779240</link> for
+      details.
     </para>
   </section>
 </section>

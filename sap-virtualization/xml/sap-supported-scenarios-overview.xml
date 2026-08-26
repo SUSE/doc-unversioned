@@ -29,6 +29,6 @@
     your virtualized &sap; systems deliver near bare-metal performance, meeting strict performance
     criteria and minimizing virtualization latency across CPU, memory, storage and network
     subsystems. This reference document acts as your architectural guide, mapping out supported
-    scenarios and validation requirements, for both traditional and cloud-native deployments.
+    scenarios and validation requirements for both traditional and cloud-native deployments.
   </para>
 </section>
