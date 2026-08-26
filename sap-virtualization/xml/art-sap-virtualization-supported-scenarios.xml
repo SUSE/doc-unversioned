@@ -19,7 +19,7 @@
 <?dbtimestamp format="B d, Y"?></date>
     <!-- History -->
     <revhistory xml:id="rh-sap-virtualization-supported-scenarios">
-      <revision><date>2026-08-24</date>
+      <revision><date>2026-08-26</date>
         <revdescription>
           <para>
             Initial version
