@@ -46,6 +46,14 @@
     </meta>
     <revhistory xml:id="rh-article-suseconnect-visibility">
       <revision>
+        <date>2026-08-18</date>
+        <revdescription>
+          <para>
+            Added 'rpm_packages' to the table of collected system attributes and collector configuration.
+          </para>
+        </revdescription>
+      </revision>
+      <revision>
         <date>2026-06-08</date>
         <revdescription>
           <para>
@@ -482,6 +490,35 @@
 </screen>
             </entry>
           </row>
+          <row>
+            <entry>rpm_packages</entry>
+            <entry>List</entry>
+            <entry>
+              <para>
+                Installed SUSE RPM packages
+              </para>
+<screen>
+{
+  "identifier":"f0c8e318d184[...]d568c8543f49efbc0",
+  "data":[
+    [
+      "bash",
+      "4.4",
+      "19.6.1",
+      "x86_64"
+    ],
+    [
+      "glibc",
+      "2.31",
+      "150300.63.1",
+      "x86_64"
+    ],
+    ...
+  ]
+}
+</screen>
+            </entry>
+          </row>
         </tbody>
       </tgroup>
     </table>
@@ -555,15 +592,18 @@
         <title>Optional collectors</title>
 
         <para>
-          The following collectors are enabled by default but can be disabled through configuration:
+          The following collectors are optional and can be configured:
         </para>
 
         <itemizedlist>
           <listitem>
-            <para><literal>pci_data</literal> — PCI device information</para>
+            <para><literal>pci_data</literal> — PCI device information (enabled by default)</para>
           </listitem>
           <listitem>
-            <para><literal>mod_list</literal> — Loaded kernel modules</para>
+            <para><literal>mod_list</literal> — Loaded kernel modules (enabled by default)</para>
+          </listitem>
+          <listitem>
+            <para><literal>rpm_packages</literal> — Installed SUSE RPM packages (disabled by default)</para>
           </listitem>
         </itemizedlist>
 
@@ -586,8 +626,10 @@ no_zypper_refs: false
 
 collectors:
   pci_data:
-    state: disabled
+    state: enabled
   mod_list:
+    state: enabled
+  rpm_packages:
     state: disabled
 </screen>
 
@@ -597,7 +639,7 @@ collectors:
 
           <itemizedlist>
             <listitem>
-              <para><literal>enabled</literal> — Enable the collector (default)</para>
+              <para><literal>enabled</literal> — Enable the collector</para>
             </listitem>
             <listitem>
               <para><literal>disabled</literal> — Disable the collector</para>
