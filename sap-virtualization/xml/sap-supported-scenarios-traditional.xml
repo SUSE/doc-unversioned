@@ -4,11 +4,11 @@
   <!ENTITY % entities SYSTEM "generic-entities.ent">
     %entities;
 ]>
-<section xml:id="sap-supported-scenarios-kvm" xml:lang="en"
+<section xml:id="sap-supported-scenarios-traditional" xml:lang="en"
   xmlns="http://docbook.org/ns/docbook" version="5.2"
   xmlns:xi="http://www.w3.org/2001/XInclude"
   xmlns:xlink="http://www.w3.org/1999/xlink">
-  <title>Supported scenarios on &skvm;</title>
+  <title>Supported scenarios for traditional &sap; applications</title>
   <info>
     <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
       <dm:bugtracker></dm:bugtracker>
