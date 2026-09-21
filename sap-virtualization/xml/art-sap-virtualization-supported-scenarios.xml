@@ -19,6 +19,13 @@
 <?dbtimestamp format="B d, Y"?></date>
     <!-- History -->
     <revhistory xml:id="rh-sap-virtualization-supported-scenarios">
+      <revision><date>2026-09-21</date>
+        <revdescription>
+          <para>
+            Updated title of a section
+          </para>
+        </revdescription>
+      </revision>
       <revision><date>2026-08-26</date>
         <revdescription>
           <para>
@@ -61,7 +68,7 @@
     </abstract>
   </info>
   <xi:include href="sap-supported-scenarios-overview.xml"/>
-  <xi:include href="sap-supported-scenarios-kvm.xml"/>
+  <xi:include href="sap-supported-scenarios-traditional.xml"/>
   <xi:include href="sap-cloud-workloads.xml"/>
   <xi:include href="sap-supported-scenarios-references.xml"/>
   <xi:include href="common_legal.xml"/>
