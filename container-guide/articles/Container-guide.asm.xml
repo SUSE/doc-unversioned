@@ -44,6 +44,13 @@
     <merge>
       <title>&sle_container_guide;</title>
       <revhistory>
+       <revision><date>2026-09-22</date>
+        <revdescription>
+         <para>
+          Updated Go FIPS compliance information and added missing PHP variants.
+         </para>
+        </revdescription>
+       </revision>
        <revision><date>2023-11-17</date>
         <revdescription>
          <para>
