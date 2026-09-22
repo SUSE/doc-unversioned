@@ -96,10 +96,11 @@
       <term>golang</term>
       <listitem>
         <para>
-          Ships with the <command>go</command> compiler version specified in
-          the tag. A variant linked against OpenSSL
-          (<literal>golang:&lt;version&gt;-openssl</literal>) is also
-          published for workloads that require the system FIPS crypto.
+          Ships with the Go compiler and race detector libraries. Go binaries
+          can natively operate in a mode that facilitates FIPS 140-3 compliance.
+          Starting with Go 1.27, the variant linked against OpenSSL
+          (<literal>golang:&lt;version&gt;-openssl</literal>) will no longer
+          be supported.
         </para>
       </listitem>
     </varlistentry>
@@ -146,7 +147,24 @@
       <term>php</term>
       <listitem>
         <para>
-          Ships with the PHP version specified in the tag.
+          Ships with the PHP interpreter and Composer.
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>php-apache</term>
+      <listitem>
+        <para>
+          Ships with the PHP interpreter, Apache HTTP Server and the
+          <literal>mod_php</literal> module.
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>php-fpm</term>
+      <listitem>
+        <para>
+          Ships with the PHP interpreter and PHP-FPM.
         </para>
       </listitem>
     </varlistentry>
