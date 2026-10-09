@@ -124,7 +124,7 @@
     </para>
     <para>
       Next, modify the
-      <link xlink:href="https://github.com/containers/image/blob/main/docs/containers-policy.json.5.md">/etc/containers/policy.json</link>
+      <link xlink:href="https://github.com/podman-container-tools/container-libs/blob/main/image/docs/containers-policy.json.5.md">/etc/containers/policy.json</link>
       file. Under the <literal>docker</literal> attribute, add the
       <literal>registry.suse.com</literal> configuration similar to the
       following:
