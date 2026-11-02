@@ -121,6 +121,80 @@
         documentation</link>.
       </para>
     </section>
+    <section xml:id="sec-docker-setup-proxy">
+      <title>Configuring a proxy for &deng;</title>
+      <para>
+        If your environment allows access to external networks through a proxy server, configure the proxy for both the host and &deng;. &deng; does not use the proxy settings of the host, so you need to configure them separately.
+      </para>
+      <orderedlist>
+        <listitem>
+          <para>
+            Configure the proxy server on the container host. You can do this during or after the installation of &slsa;. For details, refer to the `<link xlink:href="https://documentation.suse.com/sles/">`documentation for your &slsa; version`</link>`.
+          </para>
+          <para>
+            You can verify that the host can reach external servers through the proxy, by running the following command:
+          </para>
+<screen>&prompt.user;curl -vI https://registry.suse.com 2>&amp;1 | grep -i proxy</screen>
+          <para>
+            The output should show the address of your proxy server and no connection errors.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Create a directory for a &systemd; drop-in file for the &docker; service:
+          </para>
+<screen>&prompt.sudo;mkdir -p /etc/systemd/system/docker.service.d</screen>
+        </listitem>
+        <listitem>
+          <para>
+            Create the file <filename>/etc/systemd/system/docker.service.d/http-proxy.conf</filename> with the following content:
+          </para>
+<screen>[Service]
+Environment="HTTP_PROXY=http://proxy.example.com:3128"
+Environment="HTTPS_PROXY=http://proxy.example.com:3128"
+Environment="NO_PROXY=localhost,127.0.0.1,registry.example.com,.corp"</screen>
+        <itemizedlist>
+          <listitem>
+            <para>
+              <literal>HTTP_PROXY</literal> and <literal>HTTPS_PROXY</literal> set the proxy server that the &docker; daemon uses.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <literal>NO_PROXY</literal> lists the servers that the daemon contacts directly, without the proxy, such as <literal>localhost</literal> or a registry in your local network.
+            </para>
+          </listitem>
+        </itemizedlist>
+        </listitem>
+        <listitem>
+          <para>
+            Reload the &systemd; configuration and restart the &docker; service:
+          </para>
+<screen>&prompt.sudo;systemctl daemon-reload
+&prompt.sudo;systemctl restart docker.service</screen>
+        </listitem>
+        <listitem>
+          <para>
+            Verify that the &docker; service uses the proxy settings:
+          </para>
+<screen>&prompt.sudo;systemctl show --property=Environment docker.service
+Environment=HTTP_PROXY=http://proxy.example.com:3128 HTTPS_PROXY=http://proxy.example.com:3128 NO_PROXY=localhost,127.0.0.1,registry.example.com,.corp
+</screen>
+        </listitem>
+        <listitem>
+          <para>
+            Pull an image from an external registry to test the configuration:
+          </para>
+<screen>&prompt.sudo;docker pull registry.suse.com/bci/bci-base</screen>
+        </listitem>
+      </orderedlist>
+    </section>
+
+
+
+
+
+
   </section>
   <section xml:id="sec-docker-storaged">
     <title>Storage drivers</title>
