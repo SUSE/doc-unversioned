@@ -314,6 +314,86 @@ uid=0(root) gid=0(root) groups=0(root),65534(nobody)</screen>
       </para>
 <screen>unqualified-search-registries = ["registry.suse.com", "docker.io"]</screen>
     </section>
+    <section xml:id="sec-podman-proxy">
+      <title>Configuring a proxy for &podman;</title>
+      <para>
+        If your environment allows access to external networks through a proxy server, configure the proxy for both the host and &podman;. &podman; uses the proxy environment variables of the user who runs it to pull images from external registries, such as &suseregistry; or &dhub;.
+      </para>
+      <orderedlist>
+        <listitem>
+          <para>
+            Configure the proxy server on the container host. You can do this during or after the installation of &slsa;. For details, refer to the documentation for your &slsa; version (<link xlink:href="https://documentation.suse.com/sles/"></link>). 
+          </para>
+          <para>
+            You can verify that the host can reach external servers through the proxy, by running the following command:
+          </para>
+<screen>&prompt.user;curl -vI https://registry.suse.com 2>&amp;1 | grep -i proxy</screen>
+          <para>
+            The output should show that a proxy tunnel is established and no connection errors occurred, for example:
+          </para>
+<screen>* Proxy auth using Basic with user 'user1'
+* Establish HTTP proxy tunnel to registry.suse.com:443
+> Proxy-Authorization: Basic xxxxxxx
+> Proxy-Connection: Keep-Alive</screen>
+        </listitem>
+        <listitem>
+          <para>
+            Check whether the proxy variables are already set in your shell:
+          </para>
+<screen>&prompt.user;env | grep -i proxy</screen>
+          <para>
+            If the output shows the correct proxy values, you can skip directly to the last step.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            If the proxy variables are missing, or if you need to configure a different proxy specifically for &podman;, create the file <filename>/etc/profile.d/http_proxy.sh</filename> with the following content:
+          </para>
+<screen>export HTTP_PROXY=http://proxy.example.com:3128
+export http_proxy=http://proxy.example.com:3128
+export HTTPS_PROXY=http://proxy.example.com:3128
+export https_proxy=http://proxy.example.com:3128
+export NO_PROXY=localhost,127.0.0.1,registry.example.com,.corp
+export no_proxy=localhost,127.0.0.1,registry.example.com,.corp</screen>
+          <para>
+            Both uppercase and lowercase variables are required because different Linux tools expect different formats.
+          </para>
+          <important>
+            <title>Proxy credentials</title>
+            <para>
+              If your proxy requires authentication, use the form <literal>http://USERNAME:PASSWORD@proxy.example.com:3128</literal>.
+            </para>
+          </important>
+          <itemizedlist>
+          <listitem>
+            <para>
+              <literal>HTTP_PROXY</literal>/<literal>http_proxy</literal> and <literal>HTTPS_PROXY</literal>/<literal>https_proxy</literal> set the proxy server that &podman; uses.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <literal>NO_PROXY</literal>/<literal>no_proxy</literal> lists the servers that &podman; contacts directly, without the proxy, such as <literal>localhost</literal> or a registry in your local network.
+            </para>
+          </listitem>
+        </itemizedlist>
+        </listitem>
+        <listitem>
+          <para>
+            To apply the changes immediately to your current session, run:
+          </para>
+<screen>&prompt.user;source /etc/profile.d/http_proxy.sh</screen>
+          <para>
+            Otherwise, log out and log back in to apply the changes system-wide.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            To test the configuration, pull an image from an external registry:
+          </para>
+<screen>&prompt.sudo;podman pull registry.suse.com/bci/bci-base</screen>
+        </listitem>
+      </orderedlist>
+    </section>
     <section xml:id="sec-podman-search">
       <title>Searching images in registries</title>
       <para>
