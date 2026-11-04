@@ -110,7 +110,8 @@
       <literal>/etc/subuid</literal>:
     </para>
 <screen>&prompt.user;grep $(id -nu) /etc/subuid
-    user:10000:65536</screen>
+
+user:10000:65536</screen>
     <para>
       When no entry is found, add the required sub-UID and sub-GID entries via
       the following command:
@@ -149,11 +150,11 @@
       <command>zypper ref</command> results in the following error message:
     </para>
 <screen>Refreshing service 'container-suseconnect-zypp'.
-    Problem retrieving the repository index file for service 'container-suseconnect-zypp':
-    [container-suseconnect-zypp|file:/usr/lib/zypp/plugins/services/container-suseconnect-zypp]
-    Warning: Skipping service 'container-suseconnect-zypp' because of the above error.
-    Warning: There are no enabled repositories defined.
-    Use 'zypper addrepo' or 'zypper modifyrepo' commands to add or enable repositories</screen>
+Problem retrieving the repository index file for service 'container-suseconnect-zypp':
+[container-suseconnect-zypp|file:/usr/lib/zypp/plugins/services/container-suseconnect-zypp]
+Warning: Skipping service 'container-suseconnect-zypp' because of the above error.
+Warning: There are no enabled repositories defined.
+Use 'zypper addrepo' or 'zypper modifyrepo' commands to add or enable repositories</screen>
     <para>
       To solve the problem, grant the current user the required access rights
       by running the following command on the host:
@@ -170,7 +171,7 @@
       the <filename>/etc/zypp/credentials.d/</filename> directory.
     </para>
 <screen>&prompt.user;sudo chgrp <replaceable>GROUPNAME</replaceable> /etc/zypp/credentials.d/*
-      &prompt.user;sudo chmod g+r /etc/zypp/credentials.d/*</screen>
+&prompt.user;sudo chmod g+r /etc/zypp/credentials.d/*</screen>
     <para>
       You can then grant a specific user write access by adding them to the
       created group.
@@ -183,7 +184,8 @@
         container:
       </para>
 <screen>&prompt.user;podman run --rm -it registry.suse.com/bci/bci-base id
-    uid=0(root) gid=0(root) groups=0(root)</screen>
+
+uid=0(root) gid=0(root) groups=0(root)</screen>
       <para>
         Note that even if you are root in the container, you cannot gain
         superuser privileges outside of it.
@@ -196,30 +198,33 @@
         possible to keep the current user id in the container:
       </para>
 <screen>&prompt.user;podman run --userns=keep-id --rm -it registry.suse.com/bci/bci-base id
-    uid=1000(user) gid=1000(users) groups=1000(users)</screen>
+
+uid=1000(user) gid=1000(users) groups=1000(users)</screen>
       <para>
         The flag <option>--userns=keep-id</option> has a similar effect when
         used with bind mounts:
       </para>
 <screen>&prompt.user;podman run --rm -it -v $(pwd):/share/ registry.suse.com/bci/bci-base stat /share/
-      File: /share/
-      Size: 318             Blocks: 0          IO Block: 4096   directory
-    Device: 2ch/44d Inode: 3506170     Links: 1
-    Access: (0755/drwxr-xr-x)  Uid: (    0/    root)   Gid: (    0/    root)
-    Access: 2023-05-03 12:52:18.636392618 +0000
-    Modify: 2023-05-03 12:52:17.178380923 +0000
-    Change: 2023-05-03 12:52:17.178380923 +0000
-     Birth: 2023-05-03 12:52:15.852370288 +0000
 
-     &prompt.user;podman run --userns=keep-id --rm -it -v $(pwd):/share/ registry.suse.com/bci/bci-base stat /share/
-      File: /share/
-      Size: 318             Blocks: 0          IO Block: 4096   directory
-    Device: 2ch/44d Inode: 3506170     Links: 1
-    Access: (0755/drwxr-xr-x)  Uid: ( 1000/     user)   Gid: ( 1000/     users)
-    Access: 2023-05-03 12:52:18.636392618 +0000
-    Modify: 2023-05-03 12:52:17.178380923 +0000
-    Change: 2023-05-03 12:52:17.178380923 +0000
-     Birth: 2023-05-03 12:52:15.852370288 +0000</screen>
+  File: /share/
+  Size: 318             Blocks: 0          IO Block: 4096   directory
+Device: 2ch/44d Inode: 3506170     Links: 1
+Access: (0755/drwxr-xr-x)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2023-05-03 12:52:18.636392618 +0000
+Modify: 2023-05-03 12:52:17.178380923 +0000
+Change: 2023-05-03 12:52:17.178380923 +0000
+ Birth: 2023-05-03 12:52:15.852370288 +0000</screen>
+
+<screen>&prompt.user;podman run --userns=keep-id --rm -it -v $(pwd):/share/ registry.suse.com/bci/bci-base stat /share/
+
+  File: /share/
+  Size: 318             Blocks: 0          IO Block: 4096   directory
+Device: 2ch/44d Inode: 3506170     Links: 1
+Access: (0755/drwxr-xr-x)  Uid: ( 1000/     user)   Gid: ( 1000/     users)
+Access: 2023-05-03 12:52:18.636392618 +0000
+Modify: 2023-05-03 12:52:17.178380923 +0000
+Change: 2023-05-03 12:52:17.178380923 +0000
+ Birth: 2023-05-03 12:52:15.852370288 +0000</screen>
       <para>
         &podman; stores the containers' data in the storage graph root (default
         is <filename>~/.local/share/containers/storage</filename>). Because of
@@ -232,9 +237,9 @@
         To read or modify any file in the graph root, enter a shell as follows:
       </para>
 <screen>&prompt.user;podman unshare bash
+&prompt.user;id
 
-    &prompt.user;id
-    uid=0(root) gid=0(root) groups=0(root),65534(nobody)</screen>
+uid=0(root) gid=0(root) groups=0(root),65534(nobody)</screen>
       <para>
         Note that <command>podman unshare</command> performs the same user
         remapping as <command>podman run</command> does when launching a
@@ -319,11 +324,11 @@
       <para>
         To search in all registries:
       </para>
-<screen>podman search go</screen>
+<screen>&prompt.user;podman search go</screen>
       <para>
         To search in a specific registry:
       </para>
-<screen>podman search registry.suse.com/go</screen>
+<screen>&prompt.user;podman search registry.suse.com/go</screen>
     </section>
     <section xml:id="id-downloading-pulling-images">
       <title>Downloading (pulling) images</title>
@@ -352,37 +357,41 @@
       Pull the &bcia;-Base image from &suseregistry;:
     </para>
 <screen>&prompt.user;podman pull registry.suse.com/bci/bci-base
-    Trying to pull registry.suse.com/bci/bci-base:latest...
-    Getting image source signatures
-    Copying blob bf6ca87723f2 done
-    Copying config 34578a383c done
-    Writing manifest to image destination
-    Storing signatures
-    34578a383c7b6fdcb85f90fbad59b7e7a16071cf47843688e90fe20ff64a684</screen>
+
+Trying to pull registry.suse.com/bci/bci-base:latest...
+Getting image source signatures
+Copying blob bf6ca87723f2 done
+Copying config 34578a383c done
+Writing manifest to image destination
+Storing signatures
+34578a383c7b6fdcb85f90fbad59b7e7a16071cf47843688e90fe20ff64a684</screen>
     <para>
       List the pulled images:
     </para>
 <screen>&prompt.user;podman images
-    REPOSITORY                      TAG         IMAGE ID      CREATED        SIZE
-    registry.suse.com/bci/bci-base  latest      34578a383c7b  22 hours ago   122 MB</screen>
+
+REPOSITORY                      TAG         IMAGE ID      CREATED        SIZE
+registry.suse.com/bci/bci-base  latest      34578a383c7b  22 hours ago   122 MB</screen>
     <para>
       Rename the &bcia;-Base image to <literal>my-base</literal>:
     </para>
-<screen>podman tag 34578a383c7b my-base</screen>
-<screen>podman images
-    REPOSITORY                      TAG         IMAGE ID      CREATED        SIZE
-    registry.suse.com/bci/bci-base  latest      34578a383c7b  22 hours ago   122 MB
-    localhost/my-base               latest      34578a383c7b  22 hours ago   122 MB</screen>
+<screen>&prompt.user;podman tag 34578a383c7b my-base</screen>
+<screen>&prompt.user;podman images
+
+REPOSITORY                      TAG         IMAGE ID      CREATED        SIZE
+registry.suse.com/bci/bci-base  latest      34578a383c7b  22 hours ago   122 MB
+localhost/my-base               latest      34578a383c7b  22 hours ago   122 MB</screen>
     <para>
       Add a custom tag <literal>1</literal> (indicating that this version 1 of
       the image) to <literal>my-base</literal>:
     </para>
 <screen>&prompt.user;podman tag 34578a383c7b my-base:1</screen>
 <screen>&prompt.user;podman images
-    REPOSITORY                      TAG         IMAGE ID      CREATED        SIZE
-    registry.suse.com/bci/bci-base  latest      34578a383c7b  22 hours ago   122 MB
-    localhost/my-base               latest      34578a383c7b  22 hours ago   122 MB
-    localhost/my-base               1           34578a383c7b  22 hours ago   122 MB</screen>
+
+REPOSITORY                      TAG         IMAGE ID      CREATED        SIZE
+registry.suse.com/bci/bci-base  latest      34578a383c7b  22 hours ago   122 MB
+localhost/my-base               latest      34578a383c7b  22 hours ago   122 MB
+localhost/my-base               1           34578a383c7b  22 hours ago   122 MB</screen>
     <para>
       Note that the default tag <literal>latest</literal> is still present.
     </para>

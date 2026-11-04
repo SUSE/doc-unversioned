@@ -64,25 +64,25 @@
       <replaceable>/PATH/DIR/</replaceable>:
     </para>
 <screen>&prompt.user;podman run -d --restart=always --name registry -p 5000:5000 \
-    -v /PATH/DIR:/var/lib/docker-registry registry.suse.com/suse/registry</screen>
+  -v /PATH/DIR:/var/lib/docker-registry registry.suse.com/suse/registry</screen>
     <para>
       Alternatively, create a named volume <replaceable>registry</replaceable>
       for the &suseregistry; container as follows:
     </para>
 <screen>&prompt.user;podman run -d --restart=always --name registry -p 5000:5000 \
-     -v registry:/var/lib/docker-registry registry.suse.com/suse/registry</screen>
+  -v registry:/var/lib/docker-registry registry.suse.com/suse/registry</screen>
      <para>
       To make it easier to manage the registry, create a corresponding system
       unit:
     </para>
-<screen>&prompt.user; podman generate systemd registry | \
-     sudo tee /etc/systemd/system/suse_registry.service</screen>
+<screen>&prompt.user;podman generate systemd registry | \
+&prompt.user;sudo tee /etc/systemd/system/suse_registry.service</screen>
     <para>
       Enable and start the registry service, then verify its status:
     </para>
 <screen>&prompt.user;sudo systemctl enable suse_registry.service
-      &prompt.user;sudo systemctl start suse_registry.service
-      &prompt.user;sudo systemctl status suse_registry.service</screen>
+&prompt.user;sudo systemctl start suse_registry.service
+&prompt.user;sudo systemctl status suse_registry.service</screen>
     <para>
       For more details about &dreg; and its configuration, see the official
       documentation at

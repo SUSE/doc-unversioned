@@ -72,12 +72,12 @@
       <para>
         To take advantage of repositories available through your &suse; subscription, build an image so that the secret in the host system is mounted inside the container image. This can be done using the following command:
       </para>
-<screen>podman build --no-cache --secret id=SCCcredentials,src=/etc/zypp/credentials.d/SCCcredentials,type=file .</screen>
+<screen>&prompt.user;podman build --no-cache --secret id=SCCcredentials,src=/etc/zypp/credentials.d/SCCcredentials,type=file .</screen>
 
       <para>
         It is possible to enable additional non-recommended modules via the environment variable <literal>ADDITIONAL_MODULES</literal>, for example:
       </para>
-<screen>podman build --env ADDITIONAL_MODULES=sle-module-desktop-applications,sle-module-development-tools</screen>
+<screen>&prompt.user;podman build --env ADDITIONAL_MODULES=sle-module-desktop-applications,sle-module-development-tools</screen>
 
       <note xml:id="note-build-images-different-codebase">
         <title>Building images on systems registered with &rmt;</title>
@@ -149,18 +149,18 @@
         image based on &sls; 15:
       </para>
 <screen>FROM registry.suse.com/suse/sle15
-    RUN zypper ref -s &amp;&amp; zypper -n in vim &amp;&amp; zypper -n clean</screen>
+RUN zypper ref -s &amp;&amp; zypper -n in vim &amp;&amp; zypper -n clean</screen>
       <para>
         When the &podman; host machine is registered with an internal &rmt;
         server, the image requires the SSL certificate used by &rmt;:
       </para>
 <screen>FROM registry.suse.com/suse/sle15
-    # Import the crt file of our private SMT server
-    ADD http://smt./smt.crt /etc/pki/trust/anchors/smt.crt
-    RUN update-ca-certificates &amp;&amp; \
-        zypper ref -s &amp;&amp; \
-        zypper -n in vim &amp;&amp; \
-        zypper -n clean</screen>
+# Import the crt file of our private SMT server
+ADD http://smt./smt.crt /etc/pki/trust/anchors/smt.crt
+RUN update-ca-certificates &amp;&amp; \
+    zypper ref -s &amp;&amp; \
+    zypper -n in vim &amp;&amp; \
+    zypper -n clean</screen>
       <para>
         If you wish to add &slea; extensions and modules to your images, refer
         to <xref linkend="sec-container-suseconnect-modules"/>.

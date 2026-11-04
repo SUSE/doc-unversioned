@@ -136,7 +136,8 @@
       Here is an example of the labels information shown by <literal>podman
       inspect</literal>:
     </para>
-<screen>podman inspect registry.suse.com/bci/bci-base:15.7
+<screen>&prompt.user;podman inspect registry.suse.com/bci/bci-base:15.7
+
     [...]
     "Labels": {
                 "com.suse.bci.base.authors": "https://github.com/SUSE/bci/discussions",
@@ -188,11 +189,11 @@
       lists all labels and only the information about the labels of the
       <package>bci-base:15.7</package> image:
     </para>
-<screen>podman inspect -f {{.Labels | json}} registry.suse.com/bci/bci-base:15.7</screen>
+<screen>&prompt.user;podman inspect -f '{{.Labels | json}}' registry.suse.com/bci/bci-base:15.7</screen>
     <para>
       It is also possible to retrieve the value of a specific label:
     </para>
-<screen>podman inspect -f {{ index .Labels \"com.suse.bci.base.supportlevel\" }} registry.suse.com/bci/bci-base:15.7</screen>
+<screen>&prompt.user;podman inspect -f '{{ index .Labels "com.suse.bci.base.supportlevel" }}' registry.suse.com/bci/bci-base:15.7</screen>
     <para>
       The preceding command retrieves the value of the
       <literal>com.suse.bci.base.supportlevel</literal> label.
@@ -201,8 +202,8 @@
       The skopeo tool makes it possible to examine labels of an image without
       pulling it first. For example:
     </para>
-<screen>skopeo inspect -f {{.Labels | json}} docker://registry.suse.com/bci/bci-base:15.7
-skopeo inspect -f {{ index .Labels \"com.suse.bci.base.supportlevel\" }} docker://registry.suse.com/bci/bci-base:15.7
+<screen>&prompt.user;skopeo inspect -f '{{.Labels | json}}' docker://registry.suse.com/bci/bci-base:15.7
+&prompt.user;skopeo inspect -f '{{ index .Labels "com.suse.bci.base.supportlevel" }}' docker://registry.suse.com/bci/bci-base:15.7
 </screen>
   </section>
 </article>

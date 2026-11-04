@@ -20,7 +20,7 @@
   </info>
     <para>In a production environment, you are likely to manage multiple containers. To work with multiple containers, you
     have to group the containers into a pod that provides a specification for deploying and running the containers as well as allowing them to share storage and network resources. In other words, a pod
-    encapsulates an application composed of multiple containers into a single unit. The concept of pod was
+    encapsulates an application composed of multiple containers into a single unit. The concept of pod was
     introduced by <link xlink:href="https://kubernetes.io/docs/concepts/workloads/pods/">&kube;</link>. &podman; uses the same definition as &kube;.</para>
 
       <para>Usually, containers within a pod can communicate directly with each other. Each pod contains an
@@ -53,54 +53,68 @@
 
     <para><command>podman pod create</command> creates a pod with a random name. You can use the <option>--name</option> parameter to
     assign the desired name to a pod.</para>
-    <screen>&prompt.user;podman pod create
-    344940492c00b6a19ececbc5b109351bf0a3b8b19b3c279a097da7a653c592d0</screen>
+<screen>&prompt.user;podman pod create
+
+344940492c00b6a19ececbc5b109351bf0a3b8b19b3c279a097da7a653c592d0</screen>
     <para>You can list our pods using the <command>podman pod list</command> command:</para>
-    <screen>&prompt.user;podman pod list
-    POD ID        NAME          STATUS      CREATED        INFRA ID      # OF CONTAINERS
-    344940492c00  suspicious_curie  Created     2 minutes ago  617d7e3ce399  1</screen>
+<screen>&prompt.user;podman pod list
+
+POD ID        NAME              STATUS      CREATED        INFRA ID      # OF CONTAINERS
+344940492c00  suspicious_curie  Created     2 minutes ago  617d7e3ce399  1</screen>
     <para>You can also list all containers with the pods they are associated with:</para>
-    <screen>&prompt.user;podman ps -a --pod
-    CONTAINER ID  IMAGE                 COMMAND     CREATED        STATUS      PORTS       NAMES               POD ID        PODNAME
-    617d7e3ce399  localhost/podman-pause:4.3.1-1669118400              5 minutes ago  Created                 344940492c00-infra  344940492c00  suspicious_curie</screen>
+<screen>&prompt.user;podman ps -a --pod
+
+CONTAINER ID  IMAGE                                    COMMAND     CREATED        STATUS      PORTS       NAMES               POD ID        PODNAME
+617d7e3ce399  localhost/podman-pause:4.3.1-1669118400              5 minutes ago  Created                 344940492c00-infra  344940492c00  suspicious_curie</screen>
     <para>The created pod has an infra container identified by the <literal>localhost/podman-pause:4.x</literal> name. The
     purpose of this container is to reserve the namespaces associated with the pod and allow &podman; to
     add other containers to the pod.</para>
 
     <para>Using the <command>podman run --pod</command> command, you can run a container and add it to the desired pod. For
     example, the command below runs a container based on the <package>suse/sle15</package> image and adds the container to
-    the <literal>suspicious_curie</literal> pod:</para>
-    <screen>&prompt.user;podman run -d --pod suspicious_curie registry.suse.com/bci/bci-base sleep 1h
-    8f5af62a7c385bbd1a3a5cc3a53a8d0f8cf942adc26a065960d4232fcc93ac98</screen>
+    the <literal>suspicious_curie</literal> pod:</para>
+<screen>&prompt.user;podman run -d --pod suspicious_curie registry.suse.com/bci/bci-base sleep 1h
+
+8f5af62a7c385bbd1a3a5cc3a53a8d0f8cf942adc26a065960d4232fcc93ac98</screen>
     <warning>
     <para>If this command shows the following warning,  refer to
     <link xlink:href="https://documentation.suse.com/container/all/single-html/SLES-container/#sec-bci-suseconnect-podman-buildah-nerdctl">Using container-suseconnect on non-SLE hosts or with &podman;, &buildah;, and nerdctl</link>:</para>
     </warning>
-    <screen>WARN[0005] Path "/etc/SUSEConnect" from "/etc/containers/mounts.conf" doesn't exist, skipping
-    WARN[0005] Failed to mount subscriptions, skipping entry in /etc/containers/mounts.conf: open /etc/zypp/credentials.d/SCCcredentials: permission denied</screen>
+<screen>WARN[0005] Path "/etc/SUSEConnect" from "/etc/containers/mounts.conf" doesn't exist, skipping
+WARN[0005] Failed to mount subscriptions, skipping entry in /etc/containers/mounts.conf: open /etc/zypp/credentials.d/SCCcredentials: permission denied</screen>
     <para>The command above adds a container that sleeps for 60 minutes and then exits. Run the <command>podman ps -a --pod</command> command again and you should see that the pod now has two containers.</para>
     <para>You can also check the command <command>podman pod ps</command>:</para>
-    <screen>&prompt.user;podman pod ps
-    POD ID        NAME          STATUS      CREATED         INFRA ID      # OF CONTAINERS
-    344940492c00  suspicious_curie Running     21 minutes ago  617d7e3ce399  2</screen>
+<screen>&prompt.user;podman pod ps
+
+POD ID        NAME             STATUS      CREATED         INFRA ID      # OF CONTAINERS
+344940492c00  suspicious_curie Running     21 minutes ago  617d7e3ce399  2</screen>
     <para>To stop our newly created container named <literal>objective_jemison</literal></para>
-    <screen>&prompt.user;podman ps -a --pod
-    CONTAINER ID  IMAGE                                COMMAND     CREATED         STATUS            PORTS       NAMES               POD ID        PODNAME
-    617d7e3ce399  localhost/podman-pause:4.3.1-1669118400                             14 minutes ago  Up 4 minutes ago              344940492c00-infra  344940492c00  suspicious_curie 8f5af62a7c38  registry.suse.com/bci/bci-base:latest  sleep 1h    4 minutes ago   Up 4 minutes ago              objective_jemison   344940492c00  suspicious_curie
-    &prompt.user;podman stop objective_jemison
-    objective_jemison
-    &prompt.user;podman pod ps
-    POD ID        NAME          STATUS      CREATED         INFRA ID      # OF CONTAINERS
-    344940492c00  suspicious_curie  Degraded    25 minutes ago  617d7e3ce399  2
-    &prompt.user;podman ps -a --pod
-    CONTAINER ID  IMAGE                                COMMAND     CREATED         STATUS                       PORTS       NAMES               POD ID        PODNAME
-    617d7e3ce399  localhost/podman-pause:4.3.1-1669118400                             25 minutes ago  Up 15 minutes ago                        344940492c00-infra  344940492c00  suspicious_curie 8f5af62a7c38  registry.suse.com/bci/bci-base:latest  sleep 1h    15 minutes ago  Exited (137) 14 seconds ago              objective_jemison   344940492c00  suspicious_curie</screen>
+<screen>&prompt.user;podman ps -a --pod
+
+CONTAINER ID  IMAGE                                    COMMAND     CREATED         STATUS            PORTS       NAMES               POD ID        PODNAME
+617d7e3ce399  localhost/podman-pause:4.3.1-1669118400              14 minutes ago  Up 4 minutes ago              344940492c00-infra  344940492c00  suspicious_curie
+8f5af62a7c38  registry.suse.com/bci/bci-base:latest    sleep 1h    4 minutes ago   Up 4 minutes ago              objective_jemison   344940492c00  suspicious_curie</screen>
+<screen>&prompt.user;podman stop objective_jemison
+
+objective_jemison</screen>
+<screen>&prompt.user;podman pod ps
+
+POD ID        NAME              STATUS      CREATED         INFRA ID      # OF CONTAINERS
+344940492c00  suspicious_curie  Degraded    25 minutes ago  617d7e3ce399  2</screen>
+<screen>&prompt.user;podman ps -a --pod
+
+CONTAINER ID  IMAGE                                    COMMAND     CREATED         STATUS                       PORTS       NAMES               POD ID        PODNAME
+617d7e3ce399  localhost/podman-pause:4.3.1-1669118400              25 minutes ago  Up 15 minutes ago                        344940492c00-infra  344940492c00  suspicious_curie
+8f5af62a7c38  registry.suse.com/bci/bci-base:latest    sleep 1h    15 minutes ago  Exited (137) 14 seconds ago              objective_jemison   344940492c00  suspicious_curie</screen>
     <para>You can also stop the pod and all of its containers using <command>podman pod stop</command>:</para>
-    <screen># podman pod stop suspicious_curie
-    344940492c00b6a19ececbc5b109351bf0a3b8b19b3c279a097da7a653c592d0
-    &prompt.user;podman ps -ap
-    CONTAINER ID  IMAGE                                COMMAND     CREATED         STATUS                      PORTS       NAMES               POD ID        PODNAME
-    617d7e3ce399  localhost/podman-pause:4.3.1-1669118400                             29 minutes ago  Exited (0) 7 seconds ago                344940492c00-infra  344940492c00  suspicious_curie 8f5af62a7c38  registry.suse.com/bci/bci-base:latest  sleep 1h    19 minutes ago  Exited (137) 3 minutes ago              objective_jemison   344940492c00  suspicious_curie</screen>
+<screen>&prompt.user;podman pod stop suspicious_curie
+
+344940492c00b6a19ececbc5b109351bf0a3b8b19b3c279a097da7a653c592d0</screen>
+<screen>&prompt.user;podman ps -ap
+
+CONTAINER ID  IMAGE                                    COMMAND     CREATED         STATUS                      PORTS       NAMES               POD ID        PODNAME
+617d7e3ce399  localhost/podman-pause:4.3.1-1669118400              29 minutes ago  Exited (0) 7 seconds ago                344940492c00-infra  344940492c00  suspicious_curie 
+8f5af62a7c38  registry.suse.com/bci/bci-base:latest    sleep 1h    19 minutes ago  Exited (137) 3 minutes ago              objective_jemison   344940492c00  suspicious_curie</screen>
     <para>You can also start and restart everything with <command>sudo podman start <replaceable>CONTAINER_NAME</replaceable></command>,
     <command>podman pod start <replaceable>POD_NAME</replaceable></command> or <command>podman pod restart <replaceable>POD_NAME</replaceable></command>.</para>
     <para>There are two ways to remove pods. You can use the <command>podman pod rm</command> command to remove one or more pods.
@@ -128,42 +142,44 @@
     a failure occurs, and keep its logs in journald.</para>
 
     <para>The following example uses a simple NGINX container:</para>
-    <screen>&prompt.user;podman run -d --name web -p 8080:80 docker.io/nginx
-    c0148d8476418a2da938a711542c55efc09e4119909aea70e287465c6fb51618</screen>
+<screen>&prompt.user;podman run -d --name web -p 8080:80 docker.io/nginx
+
+c0148d8476418a2da938a711542c55efc09e4119909aea70e287465c6fb51618</screen>
     <para>Generating a systemd unit for the container can be done as follows:</para>
-    <screen>&prompt.user;podman generate systemd --name --new web
-    # container-web.service
-    # autogenerated by Podman 4.2.0
-    # Tue Sep 13 10:58:54 CEST 2022
+<screen>&prompt.user;podman generate systemd --name --new web
 
-    [Unit]
-    Description=Podman container-web.service
-    Documentation=man:podman-generate-systemd(1)
-    Wants=network-online.target
-    After=network-online.target
-    RequiresMountsFor=%t/containers
+# container-web.service
+# autogenerated by Podman 4.2.0
+# Tue Sep 13 10:58:54 CEST 2022
 
-    [Service]
-    Environment=PODMAN_SYSTEMD_UNIT=%n
-    Restart=on-failure
-    TimeoutStopSec=70
-    ExecStartPre=/bin/rm -f %t/%n.ctr-id
-    ExecStart=/usr/bin/podman run \
-            --cidfile=%t/%n.ctr-id \
-            --cgroups=no-conmon \
-            --rm \
-            --sdnotify=conmon \
-            --replace \
-            -d \
-            --name web \
-            -p 8080:80 docker.io/nginx
-    ExecStop=/usr/bin/podman stop --ignore --cidfile=%t/%n.ctr-id
-    ExecStopPost=/usr/bin/podman rm -f --ignore --cidfile=%t/%n.ctr-id
-    Type=notify
-    NotifyAccess=all
+[Unit]
+Description=Podman container-web.service
+Documentation=man:podman-generate-systemd(1)
+Wants=network-online.target
+After=network-online.target
+RequiresMountsFor=%t/containers
 
-    [Install]
-    WantedBy=default.target</screen>
+[Service]
+Environment=PODMAN_SYSTEMD_UNIT=%n
+Restart=on-failure
+TimeoutStopSec=70
+ExecStartPre=/bin/rm -f %t/%n.ctr-id
+ExecStart=/usr/bin/podman run \
+        --cidfile=%t/%n.ctr-id \
+        --cgroups=no-conmon \
+        --rm \
+        --sdnotify=conmon \
+        --replace \
+        -d \
+        --name web \
+        -p 8080:80 docker.io/nginx
+ExecStop=/usr/bin/podman stop --ignore --cidfile=%t/%n.ctr-id
+ExecStopPost=/usr/bin/podman rm -f --ignore --cidfile=%t/%n.ctr-id
+Type=notify
+NotifyAccess=all
+
+[Install]
+WantedBy=default.target</screen>
     <para>&podman; outputs a unit file to the console that can be put either into the user
     unit systemd directories (<filename>~/.config/systemd/user/</filename> or <filename>/etc/systemd/user/</filename>) or
     into the system unit systemd directory (<filename>/etc/systemd/system</filename>) and control the
@@ -173,30 +189,33 @@
     a user-friendly name to the container: without it, &podman; uses container IDs
     instead of their names.</para>
     <para>To control the container as a user unit, proceed as follows:</para>
-    <screen>&prompt.user;podman generate systemd --name --new --files web
-    /home/user/container-web.service
-    &prompt.user;mv container-web.service ~/.config/systemd/user/
-    &prompt.user;systemctl --user daemon-reload</screen>
+<screen>&prompt.user;podman generate systemd --name --new --files web
+
+/home/user/container-web.service</screen>
+<screen>&prompt.user;mv container-web.service ~/.config/systemd/user/
+&prompt.user;systemctl --user daemon-reload</screen>
     <para>Now the container can be started with <command>systemctl --user start container-web</command>:</para>
-    <screen>&prompt.user;systemctl --user start container-web
-    &prompt.user;systemctl --user is-active container-web.service
-    active</screen>
+<screen>&prompt.user;systemctl --user start container-web
+&prompt.user;systemctl --user is-active container-web.service
+
+active</screen>
     <para>Run the <command>podman ps</command> command to see the list of all running containers:</para>
-    <screen>&prompt.user;podman ps
-    CONTAINER ID  IMAGE                           COMMAND               CREATED         STATUS             PORTS                 NAMES
-    af92743971d2  docker.io/library/nginx:latest  nginx -g daemon o...  15 minutes ago  Up 15 minutes ago  0.0.0.0:8080-&gt;80/tcp  web</screen>
+<screen>&prompt.user;podman ps
+
+CONTAINER ID  IMAGE                           COMMAND               CREATED         STATUS             PORTS                 NAMES
+af92743971d2  docker.io/library/nginx:latest  nginx -g daemon o...  15 minutes ago  Up 15 minutes ago  0.0.0.0:8080-&gt;80/tcp  web</screen>
     <para>One of the benefits of managing the container via systemd is the ability to
     automatically restart the container if it crashes. You can simulate a crash by
     sending <literal>SIGKILL</literal> to the main process in the container:</para>
-    <screen>&prompt.user;podman ps
-    CONTAINER ID  IMAGE                           COMMAND               CREATED             STATUS                 PORTS                 NAMES
-    4c89582fa9cb  docker.io/library/nginx:latest  nginx -g daemon o...  About a minute ago  Up About a minute ago  0.0.0.0:8080-&gt;80/tcp  web
+<screen>&prompt.user;podman ps
 
-    &prompt.user;kill -9 $(podman inspect --format "{{.State.Pid}}" web)
+CONTAINER ID  IMAGE                           COMMAND               CREATED             STATUS                 PORTS                 NAMES
+4c89582fa9cb  docker.io/library/nginx:latest  nginx -g daemon o...  About a minute ago  Up About a minute ago  0.0.0.0:8080-&gt;80/tcp  web</screen>
+<screen>&prompt.user;kill -9 $(podman inspect --format "{{.State.Pid}}" web)
+&prompt.user;podman ps
 
-    &prompt.user;podman ps
-    CONTAINER ID  IMAGE                           COMMAND               CREATED        STATUS            PORTS                 NAMES
-    0b5be4493251  docker.io/library/nginx:latest  nginx -g daemon o...  4 seconds ago  Up 4 seconds ago  0.0.0.0:8080-&gt;80/tcp  web</screen>
+CONTAINER ID  IMAGE                           COMMAND               CREATED        STATUS            PORTS                 NAMES
+0b5be4493251  docker.io/library/nginx:latest  nginx -g daemon o...  4 seconds ago  Up 4 seconds ago  0.0.0.0:8080-&gt;80/tcp  web</screen>
     <para>Note that the container is <emphasis role="strong">not</emphasis> restarted when it is stopped gracefully,
     for example, via <command>podman stop web</command>. To always restart it, add the flag
     <option>--restart-policy=always</option> to <command>podman generate systemd</command>.</para>
@@ -222,31 +241,34 @@
     "io.containers.autoupdate=registry" \</option> to the <option>ExecStart=</option> entry of the
     container's systemd unit file. For the NGINX example, modify
     <literal>~/.config/systemd/user/container-web.service</literal> as follows:</para>
-    <screen>ExecStart=/usr/bin/podman run \
-            --cidfile=%t/%n.ctr-id \
-            --cgroups=no-conmon \
-            --rm \
-            --sdnotify=conmon \
-            --replace \
-            -d \
-            --name web \
-            --label "io.containers.autoupdate=registry" \
-            -p 8080:80 docker.io/nginx</screen>
+<screen>ExecStart=/usr/bin/podman run \
+        --cidfile=%t/%n.ctr-id \
+        --cgroups=no-conmon \
+        --rm \
+        --sdnotify=conmon \
+        --replace \
+        -d \
+        --name web \
+        --label "io.containers.autoupdate=registry" \
+        -p 8080:80 docker.io/nginx</screen>
     <para>After reloading the daemons and restarting the container, perform a dry
     run of the update (it will most likely not report any updates):</para>
-    <screen>&prompt.user;podman auto-update --dry-run
-    UNIT                   CONTAINER           IMAGE            POLICY      UPDATED
-    container-web.service  87d263489307 (web)  docker.io/nginx  registry    false</screen>
+<screen>&prompt.user;podman auto-update --dry-run
+
+UNIT                   CONTAINER           IMAGE            POLICY      UPDATED
+container-web.service  87d263489307 (web)  docker.io/nginx  registry    false</screen>
     <para>It is good practice to have external testing in place to make sure that image
     updates are generally safe to be deployed. If you are confident of the quality
     of our container image, you can let &podman; automatically apply image updates
     periodically by enabling the <option>podman-auto-update.timer</option>:</para>
-    <screen># only for the current user
-    &prompt.user;systemctl --user enable podman-auto-update.timer
-    Created symlink /home/user/.config/systemd/user/timers.target.wants/podman-auto-update.timer → /usr/lib/systemd/user/podman-auto-update.timer.
-    # or as root
-    &prompt.user;sudo systemctl enable podman-auto-update.timer
-    Created symlink /etc/systemd/system/timers.target.wants/podman-auto-update.timer → /usr/lib/systemd/system/podman-auto-update.timer.</screen>
+<screen># only for the current user
+&prompt.user;systemctl --user enable podman-auto-update.timer
+
+Created symlink /home/user/.config/systemd/user/timers.target.wants/podman-auto-update.timer → /usr/lib/systemd/user/podman-auto-update.timer.</screen>
+<screen># as root
+&prompt.user;sudo systemctl enable podman-auto-update.timer
+
+Created symlink /etc/systemd/system/timers.target.wants/podman-auto-update.timer → /usr/lib/systemd/system/podman-auto-update.timer.</screen>
     </section>
 
     <section xml:id="id-managing-multiple-containers">
@@ -260,54 +282,62 @@
     <para>The following example deploys a Drupal and PostgreSQL container in a single pod
     and manages these via systemd units. First, create a new pod that exposes the
     Drupal web interface:</para>
-    <screen>&prompt.user;podman pod create -p 8080:80 --name drupal
-    736cab072c49e68ad368ba819e9117be13ef8fa048a2eb88736b5968b3a19a64</screen>
+<screen>&prompt.user;podman pod create -p 8080:80 --name drupal
+
+736cab072c49e68ad368ba819e9117be13ef8fa048a2eb88736b5968b3a19a64</screen>
     <para>Once the pod has been created, launch the Drupal front-end and the
     PostgreSQL database inside it:</para>
-    <screen>&prompt.user;podman run -d --name drupal-frontend --pod drupal docker.io/drupal
-    ffd2fbd6d445e63fb0c28abb8d25ced78f819211d3bce9d6174fe4912d89f0ca
+<screen>&prompt.user;podman run -d --name drupal-frontend --pod drupal docker.io/drupal
 
-    &prompt.user;podman run -d --name drupal-pg --pod drupal \
-          -e POSTGRES_DB=drupal \
-          -e POSTGRES_USER=user \
-          -e POSTGRES_PASSWORD=pass \
-          docker.io/postgres:11
-    a4dc31b24000780d9ffd81a486d0d144c47c3adfbecf0f7effee24a00273fcde</screen>
+ffd2fbd6d445e63fb0c28abb8d25ced78f819211d3bce9d6174fe4912d89f0ca</screen>
+<screen>&prompt.user;podman run -d --name drupal-pg --pod drupal \
+  -e POSTGRES_DB=drupal \
+  -e POSTGRES_USER=user \
+  -e POSTGRES_PASSWORD=pass \
+  docker.io/postgres:11
+
+a4dc31b24000780d9ffd81a486d0d144c47c3adfbecf0f7effee24a00273fcde</screen>
     <para>This results in three running containers: the Drupal web interface, the
     PostgreSQL database and the pod's infrastructure container.</para>
-    <screen>&prompt.user;podman ps
-    CONTAINER ID  IMAGE                                    COMMAND               CREATED             STATUS                 PORTS                 NAMES
-    2948fa1476c6  localhost/podman-pause:4.2.0-1660228937                        2 minutes ago       Up About a minute ago  0.0.0.0:8080-&gt;80/tcp  736cab072c49-infra
-    ffd2fbd6d445  docker.io/library/drupal:latest          apache2-foregroun...  About a minute ago  Up About a minute ago  0.0.0.0:8080-&gt;80/tcp  drupal-frontend
-    a4dc31b24000  docker.io/library/postgres:11            postgres              40 seconds ago      Up 41 seconds ago      0.0.0.0:8080-&gt;80/tcp  drupal-pg</screen>
+<screen>&prompt.user;podman ps
+
+CONTAINER ID  IMAGE                                    COMMAND               CREATED             STATUS                 PORTS                 NAMES
+2948fa1476c6  localhost/podman-pause:4.2.0-1660228937                        2 minutes ago       Up About a minute ago  0.0.0.0:8080-&gt;80/tcp  736cab072c49-infra
+ffd2fbd6d445  docker.io/library/drupal:latest          apache2-foregroun...  About a minute ago  Up About a minute ago  0.0.0.0:8080-&gt;80/tcp  drupal-frontend
+a4dc31b24000  docker.io/library/postgres:11            postgres              40 seconds ago      Up 41 seconds ago      0.0.0.0:8080-&gt;80/tcp  drupal-pg</screen>
     <para>Creating a systemd unit for the pod is done similarly to a
     single container:</para>
-    <screen linenumbering="unnumbered">&prompt.user;podman generate systemd --name --new --files drupal
-    /home/user/pod-drupal.service
-    /home/user/container-drupal-frontend.service
-    /home/user/container-drupal-pg.service
-    &prompt.user;mv *service ~/.config/systemd/user/
-    &prompt.user;systemctl daemon-reload --user</screen>
+<screen linenumbering="unnumbered">&prompt.user;podman generate systemd --name --new --files drupal
+
+/home/user/pod-drupal.service
+/home/user/container-drupal-frontend.service
+/home/user/container-drupal-pg.service</screen>
+<screen>&prompt.user;mv *service ~/.config/systemd/user/
+&prompt.user;systemctl daemon-reload --user</screen>
     <para>Since &podman; is aware of which containers belong to the <literal>drupal</literal> pod and how
     their systemd units are called, it can correctly add the dependencies to the
     pod's unit file. This means that when you start or stop the pod, systemd ensures
     that all containers inside the pod are started or stopped automatically.</para>
     <para>To check systemd's dependency handling, first stop the <literal>drupal</literal> pod and verify
     that no containers are currently running on the host:</para>
-    <screen>&prompt.user;podman pod stop drupal
-    736cab072c49e68ad368ba819e9117be13ef8fa048a2eb88736b5968b3a19a64
-    &prompt.user;podman pod rm drupal
-    736cab072c49e68ad368ba819e9117be13ef8fa048a2eb88736b5968b3a19a64
-    &prompt.user;podman ps -a
-    CONTAINER ID  IMAGE       COMMAND     CREATED     STATUS      PORTS       NAMES</screen>
+<screen>&prompt.user;podman pod stop drupal
+
+736cab072c49e68ad368ba819e9117be13ef8fa048a2eb88736b5968b3a19a64</screen>
+<screen>&prompt.user;podman pod rm drupal
+
+736cab072c49e68ad368ba819e9117be13ef8fa048a2eb88736b5968b3a19a64</screen>
+<screen>&prompt.user;podman ps -a
+
+CONTAINER ID  IMAGE       COMMAND     CREATED     STATUS      PORTS       NAMES</screen>
     <para>Start the <literal>drupal</literal> pod via <command>systemctl start --user pod-drupal.service</command>, and
     systemd launches the containers inside the pod:</para>
-    <screen>&prompt.user;systemctl start --user pod-drupal.service
-    &prompt.user;podman ps
-    CONTAINER ID  IMAGE                                    COMMAND               CREATED        STATUS            PORTS                 NAMES
-    d1589d3ac68b  localhost/podman-pause:4.2.0-1660228937                        5 seconds ago  Up 5 seconds ago  0.0.0.0:8080-&gt;80/tcp  ca41b505bd13-infra
-    a49bea53c20c  docker.io/library/postgres:11            postgres              4 seconds ago  Up 5 seconds ago  0.0.0.0:8080-&gt;80/tcp  drupal-pg
-    dc9dca018dad  docker.io/library/drupal:latest          apache2-foregroun...  4 seconds ago  Up 5 seconds ago  0.0.0.0:8080-&gt;80/tcp  drupal-frontend</screen>
+<screen>&prompt.user;systemctl start --user pod-drupal.service
+&prompt.user;podman ps
+
+CONTAINER ID  IMAGE                                    COMMAND               CREATED        STATUS            PORTS                 NAMES
+d1589d3ac68b  localhost/podman-pause:4.2.0-1660228937                        5 seconds ago  Up 5 seconds ago  0.0.0.0:8080-&gt;80/tcp  ca41b505bd13-infra
+a49bea53c20c  docker.io/library/postgres:11            postgres              4 seconds ago  Up 5 seconds ago  0.0.0.0:8080-&gt;80/tcp  drupal-pg
+dc9dca018dad  docker.io/library/drupal:latest          apache2-foregroun...  4 seconds ago  Up 5 seconds ago  0.0.0.0:8080-&gt;80/tcp  drupal-frontend</screen>
     </section>
     <section xml:id="sec-orchestration-podman-more">
     <title>More on &podman;</title>

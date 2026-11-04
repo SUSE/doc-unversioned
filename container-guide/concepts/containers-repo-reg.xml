@@ -122,9 +122,9 @@
         <replaceable>REGISTRATION_CODE</replaceable> with your SCC registration
         code)
       </para>
-<screen>podman run --rm registry.suse.com/suse/sle15:latest bash -c \
-        "zypper -n in SUSEConnect; SUSEConnect --regcode <replaceable>REGISTRATION_CODE</replaceable>; \
-         cat /etc/zypp/credentials.d/SCCcredentials"</screen>
+<screen>&prompt.user;podman run --rm registry.suse.com/suse/sle15:latest bash -c \
+"zypper -n in SUSEConnect; SUSEConnect --regcode <replaceable>REGISTRATION_CODE</replaceable>; \
+cat /etc/zypp/credentials.d/SCCcredentials"</screen>
       <para>
         If you are running a container based on a &bcia;, mount
         <filename>SCCcredentials</filename> (and optionally
@@ -132,8 +132,8 @@
         following example shows how to mount
         <filename>SCCcredentials</filename> in the current working directory:
       </para>
-<screen>podman run -v /path/to/SCCcredentials:/etc/zypp/credentials.d/SCCcredentials \
-        -it --pull=always registry.suse.com/bci/bci-base:latest</screen>
+<screen>&prompt.user;podman run -v /path/to/SCCcredentials:/etc/zypp/credentials.d/SCCcredentials \
+  -it --pull=always registry.suse.com/bci/bci-base:latest</screen>
       <para>
         Do not copy the <filename>SCCcredentials</filename> and
         <filename>SUSEConnect</filename> files into the container image to
@@ -146,16 +146,15 @@
         follows:
       </para>
 <screen>FROM registry.suse.com/bci/bci-base:latest
-    
-    RUN --mount=type=secret,id=SUSEConnect \
-        --mount=type=secret,id=SCCcredentials \
-        zypper -n in fluxbox</screen>
+RUN --mount=type=secret,id=SUSEConnect \
+    --mount=type=secret,id=SCCcredentials \
+    zypper -n in fluxbox</screen>
       <para>
         &buildah; support mounting secrets via the <literal>--secret</literal>
         flag as follows:
       </para>
-<screen>buildah bud --layers --secret=id=SCCcredentials,src=/path/to/SCCcredentials \
-        --secret=id=SUSEConnect,src=/path/to/SUSEConnect .</screen>
+<screen>&prompt.user;buildah bud --layers --secret=id=SCCcredentials,src=/path/to/SCCcredentials \
+  --secret=id=SUSEConnect,src=/path/to/SUSEConnect .</screen>
       <note>
         <title>known issue</title>
         <para>
@@ -164,10 +163,11 @@
           the following error message:
         </para>
 <screen>&gt; zypper ref
-    Refreshing service 'container-suseconnect-zypp'.
-    Problem retrieving the repository index file for service 'container-suseconnect-zypp':
-    [container-suseconnect-zypp|file:/usr/lib/zypp/plugins/services/container-suseconnect-zypp]
-    Warning: Skipping service 'container-suseconnect-zypp' because of the above error.</screen>
+
+Refreshing service 'container-suseconnect-zypp'.
+Problem retrieving the repository index file for service 'container-suseconnect-zypp':
+[container-suseconnect-zypp|file:/usr/lib/zypp/plugins/services/container-suseconnect-zypp]
+Warning: Skipping service 'container-suseconnect-zypp' because of the above error.</screen>
         <para>
           Ignore the message, as it simply indicates that container-suseconnect
           was not able to retrieve your SUSE Customer Center credentials, and
@@ -188,9 +188,8 @@
         done using the <literal>ENV</literal> directive as follows:
       </para>
 <screen>FROM registry.suse.com/bci/bci-base:latest
-    ENV ADDITIONAL_MODULES sle-module-desktop-applications,sle-module-development-tools
-    
-    RUN --mount=type=secret,id=SCCcredentials zypper -n in fluxbox &amp;&amp; zypper -n clean</screen>
+ENV ADDITIONAL_MODULES sle-module-desktop-applications,sle-module-development-tools
+RUN --mount=type=secret,id=SCCcredentials zypper -n in fluxbox &amp;&amp; zypper -n clean</screen>
     </section>
   </section>
 </article>

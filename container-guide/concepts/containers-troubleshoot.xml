@@ -59,7 +59,7 @@
         list of file system contents, including names, paths, and sizes):
       </para>
 <screen>&prompt.user;sudo container-diff analyze --type=history daemon://<replaceable>IMAGE</replaceable>
-    &prompt.user;sudo container-diff analyze --type=file daemon://<replaceable>IMAGE</replaceable></screen>
+&prompt.user;sudo container-diff analyze --type=file daemon://<replaceable>IMAGE</replaceable></screen>
       <para>
         To view all available parameters and their brief descriptions, run the
         <command>container-diff analyze --help</command> command.

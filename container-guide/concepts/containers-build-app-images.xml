@@ -91,12 +91,12 @@
       <package>example</package> package:
     </para>
 <screen>FROM registry.suse.com/suse/sle15
-    LABEL maintainer=EXAMPLEUSER_PLAIN
-    RUN zypper ref &amp;&amp; zypper in -f example-1.0.0-0
-    COPY application.rpm /tmp/
-    RUN zypper --non-interactive in /tmp/application.rpm
-    ENTRYPOINT ["/etc/bin/application"]
-    CMD ["-i"]</screen>
+LABEL maintainer=EXAMPLEUSER_PLAIN
+RUN zypper ref &amp;&amp; zypper in -f example-1.0.0-0
+COPY application.rpm /tmp/
+RUN zypper --non-interactive in /tmp/application.rpm
+ENTRYPOINT ["/etc/bin/application"]
+CMD ["-i"]</screen>
     <para>
       Build the image by running the following command in the directory that
       the <filename>Dockerfile</filename> resides in:
@@ -155,11 +155,11 @@
       using the file <filename>/etc/example/configuration_example</filename>:
     </para>
 <screen>FROM registry.suse.com/suse/sle15 <co xml:id="CO1-1"/>
-    RUN zypper ref &amp;&amp; zypper --non-interactive in example <co xml:id="CO1-2"/>
-    ENV BACKUP=/backup <co xml:id="CO1-3"/>
-    RUN mkdir -p $BACKUP <co xml:id="CO1-4"/>
-    COPY configuration_example /etc/example/ <co xml:id="CO1-5"/>
-    ENTRYPOINT ["/etc/bin/example"] <co xml:id="CO1-6"/></screen>
+RUN zypper ref &amp;&amp; zypper --non-interactive in example <co xml:id="CO1-2"/>
+ENV BACKUP=/backup <co xml:id="CO1-3"/>
+RUN mkdir -p $BACKUP <co xml:id="CO1-4"/>
+COPY configuration_example /etc/example/ <co xml:id="CO1-5"/>
+ENTRYPOINT ["/etc/bin/example"] <co xml:id="CO1-6"/></screen>
     <para>
       The above example <literal>Dockerfile</literal> performs the following
       operations:
@@ -243,12 +243,12 @@
       system:
     </para>
 <screen>FROM registry.suse.com/suse/sles12sp4
-    RUN zypper ref &amp;&amp; zypper --non-interactive in apache2
-    COPY apache2 /etc/sysconfig/
-    RUN chown -R admin /data
-    EXPOSE 80
-    VOLUME /data
-    ENTRYPOINT ["apache2ctl"]</screen>
+RUN zypper ref &amp;&amp; zypper --non-interactive in apache2
+COPY apache2 /etc/sysconfig/
+RUN chown -R admin /data
+EXPOSE 80
+VOLUME /data
+ENTRYPOINT ["apache2ctl"]</screen>
     <para>
       The example above installs the Apache Web server to the image and copies
       the entire configuration to the image. The <literal>data</literal>
@@ -268,15 +268,15 @@
       port is as follows:
     </para>
 <screen xml:id="ex-docker-dockerfile-apache2">FROM registry.suse.com/suse/sle15 <co xml:id="CO2-1"/>
-    LABEL maintainer=<replaceable>EXAMPLEUSER_PLAIN</replaceable> <co xml:id="CO2-2"/>
-    ADD etc/ /etc/zypp/ <co xml:id="CO2-3"/>
-    RUN zypper refs &amp;&amp; zypper refresh <co xml:id="CO2-4"/>
-    RUN zypper --non-interactive in apache2 <co xml:id="CO2-5"/>
-    RUN echo "The Web server is running" &prompt.user;/srv/www/htdocs/test.html <co xml:id="CO2-6"/>
-    # COPY data/* /srv/www/htdocs/ <co xml:id="CO2-7"/>
-    EXPOSE 80 <co xml:id="CO2-8"/>
-    ENTRYPOINT ["/usr/sbin/httpd"]
-    CMD ["-D", "FOREGROUND"]</screen>
+LABEL maintainer=<replaceable>EXAMPLEUSER_PLAIN</replaceable> <co xml:id="CO2-2"/>
+ADD etc/ /etc/zypp/ <co xml:id="CO2-3"/>
+RUN zypper refs &amp;&amp; zypper refresh <co xml:id="CO2-4"/>
+RUN zypper --non-interactive in apache2 <co xml:id="CO2-5"/>
+RUN echo "The Web server is running" &prompt.user;/srv/www/htdocs/test.html <co xml:id="CO2-6"/>
+# COPY data/* /srv/www/htdocs/ <co xml:id="CO2-7"/>
+EXPOSE 80 <co xml:id="CO2-8"/>
+ENTRYPOINT ["/usr/sbin/httpd"]
+CMD ["-D", "FOREGROUND"]</screen>
     <calloutlist>
       <callout arearefs="CO2-1">
         <para>
@@ -370,8 +370,8 @@
               the <filename>docker/etc</filename> directory:
             </para>
 <screen>&prompt.user;cd docker
-    &prompt.user;mkdir etc
-    &prompt.user;sudo cp -a /etc/zypp/{repos.d,services.d} etc/</screen>
+&prompt.user;mkdir etc
+&prompt.user;sudo cp -a /etc/zypp/{repos.d,services.d} etc/</screen>
             <para>
               Instead of copying all repository and service files, you can also
               copy only the subset that is required by the container.
@@ -425,9 +425,10 @@
           --latest</command> command:
         </para>
 <screen>&prompt.user;docker ps --latest
-    CONTAINER ID        IMAGE               COMMAND                  [...]
-    7bd674eb196d
-    tux/apache2         "/usr/sbin/httpd -..."   [...]</screen>
+
+CONTAINER ID        IMAGE               COMMAND                  [...]
+7bd674eb196d
+tux/apache2         "/usr/sbin/httpd -..."   [...]</screen>
         <para>
           To stop and delete the container, run the following command:
         </para>
