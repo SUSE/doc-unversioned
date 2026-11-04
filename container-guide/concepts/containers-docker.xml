@@ -157,6 +157,15 @@
 Environment="HTTP_PROXY=http://proxy.example.com:3128"
 Environment="HTTPS_PROXY=http://proxy.example.com:3128"
 Environment="NO_PROXY=localhost,127.0.0.1,registry.example.com,.corp"</screen>
+          <important>
+            <title>Proxy credentials and special characters</title>
+            <para>
+              If your proxy requires authentication, use the form <literal>http://USERNAME:PASSWORD@proxy.example.com:3128</literal>.
+            </para>
+            <para>
+              Special characters in the proxy value must be URL-encoded and double-escaped. For example, the <literal>@</literal> symbol becomes <literal>%%40</literal>. A password of <literal>P@SSWORD</literal> would look like this: <literal>http://USERNAME:P%%40SSWORD@proxy.example.com:3128</literal>.
+            </para>
+          </important>
         <itemizedlist>
           <listitem>
             <para>
@@ -181,15 +190,10 @@ Environment="NO_PROXY=localhost,127.0.0.1,registry.example.com,.corp"</screen>
           <para>
             Verify that the &docker; service uses the proxy settings:
           </para>
-<screen>&prompt.sudo;systemctl show --property=Environment docker.service
-Environment=HTTP_PROXY=http://proxy.example.com:3128 HTTPS_PROXY=http://proxy.example.com:3128 NO_PROXY=localhost,127.0.0.1,registry.example.com,.corp
-</screen>
-        <important>
-          <title>Proxy credentials</title>
-          <para>
-              If your proxy requires authentication, use the form <literal>http://USERNAME:PASSWORD@proxy.example.com:3128</literal>.
-          </para>
-        </important>
+<screen>&prompt.sudo;systemctl show --property=Environment docker.service</screen>
+          <para>The output should look similar to this:</para>
+<screen>Environment=HTTP_PROXY=http://proxy.example.com:3128 HTTPS_PROXY=http://proxy.example.com:3128 NO_PROXY=localhost,127.0.0.1,registry.example.com,.corp</screen>
+
         </listitem>
         <listitem>
           <para>

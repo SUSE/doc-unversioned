@@ -81,7 +81,7 @@
         </revision>
        </revhistory>
       <!-- ISO date of last update as YYYY-MM-DD -->
-      <meta name="updated" content="2023-11-02"/>
+      <meta name="updated" content="2026-11-09"/>
       <!-- enter the platform identifier or list of comma-separated list of identifiers -->
       <meta name="architecture" content="x86_64;zseries;power;aarch64"/>
       <!-- enter product name and version -->
