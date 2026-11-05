@@ -76,7 +76,7 @@
       unit:
     </para>
 <screen>&prompt.user;podman generate systemd registry | \
-&prompt.user;sudo tee /etc/systemd/system/suse_registry.service</screen>
+  sudo tee /etc/systemd/system/suse_registry.service</screen>
     <para>
       Enable and start the registry service, then verify its status:
     </para>
