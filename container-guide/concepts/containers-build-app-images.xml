@@ -426,9 +426,8 @@ CMD ["-D", "FOREGROUND"]</screen>
         </para>
 <screen>&prompt.user;docker ps --latest
 
-CONTAINER ID        IMAGE               COMMAND                  [...]
-7bd674eb196d
-tux/apache2         "/usr/sbin/httpd -..."   [...]</screen>
+CONTAINER ID   IMAGE         COMMAND                  [...]
+7bd674eb196d   tux/apache2   "/usr/sbin/httpd -..."   [...]</screen>
         <para>
           To stop and delete the container, run the following command:
         </para>

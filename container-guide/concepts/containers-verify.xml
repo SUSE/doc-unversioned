@@ -63,8 +63,8 @@
       immutable tamper resistant ledger. For example:
     </para>
 <screen>&prompt.user;podman run --rm -e COSIGN_EXPERIMENTAL=1 registry.suse.com/suse/cosign \
-    verify --key /usr/share/pki/containers/suse-container-key.pem \
-    registry.suse.com/bci/bci-base:latest | tail -1 | jq
+  verify --key /usr/share/pki/containers/suse-container-key.pem \
+  registry.suse.com/bci/bci-base:latest | tail -1 | jq
 
 [
   {

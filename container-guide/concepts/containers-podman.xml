@@ -370,17 +370,17 @@ Storing signatures
     </para>
 <screen>&prompt.user;podman images
 
-REPOSITORY                      TAG         IMAGE ID      CREATED        SIZE
-registry.suse.com/bci/bci-base  latest      34578a383c7b  22 hours ago   122 MB</screen>
+REPOSITORY                      TAG     IMAGE ID      CREATED       SIZE
+registry.suse.com/bci/bci-base  latest  34578a383c7b  22 hours ago  122 MB</screen>
     <para>
       Rename the &bcia;-Base image to <literal>my-base</literal>:
     </para>
 <screen>&prompt.user;podman tag 34578a383c7b my-base</screen>
 <screen>&prompt.user;podman images
 
-REPOSITORY                      TAG         IMAGE ID      CREATED        SIZE
-registry.suse.com/bci/bci-base  latest      34578a383c7b  22 hours ago   122 MB
-localhost/my-base               latest      34578a383c7b  22 hours ago   122 MB</screen>
+REPOSITORY                      TAG     IMAGE ID      CREATED       SIZE
+registry.suse.com/bci/bci-base  latest  34578a383c7b  22 hours ago  122 MB
+localhost/my-base               latest  34578a383c7b  22 hours ago  122 MB</screen>
     <para>
       Add a custom tag <literal>1</literal> (indicating that this version 1 of
       the image) to <literal>my-base</literal>:
@@ -388,10 +388,10 @@ localhost/my-base               latest      34578a383c7b  22 hours ago   122 MB<
 <screen>&prompt.user;podman tag 34578a383c7b my-base:1</screen>
 <screen>&prompt.user;podman images
 
-REPOSITORY                      TAG         IMAGE ID      CREATED        SIZE
-registry.suse.com/bci/bci-base  latest      34578a383c7b  22 hours ago   122 MB
-localhost/my-base               latest      34578a383c7b  22 hours ago   122 MB
-localhost/my-base               1           34578a383c7b  22 hours ago   122 MB</screen>
+REPOSITORY                      TAG     IMAGE ID      CREATED       SIZE
+registry.suse.com/bci/bci-base  latest  34578a383c7b  22 hours ago  122 MB
+localhost/my-base               latest  34578a383c7b  22 hours ago  122 MB
+localhost/my-base               1       34578a383c7b  22 hours ago  122 MB</screen>
     <para>
       Note that the default tag <literal>latest</literal> is still present.
     </para>
