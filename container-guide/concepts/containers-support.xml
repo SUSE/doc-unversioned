@@ -35,15 +35,17 @@
     </para>
     <table frame="all" rowsep="1" colsep="1">
       <title>Support matrix</title>
-      <tgroup cols="3">
-        <colspec colname="col_1" colwidth="33.3333*"/>
-        <colspec colname="col_2" colwidth="33.3333*"/>
-        <colspec colname="col_3" colwidth="33.3334*"/>
+      <tgroup cols="4">
+        <colspec colname="col_1" colwidth="40*"/>
+        <colspec colname="col_2" colwidth="20*"/>
+        <colspec colname="col_3" colwidth="20*"/>
+        <colspec colname="col_4" colwidth="20*"/>
         <thead>
           <row>
             <entry align="center" valign="top">Host ↓ Container image →</entry>
             <entry align="center" valign="top">&slsa; 12</entry>
             <entry align="center" valign="top">&slsa; 15</entry>
+            <entry align="center" valign="top">&slsa; 16</entry>
           </row>
         </thead>
         <tbody>
@@ -63,11 +65,41 @@
                 &#10059;
               </para>
             </entry>
+            <entry align="center" valign="top">
+              <para>-</para>
+            </entry>
           </row>
           <row>
             <entry align="center" valign="top">
               <para>
                 <emphasis role="strong">&slsa; 15</emphasis>
+              </para>
+            </entry>
+            <entry align="center" valign="top">
+              <para>
+                &#10003;
+              </para>
+            </entry>
+            <entry align="center" valign="top">
+              <para>
+                &#10003;
+              </para>
+            </entry>
+            <entry align="center" valign="top">
+              <para>
+                &#10059;
+              </para>
+            </entry>
+          </row>
+          <row>
+            <entry align="center" valign="top">
+              <para>
+                <emphasis role="strong">&slsa; 16</emphasis>
+              </para>
+            </entry>
+            <entry align="center" valign="top">
+              <para>
+                &#10003;
               </para>
             </entry>
             <entry align="center" valign="top">
@@ -97,6 +129,9 @@
                 &#10003;
               </para>
             </entry>
+            <entry align="center" valign="top">
+              <para>-</para>
+            </entry>
           </row>
           <row>
             <entry align="center" valign="top">
@@ -114,6 +149,9 @@
                 &#10003;
               </para>
             </entry>
+            <entry align="center" valign="top">
+              <para>-</para>
+            </entry>
           </row>
         </tbody>
       </tgroup>
@@ -124,14 +162,16 @@
     <para>
       &#10059; Limited support (see the Limited support note)
     </para>
+    <para>
+      - Not supported
+    </para>
     <important>
       <title>Limited support note</title>
       <para>
-        &suse; provides limited support for &slsa; 15 GA-based containers
-        running on &slsa; 12 SP5 hosts due to the fact that containerized
-        applications can make system calls not available in the host's kernel.
+        &suse; provides limited support for &slsa; 15 containers
+        running on &slsa; 12 SP5 hosts, and for &slsa; 16 containers running on &slsa; 15 hosts, because containerized applications can make system calls not available in the older host's kernel.
         To avoid potential risks and compatibility problems, &suse; recommends
-        using the same Service Pack release for both containers and hosts.
+        using the same Service Pack or major release for both containers and hosts.
       </para>
     </important>
     <para>
