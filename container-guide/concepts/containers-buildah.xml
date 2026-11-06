@@ -168,16 +168,16 @@
       The following example can give you a general idea of how to build an
       image with &buildah;.
     </para>
-<screen>container=$(buildah from suse/sle15) <co xml:id="CO3-1"/>
-    buildah run $container zypper up <co xml:id="CO3-2"/>
-    buildah copy $container . /usr/src/example/ <co xml:id="CO3-3"/>
-    buildah config --workingdir /usr/src/example $container <co xml:id="CO3-4"/>
-    buildah config --port 8000 $container
-    buildah config --cmd "php -S 0.0.0.0:8000" $container
-    buildah config --label maintainer="Tux" $container <co xml:id="CO3-5"/>
-    buildah config --label version="0.1" $container
-    buildah commit $container example <co xml:id="CO3-6"/>
-    buildah rm $container <co xml:id="CO3-7"/></screen>
+<screen>&prompt.user;container=$(buildah from suse/sle15) <co xml:id="CO3-1"/>
+&prompt.user;buildah run $container zypper up <co xml:id="CO3-2"/>
+&prompt.user;buildah copy $container . /usr/src/example/ <co xml:id="CO3-3"/>
+&prompt.user;buildah config --workingdir /usr/src/example $container <co xml:id="CO3-4"/>
+&prompt.user;buildah config --port 8000 $container
+&prompt.user;buildah config --cmd "php -S 0.0.0.0:8000" $container
+&prompt.user;buildah config --label maintainer="Tux" $container <co xml:id="CO3-5"/>
+&prompt.user;buildah config --label version="0.1" $container
+&prompt.user;buildah commit $container example <co xml:id="CO3-6"/>
+&prompt.user;buildah rm $container <co xml:id="CO3-7"/></screen>
     <calloutlist>
       <callout arearefs="CO3-1">
         <para>

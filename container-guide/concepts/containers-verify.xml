@@ -31,26 +31,26 @@
       fetches the cosign container from the &suse; registry, which includes the SUSE signing key
       and uses it to verify the latest &bcia;-Base container image.
     </para>
-<screen>&prompt.user;podman run --rm -it registry.suse.com/suse/cosign verify \
-        --key /usr/share/pki/containers/suse-container-key.pem \
-        registry.suse.com/bci/bci-base:latest | tail -1 | jq
+<screen>&prompt.user;podman run --rm registry.suse.com/suse/cosign verify \
+  --key /usr/share/pki/containers/suse-container-key.pem \
+  registry.suse.com/bci/bci-base:latest | tail -1 | jq
     
-    [
-      {
-        "critical": {
-          "identity": {
-            "docker-reference": "registry.suse.com/bci/bci-base"
-          },
-          "image": {
-            "docker-manifest-digest": "sha256:52a828600279746ef669cf02a599660cd53faf4b2430a6b211d593c3add047f5"
-          },
-          "type": "cosign container image signature"
-        },
-        "optional": {
-          "creator": "OBS"
-        }
-      }
-    ]</screen>
+[
+  {
+    "critical": {
+      "identity": {
+        "docker-reference": "registry.suse.com/bci/bci-base"
+      },
+      "image": {
+        "docker-manifest-digest": "sha256:52a828600279746ef669cf02a599660cd53faf4b2430a6b211d593c3add047f5"
+      },
+      "type": "cosign container image signature"
+    },
+    "optional": {
+      "creator": "OBS"
+    }
+  }
+]</screen>
     <para>
       The signing key can be used to verify all &bcia;s, and it also ships with
       &productname; (the
@@ -62,33 +62,34 @@
       <link xlink:href="https://github.com/sigstore/rekor">rekor</link>, the
       immutable tamper resistant ledger. For example:
     </para>
-<screen>&prompt.user;podman run --rm -it -e COSIGN_EXPERIMENTAL=1 registry.suse.com/suse/cosign \
-        verify --key /usr/share/pki/containers/suse-container-key.pem \
-        registry.suse.com/bci/bci-base:latest | tail -1 | jq
-    [
-      {
-        "critical": {
-          "identity": {
-            "docker-reference": "registry.suse.com/bci/bci-base"
-          },
-          "image": {
-            "docker-manifest-digest": "sha256:52a828600279746ef669cf02a599660cd53faf4b2430a6b211d593c3add047f5"
-          },
-          "type": "cosign container image signature"
-        },
-        "optional": {
-          "creator": "OBS"
-        }
-      }
-    ]</screen>
+<screen>&prompt.user;podman run --rm -e COSIGN_EXPERIMENTAL=1 registry.suse.com/suse/cosign \
+  verify --key /usr/share/pki/containers/suse-container-key.pem \
+  registry.suse.com/bci/bci-base:latest | tail -1 | jq
+
+[
+  {
+    "critical": {
+      "identity": {
+        "docker-reference": "registry.suse.com/bci/bci-base"
+      },
+      "image": {
+        "docker-manifest-digest": "sha256:52a828600279746ef669cf02a599660cd53faf4b2430a6b211d593c3add047f5"
+      },
+      "type": "cosign container image signature"
+    },
+    "optional": {
+      "creator": "OBS"
+    }
+  }
+]</screen>
     <para>
       If verification fails, the output of the <command>cosign verify</command>
       command is similar to the one below.
     </para>
 <screen>Error: no matching signatures:
-    crypto/rsa: verification error
-    main.go:62: error during command execution: no matching signatures:
-    crypto/rsa: verification error</screen>
+crypto/rsa: verification error
+main.go:62: error during command execution: no matching signatures:
+crypto/rsa: verification error</screen>
   </section>
   <section xml:id="sec-verify-helm-chart">
     <title>Verifying Helm charts with Cosign</title>
@@ -115,8 +116,8 @@
       <filename>/etc/containers/registries.d/default.yaml</filename>:
     </para>
 <screen language="YAML" linenumbering="unnumbered">docker:
-      registry.suse.com:
-        use-sigstore-attachments: true</screen>
+  registry.suse.com:
+    use-sigstore-attachments: true</screen>
     <para>
       Instead of editing the <filename>default.yaml</filename>, you can create
       a new file in <filename>/etc/containers/registries.d/</filename> with a
@@ -130,32 +131,32 @@
       following:
     </para>
 <screen language="json" linenumbering="unnumbered">{
-      "default": [
-        {
-          "type": "insecureAcceptAnything"
-        }
-      ],
-      "transports": {
-        "docker-daemon": {
-          "": [
-            {
-              "type": "insecureAcceptAnything"
-            }
-          ]
-        },
-        "docker": {
-          "registry.suse.com": [
-            {
-              "type": "sigstoreSigned",
-              "keyPath": "/usr/share/pki/containers/suse-container-key.pem",
-              "signedIdentity": {
-                "type": "matchRepository"
-              }
-            }
-          ]
-        }
+  "default": [
+      {
+        "type": "insecureAcceptAnything"
       }
-    }</screen>
+    ],
+    "transports": {
+      "docker-daemon": {
+        "": [
+          {
+            "type": "insecureAcceptAnything"
+          }
+        ]
+      },
+      "docker": {
+        "registry.suse.com": [
+          {
+            "type": "sigstoreSigned",
+            "keyPath": "/usr/share/pki/containers/suse-container-key.pem",
+            "signedIdentity": {
+              "type": "matchRepository"
+            }
+          }
+        ]
+      }
+    }
+  }</screen>
     <para>
       The specified configuration instructs &podman;, skopeo and &buildah; to
       verify images under the <literal>registry.suse.com</literal> repository.
@@ -177,7 +178,7 @@
         Signing Keys</link>, or use the following command:
       </para>
 <screen linenumbering="unnumbered">&gt; sudo curl -s https://ftp.suse.com/pub/projects/security/keys/container-key.pem \
-        -o /usr/share/pki/containers/suse-container-key.pem</screen>
+  -o /usr/share/pki/containers/suse-container-key.pem</screen>
       <note>
         <para>
           This step is optional on &productname;. The signing key is already
@@ -195,8 +196,9 @@
       If verification fails, the command returns an error message as follows:
     </para>
 <screen linenumbering="unnumbered">&prompt.user;podman pull registry.suse.com/bci/bci-base:latest
-    Trying to pull registry.suse.com/bci/bci-base:latest...
-    Error: copying system image from manifest list: Source image rejected: Signature for identity registry.suse.com/bci/bci-base is not accepted</screen>
+
+Trying to pull registry.suse.com/bci/bci-base:latest...
+Error: copying system image from manifest list: Source image rejected: Signature for identity registry.suse.com/bci/bci-base is not accepted</screen>
     <para>
       If there are no issues with the signed image and your configuration, you
       can proceed with using the container image.

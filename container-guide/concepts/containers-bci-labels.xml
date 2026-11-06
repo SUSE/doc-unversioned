@@ -136,43 +136,44 @@
       Here is an example of the labels information shown by <literal>podman
       inspect</literal>:
     </para>
-<screen>podman inspect registry.suse.com/bci/bci-base:15.7
-    [...]
-    "Labels": {
-                "com.suse.bci.base.authors": "https://github.com/SUSE/bci/discussions",
-                "com.suse.bci.base.created": "2026-06-09T19:43:41.997245000Z",
-                "com.suse.bci.base.description": "Image for containers based on SUSE Linux Enterprise Server 15 SP7.",
-                "com.suse.bci.base.disturl": "obs://build.suse.de/SUSE:SLE-15-SP7:Update:CR/images/b51182d2946c2d9f7961240a0cef66d2-sles15-image",
-                "com.suse.bci.base.eula": "sle-bci",
-                "com.suse.bci.base.lifecycle-url": "https://www.suse.com/lifecycle#suse-linux-enterprise-server-15",
-                "com.suse.bci.base.name": "15.7-5.20.19",
-                "com.suse.bci.base.reference": "registry.suse.com/bci/bci-base:15.7-5.20.19",
-                "com.suse.bci.base.release-stage": "released",
-                "com.suse.bci.base.source": "https://sources.suse.com/SUSE:SLE-15-SP7:Update:CR/sles15-image/b51182d2946c2d9f7961240a0cef66d2/",
-                "com.suse.bci.base.supportlevel": "l3",
-                "com.suse.bci.base.title": "SLE BCI 15 SP7 Base",
-                "com.suse.bci.base.until": "2031-07-31",
-                "com.suse.bci.base.url": "https://www.suse.com/products/base-container-images/",
-                "com.suse.bci.base.vendor": "SUSE LLC",
-                "com.suse.bci.base.version": "15.7-5.20.19",
-                "com.suse.eula": "sle-bci",
-                "com.suse.lifecycle-url": "https://www.suse.com/lifecycle#suse-linux-enterprise-server-15",
-                "com.suse.release-stage": "released",
-                "com.suse.supportlevel": "l3",
-                "com.suse.supportlevel.until": "2031-07-31",
-                "org.openbuildservice.disturl": "obs://build.suse.de/SUSE:SLE-15-SP7:Update:CR/images/b51182d2946c2d9f7961240a0cef66d2-sles15-image",
-                "org.opencontainers.image.authors": "https://github.com/SUSE/bci/discussions",
-                "org.opencontainers.image.created": "2026-06-09T19:43:41.997245000Z",
-                "org.opencontainers.image.description": "Image for containers based on SUSE Linux Enterprise Server 15 SP7.",
-                "org.opencontainers.image.ref.name": "15.7-5.20.19",
-                "org.opencontainers.image.source": "https://sources.suse.com/SUSE:SLE-15-SP7:Update:CR/sles15-image/b51182d2946c2d9f7961240a0cef66d2/",
-                "org.opencontainers.image.title": "SLE BCI 15 SP7 Base",
-                "org.opencontainers.image.url": "https://www.suse.com/products/base-container-images/",
-                "org.opencontainers.image.vendor": "SUSE LLC",
-                "org.opencontainers.image.version": "15.7-5.20.19",
-                "org.opensuse.reference": "registry.suse.com/bci/bci-base:15.7-5.20.19"
-            },
-    [...]</screen>
+<screen>&prompt.user;podman inspect registry.suse.com/bci/bci-base:15.7
+
+[...]
+"Labels": {
+            "com.suse.bci.base.authors": "https://github.com/SUSE/bci/discussions",
+            "com.suse.bci.base.created": "2026-06-09T19:43:41.997245000Z",
+            "com.suse.bci.base.description": "Image for containers based on SUSE Linux Enterprise Server 15 SP7.",
+            "com.suse.bci.base.disturl": "obs://build.suse.de/SUSE:SLE-15-SP7:Update:CR/images/b51182d2946c2d9f7961240a0cef66d2-sles15-image",
+            "com.suse.bci.base.eula": "sle-bci",
+            "com.suse.bci.base.lifecycle-url": "https://www.suse.com/lifecycle#suse-linux-enterprise-server-15",
+            "com.suse.bci.base.name": "15.7-5.20.19",
+            "com.suse.bci.base.reference": "registry.suse.com/bci/bci-base:15.7-5.20.19",
+            "com.suse.bci.base.release-stage": "released",
+            "com.suse.bci.base.source": "https://sources.suse.com/SUSE:SLE-15-SP7:Update:CR/sles15-image/b51182d2946c2d9f7961240a0cef66d2/",
+            "com.suse.bci.base.supportlevel": "l3",
+            "com.suse.bci.base.title": "SLE BCI 15 SP7 Base",
+            "com.suse.bci.base.until": "2031-07-31",
+            "com.suse.bci.base.url": "https://www.suse.com/products/base-container-images/",
+            "com.suse.bci.base.vendor": "SUSE LLC",
+            "com.suse.bci.base.version": "15.7-5.20.19",
+            "com.suse.eula": "sle-bci",
+            "com.suse.lifecycle-url": "https://www.suse.com/lifecycle#suse-linux-enterprise-server-15",
+            "com.suse.release-stage": "released",
+            "com.suse.supportlevel": "l3",
+            "com.suse.supportlevel.until": "2031-07-31",
+            "org.openbuildservice.disturl": "obs://build.suse.de/SUSE:SLE-15-SP7:Update:CR/images/b51182d2946c2d9f7961240a0cef66d2-sles15-image",
+            "org.opencontainers.image.authors": "https://github.com/SUSE/bci/discussions",
+            "org.opencontainers.image.created": "2026-06-09T19:43:41.997245000Z",
+            "org.opencontainers.image.description": "Image for containers based on SUSE Linux Enterprise Server 15 SP7.",
+            "org.opencontainers.image.ref.name": "15.7-5.20.19",
+            "org.opencontainers.image.source": "https://sources.suse.com/SUSE:SLE-15-SP7:Update:CR/sles15-image/b51182d2946c2d9f7961240a0cef66d2/",
+            "org.opencontainers.image.title": "SLE BCI 15 SP7 Base",
+            "org.opencontainers.image.url": "https://www.suse.com/products/base-container-images/",
+            "org.opencontainers.image.vendor": "SUSE LLC",
+            "org.opencontainers.image.version": "15.7-5.20.19",
+            "org.opensuse.reference": "registry.suse.com/bci/bci-base:15.7-5.20.19"
+          },
+[...]</screen>
     <para>
       Labels are exposed under several prefixes: the
       <literal>com.suse.bci.base.*</literal> namespace carries the SUSE-specific
@@ -188,11 +189,11 @@
       lists all labels and only the information about the labels of the
       <package>bci-base:15.7</package> image:
     </para>
-<screen>podman inspect -f {{.Labels | json}} registry.suse.com/bci/bci-base:15.7</screen>
+<screen>&prompt.user;podman inspect -f '{{.Labels | json}}' registry.suse.com/bci/bci-base:15.7</screen>
     <para>
       It is also possible to retrieve the value of a specific label:
     </para>
-<screen>podman inspect -f {{ index .Labels \"com.suse.bci.base.supportlevel\" }} registry.suse.com/bci/bci-base:15.7</screen>
+<screen>&prompt.user;podman inspect -f '{{ index .Labels "com.suse.bci.base.supportlevel" }}' registry.suse.com/bci/bci-base:15.7</screen>
     <para>
       The preceding command retrieves the value of the
       <literal>com.suse.bci.base.supportlevel</literal> label.
@@ -201,8 +202,8 @@
       The skopeo tool makes it possible to examine labels of an image without
       pulling it first. For example:
     </para>
-<screen>skopeo inspect -f {{.Labels | json}} docker://registry.suse.com/bci/bci-base:15.7
-skopeo inspect -f {{ index .Labels \"com.suse.bci.base.supportlevel\" }} docker://registry.suse.com/bci/bci-base:15.7
+<screen>&prompt.user;skopeo inspect -f '{{.Labels | json}}' docker://registry.suse.com/bci/bci-base:15.7
+&prompt.user;skopeo inspect -f '{{ index .Labels "com.suse.bci.base.supportlevel" }}' docker://registry.suse.com/bci/bci-base:15.7
 </screen>
   </section>
 </article>
