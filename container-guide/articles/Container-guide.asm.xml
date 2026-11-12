@@ -44,6 +44,13 @@
     <merge>
       <title>&sle_container_guide;</title>
       <revhistory>
+        <revision><date>2026-11-12</date>
+        <revdescription>
+         <para>
+          Added proxy steps for docker and podman.
+         </para>
+        </revdescription>
+       </revision>
        <revision><date>2026-11-09</date>
         <revdescription>
          <para>
@@ -81,7 +88,7 @@
         </revision>
        </revhistory>
       <!-- ISO date of last update as YYYY-MM-DD -->
-      <meta name="updated" content="2026-11-09"/>
+      <meta name="updated" content="2026-11-12"/>
       <!-- enter the platform identifier or list of comma-separated list of identifiers -->
       <meta name="architecture" content="x86_64;zseries;power;aarch64"/>
       <!-- enter product name and version -->
