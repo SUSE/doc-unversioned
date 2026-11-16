@@ -114,7 +114,7 @@
         </listitem>
       </varlistentry>
       <varlistentry>
-        <term>DR region with passive cluster (Technology Preview) {D &lt;= C} &lt;- [A' =&gt; B]</term>
+        <term>DR region with passive cluster {D &lt;= C} &lt;- [A' =&gt; B]</term>
         <listitem>
         <figure xml:id="fig-common-configurations-saphana-angi-passive-dr">
           <title>DR region with passive cluster</title>

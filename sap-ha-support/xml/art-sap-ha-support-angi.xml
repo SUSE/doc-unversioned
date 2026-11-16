@@ -18,6 +18,14 @@
    <!-- History -->
    <revhistory xml:id="rh-sap-ha-support-angi">
     <revision>
+      <date>2026-11-16</date>
+      <revdescription>
+        <para>
+          Full support for performance-optimized, Multi-Target SR, third site in passive cluster
+        </para>
+      </revdescription>
+    </revision>
+    <revision>
       <date>2026-08-27</date>
       <revdescription>
         <para>
