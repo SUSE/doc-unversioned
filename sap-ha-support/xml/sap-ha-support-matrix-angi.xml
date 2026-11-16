@@ -45,7 +45,7 @@
           </row>
           <row>
             <entry>Performance-optimized, Multi-Target SR, third site in passive cluster</entry>
-            <entry>Technology preview</entry>
+            <entry>Supported, but undocumented</entry>
           </row>
           <row>
             <entry>Performance-optimized, Multi-SID in one cluster (MCOS)</entry>
