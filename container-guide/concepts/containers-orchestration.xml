@@ -360,7 +360,7 @@ dc9dca018dad  docker.io/...  apache2-foregroun...  4 seconds ago  Up 5 seconds a
     built for IoT and Edge computing. Unlike &kube;, K3s is packaged as a single &lt;60 MB binary and
     optimized for the &arm; architecture.</para>
     <para>For more info, refer to
-    <link xlink:href="https://www.suse.com/c/rancher_blog/introduction-to-k3s/">Introduction to K3s</link> and
+    <link xlink:href="https://opensource.suse.com/rancher-blog/blog/introduction-to-k3s/">Introduction to K3s</link> and
     <link xlink:href="https://documentation.suse.com/cloudnative/k3s/latest/en/quick-start.html">Quick-Start Guide</link>.</para>
     </section>
 </article>

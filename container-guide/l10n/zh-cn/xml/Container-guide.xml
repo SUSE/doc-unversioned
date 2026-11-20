@@ -2930,7 +2930,7 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
     <section xml:id="sec-k3s">
       <title>轻量级 Kubernetes (k3s)</title>
       <para><link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://k3s.io">K3s</link> 是专为物联网和边缘计算构建且经过 CNCF 认证的轻量级 Kubernetes 发行版。与 Kubernetes 不同，K3s 封装为单个不到 60 MB 的二进制文件，并针对 Arm 架构进行了优化。</para>
-      <para>有关详细信息，请参见 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.suse.com/c/rancher_blog/introduction-to-k3s/">K3s 简介</link>和<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://documentation.suse.com/trd/suse/html/kubernetes_ri_rancher-k3s-slemicro/id-deployment.html">如何在 SUSE Linux Enterprise Server 上安装 K3s 和 Rancher</link>。</para>
+      <para>有关详细信息，请参见 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://opensource.suse.com/rancher-blog/blog/introduction-to-k3s/">K3s 简介</link>和<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://documentation.suse.com/trd/suse/html/kubernetes_ri_rancher-k3s-slemicro/id-deployment.html">如何在 SUSE Linux Enterprise Server 上安装 K3s 和 Rancher</link>。</para>
     </section>
   </section>
   <section xml:lang="zh-cn" role="concept" version="5.2" xml:id="container-support">
