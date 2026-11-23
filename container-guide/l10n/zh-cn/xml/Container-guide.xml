@@ -3451,7 +3451,7 @@ skopeo inspect -f {{ index .Labels \"com.suse.sle.base.supportlevel\" }} docker:
         <term>映像</term>
         <listitem>
           <para>
-          <emphasis>映像</emphasis>是用于创建<emphasis>容器</emphasis>的只读模板。Docker 映像由一系列相互叠加构建的层组成。每个层对应于一项永久性更改，例如，应用程序的一项更新。更改存储在名为 <emphasis>Dockerfile</emphasis> 的文件中。有关更多细节，请参见<link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://docs.docker.com/engine/reference/glossary#image">官方 Docker 文档</link>。
+          <emphasis>映像</emphasis>是用于创建<emphasis>容器</emphasis>的只读模板。Docker 映像由一系列相互叠加构建的层组成。每个层对应于一项永久性更改，例如，应用程序的一项更新。更改存储在名为 <emphasis>Dockerfile</emphasis> 的文件中。有关更多细节，请参见<link xmlns:xlink="https://docs.docker.com/learn/content/what-is-a-container/#what-an-image-is">官方 Docker 文档</link>。
         </para>
         </listitem>
       </varlistentry>
